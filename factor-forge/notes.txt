@@ -1,0 +1,14 @@
+FACTOR FORGE -- NOTES
+=====================
+SETUP (2026-10-21)
+  Machine: Mac (macOS, Darwin 25.6.0), Python 3.12.10, venv in factor-forge/.venv
+  Libraries: see requirements.txt (anthropic 1.13.0, pandas 3.0.6, numpy 2.5.4,
+             scipy 1.18.1, matplotlib 3.11.2, python-dotenv 1.2.4)
+  Data: Ken French Data Library, raw CSV zips (download date: TBD, CRSP release: TBD)
+  Models: claude-fable-5-1, claude-opus-5-5, claude-sonnet-5-5, claude-haiku-5-5
+  Rules: models see only the frozen prompt + file previews; no web, no tools, no memory.
+         Claude Code builds infrastructure only, never the answers under test.
+
+LOG
+2026-10-21  Created project folder, venv, .env (ignored), requirements.txt, .gitignore.
+            Not yet committed.

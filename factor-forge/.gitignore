@@ -1,0 +1,21 @@
+# secrets -- never commit
+.env
+
+# local Python stuff
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# dry-run (fake model) outputs: regenerate any time with --dry-run
+runs_dryrun/
+results_dryrun/
+figures_dryrun/
+
+# zips are redundant with data/raw (re-download with the URL pattern in tasks.json)
+data/zips/
+
+# COMMITTED on purpose: data/raw, data/truth, data/reference, tasks.json,
+# runs/ (every prompt, reply, extracted script and meta.json -- ~15 MB for 320 runs),
+# results/ and figures/.
