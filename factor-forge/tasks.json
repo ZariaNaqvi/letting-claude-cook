@@ -1,0 +1,187 @@
+{
+  "source": "Ken French Data Library, files built from the 202608 CRSP database, downloaded 2026-10-21",
+  "url_pattern": "https://mba.tuck.dartmouth.edu/pages/faculty/ken.french/ftp/<NAME>_CSV.zip",
+  "pass_rule": {
+    "script_ran": true,
+    "min_coverage": 0.95,
+    "rmse_bp_max": 1.0,
+    "note": "worst human-reference RMSE = 0.4182 bp (inputs rounded to 2 dp for Prior files, 4 dp for 2x3 files; official factors rounded to 2 dp). Threshold = max(1 bp, 2 x worst reference RMSE)."
+  },
+  "never_give_model": [
+    "F-F_Research_Data_Factors.csv",
+    "F-F_Research_Data_5_Factors_2x3.csv",
+    "F-F_Momentum_Factor.csv",
+    "F-F_ST_Reversal_Factor.csv",
+    "F-F_LT_Reversal_Factor.csv"
+  ],
+  "dropped": [
+    {
+      "id": "HML_5F",
+      "reason": "Official HML in the 5-factor file is byte-identical to the 3-factor HML over 196307-202608 (max diff 0.00); redundant with HML."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "HML",
+      "factor_name": "HML (high minus low, value) from the 3-factor model",
+      "official_file": "F-F_Research_Data_Factors.csv",
+      "official_column": "HML",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_2x3.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "HML = 1/2 (Small Value + Big Value) - 1/2 (Small Growth + Big Growth), i.e. 0.5*(SMALL HiBM + BIG HiBM) - 0.5*(SMALL LoBM + BIG LoBM), using the value-weighted monthly returns table (first table) of 6_Portfolios_2x3.csv. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French HML (high minus low, value) from the 3-factor model factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_2x3.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/HML.csv",
+      "reference_csv": "data/reference/HML.csv",
+      "months": 1202,
+      "first": 192607,
+      "last": 202608,
+      "reference_rmse_bp": 0.2908,
+      "reference_max_abs_bp": 0.5
+    },
+    {
+      "id": "SMB_3F",
+      "factor_name": "SMB (small minus big) from the 3-factor model",
+      "official_file": "F-F_Research_Data_Factors.csv",
+      "official_column": "SMB",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_2x3.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "SMB = 1/3 (Small Value + Small Neutral + Small Growth) - 1/3 (Big Value + Big Neutral + Big Growth), i.e. mean(SMALL LoBM, ME1 BM2, SMALL HiBM) - mean(BIG LoBM, ME2 BM2, BIG HiBM), using the value-weighted monthly returns table (first table) of 6_Portfolios_2x3.csv. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French SMB (small minus big) from the 3-factor model factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_2x3.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/SMB_3F.csv",
+      "reference_csv": "data/reference/SMB_3F.csv",
+      "months": 1202,
+      "first": 192607,
+      "last": 202608,
+      "reference_rmse_bp": 0.2964,
+      "reference_max_abs_bp": 0.5
+    },
+    {
+      "id": "SMB_5F",
+      "factor_name": "SMB (small minus big) from the 5-factor (2x3) model",
+      "official_file": "F-F_Research_Data_5_Factors_2x3.csv",
+      "official_column": "SMB",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_2x3.csv",
+        "6_Portfolios_ME_OP_2x3.csv",
+        "6_Portfolios_ME_INV_2x3.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "SMB = 1/3 (SMB_B/M + SMB_OP + SMB_INV), where in each of the three 2x3 files SMB_x = mean of the 3 small portfolios - mean of the 3 big portfolios (small = SMALL Lo*, ME1 *2, SMALL Hi*; big = BIG Lo*, ME2 *2, BIG Hi*). Use the value-weighted monthly returns table (first table) of each file, and only months present in all three files (196307 onward). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French SMB (small minus big) from the 5-factor (2x3) model factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_2x3.csv, 6_Portfolios_ME_OP_2x3.csv, 6_Portfolios_ME_INV_2x3.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/SMB_5F.csv",
+      "reference_csv": "data/reference/SMB_5F.csv",
+      "months": 758,
+      "first": 196307,
+      "last": 202608,
+      "reference_rmse_bp": 0.2824,
+      "reference_max_abs_bp": 0.4989
+    },
+    {
+      "id": "RMW",
+      "factor_name": "RMW (robust minus weak profitability)",
+      "official_file": "F-F_Research_Data_5_Factors_2x3.csv",
+      "official_column": "RMW",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_ME_OP_2x3.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "RMW = 1/2 (Small Robust + Big Robust) - 1/2 (Small Weak + Big Weak), i.e. 0.5*(SMALL HiOP + BIG HiOP) - 0.5*(SMALL LoOP + BIG LoOP), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_OP_2x3.csv. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French RMW (robust minus weak profitability) factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_ME_OP_2x3.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/RMW.csv",
+      "reference_csv": "data/reference/RMW.csv",
+      "months": 758,
+      "first": 196307,
+      "last": 202608,
+      "reference_rmse_bp": 0.2912,
+      "reference_max_abs_bp": 0.5
+    },
+    {
+      "id": "CMA",
+      "factor_name": "CMA (conservative minus aggressive investment)",
+      "official_file": "F-F_Research_Data_5_Factors_2x3.csv",
+      "official_column": "CMA",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_ME_INV_2x3.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "CMA = 1/2 (Small Conservative + Big Conservative) - 1/2 (Small Aggressive + Big Aggressive), i.e. 0.5*(SMALL LoINV + BIG LoINV) - 0.5*(SMALL HiINV + BIG HiINV), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_INV_2x3.csv. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French CMA (conservative minus aggressive investment) factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_ME_INV_2x3.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/CMA.csv",
+      "reference_csv": "data/reference/CMA.csv",
+      "months": 758,
+      "first": 196307,
+      "last": 202608,
+      "reference_rmse_bp": 0.2888,
+      "reference_max_abs_bp": 0.5
+    },
+    {
+      "id": "MOM",
+      "factor_name": "Momentum (Mom / UMD)",
+      "official_file": "F-F_Momentum_Factor.csv",
+      "official_column": "Mom",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_ME_Prior_12_2.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "Mom = 1/2 (Small High + Big High) - 1/2 (Small Low + Big Low) prior (t-12 to t-2) return, i.e. 0.5*(SMALL HiPRIOR + BIG HiPRIOR) - 0.5*(SMALL LoPRIOR + BIG LoPRIOR), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_Prior_12_2.csv. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French Momentum (Mom / UMD) factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_ME_Prior_12_2.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/MOM.csv",
+      "reference_csv": "data/reference/MOM.csv",
+      "months": 1196,
+      "first": 192701,
+      "last": 202608,
+      "reference_rmse_bp": 0.4071,
+      "reference_max_abs_bp": 1.0
+    },
+    {
+      "id": "ST_REV",
+      "factor_name": "Short-Term Reversal (ST_Rev)",
+      "official_file": "F-F_ST_Reversal_Factor.csv",
+      "official_column": "ST_Rev",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_ME_Prior_1_0.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "ST_Rev = 1/2 (Small Low + Big Low) - 1/2 (Small High + Big High) prior (t-1) return, i.e. 0.5*(SMALL LoPRIOR + BIG LoPRIOR) - 0.5*(SMALL HiPRIOR + BIG HiPRIOR), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_Prior_1_0.csv. Note the sign: LOW minus HIGH. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French Short-Term Reversal (ST_Rev) factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_ME_Prior_1_0.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/ST_REV.csv",
+      "reference_csv": "data/reference/ST_REV.csv",
+      "months": 1207,
+      "first": 192602,
+      "last": 202608,
+      "reference_rmse_bp": 0.4083,
+      "reference_max_abs_bp": 1.0
+    },
+    {
+      "id": "LT_REV",
+      "factor_name": "Long-Term Reversal (LT_Rev)",
+      "official_file": "F-F_LT_Reversal_Factor.csv",
+      "official_column": "LT_Rev",
+      "official_block": "block 0 (untitled monthly table, first table in file)",
+      "input_files": [
+        "6_Portfolios_ME_Prior_60_13.csv"
+      ],
+      "block_to_use": "Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.",
+      "recipe_text": "LT_Rev = 1/2 (Small Low + Big Low) - 1/2 (Small High + Big High) prior (t-60 to t-13) return, i.e. 0.5*(SMALL LoPRIOR + BIG LoPRIOR) - 0.5*(SMALL HiPRIOR + BIG HiPRIOR), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_Prior_60_13.csv. Note the sign: LOW minus HIGH. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "name_only_text": "Construct the Fama-French Long-Term Reversal (LT_Rev) factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_ME_Prior_60_13.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.",
+      "truth_csv": "data/truth/LT_REV.csv",
+      "reference_csv": "data/reference/LT_REV.csv",
+      "months": 1148,
+      "first": 193101,
+      "last": 202608,
+      "reference_rmse_bp": 0.4182,
+      "reference_max_abs_bp": 1.0
+    }
+  ]
+}

@@ -4,7 +4,9 @@ SETUP (2026-10-21)
   Machine: Mac (macOS, Darwin 25.6.0), Python 3.12.10, venv in factor-forge/.venv
   Libraries: see requirements.txt (anthropic 1.13.0, pandas 3.0.6, numpy 2.5.4,
              scipy 1.18.1, matplotlib 3.11.2, python-dotenv 1.2.4)
-  Data: Ken French Data Library, raw CSV zips (download date: TBD, CRSP release: TBD)
+  Data: Ken French Data Library, raw CSV zips (download date: 2026-10-21)
+        Release line (head -1 data/raw/6_Portfolios_2x3.csv):
+        "This file was created using the 202608 CRSP database."
   Models: claude-fable-5-1, claude-opus-5-5, claude-sonnet-5-5, claude-haiku-5-5
   Rules: models see only the frozen prompt + file previews; no web, no tools, no memory.
          Claude Code builds infrastructure only, never the answers under test.
@@ -12,3 +14,11 @@ SETUP (2026-10-21)
 LOG
 2026-10-21  Created project folder, venv, .env (ignored), requirements.txt, .gitignore.
             Not yet committed.
+2026-10-21  Added ground_truth.py; ran `python -I ground_truth.py`. All 8 tasks
+            (HML, SMB_3F, SMB_5F, RMW, CMA, MOM, ST_REV, LT_REV) match the official
+            series: coverage 1.00, corr 1.0000, RMSE 0.28-0.42 bp, max |err| <= 1.0 bp,
+            0 months off by > 1 bp (residual = 2-decimal rounding in French's files).
+            HML in the 5-factor file = 3-factor HML. Wrong SMB recipes (9-port for 3F,
+            3-port for 5F) miss by RMSE ~60 bp, max ~351 bp -> recipes are distinct.
+            Wrote data/truth/*.csv, data/reference/*.csv, data/ground_truth_results.csv.
+2026-10-21  ground_truth.py: all 8 factors reproduce, worst RMSE 0.418 bp (LT_REV). PASS threshold = 1.0 bp.
