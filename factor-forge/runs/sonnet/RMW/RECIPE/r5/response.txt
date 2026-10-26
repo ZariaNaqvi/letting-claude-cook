@@ -1,0 +1,44 @@
+The script reads the file line by line and stops after the first table, so the later blocks are never used.
+
+- **Parsing:** it finds the header line containing "Value Weighted Returns" and "Monthly". Then it reads rows whose first field is a 6-digit YYYYMM date, and stops at the first line that is not such a row (a blank line or the next block header).
+- **Columns:** it takes them from the header row: SMALL LoOP, ME1 OP2, SMALL HiOP, BIG LoOP, ME2 OP2, BIG HiOP. They are located by name rather than position.
+- **Missing values:** -99.99 and -999 are treated as missing, and any month where one of the four needed columns is missing is skipped.
+- **Formula:** RMW = 0.5*(SMALL HiOP + BIG HiOP) - 0.5*(SMALL LoOP + BIG LoOP).
+
+```python
+import csv
+import pandas as pd
+
+rows = []
+header = None
+started = False
+with open("6_Portfolios_ME_OP_2x3.csv", newline="") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if "Value Weighted" in s and "Monthly" in s:
+                started = True
+            continue
+        if header is None:
+            if s.startswith(",") or "LoOP" in s:
+                header = [h.strip() for h in next(csv.reader([s]))]
+            continue
+        parts = [p.strip() for p in next(csv.reader([s]))] if s else []
+        if parts and len(parts[0]) == 6 and parts[0].isdigit():
+            rows.append(parts)
+        else:
+            break
+
+cols = ["date"] + header[1:]
+df = pd.DataFrame([r[:len(cols)] for r in rows], columns=cols)
+for c in cols:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+need = ["SMALL LoOP", "SMALL HiOP", "BIG LoOP", "BIG HiOP"]
+for c in need:
+    df.loc[df[c].isin([-99.99, -999]), c] = float("nan")
+df = df.dropna(subset=need)
+df["value"] = 0.5 * (df["SMALL HiOP"] + df["BIG HiOP"]) - 0.5 * (df["SMALL LoOP"] + df["BIG LoOP"])
+out = df[["date", "value"]].copy()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```

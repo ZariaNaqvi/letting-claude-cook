@@ -1,0 +1,68 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+def read_vw_monthly(fname):
+    with open(fname, "r", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+    # find the first "Average Value Weighted Returns -- Monthly" header
+    start = None
+    for i, ln in enumerate(lines):
+        if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        # fall back: first block of 6-digit dated rows
+        start = 0
+    rows = {}
+    in_block = False
+    for ln in lines[start + 1:]:
+        s = ln.strip()
+        if not s:
+            if in_block:
+                break
+            continue
+        parts = [p.strip() for p in ln.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]):
+            in_block = True
+            vals = []
+            for p in parts[1:7]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if v <= -99.0:
+                    v = np.nan
+                vals.append(v)
+            rows[int(parts[0])] = vals
+        else:
+            if in_block:
+                break
+            # header line for columns; continue
+    df = pd.DataFrame.from_dict(rows, orient="index",
+                                columns=["SL", "SM", "SH", "BL", "BM", "BH"])
+    df.index.name = "date"
+    return df.sort_index()
+
+def smb_component(df):
+    return (df["SL"] + df["SM"] + df["SH"]) / 3.0 - (df["BL"] + df["BM"] + df["BH"]) / 3.0
+
+bm = read_vw_monthly("6_Portfolios_2x3.csv")
+op = read_vw_monthly("6_Portfolios_ME_OP_2x3.csv")
+inv = read_vw_monthly("6_Portfolios_ME_INV_2x3.csv")
+
+smb_bm = smb_component(bm)
+smb_op = smb_component(op)
+smb_inv = smb_component(inv)
+
+common = smb_bm.index.intersection(smb_op.index).intersection(smb_inv.index)
+smb = (smb_bm.loc[common] + smb_op.loc[common] + smb_inv.loc[common]) / 3.0
+smb = smb.dropna()
+
+out = pd.DataFrame({"date": smb.index.astype(int), "value": smb.values.round(4)})
+out = out.sort_values("date").reset_index(drop=True)
+out.to_csv("output.csv", index=False)
+```
+
+SMB (5-factor) = average of the three size spreads: for each of the BM, OP, and INV 2x3 sorts, SMB_x = mean(small portfolios) − mean(big portfolios); SMB = (SMB_BM + SMB_OP + SMB_INV)/3, using the value-weighted monthly returns and the months common to all three files (from 196307).

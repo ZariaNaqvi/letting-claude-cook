@@ -1,0 +1,67 @@
+The factor is `UMD = 0.5*(Small High + Big High) - 0.5*(Small Low + Big Low)`, using the four corner portfolios of the 2x3 size-by-momentum sort. The script reads only the first monthly value-weighted block, treats -99.99 and -999 as missing, and drops any month where one of the four corner returns is missing.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+INPUT = "6_Portfolios_ME_Prior_12_2.csv"
+OUTPUT = "output.csv"
+
+MISSING_VALUES = (-99.99, -999.0)
+
+
+def is_missing(x):
+    return any(np.isclose(x, m, rtol=0, atol=1e-9) for m in MISSING_VALUES)
+
+
+def parse_monthly_block(path):
+    """Parse the first 'Monthly' value-weighted block of the Ken French file.
+
+    Returns a DataFrame indexed by date (int YYYYMM) with the 6 portfolio
+    columns in file order. Missing codes are converted to NaN.
+    """
+    rows = []
+    started = False
+    date_re = re.compile(r"^\d{6}$")
+    with open(path, "r", encoding="utf-8", errors="replace") as f:
+        for line in f:
+            parts = [p.strip() for p in line.strip().split(",")]
+            if len(parts) >= 7 and date_re.match(parts[0]):
+                try:
+                    vals = [float(x) for x in parts[1:7]]
+                except ValueError:
+                    if started:
+                        break
+                    continue
+                vals = [np.nan if is_missing(v) else v for v in vals]
+                rows.append([int(parts[0])] + vals)
+                started = True
+            else:
+                # End of the first monthly block (blank line or next section)
+                if started:
+                    break
+    cols = ["date", "SL", "ME1P2", "SH", "BL", "ME2P2", "BH"]
+    df = pd.DataFrame(rows, columns=cols)
+    df = df.drop_duplicates(subset="date", keep="first")
+    return df
+
+
+def main():
+    df = parse_monthly_block(INPUT)
+
+    # Momentum factor (Ken French construction with 2x3 sorts):
+    # UMD = 1/2 (Small High + Big High) - 1/2 (Small Low + Big Low)
+    needed = ["SH", "BH", "SL", "BL"]
+    df = df.dropna(subset=needed).copy()
+    df["value"] = 0.5 * (df["SH"] + df["BH"]) - 0.5 * (df["SL"] + df["BL"])
+
+    out = df[["date", "value"]].copy()
+    out["date"] = out["date"].astype(int)
+    out = out.sort_values("date").reset_index(drop=True)
+    out.to_csv(OUTPUT, index=False, columns=["date", "value"])
+
+
+if __name__ == "__main__":
+    main()
+```

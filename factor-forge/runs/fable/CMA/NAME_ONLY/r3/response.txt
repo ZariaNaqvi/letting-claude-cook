@@ -1,0 +1,72 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_INV_2x3.csv"
+
+with open(fname, "r") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly value-weighted section
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first line starting with a 6-digit date
+    for i, line in enumerate(lines):
+        if re.match(r"^\s*\d{6}\s*,", line):
+            start = i - 1
+            break
+
+# header line is the next line after section title
+header_idx = start + 1
+while header_idx < len(lines) and not lines[header_idx].strip().startswith(","):
+    header_idx += 1
+header = [h.strip() for h in lines[header_idx].split(",")]
+
+rows = []
+for line in lines[header_idx + 1:]:
+    s = line.strip()
+    if not s:
+        if rows:
+            break
+        continue
+    if not re.match(r"^\d{6}\s*,", s):
+        if rows:
+            break
+        continue
+    parts = [p.strip() for p in s.split(",")]
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header[:len(rows[0])])
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+cols = list(df.columns[1:])
+# Identify columns: SMALL LoINV, SMALL HiINV, BIG LoINV, BIG HiINV
+def find(pattern):
+    for c in cols:
+        if re.search(pattern, c, re.I):
+            return c
+    raise KeyError(pattern)
+
+small_lo = find(r"SMALL\s*LoINV")
+small_hi = find(r"SMALL\s*HiINV")
+big_lo = find(r"BIG\s*LoINV")
+big_hi = find(r"BIG\s*HiINV")
+
+cma = 0.5 * (df[small_lo] + df[big_lo]) - 0.5 * (df[small_hi] + df[big_hi])
+
+out = pd.DataFrame({"date": df["date"], "value": cma})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```
+
+CMA = ½(Small Conservative + Big Conservative) − ½(Small Aggressive + Big Aggressive), where LoINV = conservative and HiINV = aggressive, using the monthly value-weighted 2x3 ME/INV portfolios.

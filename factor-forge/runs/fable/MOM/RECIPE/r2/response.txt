@@ -1,0 +1,76 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_12_2.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.readlines()
+
+# Locate the first table: "Average Value Weighted Returns -- Monthly"
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first header line beginning with a comma
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# Header line is the next line starting with a comma
+hdr_idx = start + 1
+while hdr_idx < len(lines) and not lines[hdr_idx].strip().startswith(","):
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].strip().split(",")]
+
+rows = []
+for line in lines[hdr_idx + 1:]:
+    s = line.strip()
+    if not s:
+        # blank line ends the block (allow leading blanks before data though)
+        if rows:
+            break
+        continue
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        if rows:
+            break
+        continue
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df.rename(columns={header[0]: "date"}, inplace=True)
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Identify columns robustly
+def find_col(cols, *keys):
+    for c in cols:
+        cu = c.upper().replace(" ", "")
+        if all(k.upper().replace(" ", "") in cu for k in keys):
+            return c
+    raise KeyError(keys)
+
+cols = list(df.columns[1:])
+s_hi = find_col(cols, "SMALL", "HiPRIOR")
+s_lo = find_col(cols, "SMALL", "LoPRIOR")
+b_hi = find_col(cols, "BIG", "HiPRIOR")
+b_lo = find_col(cols, "BIG", "LoPRIOR")
+
+# Treat missing-value codes as NaN
+for c in [s_hi, s_lo, b_hi, b_lo]:
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+mom = 0.5 * (df[s_hi] + df[b_hi]) - 0.5 * (df[s_lo] + df[b_lo])
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": mom.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)
+```
+
+The script parses only the first (value-weighted monthly) block, stops at the first blank/non-YYYYMM line after the data, computes Mom = ½(Small Hi + Big Hi) − ½(Small Lo + Big Lo), and writes `output.csv` with `date,value`.

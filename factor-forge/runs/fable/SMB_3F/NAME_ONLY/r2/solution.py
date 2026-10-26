@@ -1,0 +1,68 @@
+import pandas as pd
+import numpy as np
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r") as f:
+    lines = f.readlines()
+
+# Locate the first monthly value-weighted section
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # Fallback: first line that starts with a 6-digit date
+    for i, line in enumerate(lines):
+        s = line.strip()
+        if len(s) >= 6 and s[:6].isdigit() and s[6:7] == ",":
+            start = i - 2
+            break
+
+# Header line follows the section title
+header_idx = start + 1
+header = [h.strip() for h in lines[header_idx].strip().split(",")]
+# header[0] is empty (date column)
+cols = header[1:]
+
+rows = []
+for line in lines[header_idx + 1:]:
+    s = line.strip()
+    if s == "":
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not (len(parts[0]) == 6 and parts[0].isdigit()):
+        break
+    try:
+        vals = [float(p) for p in parts[1:]]
+    except ValueError:
+        break
+    rows.append([int(parts[0])] + vals)
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+df = df.set_index("date")
+df = df.replace([-99.99, -999.0], np.nan)
+
+# Identify the six portfolios by column name
+def find_col(keys):
+    for c in df.columns:
+        cl = c.upper().replace(" ", "")
+        if all(k in cl for k in keys):
+            return c
+    raise KeyError(keys)
+
+small_lo = find_col(["SMALL", "LOBM"])
+small_hi = find_col(["SMALL", "HIBM"])
+small_mid = find_col(["ME1", "BM2"])
+big_lo = find_col(["BIG", "LOBM"])
+big_hi = find_col(["BIG", "HIBM"])
+big_mid = find_col(["ME2", "BM2"])
+
+smb = (df[small_lo] + df[small_mid] + df[small_hi]) / 3.0 \
+    - (df[big_lo] + df[big_mid] + df[big_hi]) / 3.0
+
+out = pd.DataFrame({"date": df.index.astype(int), "value": smb.values})
+out = out.dropna(subset=["value"])
+out["value"] = out["value"].round(4)
+out.to_csv("output.csv", index=False)

@@ -1,0 +1,77 @@
+CMA is built from the 2x3 size/investment sorts as the average of the two conservative (low-INV) portfolios minus the average of the two aggressive (high-INV) portfolios:
+
+CMA = ½(SMALL LoINV + BIG LoINV) − ½(SMALL HiINV + BIG HiINV)
+
+The script reads only the "Average Value Weighted Returns -- Monthly" block of the file. That block ends at the first line that does not start with a 6-digit date. Months where any of the four needed portfolios is missing (-99.99 or -999) are dropped, so they do not appear in the output.
+
+```python
+import re
+import pandas as pd
+import numpy as np
+
+fname = "6_Portfolios_ME_INV_2x3.csv"
+with open(fname, "r", encoding="latin-1") as f:
+    lines = [l.rstrip("\n").rstrip("\r") for l in f]
+
+# locate the value-weighted monthly section
+start = None
+for i, l in enumerate(lines):
+    if "Average Value Weighted Returns" in l and "Monthly" in l:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly section not found")
+
+# header line
+h = start + 1
+while lines[h].strip() == "":
+    h += 1
+header = [c.strip() for c in lines[h].split(",")]
+cols = header[1:]
+
+rows = []
+j = h + 1
+while j < len(lines):
+    l = lines[j].strip()
+    if not l:
+        break
+    parts = [p.strip() for p in l.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = []
+    for p in parts[1:]:
+        try:
+            vals.append(float(p))
+        except ValueError:
+            vals.append(np.nan)
+    rows.append([int(parts[0])] + vals)
+    j += 1
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+for c in cols:
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+def find(pattern_size, pattern_inv):
+    for c in cols:
+        cu = c.upper().replace(" ", "")
+        if pattern_size(cu) and pattern_inv(cu):
+            return c
+    raise RuntimeError(f"column not found")
+
+is_small = lambda c: c.startswith("SMALL") or c.startswith("ME1")
+is_big = lambda c: c.startswith("BIG") or c.startswith("ME2")
+is_lo = lambda c: "LOINV" in c or c.endswith("INV1")
+is_hi = lambda c: "HIINV" in c or c.endswith("INV3")
+
+sl = find(is_small, is_lo)
+sh = find(is_small, is_hi)
+bl = find(is_big, is_lo)
+bh = find(is_big, is_hi)
+
+df["value"] = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out = out.sort_values("date")
+out["value"] = out["value"].round(6)
+out.to_csv("output.csv", index=False)
+```

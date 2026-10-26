@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRWL4nnrBf5Zztud8SQU",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_ME_Prior_60_13.csv\"\n\nwith open(fname, \"r\", encoding=\"utf-8\", errors=\"replace\") as f:\n    lines = f.readlines()\n\n# Locate the first table header (line starting with comma followed by column names)\nstart = None\nfor i, line in enumerate(lines):\n    if line.strip().startswith(\",\") and \"SMALL LoPRIOR\" in line:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Could not find header of first table\")\n\nheader = [c.strip() for c in lines[start].strip().split(\",\")]\nrows = []\nfor line in lines[start + 1:]:\n    s = line.strip()\n    if not s:\n        # blank line ends the block\n        if rows:\n            break\n        continue\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        # non-monthly row (e.g. annual YYYY) or a new block title -> stop\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf = df.rename(columns={header[0]: \"date\"})\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Treat missing-data codes as NaN\nvals = df.iloc[:, 1:]\nvals = vals.mask((vals <= -99.99))\ndf.iloc[:, 1:] = vals\n\nvalue = 0.5 * (df[\"SMALL LoPRIOR\"] + df[\"BIG LoPRIOR\"]) - 0.5 * (df[\"SMALL HiPRIOR\"] + df[\"BIG HiPRIOR\"])\n\nout = pd.DataFrame({\"date\": df[\"date\"].astype(int), \"value\": value.round(4)})\nout = out.dropna(subset=[\"value\"])\nout.to_csv(\"output.csv\", index=False)\n```\n\nThis parses only the first monthly value-weighted block (stops at the first blank line / non-YYYYMM row), computes LT_Rev = \u00bd(Small Low + Big Low) \u2212 \u00bd(Small High + Big High), and writes `date,value` in percent.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2691,
+    "output_tokens": 759,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

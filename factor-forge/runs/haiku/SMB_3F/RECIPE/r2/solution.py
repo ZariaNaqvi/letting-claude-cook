@@ -1,0 +1,69 @@
+import re
+import math
+import csv
+
+INPUT_FILE = "6_Portfolios_2x3.csv"
+OUTPUT_FILE = "output.csv"
+TITLE_KEY = "Average Value Weighted Returns -- Monthly"
+MISSING = (-99.99, -999.0)
+
+
+def parse_value(s):
+    try:
+        v = float(s)
+    except ValueError:
+        return math.nan
+    for m in MISSING:
+        if abs(v - m) < 1e-9:
+            return math.nan
+    return v
+
+
+def main():
+    with open(INPUT_FILE, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate the first block (value-weighted monthly returns)
+    start = None
+    for i, line in enumerate(lines):
+        if TITLE_KEY in line:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Monthly value-weighted block not found")
+
+    records = []
+    started = False
+    for line in lines[start + 1:]:
+        parts = [p.strip() for p in line.split(",")]
+        if not parts or parts[0] == "":
+            if started:
+                break  # blank line / header ends the block
+            continue  # column header row of the block
+        if re.fullmatch(r"\d{6}", parts[0]) and len(parts) >= 7:
+            date = int(parts[0])
+            vals = [parse_value(p) for p in parts[1:7]]
+            records.append((date, vals))
+            started = True
+        else:
+            if started:
+                break  # next block (annual, etc.) begins
+
+    out_rows = []
+    for date, vals in records:
+        small = vals[0:3]
+        big = vals[3:6]
+        if any(math.isnan(x) for x in small + big):
+            continue
+        smb = sum(small) / 3.0 - sum(big) / 3.0
+        out_rows.append((date, smb))
+
+    with open(OUTPUT_FILE, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["date", "value"])
+        for date, val in out_rows:
+            w.writerow([date, repr(float(val))])
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,55 @@
+import pandas as pd
+import numpy as np
+
+fname = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(fname, "r") as f:
+    lines = f.read().splitlines()
+
+# Locate the monthly value-weighted section (first section with YYYYMM rows)
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first line starting with a 6-digit date
+    for i, line in enumerate(lines):
+        s = line.strip()
+        if len(s) >= 6 and s[:6].isdigit() and "," in s:
+            start = i - 1
+            break
+
+rows = []
+i = start + 1
+# skip to header line (starts with a comma)
+while i < len(lines) and not lines[i].strip().startswith(","):
+    i += 1
+header = [h.strip() for h in lines[i].strip().split(",")]
+i += 1
+while i < len(lines):
+    s = lines[i].strip()
+    if s == "":
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if len(parts[0]) == 6 and parts[0].isdigit():
+        rows.append(parts)
+    else:
+        break
+    i += 1
+
+df = pd.DataFrame(rows, columns=header[: len(rows[0])])
+df = df.rename(columns={df.columns[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan
+
+cols = list(df.columns[1:])
+small_lo, small_hi = cols[0], cols[2]
+big_lo, big_hi = cols[3], cols[5]
+
+df["value"] = 0.5 * (df[small_lo] + df[big_lo]) - 0.5 * (df[small_hi] + df[big_hi])
+out = df[["date", "value"]].dropna()
+out["value"] = out["value"].round(4)
+out.to_csv("output.csv", index=False)

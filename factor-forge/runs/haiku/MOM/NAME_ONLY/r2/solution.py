@@ -1,0 +1,65 @@
+import re
+import numpy as np
+import pandas as pd
+
+IN_FILE = "6_Portfolios_ME_Prior_12_2.csv"
+OUT_FILE = "output.csv"
+
+
+def is_missing(x):
+    return np.isclose(x, -99.99, atol=1e-6) or np.isclose(x, -999.0, atol=1e-6)
+
+
+def parse_first_monthly_block(path):
+    """Parse the first contiguous block of YYYYMM rows (value-weighted monthly returns)."""
+    rows = []
+    started = False
+    date_re = re.compile(r'^\s*(\d{6})\s*,(.*)$')
+    with open(path, encoding="latin-1") as f:
+        for line in f:
+            s = line.strip().lstrip("\ufeff")
+            m = date_re.match(s)
+            if m:
+                started = True
+                ym = int(m.group(1))
+                month = ym % 100
+                if not (1 <= month <= 12):
+                    continue
+                parts = [p.strip() for p in m.group(2).split(",")]
+                vals = []
+                for p in parts[:6]:
+                    try:
+                        v = float(p)
+                    except ValueError:
+                        v = np.nan
+                    if not np.isnan(v) and is_missing(v):
+                        v = np.nan
+                    vals.append(v)
+                while len(vals) < 6:
+                    vals.append(np.nan)
+                rows.append([ym] + vals)
+            elif started:
+                # end of the first monthly block (footer / next block)
+                break
+    cols = ["date", "SL", "SM", "SH", "BL", "BM", "BH"]
+    df = pd.DataFrame(rows, columns=cols)
+    return df
+
+
+def main():
+    df = parse_first_monthly_block(IN_FILE)
+    df = df.drop_duplicates(subset="date").sort_values("date").reset_index(drop=True)
+
+    needed = ["SL", "SH", "BL", "BH"]
+    df = df.dropna(subset=needed).copy()
+
+    # Ken French UMD: average of Small-High and Big-High minus average of Small-Low and Big-Low
+    df["value"] = 0.5 * (df["SH"] + df["BH"]) - 0.5 * (df["SL"] + df["BL"])
+
+    out = df[["date", "value"]].copy()
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUT_FILE, index=False, columns=["date", "value"])
+
+
+if __name__ == "__main__":
+    main()

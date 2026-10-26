@@ -1,0 +1,90 @@
+The script reads the first table ("Average Value Weighted Returns -- Monthly") from each of the three files and builds SMB from it.
+
+**How the table is read**
+- It finds that heading in each file and reads the header line that follows.
+- It keeps rows dated YYYYMM and stops at the first blank or non-monthly line.
+
+**How the columns are grouped**
+- **Small:** columns whose names start with `SMALL` or `ME1`.
+- **Big:** columns whose names start with `BIG` or `ME2`.
+- If that name matching does not find exactly three of each, it falls back to the column order: first three small, last three big.
+
+**How SMB is computed**
+- For each file, SMB_x = mean of the three small portfolios − mean of the three big portfolios.
+- SMB = the average of the three files' SMB_x values.
+
+**Which months are kept**
+- Only months present in all three files are output.
+- Missing-value codes (-99.99 or -999) are treated as missing. Any month with a missing value in any of the 18 portfolios is dropped.
+
+```python
+import pandas as pd
+import numpy as np
+
+FILES = ["6_Portfolios_2x3.csv", "6_Portfolios_ME_OP_2x3.csv", "6_Portfolios_ME_INV_2x3.csv"]
+
+
+def read_first_vw_monthly(path):
+    with open(path, "r", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+    start = None
+    for i, ln in enumerate(lines):
+        if "Average Value Weighted Returns -- Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        raise ValueError(f"VW monthly block not found in {path}")
+    # header line: next non-empty line
+    j = start + 1
+    while j < len(lines) and lines[j].strip() == "":
+        j += 1
+    header = [h.strip() for h in lines[j].split(",")]
+    cols = header[1:]
+    rows = []
+    k = j + 1
+    while k < len(lines):
+        ln = lines[k].strip()
+        if ln == "":
+            break
+        parts = [p.strip() for p in ln.split(",")]
+        d = parts[0]
+        if not (d.isdigit() and len(d) == 6):
+            break
+        vals = []
+        for p in parts[1:1 + len(cols)]:
+            try:
+                v = float(p)
+            except ValueError:
+                v = np.nan
+            if v <= -99.99 or v == -999:
+                v = np.nan
+            vals.append(v)
+        while len(vals) < len(cols):
+            vals.append(np.nan)
+        rows.append([int(d)] + vals)
+        k += 1
+    df = pd.DataFrame(rows, columns=["date"] + cols).set_index("date")
+    return df
+
+
+def smb_component(df):
+    cols = list(df.columns)
+    small = [c for c in cols if c.upper().startswith("SMALL") or c.upper().startswith("ME1")]
+    big = [c for c in cols if c.upper().startswith("BIG") or c.upper().startswith("ME2")]
+    if len(small) != 3 or len(big) != 3:
+        small, big = cols[:3], cols[3:6]
+    return df[small].mean(axis=1, skipna=False) - df[big].mean(axis=1, skipna=False)
+
+
+comps = []
+for fn in FILES:
+    comps.append(smb_component(read_first_vw_monthly(fn)))
+
+combined = pd.concat(comps, axis=1, join="inner")
+combined = combined.dropna()
+smb = combined.mean(axis=1)
+
+out = pd.DataFrame({"date": smb.index.astype(int), "value": smb.values})
+out = out.sort_values("date")
+out.to_csv("output.csv", index=False)
+```

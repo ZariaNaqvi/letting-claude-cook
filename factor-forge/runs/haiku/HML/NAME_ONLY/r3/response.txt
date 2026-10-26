@@ -1,0 +1,52 @@
+The factor is built from the value-weighted monthly block of `6_Portfolios_2x3.csv`, using the standard Fama-French 2x3 definition: HML = ½(Small HiBM + Big HiBM) − ½(Small LoBM + Big LoBM). The script reads the first contiguous block of YYYYMM rows, which is the value-weighted monthly section, and skips the equal-weighted and annual sections that follow. Months with missing sentinel values (-99.99 or -999) are dropped, since the factor cannot be computed for them.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+
+def main():
+    with open("6_Portfolios_2x3.csv", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Collect the first contiguous block of monthly rows (YYYYMM dates).
+    # In this file that block is "Average Value Weighted Returns -- Monthly".
+    rows = []
+    started = False
+    for line in lines:
+        parts = [p.strip() for p in line.split(",")]
+        if parts and re.fullmatch(r"\d{6}", parts[0]) and len(parts) >= 7:
+            rows.append(parts)
+            started = True
+        elif started:
+            break
+
+    records = []
+    for parts in rows:
+        date = int(parts[0])
+        vals = []
+        for x in parts[1:7]:
+            try:
+                v = float(x)
+            except ValueError:
+                v = np.nan
+            if v in (-99.99, -999.0):
+                v = np.nan
+            vals.append(v)
+        # Column order in 6_Portfolios_2x3:
+        # 0 SMALL LoBM, 1 ME1 BM2, 2 SMALL HiBM, 3 BIG LoBM, 4 ME2 BM2, 5 BIG HiBM
+        small_lo, _, small_hi, big_lo, _, big_hi = vals
+        hml = 0.5 * (small_hi + big_hi) - 0.5 * (small_lo + big_lo)
+        records.append((date, hml))
+
+    df = pd.DataFrame(records, columns=["date", "value"])
+    df = df.dropna(subset=["value"])
+    df = df.drop_duplicates(subset=["date"]).sort_values("date").reset_index(drop=True)
+    df["date"] = df["date"].astype(int)
+    df.to_csv("output.csv", index=False)
+
+
+if __name__ == "__main__":
+    main()
+```

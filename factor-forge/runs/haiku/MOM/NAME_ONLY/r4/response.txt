@@ -1,0 +1,80 @@
+The factor is the average of the two High-prior portfolios minus the average of the two Low-prior portfolios, using the value-weighted 2x3 size/momentum returns. This is the standard 2x3 construction of UMD, but the true Ken French factor uses NYSE breakpoints and the full CRSP universe, so this output may differ slightly from the official series.
+
+```python
+import math
+
+INPUT_FILE = "6_Portfolios_ME_Prior_12_2.csv"
+OUTPUT_FILE = "output.csv"
+
+MISSING_VALUES = (-99.99, -999.0)
+
+
+def is_missing(v):
+    if v is None or (isinstance(v, float) and math.isnan(v)):
+        return True
+    for m in MISSING_VALUES:
+        if abs(v - m) < 1e-9:
+            return True
+    return v <= -99.0  # any other sentinel-like value
+
+
+def to_float(s):
+    s = s.strip()
+    if s == "":
+        return None
+    try:
+        return float(s)
+    except ValueError:
+        return None
+
+
+def parse_first_monthly_block(path):
+    """Parse the first contiguous block of YYYYMM rows (value-weighted monthly)."""
+    rows = []
+    started = False
+    with open(path, "r", encoding="latin-1") as fh:
+        for raw in fh:
+            line = raw.strip()
+            parts = [p.strip() for p in line.split(",")]
+            is_data = (
+                len(parts) == 7
+                and len(parts[0]) == 6
+                and parts[0].isdigit()
+            )
+            if is_data:
+                started = True
+                rows.append(parts)
+            elif started:
+                # end of the first monthly block
+                break
+    return rows
+
+
+def main():
+    rows = parse_first_monthly_block(INPUT_FILE)
+
+    # Column order in the file:
+    # 1: SMALL LoPRIOR, 2: ME1 PRIOR2, 3: SMALL HiPRIOR,
+    # 4: BIG LoPRIOR,   5: ME2 PRIOR2, 6: BIG HiPRIOR
+    # Index in parts list: date is parts[0], values are parts[1..6]
+    SL, SH, BL, BH = 1, 3, 4, 6
+
+    results = {}
+    for parts in rows:
+        date = int(parts[0])
+        vals = [to_float(parts[i]) for i in range(1, 7)]
+        sl, sh, bl, bh = vals[SL - 1], vals[SH - 1], vals[BL - 1], vals[BH - 1]
+        if any(is_missing(x) for x in (sl, sh, bl, bh)):
+            continue
+        umd = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+        results[date] = umd
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8", newline="") as out:
+        out.write("date,value\n")
+        for date in sorted(results):
+            out.write(f"{date},{results[date]!r}\n")
+
+
+if __name__ == "__main__":
+    main()
+```

@@ -1,0 +1,98 @@
+The script finds the first monthly table, takes the four needed columns (SMALL LoPRIOR, BIG LoPRIOR, SMALL HiPRIOR, BIG HiPRIOR), and computes 0.5*(Small Lo + Big Lo) - 0.5*(Small Hi + Big Hi). Missing-value codes (-99.99, -999) become NaN and months with missing inputs are dropped.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+FN = "6_Portfolios_ME_Prior_1_0.csv"
+OUT = "output.csv"
+
+
+def is_missing(x):
+    return x is None or np.isnan(x) or np.isclose(x, -99.99) or np.isclose(x, -999.0)
+
+
+def to_float(s):
+    try:
+        v = float(s)
+    except (ValueError, TypeError):
+        return np.nan
+    return np.nan if is_missing(v) else v
+
+
+def norm(s):
+    return re.sub(r"\s+", " ", s.strip().upper())
+
+
+def main():
+    with open(FN, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate the title of the first (value-weighted monthly) block
+    start = -1
+    for i, l in enumerate(lines):
+        low = l.lower()
+        if "value weighted" in low and "monthly" in low:
+            start = i
+            break
+    if start < 0:
+        start = -1  # fallback: first monthly-looking block in file
+
+    header = None
+    started = False
+    rows = []
+    for l in lines[start + 1:]:
+        s = l.strip()
+        if not s:
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if not started and parts[0] == "" and header is None:
+            header = parts
+            continue
+        if re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            rows.append(parts)
+        else:
+            if started:
+                break  # end of monthly table
+
+    if header is None:
+        raise RuntimeError("Header not found")
+
+    hnames = [norm(h) for h in header]
+
+    def col_idx(name, fallback):
+        n = norm(name)
+        if n in hnames:
+            return hnames.index(n)
+        return fallback
+
+    i_sl = col_idx("SMALL LoPRIOR", 1)
+    i_bl = col_idx("BIG LoPRIOR", 4)
+    i_sh = col_idx("SMALL HiPRIOR", 3)
+    i_bh = col_idx("BIG HiPRIOR", 6)
+
+    out_dates = []
+    out_vals = []
+    for parts in rows:
+        def get(idx):
+            return to_float(parts[idx]) if idx < len(parts) else np.nan
+
+        sl, bl, sh, bh = get(i_sl), get(i_bl), get(i_sh), get(i_bh)
+        if any(np.isnan(v) for v in (sl, bl, sh, bh)):
+            continue
+        val = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+        out_dates.append(int(parts[0]))
+        out_vals.append(val)
+
+    df = pd.DataFrame({"date": out_dates, "value": out_vals})
+    df["date"] = df["date"].astype(int)
+    df.to_csv(OUT, index=False)
+
+
+if __name__ == "__main__":
+    main()
+```

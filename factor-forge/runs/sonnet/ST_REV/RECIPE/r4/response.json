@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRWWqxBFiyFFeqmJ8ePb",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script parses the file line by line and stops reading after the first table's monthly rows, so it ignores every later block.\n\n- **Parsing:** It finds the first header line that contains \"SMALL LoPRIOR\", then reads the rows that follow. A row is kept only if its first field is a 6-digit YYYYMM date. Reading stops at the first non-matching line once data has started.\n- **Missing data:** Values of -99.99 or -999 are treated as missing. Any month where one of the four needed columns is missing is dropped.\n- **Formula:** value = 0.5 \u00d7 (SMALL LoPRIOR + BIG LoPRIOR) \u2212 0.5 \u00d7 (SMALL HiPRIOR + BIG HiPRIOR).\n- **Columns:** The column names are located by name from the header line, with whitespace stripped.\n\n```python\nimport csv\nimport pandas as pd\n\nrows = []\nheader = None\nstarted = False\nwith open(\"6_Portfolios_ME_Prior_1_0.csv\", newline=\"\") as f:\n    for line in f:\n        s = line.strip()\n        if header is None:\n            if \"SMALL LoPRIOR\" in s:\n                header = [c.strip() for c in s.split(\",\")]\n            continue\n        parts = [p.strip() for p in s.split(\",\")]\n        if len(parts[0]) == 6 and parts[0].isdigit() and len(parts) >= len(header):\n            started = True\n            rows.append(parts[:len(header)])\n        else:\n            if started:\n                break\n\nheader[0] = \"date\"\ndf = pd.DataFrame(rows, columns=header)\ndf[\"date\"] = df[\"date\"].astype(int)\ncols = [\"SMALL LoPRIOR\", \"BIG LoPRIOR\", \"SMALL HiPRIOR\", \"BIG HiPRIOR\"]\nfor c in cols:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n    df.loc[df[c].isin([-99.99, -999, -999.0]), c] = float(\"nan\")\ndf = df.dropna(subset=cols)\ndf[\"value\"] = 0.5 * (df[\"SMALL LoPRIOR\"] + df[\"BIG LoPRIOR\"]) - 0.5 * (df[\"SMALL HiPRIOR\"] + df[\"BIG HiPRIOR\"])\ndf[[\"date\", \"value\"]].to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2708,
+    "output_tokens": 785,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

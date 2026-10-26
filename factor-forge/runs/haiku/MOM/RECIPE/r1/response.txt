@@ -1,0 +1,81 @@
+The script finds the first "Average Value Weighted Returns -- Monthly" block, reads the four needed columns by header name, and computes the momentum factor as 0.5*(SMALL HiPRIOR + BIG HiPRIOR) - 0.5*(SMALL LoPRIOR + BIG LoPRIOR). Missing codes (-99.99, -999) are treated as NaN, and months lacking any of the four inputs are dropped.
+
+```python
+import math
+import pandas as pd
+
+IN_FILE = "6_Portfolios_ME_Prior_12_2.csv"
+OUT_FILE = "output.csv"
+MISSING_CODES = (-99.99, -999.0)
+
+
+def to_num(s):
+    try:
+        v = float(s)
+    except (TypeError, ValueError):
+        return math.nan
+    if any(abs(v - m) < 1e-9 for m in MISSING_CODES):
+        return math.nan
+    return v
+
+
+def norm(name):
+    return " ".join(name.split())
+
+
+def main():
+    with open(IN_FILE, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the first "Value Weighted Returns -- Monthly" block
+    start = None
+    for i, l in enumerate(lines):
+        low = l.lower()
+        if "value weighted returns" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Monthly value-weighted block not found")
+
+    # Header line: next non-empty line
+    j = start + 1
+    while j < len(lines) and not lines[j].strip():
+        j += 1
+    header = [norm(h) for h in lines[j].split(",")]
+    col_idx = {h: k for k, h in enumerate(header)}
+
+    needed = ["SMALL LoPRIOR", "SMALL HiPRIOR", "BIG LoPRIOR", "BIG HiPRIOR"]
+    for n in needed:
+        if n not in col_idx:
+            raise RuntimeError(f"Column {n} not found in header: {header}")
+
+    records = []
+    for l in lines[j + 1:]:
+        parts = [p.strip() for p in l.split(",")]
+        first = parts[0] if parts else ""
+        if len(first) != 6 or not first.isdigit():
+            if records:
+                break  # end of the monthly block
+            continue
+        vals = {}
+        for n in needed:
+            k = col_idx[n]
+            vals[n] = to_num(parts[k]) if k < len(parts) else math.nan
+        records.append((int(first), vals))
+
+    rows = []
+    for date, v in records:
+        mom = (0.5 * (v["SMALL HiPRIOR"] + v["BIG HiPRIOR"])
+               - 0.5 * (v["SMALL LoPRIOR"] + v["BIG LoPRIOR"]))
+        if math.isnan(mom):
+            continue
+        rows.append((date, mom))
+
+    out = pd.DataFrame(rows, columns=["date", "value"])
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUT_FILE, index=False)
+
+
+if __name__ == "__main__":
+    main()
+```

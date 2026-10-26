@@ -1,0 +1,82 @@
+TASK
+LT_Rev = 1/2 (Small Low + Big Low) - 1/2 (Small High + Big High) prior (t-60 to t-13) return, i.e. 0.5*(SMALL LoPRIOR + BIG LoPRIOR) - 0.5*(SMALL HiPRIOR + BIG HiPRIOR), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_Prior_60_13.csv. Note the sign: LOW minus HIGH. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.
+TABLE TO USE: Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.
+
+DATA
+You are given 1 raw CSV file(s), exactly as downloaded from the Ken French Data Library: 6_Portfolios_ME_Prior_60_13.csv.
+They are in the current working directory. Below are the first 60 lines of each file, verbatim.
+The files are much longer than what is shown; you have to write code that handles the whole file.
+
+=== FILE: 6_Portfolios_ME_Prior_60_13.csv (first 60 of 7120 lines, verbatim) ===
+This file was created by using the 202608 CRSP database.
+It contains value- weighted returns for the intersections of  2 ME portfolios
+and  3 prior return portfolios.
+
+The portfolios are constructed monthly.  ME is market cap at the end of the
+previous month.  PRIOR_RET is from -60 to -13.
+
+Missing data are indicated by -99.99 or -999.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoPRIOR,ME1 PRIOR2,SMALL HiPRIOR,BIG LoPRIOR,ME2 PRIOR2,BIG HiPRIOR
+193101,  22.35,  11.22,  20.34,   4.79,   8.22,   5.13
+193102,  15.80,  18.79,  12.82,  12.16,   6.41,  11.80
+193103,  -4.19,  -8.60, -10.92,  -3.01, -10.05,  -4.93
+193104, -16.06, -15.41, -17.04, -12.49,  -9.95,  -9.15
+193105, -12.99, -13.28, -17.54, -22.92, -12.29, -13.77
+193106,  16.46,  21.71,  21.19,  26.66,  15.40,  14.02
+193107,  -4.30,  -8.11,  -8.71,  -3.81,  -7.39,  -6.79
+193108,  -7.07,   1.35,  -1.81,  -1.82,   0.14,   0.29
+193109, -33.74, -34.78, -32.89, -41.26, -28.94, -27.82
+193110,   8.98,  11.07,   9.21,  18.24,   6.52,   8.50
+193111,  -9.46,  -9.34,  -8.17,  -5.25, -11.30,  -8.55
+193112, -20.22, -24.31, -17.43, -21.69, -17.64, -11.42
+193201,  11.41,  14.20,   4.71,   3.53,   1.04,  -2.50
+193202,   0.80,   3.04,  -1.89,   8.78,   0.91,   6.95
+193203, -11.39, -10.89, -12.99, -11.18, -11.35, -11.17
+193204, -18.60, -18.45, -18.56, -16.83, -15.51, -19.56
+193205, -15.22, -25.82, -29.66, -14.37, -21.91, -19.69
+193206,   1.98,   6.41,  16.92,   5.75,   5.84,  -2.43
+193207,  50.58,  48.43,  39.10,  60.39,  43.60,  32.62
+193208,  84.08,  70.77,  59.88,  54.06,  47.29,  32.49
+193209, -11.95,  -9.71,  -2.37,  -8.87,  -6.10,  -1.49
+193210, -21.35, -14.90, -10.95, -17.55, -16.74, -11.86
+193211,  -9.87,  -7.32,  -4.37, -15.30,  -8.88,  -5.20
+193212,  -8.17,  -6.31,  -4.60,  -5.88,  -0.98,   6.55
+193301,   4.17,   3.61,   8.39,  10.73,   3.81,   1.00
+193302, -18.51, -20.07, -19.65, -22.37, -17.36, -14.41
+193303,  11.52,  12.78,   2.25,   6.23,   9.32,   1.73
+193304,  62.73,  55.27,  37.78,  78.99,  60.04,  29.64
+193305,  95.04,  63.39,  56.95,  43.37,  27.04,  15.84
+193306,  26.65,  18.17,  16.96,  19.45,  18.38,  10.14
+193307,  -7.09, -12.43, -11.04,  -8.96, -11.15,  -8.11
+193308,   9.97,   9.83,   9.96,  17.40,  17.60,   9.97
+193309, -22.07, -17.39,  -7.39, -17.02, -12.78,  -7.76
+193310, -13.27, -13.23,  -9.57, -14.80, -11.95,  -6.69
+193311,   6.90,   5.61,   3.43,   9.46,  15.57,   8.53
+193312,  -1.08,   3.04,  -0.63,   2.93,   4.11,   0.88
+193401,  48.19,  33.43,  16.79,  29.47,  15.91,   8.37
+193402,   3.11,   1.67,   0.61,  -1.19,  -2.98,  -2.30
+193403,   0.08,   0.95,   4.13,   0.66,  -0.21,   0.25
+193404,  -2.29,   1.17,   2.68,  -1.51,  -4.44,  -0.08
+193405, -15.04, -11.67,  -6.09, -10.35, -10.64,  -4.74
+193406,  -4.13,   0.71,   1.59,   1.49,   1.94,   3.35
+193407, -26.06, -22.47, -18.59, -24.82, -13.73,  -6.22
+193408,  14.59,  11.34,   9.97,   9.56,   5.85,   4.61
+193409,  -2.28,  -1.58,  -0.61,   1.14,   0.00,  -0.27
+193410,  -3.03,  -2.60,  -0.41,  -6.07,  -2.70,  -0.46
+193411,  16.08,  15.56,  11.73,   6.64,   9.81,   7.16
+193412,   1.17,   2.02,   2.73,  -3.32,  -0.05,   0.53
+[file continues; 7060 more lines]
+
+OUTPUT CONTRACT
+- Reply with exactly ONE Python code block (```python ... ```). I will save it as solution.py and run it unchanged with `python solution.py`, no arguments, from the directory that holds the files.
+- The script reads the files above by name from the current directory. No internet access, no other files.
+- Allowed libraries: the Python standard library, pandas and numpy only (Python 3.12, pandas 3.0, numpy 2.x).
+- The script must write output.csv to the current directory with exactly two columns, in this order: date,value
+    date  = integer YYYYMM (for example 192607)
+    value = the factor's monthly return in PERCENT (1.23 means 1.23%), same units as the input files
+- One row per month, for every month the input data supports. Monthly rows only.
+- The script must finish within 60 seconds.
+- You may add a short explanation outside the code block; only the code is run and scored.

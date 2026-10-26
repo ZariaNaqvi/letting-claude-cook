@@ -1,0 +1,45 @@
+The script reads the file line by line and keeps only the first table, stopping at the first non-monthly line after the data starts.
+
+Parsing details:
+- The header line `,SMALL LoINV,ME1 INV2,SMALL HiINV,BIG LoINV,ME2 INV2,BIG HiINV` gives the column order. The columns are SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV, which sit at indices 1 to 6 after splitting on commas.
+- A row counts as monthly when its first field is a 6-digit integer. Reading starts after the "Average Value Weighted Returns -- Monthly" header and ends at the first blank line or non-matching line once data rows have begun.
+- Any value of -99.99 or -999 is treated as missing. The CMA value for that month is then NaN and the row is dropped.
+
+The formula is 0.5*(SMALL LoINV + BIG LoINV) - 0.5*(SMALL HiINV + BIG HiINV).
+
+```python
+import re
+import pandas as pd
+
+rows = []
+started = False
+with open("6_Portfolios_ME_INV_2x3.csv", "r", errors="ignore") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if "Average Value Weighted Returns" in s and "Monthly" in s:
+                started = True
+            continue
+        if not s:
+            if rows:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]) and len(parts) >= 7:
+            try:
+                vals = [float(x) for x in parts[1:7]]
+            except ValueError:
+                continue
+            rows.append([int(parts[0])] + vals)
+        else:
+            if rows:
+                break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+for c in ["sl", "sm", "sh", "bl", "bm", "bh"]:
+    df.loc[df[c].isin([-99.99, -999.0]), c] = float("nan")
+df["value"] = 0.5 * (df["sl"] + df["bl"]) - 0.5 * (df["sh"] + df["bh"])
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```

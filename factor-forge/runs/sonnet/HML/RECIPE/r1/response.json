@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVCr8j3EQaENfQyBcHj",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script reads the file line by line and stops at the end of the first table, so none of the later blocks are used.\n\n- **Table start:** it finds the line containing \"Average Value Weighted Returns -- Monthly\" and treats the next line as the header.\n- **Data rows:** it keeps rows whose first field is a 6-digit integer and stops at the first row that isn't one, which is the blank line or next block title.\n- **Columns:** it picks columns by header name, so it does not depend on column order. The headers are `SMALL LoBM`, `ME1 BM2`, `SMALL HiBM`, `BIG LoBM`, `ME2 BM2`, `BIG HiBM`.\n- **Missing values:** values of -99.99 or -999 are set to NaN, and any month with a NaN in one of the four portfolios used is dropped.\n- **Formula:** HML = 0.5*(SMALL HiBM + BIG HiBM) - 0.5*(SMALL LoBM + BIG LoBM).\n\n```python\nimport pandas as pd\nimport numpy as np\n\nrows = []\nheader = None\nwith open(\"6_Portfolios_2x3.csv\", \"r\") as f:\n    lines = f.read().splitlines()\n\nstart = None\nfor i, l in enumerate(lines):\n    if \"Average Value Weighted Returns\" in l and \"Monthly\" in l:\n        start = i\n        break\n\nheader = [h.strip() for h in lines[start + 1].split(\",\")]\nfor l in lines[start + 2:]:\n    parts = [p.strip() for p in l.split(\",\")]\n    if not parts or not parts[0].isdigit() or len(parts[0]) != 6:\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf.columns = [\"date\"] + list(df.columns[1:])\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n    df.loc[df[c].isin([-99.99, -999]), c] = np.nan\n\ndf[\"value\"] = 0.5 * (df[\"SMALL HiBM\"] + df[\"BIG HiBM\"]) - 0.5 * (df[\"SMALL LoBM\"] + df[\"BIG LoBM\"])\nout = df[[\"date\", \"value\"]].dropna()\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2792,
+    "output_tokens": 790,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

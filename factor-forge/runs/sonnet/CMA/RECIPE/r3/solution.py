@@ -1,0 +1,41 @@
+import csv
+
+fn = "6_Portfolios_ME_INV_2x3.csv"
+with open(fn, newline="") as f:
+    lines = f.read().splitlines()
+
+start = None
+for i, l in enumerate(lines):
+    if "Average Value Weighted Returns" in l and "Monthly" in l:
+        start = i
+        break
+
+header = [h.strip() for h in lines[start + 1].split(",")]
+try:
+    iSL = header.index("SMALL LoINV")
+    iSH = header.index("SMALL HiINV")
+    iBL = header.index("BIG LoINV")
+    iBH = header.index("BIG HiINV")
+except ValueError:
+    iSL, iSH, iBL, iBH = 1, 3, 4, 6
+
+rows = []
+for l in lines[start + 2:]:
+    parts = [p.strip() for p in l.split(",")]
+    if not parts or not (len(parts[0]) == 6 and parts[0].isdigit()):
+        break
+    try:
+        sl = float(parts[iSL]); sh = float(parts[iSH])
+        bl = float(parts[iBL]); bh = float(parts[iBH])
+    except (ValueError, IndexError):
+        continue
+    if any(v <= -99.0 for v in (sl, sh, bl, bh)):
+        continue
+    val = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+    rows.append((int(parts[0]), round(val, 6)))
+
+with open("output.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["date", "value"])
+    for d, v in rows:
+        w.writerow([d, v])

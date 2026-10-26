@@ -1,0 +1,63 @@
+import re
+import numpy as np
+import pandas as pd
+
+FN = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(FN, "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# locate the first (value-weighted monthly) block
+start = None
+for i, ln in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in ln:
+        start = i
+        break
+if start is None:
+    # fallback: first header line starting with ','
+    for i, ln in enumerate(lines):
+        if ln.startswith(","):
+            start = i - 1
+            break
+
+# header line
+hdr_idx = start + 1
+while not lines[hdr_idx].strip().startswith(","):
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].split(",")[1:]]
+
+rows = []
+for ln in lines[hdr_idx + 1:]:
+    s = ln.strip()
+    parts = [p.strip() for p in s.split(",")]
+    if not parts or not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = []
+    for p in parts[1:1 + len(header)]:
+        try:
+            vals.append(float(p))
+        except ValueError:
+            vals.append(np.nan)
+    rows.append([int(parts[0])] + vals)
+
+df = pd.DataFrame(rows, columns=["date"] + header)
+for c in header:
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+# identify columns by position: SMALL Lo, ME1 P2, SMALL Hi, BIG Lo, ME2 P2, BIG Hi
+def find(keys, default_pos):
+    for c in header:
+        cu = c.upper().replace(" ", "")
+        if all(k in cu for k in keys):
+            return c
+    return header[default_pos]
+
+sl = find(["SMALL", "LO"], 0)
+sh = find(["SMALL", "HI"], 2)
+bl = find(["BIG", "LO"], 3)
+bh = find(["BIG", "HI"], 5)
+
+val = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])
+out = pd.DataFrame({"date": df["date"].astype(int), "value": val.round(2)})
+out = out.dropna().drop_duplicates("date").sort_values("date")
+out.to_csv("output.csv", index=False)

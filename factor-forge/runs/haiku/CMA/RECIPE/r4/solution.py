@@ -1,0 +1,83 @@
+import csv
+import math
+import pandas as pd
+
+INPUT_FILE = "6_Portfolios_ME_INV_2x3.csv"
+OUTPUT_FILE = "output.csv"
+MISSING_THRESHOLD = -99.0  # -99.99 and -999 are missing-data codes
+
+
+def norm(s):
+    return " ".join(s.split())
+
+
+def parse_value(tok):
+    try:
+        v = float(tok)
+    except ValueError:
+        return float("nan")
+    if v <= MISSING_THRESHOLD:
+        return float("nan")
+    return v
+
+
+def main():
+    with open(INPUT_FILE, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the first block: 'Average Value Weighted Returns -- Monthly'
+    start = None
+    for i, line in enumerate(lines):
+        if "Value Weighted Returns -- Monthly" in line:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly block not found")
+
+    # Header is the next non-empty line
+    hi = start + 1
+    while hi < len(lines) and not lines[hi].strip():
+        hi += 1
+    header = [norm(h) for h in next(csv.reader([lines[hi]]))]
+
+    def col_index(name):
+        for j, h in enumerate(header):
+            if h == name:
+                return j
+        raise RuntimeError(f"Column '{name}' not found in header: {header}")
+
+    i_small_lo = col_index("SMALL LoINV")
+    i_big_lo = col_index("BIG LoINV")
+    i_small_hi = col_index("SMALL HiINV")
+    i_big_hi = col_index("BIG HiINV")
+
+    records = []
+    started = False
+    for line in lines[hi + 1:]:
+        parts = [p.strip() for p in next(csv.reader([line]))] if line.strip() else []
+        if not parts or len(parts[0]) != 6 or not parts[0].isdigit():
+            if started:
+                break  # end of the monthly block
+            continue
+        started = True
+        date = int(parts[0])
+        need = max(i_small_lo, i_big_lo, i_small_hi, i_big_hi)
+        if len(parts) <= need:
+            records.append((date, float("nan")))
+            continue
+        sl = parse_value(parts[i_small_lo])
+        bl = parse_value(parts[i_big_lo])
+        sh = parse_value(parts[i_small_hi])
+        bh = parse_value(parts[i_big_hi])
+        cma = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+        records.append((date, cma))
+
+    df = pd.DataFrame(records, columns=["date", "value"])
+    df = df.dropna(subset=["value"])
+    df["date"] = df["date"].astype(int)
+    df = df.sort_values("date").drop_duplicates("date").reset_index(drop=True)
+    df.to_csv(OUTPUT_FILE, index=False)
+
+
+if __name__ == "__main__":
+    main()

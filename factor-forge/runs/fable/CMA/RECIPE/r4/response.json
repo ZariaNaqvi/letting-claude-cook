@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRWHXnBGb4bTHYg3KPMT",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_ME_INV_2x3.csv\"\n\nwith open(fname, \"r\", encoding=\"utf-8\", errors=\"replace\") as f:\n    lines = f.readlines()\n\n# Locate first monthly block header (line starting with a comma, after the title)\nstart = None\nfor i, line in enumerate(lines):\n    if line.strip().startswith(\"Average Value Weighted Returns -- Monthly\"):\n        start = i\n        break\nif start is None:\n    # fallback: first line that starts with ','\n    for i, line in enumerate(lines):\n        if line.startswith(\",\"):\n            start = i - 1\n            break\n\n# Find header line (starts with ',')\nhdr_idx = None\nfor j in range(start, len(lines)):\n    if lines[j].startswith(\",\"):\n        hdr_idx = j\n        break\n\nheader = [h.strip() for h in lines[hdr_idx].strip().split(\",\")]\nrows = []\nfor line in lines[hdr_idx + 1:]:\n    s = line.strip()\n    if not s:\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf = df.rename(columns={header[0]: \"date\"})\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Treat missing codes\ndf = df.replace({-99.99: np.nan, -999.0: np.nan})\n\ncols = {c.upper().replace(\" \", \"\"): c for c in df.columns}\ndef col(name):\n    return cols[name.upper().replace(\" \", \"\")]\n\ns_lo = df[col(\"SMALL LoINV\")]\nb_lo = df[col(\"BIG LoINV\")]\ns_hi = df[col(\"SMALL HiINV\")]\nb_hi = df[col(\"BIG HiINV\")]\n\nvalue = 0.5 * (s_lo + b_lo) - 0.5 * (s_hi + b_hi)\n\nout = pd.DataFrame({\"date\": df[\"date\"], \"value\": value.round(4)})\nout = out.dropna(subset=[\"value\"])\nout[\"date\"] = out[\"date\"].astype(int)\nout.to_csv(\"output.csv\", index=False)\n```\n\nThis parses the first monthly value-weighted block (rows with YYYYMM dates until the first blank line), computes CMA = \u00bd(SMALL LoINV + BIG LoINV) \u2212 \u00bd(SMALL HiINV + BIG HiINV), and writes `output.csv` with `date,value`.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2789,
+    "output_tokens": 904,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

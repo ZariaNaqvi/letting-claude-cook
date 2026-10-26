@@ -1,0 +1,35 @@
+import pandas as pd
+import numpy as np
+
+rows = []
+started = False
+in_section = False
+with open("6_Portfolios_2x3.csv", "r") as f:
+    for line in f:
+        s = line.strip()
+        if not in_section:
+            if "Average Value Weighted Returns" in s and "Monthly" in s:
+                in_section = True
+            continue
+        if not s:
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts[0]) == 6 and parts[0].isdigit() and len(parts) >= 7:
+            started = True
+            try:
+                vals = [float(x) for x in parts[1:7]]
+            except ValueError:
+                continue
+            rows.append([int(parts[0])] + vals)
+        else:
+            if started:
+                break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+cols = ["sl", "sm", "sh", "bl", "bm", "bh"]
+mask = ((df[cols] <= -99.0)).any(axis=1)
+df = df[~mask].copy()
+df["value"] = (df[["sl", "sm", "sh"]].sum(axis=1) - df[["bl", "bm", "bh"]].sum(axis=1)) / 3.0
+df[["date", "value"]].to_csv("output.csv", index=False)

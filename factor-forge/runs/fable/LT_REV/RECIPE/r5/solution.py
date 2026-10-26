@@ -1,0 +1,52 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first table header line (starts with comma, contains column names)
+start = None
+for i, line in enumerate(lines):
+    if line.startswith(",") and "SMALL LoPRIOR" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Could not find header of first table")
+
+header = [c.strip() for c in lines[start].split(",")]
+rows = []
+for line in lines[start + 1:]:
+    s = line.strip()
+    if not s:
+        # blank line indicates end of block
+        if rows:
+            break
+        continue
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        # non-monthly row (e.g. next block header or annual YYYY) -> stop
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df.rename(columns={header[0]: "date"}, inplace=True)
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing codes as NaN
+df.replace([-99.99, -999.0, -999], np.nan, inplace=True)
+
+sl = df["SMALL LoPRIOR"]
+sh = df["SMALL HiPRIOR"]
+bl = df["BIG LoPRIOR"]
+bh = df["BIG HiPRIOR"]
+
+value = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": value.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)

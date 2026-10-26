@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVdovU9XCT14MSup9nn",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script reads the file line by line and finds the first table by locating the header line that contains \"Average Value Weighted Returns -- Monthly\". It then reads rows whose first field is a 6-digit date, and stops at the first blank line or non-monthly line after the data starts.\n\nMissing values are marked -99.99 or -999. Any month with a missing value in one of the six portfolios is dropped, or left as NaN. Dropping those rows is the safer choice, since a missing component makes SMB undefined for that month.\n\nThe SMB value is the mean of the three small portfolios minus the mean of the three big portfolios.\n\n```python\nimport csv\n\nrows = []\nstarted = False\nwith open(\"6_Portfolios_2x3.csv\", \"r\", errors=\"replace\") as f:\n    for line in f:\n        s = line.strip()\n        if not started:\n            if \"Average Value Weighted Returns\" in s and \"Monthly\" in s:\n                started = True\n            continue\n        if not s:\n            if rows:\n                break\n            continue\n        parts = [p.strip() for p in s.split(\",\")]\n        d = parts[0]\n        if len(d) == 6 and d.isdigit() and len(parts) >= 7:\n            try:\n                vals = [float(x) for x in parts[1:7]]\n            except ValueError:\n                continue\n            rows.append((int(d), vals))\n        else:\n            if rows:\n                break\n\nout = []\nfor d, v in rows:\n    if any(x <= -99.0 for x in v):\n        continue\n    smb = sum(v[0:3]) / 3.0 - sum(v[3:6]) / 3.0\n    out.append((d, smb))\n\nwith open(\"output.csv\", \"w\", newline=\"\") as f:\n    w = csv.writer(f)\n    w.writerow([\"date\", \"value\"])\n    for d, x in out:\n        w.writerow([d, round(x, 6)])\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2817,
+    "output_tokens": 602,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

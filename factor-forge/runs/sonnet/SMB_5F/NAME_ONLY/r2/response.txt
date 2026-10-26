@@ -1,0 +1,58 @@
+This script builds SMB the way Ken French's 5-factor (2x3) methodology does. I have not run it against the full files.
+
+- **Per-file SMB:** in each of the three files, SMB is the average of the three small portfolios minus the average of the three big portfolios, using the first block of each file, the monthly value-weighted returns.
+- **Final SMB:** the average of the three per-file SMBs (book-to-market, profitability, investment).
+- **Missing values:** -99.99 and -999 are treated as missing, so a month with any missing portfolio return gets no value.
+- **Month coverage:** the book-to-market file starts in 192607, but the profitability and investment files start in 196307. I output only months present in all three files, so the output starts in 196307, as in Ken French's 5-factor data. Your wording ("every month available in the input") could also be read as wanting 1926–1963 filled from the book-to-market file alone. I chose the intersection to match his published series.
+
+```python
+import re
+import pandas as pd
+import numpy as np
+
+
+def read_first_block(fn):
+    rows = {}
+    started = False
+    with open(fn, "r", errors="ignore") as f:
+        for line in f:
+            s = line.strip()
+            if not started:
+                if "Average Value Weighted Returns" in s and "Monthly" in s:
+                    started = True
+                continue
+            if re.match(r"^\d{6}\s*,", s):
+                parts = [p.strip() for p in s.split(",")]
+                vals = []
+                for p in parts[1:7]:
+                    try:
+                        v = float(p)
+                    except ValueError:
+                        v = np.nan
+                    if v <= -99.0:
+                        v = np.nan
+                    vals.append(v)
+                if len(vals) == 6:
+                    rows[int(parts[0])] = vals
+            else:
+                if rows and s == "":
+                    break
+                if rows:
+                    break
+    df = pd.DataFrame.from_dict(rows, orient="index")
+    return df
+
+
+files = ["6_Portfolios_2x3.csv", "6_Portfolios_ME_OP_2x3.csv", "6_Portfolios_ME_INV_2x3.csv"]
+smbs = []
+for fn in files:
+    d = read_first_block(fn)
+    s = d[[0, 1, 2]].mean(axis=1, skipna=False) - d[[3, 4, 5]].mean(axis=1, skipna=False)
+    smbs.append(s)
+
+all_df = pd.concat(smbs, axis=1, join="inner")
+res = all_df.mean(axis=1, skipna=False).dropna()
+out = pd.DataFrame({"date": res.index.astype(int), "value": res.values})
+out = out.sort_values("date")
+out.to_csv("output.csv", index=False)
+```

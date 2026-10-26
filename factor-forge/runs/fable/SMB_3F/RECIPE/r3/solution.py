@@ -1,0 +1,57 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly value-weighted block
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # Fallback: first line that looks like a header with portfolio names
+    for i, line in enumerate(lines):
+        if line.strip().startswith(",") and "SMALL LoBM" in line:
+            start = i - 1
+            break
+
+# Find header line (starts with comma) after the block title
+hdr_idx = None
+for j in range(start + 1, min(start + 10, len(lines))):
+    if lines[j].strip().startswith(","):
+        hdr_idx = j
+        break
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+header[0] = "date"
+
+rows = []
+date_re = re.compile(r"^\s*\d{6}\s*$")
+for line in lines[hdr_idx + 1:]:
+    if not line.strip():
+        break
+    parts = [p.strip() for p in line.split(",")]
+    if not date_re.match(parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header[:len(rows[0])])
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c].isin([-99.99, -999, -999.0]), c] = np.nan
+
+small = df[["SMALL LoBM", "ME1 BM2", "SMALL HiBM"]].mean(axis=1)
+big = df[["BIG LoBM", "ME2 BM2", "BIG HiBM"]].mean(axis=1)
+
+# Require all six portfolios present
+valid = df[["SMALL LoBM", "ME1 BM2", "SMALL HiBM", "BIG LoBM", "ME2 BM2", "BIG HiBM"]].notna().all(axis=1)
+
+out = pd.DataFrame({"date": df["date"], "value": (small - big).round(6)})
+out = out[valid].reset_index(drop=True)
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

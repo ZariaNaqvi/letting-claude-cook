@@ -1,0 +1,82 @@
+import re
+import numpy as np
+import pandas as pd
+
+SRC = "6_Portfolios_ME_Prior_60_13.csv"
+OUT = "output.csv"
+MISSING = (-99.99, -999.0)
+
+
+def is_missing(x):
+    if x is None or np.isnan(x):
+        return True
+    return any(abs(x - m) < 1e-9 for m in MISSING)
+
+
+def main():
+    with open(SRC, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate the first value-weighted monthly block
+    start = None
+    for i, line in enumerate(lines):
+        if "Average Value Weighted Returns -- Monthly" in line:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly block not found")
+
+    # header line is the next non-empty line after the title
+    h = start + 1
+    while h < len(lines) and lines[h].strip() == "":
+        h += 1
+    header = [c.strip() for c in lines[h].split(",")[1:]]
+
+    def col_index(name):
+        target = name.upper()
+        for k, c in enumerate(header):
+            if c.upper() == target:
+                return k
+        raise RuntimeError(f"Column {name} not found in header {header}")
+
+    idx_SL = col_index("SMALL LoPRIOR")
+    idx_BL = col_index("BIG LoPRIOR")
+    idx_SH = col_index("SMALL HiPRIOR")
+    idx_BH = col_index("BIG HiPRIOR")
+    ncols = len(header)
+
+    rows = []
+    started = False
+    for j in range(h + 1, len(lines)):
+        parts = [p.strip() for p in lines[j].split(",")]
+        if parts and re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            vals = []
+            for p in parts[1:1 + ncols]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                vals.append(np.nan if is_missing(v) else v)
+            while len(vals) < ncols:
+                vals.append(np.nan)
+            rows.append((int(parts[0]), vals))
+        else:
+            if started:
+                break  # end of the first block
+
+    recs = []
+    for date, vals in rows:
+        sl, bl, sh, bh = vals[idx_SL], vals[idx_BL], vals[idx_SH], vals[idx_BH]
+        if any(np.isnan(x) for x in (sl, bl, sh, bh)):
+            continue
+        val = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+        recs.append((date, val))
+
+    out = pd.DataFrame(recs, columns=["date", "value"])
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUT, index=False)
+
+
+if __name__ == "__main__":
+    main()

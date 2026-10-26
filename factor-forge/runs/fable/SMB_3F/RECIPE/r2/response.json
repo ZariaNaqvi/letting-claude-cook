@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVPyZ271RyDadDxcceU",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "Parse the first monthly block (rows with 6-digit YYYYMM dates until the next blank/header line), handle missing codes, and compute SMB as the difference of the small and big portfolio averages.\n\n```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_2x3.csv\"\n\nwith open(fname, \"r\", encoding=\"utf-8\", errors=\"replace\") as f:\n    lines = f.readlines()\n\n# Locate the first header line (starts with a comma, lists the portfolio names)\nstart = None\nfor i, line in enumerate(lines):\n    if line.startswith(\",\") and \"SMALL LoBM\" in line:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Could not find the first monthly table header\")\n\ncols = [c.strip() for c in lines[start].strip().split(\",\")]\ncols[0] = \"date\"\n\nrows = []\nfor line in lines[start + 1:]:\n    s = line.strip()\n    if not s:\n        break  # end of block\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break  # next block header or non-monthly row\n    if len(parts) != len(cols):\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=cols)\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in cols[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n    df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan\n\nsmall = df[[\"SMALL LoBM\", \"ME1 BM2\", \"SMALL HiBM\"]].mean(axis=1, skipna=False)\nbig = df[[\"BIG LoBM\", \"ME2 BM2\", \"BIG HiBM\"]].mean(axis=1, skipna=False)\n\nout = pd.DataFrame({\"date\": df[\"date\"], \"value\": (small - big).round(4)})\nout = out.dropna(subset=[\"value\"])\nout[\"date\"] = out[\"date\"].astype(int)\nout.to_csv(\"output.csv\", index=False)\n```\n\nThe script reads only the first \"Average Value Weighted Returns -- Monthly\" block (stopping at the first blank line or non-YYYYMM row), treats -99.99/-999 as missing, and writes `date,value` with SMB in percent.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2817,
+    "output_tokens": 789,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

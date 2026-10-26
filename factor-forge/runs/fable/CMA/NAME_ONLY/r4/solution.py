@@ -1,0 +1,54 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_INV_2x3.csv"
+
+with open(fname, "r") as f:
+    lines = f.read().splitlines()
+
+# Locate the first "Average Value Weighted Returns -- Monthly" block
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Could not find monthly value-weighted block")
+
+# Header line is next non-empty line starting with comma
+j = start + 1
+while j < len(lines) and not lines[j].strip().startswith(","):
+    j += 1
+header = [h.strip() for h in lines[j].split(",")]
+cols = header[1:]
+
+rows = []
+k = j + 1
+while k < len(lines):
+    line = lines[k].strip()
+    if line == "":
+        break
+    parts = [p.strip() for p in line.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = [float(p) for p in parts[1:1 + len(cols)]]
+    rows.append([int(parts[0])] + vals)
+    k += 1
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+# Treat missing codes as NaN
+for c in cols:
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+# Identify columns: order is SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV
+small_lo = cols[0]
+small_hi = cols[2]
+big_lo = cols[3]
+big_hi = cols[5]
+
+cma = 0.5 * (df[small_lo] + df[big_lo]) - 0.5 * (df[small_hi] + df[big_hi])
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": cma.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)

@@ -1,0 +1,51 @@
+The script reads the file line by line and keeps only the first table, which runs from the header line containing "Average Value Weighted Returns -- Monthly" until the first non-data line. It then computes Mom = 0.5·(SMALL HiPRIOR + BIG HiPRIOR) − 0.5·(SMALL LoPRIOR + BIG LoPRIOR).
+
+- **Parsing:** a row counts as data if its first field is a 6-digit integer. After the first data row appears, the loop stops at the first line that is not data (the blank line before the next block).
+- **Missing values:** any row where one of the four needed columns is -99.99 or -999 is skipped, so no output row is produced for that month.
+- **Columns:** they are picked by header name (`SMALL LoPRIOR`, `SMALL HiPRIOR`, `BIG LoPRIOR`, `BIG HiPRIOR`), so column order does not matter.
+- **Output:** values are rounded to 4 decimals and written as `date,value`.
+
+```python
+import csv
+
+fn = "6_Portfolios_ME_Prior_12_2.csv"
+with open(fn, newline="", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+start = None
+for i, l in enumerate(lines):
+    if "Average Value Weighted Returns" in l and "Monthly" in l:
+        start = i
+        break
+
+header = [h.strip() for h in lines[start + 1].split(",")]
+idx = {h: j for j, h in enumerate(header)}
+cSL = idx["SMALL LoPRIOR"]
+cSH = idx["SMALL HiPRIOR"]
+cBL = idx["BIG LoPRIOR"]
+cBH = idx["BIG HiPRIOR"]
+
+rows = []
+seen = False
+for l in lines[start + 2:]:
+    parts = [p.strip() for p in l.split(",")]
+    if parts and len(parts[0]) == 6 and parts[0].isdigit():
+        seen = True
+        try:
+            sl, sh, bl, bh = (float(parts[c]) for c in (cSL, cSH, cBL, cBH))
+        except (ValueError, IndexError):
+            continue
+        if any(v <= -99.0 for v in (sl, sh, bl, bh)):
+            continue
+        val = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+        rows.append((int(parts[0]), round(val, 4)))
+    else:
+        if seen:
+            break
+
+with open("output.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["date", "value"])
+    for d, v in rows:
+        w.writerow([d, v])
+```

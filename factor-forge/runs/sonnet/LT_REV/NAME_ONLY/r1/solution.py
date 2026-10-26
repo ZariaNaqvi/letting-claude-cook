@@ -1,0 +1,28 @@
+import pandas as pd
+import numpy as np
+
+rows = []
+started = False
+with open("6_Portfolios_ME_Prior_60_13.csv", "r", errors="ignore") as f:
+    for line in f:
+        parts = [p.strip() for p in line.strip().split(",")]
+        if len(parts) >= 7 and len(parts[0]) == 6 and parts[0].isdigit():
+            try:
+                vals = [float(x) for x in parts[1:7]]
+            except ValueError:
+                if started:
+                    break
+                continue
+            started = True
+            rows.append([int(parts[0])] + vals)
+        else:
+            if started:
+                break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+vals = df[["sl", "sm", "sh", "bl", "bm", "bh"]].copy()
+vals = vals.mask((vals <= -99.99) | (vals <= -999))
+df[["sl", "sm", "sh", "bl", "bm", "bh"]] = vals
+df = df.dropna()
+df["value"] = 0.5 * (df["sl"] + df["bl"]) - 0.5 * (df["sh"] + df["bh"])
+df[["date", "value"]].to_csv("output.csv", index=False)

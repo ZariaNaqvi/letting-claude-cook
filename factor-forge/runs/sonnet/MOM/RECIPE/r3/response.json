@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRW5qt2ZBrRmQAddUSi1",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script reads the file line by line and keeps only the first table, stopping when the monthly rows end. Missing values (-99.99 or -999) are set to NaN, so any month with a missing input gets no row.\n\n```python\nimport csv\nimport numpy as np\nimport pandas as pd\n\nrows = []\nheader = None\nstarted = False\nwith open(\"6_Portfolios_ME_Prior_12_2.csv\", newline=\"\") as f:\n    for line in f:\n        s = line.strip()\n        if not started:\n            if s.startswith(\",\") and \"SMALL\" in s.upper() and \"LoPRIOR\".upper() in s.upper():\n                header = [x.strip() for x in s.split(\",\")]\n                started = True\n            continue\n        if not s:\n            if rows:\n                break\n            continue\n        parts = [x.strip() for x in s.split(\",\")]\n        if not parts[0].isdigit() or len(parts[0]) != 6:\n            if rows:\n                break\n            continue\n        rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf = df.rename(columns={header[0]: \"date\"})\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    v = pd.to_numeric(df[c], errors=\"coerce\")\n    v = v.where(~v.isin([-99.99, -999, -999.0]), np.nan)\n    df[c] = v\n\nval = 0.5 * (df[\"SMALL HiPRIOR\"] + df[\"BIG HiPRIOR\"]) - 0.5 * (df[\"SMALL LoPRIOR\"] + df[\"BIG LoPRIOR\"])\nout = pd.DataFrame({\"date\": df[\"date\"], \"value\": val}).dropna()\nout[\"date\"] = out[\"date\"].astype(int)\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2699,
+    "output_tokens": 598,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

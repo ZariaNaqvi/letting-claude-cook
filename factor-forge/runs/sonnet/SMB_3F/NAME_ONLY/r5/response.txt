@@ -1,0 +1,36 @@
+The script reads only the first block of the file, "Average Value Weighted Returns -- Monthly". It computes SMB as the average of the three small portfolios minus the average of the three big portfolios, which is Ken French's definition. Rows with a missing value (-99.99 or -999) are dropped.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+rows = []
+started = False
+with open("6_Portfolios_2x3.csv", "r", errors="ignore") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if s.startswith("Average Value Weighted Returns") and "Monthly" in s:
+                started = True
+            continue
+        if not s:
+            if rows:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]) and len(parts) >= 7:
+            rows.append(parts[:7])
+        elif rows:
+            break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+df["date"] = df["date"].astype(int)
+cols = ["sl", "sm", "sh", "bl", "bm", "bh"]
+for c in cols:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+df[cols] = df[cols].mask((df[cols] <= -99.0))
+df = df.dropna()
+df["value"] = (df["sl"] + df["sm"] + df["sh"]) / 3.0 - (df["bl"] + df["bm"] + df["bh"]) / 3.0
+df[["date", "value"]].to_csv("output.csv", index=False)
+```

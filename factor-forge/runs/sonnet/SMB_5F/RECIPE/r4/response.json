@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRWUrhH7vUSZNwx8M5Da",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script reads each file line by line and keeps only the first table. It starts after the header line containing \"Average Value Weighted Returns -- Monthly\" and stops at the first line that is not a 6-value monthly row.\n\nFor each month, SMB_x is the mean of the three small portfolios minus the mean of the three big portfolios. The final SMB is the average of the three SMB_x values over months present in all three files. Missing values (-99.99 or -999) are treated as NaN, so any month with a missing value in a file is dropped from the output.\n\nI did not run this against the files.\n\n```python\nimport pandas as pd\nimport numpy as np\n\ndef read_first_block(fn):\n    rows = {}\n    started = False\n    with open(fn, \"r\", errors=\"ignore\") as f:\n        for line in f:\n            s = line.strip()\n            if not started:\n                if \"Average Value Weighted Returns\" in s and \"Monthly\" in s:\n                    started = True\n                continue\n            if not s:\n                if rows:\n                    break\n                continue\n            parts = [p.strip() for p in s.split(\",\")]\n            if parts[0] == \"\":\n                # header line\n                if rows:\n                    break\n                continue\n            if not (parts[0].isdigit() and len(parts[0]) == 6):\n                if rows:\n                    break\n                continue\n            if len(parts) < 7:\n                break\n            try:\n                vals = [float(x) for x in parts[1:7]]\n            except ValueError:\n                break\n            vals = [np.nan if (v <= -99.99) else v for v in vals]\n            rows[int(parts[0])] = vals\n    df = pd.DataFrame.from_dict(rows, orient=\"index\")\n    return df\n\ndef smb(fn):\n    df = read_first_block(fn)\n    return df.iloc[:, 0:3].mean(axis=1, skipna=False) - df.iloc[:, 3:6].mean(axis=1, skipna=False)\n\na = smb(\"6_Portfolios_2x3.csv\")\nb = smb(\"6_Portfolios_ME_OP_2x3.csv\")\nc = smb(\"6_Portfolios_ME_INV_2x3.csv\")\n\nd = pd.concat([a, b, c], axis=1, join=\"inner\").dropna()\nval = d.mean(axis=1)\nout = pd.DataFrame({\"date\": val.index.astype(int), \"value\": val.values})\nout = out.sort_values(\"date\")\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 6881,
+    "output_tokens": 798,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

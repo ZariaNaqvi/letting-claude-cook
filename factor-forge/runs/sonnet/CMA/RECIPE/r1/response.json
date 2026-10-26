@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVF7nsZv4phCCy5V8wm",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script reads the file line by line and parses only the first table. It starts after the \"Average Value Weighted Returns -- Monthly\" header and the column-header line. It keeps rows whose first field is a 6-digit integer and stops at the first non-matching line once data has started.\n\nMissing values (-99.99 or -999) are handled by setting the month's value to NaN and dropping that row. The column order is SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV, so the indices are 0, 2, 3 and 5.\n\nCMA = 0.5*(SMALL LoINV + BIG LoINV) - 0.5*(SMALL HiINV + BIG HiINV).\n\n```python\nimport csv\n\nrows = []\nstarted = False\nwith open(\"6_Portfolios_ME_INV_2x3.csv\", newline=\"\") as f:\n    in_block = False\n    for line in f:\n        s = line.strip()\n        if not in_block:\n            if s.startswith(\"Average Value Weighted Returns\") and \"Monthly\" in s:\n                in_block = True\n            continue\n        if not s:\n            if started:\n                break\n            continue\n        parts = [p.strip() for p in s.split(\",\")]\n        first = parts[0]\n        if len(first) == 6 and first.isdigit():\n            started = True\n            try:\n                v = [float(x) for x in parts[1:7]]\n            except ValueError:\n                continue\n            if any(x <= -99.0 for x in v):\n                continue\n            lo_s, _, hi_s, lo_b, _, hi_b = v\n            val = 0.5 * (lo_s + lo_b) - 0.5 * (hi_s + hi_b)\n            rows.append((int(first), round(val, 6)))\n        else:\n            if started:\n                break\n\nwith open(\"output.csv\", \"w\", newline=\"\") as f:\n    w = csv.writer(f)\n    w.writerow([\"date\", \"value\"])\n    for d, v in rows:\n        w.writerow([d, v])\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2789,
+    "output_tokens": 664,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

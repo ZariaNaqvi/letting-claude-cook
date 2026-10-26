@@ -1,0 +1,34 @@
+import pandas as pd
+import numpy as np
+
+rows = []
+in_section = False
+with open("6_Portfolios_2x3.csv", "r", encoding="latin-1") as f:
+    for line in f:
+        s = line.strip()
+        if not in_section:
+            if "Value Weighted Returns" in s and "Monthly" in s:
+                in_section = True
+            continue
+        if not s:
+            if rows:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts) >= 7 and parts[0].isdigit() and len(parts[0]) == 6:
+            try:
+                vals = [float(x) for x in parts[1:7]]
+            except ValueError:
+                break
+            rows.append([int(parts[0])] + vals)
+        else:
+            if rows:
+                break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+for c in ["sl", "sm", "sh", "bl", "bm", "bh"]:
+    df[c] = df[c].where(~df[c].isin([-99.99, -999.0, -999]), np.nan)
+df["value"] = 0.5 * (df["sh"] + df["bh"]) - 0.5 * (df["sl"] + df["bl"])
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

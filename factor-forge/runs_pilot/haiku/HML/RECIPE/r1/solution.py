@@ -1,0 +1,82 @@
+import re
+import math
+import csv
+
+
+def _parse_val(tok):
+    try:
+        v = float(tok)
+    except ValueError:
+        return math.nan
+    if v in (-99.99, -999.0) or v <= -99.98 and v >= -99.99:
+        return math.nan
+    if v == -999:
+        return math.nan
+    return v
+
+
+def main():
+    fname = "6_Portfolios_2x3.csv"
+    with open(fname, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate first value-weighted monthly block
+    start = None
+    for i, l in enumerate(lines):
+        if "Value Weighted Returns -- Monthly" in l:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly block not found")
+
+    # header line: first non-empty line containing commas after the title
+    header_idx = None
+    for j in range(start + 1, len(lines)):
+        if lines[j].strip() and "," in lines[j]:
+            header_idx = j
+            break
+    if header_idx is None:
+        raise RuntimeError("Header line not found")
+
+    header = [" ".join(h.strip().split()) for h in lines[header_idx].split(",")]
+
+    def find_col(name):
+        for k, h in enumerate(header):
+            if h == name:
+                return k
+        raise RuntimeError(f"Column {name} not found in header {header}")
+
+    c_sl = find_col("SMALL LoBM")
+    c_sh = find_col("SMALL HiBM")
+    c_bl = find_col("BIG LoBM")
+    c_bh = find_col("BIG HiBM")
+
+    out_rows = []
+    started = False
+    for l in lines[header_idx + 1:]:
+        parts = [p.strip() for p in l.split(",")]
+        if parts and re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            try:
+                sl = _parse_val(parts[c_sl])
+                sh = _parse_val(parts[c_sh])
+                bl = _parse_val(parts[c_bl])
+                bh = _parse_val(parts[c_bh])
+            except IndexError:
+                continue
+            val = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+            if math.isfinite(val):
+                out_rows.append((int(parts[0]), val))
+        else:
+            if started:
+                break  # end of the monthly block
+
+    with open("output.csv", "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["date", "value"])
+        for d, v in out_rows:
+            w.writerow([d, repr(float(v))])
+
+
+if __name__ == "__main__":
+    main()

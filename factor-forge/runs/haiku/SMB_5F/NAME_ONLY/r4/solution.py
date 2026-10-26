@@ -1,0 +1,74 @@
+import numpy as np
+import pandas as pd
+
+
+def parse_vw_monthly(fn):
+    """Parse the 'Average Value Weighted Returns -- Monthly' block of a Ken French 2x3 file.
+    Returns a DataFrame indexed by YYYYMM int with 6 columns in file order:
+    [small-lo, small-mid, small-hi, big-lo, big-mid, big-hi]."""
+    with open(fn, encoding="utf-8", errors="replace") as f:
+        lines = f.read().splitlines()
+
+    start = None
+    for i, line in enumerate(lines):
+        if "Value Weighted Returns" in line and "Monthly" in line:
+            start = i
+            break
+    if start is None:
+        raise ValueError(f"Value-weighted monthly block not found in {fn}")
+
+    recs = {}
+    started = False
+    for line in lines[start + 1:]:
+        parts = [p.strip() for p in line.split(",")]
+        if len(parts) >= 7 and len(parts[0]) == 6 and parts[0].isdigit():
+            vals = []
+            for p in parts[1:7]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if v <= -99.99:  # -99.99 or -999 indicate missing
+                    v = np.nan
+                vals.append(v)
+            recs[int(parts[0])] = vals
+            started = True
+        elif started:
+            # end of the monthly block (blank line or next section)
+            break
+
+    df = pd.DataFrame.from_dict(recs, orient="index",
+                                columns=["S_L", "S_M", "S_H", "B_L", "B_M", "B_H"])
+    df.index.name = "date"
+    return df.sort_index()
+
+
+def small_minus_big(df):
+    small = df[["S_L", "S_M", "S_H"]].mean(axis=1, skipna=False)
+    big = df[["B_L", "B_M", "B_H"]].mean(axis=1, skipna=False)
+    return small - big
+
+
+def main():
+    bm = parse_vw_monthly("6_Portfolios_2x3.csv")
+    op = parse_vw_monthly("6_Portfolios_ME_OP_2x3.csv")
+    inv = parse_vw_monthly("6_Portfolios_ME_INV_2x3.csv")
+
+    smb_bm = small_minus_big(bm).rename("smb_bm")
+    smb_op = small_minus_big(op).rename("smb_op")
+    smb_inv = small_minus_big(inv).rename("smb_inv")
+
+    comb = pd.concat([smb_bm, smb_op, smb_inv], axis=1, join="inner").dropna()
+    comb = comb.sort_index()
+
+    smb = comb.mean(axis=1)  # SMB = average of the three SMB spreads
+
+    out = pd.DataFrame({
+        "date": comb.index.astype(int),
+        "value": smb.values,
+    })
+    out.to_csv("output.csv", index=False)
+
+
+if __name__ == "__main__":
+    main()

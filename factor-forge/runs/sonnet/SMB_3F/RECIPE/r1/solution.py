@@ -1,0 +1,45 @@
+import csv
+
+def main():
+    rows = []
+    started = False
+    with open("6_Portfolios_2x3.csv", "r", encoding="latin-1") as f:
+        for line in f:
+            s = line.strip()
+            if not started:
+                if "Average Value Weighted Returns" in s and "Monthly" in s:
+                    started = True
+                continue
+            if not s:
+                if rows:
+                    break
+                continue
+            parts = [p.strip() for p in s.split(",")]
+            d = parts[0]
+            if len(d) == 6 and d.isdigit():
+                try:
+                    vals = [float(x) for x in parts[1:7]]
+                except ValueError:
+                    continue
+                if len(vals) < 6:
+                    continue
+                rows.append((int(d), vals))
+            else:
+                if rows:
+                    break
+                # header line, skip
+                continue
+    out = []
+    for d, v in rows:
+        if any(x <= -99.0 for x in v):
+            continue
+        small = (v[0] + v[1] + v[2]) / 3.0
+        big = (v[3] + v[4] + v[5]) / 3.0
+        out.append((d, round(small - big, 6)))
+    with open("output.csv", "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["date", "value"])
+        for d, x in out:
+            w.writerow([d, x])
+
+main()

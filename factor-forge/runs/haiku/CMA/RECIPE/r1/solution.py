@@ -1,0 +1,85 @@
+import numpy as np
+import pandas as pd
+
+SRC = "6_Portfolios_ME_INV_2x3.csv"
+OUT = "output.csv"
+
+
+def norm(s):
+    return " ".join(str(s).replace("\t", " ").split()).upper()
+
+
+def main():
+    with open(SRC, "r", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate first table: 'Average Value Weighted Returns -- Monthly'
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "value weighted" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly block not found")
+
+    # header line: next non-empty line after the title
+    h = start + 1
+    while h < len(lines) and lines[h].strip() == "":
+        h += 1
+    header = [norm(x) for x in lines[h].split(",")]
+
+    def col(name):
+        target = norm(name)
+        for j, name_j in enumerate(header):
+            if name_j == target:
+                return j
+        raise RuntimeError(f"Column not found: {name}")
+
+    idx_SL = col("SMALL LoINV")
+    idx_BL = col("BIG LoINV")
+    idx_SH = col("SMALL HiINV")
+    idx_BH = col("BIG HiINV")
+
+    rows = []
+    started = False
+    for line in lines[h + 1:]:
+        parts = [p.strip() for p in line.split(",")]
+        first = parts[0] if parts else ""
+        is_monthly = len(first) == 6 and first.isdigit()
+        if not is_monthly:
+            if started:
+                break  # end of monthly block
+            continue
+        started = True
+
+        def num(j):
+            if j >= len(parts):
+                return np.nan
+            try:
+                v = float(parts[j])
+            except ValueError:
+                return np.nan
+            if v in (-99.99, -999.0):
+                return np.nan
+            return v
+
+        rows.append((
+            int(first),
+            num(idx_SL), num(idx_BL), num(idx_SH), num(idx_BH),
+        ))
+
+    df = pd.DataFrame(rows, columns=["date", "SL", "BL", "SH", "BH"])
+    df["value"] = 0.5 * (df["SL"] + df["BL"]) - 0.5 * (df["SH"] + df["BH"])
+    df = df.dropna(subset=["value"])
+    df = df.drop_duplicates(subset=["date"]).sort_values("date")
+
+    out = pd.DataFrame({
+        "date": df["date"].astype(int),
+        "value": df["value"].astype(float),
+    })
+    out.to_csv(OUT, index=False)
+
+
+if __name__ == "__main__":
+    main()

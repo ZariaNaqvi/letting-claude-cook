@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVTpE3ZaGxufcgBxNAT",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_ME_Prior_12_2.csv\"\n\nwith open(fname, \"r\", encoding=\"utf-8\", errors=\"replace\") as f:\n    lines = f.readlines()\n\n# Locate the first table: \"Average Value Weighted Returns -- Monthly\"\nstart = None\nfor i, line in enumerate(lines):\n    if \"Average Value Weighted Returns\" in line and \"Monthly\" in line:\n        start = i\n        break\nif start is None:\n    # fallback: first header line beginning with a comma\n    for i, line in enumerate(lines):\n        if line.startswith(\",\"):\n            start = i - 1\n            break\n\n# Header line is the next line starting with a comma\nhdr_idx = start + 1\nwhile hdr_idx < len(lines) and not lines[hdr_idx].strip().startswith(\",\"):\n    hdr_idx += 1\nheader = [h.strip() for h in lines[hdr_idx].strip().split(\",\")]\n\nrows = []\nfor line in lines[hdr_idx + 1:]:\n    s = line.strip()\n    if not s:\n        # blank line ends the block (allow leading blanks before data though)\n        if rows:\n            break\n        continue\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        if rows:\n            break\n        continue\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf.rename(columns={header[0]: \"date\"}, inplace=True)\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Identify columns robustly\ndef find_col(cols, *keys):\n    for c in cols:\n        cu = c.upper().replace(\" \", \"\")\n        if all(k.upper().replace(\" \", \"\") in cu for k in keys):\n            return c\n    raise KeyError(keys)\n\ncols = list(df.columns[1:])\ns_hi = find_col(cols, \"SMALL\", \"HiPRIOR\")\ns_lo = find_col(cols, \"SMALL\", \"LoPRIOR\")\nb_hi = find_col(cols, \"BIG\", \"HiPRIOR\")\nb_lo = find_col(cols, \"BIG\", \"LoPRIOR\")\n\n# Treat missing-value codes as NaN\nfor c in [s_hi, s_lo, b_hi, b_lo]:\n    df.loc[df[c] <= -99.0, c] = np.nan\n\nmom = 0.5 * (df[s_hi] + df[b_hi]) - 0.5 * (df[s_lo] + df[b_lo])\n\nout = pd.DataFrame({\"date\": df[\"date\"].astype(int), \"value\": mom.round(4)})\nout = out.dropna(subset=[\"value\"])\nout.to_csv(\"output.csv\", index=False)\n```\n\nThe script parses only the first (value-weighted monthly) block, stops at the first blank/non-YYYYMM line after the data, computes Mom = \u00bd(Small Hi + Big Hi) \u2212 \u00bd(Small Lo + Big Lo), and writes `output.csv` with `date,value`.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2699,
+    "output_tokens": 1076,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

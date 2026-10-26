@@ -22,3 +22,165 @@ LOG
             3-port for 5F) miss by RMSE ~60 bp, max ~351 bp -> recipes are distinct.
             Wrote data/truth/*.csv, data/reference/*.csv, data/ground_truth_results.csv.
 2026-10-21  ground_truth.py: all 8 factors reproduce, worst RMSE 0.418 bp (LT_REV). PASS threshold = 1.0 bp.
+
+## SETUP, WEEK 2 ADDITIONS
+Date: 2026-10-26 (prompts-v1 commit e5b4a4f and both manifests are dated 10-26; change if setup began 10-23)
+Prompts: prompts-v1 (PROMPT_VERSION v1), tag prompts-v1 = e5b4a4f
+Models: claude-fable-5-1, claude-opus-5-5, claude-sonnet-5-5, claude-haiku-5-5
+Settings: effort high, max_tokens 32000, no system prompt, no tools, no temperature, 2 workers
+Script limit: 60 s, fresh temp folder with only the raw input files
+Data: Ken French Data Library raw CSVs, release 202608 (CRSP), downloaded 2026-10-21
+SDK / Python / pandas: anthropic 1.13.0 / Python 3.12.10 / pandas 3.0.6 (numpy 2.5.4), from runs/manifest.json
+Rules: models see only the prompt; Claude Code built the harness, never the answers
+Full run: 320 jobs (8 tasks x 2 conditions x 4 models x 5 repeats), started 2026-10-26 16:31,
+          finished in one pass, $11.16 total; the 17:00 rerun found 320/320 done (0 new calls).
+
+## PILOT 2026-10-26 (runs_pilot/, HML x 2 conditions x 4 models)
+Output: 8/8 PASS. rmse_bp 0.2908 for all 8 runs (fable NAME_ONLY 0.29078, the other 7 0.290827),
+        max_abs_bp 0.5, so the only error is French's 2-decimal rounding.
+Choices: All 8 used 6_Portfolios_2x3.csv and found the first block by searching for
+        "Value Weighted Returns" + "Monthly". HML = 0.5*(SH+BH) - 0.5*(SL+BL) in every run.
+        Opus/Haiku RECIPE and Fable RECIPE picked columns by name ("SMALL HiBM" ...).
+        Sonnet RECIPE used fixed positions (v[2]+v[5]) - (v[0]+v[3]); right for this file, but it
+        breaks silently if the column order changes.
+Flagged: No max_tokens hits (all end_turn). Slowest call 15.3 s (fable NAME_ONLY). Fable NAME_ONLY
+        rounded output to 4 decimals, which explains its slightly different rmse.
+Errors: None in the scored CSV. Pilot was 2 invocations: a haiku-only smoke test (15:51:17) and then
+        all 4 models (15:51:48). (Add any harness bug you fixed by hand here.)
+Takeaway: HML is too easy to tell the models apart (8/8, identical errors). The full run's
+        differences have to come from the harder tasks (SMB_5F, MOM, the reversals).
+
+## HAND-CHECK 2026-10-26 (sample seed 2026)
+Sample: results/runs_scored.csv .sample(10, random_state=2026) -> 9 PASS + 1 WRONG_FORMULA.
+Not blind: the tags were printed next to the folder names. Verdicts come from solution.py,
+output.csv and stderr.txt. The other 3 non-PASS runs were outside the sample; they are checked
+in an extra block below.
+
+### runs/haiku/SMB_5F/NAME_ONLY/r5
+Tag: WRONG_FORMULA   rmse_bp: 38.49 (max 173.4, corr 0.994)
+Output: 758 rows from 196307, full coverage, values plausible but off.
+Choices: Correct tables (2x3 BM, OP and INV, VW monthly), correct recipe (average of the 3 size spreads).
+Flagged: Columns picked with c.upper().startswith("SMALL") / ("BIG"). The middle columns are named
+        "ME1 BM2" / "ME2 BM2", so each leg averages 2 portfolios instead of 3.
+Errors: Column selection bug, not a recipe misunderstanding.
+Agree with tag? yes, because the formula as executed is wrong. But this is not SMB_SWAP; the
+        tag hides that the concept was right.
+Takeaway: "Right recipe, wrong columns." Haiku SMB_5F NAME_ONLY r1 and RECIPE r5 (both in this
+        sample) wrote the same idea with positions [0,1,2]/[3,4,5] or "SMALL or ME1" and passed.
+
+### runs/opus/SMB_3F/NAME_ONLY/r2
+Tag: PASS   rmse_bp: 0.296
+Output: 1202 rows from 192607, rounded to 6 dp.
+Choices: 6_Portfolios_2x3.csv, VW monthly; small = cols with SMALL or ME1, big = BIG or ME2
+        (3 each, with a positional fallback); SMB = mean(small) - mean(big).
+Flagged: Includes ME1/ME2, which is exactly the case Haiku SMB_5F r5 missed.
+Errors: none
+Agree with tag? yes
+Takeaway: The defensive "len(small) != 3" check is what Haiku r5 lacked.
+
+### runs/opus/ST_REV/NAME_ONLY/r2
+Tag: PASS   rmse_bp: 0.408
+Output: 1207 rows from 192602.
+Choices: 6_Portfolios_ME_Prior_1_0.csv, VW monthly; matched names with spaces removed
+        (SMALLLOPRIOR, ...); ST_REV = 0.5*(SL+BL) - 0.5*(SH+BH), losers minus winners (sign correct).
+Flagged: none
+Errors: none
+Agree with tag? yes
+Takeaway: In NAME_ONLY, Opus inferred the reversal sign from the name alone.
+
+### runs/fable/RMW/NAME_ONLY/r1
+Tag: PASS   rmse_bp: 0.291
+Output: 758 rows from 196307, rounded to 4 dp.
+Choices: 6_Portfolios_ME_OP_2x3.csv, VW monthly; RMW = 0.5*(SH+BH) - 0.5*(SL+BL) on OP.
+Flagged: Columns unpacked by position (cols[:6]) with no name check; correct only because the
+        file order is the usual one.
+Errors: none
+Agree with tag? yes
+Takeaway: Right number, fragile method.
+
+### runs/fable/CMA/RECIPE/r3
+Tag: PASS   rmse_bp: 0.289
+Output: 758 rows from 196307, unrounded floats.
+Choices: 6_Portfolios_ME_INV_2x3.csv, VW monthly; columns by name; CMA = Lo INV - Hi INV
+        (conservative minus aggressive; sign correct).
+Flagged: none
+Errors: none
+Agree with tag? yes
+Takeaway: Clean reference-quality script.
+
+### runs/opus/LT_REV/NAME_ONLY/r1
+Tag: PASS   rmse_bp: 0.537 (max 1.0)
+Output: 1148 rows from 193101, rounded to 2 dp.
+Choices: 6_Portfolios_ME_Prior_60_13.csv, VW monthly; names matched; LT_REV = Lo - Hi PRIOR (sign correct).
+Flagged: round(2) rounds the computed average a second time on top of French's 2 dp, so rmse is
+        0.537 instead of the 0.418 floor that every unrounded LT_REV run gets. Some fable runs show
+        the same pattern (fable/opus LT_REV max 0.537).
+Errors: none, but it uses about half of the 1 bp threshold.
+Agree with tag? yes
+Takeaway: A cosmetic choice (rounding) moves rmse_bp, so rmse differences under ~0.15 bp
+        between models mean nothing.
+
+### runs/haiku/SMB_5F/NAME_ONLY/r1
+Tag: PASS   rmse_bp: 0.282
+Output: 758 rows from 196307, unrounded.
+Choices: All three 2x3 files, VW monthly; per file mean(v[0..2]) - mean(v[3..5]); average of the 3.
+Flagged: Positional, but includes the middle portfolios (unlike r5).
+Errors: none
+Agree with tag? yes
+Takeaway: Same model, same prompt, different column logic -> pass vs fail. That is repeat-to-repeat variance.
+
+### runs/haiku/SMB_5F/RECIPE/r5
+Tag: PASS   rmse_bp: 0.282
+Output: identical numbers to NAME_ONLY r1.
+Choices: All three 2x3 files; small = SMALL or startswith ME1 (3 each, positional fallback); average of 3.
+Flagged: Dead code. A "common" join/mean loop is computed and never used.
+Errors: none
+Agree with tag? yes
+Takeaway: The output is right even though part of the code does nothing; worth a slide on code quality.
+
+### runs/sonnet/LT_REV/NAME_ONLY/r2
+Tag: PASS   rmse_bp: 0.418
+Output: 1148 rows from 193101, unrounded.
+Choices: 6_Portfolios_ME_Prior_60_13.csv, first VW monthly block; fixed positions sl..bh;
+        LT_REV = 0.5*(SL+BL) - 0.5*(SH+BH).
+Flagged: Drops any month with a missing code instead of setting it to NaN (same result here).
+Errors: none
+Agree with tag? yes
+Takeaway: Short and correct.
+
+### runs/haiku/RMW/NAME_ONLY/r2
+Tag: PASS   rmse_bp: 0.291
+Output: 758 rows from 196307, repr() floats.
+Choices: 6_Portfolios_ME_OP_2x3.csv, first "value weighted" + "monthly" block; positions 0,2,3,5;
+        RMW = Hi OP - Lo OP.
+Flagged: positional columns (same fragility as fable RMW r1).
+Errors: none
+Agree with tag? yes
+Takeaway: none beyond the positional-column pattern.
+
+### Extra: the 3 other non-PASS runs (not in the seed-2026 sample)
+runs/fable/MOM/NAME_ONLY/r2 and r4
+Tag: BAD_FORMAT   rmse_bp: n/a (coverage 0)
+Output: header line only, 0 rows.
+Choices: Right table (ME_Prior_12_2, VW monthly), right formula 0.5*(SH+BH) - 0.5*(SL+BL).
+Errors: Header search `"LoPRIOR" in s.upper()` can never match (upper() gives LOPRIOR), so nothing
+        is parsed. The same bug appears in 2 of 5 Fable MOM NAME_ONLY repeats.
+Agree with tag? yes (output has no rows). Root cause is a string-case bug, not finance.
+Takeaway: "Right reasoning, zero output." The best example of the opposite of right number, wrong reasons.
+
+runs/opus/RMW/NAME_ONLY/r3
+Tag: CRASH   rmse_bp: n/a
+Choices: Right table (ME_OP_2x3, VW monthly), right formula (robust - weak), names matched.
+Errors: `v = df.iloc[:,1:].to_numpy(); v[mask] = np.nan` -> "assignment destination is read-only".
+        Under pandas 3.0 copy-on-write, to_numpy() can return a read-only view.
+Agree with tag? yes. The failure comes from the environment (pandas 3), not the model's finance;
+        on pandas 2.x it would probably have passed. Mention in limitations.
+
+Hand-check result: 10/10 sampled tags agree (plus 3/3 extra). No mis-tags. Two failure tags hide the
+real cause (column-selection bug, case bug), and one failure is a pandas-version issue.
+
+## CHANGES LOG
+2026-10-26  run_experiment.py, score.py, analyze.py, dryrun_mock.py, selftest.py, README.md added
+            (commit c47af5d, after tag prompts-v1). Harness only; prompts.py and tasks.json are
+            unchanged since prompts-v1, so every run used the v1 prompts.
+2026-10-26  notes.txt: Week 2 SETUP, PILOT, HAND-CHECK and CHANGES LOG blocks added.

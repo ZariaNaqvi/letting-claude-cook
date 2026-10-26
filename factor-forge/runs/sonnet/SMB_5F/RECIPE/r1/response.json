@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVDz8DU6bYJCwJe5fCe",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script reads only the first table of each file. It starts at the header line \"Average Value Weighted Returns -- Monthly\" and collects the following rows until the first line that is not a 6-digit date row, such as a blank line or the next block title.\n\nEach file is parsed line by line. A row counts as data when its first field is a 6-digit integer and it has 7 fields. Values of -99.99 or -999 are treated as missing (NaN). A month with any missing value in a file gives NaN for that file's SMB component, and I drop those months.\n\nFor each file, SMB_x is the mean of the three small columns minus the mean of the three big columns. The files are inner-joined on date, which gives 196307 onward. The final value is the average of the three SMB components.\n\n```python\nimport pandas as pd\nimport numpy as np\n\n\ndef read_first_block(fn):\n    rows = []\n    started = False\n    with open(fn, \"r\", errors=\"replace\") as f:\n        for line in f:\n            s = line.strip()\n            if not started:\n                if \"Average Value Weighted Returns\" in s and \"Monthly\" in s:\n                    started = True\n                continue\n            if not s:\n                if rows:\n                    break\n                continue\n            parts = [p.strip() for p in s.split(\",\")]\n            if parts[0].isdigit() and len(parts[0]) == 6 and len(parts) >= 7:\n                vals = []\n                for p in parts[1:7]:\n                    try:\n                        v = float(p)\n                    except ValueError:\n                        v = np.nan\n                    if v <= -99.0:\n                        v = np.nan\n                    vals.append(v)\n                rows.append([int(parts[0])] + vals)\n            else:\n                if rows:\n                    break\n    df = pd.DataFrame(rows, columns=[\"date\", \"s1\", \"s2\", \"s3\", \"b1\", \"b2\", \"b3\"])\n    return df\n\n\ndef smb(fn, name):\n    df = read_first_block(fn)\n    v = df[[\"s1\", \"s2\", \"s3\"]].mean(axis=1, skipna=False) - df[[\"b1\", \"b2\", \"b3\"]].mean(axis=1, skipna=False)\n    return pd.DataFrame({\"date\": df[\"date\"], name: v})\n\n\na = smb(\"6_Portfolios_2x3.csv\", \"bm\")\nb = smb(\"6_Portfolios_ME_OP_2x3.csv\", \"op\")\nc = smb(\"6_Portfolios_ME_INV_2x3.csv\", \"inv\")\nm = a.merge(b, on=\"date\", how=\"inner\").merge(c, on=\"date\", how=\"inner\")\nm = m.dropna()\nm[\"value\"] = (m[\"bm\"] + m[\"op\"] + m[\"inv\"]) / 3.0\nm = m.sort_values(\"date\")\nm[[\"date\", \"value\"]].to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 6881,
+    "output_tokens": 912,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

@@ -1,0 +1,82 @@
+TASK
+RMW = 1/2 (Small Robust + Big Robust) - 1/2 (Small Weak + Big Weak), i.e. 0.5*(SMALL HiOP + BIG HiOP) - 0.5*(SMALL LoOP + BIG LoOP), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_OP_2x3.csv. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.
+TABLE TO USE: Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.
+
+DATA
+You are given 1 raw CSV file(s), exactly as downloaded from the Ken French Data Library: 6_Portfolios_ME_OP_2x3.csv.
+They are in the current working directory. Below are the first 60 lines of each file, verbatim.
+The files are much longer than what is shown; you have to write code that handles the whole file.
+
+=== FILE: 6_Portfolios_ME_OP_2x3.csv (first 60 of 6263 lines, verbatim) ===
+This file was created using the 202608 CRSP database.
+It contains value- and equal-weighted returns for portfolios formed on ME and OP.
+
+The portfolios are constructed at the end of June.  OP is operating profits (sales - cost
+of goods sold - selling, general and administrative expenses - interest expense) divided by book
+at the last fiscal year end of the prior calendar year.
+Annual returns are from January to December.
+
+Missing data are indicated by -99.99 or -999.
+
+Please be aware that some of the value-weight averages of operating profitability for
+deciles 1 and 10 are extreme. These are driven by extraordinary values of OP for
+individual firms. We have spot checked the accounting data that produce the
+extraordinary values and all the numbers we examined accurately reflect the
+data in the firm's accounting statements.
+
+The break points include utilities and include financials.
+
+The  portfolios  include utilities and include financials.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoOP,ME1 OP2,SMALL HiOP,BIG LoOP,ME2 OP2,BIG HiOP
+196307,  -0.8271,  -0.6030,  -0.4670,  -0.8758,   0.4120,   0.0439
+196308,   4.8286,   4.2918,   5.3371,   5.5646,   4.9316,   5.8518
+196309,  -0.9874,  -1.0672,  -2.7990,  -1.6849,  -0.8072,  -1.4241
+196310,   1.3546,   1.7163,   1.6065,   0.8531,   1.4226,   6.1848
+196311,  -1.2564,  -1.1526,  -2.2329,  -1.4749,   0.3244,  -1.3551
+196312,  -0.1141,   0.8430,   0.4948,   2.4576,   2.4700,   2.0979
+196401,   2.9416,   2.8013,   2.9534,   2.1697,   2.8818,   2.5841
+196402,   2.8081,   1.3217,   2.9989,   2.1461,   1.3009,   2.1792
+196403,   5.0888,   3.3919,   2.5890,   3.2697,   1.1867,   1.7010
+196404,  -1.2681,  -0.7196,  -1.4041,   2.2038,   0.9506,  -0.3082
+196405,   1.9300,   0.4715,   1.4283,   1.8218,   1.1661,   2.0189
+196406,   1.3926,   1.8051,   1.8818,   1.7709,   2.5344,   0.6118
+196407,   2.9210,   2.7970,   2.4208,   1.7438,   1.5824,   2.5093
+196408,  -0.7545,  -0.8503,  -0.4150,  -1.1410,  -1.0726,  -1.2484
+196409,   3.1423,   2.7010,   3.2512,   4.5069,   2.2166,   3.3551
+196410,   1.4113,   2.0948,   2.8977,   1.9701,   1.2120,   0.0255
+196411,  -0.5796,  -0.0540,   0.8462,   0.6131,   0.3887,   0.4064
+196412,  -0.6269,  -0.6978,  -0.4097,  -0.7575,   0.4428,   1.0376
+196501,   6.2025,   6.1050,   7.1227,   4.2061,   1.8538,   5.3099
+196502,   3.6025,   4.1714,   3.9986,   0.8181,   0.0254,   0.9342
+196503,   1.1506,   1.0736,   0.7470,  -1.0379,  -1.3489,  -1.2709
+196504,   4.7612,   4.5210,   4.0970,   3.0336,   2.7003,   4.4054
+196505,  -0.3668,   0.2748,   0.1976,   0.6981,   0.0884,  -0.8017
+196506,  -9.5679,  -9.0637,  -9.5413,  -5.7212,  -3.8454,  -5.2877
+196507,   2.8386,   4.0567,   2.0248,   3.6607,   0.7801,   1.6599
+196508,   4.9188,   4.7066,   6.3799,   1.6888,   1.9588,   4.2946
+196509,   4.8884,   4.4632,   3.2455,   4.0079,   2.4560,   3.9551
+196510,   6.7239,   5.8810,   6.8263,   2.2844,   1.1240,   4.5531
+196511,   6.7100,   3.9101,   4.6452,   0.6542,  -1.0037,   0.5559
+196512,   5.0567,   3.5099,   3.6229,   1.7354,   1.0983,   0.5650
+196601,   7.7605,   5.3994,   4.5500,   3.2655,  -0.9752,   1.1679
+196602,   4.9191,   2.2071,   3.0555,  -2.0089,  -1.9360,  -0.4559
+196603,  -2.6718,  -1.4470,  -2.4090,  -3.2626,  -2.6261,  -0.9477
+196604,   5.7182,   4.4071,   6.0555,   1.7919,   2.1708,   2.2970
+196605, -11.4375,  -9.2601,  -9.4425,  -6.0223,  -4.2581,  -4.7435
+196606,  -0.2513,   1.1187,   0.2249,  -1.3280,  -0.7310,  -1.6384
+196607,  -1.7754,  -0.8207,  -2.2683,  -1.1020,  -1.1634,  -1.3070
+[file continues; 6203 more lines]
+
+OUTPUT CONTRACT
+- Reply with exactly ONE Python code block (```python ... ```). I will save it as solution.py and run it unchanged with `python solution.py`, no arguments, from the directory that holds the files.
+- The script reads the files above by name from the current directory. No internet access, no other files.
+- Allowed libraries: the Python standard library, pandas and numpy only (Python 3.12, pandas 3.0, numpy 2.x).
+- The script must write output.csv to the current directory with exactly two columns, in this order: date,value
+    date  = integer YYYYMM (for example 192607)
+    value = the factor's monthly return in PERCENT (1.23 means 1.23%), same units as the input files
+- One row per month, for every month the input data supports. Monthly rows only.
+- The script must finish within 60 seconds.
+- You may add a short explanation outside the code block; only the code is run and scored.

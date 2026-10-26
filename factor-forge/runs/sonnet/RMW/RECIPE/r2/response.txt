@@ -1,0 +1,51 @@
+I could not run this against the full file, so the parser is written from the 60 lines shown. It reads the first table only, which starts at the header line containing "Average Value Weighted Returns -- Monthly".
+
+- **Parsing:** It reads lines after the header line, skips the column-name row, and takes rows whose first field is a 6-digit integer. It stops at the first non-matching line once data has started, which is the blank line before the next block.
+- **Missing data:** Values of -99.99 or -999 are treated as missing. Any month with a missing value in one of the four portfolios gets no output row.
+- **Formula:** value = 0.5*(SMALL HiOP + BIG HiOP) - 0.5*(SMALL LoOP + BIG LoOP). Columns are located by name from the header row.
+
+```python
+import re
+import pandas as pd
+
+rows = []
+started = False
+cols = None
+with open("6_Portfolios_ME_OP_2x3.csv", "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+i = 0
+for idx, l in enumerate(lines):
+    if "Average Value Weighted Returns" in l and "Monthly" in l:
+        i = idx + 1
+        break
+
+# header row
+while i < len(lines) and not lines[i].strip():
+    i += 1
+cols = [c.strip() for c in lines[i].split(",")]
+i += 1
+for l in lines[i:]:
+    parts = [p.strip() for p in l.split(",")]
+    if re.fullmatch(r"\d{6}", parts[0]):
+        started = True
+        rows.append(parts)
+    else:
+        if started:
+            break
+        if not l.strip():
+            continue
+
+df = pd.DataFrame(rows)
+df = df.iloc[:, :len(cols)]
+df.columns = ["date"] + cols[1:len(df.columns)]
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[(df[c] <= -99.99) | (df[c] == -999), c] = float("nan")
+
+val = 0.5 * (df["SMALL HiOP"] + df["BIG HiOP"]) - 0.5 * (df["SMALL LoOP"] + df["BIG LoOP"])
+out = pd.DataFrame({"date": df["date"], "value": val}).dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```

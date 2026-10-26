@@ -1,0 +1,100 @@
+This builds RMW from the value-weighted monthly section of the 6-portfolio ME/OP file. RMW is the average of the two high-OP portfolios (Small HiOP and Big HiOP) minus the average of the two low-OP portfolios (Small LoOP and Big LoOP). The script reads only the value-weighted monthly block, treats -99.99 and -999 as missing, and writes one row per month where all four returns are available.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+
+def _norm(s):
+    return re.sub(r'[^a-z]', '', s.lower())
+
+
+def main():
+    fname = '6_Portfolios_ME_OP_2x3.csv'
+    with open(fname, encoding='latin-1') as f:
+        lines = f.read().splitlines()
+
+    # Locate the value-weighted monthly section
+    start = None
+    for i, l in enumerate(lines):
+        ll = l.lower()
+        if 'value' in ll and 'weighted' in ll and 'monthly' in ll:
+            start = i
+            break
+    if start is None:
+        start = 0  # fallback: scan from top
+
+    # Locate header line (first subsequent line containing a comma and non-date names)
+    header_idx = None
+    for j in range(start, len(lines)):
+        l = lines[j].strip()
+        if ',' in l and not re.match(r'^\s*\d{6}\s*,', l):
+            header_idx = j
+            break
+
+    col_idx = None
+    if header_idx is not None:
+        names = [h.strip() for h in lines[header_idx].split(',')][1:]
+        normed = [_norm(n) for n in names]
+        try:
+            col_idx = {
+                'sl': normed.index('smallloop'),
+                'sh': normed.index('smallhiop'),
+                'bl': normed.index('bigloop'),
+                'bh': normed.index('bighiop'),
+            }
+        except ValueError:
+            col_idx = None
+    if col_idx is None:
+        # Positional fallback: SMALL LoOP, ME1 OP2, SMALL HiOP, BIG LoOP, ME2 OP2, BIG HiOP
+        col_idx = {'sl': 0, 'sh': 2, 'bl': 3, 'bh': 5}
+
+    rows = []
+    started = False
+    search_from = header_idx + 1 if header_idx is not None else start
+    for j in range(search_from, len(lines)):
+        raw = lines[j].strip()
+        if not raw:
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in raw.split(',')]
+        if re.fullmatch(r'\d{6}', parts[0]):
+            started = True
+            vals = []
+            for k in range(1, len(parts)):
+                try:
+                    v = float(parts[k])
+                except ValueError:
+                    v = np.nan
+                if v in (-99.99, -999.0):
+                    v = np.nan
+                vals.append(v)
+            # pad if short
+            while len(vals) < 6:
+                vals.append(np.nan)
+            rows.append([int(parts[0])] + vals)
+        else:
+            if started:
+                break
+
+    cols = ['date'] + [f'c{k}' for k in range(len(rows[0]) - 1)] if rows else ['date']
+    df = pd.DataFrame(rows, columns=cols)
+
+    sl = df[f'c{col_idx["sl"]}']
+    sh = df[f'c{col_idx["sh"]}']
+    bl = df[f'c{col_idx["bl"]}']
+    bh = df[f'c{col_idx["bh"]}']
+
+    rmw = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+
+    out = pd.DataFrame({'date': df['date'].astype(int), 'value': rmw})
+    out = out.dropna(subset=['value']).reset_index(drop=True)
+    out['date'] = out['date'].astype(int)
+    out.to_csv('output.csv', index=False, columns=['date', 'value'], float_format='%.6f')
+
+
+if __name__ == '__main__':
+    main()
+```

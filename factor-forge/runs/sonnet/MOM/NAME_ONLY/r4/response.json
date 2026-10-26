@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRWWjF7pPU87ykTgRbxN",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQSzgsKEAgTGAI4AUIIdGhpbmtpbmcSDAM1VXfmQtGXGYVquBoMuTGjMPm/u6YmZZYeIjD1EfgCzBO5ZAna0p5ocPbxae2aK3xaz/XI2teTLeRSNaFAqPcwGfAM1V2Z+Erx8JYq6wp6uNqmjaNcdnLSUrPZsE7stN4V1oI9tMksDRUahxLnFJCX3KmuOY1tl6Q27fmNzkHd681j3e0x4EcXjTRV41161k7LkfRqO04DkkevW6XUgvfEbKA28poFMHDSofozYL/Az/9AzZzwC0+CzbVknYTd4FQuWI/EVKafp0IyjTFFj5jsH3ongUGwGbOE9KEWwDDEhod2JO4K4jzMSAU9qH4OMZSCt9IY/TzYTxaQW8lf199H6Y9qzlwdTBJ7XKvBZTT2qV8nLOFWWXj4G3ZwXk0RbNLZz6VloeRVUzceIuWtb6+ZzeG94ejhWqMsDFCY34LKujTV/L8ZBXtbrUi9ageum6fOSgP3Vt5JHSiBla26OEIsdujIho/uAoKQFbl82jlSmhuDd03+GbiF0imF5jmJPAYx0Xc7OaGf77LH/j+L/ul1YfB5rfEkRyuMSd9OF7iOlA6+mmh9GWklUoL/fuZwM6EatM9XxtbdsNnEnYtxz7wqg55VfapWHyOju0fcLLXcwr5HAONvH2mF/8C9+4gjU5phGZCNfSMFn04SJt/CkfGSARMw+dizx00toSvLAjq9fTkUQ6bFqYYgCUxmKUaeJH2emUU8Rqi9bZNDeexdfTOUxOWCU4iW9sp8kN091r8sy/Jn+whOXvwhCnCWbEv6Tiomq50mwPq0oD3Y49W/dGVz+jl3nm9kmWnYDXeuMkieI/iIRQs4Be9HpVNlhvFDnYq94DqhJaJ5Cz5T+GfCgp6yiSvI0gtQKuYYNew0e64LD3QQWgcVLTyOQNMhZiOAcx50wMQi/yT5TSnjd87N6UEEuzNR9B+kXF3vnErc0cUs3WjGCfLYLQe+gvBCerVF/3J6XEQptfCzD488l+BdGFt6uR7HYmlLumkTFASyFPApAdk3Sv09mx9OtopGkDDcdXzMjXk6lAaesFWQqW8b2Rtfs5cQr3LkmfkQP5HM9OfpBCfUHEvb7GLI2WwRKKFISwGhT7LrfsS9/OwY49F8IkM8xF6iY1aXhjS3wWPsSD1j1aaGAYHBkRAxZGOW7mai9bc5E2fOyuyQtrOeIJGzVn7QdsVlNDgRJlQYeOG3UHzGxW5qvIvPrxFSSD4CdCjuXadGz9//FL87lcDPaAQYjLuywCIU+TsUX+qjCxE/BATBvH7KLBldQNk4wKQA81K9osSeVLVkC0Ht/Fr0gmukhqSbU0XFTiH26lW9Ce1TXJyiI00IurzNwkFDRBL1+FhadT4drUdBWZVc20bIPtLcQBqEp4YUWGyvBRLgfCRUiAGuHyNbHgEQ33x45K1yPQoRQlusa818kQySiRhe1Won1yO6xwy95ULAbm0jfYaFr/nJTIg9VTpW9RwYb6wc0Y8dwM+Qvx8q+Jaib8uNkHwlSRNntxndCT7TJjQvmszBIM5NqMOE1c/OiQI/s8SlqOxwe96F+H7Dn0tPa4oM5tcLFpMX4mC2mxiA/prpkMuBBC+8i3Y4bNjVHT+opeh757GN6AT8N9d4/ndXi/O5t+eRuuhcnHuQmo3wrwSb9uT5N6yBfB3WiAaIwyyKpKr2dagospy2KugQ6K3xGbn5YqFVmgFDGwMKBYEIcFsCdVJw+lPDfY3yL0RUuUaRyhVrT7GfU6g+9xSnzFju/60YucNq8nEjXRBVBOuSLh/h0yJLrWgN1NfkQucOSeKU7Vcp62zd4OjI23YSdJivJJvLgcITzeA59fIxvhCaJ1rI4RMa0cF42X6jBXaSDJ0lZPZ2v7+MDu1bLfXBGbjG4oxh4W42y4ARxpjZr04rXwnZplnl37yFt0BRUvWyJJiEEAOJwlrdhz4XS+gdFayEmP1FnTbuxn5P/Ih9ltho7BLIGAE=",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "This script computes Momentum as the average of the two high-prior portfolios minus the average of the two low-prior portfolios: Mom = \u00bd(Small Hi + Big Hi) \u2212 \u00bd(Small Lo + Big Lo). It reads only the first section of the file (value-weighted monthly returns), starting after the \"Value Weighted Returns -- Monthly\" line and stopping at the first non-monthly line. I have not run it against the full file. Rows with missing values (-99.99 or -999) are skipped, and the output is rounded to 2 decimals like Ken French's published series.\n\n```python\nimport re\nimport pandas as pd\nimport numpy as np\n\nrows = []\nstarted = False\nwith open(\"6_Portfolios_ME_Prior_12_2.csv\", \"r\", errors=\"ignore\") as f:\n    for line in f:\n        s = line.strip()\n        if not started:\n            if \"Value Weighted Returns\" in s and \"Monthly\" in s:\n                started = True\n            continue\n        if not s:\n            if rows:\n                break\n            continue\n        parts = [p.strip() for p in s.split(\",\")]\n        if re.fullmatch(r\"\\d{6}\", parts[0]) and len(parts) >= 7:\n            try:\n                vals = [float(x) for x in parts[1:7]]\n            except ValueError:\n                continue\n            rows.append([int(parts[0])] + vals)\n        else:\n            if rows:\n                break\n\ndf = pd.DataFrame(rows, columns=[\"date\", \"sl\", \"sm\", \"sh\", \"bl\", \"bm\", \"bh\"])\nvals = df[[\"sl\", \"sm\", \"sh\", \"bl\", \"bm\", \"bh\"]].copy()\nvals = vals.mask((vals <= -99.99) | (vals <= -999))\ndf[[\"sl\", \"sm\", \"sh\", \"bl\", \"bm\", \"bh\"]] = vals\ndf = df.dropna()\ndf[\"value\"] = (0.5 * (df[\"sh\"] + df[\"bh\"]) - 0.5 * (df[\"sl\"] + df[\"bl\"])).round(2)\ndf[[\"date\", \"value\"]].to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2506,
+    "output_tokens": 1080,
+    "output_tokens_details": {
+      "thinking_tokens": 390
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

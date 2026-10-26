@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRV4STDunSmC2pSHe2Po",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_ME_Prior_1_0.csv\"\n\nwith open(fname, \"r\", encoding=\"utf-8\", errors=\"replace\") as f:\n    lines = f.read().splitlines()\n\n# Find the first block: 'Average Value Weighted Returns -- Monthly'\nstart = None\nfor i, line in enumerate(lines):\n    if \"Average Value Weighted Returns\" in line and \"Monthly\" in line:\n        start = i\n        break\nif start is None:\n    # fallback: first header line starting with comma\n    for i, line in enumerate(lines):\n        if line.startswith(\",\"):\n            start = i - 1\n            break\n\n# header line is the next line starting with a comma\nhdr_idx = None\nfor j in range(start + 1, len(lines)):\n    if lines[j].strip().startswith(\",\"):\n        hdr_idx = j\n        break\n\nheader = [h.strip() for h in lines[hdr_idx].split(\",\")]\nrows = []\nfor line in lines[hdr_idx + 1:]:\n    s = line.strip()\n    if not s:\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break\n    if len(parts) != len(header):\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf = df.rename(columns={header[0]: \"date\"})\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Treat missing codes as NaN\nvals = df.columns[1:]\ndf[vals] = df[vals].mask((df[vals] <= -99.99))\n\n# Identify columns\ndef find_col(cols, *keys):\n    for c in cols:\n        cl = c.upper().replace(\" \", \"\")\n        if all(k in cl for k in keys):\n            return c\n    raise KeyError(keys)\n\ncols = list(df.columns[1:])\ns_lo = find_col(cols, \"SMALL\", \"LO\")\ns_hi = find_col(cols, \"SMALL\", \"HI\")\nb_lo = find_col(cols, \"BIG\", \"LO\")\nb_hi = find_col(cols, \"BIG\", \"HI\")\n\nvalue = 0.5 * (df[s_lo] + df[b_lo]) - 0.5 * (df[s_hi] + df[b_hi])\n\nout = pd.DataFrame({\"date\": df[\"date\"].astype(int), \"value\": value.round(4)})\nout = out.dropna(subset=[\"value\"]) if out[\"value\"].isna().all() else out\nout.to_csv(\"output.csv\", index=False)\n```\n\nThe script parses the first (value-weighted monthly) block, stops at the first blank line/non-YYYYMM row, and computes ST_Rev = \u00bd(SMALL LoPRIOR + BIG LoPRIOR) \u2212 \u00bd(SMALL HiPRIOR + BIG HiPRIOR) in percent for every month.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2708,
+    "output_tokens": 1017,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

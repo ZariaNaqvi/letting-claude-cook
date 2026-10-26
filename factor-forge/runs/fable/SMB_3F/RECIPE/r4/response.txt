@@ -1,0 +1,58 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+with open(fname, "r") as f:
+    lines = f.read().splitlines()
+
+# Locate the first table: header line (starts with ',') after the "Average Value Weighted Returns -- Monthly" title
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first line that starts with a comma (header)
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# Find header line
+hdr_idx = None
+for j in range(start + 1, len(lines)):
+    if lines[j].strip().startswith(","):
+        hdr_idx = j
+        break
+
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+rows = []
+for j in range(hdr_idx + 1, len(lines)):
+    line = lines[j].strip()
+    if not line:
+        break
+    parts = [p.strip() for p in line.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df.rename(columns={header[0]: "date"}, inplace=True)
+df["date"] = df["date"].astype(int)
+cols = [c for c in df.columns if c != "date"]
+for c in cols:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+df = df.replace([-99.99, -999.0], np.nan)
+
+small = ["SMALL LoBM", "ME1 BM2", "SMALL HiBM"]
+big = ["BIG LoBM", "ME2 BM2", "BIG HiBM"]
+
+value = df[small].mean(axis=1) - df[big].mean(axis=1)
+out = pd.DataFrame({"date": df["date"].astype(int), "value": value.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)
+```
+
+The script parses only the first (value-weighted monthly) block, stopping at the first blank/non-YYYYMM line, then computes SMB as the mean of the three small portfolios minus the mean of the three big portfolios.

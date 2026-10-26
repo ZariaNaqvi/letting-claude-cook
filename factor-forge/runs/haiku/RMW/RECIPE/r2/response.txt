@@ -1,0 +1,85 @@
+The script finds the first table ("Average Value Weighted Returns -- Monthly"), reads the four needed columns by header name, and computes RMW as 0.5·(SMALL HiOP + BIG HiOP) − 0.5·(SMALL LoOP + BIG LoOP). Missing-value codes (-99.99, -999) become NaN, and months lacking any of the four inputs are dropped.
+
+```python
+import re
+import pandas as pd
+import numpy as np
+
+SRC = "6_Portfolios_ME_OP_2x3.csv"
+OUT = "output.csv"
+TITLE = "Average Value Weighted Returns -- Monthly"
+MISSING = {-99.99, -999.0}
+
+with open(SRC, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# locate the first value-weighted monthly block
+start = None
+for i, line in enumerate(lines):
+    if TITLE.lower() in line.strip().lower():
+        start = i
+        break
+if start is None:
+    raise SystemExit("Monthly value-weighted block not found")
+
+# header: next non-empty line
+h = start + 1
+while h < len(lines) and lines[h].strip() == "":
+    h += 1
+header = [c.strip() for c in lines[h].split(",")]
+
+def find_col(name):
+    for j, c in enumerate(header):
+        if c.upper() == name.upper():
+            return j
+    raise SystemExit(f"Column not found: {name}")
+
+c_SL = find_col("SMALL LoOP")
+c_SH = find_col("SMALL HiOP")
+c_BL = find_col("BIG LoOP")
+c_BH = find_col("BIG HiOP")
+ncols = len(header)
+
+def to_num(s):
+    try:
+        v = float(s.strip())
+    except ValueError:
+        return np.nan
+    if v in MISSING:
+        return np.nan
+    return v
+
+records = []
+started = False
+for line in lines[h + 1:]:
+    s = line.strip()
+    if s == "":
+        if started:
+            break
+        continue
+    parts = s.split(",")
+    key = parts[0].strip()
+    if re.fullmatch(r"\d{6}", key):
+        started = True
+        if len(parts) < ncols:
+            parts = parts + [""] * (ncols - len(parts))
+        rec = {
+            "date": int(key),
+            "SL": to_num(parts[c_SL]),
+            "SH": to_num(parts[c_SH]),
+            "BL": to_num(parts[c_BL]),
+            "BH": to_num(parts[c_BH]),
+        }
+        records.append(rec)
+    else:
+        if started:
+            break  # end of monthly block
+
+df = pd.DataFrame(records)
+df = df.dropna(subset=["SL", "SH", "BL", "BH"]).copy()
+df["value"] = 0.5 * (df["SH"] + df["BH"]) - 0.5 * (df["SL"] + df["BL"])
+out = df[["date", "value"]].copy()
+out["date"] = out["date"].astype(int)
+out = out.sort_values("date").reset_index(drop=True)
+out.to_csv(OUT, index=False)
+```

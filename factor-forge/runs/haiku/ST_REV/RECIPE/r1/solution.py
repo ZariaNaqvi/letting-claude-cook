@@ -1,0 +1,61 @@
+import re
+import math
+import pandas as pd
+
+INPUT = "6_Portfolios_ME_Prior_1_0.csv"
+OUTPUT = "output.csv"
+HEADER_TAG = "Average Value Weighted Returns -- Monthly"
+
+
+def to_num(tok):
+    try:
+        v = float(tok)
+    except ValueError:
+        return math.nan
+    if v == -99.99 or v == -999.0:
+        return math.nan
+    return v
+
+
+def main():
+    with open(INPUT, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    start = None
+    for i, line in enumerate(lines):
+        if HEADER_TAG in line:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Monthly value-weighted block not found")
+
+    records = []
+    started = False
+    for line in lines[start + 1:]:
+        s = line.strip()
+        if not s:
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]) and len(parts) >= 7:
+            started = True
+            date = int(parts[0])
+            vals = [to_num(p) for p in parts[1:7]]
+            # order: SMALL LoPRIOR, ME1 PRIOR2, SMALL HiPRIOR,
+            #        BIG LoPRIOR, ME2 PRIOR2, BIG HiPRIOR
+            s_lo, s_hi, b_lo, b_hi = vals[0], vals[2], vals[3], vals[5]
+            value = 0.5 * (s_lo + b_lo) - 0.5 * (s_hi + b_hi)
+            if not math.isnan(value):
+                records.append((date, value))
+        else:
+            if started:
+                break
+
+    out = pd.DataFrame(records, columns=["date", "value"])
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUTPUT, index=False)
+
+
+if __name__ == "__main__":
+    main()

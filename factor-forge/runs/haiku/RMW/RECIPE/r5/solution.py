@@ -1,0 +1,76 @@
+import re
+import numpy as np
+import pandas as pd
+
+
+def main():
+    fname = "6_Portfolios_ME_OP_2x3.csv"
+    with open(fname, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the first value-weighted monthly block
+    start = None
+    for i, l in enumerate(lines):
+        if "Average Value Weighted Returns -- Monthly" in l:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly block not found")
+
+    header = None
+    rows = []
+    j = start + 1
+    while j < len(lines):
+        s = lines[j].strip()
+        if header is None:
+            if s == "":
+                j += 1
+                continue
+            header = [" ".join(h.split()) for h in s.split(",")]
+            j += 1
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if parts and re.fullmatch(r"\d{6}", parts[0]):
+            rows.append(parts)
+        elif rows:
+            # end of the monthly data block
+            break
+        j += 1
+
+    if header is None or not rows:
+        raise RuntimeError("No data parsed")
+
+    ncol = len(header)
+    rows = [r[:ncol] + [""] * (ncol - len(r)) for r in rows]
+    df = pd.DataFrame(rows, columns=[f"c{k}" for k in range(ncol)])
+
+    name_to_col = {}
+    for k, name in enumerate(header):
+        name_to_col[name.upper()] = f"c{k}"
+
+    def getcol(name):
+        key = name.upper()
+        if key not in name_to_col:
+            raise KeyError(f"Column {name} not found in header {header}")
+        vals = pd.to_numeric(df[name_to_col[key]], errors="coerce").astype(float)
+        vals = vals.where(~np.isclose(vals, -99.99) & ~np.isclose(vals, -999.0), np.nan)
+        return vals
+
+    small_hi = getcol("SMALL HiOP")
+    big_hi = getcol("BIG HiOP")
+    small_lo = getcol("SMALL LoOP")
+    big_lo = getcol("BIG LoOP")
+
+    rmw = 0.5 * (small_hi + big_hi) - 0.5 * (small_lo + big_lo)
+
+    out = pd.DataFrame({
+        "date": df["c0"].astype(int),
+        "value": rmw,
+    })
+    out = out.dropna(subset=["value"])
+    out["date"] = out["date"].astype(int)
+    out.to_csv("output.csv", index=False, columns=["date", "value"])
+
+
+if __name__ == "__main__":
+    main()

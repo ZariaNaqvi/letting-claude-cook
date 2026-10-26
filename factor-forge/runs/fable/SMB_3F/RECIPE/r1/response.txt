@@ -1,0 +1,54 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly block: header line starting with a comma, followed by YYYYMM rows
+start = None
+for i, line in enumerate(lines):
+    s = line.strip()
+    if s.startswith(",") and "SMALL LoBM" in s:
+        # check next line is a monthly row
+        if i + 1 < len(lines) and re.match(r"^\s*\d{6}\s*,", lines[i + 1]):
+            start = i
+            break
+if start is None:
+    raise RuntimeError("Could not find monthly value-weighted block")
+
+header = [h.strip() for h in lines[start].split(",")]
+rows = []
+for line in lines[start + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    if not re.match(r"^\d{6}\s*,", s):
+        break
+    parts = [p.strip() for p in s.split(",")]
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+cols = ["SMALL LoBM", "ME1 BM2", "SMALL HiBM", "BIG LoBM", "ME2 BM2", "BIG HiBM"]
+for c in cols:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing-data codes as NaN
+for c in cols:
+    df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan
+
+small = df[["SMALL LoBM", "ME1 BM2", "SMALL HiBM"]].mean(axis=1, skipna=False)
+big = df[["BIG LoBM", "ME2 BM2", "BIG HiBM"]].mean(axis=1, skipna=False)
+df["value"] = small - big
+
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```
+
+This parses the first "Average Value Weighted Returns -- Monthly" block (stopping at the first blank/non-YYYYMM line), computes SMB as the average of the three small portfolios minus the average of the three big portfolios, and writes `date,value` for every month.

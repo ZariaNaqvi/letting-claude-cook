@@ -1,0 +1,79 @@
+The factor is the average of the two low-prior-return portfolios minus the average of the two high-prior-return portfolios, using the value-weighted returns from the first (monthly) table in the file. The script parses only that table, treats -99.99 and -999 as missing, and drops any month where the factor cannot be computed.
+
+```python
+import numpy as np
+import pandas as pd
+
+SRC = "6_Portfolios_ME_Prior_1_0.csv"
+OUT = "output.csv"
+MISSING_VALUES = (-99.99, -999.0)
+
+
+def is_missing(x):
+    return any(np.isclose(x, m) for m in MISSING_VALUES)
+
+
+def main():
+    with open(SRC, encoding="latin-1") as fh:
+        lines = fh.read().splitlines()
+
+    # Locate the column header of the first (value-weighted, monthly) table.
+    header_idx = None
+    for i, line in enumerate(lines):
+        parts = [p.strip() for p in line.split(",")]
+        if len(parts) > 1 and parts[0] == "" and any("PRIOR" in p for p in parts[1:]):
+            header_idx = i
+            break
+    if header_idx is None:
+        raise RuntimeError("Could not find column header line")
+
+    cols = [p.strip() for p in lines[header_idx].split(",")][1:]
+    ncols = len(cols)
+
+    # Read contiguous block of monthly rows (YYYYMM dates) right after the header.
+    records = []
+    started = False
+    for line in lines[header_idx + 1:]:
+        if line.strip() == "":
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in line.split(",")]
+        date_str = parts[0]
+        is_monthly = len(date_str) == 6 and date_str.isdigit()
+        if not is_monthly:
+            if started:
+                break
+            continue
+        started = True
+        vals = []
+        for p in parts[1:1 + ncols]:
+            try:
+                v = float(p)
+            except ValueError:
+                v = np.nan
+            if not np.isnan(v) and is_missing(v):
+                v = np.nan
+            vals.append(v)
+        while len(vals) < ncols:
+            vals.append(np.nan)
+        records.append([int(date_str)] + vals)
+
+    df = pd.DataFrame(records, columns=["date"] + cols)
+
+    lo_cols = [c for c in cols if "LoPRIOR" in c]
+    hi_cols = [c for c in cols if "HiPRIOR" in c]
+
+    # ST_Rev = 0.5*(SMALL Lo + BIG Lo) - 0.5*(SMALL Hi + BIG Hi)
+    lo_avg = df[lo_cols].mean(axis=1, skipna=False)
+    hi_avg = df[hi_cols].mean(axis=1, skipna=False)
+    df["value"] = lo_avg - hi_avg
+
+    out = df[["date", "value"]].dropna(subset=["value"]).copy()
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUT, index=False, columns=["date", "value"])
+
+
+if __name__ == "__main__":
+    main()
+```

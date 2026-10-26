@@ -1,0 +1,61 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_OP_2x3.csv"
+
+with open(fname, "r") as f:
+    lines = f.readlines()
+
+# Find the first block header "Average Value Weighted Returns -- Monthly"
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Monthly VW block not found")
+
+# Header line is the next line beginning with a comma
+hdr_idx = start + 1
+while hdr_idx < len(lines) and not lines[hdr_idx].strip().startswith(","):
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].strip().split(",")]
+
+rows = []
+for line in lines[hdr_idx + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    if len(parts) != len(header):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing codes as NaN
+for c in df.columns[1:]:
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+cols = {c.strip().upper(): c for c in df.columns}
+small_hi = cols["SMALL HIOP"]
+big_hi = cols["BIG HIOP"]
+small_lo = cols["SMALL LOOP"]
+big_lo = cols["BIG LOOP"]
+
+df["value"] = 0.5 * (df[small_hi] + df[big_hi]) - 0.5 * (df[small_lo] + df[big_lo])
+
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```
+
+The script locates the first "Average Value Weighted Returns -- Monthly" block, reads only the YYYYMM rows until the block ends, converts missing codes to NaN, and computes RMW = ½(Small HiOP + Big HiOP) − ½(Small LoOP + Big LoOP) in percent.

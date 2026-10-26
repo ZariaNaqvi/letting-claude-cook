@@ -1,0 +1,61 @@
+The script reads only the first monthly value-weighted table and computes the LOW-minus-HIGH reversal factor.
+
+- **Finding the table:** it locates the `Average Value Weighted Returns -- Monthly` header. It reads the column header on the next line, then reads rows until the first line that isn't a `YYYYMM` row.
+- **Missing values:** values of -99.99 or -999 are treated as missing. Any month with a missing input is dropped.
+- **Output:** values are rounded to 4 decimals.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+FNAME = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(FNAME, "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# locate first monthly value-weighted block
+start = None
+for i, ln in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in ln:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly block not found")
+
+# header line: next non-empty line
+j = start + 1
+while lines[j].strip() == "":
+    j += 1
+header = [h.strip() for h in lines[j].split(",")]
+cols = header[1:]
+
+rows = []
+k = j + 1
+while k < len(lines):
+    ln = lines[k].strip()
+    if ln == "":
+        break
+    parts = [p.strip() for p in ln.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append([int(parts[0])] + [float(p) if p != "" else np.nan for p in parts[1:]])
+    k += 1
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+for c in cols:
+    df.loc[(df[c] <= -99.99 + 1e-9) | (df[c] == -999), c] = np.nan
+
+need = ["SMALL LoPRIOR", "BIG LoPRIOR", "SMALL HiPRIOR", "BIG HiPRIOR"]
+df = df.dropna(subset=need)
+
+df["value"] = 0.5 * (df["SMALL LoPRIOR"] + df["BIG LoPRIOR"]) - 0.5 * (
+    df["SMALL HiPRIOR"] + df["BIG HiPRIOR"]
+)
+
+out = df[["date", "value"]].copy()
+out["date"] = out["date"].astype(int)
+out["value"] = out["value"].round(4)
+out = out.sort_values("date").drop_duplicates("date")
+out.to_csv("output.csv", index=False)
+```

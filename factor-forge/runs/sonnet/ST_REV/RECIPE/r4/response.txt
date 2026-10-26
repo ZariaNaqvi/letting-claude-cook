@@ -1,0 +1,40 @@
+The script parses the file line by line and stops reading after the first table's monthly rows, so it ignores every later block.
+
+- **Parsing:** It finds the first header line that contains "SMALL LoPRIOR", then reads the rows that follow. A row is kept only if its first field is a 6-digit YYYYMM date. Reading stops at the first non-matching line once data has started.
+- **Missing data:** Values of -99.99 or -999 are treated as missing. Any month where one of the four needed columns is missing is dropped.
+- **Formula:** value = 0.5 × (SMALL LoPRIOR + BIG LoPRIOR) − 0.5 × (SMALL HiPRIOR + BIG HiPRIOR).
+- **Columns:** The column names are located by name from the header line, with whitespace stripped.
+
+```python
+import csv
+import pandas as pd
+
+rows = []
+header = None
+started = False
+with open("6_Portfolios_ME_Prior_1_0.csv", newline="") as f:
+    for line in f:
+        s = line.strip()
+        if header is None:
+            if "SMALL LoPRIOR" in s:
+                header = [c.strip() for c in s.split(",")]
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts[0]) == 6 and parts[0].isdigit() and len(parts) >= len(header):
+            started = True
+            rows.append(parts[:len(header)])
+        else:
+            if started:
+                break
+
+header[0] = "date"
+df = pd.DataFrame(rows, columns=header)
+df["date"] = df["date"].astype(int)
+cols = ["SMALL LoPRIOR", "BIG LoPRIOR", "SMALL HiPRIOR", "BIG HiPRIOR"]
+for c in cols:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c].isin([-99.99, -999, -999.0]), c] = float("nan")
+df = df.dropna(subset=cols)
+df["value"] = 0.5 * (df["SMALL LoPRIOR"] + df["BIG LoPRIOR"]) - 0.5 * (df["SMALL HiPRIOR"] + df["BIG HiPRIOR"])
+df[["date", "value"]].to_csv("output.csv", index=False)
+```

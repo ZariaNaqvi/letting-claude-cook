@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRWwJ4jjfqpakFXLbp4H",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQS3QwKEAgTGAI4AUIIdGhpbmtpbmcSDHYQwEPX4q2cwlO86RoMJd+oEhdCH3hwulcFIjDr9+JOGDAhpiNGhm+sInyFNwQG/uY4EpUrszZSh9HKvvWwRj+lDEQ9bgse/nTaEM8q+gtMNOiGcEsHVAfi6CBlD54qJGkQJYP0LVepIv8W9uGjX7+9PZjA6bzqWB4Cbl/zr3olbli+yGFDLVgYu69FL1HQ41E6LspNz30ML0cZlEqe115wdmBorLPgo73dsgcMRPDH3RROM4JMx7H0oz9LOWJS3P1Im0NH62S8RpV4CC1dL30t2i2kHbB039IEvo6kYC/KbB1oPlX9bxNM01VjASFwzozFkmAxmpTp1+hc1X3ZoK2ZwHIVM41aVRwSwxZkJGUKBlSD/69pHOpa6X3Wn2PFuxqyfN/KmR0+Egfg8da10yX3ASExohCmnBdeAPXNyKXLXQSQ0J6lRLQsViGp7rIhtNhDyhTOY2C+kqpjNxk/Gx3rfp0A3mk/dUMds7deFB1yqTF+QHuMTtu7bxppdABH9zhpiM/8P+EjtgQxha9yf27KyFAZW8SxDNVWd0CmBl/6vTH65uGbg+s83rHqVbmG+gP8Shn14S9VHD7AbcNBnKICpWBwTWEMK0Z+/icPY4Slr3CgRNx3QAzFSgkpRdgbnxrGBodKOBxmjopc+l/y4ES8mZ4wcLjCape44xv+kuIiAkW2rMcHw+9pD7/bVs64nK/I5D7qGl2Br6ZWWmc3AuOK0AxTWuZaxTCVq4WTnhL9F3B0zNzxHFExHk0lT2rVQ/xoLTmoAlFc6D3pQ0HSHhpzQFa6U5Y2ZToCTT7uW/ULMffJxub0Z7VA/bUubQwjmVqEPvl7zh2SIzREBtUeFFcJgo0aKaXTls7xfhQIm6lzgU8SQj+OzbPsg1LPgHD0vkdyr4trax+eUh05zwkxeHrAlVft7aLB4EBgkc42kz2bOu3ic1e8YI3dJe10PaBarzFoHwGmBCBc8ANmpLF13rKUYp74HfD4PUwHe8ylmj8KAZZUPBjE6JZUZCnVdwM7USyWoZ37gncw5lnt+cqKlhFi7GYMGqsoy25pV6FfXDUPooyAcElpbzXoJofAqN3OkUFwiKIUltNLUcLbUcBl5lUoBr6SwgYOh1LYbuhzKUPco6T3NQQCtvGpCDwD1fckJw9zlgeoBZ5eaKst/0lxl0kvweFsfCBBb0bWx9t57efSq9Ftil9qqqrsMw4Qh+5yzW6ZLbsnNciDpACc7VjVTrKm09Jrtit/V2g9at+Ek3a3eliWk8lAnE2IVOutmoVnV+oDNUuvJM7ySj+6lrGCa7ipQ0YGE141swDazPargsgvzUMp/yf2WT+BT7H1P5bfYEq0WMiUt0Bd26Qex50sAEdQ3xO/0EK3gGy5fuXhiehoRRSQ6x+Tm2bEJqySHuwW5JrCENnOSDRcGGt9XQLopCuinVsuMnhopOOq1AmEkT6+ABQYWx4nJ4XMpuu1Kj3BTAGkZxIuVY9ebJfPgopROBX4UM7jF14CePrcTpQrFYovLOeIE6/M18kMFydjrUB2/fbYvymlCVhB7AH4IFWvK0IlCY4xnr1Jnpxi5SIJT1SX9SQpQXjLbCTyKvVy3rNTGKVL46nRe5bhdTYENyvX6YigOef3hAu4Eng21GHMC8E92rAhuZWAw0BOTyzpqRiaPr80t1B8yhvUDZwF0CDZDn3Di/Jt4AQNvSyBfYAr4u/4Sb+68badZeVDcQtxfuYcqi4epu5idmETrNV2Dv/sUUA72Hg5YwXjXgF1iQetpXx5HMRf0H4zCSpkLGP19xgAsTnwKyDGpBWSr5cE+HnRDD8AbAtFLLUeIcjd8Avbmi1UBo7gpe9I9nxqA+zEZsHidluCRUWX8PQF1OeJP3zRWd6hOgP6kRo4lAmC1KPZZi3/nSlQo6O1yGli4VWTYuOtaXl7cqtkPIisJf8tL1sjFQSVvsYILv9tbqseYwF3h2EAtA3SrAZgG1OgdJs4F9lVheFpw3u10uX3w8c5BM6E4APi8dvxjEVwMUiHsSuvm0LWHHqik5hY6u65gMxG/YYEElgJ0Ne3XmBwzmKlnk7h7/n8ERdrMA2A7EH0fvZfAZKgfQL8yvlHirGBtZsJwlWYHWWwyZENusX48fYrLlXViHRVxsLm1e/jz34YAQ==",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "The script reads only the first block of the file (the monthly value-weighted returns) and stops at the first non-data line, so the later equal-weighted, firm-count and annual sections are ignored. It computes Mom as the average of the two high-prior portfolios minus the average of the two low-prior portfolios:\n\nMom = \u00bd (Small High + Big High) \u2212 \u00bd (Small Low + Big Low)\n\nMonths with a missing value (-99.99 or -999) are dropped. I have not run it against the full file.\n\n```python\nimport re\nimport numpy as np\nimport pandas as pd\n\nrows = []\nstarted = False\nwith open(\"6_Portfolios_ME_Prior_12_2.csv\", \"r\", errors=\"ignore\") as f:\n    for line in f:\n        s = line.strip()\n        if not started:\n            if \"Value Weighted Returns\" in s and \"Monthly\" in s:\n                started = True\n            continue\n        if re.match(r\"^\\d{6}\\s*,\", s):\n            parts = [p.strip() for p in s.split(\",\")]\n            rows.append([int(parts[0])] + [float(x) for x in parts[1:7]])\n        elif rows:\n            break\n\ndf = pd.DataFrame(rows, columns=[\"date\", \"sl\", \"sm\", \"sh\", \"bl\", \"bm\", \"bh\"])\nfor c in [\"sl\", \"sm\", \"sh\", \"bl\", \"bm\", \"bh\"]:\n    df.loc[(df[c] <= -99.0), c] = np.nan\ndf[\"value\"] = 0.5 * (df[\"sh\"] + df[\"bh\"]) - 0.5 * (df[\"sl\"] + df[\"bl\"])\nout = df.dropna(subset=[\"value\"])[[\"date\", \"value\"]].copy()\nout[\"value\"] = out[\"value\"].round(4)\nout[\"date\"] = out[\"date\"].astype(int)\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2506,
+    "output_tokens": 1047,
+    "output_tokens_details": {
+      "thinking_tokens": 442
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

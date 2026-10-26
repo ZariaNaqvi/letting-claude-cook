@@ -1,0 +1,58 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.readlines()
+
+# Find first monthly block: header line starting with a comma, followed by YYYYMM rows
+start = None
+for i, line in enumerate(lines):
+    if line.startswith(",") and "LoPRIOR" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Could not locate header of first table")
+
+header = [h.strip() for h in lines[start].strip().split(",")]
+rows = []
+for line in lines[start + 1:]:
+    s = line.strip()
+    if not s:
+        if rows:
+            break
+        continue
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        # end of monthly block (e.g. next block title or annual rows)
+        if rows:
+            break
+        continue
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing codes as NaN
+for c in df.columns[1:]:
+    df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan
+
+sl = df["SMALL LoPRIOR"]
+bl = df["BIG LoPRIOR"]
+sh = df["SMALL HiPRIOR"]
+bh = df["BIG HiPRIOR"]
+
+value = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": value.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)
+```
+
+The script parses the first (value-weighted monthly) block, computes LT_Rev = ½(SMALL LoPRIOR + BIG LoPRIOR) − ½(SMALL HiPRIOR + BIG HiPRIOR), and writes `output.csv` with `date,value`.

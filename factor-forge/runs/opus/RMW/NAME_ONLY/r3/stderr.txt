@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/private/var/folders/jh/_l3qz_tx6bs9095c0729ylzc0000gn/T/ff_run_9r0iob1e/solution.py", line 54, in <module>
+    v[(v <= -99.99 + 1e-9) | (v == -999)] = np.nan
+    ~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: assignment destination is read-only

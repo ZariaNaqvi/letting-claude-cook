@@ -1,0 +1,46 @@
+The script reads the file line by line and parses only the first table. It starts after the "Average Value Weighted Returns -- Monthly" header and the column-header line. It keeps rows whose first field is a 6-digit integer and stops at the first non-matching line once data has started.
+
+Missing values (-99.99 or -999) are handled by setting the month's value to NaN and dropping that row. The column order is SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV, so the indices are 0, 2, 3 and 5.
+
+CMA = 0.5*(SMALL LoINV + BIG LoINV) - 0.5*(SMALL HiINV + BIG HiINV).
+
+```python
+import csv
+
+rows = []
+started = False
+with open("6_Portfolios_ME_INV_2x3.csv", newline="") as f:
+    in_block = False
+    for line in f:
+        s = line.strip()
+        if not in_block:
+            if s.startswith("Average Value Weighted Returns") and "Monthly" in s:
+                in_block = True
+            continue
+        if not s:
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        first = parts[0]
+        if len(first) == 6 and first.isdigit():
+            started = True
+            try:
+                v = [float(x) for x in parts[1:7]]
+            except ValueError:
+                continue
+            if any(x <= -99.0 for x in v):
+                continue
+            lo_s, _, hi_s, lo_b, _, hi_b = v
+            val = 0.5 * (lo_s + lo_b) - 0.5 * (hi_s + hi_b)
+            rows.append((int(first), round(val, 6)))
+        else:
+            if started:
+                break
+
+with open("output.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["date", "value"])
+    for d, v in rows:
+        w.writerow([d, v])
+```

@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVrY75PXc4gAo66pjtu",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_ME_OP_2x3.csv\"\n\nwith open(fname, \"r\") as f:\n    lines = f.readlines()\n\n# Locate the first \"Average Value Weighted Returns -- Monthly\" block\nstart = None\nfor i, line in enumerate(lines):\n    if \"Average Value Weighted Returns -- Monthly\" in line:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Could not find value-weighted monthly block\")\n\n# Header line follows the title\nheader_idx = start + 1\nwhile header_idx < len(lines) and not lines[header_idx].strip().startswith(\",\"):\n    header_idx += 1\nheader = [h.strip() for h in lines[header_idx].strip().split(\",\")]\n\nrows = []\nfor line in lines[header_idx + 1:]:\n    s = line.strip()\n    if not s:\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf = df.rename(columns={header[0]: \"date\"})\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Treat missing codes as NaN\nfor c in df.columns[1:]:\n    df.loc[df[c] <= -99.0, c] = np.nan\n\nrmw = 0.5 * (df[\"SMALL HiOP\"] + df[\"BIG HiOP\"]) - 0.5 * (df[\"SMALL LoOP\"] + df[\"BIG LoOP\"])\n\nout = pd.DataFrame({\"date\": df[\"date\"], \"value\": rmw})\nout = out.dropna(subset=[\"value\"])\nout[\"date\"] = out[\"date\"].astype(int)\nout.to_csv(\"output.csv\", index=False)\n```\n\nThis parses the first (value-weighted monthly) block, stops at the first blank/non-YYYYMM line, and computes RMW = 0.5\u00b7(SMALL HiOP + BIG HiOP) \u2212 0.5\u00b7(SMALL LoOP + BIG LoOP) in percent.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2658,
+    "output_tokens": 758,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

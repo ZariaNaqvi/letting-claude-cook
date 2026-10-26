@@ -1,0 +1,61 @@
+import csv
+import re
+import math
+
+FNAME = "6_Portfolios_ME_Prior_12_2.csv"
+
+with open(FNAME, "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# Locate the first block: Average Value Weighted Returns -- Monthly
+start = None
+for i, ln in enumerate(lines):
+    if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly block not found")
+
+# Header line follows
+hdr_idx = start + 1
+while not lines[hdr_idx].strip():
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+
+def find_col(name):
+    norm = lambda s: re.sub(r"\s+", " ", s.strip().upper())
+    for j, h in enumerate(header):
+        if norm(h) == norm(name):
+            return j
+    raise RuntimeError(f"Column {name} not found in header {header}")
+
+c_sl = find_col("SMALL LoPRIOR")
+c_sh = find_col("SMALL HiPRIOR")
+c_bl = find_col("BIG LoPRIOR")
+c_bh = find_col("BIG HiPRIOR")
+
+rows = []
+for ln in lines[hdr_idx + 1:]:
+    s = ln.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    date = int(parts[0])
+    try:
+        vals = [float(parts[c]) for c in (c_sl, c_sh, c_bl, c_bh)]
+    except (ValueError, IndexError):
+        continue
+    if any(math.isnan(v) or v <= -99.99 + 1e-9 for v in vals):
+        continue
+    sl, sh, bl, bh = vals
+    mom = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+    rows.append((date, round(mom, 6)))
+
+rows.sort()
+with open("output.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["date", "value"])
+    for d, v in rows:
+        w.writerow([d, v])

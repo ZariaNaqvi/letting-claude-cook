@@ -1,0 +1,79 @@
+The RMW factor is the average of the two robust (high-OP) portfolio returns minus the average of the two weak (low-OP) portfolio returns, using the value-weighted monthly returns. The script parses only the value-weighted monthly block and skips the equal-weighted block and the annual sections.
+
+```python
+import csv
+import math
+
+IN_FILE = "6_Portfolios_ME_OP_2x3.csv"
+OUT_FILE = "output.csv"
+
+
+def is_missing(x):
+    return x is None or math.isnan(x) or abs(x + 99.99) < 1e-6 or abs(x + 999.0) < 1e-6
+
+
+def parse_value_weighted_block(path):
+    with open(path, "r", encoding="utf-8", errors="replace") as f:
+        lines = f.read().splitlines()
+
+    # locate the monthly value-weighted block
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "value weighted" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Could not find monthly value-weighted block")
+
+    rows = []
+    started = False
+    for line in lines[start + 1:]:
+        parts = [p.strip() for p in line.split(",")]
+        if parts and len(parts[0]) == 6 and parts[0].isdigit() and len(parts) >= 7:
+            started = True
+            date = int(parts[0])
+            vals = []
+            for p in parts[1:7]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = float("nan")
+                if is_missing(v):
+                    v = float("nan")
+                vals.append(v)
+            rows.append((date, vals))
+        else:
+            if started:
+                # end of monthly value-weighted block
+                break
+    return rows
+
+
+def main():
+    rows = parse_value_weighted_block(IN_FILE)
+
+    # column order in file: SMALL LoOP, ME1 OP2, SMALL HiOP, BIG LoOP, ME2 OP2, BIG HiOP
+    SMALL_LO, SMALL_HI, BIG_LO, BIG_HI = 0, 2, 3, 5
+
+    out = []
+    for date, vals in rows:
+        sl, sh = vals[SMALL_LO], vals[SMALL_HI]
+        bl, bh = vals[BIG_LO], vals[BIG_HI]
+        if any(math.isnan(x) for x in (sl, sh, bl, bh)):
+            continue
+        rmw = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+        out.append((date, rmw))
+
+    out.sort(key=lambda r: r[0])
+
+    with open(OUT_FILE, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["date", "value"])
+        for date, val in out:
+            w.writerow([date, repr(float(val))])
+
+
+if __name__ == "__main__":
+    main()
+```

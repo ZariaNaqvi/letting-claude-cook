@@ -1,0 +1,60 @@
+import numpy as np
+import pandas as pd
+
+IN_FILE = "6_Portfolios_ME_Prior_1_0.csv"
+OUT_FILE = "output.csv"
+MISSING = {-99.99, -999.0}
+
+
+def parse_first_monthly_block(path):
+    """Parse the first contiguous block of monthly rows (YYYYMM, 6 return columns)."""
+    records = []
+    started = False
+    with open(path, encoding="latin-1") as f:
+        for line in f:
+            parts = [p.strip() for p in line.strip().split(",")]
+            if parts and len(parts[0]) == 6 and parts[0].isdigit():
+                started = True
+                vals = []
+                for p in parts[1:7]:
+                    try:
+                        v = float(p)
+                    except ValueError:
+                        v = np.nan
+                    if v in MISSING:
+                        v = np.nan
+                    vals.append(v)
+                while len(vals) < 6:
+                    vals.append(np.nan)
+                records.append([int(parts[0])] + vals)
+            elif started:
+                # end of the first monthly block (annual section / footnotes follow)
+                break
+    cols = ["date", "SL", "ME1P2", "SH", "BL", "ME2P2", "BH"]
+    df = pd.DataFrame(records, columns=cols)
+    df = df.drop_duplicates(subset="date", keep="first").sort_values("date")
+    return df
+
+
+def main():
+    df = parse_first_monthly_block(IN_FILE)
+
+    # Column mapping per file header:
+    # SMALL LoPRIOR (SL), ME1 PRIOR2 (ME1P2), SMALL HiPRIOR (SH),
+    # BIG LoPRIOR (BL), ME2 PRIOR2 (ME2P2), BIG HiPRIOR (BH)
+    # ST_Rev = average(Small Lo, Big Lo) - average(Small Hi, Big Hi)
+    needed = ["SL", "SH", "BL", "BH"]
+    df = df.dropna(subset=needed)
+
+    st_rev = 0.5 * (df["SL"] + df["BL"]) - 0.5 * (df["SH"] + df["BH"])
+
+    out = pd.DataFrame({
+        "date": df["date"].astype(int),
+        "value": st_rev.astype(float),
+    }).reset_index(drop=True)
+
+    out.to_csv(OUT_FILE, index=False, columns=["date", "value"])
+
+
+if __name__ == "__main__":
+    main()

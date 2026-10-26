@@ -1,0 +1,68 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_INV_2x3.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.readlines()
+
+# Locate first monthly block header (line starting with a comma, after the title)
+start = None
+for i, line in enumerate(lines):
+    if line.strip().startswith("Average Value Weighted Returns -- Monthly"):
+        start = i
+        break
+if start is None:
+    # fallback: first line that starts with ','
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# Find header line (starts with ',')
+hdr_idx = None
+for j in range(start, len(lines)):
+    if lines[j].startswith(","):
+        hdr_idx = j
+        break
+
+header = [h.strip() for h in lines[hdr_idx].strip().split(",")]
+rows = []
+for line in lines[hdr_idx + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing codes
+df = df.replace({-99.99: np.nan, -999.0: np.nan})
+
+cols = {c.upper().replace(" ", ""): c for c in df.columns}
+def col(name):
+    return cols[name.upper().replace(" ", "")]
+
+s_lo = df[col("SMALL LoINV")]
+b_lo = df[col("BIG LoINV")]
+s_hi = df[col("SMALL HiINV")]
+b_hi = df[col("BIG HiINV")]
+
+value = 0.5 * (s_lo + b_lo) - 0.5 * (s_hi + b_hi)
+
+out = pd.DataFrame({"date": df["date"], "value": value.round(4)})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```
+
+This parses the first monthly value-weighted block (rows with YYYYMM dates until the first blank line), computes CMA = ½(SMALL LoINV + BIG LoINV) − ½(SMALL HiINV + BIG HiINV), and writes `output.csv` with `date,value`.

@@ -1,0 +1,39 @@
+The script below builds ST_Rev as Ken French defines it, using only the first block of the file (the value-weighted monthly returns):
+
+ST_Rev = ½ (Small Lo + Big Lo) − ½ (Small Hi + Big Hi)
+
+It stops reading at the first line that is not a six-digit date. Any month with a -99.99 or -999 value is dropped, since the factor can't be computed for it. I haven't run it against the full file.
+
+```python
+import re
+import pandas as pd
+import numpy as np
+
+rows = []
+started = False
+with open("6_Portfolios_ME_Prior_1_0.csv", "r", errors="ignore") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if s.startswith(",") and "SMALL" in s.upper():
+                started = True
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]) and len(parts) >= 7:
+            rows.append(parts[:7])
+        else:
+            if rows:
+                break
+            if s == "":
+                continue
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+df["date"] = df["date"].astype(int)
+for c in ["sl", "sm", "sh", "bl", "bm", "bh"]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c] <= -99.0, c] = np.nan
+df["value"] = 0.5 * (df["sl"] + df["bl"]) - 0.5 * (df["sh"] + df["bh"])
+out = df[["date", "value"]].dropna()
+out["value"] = out["value"].round(6)
+out.to_csv("output.csv", index=False)
+```

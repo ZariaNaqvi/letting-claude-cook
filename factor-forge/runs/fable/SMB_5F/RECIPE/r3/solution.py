@@ -1,0 +1,65 @@
+import re
+import pandas as pd
+import numpy as np
+
+def read_first_monthly_block(fname):
+    with open(fname, "r", encoding="utf-8", errors="replace") as f:
+        lines = f.read().splitlines()
+    # Locate the first table (Average Value Weighted Returns -- Monthly)
+    start = None
+    for i, ln in enumerate(lines):
+        if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        start = 0
+    # Header line: first line after start beginning with a comma
+    hdr_idx = None
+    for j in range(start + 1, len(lines)):
+        if lines[j].lstrip().startswith(","):
+            hdr_idx = j
+            break
+    header = [h.strip() for h in lines[hdr_idx].split(",")][1:]
+    rows = []
+    pat = re.compile(r"^\s*\d{6}\s*,")
+    for ln in lines[hdr_idx + 1:]:
+        if pat.match(ln):
+            parts = [p.strip() for p in ln.split(",")]
+            date = int(parts[0])
+            vals = []
+            for p in parts[1:1 + len(header)]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if v <= -99.0:
+                    v = np.nan
+                vals.append(v)
+            rows.append([date] + vals)
+        else:
+            if rows:  # end of monthly block
+                break
+    df = pd.DataFrame(rows, columns=["date"] + header).set_index("date")
+    return df
+
+def smb_from(df):
+    cols = list(df.columns)
+    small = df[cols[0:3]].mean(axis=1)
+    big = df[cols[3:6]].mean(axis=1)
+    return small - big
+
+bm = read_first_monthly_block("6_Portfolios_2x3.csv")
+op = read_first_monthly_block("6_Portfolios_ME_OP_2x3.csv")
+inv = read_first_monthly_block("6_Portfolios_ME_INV_2x3.csv")
+
+s_bm = smb_from(bm).rename("bm")
+s_op = smb_from(op).rename("op")
+s_inv = smb_from(inv).rename("inv")
+
+merged = pd.concat([s_bm, s_op, s_inv], axis=1, join="inner").sort_index()
+smb = (merged["bm"] + merged["op"] + merged["inv"]) / 3.0
+
+out = pd.DataFrame({"date": merged.index.astype(int), "value": smb.values})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

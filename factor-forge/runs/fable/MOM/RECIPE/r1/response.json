@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRV3mTCBMwW2rpDss7Zu",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_ME_Prior_12_2.csv\"\n\nwith open(fname, \"r\", encoding=\"utf-8\", errors=\"replace\") as f:\n    lines = f.read().splitlines()\n\n# Locate first monthly table: header line starting with comma, followed by YYYYMM rows\nstart = None\nheader = None\nfor i, line in enumerate(lines):\n    s = line.strip()\n    if s.startswith(\",\") and \"SMALL LoPRIOR\" in s:\n        # check next line is a monthly row\n        if i + 1 < len(lines) and re.match(r\"^\\s*\\d{6}\\s*,\", lines[i + 1]):\n            start = i + 1\n            header = [h.strip() for h in s.split(\",\")]\n            break\n\nif start is None:\n    raise RuntimeError(\"Could not find monthly value-weighted table\")\n\nrows = []\nfor line in lines[start:]:\n    s = line.strip()\n    if not s:\n        break\n    if not re.match(r\"^\\d{6}\\s*,\", s):\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf = df.rename(columns={header[0]: \"date\"})\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Replace missing indicators\nfor c in df.columns[1:]:\n    df.loc[df[c].isin([-99.99, -999, -999.0]), c] = np.nan\n\nsh = df[\"SMALL HiPRIOR\"]\nbh = df[\"BIG HiPRIOR\"]\nsl = df[\"SMALL LoPRIOR\"]\nbl = df[\"BIG LoPRIOR\"]\n\ndf[\"value\"] = 0.5 * (sh + bh) - 0.5 * (sl + bl)\n\nout = df[[\"date\", \"value\"]].dropna()\nout[\"value\"] = out[\"value\"].round(4)\nout.to_csv(\"output.csv\", index=False)\n```\n\nThe script parses the first monthly value-weighted block (stopping at the first blank/non-YYYYMM line), treats -99.99/-999 as missing, and computes Mom = \u00bd(SMALL HiPRIOR + BIG HiPRIOR) \u2212 \u00bd(SMALL LoPRIOR + BIG LoPRIOR) in percent.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2699,
+    "output_tokens": 818,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

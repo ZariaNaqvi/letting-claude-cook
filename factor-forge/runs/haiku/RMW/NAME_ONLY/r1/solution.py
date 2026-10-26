@@ -1,0 +1,105 @@
+import numpy as np
+import pandas as pd
+
+INPUT = "6_Portfolios_ME_OP_2x3.csv"
+OUTPUT = "output.csv"
+MISSING = (-99.99, -999.0)
+
+
+def parse_vw_monthly(path):
+    with open(path, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate the start of the value-weighted monthly section
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "value weighted" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly section not found")
+
+    # locate header row (starts with comma, contains portfolio names)
+    header_idx = None
+    for j in range(start + 1, len(lines)):
+        if lines[j].strip().startswith(","):
+            header_idx = j
+            break
+    if header_idx is None:
+        raise RuntimeError("Header row not found")
+
+    header = [h.strip().upper() for h in lines[header_idx].split(",")[1:]]
+
+    col_map = {}
+    for k, name in enumerate(header):
+        if name.startswith("SMALL") and "LO" in name:
+            col_map["sLo"] = k
+        elif name.startswith("SMALL") and "HI" in name:
+            col_map["sHi"] = k
+        elif name.startswith("BIG") and "LO" in name:
+            col_map["bLo"] = k
+        elif name.startswith("BIG") and "HI" in name:
+            col_map["bHi"] = k
+    for key in ("sLo", "sHi", "bLo", "bHi"):
+        if key not in col_map:
+            raise RuntimeError(f"Column {key} not identified in header {header}")
+
+    rows = []
+    data_started = False
+    for line in lines[header_idx + 1:]:
+        s = line.strip()
+        if not s:
+            if data_started:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        first = parts[0]
+        if first.isdigit() and len(first) == 6:
+            data_started = True
+            vals = []
+            for p in parts[1:]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if any(np.isclose(v, m) for m in MISSING):
+                    v = np.nan
+                vals.append(v)
+            rows.append((int(first), vals))
+        else:
+            if data_started:
+                break  # end of monthly block
+
+    recs = []
+    for date, vals in rows:
+        def g(key):
+            idx = col_map[key]
+            return vals[idx] if idx < len(vals) else np.nan
+        recs.append({
+            "date": date,
+            "sLo": g("sLo"),
+            "sHi": g("sHi"),
+            "bLo": g("bLo"),
+            "bHi": g("bHi"),
+        })
+    return pd.DataFrame(recs)
+
+
+def main():
+    df = parse_vw_monthly(INPUT)
+    df = df.dropna(subset=["sLo", "sHi", "bLo", "bHi"]).copy()
+
+    # RMW = avg(Small High OP, Big High OP) - avg(Small Low OP, Big Low OP)
+    df["value"] = 0.5 * (df["sHi"] + df["bHi"]) - 0.5 * (df["sLo"] + df["bLo"])
+
+    out = pd.DataFrame({
+        "date": df["date"].astype(int),
+        "value": df["value"].astype(float),
+    }).sort_values("date").reset_index(drop=True)
+
+    out.to_csv(OUTPUT, index=False, columns=["date", "value"])
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,65 @@
+The script finds the value-weighted monthly section, parses the six 2x3 portfolio columns, and computes HML as 0.5·(Small Value + Big Value) − 0.5·(Small Growth + Big Growth), using the Ken French convention. The result is written to output.csv.
+
+```python
+import numpy as np
+import pandas as pd
+
+
+def is_yyyymm(tok):
+    return len(tok) == 6 and tok.isdigit()
+
+
+def main():
+    with open("6_Portfolios_2x3.csv", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the value-weighted monthly section (not the equal-weighted one)
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "value weighted returns" in low and "monthly" in low and "equal" not in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Could not find value-weighted monthly section")
+
+    rows = []
+    seen_data = False
+    for line in lines[start + 1:]:
+        if line.strip() == "":
+            if seen_data:
+                break
+            continue
+        parts = [p.strip() for p in line.split(",")]
+        if is_yyyymm(parts[0]):
+            seen_data = True
+            vals = []
+            for p in parts[1:7]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if v != v or np.isclose(v, -99.99) or np.isclose(v, -999.0):
+                    v = np.nan
+                vals.append(v)
+            if len(vals) < 6:
+                vals += [np.nan] * (6 - len(vals))
+            rows.append([int(parts[0])] + vals)
+        else:
+            if seen_data:
+                break  # next section reached
+
+    cols = ["date", "SL", "MB1", "SH", "BL", "MB2", "BH"]
+    df = pd.DataFrame(rows, columns=cols)
+
+    # Ken French HML: average of the two value portfolios minus average of the two growth portfolios
+    df["value"] = 0.5 * (df["SH"] + df["BH"]) - 0.5 * (df["SL"] + df["BL"])
+
+    out = df[["date", "value"]].dropna().copy()
+    out["date"] = out["date"].astype(int)
+    out.to_csv("output.csv", index=False)
+
+
+if __name__ == "__main__":
+    main()
+```

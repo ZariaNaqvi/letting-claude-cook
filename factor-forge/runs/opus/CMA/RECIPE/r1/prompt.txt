@@ -1,0 +1,82 @@
+TASK
+CMA = 1/2 (Small Conservative + Big Conservative) - 1/2 (Small Aggressive + Big Aggressive), i.e. 0.5*(SMALL LoINV + BIG LoINV) - 0.5*(SMALL HiINV + BIG HiINV), using the value-weighted monthly returns table (first table) of 6_Portfolios_ME_INV_2x3.csv. Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.
+TABLE TO USE: Block 0 of each portfolio file: 'Average Value Weighted Returns -- Monthly' (the FIRST table; monthly rows dated YYYYMM). Do NOT use the equal-weighted, annual, number-of-firms, market-cap/firm-size, or characteristic blocks.
+
+DATA
+You are given 1 raw CSV file(s), exactly as downloaded from the Ken French Data Library: 6_Portfolios_ME_INV_2x3.csv.
+They are in the current working directory. Below are the first 60 lines of each file, verbatim.
+The files are much longer than what is shown; you have to write code that handles the whole file.
+
+=== FILE: 6_Portfolios_ME_INV_2x3.csv (first 60 of 6257 lines, verbatim) ===
+This file was created using the 202608 CRSP database.
+It contains value- and equal-weighted returns for portfolios formed on ME and INV.
+
+The portfolios are constructed at the end of June.  INV is the change
+in total assets from the fiscal year ending in year t-2 to the fiscal year ending in t-1
+divided by t-2 total assets.
+Annual returns are from January to December.
+
+Missing data are indicated by -99.99 or -999.
+
+The break points include utilities and include financials.
+
+The  portfolios  include utilities and include financials.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoINV,ME1 INV2,SMALL HiINV,BIG LoINV,ME2 INV2,BIG HiINV
+196307,  -0.9962,  -0.5098,  -0.1385,  -1.2396,   0.5487,   0.1981
+196308,   4.6421,   4.4236,   5.5403,   6.1849,   4.8311,   6.0558
+196309,  -1.0470,  -2.1324,  -2.0696,  -1.1901,  -1.4168,  -0.4660
+196310,   2.0194,   1.0046,   1.4467,   2.0655,   1.8442,   7.1314
+196311,  -0.7462,  -1.1328,  -2.4649,   0.1795,   0.1686,  -2.6430
+196312,  -0.0953,   0.1850,   1.1097,   2.3372,   2.6013,   1.6368
+196401,   4.2674,   3.0242,   1.4225,   2.7854,   2.7354,   2.6678
+196402,   2.4559,   2.8335,   1.5921,   2.5349,   1.4431,   1.7770
+196403,   5.8353,   3.2906,   2.4035,   4.1144,   0.9174,   1.5810
+196404,  -0.9704,  -0.1621,  -1.5191,  -1.7953,   1.1802,   1.0063
+196405,   2.6522,   0.5430,   0.0009,   0.8658,   0.9869,   3.2524
+196406,   2.1025,   2.0395,   1.1954,   0.3238,   2.3249,   1.0308
+196407,   2.8697,   2.6663,   1.9496,   3.1320,   2.2080,   0.3891
+196408,  -1.3910,  -0.0718,  -0.5404,  -0.4171,  -1.1141,  -1.8158
+196409,   3.8084,   3.1370,   2.7812,   3.6801,   2.5308,   3.6353
+196410,   2.0470,   1.6190,   1.5551,   0.5135,   1.1019,   0.0178
+196411,  -0.7146,  -0.4735,   0.5481,   1.0835,   0.3210,   0.3292
+196412,  -2.0040,  -0.1165,   0.0038,  -0.5212,   0.9276,   0.4531
+196501,   7.0980,   5.8130,   6.3355,   4.7506,   2.6261,   5.4228
+196502,   4.0616,   3.5247,   4.3249,   0.8586,  -0.0129,   1.8324
+196503,   1.6720,   1.2723,   0.4202,  -1.0586,  -1.4158,  -1.0381
+196504,   3.7656,   5.0480,   5.2380,   2.3653,   3.1278,   5.2952
+196505,   0.5455,  -0.4135,   0.0742,   0.3779,  -0.3794,  -0.2445
+196506,  -9.2709,  -8.4814, -10.1262,  -5.8661,  -3.9569,  -5.8547
+196507,   3.3745,   2.5610,   3.2759,   1.5652,   1.3623,   1.8227
+196508,   6.2178,   4.7626,   6.0474,   2.2613,   2.4383,   4.0481
+196509,   4.4771,   3.7928,   4.0292,   4.0458,   3.0405,   3.0326
+196510,   6.4838,   6.3270,   7.2878,   2.4758,   2.3950,   3.1920
+196511,   7.5034,   4.3884,   6.2021,  -0.8942,  -1.0115,   2.1530
+196512,   2.8610,   4.1566,   4.5638,   1.2657,   1.0541,   0.6680
+196601,   6.6116,   6.2575,   5.9235,  -0.0020,   0.3011,   1.1978
+196602,   4.7885,   2.4700,   3.7742,  -3.2177,  -1.6301,   0.6937
+196603,  -1.5024,  -3.0564,  -1.7133,  -1.3261,  -2.9123,  -1.0176
+196604,   6.7597,   3.1707,   6.6106,   1.6033,   1.6287,   3.5943
+196605, -11.7393,  -9.5945,  -9.9109,  -5.1912,  -4.9351,  -4.0501
+196606,   0.9377,  -0.0652,   0.1970,  -0.2499,  -1.6199,  -1.0912
+196607,  -1.7534,  -1.2053,  -2.1017,  -0.1499,  -0.7106,  -3.2359
+196608, -10.2815,  -9.6286, -10.9197,  -6.8503,  -7.1561,  -7.8023
+196609,  -1.3825,  -1.6927,  -1.8897,   0.4000,   0.4988,  -3.7731
+196610,  -0.7063,  -0.2222,  -3.6802,   6.8686,   5.4415,   1.4519
+196611,   2.2880,   3.6031,   7.6306,  -1.5403,   0.7562,   6.3705
+196612,   1.2999,   1.0227,   3.9082,   0.9155,   0.6710,  -1.2223
+196701,  16.5956,  15.9689,  19.3513,   6.2204,   7.2331,   9.9249
+[file continues; 6197 more lines]
+
+OUTPUT CONTRACT
+- Reply with exactly ONE Python code block (```python ... ```). I will save it as solution.py and run it unchanged with `python solution.py`, no arguments, from the directory that holds the files.
+- The script reads the files above by name from the current directory. No internet access, no other files.
+- Allowed libraries: the Python standard library, pandas and numpy only (Python 3.12, pandas 3.0, numpy 2.x).
+- The script must write output.csv to the current directory with exactly two columns, in this order: date,value
+    date  = integer YYYYMM (for example 192607)
+    value = the factor's monthly return in PERCENT (1.23 means 1.23%), same units as the input files
+- One row per month, for every month the input data supports. Monthly rows only.
+- The script must finish within 60 seconds.
+- You may add a short explanation outside the code block; only the code is run and scored.

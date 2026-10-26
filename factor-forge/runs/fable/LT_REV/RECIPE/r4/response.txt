@@ -1,0 +1,53 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.readlines()
+
+# Locate the first table header (line starting with comma followed by column names)
+start = None
+for i, line in enumerate(lines):
+    if line.strip().startswith(",") and "SMALL LoPRIOR" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Could not find header of first table")
+
+header = [c.strip() for c in lines[start].strip().split(",")]
+rows = []
+for line in lines[start + 1:]:
+    s = line.strip()
+    if not s:
+        # blank line ends the block
+        if rows:
+            break
+        continue
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        # non-monthly row (e.g. annual YYYY) or a new block title -> stop
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing-data codes as NaN
+vals = df.iloc[:, 1:]
+vals = vals.mask((vals <= -99.99))
+df.iloc[:, 1:] = vals
+
+value = 0.5 * (df["SMALL LoPRIOR"] + df["BIG LoPRIOR"]) - 0.5 * (df["SMALL HiPRIOR"] + df["BIG HiPRIOR"])
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": value.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)
+```
+
+This parses only the first monthly value-weighted block (stops at the first blank line / non-YYYYMM row), computes LT_Rev = ½(Small Low + Big Low) − ½(Small High + Big High), and writes `date,value` in percent.

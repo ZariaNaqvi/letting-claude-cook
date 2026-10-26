@@ -1,0 +1,55 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r") as f:
+    lines = f.readlines()
+
+# Locate the first table: "Average Value Weighted Returns -- Monthly"
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Could not find monthly value-weighted table")
+
+# Header line is the next line starting with a comma
+header_idx = start + 1
+while header_idx < len(lines) and not lines[header_idx].strip().startswith(","):
+    header_idx += 1
+header = [h.strip() for h in lines[header_idx].strip().split(",")]
+header[0] = "date"
+
+rows = []
+for line in lines[header_idx + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df["date"] = df["date"].astype(int)
+for c in header[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Mark missing values
+for c in header[1:]:
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+sl = df["SMALL LoBM"]
+sh = df["SMALL HiBM"]
+bl = df["BIG LoBM"]
+bh = df["BIG HiBM"]
+
+hml = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": hml})
+out = out.dropna(subset=["value"])
+out["value"] = out["value"].round(6)
+out.to_csv("output.csv", index=False)

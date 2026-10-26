@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRVaaffTNUxKrUZc59Vd",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQShQkKEAgTGAI4AUIIdGhpbmtpbmcSDMa3FAwlsXMr1UeIxRoMDP4rgzs0GZ9Qu8B/IjDcgoo5rFMy3I8opb/68axKk3K5PXmqRPvmNnSA1tqIcdkT/Crv/3/rpI6Y8bXk++kqogjB9fnx8QPizXWN29ajIOqtyX/vKfJP5vfxNw8fBWqV98s68yCX57yMh2RNcnHXg6b+QOrHyFM/THquNIX2z5iTBmQNTP4IRQTDHIEoC1ocJDiVruoXIKMWtxe3/NprgLH2ayWkBkAGi9quE60LYty2xCPrG7GsEUyXAFUw5TD3k4Hq7XKjHdg2QapBOrPgt1AQ1znbL9lc9h0Jh3Y9Rs56tT4ECLAKUrrfbsNJAAufmgADrCvi2rr5ssDf/gmZSf8gutCz3GMqAYC3UrWGn1qJTMceZv9kSkci1uD/I6bvhy3ge9Sfzzl/l6dSsHX3iUdzXRv0lFyugrnu1JunhzTg+9miKrLATGoEhpxvG6+SJ+ehewdKByfmWMvFLCBgX39pjLhIjLsi7UnXMia8YEFJGl30xrZL19/IFDbmhXbjkHaoHrgVAhuE6GbDnqeR90NH59gi/l7K2W6oYvrUUGgB7dS6cwJ7HFQQ74xdlQYe2RzRL+iKWwIjn2tY9qdbEJhGNFzrGpNZNSoKPgcU6t7/aD2JYHj3Gy+vgVnSRGcB4I38fVyd8mTiwbI+yBARJKtpCIImMd6rSGkLsqaT+Y2jKBvAHCJ7cpfKM9bLG9J214uOuKzjtQYbfinBVZD58KX4FN2y70EJw9ejIqfinKFj6fPvS7quAFmUK5iIHRoo4afa2iEIPNZIgVJX8sRXEZVUySD2Wzvn9pNg5ZK7niBOEIXLRCnNDOvxt8uNYdLFDfe0i1SlHu0fsj0OmTuaU9Uy5CrlVoRMsZHT/BLYBsinI7MolYkIC/0yKMLpDNHdntENoLjVgjHY1aZmro8yccePpj+XqqApM9qEKhoYd46Y3w1ZAxAW8MUgUcbMmBROHsSy8UZpJ0iSIxo+RWDTn5blXtz2uTH3QhQVdw9VXJj65M486O9NaIaBZTFo7ph9VnUPfGzYB8YSIO4ZleW+fbYDTXIUMsx9zwCSttblD+zTKS94HgRzc9iW3dXr4HAz2oweM9mHVWCQFs99wQipw5woODHIBrcMKucJK4ao05DEutuu7uwM8XMTnophutxBDJp/ZZtw/LnJYYOS49wh3WFchtlnogjcnMpmpIIj930jkncRI/QwpYPbpPcNaY7VJQdxNDiBQdtnfW1Kf3eBseZOUL1hYCczJ+Apg6d0fO36WLleVPfyOJvbhN+RzeX6puaswgUGFsogr5R8GVtMOpmpnfNxINn5RlzqdIjlNlxOojpUmk3/xI3QHD8acwENzvhmfWmCg5xszTS31wjNsiijjDjbEWF+KMdFG/BCUlbJ4c99dRZJSxRFr/gY3rpeJachDdYv0kGB35otUvMLn4BhjTawlfee0IxjldLIQhPVMUGfx2wtZgccu+fJN7ghJE3z6z3p4TBiv4LPTBHiGhVJZxgB",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "CMA is the average of the two low-investment (conservative) portfolios minus the average of the two high-investment (aggressive) portfolios:\n\nCMA = \u00bd (Small LoINV + Big LoINV) \u2212 \u00bd (Small HiINV + Big HiINV)\n\nThe script reads only the \"Average Value Weighted Returns -- Monthly\" block. It treats -99.99 and -999 as missing and skips any month where the factor cannot be computed.\n\n```python\nimport pandas as pd\nimport numpy as np\n\nFNAME = \"6_Portfolios_ME_INV_2x3.csv\"\n\nwith open(FNAME, \"r\", encoding=\"latin-1\") as f:\n    lines = [l.rstrip(\"\\n\").rstrip(\"\\r\") for l in f]\n\n# locate the value-weighted monthly section\nstart = None\nfor i, l in enumerate(lines):\n    if \"Average Value Weighted Returns\" in l and \"Monthly\" in l:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Value-weighted monthly section not found\")\n\nheader = [h.strip() for h in lines[start + 1].split(\",\")]\nrows = []\nfor l in lines[start + 2:]:\n    s = l.strip()\n    if not s:\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    tok = parts[0]\n    if not (tok.isdigit() and len(tok) == 6):\n        break\n    vals = []\n    for p in parts[1:]:\n        try:\n            vals.append(float(p))\n        except ValueError:\n            vals.append(np.nan)\n    rows.append([int(tok)] + vals)\n\ncols = [\"date\"] + header[1:]\ndf = pd.DataFrame(rows, columns=cols[: len(rows[0])])\nnum = df.columns[1:]\ndf[num] = df[num].astype(float)\ndf[num] = df[num].mask(df[num] <= -99.99)\n\ndef find(colnames, *keys):\n    for c in colnames:\n        cu = c.upper().replace(\" \", \"\")\n        if all(k in cu for k in keys):\n            return c\n    raise KeyError(keys)\n\nc = list(num)\n# Order in file: SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV\ntry:\n    sl = find(c, \"SMALL\", \"LOINV\")\n    sh = find(c, \"SMALL\", \"HIINV\")\n    bl = find(c, \"BIG\", \"LOINV\")\n    bh = find(c, \"BIG\", \"HIINV\")\nexcept KeyError:\n    sl, sh, bl, bh = c[0], c[2], c[3], c[5]\n\ncma = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])\nout = pd.DataFrame({\"date\": df[\"date\"].astype(int), \"value\": cma})\nout = out.dropna().sort_values(\"date\").drop_duplicates(\"date\")\nout[\"value\"] = out[\"value\"].round(6)\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-opus-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2613,
+    "output_tokens": 1234,
+    "output_tokens_details": {
+      "thinking_tokens": 217
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

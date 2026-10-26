@@ -1,0 +1,36 @@
+RMW is built the way Ken French defines it: the average of the two robust-profitability portfolios minus the average of the two weak-profitability portfolios, using the value-weighted monthly section of the file. That is 0.5·(Small HiOP + Big HiOP) − 0.5·(Small LoOP + Big LoOP). I have not run this against the full file. Months where any of the four portfolios is flagged missing (-99.99 or -999) are dropped rather than computed.
+
+```python
+import pandas as pd
+import numpy as np
+
+rows = []
+started = False
+with open("6_Portfolios_ME_OP_2x3.csv", "r", errors="ignore") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if "Value Weighted Returns" in s and "Monthly" in s:
+                started = True
+            continue
+        if not s:
+            if rows:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts[0]) == 6 and parts[0].isdigit() and len(parts) >= 7:
+            try:
+                rows.append([int(parts[0])] + [float(x) for x in parts[1:7]])
+            except ValueError:
+                pass
+        elif rows:
+            break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+cols = ["sl", "sm", "sh", "bl", "bm", "bh"]
+df[cols] = df[cols].where(~df[cols].isin([-99.99, -999, -999.0]))
+df["value"] = 0.5 * (df["sh"] + df["bh"]) - 0.5 * (df["sl"] + df["bl"])
+out = df.dropna(subset=["value"])[["date", "value"]]
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```

@@ -1,0 +1,60 @@
+import re
+import numpy as np
+import pandas as pd
+
+FNAME = "6_Portfolios_ME_OP_2x3.csv"
+
+with open(FNAME, "r", encoding="utf-8", errors="replace") as f:
+    lines = [l.rstrip("\n").rstrip("\r") for l in f]
+
+# locate the monthly value-weighted section
+start = None
+for i, l in enumerate(lines):
+    if "value weighted returns" in l.lower() and "monthly" in l.lower():
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Monthly value-weighted section not found")
+
+# header line
+h = start + 1
+while lines[h].strip() == "":
+    h += 1
+header = [c.strip().upper() for c in lines[h].split(",")]
+cols = header[1:]
+
+def find_col(pred, default):
+    for j, c in enumerate(cols):
+        if pred(c):
+            return j
+    return default
+
+sl = find_col(lambda c: ("SMALL" in c or "ME1" in c) and ("LO" in c), 0)
+sh = find_col(lambda c: ("SMALL" in c or "ME1" in c) and ("HI" in c), 2)
+bl = find_col(lambda c: ("BIG" in c or "ME2" in c) and ("LO" in c), 3)
+bh = find_col(lambda c: ("BIG" in c or "ME2" in c) and ("HI" in c), 5)
+
+rows = []
+for l in lines[h + 1:]:
+    s = l.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    try:
+        vals = [float(p) for p in parts[1:]]
+    except ValueError:
+        continue
+    rows.append([int(parts[0])] + vals)
+
+df = pd.DataFrame(rows)
+date = df[0].astype(int)
+v = df.iloc[:, 1:].to_numpy(dtype=float)
+v[(v <= -99.99 + 1e-9) | (v == -999)] = np.nan
+
+rmw = 0.5 * (v[:, sh] + v[:, bh]) - 0.5 * (v[:, sl] + v[:, bl])
+
+out = pd.DataFrame({"date": date, "value": np.round(rmw, 6)})
+out = out.dropna().drop_duplicates("date").sort_values("date")
+out.to_csv("output.csv", index=False)

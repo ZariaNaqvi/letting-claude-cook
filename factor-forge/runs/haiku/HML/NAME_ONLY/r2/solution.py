@@ -1,0 +1,80 @@
+import re
+
+
+def _is_missing(v):
+    return v is None or v != v or v in (-99.99, -999.0, -999)
+
+
+def _to_float(s):
+    try:
+        v = float(s)
+    except (TypeError, ValueError):
+        return float("nan")
+    return float("nan") if _is_missing(v) else v
+
+
+def main():
+    with open("6_Portfolios_2x3.csv", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the first value-weighted monthly table
+    start = None
+    for i, l in enumerate(lines):
+        low = l.lower()
+        if "value weighted" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        start = -1  # fall back: search from top of file
+
+    # Column header: first non-empty line after the table title
+    h = start + 1
+    while h < len(lines) and lines[h].strip() == "":
+        h += 1
+    header = [c.strip() for c in lines[h].split(",")]
+
+    def find_col(pred, default):
+        for j, name in enumerate(header):
+            if pred(name.upper()):
+                return j
+        return default
+
+    i_sl = find_col(lambda n: n.startswith("SMALL") and "LO" in n, 1)
+    i_sh = find_col(lambda n: n.startswith("SMALL") and "HI" in n, 3)
+    i_bl = find_col(lambda n: n.startswith("BIG") and "LO" in n, 4)
+    i_bh = find_col(lambda n: n.startswith("BIG") and "HI" in n, 6)
+
+    rows = []
+    started = False
+    for l in lines[h + 1:]:
+        parts = [p.strip() for p in l.split(",")]
+        if parts and re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            date = int(parts[0])
+            need = max(i_sl, i_sh, i_bl, i_bh)
+            if len(parts) <= need:
+                rows.append((date, float("nan")))
+                continue
+            sl = _to_float(parts[i_sl])
+            sh = _to_float(parts[i_sh])
+            bl = _to_float(parts[i_bl])
+            bh = _to_float(parts[i_bh])
+            if any(x != x for x in (sl, sh, bl, bh)):
+                hml = float("nan")
+            else:
+                hml = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+            rows.append((date, hml))
+        else:
+            if started:
+                break  # end of monthly block
+
+    with open("output.csv", "w", encoding="utf-8", newline="") as out:
+        out.write("date,value\n")
+        for date, val in rows:
+            if val != val:
+                continue
+            out.write(f"{date},{val!r}\n")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,69 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_12_2.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly table: header line starting with a comma, followed by YYYYMM rows
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in line:
+        start = i + 1
+        break
+if start is None:
+    # fallback: first line starting with comma
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i
+            break
+
+# header
+hdr_idx = start
+while hdr_idx < len(lines) and not lines[hdr_idx].strip().startswith(","):
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+
+rows = []
+for line in lines[hdr_idx + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header[:len(rows[0])])
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Map columns robustly by name
+cols = {c.upper().replace(" ", ""): c for c in df.columns[1:]}
+def find(key_small, key_big):
+    for k, c in cols.items():
+        if key_small in k and key_big in k:
+            return c
+    raise KeyError((key_small, key_big))
+
+s_hi = find("SMALL", "HIPRIOR")
+s_lo = find("SMALL", "LOPRIOR")
+b_hi = find("BIG", "HIPRIOR")
+b_lo = find("BIG", "LOPRIOR")
+
+for c in [s_hi, s_lo, b_hi, b_lo]:
+    df.loc[df[c].isin([-99.99, -999, -999.0]), c] = np.nan
+
+val = 0.5 * (df[s_hi] + df[b_hi]) - 0.5 * (df[s_lo] + df[b_lo])
+out = pd.DataFrame({"date": df["date"], "value": val.round(4)})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```
+
+The script parses only the first monthly value-weighted block (stopping at the first blank line after the YYYYMM rows), identifies the four corner portfolios by column name, and computes Mom = ½(Small Hi + Big Hi) − ½(Small Lo + Big Lo) in percent.

@@ -1,0 +1,73 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first "Average Value Weighted Returns -- Monthly" section
+start = None
+for i, line in enumerate(lines):
+    s = line.strip().lower()
+    if "average value weighted returns" in s and "monthly" in s:
+        start = i
+        break
+if start is None:
+    # fallback: first section whose first data row has a 6-digit YYYYMM date
+    for i, line in enumerate(lines):
+        if re.match(r"^\s*\d{6}\s*,", line):
+            start = i - 2
+            break
+
+# Header line follows the section title
+j = start + 1
+while j < len(lines) and not lines[j].strip().startswith(","):
+    j += 1
+header = [h.strip() for h in lines[j].split(",")]
+j += 1
+
+rows = []
+while j < len(lines):
+    line = lines[j]
+    if not line.strip():
+        break
+    parts = [p.strip() for p in line.split(",")]
+    if not re.match(r"^\d{6}$", parts[0]):
+        break
+    rows.append(parts)
+    j += 1
+
+cols = ["date"] + header[1:]
+df = pd.DataFrame(rows, columns=cols)
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Mark missing values
+vals = df[cols[1:]]
+df[cols[1:]] = vals.where(~vals.isin([-99.99, -999.0, -999]), np.nan)
+
+# Identify portfolios by name
+def find_col(patterns):
+    for c in cols[1:]:
+        cl = c.lower().replace(" ", "")
+        if all(p in cl for p in patterns):
+            return c
+    return None
+
+sl = find_col(["small", "lobm"])
+sh = find_col(["small", "hibm"])
+bl = find_col(["big", "lobm"])
+bh = find_col(["big", "hibm"])
+if None in (sl, sh, bl, bh):
+    # fallback to positional: SMALL LoBM, ME1 BM2, SMALL HiBM, BIG LoBM, ME2 BM2, BIG HiBM
+    sl, sh, bl, bh = cols[1], cols[3], cols[4], cols[6]
+
+hml = 0.5 * (df[sh] + df[bh]) - 0.5 * (df[sl] + df[bl])
+
+out = pd.DataFrame({"date": df["date"], "value": hml.round(4)})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

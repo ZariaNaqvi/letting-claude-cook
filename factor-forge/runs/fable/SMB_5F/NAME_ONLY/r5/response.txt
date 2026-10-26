@@ -1,0 +1,82 @@
+```python
+import re
+import numpy as np
+import pandas as pd
+
+
+def read_vw_monthly(fname):
+    """Parse the first 'Average Value Weighted Returns -- Monthly' block of a
+    Ken French 2x3 portfolio file. Returns DataFrame indexed by int YYYYMM
+    with 6 float columns in file order."""
+    with open(fname, "r", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    start = None
+    for i, ln in enumerate(lines):
+        if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        # Fallback: first block whose data lines are 6-digit dates
+        start = 0
+
+    # header line follows the title (starts with a comma)
+    j = start + 1
+    while j < len(lines) and not lines[j].strip().startswith(","):
+        j += 1
+    header = [h.strip() for h in lines[j].split(",")][1:]
+
+    rows = []
+    k = j + 1
+    pat = re.compile(r"^\s*(\d{6})\s*,")
+    while k < len(lines):
+        ln = lines[k]
+        if ln.strip() == "":
+            break
+        m = pat.match(ln)
+        if not m:
+            break
+        parts = [p.strip() for p in ln.split(",")]
+        date = int(parts[0])
+        vals = []
+        for p in parts[1:1 + len(header)]:
+            try:
+                v = float(p)
+            except ValueError:
+                v = np.nan
+            if v <= -99.0:  # -99.99 / -999 missing codes
+                v = np.nan
+            vals.append(v)
+        rows.append([date] + vals)
+        k += 1
+
+    df = pd.DataFrame(rows, columns=["date"] + header).set_index("date")
+    df = df[~df.index.duplicated(keep="first")]
+    return df
+
+
+def smb_component(df):
+    cols = list(df.columns)
+    small = df[cols[:3]].mean(axis=1)
+    big = df[cols[3:6]].mean(axis=1)
+    return small - big
+
+
+bm = read_vw_monthly("6_Portfolios_2x3.csv")
+op = read_vw_monthly("6_Portfolios_ME_OP_2x3.csv")
+inv = read_vw_monthly("6_Portfolios_ME_INV_2x3.csv")
+
+smb_bm = smb_component(bm).rename("smb_bm")
+smb_op = smb_component(op).rename("smb_op")
+smb_inv = smb_component(inv).rename("smb_inv")
+
+combined = pd.concat([smb_bm, smb_op, smb_inv], axis=1, join="inner").dropna()
+smb = (combined["smb_bm"] + combined["smb_op"] + combined["smb_inv"]) / 3.0
+
+out = pd.DataFrame({"date": smb.index.astype(int), "value": smb.values})
+out = out.sort_values("date").reset_index(drop=True)
+out["value"] = out["value"].round(4)
+out.to_csv("output.csv", index=False)
+```
+
+SMB (5-factor) is built as Ken French describes: for each of the three 2x3 sorts (ME×BE/ME, ME×OP, ME×INV), SMB_x = ⅓(Small Lo + Small Med + Small Hi) − ⅓(Big Lo + Big Med + Big Hi) using value-weighted monthly returns; then SMB = ⅓(SMB_B/M + SMB_OP + SMB_INV). Output covers the months common to all three files (1963-07 onward).

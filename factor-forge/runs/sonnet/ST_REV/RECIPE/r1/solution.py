@@ -1,0 +1,38 @@
+import re
+import pandas as pd
+
+fn = "6_Portfolios_ME_Prior_1_0.csv"
+with open(fn, "r", errors="ignore") as f:
+    lines = f.read().splitlines()
+
+# find header of first table
+start = None
+for i, l in enumerate(lines):
+    if "SMALL LoPRIOR" in l:
+        start = i
+        break
+
+header = [h.strip() for h in lines[start].split(",")]
+rows = []
+for l in lines[start + 1:]:
+    parts = [p.strip() for p in l.split(",")]
+    if not parts or not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows)
+cols = ["date"] + header[1:]
+df = df.iloc[:, :len(cols)]
+df.columns = cols
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+needed = ["SMALL LoPRIOR", "BIG LoPRIOR", "SMALL HiPRIOR", "BIG HiPRIOR"]
+mask = pd.Series(True, index=df.index)
+for c in needed:
+    mask &= df[c].notna() & (df[c] > -99) 
+df = df[mask].copy()
+
+df["value"] = 0.5 * (df["SMALL LoPRIOR"] + df["BIG LoPRIOR"]) - 0.5 * (df["SMALL HiPRIOR"] + df["BIG HiPRIOR"])
+df[["date", "value"]].to_csv("output.csv", index=False)

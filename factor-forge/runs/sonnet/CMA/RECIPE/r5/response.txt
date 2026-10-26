@@ -1,0 +1,40 @@
+The script parses the file line by line and stops at the end of the first table, so it never reads the later blocks.
+
+- It starts at the first line whose first field is a 6-digit integer. In this file that comes right after the header line `,SMALL LoINV,...`.
+- It keeps reading while the first field is a 6-digit YYYYMM date, and stops at the first line that is not one (a blank line or the next block title).
+- It computes the factor as 0.5*(SMALL LoINV + BIG LoINV) - 0.5*(SMALL HiINV + BIG HiINV), using the column order SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV.
+- It skips any month where one of the four columns it uses is missing (-99.99 or -999).
+
+```python
+import csv
+
+rows = []
+started = False
+with open("6_Portfolios_ME_INV_2x3.csv", newline="") as f:
+    for parts in csv.reader(f):
+        if not parts:
+            if started:
+                break
+            continue
+        first = parts[0].strip()
+        if first.isdigit() and len(first) == 6:
+            started = True
+            try:
+                v = [float(x) for x in parts[1:7]]
+            except ValueError:
+                continue
+            if len(v) < 6:
+                continue
+            if any(x <= -99.0 for x in (v[0], v[2], v[3], v[5])):
+                continue
+            val = 0.5 * (v[0] + v[3]) - 0.5 * (v[2] + v[5])
+            rows.append((int(first), round(val, 6)))
+        else:
+            if started:
+                break
+
+with open("output.csv", "w") as f:
+    f.write("date,value\n")
+    for d, v in rows:
+        f.write(f"{d},{v}\n")
+```

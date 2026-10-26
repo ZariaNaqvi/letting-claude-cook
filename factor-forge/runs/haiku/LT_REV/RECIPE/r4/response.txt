@@ -1,0 +1,83 @@
+The script finds the first "Average Value Weighted Returns -- Monthly" block, looks up the four needed columns by header name, and computes LT_Rev = 0.5·(SMALL LoPRIOR + BIG LoPRIOR) − 0.5·(SMALL HiPRIOR + BIG HiPRIOR). Months where any of the four inputs is missing (-99.99 or -999) are dropped.
+
+```python
+import re
+import pandas as pd
+
+FNAME = "6_Portfolios_ME_Prior_60_13.csv"
+OUT = "output.csv"
+MISSING = {-99.99, -999.0}
+
+
+def to_float(s):
+    try:
+        return float(s)
+    except (TypeError, ValueError):
+        return float("nan")
+
+
+def main():
+    with open(FNAME, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate first value-weighted monthly block
+    start = None
+    for i, l in enumerate(lines):
+        if "Average Value Weighted Returns" in l and "Monthly" in l:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly block not found")
+
+    # header line: first non-empty line after the block title containing the portfolio names
+    h = None
+    for j in range(start + 1, len(lines)):
+        if "LoPRIOR" in lines[j] or "HiPRIOR" in lines[j]:
+            h = j
+            break
+    if h is None:
+        raise RuntimeError("Header line not found")
+
+    cols = [c.strip() for c in lines[h].split(",")]
+    need = ["SMALL LoPRIOR", "BIG LoPRIOR", "SMALL HiPRIOR", "BIG HiPRIOR"]
+    idx = {}
+    for name in need:
+        if name not in cols:
+            raise RuntimeError(f"Column {name} not found in header: {cols}")
+        idx[name] = cols.index(name)
+
+    rows = []
+    started = False
+    for l in lines[h + 1:]:
+        s = l.strip()
+        if not s:
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            vals = {}
+            ok = True
+            for name in need:
+                k = idx[name]
+                v = to_float(parts[k]) if k < len(parts) else float("nan")
+                if v != v or v in MISSING:  # NaN or missing code
+                    ok = False
+                vals[name] = v
+            if ok:
+                ret = (0.5 * (vals["SMALL LoPRIOR"] + vals["BIG LoPRIOR"])
+                       - 0.5 * (vals["SMALL HiPRIOR"] + vals["BIG HiPRIOR"]))
+                rows.append((int(parts[0]), ret))
+        else:
+            if started:
+                break
+
+    out = pd.DataFrame(rows, columns=["date", "value"])
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUT, index=False)
+
+
+if __name__ == "__main__":
+    main()
+```

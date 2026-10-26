@@ -1,0 +1,58 @@
+```python
+import re
+import pandas as pd
+import numpy as np
+
+def read_first_monthly_block(fname):
+    with open(fname, "r") as f:
+        lines = f.read().splitlines()
+    # locate the first monthly VW block: header line starting with ',' followed by YYYYMM rows
+    start = None
+    for i, line in enumerate(lines):
+        if line.startswith(",") and i + 1 < len(lines) and re.match(r"^\s*\d{6}\s*,", lines[i + 1]):
+            start = i
+            break
+    if start is None:
+        raise ValueError("Could not find monthly block in " + fname)
+    cols = [c.strip() for c in lines[start].split(",")]
+    rows = []
+    for line in lines[start + 1:]:
+        if not re.match(r"^\s*\d{6}\s*,", line):
+            break
+        parts = [p.strip() for p in line.split(",")]
+        rows.append(parts)
+    df = pd.DataFrame(rows, columns=cols)
+    df.rename(columns={cols[0]: "date"}, inplace=True)
+    df["date"] = df["date"].astype(int)
+    for c in df.columns[1:]:
+        df[c] = pd.to_numeric(df[c], errors="coerce")
+        df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan
+    df = df.set_index("date")
+    return df
+
+def smb_component(df):
+    cols = list(df.columns)
+    small = [c for c in cols if c.upper().startswith("SMALL") or c.upper().startswith("ME1")]
+    big = [c for c in cols if c.upper().startswith("BIG") or c.upper().startswith("ME2")]
+    assert len(small) == 3 and len(big) == 3, (small, big)
+    return df[small].mean(axis=1) - df[big].mean(axis=1)
+
+bm = read_first_monthly_block("6_Portfolios_2x3.csv")
+op = read_first_monthly_block("6_Portfolios_ME_OP_2x3.csv")
+inv = read_first_monthly_block("6_Portfolios_ME_INV_2x3.csv")
+
+s_bm = smb_component(bm)
+s_op = smb_component(op)
+s_inv = smb_component(inv)
+
+common = s_bm.index.intersection(s_op.index).intersection(s_inv.index)
+common = sorted(common)
+smb = (s_bm.loc[common] + s_op.loc[common] + s_inv.loc[common]) / 3.0
+
+out = pd.DataFrame({"date": [int(d) for d in common], "value": smb.values})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```
+
+The script extracts the first "Average Value Weighted Returns -- Monthly" block from each file (stopping at the first non-YYYYMM row), computes each SMB component as mean(small 3) − mean(big 3), averages the three components over the common months (1963-07 onward), and writes `output.csv` with `date,value`.

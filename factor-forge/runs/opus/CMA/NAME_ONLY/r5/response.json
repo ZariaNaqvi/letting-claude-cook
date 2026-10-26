@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRWqg2fUStPRZu1HPYwf",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQSlAkKEAgTGAI4AUIIdGhpbmtpbmcSDMZO3DgO3If+sAm1oxoM+j1SLQ5dHUq/QFPqIjB2Ji3seLDZkrzjRkR8pdHdwhA5CAAMFTNRs3mirxXpeO3zcvZ5RWfMiXteHOKd8T8qsQhk+LLZm+99EbeYMS1JQU7XTKDc8YyeR6kpipkyeXZJdp5P/aDYhjV3A1nC8VjEl9sGnH355L+5yk1UvA0ExS5St2WHfVWjm1SrqPr8uiKhRYuB2QrX7v2M81rTxq9wtT+bO68LAbdHeYn/KtwaJvwCS9azoiesxiTm0YkXQNh/H/1RG6xl3pL96+Is7VGmnbtMSaS+9XqyqeGx0H339qTMyoHNRElGqpUu/rQe1mAx+iPyGfgEkhV1lrq+SCFWNjZ3Sa5R47w/hiOUeBQJVF8yO/tCyS2iIuLgjNGpHE4RS78XOnbs/zNPDqXoLq2JfJTxy5qOtUr91WgZIojN08QtmTzHyRCP934kiCZtw18rwkpsr/iTSnQKG5PSod4ejiFDfT7Dz4m8uhvmnoxfCjcqkiupgTk736YV3xX3hz1pehjCuHvdWhZuHJYKKgitqg5V0Rt+JGsI20OwJVPcPpGwwf7hzc0CvpRwDjCEnLgR9122Ehb9rroch/R+KrMLr32+1FfOwkxCMnvXhAZB+fXz9CBhKxkQNeI2rQqTjBBfpdJEVfkz2fCs366m2QbJnCmPk1GgPTgUcbkEGHR14n6F1sQu+xEDqcKt0X910hpigXD1kiH/onBPYnWb+x/x5VrarLAz/02+Kh0hcgrq7d3PCcVmH3QaKrdumn3+E4XmIp93m/3MWNd9GNWMcnvFLQDeZAnbNKfPzOQit6ArH6gBj/xtlcWY3sJgqVDGZONuRrZfuJ6dSN3fsWgULXISDht/wlV9EdMIE8/khISvRMPmabSPDYBdirMs/z6uAU+MQHr9Vwm5KkIMGlSV+Tf5e3UeXnIRsNUHO/ih3x74vRyqbmXagv07kfoS9AV1taknUriYsQ2NN/S4pSN21DJJHLRBxuvgMX9squ5IpNDV7mQlTcAYxQDO95V/NFJaLSd3GDV58gdazAAO5QH5lnyCIYPub8CkyMbu1EqmjoyLNBDzrIi2CxsgOW8ei0SaMOnOBzveDuGAUYQWs7H/mXRnSgfihzoJq7MIrIoLHLPtXXKwzY3mygo10XC0VGvCLb4Iy96xXXePrTB7RLZFhch5Mlww/sbNYstW5s1NDhfkp+V+HOQUL8lC2JjAuoutchJz0ILNu76kfsTrFvW57xtMMjhoQNs+l638l8aFX0+RLDaXY1kGg0VYI+FIsUJRdBsIaVik+V14LUDSd5V06ADuW+C63Tt9zFs3zkOndWxZNutCyvsiX8XVcpT98dvi6cQ+fCvrhbuwP+0FbJYhrjqjn0S2fhAsGj60Nbeazbv+j+Bmtb1UhzVHzjjiZi75VQTZlUep1AC63oRwXPCkTwTCga/p5zWOrDCx/zqXruVafyzmBuX4eAV3inaC2omZk0hgPcu9KTMUmTdLVhulX/W2TlKQaDRKCmJT1zBbrTTfUA4fpRgB",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "CMA is built from the 2x3 size/investment sorts as the average of the two conservative (low-INV) portfolios minus the average of the two aggressive (high-INV) portfolios:\n\nCMA = \u00bd(SMALL LoINV + BIG LoINV) \u2212 \u00bd(SMALL HiINV + BIG HiINV)\n\nThe script reads only the \"Average Value Weighted Returns -- Monthly\" block of the file. That block ends at the first line that does not start with a 6-digit date. Months where any of the four needed portfolios is missing (-99.99 or -999) are dropped, so they do not appear in the output.\n\n```python\nimport re\nimport pandas as pd\nimport numpy as np\n\nfname = \"6_Portfolios_ME_INV_2x3.csv\"\nwith open(fname, \"r\", encoding=\"latin-1\") as f:\n    lines = [l.rstrip(\"\\n\").rstrip(\"\\r\") for l in f]\n\n# locate the value-weighted monthly section\nstart = None\nfor i, l in enumerate(lines):\n    if \"Average Value Weighted Returns\" in l and \"Monthly\" in l:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Value-weighted monthly section not found\")\n\n# header line\nh = start + 1\nwhile lines[h].strip() == \"\":\n    h += 1\nheader = [c.strip() for c in lines[h].split(\",\")]\ncols = header[1:]\n\nrows = []\nj = h + 1\nwhile j < len(lines):\n    l = lines[j].strip()\n    if not l:\n        break\n    parts = [p.strip() for p in l.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break\n    vals = []\n    for p in parts[1:]:\n        try:\n            vals.append(float(p))\n        except ValueError:\n            vals.append(np.nan)\n    rows.append([int(parts[0])] + vals)\n    j += 1\n\ndf = pd.DataFrame(rows, columns=[\"date\"] + cols)\nfor c in cols:\n    df.loc[df[c] <= -99.99, c] = np.nan\n\ndef find(pattern_size, pattern_inv):\n    for c in cols:\n        cu = c.upper().replace(\" \", \"\")\n        if pattern_size(cu) and pattern_inv(cu):\n            return c\n    raise RuntimeError(f\"column not found\")\n\nis_small = lambda c: c.startswith(\"SMALL\") or c.startswith(\"ME1\")\nis_big = lambda c: c.startswith(\"BIG\") or c.startswith(\"ME2\")\nis_lo = lambda c: \"LOINV\" in c or c.endswith(\"INV1\")\nis_hi = lambda c: \"HIINV\" in c or c.endswith(\"INV3\")\n\nsl = find(is_small, is_lo)\nsh = find(is_small, is_hi)\nbl = find(is_big, is_lo)\nbh = find(is_big, is_hi)\n\ndf[\"value\"] = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])\nout = df[[\"date\", \"value\"]].dropna()\nout[\"date\"] = out[\"date\"].astype(int)\nout = out.sort_values(\"date\")\nout[\"value\"] = out[\"value\"].round(6)\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-opus-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2613,
+    "output_tokens": 1321,
+    "output_tokens_details": {
+      "thinking_tokens": 239
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

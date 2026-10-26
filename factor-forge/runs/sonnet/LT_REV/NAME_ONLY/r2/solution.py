@@ -1,0 +1,34 @@
+import pandas as pd
+
+rows = []
+started = False
+with open("6_Portfolios_ME_Prior_60_13.csv") as f:
+    lines = f.read().splitlines()
+
+in_section = False
+for line in lines:
+    if not started:
+        if "Value Weighted Returns" in line and "Monthly" in line:
+            in_section = True
+        elif in_section:
+            parts = [p.strip() for p in line.split(",")]
+            if len(parts) >= 7 and len(parts[0]) == 6 and parts[0].isdigit():
+                started = True
+            else:
+                continue
+    if started:
+        parts = [p.strip() for p in line.split(",")]
+        if len(parts) >= 7 and len(parts[0]) == 6 and parts[0].isdigit():
+            try:
+                vals = [float(x) for x in parts[1:7]]
+            except ValueError:
+                continue
+            rows.append([int(parts[0])] + vals)
+        else:
+            break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+bad = (df.iloc[:, 1:].isin([-99.99, -999, -999.0])).any(axis=1)
+df = df[~bad].copy()
+df["value"] = 0.5 * (df["sl"] + df["bl"]) - 0.5 * (df["sh"] + df["bh"])
+df[["date", "value"]].to_csv("output.csv", index=False)

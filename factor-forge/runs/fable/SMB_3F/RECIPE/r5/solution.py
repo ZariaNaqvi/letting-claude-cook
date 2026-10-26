@@ -1,0 +1,61 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Find the first table: 'Average Value Weighted Returns -- Monthly'
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first header line beginning with a comma
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# Header is the next line starting with a comma
+hdr_idx = start + 1
+while hdr_idx < len(lines) and not lines[hdr_idx].strip().startswith(","):
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+
+rows = []
+for line in lines[hdr_idx + 1:]:
+    s = line.strip()
+    if not s:
+        if rows:
+            break
+        continue
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+cols = {c.strip().upper(): c for c in df.columns[1:]}
+def col(name):
+    return cols[name.upper()]
+
+small = df[[col("SMALL LoBM"), col("ME1 BM2"), col("SMALL HiBM")]].copy()
+big = df[[col("BIG LoBM"), col("ME2 BM2"), col("BIG HiBM")]].copy()
+
+# treat missing codes as NaN
+for d in (small, big):
+    d[(d <= -99.99)] = np.nan
+
+smb = small.mean(axis=1) - big.mean(axis=1)
+
+out = pd.DataFrame({"date": df["date"], "value": smb.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)

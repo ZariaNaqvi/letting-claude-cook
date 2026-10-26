@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRVzpJsxBKKeDyBJLwpS",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQSgQoKEAgTGAI4AUIIdGhpbmtpbmcSDEtsYtrPpI8jwrjnSBoMzIKGUWZyI3tuxO2LIjCxaTVvZi+JfsTKlDCU5HhdcIOi6lvX47T80H7TKpgoDSXtxTeM80INRNbZBC81MNkqngldFscm8aE7e+ypT0xQ9MgFplkNyt+Wg7yzcwzAC7VtrTivKx/frU6CCNWeDb6HngNOm2CKT6xM4kNhxcjkO2E6FhpxbBaCyoTRpy5hqw+NJHGzN+sFN++C6EJhy7jUcgbJtc9yprPuurpa7WVxjtN0yhVNHmC4u6IE/tsLpysUFMluknS4IWovLYRuiL/gyuHf5EQipimsfJodFpaKB4oTihArAxPyH4tZSITwbJV6JY6KbXkQKqUjYPa/oi4UO/0koQ2i2fR3Ou5FxrXxrJhnZ/n9RKhxSmt9gzFjLsVw9yw29syuGIvyaAkeAgkY8Y9wbaziDdikU6PkbyPKbqyHNe2zFqsWgHjlMBDxJLNThErJkQJ25v8+H7NfMnQgRUpd+hEeY+6ylZv1ROuM7sg0LiPXiuysYmpxy+S5T1gUnusMqjsmUvp2H76UrKwFS9W8KcV+bP+oeggxbGNjftQ/kkvRFQ79p7ZD1vdfxnrpYiM4wJKDiu8NW9l5xjXhjSUCcNUR5kczGmOCwNjbiFEsaDOC5OGoPfp10Nca3VpbuNAYtGx+Sv+lIxSwRZTtaCduOUd6Qh3bvu1Yd6NNcn05Zmx6EyYJrDfDa1xx691BGzNp91qWe1WNs+2p62/Mfmn6wQbDIBuEI58bTzoSVPXKpfBi3qz39gNVYQnCPFzRF9/KZzqFESd4dO6cW5h/J+ct6AKKDhcWvF7Sxvo5MvNmdorORorSCesRuxqTnHkcMT5UMgp6EYvmr3sVOB0IjnI4yugb5vifAGfAl/3SalxeyuLQIb7cYveMO7+RczPixhaX5fMTGDxbcL1RRnmb3yRX9JMqhAXmKU2jY78JP7nu9vNz6VWsXCJshxpghCHTF7ZIyySLR+HCtzAu/UyNGOWKdxVbK8Lz+dMGzSeJfXp7TWmO8KTG0KGacYzpGP3ZzvTQSoCy3cNsCD3+h4cQH14SvWMIe2tKtC9HL5UkRprr5GBWJxzld5Sr4FLo6DoLdS0SyzLLs3txZtsPG3NB8kxx0KKKPdyoweUhE4cZnboB/ss4r6wbOfH4LMJcPlS1urQDcrOphedRRGYTb3HK+I/QEGh92uQQkqREJItLddDStBtmk0XM3WwTy3yn2YpErzY0ZpZ/QxalZjy0kEdG9VIFS2JNopqmGVa5zHei3Ropxrq4fP04eOW69KoV/glMGnDjZv0Q5Uc/eZKsym8PNjhiAOuirYRmLEA0IKjO+z/CkuALdWRa/GA9th74y/J6vW6Nqak7llsg/kdFtO4uMUNoX/pruj2SV0jP5qFhrB7IcOepCL/VrOXDt0eZCHjKn2XbRfzy8ozFDiHDw1ZCJnVZNZ5gDpePLPt4JVnNk/mkHB0xpCYtDwXq0ovphG2f5nir7pCIUprB9bFit5wZdiRSLBck2qaDoQpuinmG8XEU20fDWH3Xr6VBRWYSopTNFNdvBHM95n2QC8CmBxgmmkvHb8UJqr0gS6wfqeBwWbRydaZhB5j3nwjnfmaTURNFDAbQyB2xIvCE1jknmW/YEG5LDkEwbm42hWSrjXZ2l3kD93ssT1bJn0p+RDKVa8UYAQ==",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "CMA is built from the value-weighted monthly section of the file:\n\nCMA = \u00bd (Small LoINV + Big LoINV) \u2212 \u00bd (Small HiINV + Big HiINV)\n\nLoINV is the conservative portfolio and HiINV is the aggressive one.\n\nThe script reads only the \"Average Value Weighted Returns -- Monthly\" block. It stops at the first blank line or the next section header.\n\nTwo behaviours to be aware of:\n- **Missing values:** months where any of the four needed portfolios is missing (-99.99 or -999) are left out of the output.\n- **Rounding:** results are rounded to 4 decimals.\n\n```python\nimport csv\nimport math\n\nFNAME = \"6_Portfolios_ME_INV_2x3.csv\"\n\nwith open(FNAME, \"r\", encoding=\"utf-8\", errors=\"replace\") as f:\n    lines = f.read().splitlines()\n\n# locate the value-weighted monthly section\nstart = None\nfor i, ln in enumerate(lines):\n    s = ln.strip().lower()\n    if \"average value weighted returns\" in s and \"monthly\" in s:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Value-weighted monthly section not found\")\n\n# header line\nhdr_idx = start + 1\nwhile lines[hdr_idx].strip() == \"\":\n    hdr_idx += 1\nheader = [h.strip() for h in lines[hdr_idx].split(\",\")]\ncols = header[1:]\n\ndef find_col(pred):\n    for j, c in enumerate(cols):\n        if pred(c.upper().replace(\" \", \"\")):\n            return j\n    raise RuntimeError(\"column not found\")\n\ni_sl = find_col(lambda c: c.startswith(\"SMALL\") and \"LO\" in c)\ni_sh = find_col(lambda c: c.startswith(\"SMALL\") and \"HI\" in c)\ni_bl = find_col(lambda c: c.startswith(\"BIG\") and \"LO\" in c)\ni_bh = find_col(lambda c: c.startswith(\"BIG\") and \"HI\" in c)\n\nrows = []\nfor ln in lines[hdr_idx + 1:]:\n    s = ln.strip()\n    if s == \"\":\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    d = parts[0]\n    if not (d.isdigit() and len(d) == 6):\n        break\n    try:\n        vals = [float(p) for p in parts[1:]]\n    except ValueError:\n        continue\n    need = [vals[i_sl], vals[i_sh], vals[i_bl], vals[i_bh]]\n    if any(v <= -99.99 or math.isnan(v) for v in need):\n        continue\n    cma = 0.5 * (vals[i_sl] + vals[i_bl]) - 0.5 * (vals[i_sh] + vals[i_bh])\n    rows.append((int(d), round(cma, 4)))\n\nwith open(\"output.csv\", \"w\", newline=\"\") as f:\n    w = csv.writer(f)\n    w.writerow([\"date\", \"value\"])\n    for d, v in rows:\n        w.writerow([d, v])\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-opus-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2613,
+    "output_tokens": 1294,
+    "output_tokens_details": {
+      "thinking_tokens": 268
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

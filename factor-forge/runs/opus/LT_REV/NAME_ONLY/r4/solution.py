@@ -1,0 +1,67 @@
+import re
+import numpy as np
+import pandas as pd
+
+FNAME = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(FNAME, "r", encoding="latin-1") as f:
+    lines = [l.rstrip("\n").rstrip("\r") for l in f]
+
+# locate the value-weighted monthly block
+start = None
+for i, l in enumerate(lines):
+    if "value weighted returns" in l.lower() and "monthly" in l.lower():
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value weighted monthly block not found")
+
+# header line: next line starting with ','
+h = start + 1
+while not lines[h].strip().startswith(","):
+    h += 1
+header = [c.strip() for c in lines[h].split(",")][1:]
+
+rows = []
+for l in lines[h + 1:]:
+    s = l.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = []
+    for p in parts[1:1 + len(header)]:
+        try:
+            vals.append(float(p))
+        except ValueError:
+            vals.append(np.nan)
+    rows.append([int(parts[0])] + vals)
+
+df = pd.DataFrame(rows, columns=["date"] + header)
+cols = df.columns[1:]
+for c in cols:
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+def find(pred):
+    for c in cols:
+        u = c.upper()
+        if pred(u):
+            return c
+    raise RuntimeError("column not found")
+
+# order: SMALL LoPRIOR, ME1 PRIOR2, SMALL HiPRIOR, BIG LoPRIOR, ME2 PRIOR2, BIG HiPRIOR
+try:
+    sl = find(lambda u: ("SMALL" in u or "ME1" in u) and "LO" in u)
+    sh = find(lambda u: ("SMALL" in u or "ME1" in u) and "HI" in u)
+    bl = find(lambda u: ("BIG" in u or "ME2" in u) and "LO" in u)
+    bh = find(lambda u: ("BIG" in u or "ME2" in u) and "HI" in u)
+except RuntimeError:
+    sl, sh, bl, bh = cols[0], cols[2], cols[3], cols[5]
+
+val = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])
+out = pd.DataFrame({"date": df["date"].astype(int), "value": val})
+out = out.dropna()
+out["value"] = out["value"].round(2)
+out = out.sort_values("date").drop_duplicates("date")
+out.to_csv("output.csv", index=False)

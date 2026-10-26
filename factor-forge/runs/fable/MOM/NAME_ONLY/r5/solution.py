@@ -1,0 +1,58 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_12_2.csv"
+
+with open(fname, "r") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly value-weighted section
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first line that looks like a header row followed by YYYYMM data
+    for i, line in enumerate(lines):
+        if line.startswith(",") and i + 1 < len(lines) and re.match(r"^\s*\d{6}\s*,", lines[i + 1]):
+            start = i - 1
+            break
+
+# Find header row (begins with comma) after section title
+hdr = None
+for i in range(start + 1, len(lines)):
+    if lines[i].strip().startswith(","):
+        hdr = i
+        break
+
+cols = [c.strip() for c in lines[hdr].split(",")]
+rows = []
+for line in lines[hdr + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.match(r"^\d{6}$", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=cols)
+df.rename(columns={cols[0]: "date"}, inplace=True)
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan
+
+# Column identification: order is SMALL Lo, ME1 PRIOR2, SMALL Hi, BIG Lo, ME2 PRIOR2, BIG Hi
+names = list(df.columns[1:])
+small_lo, small_hi = names[0], names[2]
+big_lo, big_hi = names[3], names[5]
+
+mom = 0.5 * (df[small_hi] + df[big_hi]) - 0.5 * (df[small_lo] + df[big_lo])
+
+out = pd.DataFrame({"date": df["date"], "value": mom.round(4)})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

@@ -1,0 +1,45 @@
+I haven't run this against the full file; it is written to handle the whole file from the 60 lines shown.
+
+The script finds the first table by locating the header line "Average Value Weighted Returns -- Monthly". It then reads rows until the first line that doesn't start with a 6-digit date, which ends the monthly block.
+
+- **Missing data:** values of -99.99 or -999 are treated as NaN. Any month with a missing value in one of the six portfolios gets a NaN SMB and is dropped. I use a plain sum rather than a skip-NaN mean so that a partly missing month is not averaged over fewer portfolios.
+- **Formula:** SMB is the mean of the three small portfolios minus the mean of the three big ones, as specified.
+- **Parsing:** I parse each line with the `csv` module and strip whitespace. Annual data comes later in the file and only appears after the monthly block ends, so it is never read.
+
+```python
+import csv
+import numpy as np
+import pandas as pd
+
+rows = []
+started = False
+with open("6_Portfolios_2x3.csv", newline="") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if s.startswith("Average Value Weighted Returns") and "Monthly" in s:
+                started = True
+            continue
+        if not s:
+            if rows:
+                break
+            continue
+        parts = [p.strip() for p in next(csv.reader([s]))]
+        if parts[0].isdigit() and len(parts[0]) == 6:
+            try:
+                rows.append([int(parts[0])] + [float(x) for x in parts[1:7]])
+            except ValueError:
+                break
+        else:
+            if rows:
+                break
+
+df = pd.DataFrame(rows, columns=["date", "a", "b", "c", "d", "e", "f"])
+vals = df[["a", "b", "c", "d", "e", "f"]].astype(float)
+vals = vals.where(~vals.isin([-99.99, -999.0]), np.nan)
+small = vals[["a", "b", "c"]].sum(axis=1, skipna=False) / 3
+big = vals[["d", "e", "f"]].sum(axis=1, skipna=False) / 3
+out = pd.DataFrame({"date": df["date"].astype(int), "value": small - big})
+out = out.dropna().reset_index(drop=True)
+out.to_csv("output.csv", index=False)
+```

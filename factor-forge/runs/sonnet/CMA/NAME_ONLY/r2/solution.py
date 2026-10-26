@@ -1,0 +1,31 @@
+import pandas as pd
+import numpy as np
+
+with open("6_Portfolios_ME_INV_2x3.csv", "r") as f:
+    lines = f.read().splitlines()
+
+start = None
+for i, l in enumerate(lines):
+    if "Average Value Weighted Returns" in l and "Monthly" in l:
+        start = i + 1
+        break
+
+rows = []
+started = False
+for l in lines[start:]:
+    parts = [p.strip() for p in l.split(",")]
+    tok = parts[0]
+    if len(tok) == 6 and tok.isdigit() and len(parts) >= 7:
+        started = True
+        rows.append([int(tok)] + [float(x) for x in parts[1:7]])
+    else:
+        if started:
+            break
+
+df = pd.DataFrame(rows, columns=["date", "SL", "S2", "SH", "BL", "B2", "BH"])
+vals = df[["SL", "S2", "SH", "BL", "B2", "BH"]].copy()
+vals = vals.mask((vals <= -99.99) | (vals <= -999))
+df["value"] = 0.5 * (vals["SL"] + vals["BL"]) - 0.5 * (vals["SH"] + vals["BH"])
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

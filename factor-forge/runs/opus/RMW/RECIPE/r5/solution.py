@@ -1,0 +1,53 @@
+import re
+import pandas as pd
+import numpy as np
+
+FNAME = "6_Portfolios_ME_OP_2x3.csv"
+
+with open(FNAME, "r", encoding="latin-1") as f:
+    lines = [l.rstrip("\r\n") for l in f]
+
+# locate first block
+start = None
+for i, l in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in l:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly block not found")
+
+# header line
+hdr_idx = start + 1
+while lines[hdr_idx].strip() == "":
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+cols = header[1:]
+
+rows = []
+for l in lines[hdr_idx + 1:]:
+    s = l.strip()
+    if s == "":
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append([int(parts[0])] + [float(p) if p else np.nan for p in parts[1:]])
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+
+def find(name):
+    for c in cols:
+        if c.upper().replace(" ", "") == name.upper().replace(" ", ""):
+            return c
+    raise KeyError(name)
+
+sh, bh, sl, bl = find("SMALL HiOP"), find("BIG HiOP"), find("SMALL LoOP"), find("BIG LoOP")
+sub = df[[sh, bh, sl, bl]].astype(float)
+sub = sub.mask((sub <= -99.99 + 1e-9) & (sub >= -99.99 - 1e-9))
+sub = sub.mask(sub <= -999 + 1e-9)
+
+val = 0.5 * (sub[sh] + sub[bh]) - 0.5 * (sub[sl] + sub[bl])
+out = pd.DataFrame({"date": df["date"].astype(int), "value": val})
+out = out.dropna().sort_values("date").drop_duplicates("date")
+out["value"] = out["value"].round(6)
+out.to_csv("output.csv", index=False)

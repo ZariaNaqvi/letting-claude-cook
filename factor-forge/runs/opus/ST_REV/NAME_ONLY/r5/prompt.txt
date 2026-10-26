@@ -1,0 +1,81 @@
+TASK
+Construct the Fama-French Short-Term Reversal (ST_Rev) factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_ME_Prior_1_0.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.
+
+DATA
+You are given 1 raw CSV file(s), exactly as downloaded from the Ken French Data Library: 6_Portfolios_ME_Prior_1_0.csv.
+They are in the current working directory. Below are the first 60 lines of each file, verbatim.
+The files are much longer than what is shown; you have to write code that handles the whole file.
+
+=== FILE: 6_Portfolios_ME_Prior_1_0.csv (first 60 of 7482 lines, verbatim) ===
+This file was created using the 202608 CRSP database.
+It contains value- weighted returns for the intersections of  2 ME portfolios
+and  3 prior return portfolios.
+
+The portfolios are constructed monthly.  ME is market cap at the end of the
+previous month.  PRIOR_RET is from - 1 to - 1.
+
+Missing data are indicated by -99.99 or -999.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoPRIOR,ME1 PRIOR2,SMALL HiPRIOR,BIG LoPRIOR,ME2 PRIOR2,BIG HiPRIOR
+192602,  -7.13,  -5.64,  -6.39,  -4.94,  -2.75,  -2.00
+192603, -12.42,  -9.71,  -9.72, -14.01,  -5.42,  -5.18
+192604,   4.21,   3.59,   4.00,   1.38,   4.43,   3.65
+192605,  -0.25,   0.55,   0.68,  -0.72,   1.92,   0.95
+192606,   5.41,   4.53,   4.68,  10.97,   5.34,   3.71
+192607,   0.67,   1.00,   0.65,   2.09,   2.30,   5.75
+192608,   5.02,   2.49,   2.92,   2.98,   3.20,   2.22
+192609,  -0.66,   0.42,  -2.81,  -0.53,   0.49,   1.77
+192610,  -5.83,  -2.63,  -2.78,  -3.88,  -2.65,  -2.86
+192611,   1.39,   5.89,   1.41,   3.83,   3.28,   1.84
+192612,   3.24,   2.81,   1.85,   4.65,   2.74,   2.16
+192701,   0.03,   1.69,   3.09,  -1.13,   0.60,  -0.18
+192702,   5.60,   5.62,   6.69,   5.13,   3.81,   6.52
+192703,  -2.82,  -2.98,  -2.29,  -3.10,   1.07,   3.28
+192704,  -1.78,   1.92,  -0.22,  -3.45,   0.31,   2.09
+192705,   5.94,   6.95,   6.17,   4.97,   5.44,   6.80
+192706,  -1.87,  -1.45,  -1.31,  -2.51,  -2.27,  -1.72
+192707,   4.62,   5.07,   4.33,   6.05,   7.82,   8.27
+192708,  -1.25,   1.60,  -2.22,   0.54,   1.75,   3.78
+192709,   1.92,   2.29,   2.02,   4.29,   4.47,   6.27
+192710,  -5.62,  -2.19,  -1.65,  -6.09,  -3.28,  -4.37
+192711,  12.57,   7.89,   6.26,   9.15,   5.93,   6.04
+192712,   3.13,   4.50,   1.61,   1.36,   2.13,   3.69
+192801,   2.49,   3.63,   1.17,  -1.11,  -0.02,  -1.18
+192802,  -3.26,  -2.94,  -2.38,  -1.89,  -0.67,  -2.96
+192803,   6.44,   6.42,   9.66,   5.47,   7.82,  11.57
+192804,   6.90,   7.61,  11.59,   6.87,   4.43,   3.12
+192805,   3.53,   3.13,   1.81,   3.55,   2.17,  -1.35
+192806,  -8.47,  -6.19,  -8.87,  -3.86,  -3.99,  -5.80
+192807,  -2.28,   0.29,   1.65,   1.66,   0.87,   1.02
+192808,   5.57,   4.08,   3.77,   8.42,   5.85,   9.84
+192809,   5.53,   4.58,   5.70,   2.36,   3.04,   3.19
+192810,   0.54,   1.88,   5.27,   2.20,   1.21,   2.13
+192811,  11.65,   9.70,   9.61,   9.79,  11.70,  15.19
+192812,  -0.24,  -2.44,  -0.69,  -1.27,   0.53,   1.61
+192901,  -0.01,   2.45,   3.68,  -4.25,   6.97,   5.41
+192902,   0.48,   1.45,   0.52,  -0.57,   1.01,  -0.76
+192903,  -5.18,  -4.70,  -4.31,  -3.58,   0.29,   1.09
+192904,   1.17,   2.45,  -0.13,   1.83,   2.12,   1.61
+192905, -12.97,  -8.51,  -9.73,  -7.80,  -4.79,  -6.20
+192906,   8.88,   5.06,   3.84,   9.10,  10.22,  11.19
+192907,   1.43,   2.71,  -1.92,   1.05,   3.55,   7.12
+192908,   0.40,   0.38,  -0.53,   5.78,   8.72,  10.19
+192909,  -6.18,  -2.82,  -5.94,  -2.65,  -3.73,  -5.93
+192910, -26.19, -20.26, -22.89, -22.12, -16.52, -21.27
+192911, -17.94, -11.32, -10.53, -17.59, -13.20,  -8.59
+192912,  -5.18,  -2.15,  -2.52,   4.03,   2.49,  -1.72
+193001,  18.73,  10.21,   6.27,   4.23,   5.11,   6.06
+[file continues; 7422 more lines]
+
+OUTPUT CONTRACT
+- Reply with exactly ONE Python code block (```python ... ```). I will save it as solution.py and run it unchanged with `python solution.py`, no arguments, from the directory that holds the files.
+- The script reads the files above by name from the current directory. No internet access, no other files.
+- Allowed libraries: the Python standard library, pandas and numpy only (Python 3.12, pandas 3.0, numpy 2.x).
+- The script must write output.csv to the current directory with exactly two columns, in this order: date,value
+    date  = integer YYYYMM (for example 192607)
+    value = the factor's monthly return in PERCENT (1.23 means 1.23%), same units as the input files
+- One row per month, for every month the input data supports. Monthly rows only.
+- The script must finish within 60 seconds.
+- You may add a short explanation outside the code block; only the code is run and scored.

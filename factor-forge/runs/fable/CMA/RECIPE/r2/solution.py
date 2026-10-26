@@ -1,0 +1,68 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_INV_2x3.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly table: header line starting with a comma followed by column names
+# and then rows with 6-digit YYYYMM dates.
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first header line beginning with a comma
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# Find header line (starts with comma) after start
+hdr_idx = None
+for i in range(start, len(lines)):
+    if lines[i].startswith(","):
+        hdr_idx = i
+        break
+
+header = [c.strip() for c in lines[hdr_idx].split(",")]
+rows = []
+for line in lines[hdr_idx + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing codes as NaN
+vals = df.iloc[:, 1:]
+vals = vals.mask((vals <= -99.99))
+df.iloc[:, 1:] = vals
+
+def find_col(pattern):
+    for c in df.columns[1:]:
+        if re.fullmatch(pattern, c.replace(" ", "").upper()):
+            return c
+    raise KeyError(pattern)
+
+sl = find_col(r"SMALLLOINV")
+sh = find_col(r"SMALLHIINV")
+bl = find_col(r"BIGLOINV")
+bh = find_col(r"BIGHIINV")
+
+df["value"] = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])
+
+out = df[["date", "value"]].dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

@@ -1,0 +1,79 @@
+The script finds the first block ("Average Value Weighted Returns -- Monthly"), reads its header to locate the four needed columns by name, and stops at the first blank line or non-date row after the data. It treats -99.99 and -999 as missing, computes RMW = 0.5·(SMALL HiOP + BIG HiOP) − 0.5·(SMALL LoOP + BIG LoOP) for each month, and writes `output.csv` with `date,value`.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+SRC = "6_Portfolios_ME_OP_2x3.csv"
+OUT = "output.csv"
+MISSING = {-99.99, -999.0}
+
+
+def to_float(s):
+    try:
+        v = float(s)
+    except ValueError:
+        return np.nan
+    if v in MISSING:
+        return np.nan
+    return v
+
+
+def main():
+    with open(SRC, "r", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate first block header
+    start = None
+    for i, ln in enumerate(lines):
+        if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly block not found")
+
+    # header is the next non-empty line
+    h = start + 1
+    while h < len(lines) and lines[h].strip() == "":
+        h += 1
+    header = [c.strip() for c in lines[h].split(",")]
+    col_idx = {name: j for j, name in enumerate(header)}
+
+    needed = ["SMALL HiOP", "BIG HiOP", "SMALL LoOP", "BIG LoOP"]
+    for n in needed:
+        if n not in col_idx:
+            raise RuntimeError(f"Column {n} not found in header: {header}")
+
+    rows = []
+    started = False
+    for ln in lines[h + 1:]:
+        s = ln.strip()
+        if s == "":
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            rec = {"date": int(parts[0])}
+            for n in needed:
+                j = col_idx[n]
+                rec[n] = to_float(parts[j]) if j < len(parts) else np.nan
+            rows.append(rec)
+        else:
+            if started:
+                break
+
+    df = pd.DataFrame(rows)
+    df = df.dropna(subset=needed)
+    df["value"] = (0.5 * (df["SMALL HiOP"] + df["BIG HiOP"])
+                   - 0.5 * (df["SMALL LoOP"] + df["BIG LoOP"]))
+    out = df[["date", "value"]].copy()
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUT, index=False)
+
+
+if __name__ == "__main__":
+    main()
+```

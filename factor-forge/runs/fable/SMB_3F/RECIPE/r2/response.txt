@@ -1,0 +1,52 @@
+Parse the first monthly block (rows with 6-digit YYYYMM dates until the next blank/header line), handle missing codes, and compute SMB as the difference of the small and big portfolio averages.
+
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.readlines()
+
+# Locate the first header line (starts with a comma, lists the portfolio names)
+start = None
+for i, line in enumerate(lines):
+    if line.startswith(",") and "SMALL LoBM" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Could not find the first monthly table header")
+
+cols = [c.strip() for c in lines[start].strip().split(",")]
+cols[0] = "date"
+
+rows = []
+for line in lines[start + 1:]:
+    s = line.strip()
+    if not s:
+        break  # end of block
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break  # next block header or non-monthly row
+    if len(parts) != len(cols):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=cols)
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan
+
+small = df[["SMALL LoBM", "ME1 BM2", "SMALL HiBM"]].mean(axis=1, skipna=False)
+big = df[["BIG LoBM", "ME2 BM2", "BIG HiBM"]].mean(axis=1, skipna=False)
+
+out = pd.DataFrame({"date": df["date"], "value": (small - big).round(4)})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```
+
+The script reads only the first "Average Value Weighted Returns -- Monthly" block (stopping at the first blank line or non-YYYYMM row), treats -99.99/-999 as missing, and writes `date,value` with SMB in percent.

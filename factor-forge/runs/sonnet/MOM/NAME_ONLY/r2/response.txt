@@ -1,0 +1,37 @@
+The momentum factor is the average of the two high-prior-return portfolios minus the average of the two low-prior-return portfolios: Mom = ½(Small Hi + Big Hi) − ½(Small Lo + Big Lo). I have not run this script against the full file.
+
+The file holds several sections (value-weighted, equal-weighted, firm counts, and so on). The script reads only the first block, the monthly value-weighted returns. It stops at the first non-data line after that block, so later sections and annual rows are ignored. Months with a missing value (-99.99 or -999) in any of the four portfolios are dropped.
+
+```python
+import re
+import pandas as pd
+import numpy as np
+
+rows = []
+started = False
+in_section = False
+with open("6_Portfolios_ME_Prior_12_2.csv", "r", errors="ignore") as f:
+    for line in f:
+        s = line.strip()
+        if not in_section:
+            if "value" in s.lower() and "weighted" in s.lower() and "monthly" in s.lower():
+                in_section = True
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0] or ""):
+            started = True
+            if len(parts) >= 7:
+                try:
+                    rows.append([int(parts[0])] + [float(x) for x in parts[1:7]])
+                except ValueError:
+                    pass
+        elif started:
+            break
+
+df = pd.DataFrame(rows, columns=["date", "sl", "sm", "sh", "bl", "bm", "bh"])
+for c in ["sl", "sm", "sh", "bl", "bm", "bh"]:
+    df.loc[(df[c] <= -99.99) | (df[c] <= -999), c] = np.nan
+df = df.dropna()
+df["value"] = ((df["sh"] + df["bh"]) / 2 - (df["sl"] + df["bl"]) / 2).round(4)
+df[["date", "value"]].to_csv("output.csv", index=False)
+```

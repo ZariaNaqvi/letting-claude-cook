@@ -1,0 +1,75 @@
+import re
+import pandas as pd
+import numpy as np
+
+SRC = "6_Portfolios_2x3.csv"
+OUT = "output.csv"
+
+with open(SRC, encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# Locate the first "Average Value Weighted Returns -- Monthly" block
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Monthly value-weighted block not found")
+
+# Header: next non-empty line after the title
+h = start + 1
+while h < len(lines) and not lines[h].strip():
+    h += 1
+header = [c.strip() for c in lines[h].split(",")]
+
+def find_col(name):
+    for idx, c in enumerate(header):
+        if c.upper() == name.upper():
+            return idx
+    raise RuntimeError(f"Column {name} not found in header: {header}")
+
+idx_small_lo = find_col("SMALL LoBM")
+idx_small_hi = find_col("SMALL HiBM")
+idx_big_lo = find_col("BIG LoBM")
+idx_big_hi = find_col("BIG HiBM")
+ncols = len(header)
+
+# Read data rows until blank line / non-date line
+records = []
+for k in range(h + 1, len(lines)):
+    s = lines[k].strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = []
+    for p in parts[1:ncols]:
+        try:
+            v = float(p)
+        except ValueError:
+            v = np.nan
+        if v <= -99.0:  # missing-data codes -99.99 / -999
+            v = np.nan
+        vals.append(v)
+    while len(vals) < ncols - 1:
+        vals.append(np.nan)
+    records.append([int(parts[0])] + vals)
+
+cols = ["date"] + [f"c{i}" for i in range(1, ncols)]
+df = pd.DataFrame(records, columns=cols)
+
+sl = df[f"c{idx_small_lo}"]
+sh = df[f"c{idx_small_hi}"]
+bl = df[f"c{idx_big_lo}"]
+bh = df[f"c{idx_big_hi}"]
+
+hml = 0.5 * (sh + bh) - 0.5 * (sl + bl)
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": hml})
+out = out.dropna(subset=["value"]).reset_index(drop=True)
+out["date"] = out["date"].astype(int)
+
+out.to_csv(OUT, index=False, columns=["date", "value"])
+print(f"Wrote {len(out)} rows to {OUT}")

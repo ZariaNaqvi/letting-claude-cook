@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVUgT1v9WVCFXAjSddB",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\nimport re\n\nfname = \"6_Portfolios_ME_Prior_1_0.csv\"\n\nwith open(fname, \"r\") as f:\n    lines = f.readlines()\n\n# Locate the first table: \"Average Value Weighted Returns -- Monthly\"\nstart = None\nfor i, line in enumerate(lines):\n    if \"Average Value Weighted Returns -- Monthly\" in line:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Could not find value-weighted monthly table\")\n\n# Header line is the next line starting with a comma\nhdr_idx = start + 1\nwhile hdr_idx < len(lines) and not lines[hdr_idx].strip().startswith(\",\"):\n    hdr_idx += 1\nheader = [h.strip() for h in lines[hdr_idx].strip().split(\",\")]\nheader[0] = \"date\"\n\nrows = []\nfor line in lines[hdr_idx + 1:]:\n    s = line.strip()\n    if not s:\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break\n    if len(parts) != len(header):\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in header[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Replace missing codes\nfor c in header[1:]:\n    df.loc[df[c].isin([-99.99, -999.0, -999]), c] = np.nan\n\nsl = df[\"SMALL LoPRIOR\"]\nbl = df[\"BIG LoPRIOR\"]\nsh = df[\"SMALL HiPRIOR\"]\nbh = df[\"BIG HiPRIOR\"]\n\ndf[\"value\"] = 0.5 * (sl + bl) - 0.5 * (sh + bh)\n\nout = df[[\"date\", \"value\"]].dropna(subset=[\"value\"]).copy()\nout[\"date\"] = out[\"date\"].astype(int)\nout[\"value\"] = out[\"value\"].round(4)\nout.to_csv(\"output.csv\", index=False)\n```\n\nThe script parses only the first block (value-weighted monthly returns), stops at the first blank/non-YYYYMM line, treats -99.99/-999 as missing, and computes ST_Rev = \u00bd(Small Lo + Big Lo) \u2212 \u00bd(Small Hi + Big Hi) in percent.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2708,
+    "output_tokens": 827,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

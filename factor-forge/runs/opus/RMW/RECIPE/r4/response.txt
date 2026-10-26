@@ -1,0 +1,69 @@
+The script reads only the first block ("Average Value Weighted Returns -- Monthly") of the file. It stops at the first line that is not a `YYYYMM` row, so the equal-weighted and annual blocks are never read.
+
+It then computes RMW = 0.5·(SMALL HiOP + BIG HiOP) − 0.5·(SMALL LoOP + BIG LoOP). Months where any needed input is a missing-data code (−99.99 or −999) are left out of `output.csv`.
+
+```python
+import csv
+import numpy as np
+import pandas as pd
+
+FNAME = "6_Portfolios_ME_OP_2x3.csv"
+
+with open(FNAME, "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# locate first table: Average Value Weighted Returns -- Monthly
+start = None
+for i, ln in enumerate(lines):
+    if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly block not found")
+
+# header line follows (skip blank lines just in case)
+j = start + 1
+while j < len(lines) and lines[j].strip() == "":
+    j += 1
+header = [h.strip() for h in next(csv.reader([lines[j]]))]
+cols = header[1:]
+j += 1
+
+rows = []
+while j < len(lines):
+    ln = lines[j]
+    if ln.strip() == "":
+        break
+    parts = [p.strip() for p in next(csv.reader([ln]))]
+    d = parts[0]
+    if not (d.isdigit() and len(d) == 6):
+        break
+    vals = []
+    for p in parts[1:1 + len(cols)]:
+        try:
+            vals.append(float(p))
+        except ValueError:
+            vals.append(np.nan)
+    rows.append([int(d)] + vals)
+    j += 1
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+for c in cols:
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+def find(name):
+    key = name.upper().replace(" ", "")
+    for c in cols:
+        if c.upper().replace(" ", "") == key:
+            return c
+    raise KeyError(name)
+
+sh, bh = find("SMALL HiOP"), find("BIG HiOP")
+sl, bl = find("SMALL LoOP"), find("BIG LoOP")
+
+df["value"] = 0.5 * (df[sh] + df[bh]) - 0.5 * (df[sl] + df[bl])
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out = out.sort_values("date").drop_duplicates("date")
+out.to_csv("output.csv", index=False)
+```

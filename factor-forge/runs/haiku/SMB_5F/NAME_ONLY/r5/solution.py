@@ -1,0 +1,77 @@
+import re
+import pandas as pd
+
+
+def parse_vw_monthly(fname):
+    """Parse the 'Average Value Weighted Returns -- Monthly' block of a Ken French file."""
+    records = {}
+    cols = None
+    in_block = False
+    done = False
+    with open(fname, encoding="latin-1") as f:
+        for raw in f:
+            s = raw.strip()
+            if done:
+                break
+            if not in_block:
+                if "Value Weighted" in s and "Monthly" in s:
+                    in_block = True
+                continue
+            # Inside the block: stop at the next section header
+            if s.startswith("Average") or s.startswith("Annual"):
+                done = True
+                break
+            if not s:
+                continue
+            parts = [p.strip() for p in s.split(",")]
+            if cols is None and parts[0] == "":
+                cols = parts[1:]
+                continue
+            if re.fullmatch(r"\d{6}", parts[0]) and cols is not None and len(parts) >= len(cols) + 1:
+                vals = []
+                for p in parts[1:len(cols) + 1]:
+                    try:
+                        v = float(p)
+                    except ValueError:
+                        v = float("nan")
+                    if v in (-99.99, -999.0):
+                        v = float("nan")
+                    vals.append(v)
+                records[int(parts[0])] = vals
+    df = pd.DataFrame.from_dict(records, orient="index", columns=cols)
+    df.index.name = "date"
+    df = df.sort_index()
+    return df
+
+
+def small_minus_big(df):
+    small_cols = [c for c in df.columns if c.upper().startswith("SMALL")]
+    big_cols = [c for c in df.columns if c.upper().startswith("BIG")]
+    small_mean = df[small_cols].mean(axis=1, skipna=True)
+    big_mean = df[big_cols].mean(axis=1, skipna=True)
+    return small_mean - big_mean
+
+
+def main():
+    bm = parse_vw_monthly("6_Portfolios_2x3.csv")
+    op = parse_vw_monthly("6_Portfolios_ME_OP_2x3.csv")
+    inv = parse_vw_monthly("6_Portfolios_ME_INV_2x3.csv")
+
+    smb_bm = small_minus_big(bm).rename("smb_bm")
+    smb_op = small_minus_big(op).rename("smb_op")
+    smb_inv = small_minus_big(inv).rename("smb_inv")
+
+    combined = pd.concat([smb_bm, smb_op, smb_inv], axis=1, join="inner").dropna()
+    combined = combined.sort_index()
+
+    smb = combined.mean(axis=1)  # average of the three size spreads
+
+    out = pd.DataFrame({
+        "date": combined.index.astype(int),
+        "value": smb.values,
+    })
+    out.to_csv("output.csv", index=False)
+
+
+if __name__ == "__main__":
+    main()

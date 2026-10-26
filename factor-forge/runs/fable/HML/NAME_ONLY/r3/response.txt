@@ -1,0 +1,61 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+with open(fname, "r") as f:
+    lines = f.read().splitlines()
+
+# Locate the first "Average Value Weighted Returns -- Monthly" section
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first section (header line starting with a comma)
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# Find the header line (starts with a comma) after the section title
+hdr = start + 1
+while hdr < len(lines) and not lines[hdr].lstrip().startswith(","):
+    hdr += 1
+cols = [c.strip() for c in lines[hdr].split(",")]
+cols[0] = "date"
+
+rows = []
+for line in lines[hdr + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = []
+    for p in parts[1:]:
+        try:
+            vals.append(float(p))
+        except ValueError:
+            vals.append(np.nan)
+    rows.append([int(parts[0])] + vals)
+
+df = pd.DataFrame(rows, columns=cols)
+df = df.replace([-99.99, -999.0], np.nan)
+
+# Identify columns by position: SMALL LoBM, ME1 BM2, SMALL HiBM, BIG LoBM, ME2 BM2, BIG HiBM
+c = df.columns[1:]
+small_lo, small_hi = df[c[0]], df[c[2]]
+big_lo, big_hi = df[c[3]], df[c[5]]
+
+hml = 0.5 * (small_hi + big_hi) - 0.5 * (small_lo + big_lo)
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": hml.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)
+```
+
+HML is computed as ½(Small Value + Big Value) − ½(Small Growth + Big Growth) from the value-weighted monthly 2x3 portfolios, exactly per Ken French's definition.

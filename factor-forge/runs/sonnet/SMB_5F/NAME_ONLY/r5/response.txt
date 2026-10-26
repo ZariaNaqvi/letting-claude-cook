@@ -1,0 +1,51 @@
+This builds SMB the way Ken French does for the 5-factor model: the average of three small-minus-big spreads, one from each sort.
+
+- SMB_BM = mean(SMALL LoBM, ME1 BM2, SMALL HiBM) − mean(BIG LoBM, ME2 BM2, BIG HiBM)
+- SMB_OP and SMB_INV are built the same way from their own files.
+- SMB = (SMB_BM + SMB_OP + SMB_INV) / 3
+
+Each file has several sections (value-weighted monthly, equal-weighted monthly, annual). The script reads only the first block, the value-weighted monthly returns.
+
+The OP and INV files start in 196307, while the BM file starts in 192607. Ken French's 5-factor SMB only exists from 196307, so the output covers the months present in all three files. Months with a missing value (-99.99 or -999) in any of the three files are dropped.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+def read_first_block(fn):
+    rows = {}
+    started = False
+    with open(fn, "r", errors="ignore") as f:
+        for line in f:
+            parts = [p.strip() for p in line.strip().split(",")]
+            if len(parts) >= 7 and re.fullmatch(r"\d{6}", parts[0]):
+                started = True
+                vals = []
+                for p in parts[1:7]:
+                    try:
+                        v = float(p)
+                    except ValueError:
+                        v = np.nan
+                    if v <= -99.99:
+                        v = np.nan
+                    vals.append(v)
+                rows[int(parts[0])] = vals
+            elif started:
+                break
+    return pd.DataFrame.from_dict(rows, orient="index")
+
+def smb(df):
+    return df[[0, 1, 2]].mean(axis=1, skipna=False) - df[[3, 4, 5]].mean(axis=1, skipna=False)
+
+bm = read_first_block("6_Portfolios_2x3.csv")
+op = read_first_block("6_Portfolios_ME_OP_2x3.csv")
+inv = read_first_block("6_Portfolios_ME_INV_2x3.csv")
+
+idx = bm.index.intersection(op.index).intersection(inv.index)
+res = (smb(bm.loc[idx]) + smb(op.loc[idx]) + smb(inv.loc[idx])) / 3.0
+res = res.dropna().sort_index()
+
+out = pd.DataFrame({"date": res.index.astype(int), "value": res.values})
+out.to_csv("output.csv", index=False)
+```

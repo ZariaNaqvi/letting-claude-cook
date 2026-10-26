@@ -1,0 +1,71 @@
+import re
+import numpy as np
+import pandas as pd
+
+SRC = "6_Portfolios_2x3.csv"
+OUT = "output.csv"
+
+with open(SRC, encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly value-weighted block
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    raise SystemExit("Monthly value-weighted block not found")
+
+# Header: first non-empty line after the title
+hdr_idx = None
+for j in range(start + 1, len(lines)):
+    if lines[j].strip():
+        hdr_idx = j
+        break
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+# header[0] is the empty date column
+col_names = header[1:]
+
+date_re = re.compile(r"^\d{6}$")
+rows = []
+for k in range(hdr_idx + 1, len(lines)):
+    parts = [p.strip() for p in lines[k].split(",")]
+    if not parts or not date_re.match(parts[0]):
+        if rows:          # end of the monthly block
+            break
+        else:
+            continue
+    rows.append(parts)
+
+records = []
+for parts in rows:
+    vals = []
+    for p in parts[1:1 + len(col_names)]:
+        try:
+            v = float(p)
+        except ValueError:
+            v = np.nan
+        if v is None or np.isclose(v, -99.99) or np.isclose(v, -999.0):
+            v = np.nan
+        vals.append(v)
+    while len(vals) < len(col_names):
+        vals.append(np.nan)
+    rec = dict(zip(col_names, vals))
+    rec["date"] = int(parts[0])
+    records.append(rec)
+
+df = pd.DataFrame(records)
+
+needed = ["SMALL HiBM", "BIG HiBM", "SMALL LoBM", "BIG LoBM"]
+for c in needed:
+    if c not in df.columns:
+        raise SystemExit(f"Missing column: {c}")
+
+df["value"] = (0.5 * (df["SMALL HiBM"] + df["BIG HiBM"])
+               - 0.5 * (df["SMALL LoBM"] + df["BIG LoBM"]))
+
+out = df.loc[df["value"].notna(), ["date", "value"]].copy()
+out["date"] = out["date"].astype(int)
+out = out.sort_values("date").reset_index(drop=True)
+out.to_csv(OUT, index=False)

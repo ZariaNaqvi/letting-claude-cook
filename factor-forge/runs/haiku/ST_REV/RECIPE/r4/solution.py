@@ -1,0 +1,72 @@
+import re
+import numpy as np
+import pandas as pd
+
+INPUT = "6_Portfolios_ME_Prior_1_0.csv"
+OUTPUT = "output.csv"
+MISSING = {-99.99, -999.0, -999}
+
+
+def to_num(s):
+    try:
+        v = float(s)
+    except (TypeError, ValueError):
+        return np.nan
+    if np.isnan(v) or any(abs(v - m) < 1e-9 for m in MISSING):
+        return np.nan
+    return v
+
+
+def main():
+    with open(INPUT, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate first monthly value-weighted block
+    start = None
+    for i, line in enumerate(lines):
+        if "Average Value Weighted Returns -- Monthly" in line:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Monthly value-weighted block not found")
+
+    # Header row: first non-empty line after the title
+    j = start + 1
+    while j < len(lines) and lines[j].strip() == "":
+        j += 1
+    header = [h.strip() for h in lines[j].split(",")]
+    j += 1
+
+    def col(name):
+        return header.index(name)
+
+    c_sl = col("SMALL LoPRIOR")
+    c_sh = col("SMALL HiPRIOR")
+    c_bl = col("BIG LoPRIOR")
+    c_bh = col("BIG HiPRIOR")
+
+    records = []
+    started = False
+    while j < len(lines):
+        parts = [p.strip() for p in lines[j].split(",")]
+        j += 1
+        if parts and re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            def g(idx):
+                return to_num(parts[idx]) if idx < len(parts) else np.nan
+            date = int(parts[0])
+            sl, sh, bl, bh = g(c_sl), g(c_sh), g(c_bl), g(c_bh)
+            val = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+            records.append((date, val))
+        else:
+            if started:
+                break  # end of the monthly block
+
+    df = pd.DataFrame(records, columns=["date", "value"])
+    df = df.dropna(subset=["value"])
+    df["date"] = df["date"].astype(int)
+    df.to_csv(OUTPUT, index=False)
+
+
+if __name__ == "__main__":
+    main()

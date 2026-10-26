@@ -1,0 +1,50 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_OP_2x3.csv"
+
+with open(fname, "r") as f:
+    lines = f.readlines()
+
+# Locate the first "Average Value Weighted Returns -- Monthly" block
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Could not find value-weighted monthly block")
+
+# Header line follows the title
+header_idx = start + 1
+while header_idx < len(lines) and not lines[header_idx].strip().startswith(","):
+    header_idx += 1
+header = [h.strip() for h in lines[header_idx].strip().split(",")]
+
+rows = []
+for line in lines[header_idx + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing codes as NaN
+for c in df.columns[1:]:
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+rmw = 0.5 * (df["SMALL HiOP"] + df["BIG HiOP"]) - 0.5 * (df["SMALL LoOP"] + df["BIG LoOP"])
+
+out = pd.DataFrame({"date": df["date"], "value": rmw})
+out = out.dropna(subset=["value"])
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)

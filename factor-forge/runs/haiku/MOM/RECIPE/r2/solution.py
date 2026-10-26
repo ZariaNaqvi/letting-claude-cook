@@ -1,0 +1,75 @@
+import csv
+import math
+import pandas as pd
+
+INPUT = "6_Portfolios_ME_Prior_12_2.csv"
+OUTPUT = "output.csv"
+MISSING = {-99.99, -999.0}
+
+
+def to_float(s):
+    try:
+        v = float(s)
+    except (TypeError, ValueError):
+        return float("nan")
+    if math.isnan(v) or v in MISSING:
+        return float("nan")
+    return v
+
+
+def main():
+    with open(INPUT, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the first "Average Value Weighted Returns -- Monthly" block
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "average value weighted returns" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Monthly value-weighted block not found")
+
+    # Header is the next non-empty line
+    h = start + 1
+    while h < len(lines) and not lines[h].strip():
+        h += 1
+    header = [p.strip() for p in next(csv.reader([lines[h]]))]
+    col = {name: idx for idx, name in enumerate(header)}
+    needed = ["SMALL LoPRIOR", "SMALL HiPRIOR", "BIG LoPRIOR", "BIG HiPRIOR"]
+    for n in needed:
+        if n not in col:
+            raise RuntimeError(f"Column {n} not found in header: {header}")
+
+    rows = []
+    started = False
+    for line in lines[h + 1:]:
+        if not line.strip():
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in next(csv.reader([line]))]
+        if not parts or not parts[0].isdigit() or len(parts[0]) != 6:
+            if started:
+                break
+            continue
+        started = True
+        date = int(parts[0])
+        vals = {}
+        for n in needed:
+            idx = col[n]
+            vals[n] = to_float(parts[idx]) if idx < len(parts) else float("nan")
+        mom = (0.5 * (vals["SMALL HiPRIOR"] + vals["BIG HiPRIOR"])
+               - 0.5 * (vals["SMALL LoPRIOR"] + vals["BIG LoPRIOR"]))
+        rows.append((date, mom))
+
+    df = pd.DataFrame(rows, columns=["date", "value"])
+    df = df.dropna(subset=["value"])
+    df["date"] = df["date"].astype(int)
+    df = df.drop_duplicates(subset=["date"], keep="first").sort_values("date")
+    df.to_csv(OUTPUT, index=False, float_format="%.6f")
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRVdAUiBf3BcwEhiT8ok",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script reads the file line by line and finds the first table by locating the header line that contains \"Value Weighted Returns -- Monthly\". It then takes the next line as the column header and parses rows until the first line that doesn't start with a 6-digit date. Missing values (-99.99 or -999) are set to NaN, and those months are dropped from the output.\n\nHML is computed as 0.5*(SMALL HiBM + BIG HiBM) - 0.5*(SMALL LoBM + BIG LoBM). I did not run it against the full file.\n\n```python\nimport numpy as np\nimport pandas as pd\n\nrows = []\nwith open(\"6_Portfolios_2x3.csv\", \"r\", encoding=\"latin-1\") as f:\n    lines = f.read().splitlines()\n\nstart = None\nfor i, l in enumerate(lines):\n    if \"Average Value Weighted Returns\" in l and \"Monthly\" in l:\n        start = i\n        break\n\nheader = [h.strip() for h in lines[start + 1].split(\",\")]\nfor l in lines[start + 2:]:\n    parts = [p.strip() for p in l.split(\",\")]\n    if not parts or not (len(parts[0]) == 6 and parts[0].isdigit()):\n        break\n    rows.append(parts[:len(header)])\n\ndf = pd.DataFrame(rows, columns=[\"date\"] + header[1:])\ndf[\"date\"] = df[\"date\"].astype(int)\ncols = header[1:]\nfor c in cols:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n    df.loc[(df[c] <= -99.99), c] = np.nan\n\nhml = 0.5 * (df[\"SMALL HiBM\"] + df[\"BIG HiBM\"]) - 0.5 * (df[\"SMALL LoBM\"] + df[\"BIG LoBM\"])\nout = pd.DataFrame({\"date\": df[\"date\"], \"value\": hml}).dropna()\nout[\"date\"] = out[\"date\"].astype(int)\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2792,
+    "output_tokens": 660,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

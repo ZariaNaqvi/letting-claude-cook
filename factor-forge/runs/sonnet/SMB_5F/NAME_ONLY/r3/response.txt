@@ -1,0 +1,65 @@
+This script builds SMB the way Ken French's 5-factor (2x3) definition does. It takes the three SMB components and averages them:
+
+- SMB_BM = mean(small portfolios) − mean(big portfolios), from the ME/BM file.
+- SMB_OP = the same difference, from the ME/OP file.
+- SMB_INV = the same difference, from the ME/INV file.
+- SMB = (SMB_BM + SMB_OP + SMB_INV) / 3.
+
+In each file, the first three columns are the small portfolios and the last three are the big ones.
+
+Only the first section of each file is used: the value-weighted monthly returns. Parsing stops at the first non-data line after that section's rows begin. Values of -99.99 or -999 are treated as missing, and that month is dropped.
+
+The OP and INV files start in 196307, while the BM file starts in 192607. SMB therefore needs all three files, so output.csv begins at 196307, the same start as French's 5-factor SMB. I have not run this against the full files.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+
+def read_first_section(fname):
+    rows = {}
+    started = False
+    with open(fname, "r", errors="ignore") as f:
+        for line in f:
+            s = line.strip()
+            if not started:
+                if "Value Weighted Returns" in s and "Monthly" in s:
+                    started = True
+                    seen_data = False
+                continue
+            parts = [p.strip() for p in s.split(",")]
+            if len(parts) >= 7 and re.fullmatch(r"\d{6}", parts[0]):
+                seen_data = True
+                vals = []
+                for p in parts[1:7]:
+                    try:
+                        v = float(p)
+                    except ValueError:
+                        v = np.nan
+                    if v <= -99.0:
+                        v = np.nan
+                    vals.append(v)
+                rows[int(parts[0])] = vals
+            else:
+                if seen_data:
+                    break
+    df = pd.DataFrame.from_dict(rows, orient="index")
+    return df
+
+
+def smb_part(df):
+    return df.iloc[:, 0:3].mean(axis=1, skipna=False) - df.iloc[:, 3:6].mean(axis=1, skipna=False)
+
+
+bm = smb_part(read_first_section("6_Portfolios_2x3.csv"))
+op = smb_part(read_first_section("6_Portfolios_ME_OP_2x3.csv"))
+inv = smb_part(read_first_section("6_Portfolios_ME_INV_2x3.csv"))
+
+d = pd.concat([bm, op, inv], axis=1, join="inner")
+d.columns = ["bm", "op", "inv"]
+d = d.dropna()
+out = pd.DataFrame({"date": d.index.astype(int), "value": d.mean(axis=1).values})
+out = out.sort_values("date")
+out.to_csv("output.csv", index=False)
+```

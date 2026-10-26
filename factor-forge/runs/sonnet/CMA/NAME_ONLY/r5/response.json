@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRWvt75nMzieKDmhVXUe",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQSxwoKEAgTGAI4AUIIdGhpbmtpbmcSDNX4WmgyNe5HquTI3BoMT2PIeWmQiWrctq4vIjDbXcCJPUGzz/lW4kugyImMNiWEyaUY8DETuiggeQ/ySA9kE3UvOGGuRHBczn7nzC8q5AkUE2ImuGXW4zLtWvV31SDFihJvhl4ORW/MNY1gJLr9IonkOU71KYPSl2MB31zk+kUdU0U4yBpivd/z4Ely2veM4m6A1X8T8E8LoaVrAMEqPHJUu5Sckruk45unS7ySesWZcuaIr2cReqU/MNkQf3xyYVoeNO9GOR6sWMpZhPLLJpxk0rJdgjeF2JaTGC+Y+Il6ACEY9Gan2p+G4PAczBuNdxm7tZ7rpp19JoiunIXxaixJFdSNdjGaNPmG3lJGvBF1evuEFavP+8ozZ5qQadLXnZ3Vl1WV85TD/KHzy0WBkhgtDqU9PGBDWiFD0+sTI1ZDVokIT34TI2WdM9pYIbiYyNaIfgv/1atKlHrEFv9A0wiiggQo2dbDrMrvb/rn6BgtVjy5NBDoerY+S88qu0CGVwfTOF5Trxsxt8Y0gpXn1ffkVZE+Abr64d41YfvJLZ02cX4TN4EqJVWyO201z1I9zDTvXlrfdj3cDUrvBciKuhQ3kKYRxpFRPYFVj9JOm5wVwBzauCF2cUcC/eZ01CNidgn/ZKsHwBtL1wxxPKUM6An6FwKOryMLWPkRJizi5HLimXhkRlt3t1RfhNCShEU5RazhrPo/AfEPACJ3/NuoaLmhTDxTSi8Ze0hJjXkYm0b7YJ9FFwtFi+0fbRFTe1BCKnTMExPTJR9GsPOX0zbu4MzyStxTC2IJiegj7GCcSmMVgmNVeb7rPUNbGrPcxz6hUNtu/teX5Kwu67tou77xOSIg3orji9AnWtE26nBzV/G5HbE03wxsuuBknm4I4Y6BeJw7uRG0yeqfSoFTnKxkogJvZ0UnA+1mpgtbdzpj/jxbix3CfevdpqYChBFnjsnRT8mH8gIheCwOZ43mW7E8cli6jLkYmXndbntPfQwKIJSETSZAHqUUOBbKdBuvUMMuXya73ldLKXQCMI6rTsAWZyGjMHZeDjEJOKKiBqqDCqKUDAvruWYf2zPXgqictKFjfidjzQqSefn/OU9DlibZIeIAsZ1b4H7YQoNogx+ORATwWLdAsLvT58J5dtT0B2cBZwH63VYrOA/d5QLbkzC5CeGkeUzy/A7tbfE78TsfBjPgP4Acp4bV9VpzNDdU2WgNx7Er32idW1gd7P43qCNR9tRIZJL3vMkhgMeHWW636t6kfom2Hw7/Ifip/VFc8AsFZKyJ+Et+y0JnMOOAPYeK0/cMtKB0gjtZuhTCBS+ANfzH1F9BRuxnFdmVbt0pEnZzQlTYW5rPO2Xqoq3GeIDe0rdp4avcNZtPTIYyYuTmpj6XOeyBr7V7fZDNE/93SyFkpoOXyrVPqFDblaAJ1F3EywGU6NlBIlxsuRwjcOteXC55iJ/pP4VLKNCUPd0uRaooOGOaCVfI3hgXXOuME/CQIQRlFhZufXpsATYGAGRAiS1g5YQO/KspOFFWGYB+VIBrczNF/8oEQXpSQrRs1355zSHAUtj1fjbq3TTn1m4alBDhreOXp6QTYppACGhB2OKR2K6+wCqAIbOMs2T51UkVd9dlFmoIWf7NDds/0BBQmLPObQ4hXKIOwfqt9gJOURsMbSsuT+UQ/luHtSJVvfW72UmIgW5HqbAhLfxQhnHNlCsAckjMRv3tM/2YjOCOL78s9BfpqWpQsdDomqT68oNixpFnhRCpDvtrwa7GEqMbIxxj+TW1GAE=",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "CMA is computed as the average of the two low-investment (conservative) portfolios minus the average of the two high-investment (aggressive) portfolios, using the value-weighted monthly section of the file. I have not run this against the full file.\n\n```python\nimport pandas as pd\n\nrows = []\nstarted = False\nwith open(\"6_Portfolios_ME_INV_2x3.csv\", \"r\", encoding=\"latin-1\") as f:\n    in_section = False\n    for line in f:\n        s = line.strip()\n        if not in_section:\n            if \"Average Value Weighted Returns\" in s and \"Monthly\" in s:\n                in_section = True\n            continue\n        if not s:\n            if started:\n                break\n            continue\n        parts = [p.strip() for p in s.split(\",\")]\n        if parts[0].isdigit() and len(parts[0]) == 6 and len(parts) >= 7:\n            started = True\n            try:\n                vals = [float(x) for x in parts[1:7]]\n            except ValueError:\n                continue\n            rows.append([int(parts[0])] + vals)\n        else:\n            if started:\n                break\n\ndf = pd.DataFrame(rows, columns=[\"date\", \"sl\", \"sm\", \"sh\", \"bl\", \"bm\", \"bh\"])\nbad = (df[[\"sl\", \"sm\", \"sh\", \"bl\", \"bm\", \"bh\"]] <= -99).any(axis=1)\ndf = df[~bad]\ndf[\"value\"] = 0.5 * (df[\"sl\"] + df[\"bl\"]) - 0.5 * (df[\"sh\"] + df[\"bh\"])\ndf[[\"date\", \"value\"]].to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2613,
+    "output_tokens": 846,
+    "output_tokens_details": {
+      "thinking_tokens": 317
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

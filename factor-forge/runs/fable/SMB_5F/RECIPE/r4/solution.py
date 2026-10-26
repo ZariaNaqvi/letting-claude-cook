@@ -1,0 +1,64 @@
+import re
+import pandas as pd
+import numpy as np
+
+FILES = ["6_Portfolios_2x3.csv", "6_Portfolios_ME_OP_2x3.csv", "6_Portfolios_ME_INV_2x3.csv"]
+
+
+def parse_first_monthly_block(path):
+    with open(path, "r", encoding="utf-8", errors="replace") as f:
+        lines = f.read().splitlines()
+    # locate first "Average Value Weighted Returns -- Monthly" block
+    start = None
+    for i, ln in enumerate(lines):
+        if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        raise ValueError(f"Monthly VW block not found in {path}")
+    # header line: first line after start that begins with a comma
+    j = start + 1
+    while j < len(lines) and not lines[j].strip().startswith(","):
+        j += 1
+    header = [h.strip() for h in lines[j].split(",")]
+    cols = header[1:]
+    rows = []
+    k = j + 1
+    while k < len(lines):
+        ln = lines[k].strip()
+        if ln == "":
+            break
+        parts = [p.strip() for p in ln.split(",")]
+        if not re.fullmatch(r"\d{6}", parts[0]):
+            break
+        vals = []
+        for p in parts[1:]:
+            try:
+                vals.append(float(p))
+            except ValueError:
+                vals.append(np.nan)
+        rows.append([int(parts[0])] + vals)
+        k += 1
+    df = pd.DataFrame(rows, columns=["date"] + cols).set_index("date")
+    df = df.replace([-99.99, -999.0], np.nan)
+    # identify small vs big columns by name
+    small = [c for c in df.columns if c.upper().startswith("SMALL") or c.upper().startswith("ME1")]
+    big = [c for c in df.columns if c.upper().startswith("BIG") or c.upper().startswith("ME2")]
+    if len(small) != 3 or len(big) != 3:
+        small, big = list(df.columns[:3]), list(df.columns[3:6])
+    smb = df[small].mean(axis=1) - df[big].mean(axis=1)
+    return smb
+
+
+series = [parse_first_monthly_block(p) for p in FILES]
+common = series[0].index
+for s in series[1:]:
+    common = common.intersection(s.index)
+common = sorted(common)
+out = pd.concat([s.reindex(common) for s in series], axis=1)
+smb = out.mean(axis=1, skipna=False)
+res = pd.DataFrame({"date": [int(d) for d in smb.index], "value": smb.values})
+res = res.dropna(subset=["value"])
+res["date"] = res["date"].astype(int)
+res = res.sort_values("date").reset_index(drop=True)
+res.to_csv("output.csv", index=False)

@@ -1,0 +1,207 @@
+TASK
+Construct the Fama-French SMB (small minus big) from the 5-factor (2x3) model factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_2x3.csv, 6_Portfolios_ME_OP_2x3.csv, 6_Portfolios_ME_INV_2x3.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.
+
+DATA
+You are given 3 raw CSV file(s), exactly as downloaded from the Ken French Data Library: 6_Portfolios_2x3.csv, 6_Portfolios_ME_OP_2x3.csv, 6_Portfolios_ME_INV_2x3.csv.
+They are in the current working directory. Below are the first 60 lines of each file, verbatim.
+The files are much longer than what is shown; you have to write code that handles the whole file.
+
+=== FILE: 6_Portfolios_2x3.csv (first 60 of 8980 lines, verbatim) ===
+This file was created using the 202608 CRSP database.
+It contains value- and equal-weighted returns for portfolios formed on ME and BEME.
+
+The portfolios are constructed at the end of June.  BEME is book value at the last fiscal year end of the prior calendar year
+divided by ME at the end of December of the prior year.
+Annual returns are from January to December.
+
+Missing data are indicated by -99.99 or -999.
+
+The break points include utilities and include financials
+
+The  portfolios  include utilities and include financials.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoBM,ME1 BM2,SMALL HiBM,BIG LoBM,ME2 BM2,BIG HiBM
+192607,   1.0866,   0.9068,  -0.1275,   5.7178,   1.9709,   1.4225
+192608,   0.7831,   1.1829,   5.4422,   2.7268,   2.6766,   6.3196
+192609,  -2.8045,  -0.0518,  -0.4399,   1.4777,   0.0850,  -0.7906
+192610,  -4.0289,  -4.5905,  -2.0128,  -3.6327,  -2.3475,  -4.0981
+192611,   3.2971,   3.6846,   2.0877,   3.2120,   2.9055,   3.4648
+192612,   2.5645,   1.8897,   3.2700,   2.9011,   2.6011,   2.4041
+192701,  -0.8099,  -0.3284,   3.9875,  -0.2624,   0.0374,   4.4694
+192702,   3.9809,   6.1106,   6.4416,   5.0212,   3.5751,   8.6332
+192703,  -2.2271,  -1.6348,  -3.1144,   1.2856,   0.2316,  -2.4761
+192704,  -1.3839,   1.2648,   3.4837,   3.0757,  -0.7725,  -0.5495
+192705,   5.4624,   3.5551,  13.4556,   5.4126,   5.0911,   7.4919
+192706,  -1.7163,   1.4262,  -4.0890,  -0.9667,  -3.0403,  -1.6467
+192707,   4.2604,   5.2595,   4.0181,   9.2715,   6.8071,   7.2634
+192708,   2.4876,  -2.3003,   0.7332,   4.0055,   1.1524,  -1.9351
+192709,   2.2005,   2.2367,   0.3714,   5.2451,   4.4202,   5.9339
+192710,  -0.2054,  -2.1686,  -6.0935,  -3.5692,  -4.3578,  -6.6283
+192711,  10.2824,   7.9528,  10.4641,   6.9718,   6.7451,   6.6385
+192712,   5.6729,   2.6650,   2.4534,   2.5010,   1.8708,   3.4734
+192801,   3.1432,   2.6832,   3.6043,  -0.4407,  -0.4021,  -2.3184
+192802,  -4.8779,  -1.7699,  -4.1263,  -0.6750,  -1.2169,  -2.7041
+192803,   6.9742,   8.6296,   9.4431,  12.3630,   6.1449,   7.6792
+192804,   5.0264,  10.7789,   9.9758,   2.9356,   5.9428,   4.4954
+192805,   6.6955,   1.9725,   2.6118,   2.5704,  -0.0445,   0.6499
+192806,  -9.1736,  -8.5169,  -6.7990,  -3.6356,  -4.1275,  -5.4462
+192807,  -0.4122,  -0.3806,  -0.9736,   1.3622,   0.1242,   0.8343
+192808,   6.1265,   5.0112,   3.7666,   8.7594,   5.4024,   6.8627
+192809,   5.7391,   4.4691,   6.1849,   3.0057,   1.9523,   4.2356
+192810,   6.8433,   3.1403,   1.6663,   1.3103,   1.4000,   2.2058
+192811,   8.6693,  11.1459,  12.1856,  11.1696,  13.3449,  12.9533
+192812,   0.6750,  -0.7061,  -0.5797,   0.9715,   0.0250,   1.1951
+192901,   0.2541,   1.9011,   1.7793,   6.5315,   4.8675,   2.5744
+192902,   0.7412,   1.1291,   0.3953,  -0.5723,   0.7548,   3.0873
+192903,  -6.2168,  -3.3714,  -4.3437,  -1.3904,   2.3223,  -0.1211
+192904,  -0.6478,   2.7887,   0.7306,   2.3256,   1.0882,   2.8092
+192905, -10.2271,  -9.4383, -12.8944,  -5.8502,  -4.1635,  -6.2167
+192906,   6.8989,   9.5386,   6.4560,  12.4699,   9.3942,   7.4366
+192907,  -0.0599,  -0.5054,   3.8676,   3.6533,   6.1852,   5.0609
+192908,  -1.1159,  -0.6976,  -0.4807,   7.2212,  12.5055,   7.2167
+192909,  -3.9326,  -4.2674,  -3.6070,  -4.4757,  -4.9772,  -6.3774
+192910, -22.9979, -19.6471, -21.2218, -23.8688, -14.5837, -10.5728
+192911, -14.6084,  -9.5797, -10.9661, -14.2521, -10.4563,  -7.7931
+192912,  -2.7372,  -3.1726,  -1.1822,   3.2379,   0.5554,   1.4058
+193001,   6.0309,   9.5193,   8.4726,   7.3577,   3.3456,   2.8546
+193002,   1.7589,   1.0717,   4.5687,   3.4688,   1.8817,   1.2148
+[file continues; 8920 more lines]
+
+=== FILE: 6_Portfolios_ME_OP_2x3.csv (first 60 of 6263 lines, verbatim) ===
+This file was created using the 202608 CRSP database.
+It contains value- and equal-weighted returns for portfolios formed on ME and OP.
+
+The portfolios are constructed at the end of June.  OP is operating profits (sales - cost
+of goods sold - selling, general and administrative expenses - interest expense) divided by book
+at the last fiscal year end of the prior calendar year.
+Annual returns are from January to December.
+
+Missing data are indicated by -99.99 or -999.
+
+Please be aware that some of the value-weight averages of operating profitability for
+deciles 1 and 10 are extreme. These are driven by extraordinary values of OP for
+individual firms. We have spot checked the accounting data that produce the
+extraordinary values and all the numbers we examined accurately reflect the
+data in the firm's accounting statements.
+
+The break points include utilities and include financials.
+
+The  portfolios  include utilities and include financials.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoOP,ME1 OP2,SMALL HiOP,BIG LoOP,ME2 OP2,BIG HiOP
+196307,  -0.8271,  -0.6030,  -0.4670,  -0.8758,   0.4120,   0.0439
+196308,   4.8286,   4.2918,   5.3371,   5.5646,   4.9316,   5.8518
+196309,  -0.9874,  -1.0672,  -2.7990,  -1.6849,  -0.8072,  -1.4241
+196310,   1.3546,   1.7163,   1.6065,   0.8531,   1.4226,   6.1848
+196311,  -1.2564,  -1.1526,  -2.2329,  -1.4749,   0.3244,  -1.3551
+196312,  -0.1141,   0.8430,   0.4948,   2.4576,   2.4700,   2.0979
+196401,   2.9416,   2.8013,   2.9534,   2.1697,   2.8818,   2.5841
+196402,   2.8081,   1.3217,   2.9989,   2.1461,   1.3009,   2.1792
+196403,   5.0888,   3.3919,   2.5890,   3.2697,   1.1867,   1.7010
+196404,  -1.2681,  -0.7196,  -1.4041,   2.2038,   0.9506,  -0.3082
+196405,   1.9300,   0.4715,   1.4283,   1.8218,   1.1661,   2.0189
+196406,   1.3926,   1.8051,   1.8818,   1.7709,   2.5344,   0.6118
+196407,   2.9210,   2.7970,   2.4208,   1.7438,   1.5824,   2.5093
+196408,  -0.7545,  -0.8503,  -0.4150,  -1.1410,  -1.0726,  -1.2484
+196409,   3.1423,   2.7010,   3.2512,   4.5069,   2.2166,   3.3551
+196410,   1.4113,   2.0948,   2.8977,   1.9701,   1.2120,   0.0255
+196411,  -0.5796,  -0.0540,   0.8462,   0.6131,   0.3887,   0.4064
+196412,  -0.6269,  -0.6978,  -0.4097,  -0.7575,   0.4428,   1.0376
+196501,   6.2025,   6.1050,   7.1227,   4.2061,   1.8538,   5.3099
+196502,   3.6025,   4.1714,   3.9986,   0.8181,   0.0254,   0.9342
+196503,   1.1506,   1.0736,   0.7470,  -1.0379,  -1.3489,  -1.2709
+196504,   4.7612,   4.5210,   4.0970,   3.0336,   2.7003,   4.4054
+196505,  -0.3668,   0.2748,   0.1976,   0.6981,   0.0884,  -0.8017
+196506,  -9.5679,  -9.0637,  -9.5413,  -5.7212,  -3.8454,  -5.2877
+196507,   2.8386,   4.0567,   2.0248,   3.6607,   0.7801,   1.6599
+196508,   4.9188,   4.7066,   6.3799,   1.6888,   1.9588,   4.2946
+196509,   4.8884,   4.4632,   3.2455,   4.0079,   2.4560,   3.9551
+196510,   6.7239,   5.8810,   6.8263,   2.2844,   1.1240,   4.5531
+196511,   6.7100,   3.9101,   4.6452,   0.6542,  -1.0037,   0.5559
+196512,   5.0567,   3.5099,   3.6229,   1.7354,   1.0983,   0.5650
+196601,   7.7605,   5.3994,   4.5500,   3.2655,  -0.9752,   1.1679
+196602,   4.9191,   2.2071,   3.0555,  -2.0089,  -1.9360,  -0.4559
+196603,  -2.6718,  -1.4470,  -2.4090,  -3.2626,  -2.6261,  -0.9477
+196604,   5.7182,   4.4071,   6.0555,   1.7919,   2.1708,   2.2970
+196605, -11.4375,  -9.2601,  -9.4425,  -6.0223,  -4.2581,  -4.7435
+196606,  -0.2513,   1.1187,   0.2249,  -1.3280,  -0.7310,  -1.6384
+196607,  -1.7754,  -0.8207,  -2.2683,  -1.1020,  -1.1634,  -1.3070
+[file continues; 6203 more lines]
+
+=== FILE: 6_Portfolios_ME_INV_2x3.csv (first 60 of 6257 lines, verbatim) ===
+This file was created using the 202608 CRSP database.
+It contains value- and equal-weighted returns for portfolios formed on ME and INV.
+
+The portfolios are constructed at the end of June.  INV is the change
+in total assets from the fiscal year ending in year t-2 to the fiscal year ending in t-1
+divided by t-2 total assets.
+Annual returns are from January to December.
+
+Missing data are indicated by -99.99 or -999.
+
+The break points include utilities and include financials.
+
+The  portfolios  include utilities and include financials.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoINV,ME1 INV2,SMALL HiINV,BIG LoINV,ME2 INV2,BIG HiINV
+196307,  -0.9962,  -0.5098,  -0.1385,  -1.2396,   0.5487,   0.1981
+196308,   4.6421,   4.4236,   5.5403,   6.1849,   4.8311,   6.0558
+196309,  -1.0470,  -2.1324,  -2.0696,  -1.1901,  -1.4168,  -0.4660
+196310,   2.0194,   1.0046,   1.4467,   2.0655,   1.8442,   7.1314
+196311,  -0.7462,  -1.1328,  -2.4649,   0.1795,   0.1686,  -2.6430
+196312,  -0.0953,   0.1850,   1.1097,   2.3372,   2.6013,   1.6368
+196401,   4.2674,   3.0242,   1.4225,   2.7854,   2.7354,   2.6678
+196402,   2.4559,   2.8335,   1.5921,   2.5349,   1.4431,   1.7770
+196403,   5.8353,   3.2906,   2.4035,   4.1144,   0.9174,   1.5810
+196404,  -0.9704,  -0.1621,  -1.5191,  -1.7953,   1.1802,   1.0063
+196405,   2.6522,   0.5430,   0.0009,   0.8658,   0.9869,   3.2524
+196406,   2.1025,   2.0395,   1.1954,   0.3238,   2.3249,   1.0308
+196407,   2.8697,   2.6663,   1.9496,   3.1320,   2.2080,   0.3891
+196408,  -1.3910,  -0.0718,  -0.5404,  -0.4171,  -1.1141,  -1.8158
+196409,   3.8084,   3.1370,   2.7812,   3.6801,   2.5308,   3.6353
+196410,   2.0470,   1.6190,   1.5551,   0.5135,   1.1019,   0.0178
+196411,  -0.7146,  -0.4735,   0.5481,   1.0835,   0.3210,   0.3292
+196412,  -2.0040,  -0.1165,   0.0038,  -0.5212,   0.9276,   0.4531
+196501,   7.0980,   5.8130,   6.3355,   4.7506,   2.6261,   5.4228
+196502,   4.0616,   3.5247,   4.3249,   0.8586,  -0.0129,   1.8324
+196503,   1.6720,   1.2723,   0.4202,  -1.0586,  -1.4158,  -1.0381
+196504,   3.7656,   5.0480,   5.2380,   2.3653,   3.1278,   5.2952
+196505,   0.5455,  -0.4135,   0.0742,   0.3779,  -0.3794,  -0.2445
+196506,  -9.2709,  -8.4814, -10.1262,  -5.8661,  -3.9569,  -5.8547
+196507,   3.3745,   2.5610,   3.2759,   1.5652,   1.3623,   1.8227
+196508,   6.2178,   4.7626,   6.0474,   2.2613,   2.4383,   4.0481
+196509,   4.4771,   3.7928,   4.0292,   4.0458,   3.0405,   3.0326
+196510,   6.4838,   6.3270,   7.2878,   2.4758,   2.3950,   3.1920
+196511,   7.5034,   4.3884,   6.2021,  -0.8942,  -1.0115,   2.1530
+196512,   2.8610,   4.1566,   4.5638,   1.2657,   1.0541,   0.6680
+196601,   6.6116,   6.2575,   5.9235,  -0.0020,   0.3011,   1.1978
+196602,   4.7885,   2.4700,   3.7742,  -3.2177,  -1.6301,   0.6937
+196603,  -1.5024,  -3.0564,  -1.7133,  -1.3261,  -2.9123,  -1.0176
+196604,   6.7597,   3.1707,   6.6106,   1.6033,   1.6287,   3.5943
+196605, -11.7393,  -9.5945,  -9.9109,  -5.1912,  -4.9351,  -4.0501
+196606,   0.9377,  -0.0652,   0.1970,  -0.2499,  -1.6199,  -1.0912
+196607,  -1.7534,  -1.2053,  -2.1017,  -0.1499,  -0.7106,  -3.2359
+196608, -10.2815,  -9.6286, -10.9197,  -6.8503,  -7.1561,  -7.8023
+196609,  -1.3825,  -1.6927,  -1.8897,   0.4000,   0.4988,  -3.7731
+196610,  -0.7063,  -0.2222,  -3.6802,   6.8686,   5.4415,   1.4519
+196611,   2.2880,   3.6031,   7.6306,  -1.5403,   0.7562,   6.3705
+196612,   1.2999,   1.0227,   3.9082,   0.9155,   0.6710,  -1.2223
+196701,  16.5956,  15.9689,  19.3513,   6.2204,   7.2331,   9.9249
+[file continues; 6197 more lines]
+
+OUTPUT CONTRACT
+- Reply with exactly ONE Python code block (```python ... ```). I will save it as solution.py and run it unchanged with `python solution.py`, no arguments, from the directory that holds the files.
+- The script reads the files above by name from the current directory. No internet access, no other files.
+- Allowed libraries: the Python standard library, pandas and numpy only (Python 3.12, pandas 3.0, numpy 2.x).
+- The script must write output.csv to the current directory with exactly two columns, in this order: date,value
+    date  = integer YYYYMM (for example 192607)
+    value = the factor's monthly return in PERCENT (1.23 means 1.23%), same units as the input files
+- One row per month, for every month the input data supports. Monthly rows only.
+- The script must finish within 60 seconds.
+- You may add a short explanation outside the code block; only the code is run and scored.

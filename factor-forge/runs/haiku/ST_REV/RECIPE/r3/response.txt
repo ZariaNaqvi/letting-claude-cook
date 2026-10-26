@@ -1,0 +1,95 @@
+This script finds the first "Average Value Weighted Returns -- Monthly" block, parses its monthly rows, and computes the factor as 0.5·(SMALL LoPRIOR + BIG LoPRIOR) − 0.5·(SMALL HiPRIOR + BIG HiPRIOR). It writes `output.csv` with `date,value`, dropping months where any required portfolio is missing.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+FILE = "6_Portfolios_ME_Prior_1_0.csv"
+OUT = "output.csv"
+MISSING = {-99.99, -999.0, -999}
+
+
+def parse_first_monthly_block(path):
+    with open(path, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # locate the first monthly value-weighted block
+    start = None
+    for i, ln in enumerate(lines):
+        if "Average Value Weighted Returns -- Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Monthly value-weighted block not found")
+
+    # header line: first line after the title that starts with a comma
+    hdr_idx = None
+    for j in range(start + 1, len(lines)):
+        if lines[j].strip().startswith(","):
+            hdr_idx = j
+            break
+    if hdr_idx is None:
+        raise RuntimeError("Header row not found")
+
+    header = [h.strip() for h in lines[hdr_idx].split(",")][1:]
+
+    rows = []
+    started = False
+    for k in range(hdr_idx + 1, len(lines)):
+        raw = lines[k].strip()
+        if not raw:
+            if started:
+                break
+            continue
+        parts = [p.strip() for p in raw.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]):
+            started = True
+            vals = []
+            for p in parts[1:1 + len(header)]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if v in MISSING:
+                    v = np.nan
+                vals.append(v)
+            while len(vals) < len(header):
+                vals.append(np.nan)
+            rows.append([int(parts[0])] + vals)
+        else:
+            if started:
+                break
+
+    df = pd.DataFrame(rows, columns=["date"] + header)
+    return df
+
+
+def find_col(cols, *keywords):
+    for c in cols:
+        if all(k in c for k in keywords):
+            return c
+    raise KeyError(f"Column with keywords {keywords} not found in {cols}")
+
+
+def main():
+    df = parse_first_monthly_block(FILE)
+    cols = list(df.columns[1:])
+
+    s_lo = find_col(cols, "SMALL", "LoPRIOR")
+    b_lo = find_col(cols, "BIG", "LoPRIOR")
+    s_hi = find_col(cols, "SMALL", "HiPRIOR")
+    b_hi = find_col(cols, "BIG", "HiPRIOR")
+
+    df = df.dropna(subset=[s_lo, b_lo, s_hi, b_hi]).copy()
+    df["value"] = (0.5 * (df[s_lo] + df[b_lo])
+                   - 0.5 * (df[s_hi] + df[b_hi]))
+
+    out = df[["date", "value"]].copy()
+    out["date"] = out["date"].astype(int)
+    out.to_csv(OUT, index=False)
+
+
+if __name__ == "__main__":
+    main()
+```

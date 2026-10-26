@@ -1,0 +1,81 @@
+TASK
+Construct the Fama-French HML (high minus low, value) from the 3-factor model factor exactly as Ken French does, monthly, from the raw files provided (6_Portfolios_2x3.csv). Write output.csv with columns date (int YYYYMM) and value (monthly return in percent, same units as the input files), one row per month for every month available in the input.
+
+DATA
+You are given 1 raw CSV file(s), exactly as downloaded from the Ken French Data Library: 6_Portfolios_2x3.csv.
+They are in the current working directory. Below are the first 60 lines of each file, verbatim.
+The files are much longer than what is shown; you have to write code that handles the whole file.
+
+=== FILE: 6_Portfolios_2x3.csv (first 60 of 8980 lines, verbatim) ===
+This file was created using the 202608 CRSP database.
+It contains value- and equal-weighted returns for portfolios formed on ME and BEME.
+
+The portfolios are constructed at the end of June.  BEME is book value at the last fiscal year end of the prior calendar year
+divided by ME at the end of December of the prior year.
+Annual returns are from January to December.
+
+Missing data are indicated by -99.99 or -999.
+
+The break points include utilities and include financials
+
+The  portfolios  include utilities and include financials.
+
+
+  Average Value Weighted Returns -- Monthly
+,SMALL LoBM,ME1 BM2,SMALL HiBM,BIG LoBM,ME2 BM2,BIG HiBM
+192607,   1.0866,   0.9068,  -0.1275,   5.7178,   1.9709,   1.4225
+192608,   0.7831,   1.1829,   5.4422,   2.7268,   2.6766,   6.3196
+192609,  -2.8045,  -0.0518,  -0.4399,   1.4777,   0.0850,  -0.7906
+192610,  -4.0289,  -4.5905,  -2.0128,  -3.6327,  -2.3475,  -4.0981
+192611,   3.2971,   3.6846,   2.0877,   3.2120,   2.9055,   3.4648
+192612,   2.5645,   1.8897,   3.2700,   2.9011,   2.6011,   2.4041
+192701,  -0.8099,  -0.3284,   3.9875,  -0.2624,   0.0374,   4.4694
+192702,   3.9809,   6.1106,   6.4416,   5.0212,   3.5751,   8.6332
+192703,  -2.2271,  -1.6348,  -3.1144,   1.2856,   0.2316,  -2.4761
+192704,  -1.3839,   1.2648,   3.4837,   3.0757,  -0.7725,  -0.5495
+192705,   5.4624,   3.5551,  13.4556,   5.4126,   5.0911,   7.4919
+192706,  -1.7163,   1.4262,  -4.0890,  -0.9667,  -3.0403,  -1.6467
+192707,   4.2604,   5.2595,   4.0181,   9.2715,   6.8071,   7.2634
+192708,   2.4876,  -2.3003,   0.7332,   4.0055,   1.1524,  -1.9351
+192709,   2.2005,   2.2367,   0.3714,   5.2451,   4.4202,   5.9339
+192710,  -0.2054,  -2.1686,  -6.0935,  -3.5692,  -4.3578,  -6.6283
+192711,  10.2824,   7.9528,  10.4641,   6.9718,   6.7451,   6.6385
+192712,   5.6729,   2.6650,   2.4534,   2.5010,   1.8708,   3.4734
+192801,   3.1432,   2.6832,   3.6043,  -0.4407,  -0.4021,  -2.3184
+192802,  -4.8779,  -1.7699,  -4.1263,  -0.6750,  -1.2169,  -2.7041
+192803,   6.9742,   8.6296,   9.4431,  12.3630,   6.1449,   7.6792
+192804,   5.0264,  10.7789,   9.9758,   2.9356,   5.9428,   4.4954
+192805,   6.6955,   1.9725,   2.6118,   2.5704,  -0.0445,   0.6499
+192806,  -9.1736,  -8.5169,  -6.7990,  -3.6356,  -4.1275,  -5.4462
+192807,  -0.4122,  -0.3806,  -0.9736,   1.3622,   0.1242,   0.8343
+192808,   6.1265,   5.0112,   3.7666,   8.7594,   5.4024,   6.8627
+192809,   5.7391,   4.4691,   6.1849,   3.0057,   1.9523,   4.2356
+192810,   6.8433,   3.1403,   1.6663,   1.3103,   1.4000,   2.2058
+192811,   8.6693,  11.1459,  12.1856,  11.1696,  13.3449,  12.9533
+192812,   0.6750,  -0.7061,  -0.5797,   0.9715,   0.0250,   1.1951
+192901,   0.2541,   1.9011,   1.7793,   6.5315,   4.8675,   2.5744
+192902,   0.7412,   1.1291,   0.3953,  -0.5723,   0.7548,   3.0873
+192903,  -6.2168,  -3.3714,  -4.3437,  -1.3904,   2.3223,  -0.1211
+192904,  -0.6478,   2.7887,   0.7306,   2.3256,   1.0882,   2.8092
+192905, -10.2271,  -9.4383, -12.8944,  -5.8502,  -4.1635,  -6.2167
+192906,   6.8989,   9.5386,   6.4560,  12.4699,   9.3942,   7.4366
+192907,  -0.0599,  -0.5054,   3.8676,   3.6533,   6.1852,   5.0609
+192908,  -1.1159,  -0.6976,  -0.4807,   7.2212,  12.5055,   7.2167
+192909,  -3.9326,  -4.2674,  -3.6070,  -4.4757,  -4.9772,  -6.3774
+192910, -22.9979, -19.6471, -21.2218, -23.8688, -14.5837, -10.5728
+192911, -14.6084,  -9.5797, -10.9661, -14.2521, -10.4563,  -7.7931
+192912,  -2.7372,  -3.1726,  -1.1822,   3.2379,   0.5554,   1.4058
+193001,   6.0309,   9.5193,   8.4726,   7.3577,   3.3456,   2.8546
+193002,   1.7589,   1.0717,   4.5687,   3.4688,   1.8817,   1.2148
+[file continues; 8920 more lines]
+
+OUTPUT CONTRACT
+- Reply with exactly ONE Python code block (```python ... ```). I will save it as solution.py and run it unchanged with `python solution.py`, no arguments, from the directory that holds the files.
+- The script reads the files above by name from the current directory. No internet access, no other files.
+- Allowed libraries: the Python standard library, pandas and numpy only (Python 3.12, pandas 3.0, numpy 2.x).
+- The script must write output.csv to the current directory with exactly two columns, in this order: date,value
+    date  = integer YYYYMM (for example 192607)
+    value = the factor's monthly return in PERCENT (1.23 means 1.23%), same units as the input files
+- One row per month, for every month the input data supports. Monthly rows only.
+- The script must finish within 60 seconds.
+- You may add a short explanation outside the code block; only the code is run and scored.

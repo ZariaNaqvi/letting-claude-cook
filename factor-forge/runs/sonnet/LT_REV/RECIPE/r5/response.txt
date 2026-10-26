@@ -1,0 +1,54 @@
+The script reads the file line by line and stops at the first table. It finds the first header line containing "SMALL LoPRIOR", then reads rows whose first field is a 6-digit YYYYMM until the first non-matching line after the data starts.
+
+Missing values are marked -99.99 or -999. If any of the four columns used is missing in a month, that month's value is set to NaN and the row is dropped. The task asks for every month the input supports, so dropping a month with missing inputs seems the safest choice.
+
+The columns are located by header name, so the code does not depend on their order. The header row is `,SMALL LoPRIOR,ME1 PRIOR2,SMALL HiPRIOR,BIG LoPRIOR,ME2 PRIOR2,BIG HiPRIOR`.
+
+```python
+import csv
+import math
+
+path = "6_Portfolios_ME_Prior_60_13.csv"
+rows = []
+header = None
+started = False
+with open(path, newline="", encoding="latin-1") as f:
+    for line in f:
+        s = line.strip()
+        if header is None:
+            if "SMALL LoPRIOR" in s:
+                header = [h.strip() for h in s.split(",")]
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts[0]) == 6 and parts[0].isdigit():
+            started = True
+            rows.append(parts)
+        else:
+            if started:
+                break
+
+idx = {name: i for i, name in enumerate(header)}
+cols = ["SMALL LoPRIOR", "BIG LoPRIOR", "SMALL HiPRIOR", "BIG HiPRIOR"]
+ci = [idx[c] for c in cols]
+
+def bad(v):
+    return v <= -99.0
+
+out = []
+for r in rows:
+    try:
+        vals = [float(r[i]) for i in ci]
+    except (ValueError, IndexError):
+        continue
+    if any(bad(v) for v in vals):
+        continue
+    sl, bl, sh, bh = vals
+    val = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+    out.append((int(r[0]), val))
+
+with open("output.csv", "w", newline="") as f:
+    w = csv.writer(f)
+    w.writerow(["date", "value"])
+    for d, v in out:
+        w.writerow([d, round(v, 6)])
+```

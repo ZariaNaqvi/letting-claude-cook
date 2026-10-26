@@ -1,0 +1,61 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_60_13.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly block: header line starting with a comma, then YYYYMM rows
+rows = []
+header = None
+in_block = False
+for line in lines:
+    s = line.strip()
+    if not in_block:
+        if s.startswith(","):
+            header = [h.strip() for h in s.split(",")]
+            in_block = True
+        continue
+    # inside the block
+    if s == "":
+        if rows:
+            break
+        continue
+    parts = [p.strip() for p in s.split(",")]
+    if re.fullmatch(r"\d{6}", parts[0]):
+        rows.append(parts)
+    else:
+        if rows:
+            break
+        # non-matching line before any data -> keep scanning
+        continue
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+cols = {c.upper().replace(" ", ""): c for c in df.columns}
+def col(name):
+    return cols[name.upper().replace(" ", "")]
+
+sl = df[col("SMALL LoPRIOR")]
+bl = df[col("BIG LoPRIOR")]
+sh = df[col("SMALL HiPRIOR")]
+bh = df[col("BIG HiPRIOR")]
+
+vals = pd.concat([sl, bl, sh, bh], axis=1)
+mask = ~((vals <= -99).any(axis=1) | vals.isna().any(axis=1))
+
+value = 0.5 * (sl + bl) - 0.5 * (sh + bh)
+out = pd.DataFrame({"date": df["date"], "value": value})
+out = out[mask].copy()
+out["value"] = out["value"].round(4)
+out.to_csv("output.csv", index=False)
+```
+
+The script parses only the first monthly block (value-weighted returns), computes `0.5*(SMALL Lo + BIG Lo) - 0.5*(SMALL Hi + BIG Hi)`, drops months with missing (-99.99/-999) data, and writes `output.csv`.

@@ -1,0 +1,51 @@
+import pandas as pd
+import numpy as np
+import csv
+
+fname = "6_Portfolios_ME_INV_2x3.csv"
+
+with open(fname, "r") as f:
+    lines = f.read().splitlines()
+
+# Locate the monthly value-weighted section
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Monthly VW section not found")
+
+# header line is the next line
+header_idx = start + 1
+header = [h.strip() for h in lines[header_idx].split(",")]
+rows = []
+for line in lines[header_idx + 1:]:
+    s = line.strip()
+    if s == "":
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if len(parts) < 7:
+        break
+    d = parts[0]
+    if not (d.isdigit() and len(d) == 6):
+        break
+    try:
+        vals = [float(x) for x in parts[1:7]]
+    except ValueError:
+        break
+    rows.append([int(d)] + vals)
+
+cols = ["date", "SL", "SM", "SH", "BL", "BM", "BH"]
+df = pd.DataFrame(rows, columns=cols)
+for c in cols[1:]:
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+# CMA = 1/2 (Small Conservative + Big Conservative) - 1/2 (Small Aggressive + Big Aggressive)
+# Conservative = low investment, Aggressive = high investment
+df["value"] = 0.5 * (df["SL"] + df["BL"]) - 0.5 * (df["SH"] + df["BH"])
+
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out["value"] = out["value"].round(4)
+out.to_csv("output.csv", index=False)

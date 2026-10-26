@@ -1,0 +1,55 @@
+import re
+import pandas as pd
+import numpy as np
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly value-weighted block
+start = None
+for i, ln in enumerate(lines):
+    if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+        start = i
+        break
+if start is None:
+    # fallback: first header line
+    for i, ln in enumerate(lines):
+        if ln.startswith(",SMALL LoBM"):
+            start = i - 1
+            break
+
+# Find header line after start
+hdr = None
+for i in range(start, len(lines)):
+    if lines[i].strip().startswith(",") and "LoBM" in lines[i]:
+        hdr = i
+        break
+
+cols = [c.strip() for c in lines[hdr].split(",")]
+rows = []
+pat = re.compile(r"^\s*(\d{6})\s*,")
+for ln in lines[hdr + 1:]:
+    if not pat.match(ln):
+        break
+    parts = [p.strip() for p in ln.split(",")]
+    if len(parts) < 7:
+        break
+    rows.append(parts[:7])
+
+df = pd.DataFrame(rows, columns=cols[:7])
+df.rename(columns={cols[0]: "date"}, inplace=True)
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+small = ["SMALL LoBM", "ME1 BM2", "SMALL HiBM"]
+big = ["BIG LoBM", "ME2 BM2", "BIG HiBM"]
+
+smb = df[small].mean(axis=1) - df[big].mean(axis=1)
+
+out = pd.DataFrame({"date": df["date"], "value": smb.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)

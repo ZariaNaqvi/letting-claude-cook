@@ -1,0 +1,53 @@
+The 5-factor (2x3) SMB is the average of three size spreads, one from each sort:
+
+- **SMB_BM** = (Small Lo + Small Mid + Small Hi) / 3 − (Big Lo + Big Mid + Big Hi) / 3, from the ME×BM portfolios.
+- **SMB_OP** = the same spread from the ME×OP portfolios.
+- **SMB_INV** = the same spread from the ME×INV portfolios.
+- **SMB** = (SMB_BM + SMB_OP + SMB_INV) / 3.
+
+The script reads only the first block in each file, "Average Value Weighted Returns -- Monthly". It treats -99.99 and -999 as missing. It keeps only months where all three files have data. The OP and INV files start in 196307, so the output starts there even though the BM file goes back to 192607.
+
+```python
+import pandas as pd
+import numpy as np
+
+def read_vw_monthly(fname):
+    with open(fname, "r", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+    start = None
+    for i, l in enumerate(lines):
+        if "Average Value Weighted Returns -- Monthly" in l:
+            start = i
+            break
+    if start is None:
+        raise ValueError("block not found in " + fname)
+    header = [h.strip() for h in lines[start + 1].split(",")]
+    rows = []
+    for l in lines[start + 2:]:
+        parts = [p.strip() for p in l.split(",")]
+        if len(parts) < 7 or not (parts[0].isdigit() and len(parts[0]) == 6):
+            break
+        rows.append([int(parts[0])] + [float(x) for x in parts[1:7]])
+    df = pd.DataFrame(rows, columns=["date"] + header[1:7]).set_index("date")
+    df = df.replace([-99.99, -999.0], np.nan)
+    return df
+
+def smb_component(df):
+    cols = list(df.columns)
+    small = df[cols[0:3]].mean(axis=1, skipna=False)
+    big = df[cols[3:6]].mean(axis=1, skipna=False)
+    return small - big
+
+bm = read_vw_monthly("6_Portfolios_2x3.csv")
+op = read_vw_monthly("6_Portfolios_ME_OP_2x3.csv")
+inv = read_vw_monthly("6_Portfolios_ME_INV_2x3.csv")
+
+s = pd.concat([smb_component(bm), smb_component(op), smb_component(inv)],
+              axis=1, join="inner")
+s = s.dropna()
+smb = s.mean(axis=1)
+
+out = pd.DataFrame({"date": smb.index.astype(int), "value": smb.values.round(6)})
+out = out.sort_values("date")
+out.to_csv("output.csv", index=False)
+```

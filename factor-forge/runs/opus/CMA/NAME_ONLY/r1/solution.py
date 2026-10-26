@@ -1,0 +1,61 @@
+import re
+import numpy as np
+import pandas as pd
+
+FNAME = "6_Portfolios_ME_INV_2x3.csv"
+
+with open(FNAME, "r", encoding="latin-1") as f:
+    lines = [l.rstrip("\r\n") for l in f]
+
+# locate the value-weighted monthly section
+start = None
+for i, l in enumerate(lines):
+    s = l.strip().lower()
+    if "value weighted returns" in s and "monthly" in s:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly section not found")
+
+# header line
+hi = start + 1
+while lines[hi].strip() == "":
+    hi += 1
+header = [h.strip() for h in lines[hi].split(",")]
+
+rows = []
+for l in lines[hi + 1:]:
+    parts = [p.strip() for p in l.split(",")]
+    if not parts or not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    rows.append(parts)
+
+cols = ["date"] + header[1:]
+df = pd.DataFrame(rows, columns=cols[:len(rows[0])])
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+def find(cols, size_key, inv_key):
+    for c in cols:
+        u = c.upper().replace(" ", "")
+        if size_key in u and inv_key in u:
+            return c
+    raise KeyError(size_key + inv_key)
+
+c = list(df.columns[1:])
+# Column order: SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV
+try:
+    sl = find(c, "SMALL", "LOINV")
+    sh = find(c, "SMALL", "HIINV")
+    bl = find(c, "BIG", "LOINV")
+    bh = find(c, "BIG", "HIINV")
+except KeyError:
+    sl, sh, bl, bh = c[0], c[2], c[3], c[5]
+
+df["value"] = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])
+out = df[["date", "value"]].dropna().copy()
+out["value"] = out["value"].round(6)
+out = out.drop_duplicates("date").sort_values("date")
+out.to_csv("output.csv", index=False)

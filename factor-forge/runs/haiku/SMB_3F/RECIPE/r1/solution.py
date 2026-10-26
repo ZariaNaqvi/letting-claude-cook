@@ -1,0 +1,57 @@
+import re
+import numpy as np
+import pandas as pd
+
+INPUT = "6_Portfolios_2x3.csv"
+OUTPUT = "output.csv"
+
+def main():
+    with open(INPUT, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the first table (value-weighted monthly)
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "average value weighted returns" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Could not find value-weighted monthly block")
+
+    rows = []
+    data_started = False
+    for line in lines[start + 1:]:
+        parts = [p.strip() for p in line.split(",")]
+        if len(parts) >= 7 and re.fullmatch(r"\d{6}", parts[0]):
+            data_started = True
+            vals = []
+            for p in parts[1:7]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if v <= -99.9:  # missing-data codes -99.99 / -999
+                    v = np.nan
+                vals.append(v)
+            rows.append([int(parts[0])] + vals)
+        else:
+            if data_started:
+                break  # end of monthly block
+
+    cols = ["date", "SL", "SM", "SH", "BL", "BM", "BH"]
+    df = pd.DataFrame(rows, columns=cols)
+    df = df.dropna(subset=["SL", "SM", "SH", "BL", "BM", "BH"])
+    df = df.drop_duplicates(subset=["date"]).sort_values("date")
+
+    small = df[["SL", "SM", "SH"]].mean(axis=1)
+    big = df[["BL", "BM", "BH"]].mean(axis=1)
+
+    out = pd.DataFrame({
+        "date": df["date"].astype(int).values,
+        "value": (small - big).values,
+    })
+    out.to_csv(OUTPUT, index=False)
+
+if __name__ == "__main__":
+    main()

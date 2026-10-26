@@ -1,0 +1,57 @@
+The script reads only the first block ('Average Value Weighted Returns -- Monthly') and computes Mom = 0.5·(SMALL HiPRIOR + BIG HiPRIOR) − 0.5·(SMALL LoPRIOR + BIG LoPRIOR).
+
+- **Finding the block:** it locates the block's title line and treats the next line as the header. It reads YYYYMM-dated rows until the first line that isn't one.
+- **Column names:** columns are matched by name, not position.
+- **Missing values:** the file marks missing data as −99.99 or −999. These are set to missing, and any month with a missing input is dropped from output.csv.
+- **Rounding:** results are rounded to 4 decimals.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+FNAME = "6_Portfolios_ME_Prior_12_2.csv"
+
+with open(FNAME, "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+# locate first block
+start = None
+for i, ln in enumerate(lines):
+    if "Average Value Weighted Returns" in ln and "Monthly" in ln:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly block not found")
+
+header = [h.strip() for h in lines[start + 1].split(",")]
+rows = []
+date_re = re.compile(r"^\s*\d{6}\s*$")
+for ln in lines[start + 2:]:
+    parts = [p.strip() for p in ln.split(",")]
+    if len(parts) < 2 or not date_re.match(parts[0]):
+        break
+    rows.append(parts)
+
+cols = ["date"] + header[1:]
+df = pd.DataFrame([r[:len(cols)] for r in rows], columns=cols)
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+def find(name):
+    for c in cols[1:]:
+        if c.replace(" ", "").upper() == name.replace(" ", "").upper():
+            return c
+    raise KeyError(name)
+
+sh, bh = find("SMALL HiPRIOR"), find("BIG HiPRIOR")
+sl, bl = find("SMALL LoPRIOR"), find("BIG LoPRIOR")
+
+df["value"] = 0.5 * (df[sh] + df[bh]) - 0.5 * (df[sl] + df[bl])
+out = df[["date", "value"]].dropna()
+out = out.drop_duplicates("date").sort_values("date")
+out["value"] = out["value"].round(4)
+out.to_csv("output.csv", index=False)
+```

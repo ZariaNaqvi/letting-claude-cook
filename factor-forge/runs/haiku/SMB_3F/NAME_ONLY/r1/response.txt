@@ -1,0 +1,59 @@
+This script takes the value-weighted monthly section of `6_Portfolios_2x3.csv`, which is the first block in the file, and computes SMB as the average of the three small-cap portfolios minus the average of the three big-cap portfolios. The file has several sections (value- and equal-weighted, monthly and annual), so the parser stops at the end of the monthly value-weighted block. Missing codes (-99.99 or -999) become NaN, and any month with a missing portfolio is dropped.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+IN_FILE = "6_Portfolios_2x3.csv"
+OUT_FILE = "output.csv"
+
+with open(IN_FILE, encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+date_re = re.compile(r"^\d{6}$")
+
+# Locate the "Average Value Weighted Returns -- Monthly" section
+start = None
+for i, l in enumerate(lines):
+    low = l.lower()
+    if "value weighted" in low and "monthly" in low:
+        start = i
+        break
+
+rows = []
+collecting = False
+for l in lines[(start + 1 if start is not None else 0):]:
+    parts = [p.strip() for p in l.split(",")]
+    first = parts[0] if parts else ""
+    if date_re.match(first) and len(parts) >= 7:
+        collecting = True
+        vals = []
+        for x in parts[1:7]:
+            try:
+                v = float(x)
+            except ValueError:
+                v = np.nan
+            if v <= -99 or np.isnan(v):  # missing codes -99.99 / -999
+                v = np.nan
+            vals.append(v)
+        rows.append([int(first)] + vals)
+    else:
+        if collecting:
+            # end of the monthly value-weighted block
+            break
+        # otherwise still skipping header/preamble lines
+
+if not rows:
+    raise SystemExit("No monthly value-weighted data found")
+
+df = pd.DataFrame(rows, columns=["date", "SL", "SM", "SH", "BL", "BM", "BH"])
+
+# Ken French 3-factor SMB: average of small portfolios minus average of big portfolios
+df["value"] = df[["SL", "SM", "SH"]].mean(axis=1) - df[["BL", "BM", "BH"]].mean(axis=1)
+
+out = df.loc[df["value"].notna(), ["date", "value"]].copy()
+out["date"] = out["date"].astype(int)
+out.to_csv(OUT_FILE, index=False, columns=["date", "value"])
+print(f"Wrote {len(out)} rows to {OUT_FILE}")
+```

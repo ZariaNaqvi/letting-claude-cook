@@ -1,0 +1,68 @@
+```python
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_1_0.csv"
+
+with open(fname, "r") as f:
+    lines = f.readlines()
+
+# Locate the first monthly value-weighted block
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first header row
+    for i, line in enumerate(lines):
+        if line.strip().startswith(",SMALL LoPRIOR"):
+            start = i - 1
+            break
+
+# Find header row after start
+hdr = None
+for i in range(start, len(lines)):
+    if lines[i].strip().startswith(","):
+        hdr = i
+        break
+
+cols = [c.strip() for c in lines[hdr].strip().split(",")]
+rows = []
+pat = re.compile(r"^\s*(\d{6})\s*,")
+for line in lines[hdr + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    m = pat.match(s)
+    if not m:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if len(parts) != len(cols):
+        break
+    try:
+        vals = [float(p) for p in parts[1:]]
+    except ValueError:
+        break
+    rows.append([int(parts[0])] + vals)
+
+df = pd.DataFrame(rows, columns=["date"] + cols[1:])
+df = df.set_index("date")
+df = df.replace([-99.99, -999.0], np.nan)
+
+small_lo = df["SMALL LoPRIOR"]
+small_hi = df["SMALL HiPRIOR"]
+big_lo = df["BIG LoPRIOR"]
+big_hi = df["BIG HiPRIOR"]
+
+# ST_Rev = 1/2 (Small Low + Big Low) - 1/2 (Small High + Big High)
+st_rev = 0.5 * (small_lo + big_lo) - 0.5 * (small_hi + big_hi)
+
+out = pd.DataFrame({"date": df.index.astype(int), "value": st_rev.values})
+out = out.dropna(subset=["value"])
+out["value"] = out["value"].round(2)
+out.to_csv("output.csv", index=False)
+```
+
+ST_Rev is computed as the average of the two low-prior-return portfolios (Small LoPRIOR, Big LoPRIOR) minus the average of the two high-prior-return portfolios (Small HiPRIOR, Big HiPRIOR), using the monthly value-weighted block from the file.

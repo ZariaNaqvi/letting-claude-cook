@@ -1,0 +1,42 @@
+The script reads the file line by line and stops at the end of the first table, so the later blocks are never used.
+
+- **Locating the table:** it finds the line containing "Average Value Weighted Returns -- Monthly", then reads the header line after it.
+- **Parsing rows:** it keeps rows whose first field is a 6-digit YYYYMM date and stops at the first row that isn't one, which is the blank line or next block header.
+- **Missing data:** values of -99.99 or -999 are treated as NaN, so HML is NaN for that month. Those rows are dropped, since no valid value can be computed.
+- **Column matching:** columns are matched by name from the header (`SMALL HiBM`, `BIG HiBM`, `SMALL LoBM`, `BIG LoBM`).
+- **Formula:** HML = 0.5·(SMALL HiBM + BIG HiBM) − 0.5·(SMALL LoBM + BIG LoBM).
+
+```python
+import numpy as np
+import pandas as pd
+
+fn = "6_Portfolios_2x3.csv"
+with open(fn, "r", encoding="latin-1") as f:
+    lines = f.read().splitlines()
+
+start = None
+for i, l in enumerate(lines):
+    if "Average Value Weighted Returns" in l and "Monthly" in l:
+        start = i
+        break
+
+header = [h.strip() for h in lines[start + 1].split(",")]
+rows = []
+for l in lines[start + 2:]:
+    parts = [p.strip() for p in l.split(",")]
+    if len(parts) < 7 or not (parts[0].isdigit() and len(parts[0]) == 6):
+        break
+    rows.append(parts[:len(header)])
+
+df = pd.DataFrame(rows, columns=["date"] + header[1:])
+df["date"] = df["date"].astype(int)
+for c in header[1:]:
+    v = pd.to_numeric(df[c], errors="coerce")
+    v = v.where(~v.isin([-99.99, -999, -999.0]))
+    df[c] = v
+
+val = 0.5 * (df["SMALL HiBM"] + df["BIG HiBM"]) - 0.5 * (df["SMALL LoBM"] + df["BIG LoBM"])
+out = pd.DataFrame({"date": df["date"], "value": val}).dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```

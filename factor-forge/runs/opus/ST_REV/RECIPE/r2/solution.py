@@ -1,0 +1,65 @@
+import pandas as pd
+import numpy as np
+import re
+
+FNAME = "6_Portfolios_ME_Prior_1_0.csv"
+
+with open(FNAME, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# locate first table
+start = None
+for i, ln in enumerate(lines):
+    if "Average Value Weighted Returns -- Monthly" in ln:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly block not found")
+
+# header line: next non-empty line
+j = start + 1
+while j < len(lines) and lines[j].strip() == "":
+    j += 1
+header = [h.strip() for h in lines[j].split(",")]
+cols = header[1:]
+
+rows = []
+k = j + 1
+while k < len(lines):
+    ln = lines[k].strip()
+    if ln == "":
+        break
+    parts = [p.strip() for p in ln.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = []
+    for p in parts[1:]:
+        try:
+            vals.append(float(p))
+        except ValueError:
+            vals.append(np.nan)
+    rows.append([int(parts[0])] + vals)
+    k += 1
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+for c in cols:
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+def find_col(name):
+    norm = lambda s: re.sub(r"\s+", " ", s.strip().upper())
+    for c in cols:
+        if norm(c) == norm(name):
+            return c
+    raise KeyError(name)
+
+sl = find_col("SMALL LoPRIOR")
+sh = find_col("SMALL HiPRIOR")
+bl = find_col("BIG LoPRIOR")
+bh = find_col("BIG HiPRIOR")
+
+df["value"] = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])
+out = df[["date", "value"]].dropna().copy()
+out["date"] = out["date"].astype(int)
+out = out.sort_values("date").drop_duplicates("date")
+out["value"] = out["value"].round(6)
+out.to_csv("output.csv", index=False)

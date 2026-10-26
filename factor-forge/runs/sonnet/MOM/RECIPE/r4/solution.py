@@ -1,0 +1,33 @@
+import re
+import numpy as np
+import pandas as pd
+
+rows = []
+started = False
+with open("6_Portfolios_ME_Prior_12_2.csv", "r", errors="ignore") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if "Average Value Weighted Returns" in s and "Monthly" in s:
+                started = True
+            continue
+        if not s:
+            if rows:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]):
+            rows.append(parts)
+        elif rows:
+            break
+
+cols = ["date", "SL", "SM", "SH", "BL", "BM", "BH"]
+df = pd.DataFrame([r[:7] for r in rows], columns=cols)
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+df["value"] = 0.5 * (df["SH"] + df["BH"]) - 0.5 * (df["SL"] + df["BL"])
+out = df[["date", "value"]].dropna()
+out.to_csv("output.csv", index=False)

@@ -1,0 +1,73 @@
+RMW is computed as the average of the two robust portfolios minus the average of the two weak portfolios, using the value-weighted monthly returns from the 2x3 size/OP sort:
+
+RMW = ½·(Small HiOP + Big HiOP) − ½·(Small LoOP + Big LoOP)
+
+The script reads only the "Average Value Weighted Returns -- Monthly" block. It stops at the first blank line or the next section header, so annual and equal-weighted blocks are never mixed in. It treats -99.99 and -999 as missing and drops those months. Output is in percent, the same units as the input.
+
+One caveat: the file says its breakpoints include utilities and financials. The official RMW factor uses NYSE breakpoints, so this series may differ slightly from French's published RMW.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+FN = "6_Portfolios_ME_OP_2x3.csv"
+
+with open(FN, "r", encoding="latin-1") as f:
+    lines = [l.rstrip("\n").rstrip("\r") for l in f]
+
+# locate value-weighted monthly section
+start = None
+for i, l in enumerate(lines):
+    s = l.strip().lower()
+    if "average value weighted returns" in s and "monthly" in s:
+        start = i
+        break
+if start is None:
+    raise RuntimeError("Value-weighted monthly section not found")
+
+# header line follows
+hdr_idx = start + 1
+while lines[hdr_idx].strip() == "":
+    hdr_idx += 1
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+cols = header[1:]
+
+rows = []
+for l in lines[hdr_idx + 1:]:
+    s = l.strip()
+    if s == "":
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    vals = []
+    for p in parts[1:1 + len(cols)]:
+        try:
+            vals.append(float(p))
+        except ValueError:
+            vals.append(np.nan)
+    rows.append([int(parts[0])] + vals)
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+for c in cols:
+    df.loc[df[c] <= -99.99, c] = np.nan
+
+def find(pats):
+    for c in cols:
+        cu = c.upper().replace(" ", "")
+        if all(p in cu for p in pats):
+            return c
+    raise RuntimeError(f"column not found: {pats}")
+
+sl = find(["SMALL", "LOOP"])
+sh = find(["SMALL", "HIOP"])
+bl = find(["BIG", "LOOP"])
+bh = find(["BIG", "HIOP"])
+
+df["value"] = 0.5 * (df[sh] + df[bh]) - 0.5 * (df[sl] + df[bl])
+out = df[["date", "value"]].dropna()
+out["date"] = out["date"].astype(int)
+out["value"] = out["value"].round(6)
+out.to_csv("output.csv", index=False)
+```

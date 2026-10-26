@@ -1,0 +1,63 @@
+The SMB factor is the average of the three small-cap value-weighted portfolios minus the average of the three big-cap value-weighted portfolios. The script takes the monthly value-weighted table from the file, treats the first three columns as small and the last three as big, and skips any month with a missing value.
+
+```python
+import csv
+import numpy as np
+
+IN_FILE = "6_Portfolios_2x3.csv"
+OUT_FILE = "output.csv"
+MISSING = (-99.99, -999.0)
+
+
+def is_missing(v):
+    return any(np.isclose(v, m) for m in MISSING)
+
+
+def main():
+    with open(IN_FILE, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the value-weighted monthly section
+    start = None
+    for i, line in enumerate(lines):
+        if "value weighted returns -- monthly" in line.lower():
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Value-weighted monthly section not found")
+
+    records = []
+    started = False
+    for line in lines[start + 1:]:
+        parts = [p.strip() for p in line.split(",")]
+        is_data = len(parts) >= 7 and parts[0].isdigit() and len(parts[0]) == 6
+        if is_data:
+            started = True
+            try:
+                vals = [float(x) for x in parts[1:7]]
+            except ValueError:
+                vals = None
+            records.append((int(parts[0]), vals))
+        else:
+            if started:
+                # End of the monthly block (blank line or next section/footer)
+                break
+
+    out = []
+    for date, vals in records:
+        if vals is None or any(is_missing(v) for v in vals) or any(np.isnan(v) for v in vals):
+            continue
+        small = np.mean(vals[0:3])
+        big = np.mean(vals[3:6])
+        out.append((date, small - big))
+
+    with open(OUT_FILE, "w", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(["date", "value"])
+        for date, val in out:
+            w.writerow([date, repr(float(val))])
+
+
+if __name__ == "__main__":
+    main()
+```

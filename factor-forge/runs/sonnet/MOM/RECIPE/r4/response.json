@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRWWUjEY7xpauBF2Ktf4",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script parses the first table only and stops at the first non-monthly line after the data begins. Rows containing -99.99 or -999 are treated as missing, so no value is computed for those months.\n\n```python\nimport re\nimport numpy as np\nimport pandas as pd\n\nrows = []\nstarted = False\nwith open(\"6_Portfolios_ME_Prior_12_2.csv\", \"r\", errors=\"ignore\") as f:\n    for line in f:\n        s = line.strip()\n        if not started:\n            if \"Average Value Weighted Returns\" in s and \"Monthly\" in s:\n                started = True\n            continue\n        if not s:\n            if rows:\n                break\n            continue\n        parts = [p.strip() for p in s.split(\",\")]\n        if re.fullmatch(r\"\\d{6}\", parts[0]):\n            rows.append(parts)\n        elif rows:\n            break\n\ncols = [\"date\", \"SL\", \"SM\", \"SH\", \"BL\", \"BM\", \"BH\"]\ndf = pd.DataFrame([r[:7] for r in rows], columns=cols)\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in cols[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n    df.loc[df[c] <= -99.0, c] = np.nan\n\ndf[\"value\"] = 0.5 * (df[\"SH\"] + df[\"BH\"]) - 0.5 * (df[\"SL\"] + df[\"BL\"])\nout = df[[\"date\", \"value\"]].dropna()\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2699,
+    "output_tokens": 499,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

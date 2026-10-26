@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRVBC7CyQCQVtkZyvbXG",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQS9QoKEAgTGAI4AUIIdGhpbmtpbmcSDEElXuEobRjRC1hYlxoMeVaro2I8aHjOkpWbIjCkPWK85bzxCXRLaaLc1KCDm5BGbFf2eNbC4qBaa1fSseXdoIFYvQRKU3BBVelUw6MqkgrN3IRMY2j03POUWGKCS8jjpWUOSoP4An5F9IxCKkC6vsghB7qNxebBy12Iz7VbiFnVApm3AkEvwCLf73Zp36nql3SMWxdX4c2CKknjwwNSFr5HUA1jlXlcQ536maOait8IbSrOBP9f4HsY3U7zYZXLEyq4Vv1iJnqD9G6gIVQAefL/omVG1IFRLKp4a4W/4LfIiDAuAeJ9c558lqUnKn3ag87AmsR1zYgDBVwnztyC0yI7TYVBcNMHfw+h2Mfz6O8qe5oCJ4894LpEFdY0+eXLLjRC5nvQ5AnUO89e4/vCahP14xTIv9qdaVnpPWM9WpIrrVhRbfiXGo6fkamJfYrUQ0c+ZwGx1oHwHyn3e0xAScDnlouuOxTd6MLQROuF1XCHim756Zz32WqQaMG6JwRJN94+Nuehx0kCeLwqsPA41iTc8CDwdw81FRbqXDI/K6mJnSOGft6ZnwuZI4P9zLnCn9i9FHvGKlSJO93ne3i7L6rYPvp2zupcM0MdC2FVy/btsoqftpYxItZcCfHh/3VGkZ1YwpDc8oAg4IozD4LIYmDbAew6XXuPZYkxZnhPUqxK13uHYcCFtWqnF+fJhjDYiRanxCR5lhDqCqAPIBMDiqKNgtKh3AdMydSvzj7CiiE5bK9/io3tJbWkprpFVD7c/ssrOM8/oNpB3vtRnvY0Kox+ykJWBZ7CdXh5qWY0rEdeD8gPINzyTv8A3y60WHd9MJ5MSTf842Yy4xsMpFqHr76rZT6UV90TUAb1wsxqPf9lxIQxiZldgy6jfFID21jl2lJ87lraRqia+brO4sbb8YMSX7hjbtC1eSFuuqxhUmb5X8tarkAbmkXXqElqB0xfGI3VHkXkyQ7M6Fm2wF9Xqptf7YHEFcpbNgtfsjxcUGz5KiMe4eG2IeOpTzXL8gwGtEEHoCO8V+I9cy2JHKsnlWwIvPT/b7UR6mCWRCe5qHPHbyEJCb6jEOt1jCpj3xh1g1ijV4KbzQAPIgm9O3pdcjhwZBLyGwGvX7Qjj0YVj9GyC99jG/fjYgECbwktWstQjmWQRTkpAWHLnVQLdfREZHTQ46Uu8oDasQceXXYJjuM6gCpI9pcj/CyHRM2YP7baPPN6W3OzGD0FmTUOjhzDQPHg/hPXTkrtRiu3oeVnBsP/f4iNxPnMtj71kZSMyAkps/roPEdpdTke+DUzqYU+/UyqBFJZJCyxdZe+rq1vuP895wbAX210OuKiK8hsfKaWoaEzYunrkwZ8iSBv1ZERWoGmqYycZzn2FPqclNsromjJ09DqVangHZmSbpQ0B3RMlONwOFSlDLEePH3xxvOHpZqOfLz2s1kVQNPSp+2kk3f9qnufFmTfwW6yMvH3FgI3kIoX1tVEYhPkBX6FBB9k7Ia73VoLqASoCs8ThT0JPLfSSHOKSdcT7PoE03R36lZI9qeFxpaxvzfjvVc8PqYMBS6xFZYflCNBM6eyp4QzTSw71rWgi6c3PyoP5PU0Ub4KZlkcoPqp5ngODpeKVxfi90qLoARRnJnwMNi42EZO3/KEfKlO3KNjZQ+oDjxDH8HLbG7VDBB865CAuJTSAJcL7c5pR5H4wteMi66AwOzECCDTwxqBqjg0lsiqaWXOmUUbYXkQYKSMeU8n0TUj0jk4wXSmwtyTRBQowY3qrZqtRB197vMHxD4kKh/O5Pb6n93QyDDDEHopIF8J+4s4eOgiaIqnfOTb4WPWakFk0CY6lOZUkhgB",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "Mom is built from the six value-weighted Size \u00d7 Prior(12-2) portfolios as the average of the two high-prior portfolios minus the average of the two low-prior portfolios:\n\nMom = \u00bd (Small High + Big High) \u2212 \u00bd (Small Low + Big Low)\n\nHow the script handles the file:\n- It reads only the first block, \"Average Value Weighted Returns -- Monthly\". The file contains other blocks after it, and only the monthly value-weighted one is used.\n- It finds columns by name and falls back to fixed positions if the names don't match.\n- It drops months containing missing-data codes (-99.99 or -999).\n- It rounds results to 2 decimals.\n\n```python\nimport re\nimport numpy as np\nimport pandas as pd\n\nFNAME = \"6_Portfolios_ME_Prior_12_2.csv\"\n\nwith open(FNAME, \"r\", encoding=\"latin-1\") as f:\n    lines = [l.rstrip(\"\\r\\n\") for l in f]\n\n# locate the monthly value-weighted section\nstart = None\nfor i, l in enumerate(lines):\n    s = l.strip().lower()\n    if \"value weighted returns\" in s and \"monthly\" in s:\n        start = i\n        break\nif start is None:\n    # fallback: first header line beginning with a comma\n    for i, l in enumerate(lines):\n        if l.strip().startswith(\",\"):\n            start = i - 1\n            break\n\nhdr_idx = start + 1\nwhile not lines[hdr_idx].strip():\n    hdr_idx += 1\nheader = [h.strip() for h in lines[hdr_idx].split(\",\")]\n\nrows = []\nfor l in lines[hdr_idx + 1:]:\n    parts = [p.strip() for p in l.split(\",\")]\n    if not parts or not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break\n    rows.append(parts)\n\ncols = [\"date\"] + header[1:]\nncol = len(cols)\nrows = [r[:ncol] for r in rows]\ndf = pd.DataFrame(rows, columns=cols)\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in cols[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\ndef find(size_key, prior_key, fallback_pos):\n    for c in cols[1:]:\n        cu = c.upper().replace(\" \", \"\")\n        if size_key in cu and prior_key in cu:\n            return c\n    return cols[fallback_pos]\n\nsl = find(\"SMALL\", \"LOPRIOR\", 1)\nsh = find(\"SMALL\", \"HIPRIOR\", 3)\nbl = find(\"BIG\", \"LOPRIOR\", 4)\nbh = find(\"BIG\", \"HIPRIOR\", 6)\n\nsub = df[[\"date\", sl, sh, bl, bh]].copy()\nvals = sub[[sl, sh, bl, bh]]\nbad = (vals <= -99.99) | vals.isna()\nsub = sub[~bad.any(axis=1)]\n\nmom = 0.5 * (sub[sh] + sub[bh]) - 0.5 * (sub[sl] + sub[bl])\nout = pd.DataFrame({\"date\": sub[\"date\"].astype(int), \"value\": np.round(mom.values, 2)})\nout = out.drop_duplicates(\"date\").sort_values(\"date\")\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-opus-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2506,
+    "output_tokens": 1423,
+    "output_tokens_details": {
+      "thinking_tokens": 305
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

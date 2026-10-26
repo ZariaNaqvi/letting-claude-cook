@@ -1,0 +1,91 @@
+import re
+
+INPUT_FILE = "6_Portfolios_2x3.csv"
+OUTPUT_FILE = "output.csv"
+
+
+def is_missing(x):
+    return x is None or x <= -99.0
+
+
+def main():
+    with open(INPUT_FILE, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    # Locate the monthly value-weighted block
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "value weighted" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        # fallback: first line that looks like a column header followed by data
+        start = -1
+
+    # Find header line (starts with comma and contains portfolio names)
+    header = None
+    data_begin = None
+    for j in range(start + 1, len(lines)):
+        s = lines[j].strip()
+        if s.startswith(",") and re.search(r"[A-Za-z]", s):
+            header = s
+            data_begin = j + 1
+            break
+    if header is None:
+        raise RuntimeError("Could not find header line in input file")
+
+    names = [h.strip().upper() for h in header.split(",")[1:]]
+
+    def find(size, bm):
+        for k, n in enumerate(names):
+            if size in n and bm in n:
+                return k
+        return None
+
+    idx_sg = find("SMALL", "LOBM")
+    idx_sv = find("SMALL", "HIBM")
+    idx_bg = find("BIG", "LOBM")
+    idx_bv = find("BIG", "HIBM")
+    if None in (idx_sg, idx_sv, idx_bg, idx_bv):
+        # positional fallback: SMALL LoBM, ME1 BM2, SMALL HiBM, BIG LoBM, ME2 BM2, BIG HiBM
+        idx_sg, idx_sv, idx_bg, idx_bv = 0, 2, 3, 5
+
+    rows = {}
+    collected_any = False
+    for j in range(data_begin, len(lines)):
+        s = lines[j].strip()
+        if not s:
+            if collected_any:
+                break
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if re.fullmatch(r"\d{6}", parts[0]) and len(parts) >= 7:
+            date = int(parts[0])
+            try:
+                vals = [float(parts[k + 1]) for k in range(6)]
+            except ValueError:
+                vals = [float("nan")] * 6
+            rows[date] = vals
+            collected_any = True
+        else:
+            if collected_any:
+                break  # reached the next section
+
+    out = []
+    for date in sorted(rows):
+        v = rows[date]
+        sg, sv, bg, bv = v[idx_sg], v[idx_sv], v[idx_bg], v[idx_bv]
+        if any(is_missing(x) or x != x for x in (sg, sv, bg, bv)):
+            continue
+        hml = 0.5 * (sv + bv) - 0.5 * (sg + bg)
+        out.append((date, hml))
+
+    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+        f.write("date,value\n")
+        for date, val in out:
+            f.write(f"{date},{val:.6f}\n")
+
+
+if __name__ == "__main__":
+    main()

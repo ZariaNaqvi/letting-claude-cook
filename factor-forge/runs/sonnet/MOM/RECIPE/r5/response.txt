@@ -1,0 +1,41 @@
+The script reads the file line by line and keeps only the first table, stopping at the first non-monthly row after the data starts. It then computes the factor and writes output.csv.
+
+- **Parsing:** it finds the header line containing "SMALL LoPRIOR", then reads rows whose first field is a 6-digit date. It stops at the first line that is not such a row (a blank line or the next block's header).
+- **Missing data:** values of -99.99 or -999 are treated as NaN, and any month with a missing component is dropped.
+- **Formula:** Mom = 0.5*(SMALL HiPRIOR + BIG HiPRIOR) - 0.5*(SMALL LoPRIOR + BIG LoPRIOR).
+
+```python
+import pandas as pd
+import numpy as np
+
+rows = []
+started = False
+with open("6_Portfolios_ME_Prior_12_2.csv", "r", encoding="latin-1") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if "SMALL LoPRIOR" in s:
+                header = [h.strip() for h in s.split(",")]
+                started = True
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts) >= 7 and parts[0].isdigit() and len(parts[0]) == 6:
+            rows.append(parts[:7])
+        else:
+            if rows:
+                break
+            else:
+                continue
+
+cols = ["date"] + header[1:7]
+df = pd.DataFrame(rows, columns=cols)
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+val = 0.5 * (df["SMALL HiPRIOR"] + df["BIG HiPRIOR"]) - 0.5 * (df["SMALL LoPRIOR"] + df["BIG LoPRIOR"])
+out = pd.DataFrame({"date": df["date"], "value": val}).dropna()
+out["date"] = out["date"].astype(int)
+out.to_csv("output.csv", index=False)
+```

@@ -1,0 +1,103 @@
+The script finds the first "Average Value Weighted Returns -- Monthly" block, maps the four needed columns by header name, treats -99.99 and -999 as missing, and computes RMW as 0.5·(SMALL HiOP + BIG HiOP) − 0.5·(SMALL LoOP + BIG LoOP). Months with any missing input are dropped, and the result is written to output.csv.
+
+```python
+import csv
+import re
+
+INPUT = "6_Portfolios_ME_OP_2x3.csv"
+OUTPUT = "output.csv"
+MISSING = {-99.99, -999.0}
+
+
+def norm(s):
+    return " ".join(s.strip().split()).upper()
+
+
+def to_float(s):
+    try:
+        v = float(s.strip())
+    except (ValueError, AttributeError):
+        return None
+    if v in MISSING:
+        return None
+    return v
+
+
+def main():
+    with open(INPUT, "r", encoding="utf-8", errors="replace") as f:
+        lines = f.read().splitlines()
+
+    # Locate the first "Average Value Weighted Returns -- Monthly" block
+    start = None
+    for i, line in enumerate(lines):
+        low = line.lower()
+        if "average value weighted returns" in low and "monthly" in low:
+            start = i
+            break
+    if start is None:
+        raise RuntimeError("Monthly value-weighted block not found")
+
+    # Header is the next non-empty line
+    j = start + 1
+    while j < len(lines) and not lines[j].strip():
+        j += 1
+    header = [norm(c) for c in lines[j].split(",")]
+    col_idx = {name: k for k, name in enumerate(header)}
+
+    needed = {
+        "SMALL HIOP": None,
+        "BIG HIOP": None,
+        "SMALL LOOP": None,
+        "BIG LOOP": None,
+    }
+    for name in needed:
+        if name not in col_idx:
+            raise RuntimeError(f"Column {name} not found in header: {header}")
+        needed[name] = col_idx[name]
+
+    date_re = re.compile(r"^\d{6}$")
+    rows = {}
+    data_started = False
+    for k in range(j + 1, len(lines)):
+        line = lines[k].strip()
+        if not line:
+            if data_started:
+                break
+            continue
+        cells = line.split(",")
+        date_str = cells[0].strip()
+        if not date_re.match(date_str):
+            if data_started:
+                break
+            continue
+        data_started = True
+
+        vals = {}
+        ok = True
+        for name, idx in needed.items():
+            if idx >= len(cells):
+                ok = False
+                break
+            v = to_float(cells[idx])
+            if v is None:
+                ok = False
+                break
+            vals[name] = v
+        if not ok:
+            continue
+
+        rmw = 0.5 * (vals["SMALL HIOP"] + vals["BIG HIOP"]) - 0.5 * (
+            vals["SMALL LOOP"] + vals["BIG LOOP"]
+        )
+        rows[int(date_str)] = rmw
+
+    with open(OUTPUT, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["date", "value"])
+        for d in sorted(rows):
+            w.writerow([d, repr(rows[d])])
+
+
+if __name__ == "__main__":
+    main()
+```

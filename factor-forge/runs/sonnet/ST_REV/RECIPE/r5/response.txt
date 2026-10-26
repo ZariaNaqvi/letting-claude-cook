@@ -1,0 +1,43 @@
+I parse the file by hand and stop at the first table, since the first block holds the value-weighted monthly returns. The code then computes the factor from the four relevant columns and treats missing values as NaN.
+
+- **Parsing:** The code finds the line containing "Average Value Weighted Returns -- Monthly", then the header line after it. It reads rows until the first line that doesn't start with a 6-digit date.
+- **Missing data:** Values of -99.99 or -999 become NaN, so any month with a missing component gets no factor value. Those rows are dropped, since a value cannot be computed for them.
+- **Formula:** ST_Rev = 0.5*(SMALL LoPRIOR + BIG LoPRIOR) - 0.5*(SMALL HiPRIOR + BIG HiPRIOR).
+
+```python
+import pandas as pd
+import numpy as np
+
+rows = []
+header = None
+started = False
+with open("6_Portfolios_ME_Prior_1_0.csv", "r", errors="ignore") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if "Average Value Weighted Returns" in s and "Monthly" in s:
+                started = True
+            continue
+        if header is None:
+            if s.startswith(","):
+                header = [h.strip() for h in s.split(",")]
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts) >= 2 and len(parts[0]) == 6 and parts[0].isdigit():
+            rows.append(parts)
+        else:
+            if rows:
+                break
+
+cols = ["date"] + header[1:]
+df = pd.DataFrame([r[:len(cols)] for r in rows], columns=cols)
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    v = pd.to_numeric(df[c], errors="coerce")
+    v = v.where(~v.isin([-99.99, -999, -999.0]))
+    df[c] = v
+
+val = 0.5 * (df["SMALL LoPRIOR"] + df["BIG LoPRIOR"]) - 0.5 * (df["SMALL HiPRIOR"] + df["BIG HiPRIOR"])
+out = pd.DataFrame({"date": df["date"], "value": val}).dropna()
+out.to_csv("output.csv", index=False)
+```

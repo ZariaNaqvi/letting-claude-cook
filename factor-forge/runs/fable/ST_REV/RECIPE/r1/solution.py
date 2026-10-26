@@ -1,0 +1,71 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_ME_Prior_1_0.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Find the first block: 'Average Value Weighted Returns -- Monthly'
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first header line starting with comma
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# header line is the next line starting with a comma
+hdr_idx = None
+for j in range(start + 1, len(lines)):
+    if lines[j].strip().startswith(","):
+        hdr_idx = j
+        break
+
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+rows = []
+for line in lines[hdr_idx + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    if len(parts) != len(header):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=header)
+df = df.rename(columns={header[0]: "date"})
+df["date"] = df["date"].astype(int)
+for c in df.columns[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Treat missing codes as NaN
+vals = df.columns[1:]
+df[vals] = df[vals].mask((df[vals] <= -99.99))
+
+# Identify columns
+def find_col(cols, *keys):
+    for c in cols:
+        cl = c.upper().replace(" ", "")
+        if all(k in cl for k in keys):
+            return c
+    raise KeyError(keys)
+
+cols = list(df.columns[1:])
+s_lo = find_col(cols, "SMALL", "LO")
+s_hi = find_col(cols, "SMALL", "HI")
+b_lo = find_col(cols, "BIG", "LO")
+b_hi = find_col(cols, "BIG", "HI")
+
+value = 0.5 * (df[s_lo] + df[b_lo]) - 0.5 * (df[s_hi] + df[b_hi])
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": value.round(4)})
+out = out.dropna(subset=["value"]) if out["value"].isna().all() else out
+out.to_csv("output.csv", index=False)

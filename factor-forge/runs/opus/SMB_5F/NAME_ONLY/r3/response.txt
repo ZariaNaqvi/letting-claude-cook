@@ -1,0 +1,68 @@
+The script builds SMB the way the Fama-French 5-factor (2x3) model defines it:
+
+1. **One SMB per sort.** For each of the three 2x3 sorts, it computes SMB as the average of the three small portfolios minus the average of the three big portfolios. The three sorts are:
+   - size × B/M
+   - size × operating profitability (OP)
+   - size × investment (INV)
+2. **Combined factor.** The final SMB is the simple average of those three SMBs.
+3. **Data used.** It reads only the first block in each file, "Average Value Weighted Returns -- Monthly". Values of -99.99 or -999 are treated as missing.
+4. **Date range.** Output starts in 196307. All three sorts are needed and the OP and INV files begin there, so the B/M file's earlier months (from 192607) are not used.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+
+def read_vw_monthly(fname):
+    with open(fname, "r", encoding="latin-1") as f:
+        lines = f.read().splitlines()
+    start = None
+    for i, ln in enumerate(lines):
+        if "Value Weighted Returns" in ln and "Monthly" in ln:
+            start = i
+            break
+    if start is None:
+        raise ValueError(f"VW monthly section not found in {fname}")
+    # header line follows
+    i = start + 1
+    while i < len(lines) and not lines[i].strip():
+        i += 1
+    i += 1  # skip header
+    dates, rows = [], []
+    while i < len(lines):
+        ln = lines[i].strip()
+        parts = [p.strip() for p in ln.split(",")]
+        if not parts or not re.fullmatch(r"\d{6}", parts[0]):
+            break
+        vals = []
+        for p in parts[1:7]:
+            try:
+                v = float(p)
+            except ValueError:
+                v = np.nan
+            if v <= -99.99 + 1e-9 or v == -999:
+                v = np.nan
+            vals.append(v)
+        while len(vals) < 6:
+            vals.append(np.nan)
+        dates.append(int(parts[0]))
+        rows.append(vals)
+        i += 1
+    return pd.DataFrame(rows, index=dates, columns=["S1", "S2", "S3", "B1", "B2", "B3"])
+
+
+def smb(df):
+    return df[["S1", "S2", "S3"]].mean(axis=1, skipna=False) - df[["B1", "B2", "B3"]].mean(axis=1, skipna=False)
+
+
+bm = read_vw_monthly("6_Portfolios_2x3.csv")
+op = read_vw_monthly("6_Portfolios_ME_OP_2x3.csv")
+inv = read_vw_monthly("6_Portfolios_ME_INV_2x3.csv")
+
+comb = pd.concat([smb(bm).rename("bm"), smb(op).rename("op"), smb(inv).rename("inv")], axis=1, join="inner")
+val = comb.mean(axis=1, skipna=False).dropna().sort_index()
+
+out = pd.DataFrame({"date": val.index.astype(int), "value": val.values.round(4)})
+out.to_csv("output.csv", index=False)
+```

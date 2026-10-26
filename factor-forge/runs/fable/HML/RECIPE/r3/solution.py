@@ -1,0 +1,71 @@
+import pandas as pd
+import numpy as np
+import re
+
+fname = "6_Portfolios_2x3.csv"
+
+with open(fname, "r", encoding="utf-8", errors="replace") as f:
+    lines = f.read().splitlines()
+
+# Locate the first monthly table: header line starting with a comma after
+# "Average Value Weighted Returns -- Monthly"
+start = None
+for i, line in enumerate(lines):
+    if "Average Value Weighted Returns" in line and "Monthly" in line:
+        start = i
+        break
+if start is None:
+    # fallback: first header line that starts with ','
+    for i, line in enumerate(lines):
+        if line.startswith(","):
+            start = i - 1
+            break
+
+# find header row (starts with ',') after the title
+hdr = None
+for j in range(start + 1, len(lines)):
+    if lines[j].strip().startswith(","):
+        hdr = j
+        break
+
+cols = [c.strip() for c in lines[hdr].split(",")]
+cols[0] = "date"
+
+rows = []
+for line in lines[hdr + 1:]:
+    s = line.strip()
+    if not s:
+        break
+    parts = [p.strip() for p in s.split(",")]
+    if not re.fullmatch(r"\d{6}", parts[0]):
+        break
+    if len(parts) != len(cols):
+        break
+    rows.append(parts)
+
+df = pd.DataFrame(rows, columns=cols)
+df["date"] = df["date"].astype(int)
+for c in cols[1:]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+
+# Replace missing codes with NaN
+for c in cols[1:]:
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+# Identify columns by name (robust to spacing)
+def find_col(key):
+    for c in cols[1:]:
+        if c.replace(" ", "").upper() == key.replace(" ", "").upper():
+            return c
+    raise KeyError(key)
+
+sl = find_col("SMALL LoBM")
+sh = find_col("SMALL HiBM")
+bl = find_col("BIG LoBM")
+bh = find_col("BIG HiBM")
+
+hml = 0.5 * (df[sh] + df[bh]) - 0.5 * (df[sl] + df[bl])
+
+out = pd.DataFrame({"date": df["date"].astype(int), "value": hml.round(4)})
+out = out.dropna(subset=["value"])
+out.to_csv("output.csv", index=False)

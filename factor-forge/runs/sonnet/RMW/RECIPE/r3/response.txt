@@ -1,0 +1,39 @@
+The script reads the file line by line and stops at the end of the first table, so it never touches the later blocks.
+
+- **Start of the table:** it begins at the line containing "Average Value Weighted Returns -- Monthly".
+- **Rows:** a row counts only if its first field is a 6-digit integer. The first table's header row is skipped because its first field is empty.
+- **End of the table:** the first non-matching line after data has started (a blank line or the next block title) ends the table.
+- **Missing data:** values of -99.99 or -999 are treated as NaN. A month with any missing input gets NaN, and I drop those rows.
+- **Formula:** `value = 0.5*(SMALL HiOP + BIG HiOP) - 0.5*(SMALL LoOP + BIG LoOP)`, using the column names from the header.
+
+```python
+import pandas as pd
+import numpy as np
+
+rows = []
+cols = None
+started = False
+with open("6_Portfolios_ME_OP_2x3.csv", "r", encoding="latin-1") as f:
+    for line in f:
+        s = line.strip()
+        if not started:
+            if s.startswith("Average Value Weighted Returns") and "Monthly" in s:
+                started = True
+            continue
+        if cols is None:
+            if s.startswith(","):
+                cols = [c.strip() for c in s.split(",")[1:]]
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if len(parts) >= 7 and parts[0].isdigit() and len(parts[0]) == 6:
+            rows.append([int(parts[0])] + [float(x) for x in parts[1:1 + len(cols)]])
+        else:
+            if rows:
+                break
+
+df = pd.DataFrame(rows, columns=["date"] + cols)
+df = df.replace([-99.99, -999, -999.0], np.nan)
+val = 0.5 * (df["SMALL HiOP"] + df["BIG HiOP"]) - 0.5 * (df["SMALL LoOP"] + df["BIG LoOP"])
+out = pd.DataFrame({"date": df["date"].astype(int), "value": val}).dropna()
+out.to_csv("output.csv", index=False)
+```

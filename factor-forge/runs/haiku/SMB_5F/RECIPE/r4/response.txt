@@ -1,0 +1,97 @@
+The script parses the first (value-weighted monthly) table in each file, computes each file's SMB as the mean of the three small portfolios minus the mean of the three big portfolios, averages the three SMBs, and keeps only months present in all three files from 196307 onward.
+
+```python
+import re
+import numpy as np
+import pandas as pd
+
+FILES = [
+    "6_Portfolios_2x3.csv",
+    "6_Portfolios_ME_OP_2x3.csv",
+    "6_Portfolios_ME_INV_2x3.csv",
+]
+TITLE = "Value Weighted Returns -- Monthly"
+DATE_RE = re.compile(r"^\d{6}$")
+MISSING = {-99.99, -999.0}
+
+
+def parse_vw_monthly(fname):
+    """Parse the first 'Value Weighted Returns -- Monthly' block.
+    Returns DataFrame indexed by int YYYYMM with 6 portfolio columns (in file order)."""
+    with open(fname, encoding="latin-1") as f:
+        lines = f.read().splitlines()
+
+    start = None
+    for i, l in enumerate(lines):
+        if TITLE in l:
+            start = i
+            break
+    if start is None:
+        raise ValueError(f"Monthly VW block not found in {fname}")
+
+    header = None
+    rows = []
+    data_started = False
+    for l in lines[start + 1:]:
+        s = l.strip()
+        if header is None:
+            if not s:
+                continue
+            parts = [p.strip() for p in s.split(",")]
+            header = parts[1:]
+            continue
+        parts = [p.strip() for p in s.split(",")]
+        if DATE_RE.match(parts[0] if parts else ""):
+            vals = []
+            for p in parts[1:1 + len(header)]:
+                try:
+                    v = float(p)
+                except ValueError:
+                    v = np.nan
+                if v in MISSING:
+                    v = np.nan
+                vals.append(v)
+            if len(vals) != len(header):
+                continue
+            rows.append([int(parts[0])] + vals)
+            data_started = True
+        else:
+            if data_started:
+                break  # end of the monthly block
+            # blank lines before data are skipped
+
+    df = pd.DataFrame(rows, columns=["date"] + header).set_index("date")
+    df = df.apply(pd.to_numeric, errors="coerce")
+    return df
+
+
+def smb_from_block(df):
+    """First 3 columns = small portfolios, last 3 = big portfolios."""
+    cols = list(df.columns)
+    small_cols = cols[:3]
+    big_cols = cols[3:6]
+    return df[small_cols].mean(axis=1) - df[big_cols].mean(axis=1)
+
+
+def main():
+    smbs = []
+    for fn in FILES:
+        block = parse_vw_monthly(fn)
+        smbs.append(smb_from_block(block).rename(fn))
+
+    combined = pd.concat(smbs, axis=1, join="inner").sort_index()
+    combined = combined[combined.index >= 196307]
+    combined = combined.dropna()
+
+    smb = combined.mean(axis=1)  # (SMB_BM + SMB_OP + SMB_INV) / 3
+
+    out = pd.DataFrame({
+        "date": combined.index.astype(int),
+        "value": smb.values,
+    })
+    out.to_csv("output.csv", index=False, float_format="%.6f")
+
+
+if __name__ == "__main__":
+    main()
+```

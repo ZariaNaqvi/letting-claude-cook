@@ -1,0 +1,47 @@
+The script reads the file line by line and stops at the first table, so it never touches the later blocks. It begins parsing after the header line that contains "SMALL LoPRIOR", then keeps only rows whose first field is a 6-digit YYYYMM date. It ends at the first blank line or non-monthly row after the data starts.
+
+Missing values (-99.99 or -999) are treated as NaN, so any month where one of the four portfolios is missing gets no row. The "one row per month" requirement applies to months the input supports, so dropping those months seems the right call.
+
+Columns are located by name from the header, and the header is stripped of whitespace. The value is 0.5*(SMALL LoPRIOR + BIG LoPRIOR) − 0.5*(SMALL HiPRIOR + BIG HiPRIOR).
+
+```python
+import numpy as np
+import pandas as pd
+
+fn = "6_Portfolios_ME_Prior_1_0.csv"
+with open(fn, "r", errors="replace") as f:
+    lines = f.read().splitlines()
+
+hdr_idx = None
+for i, l in enumerate(lines):
+    if "SMALL LoPRIOR" in l:
+        hdr_idx = i
+        break
+
+header = [h.strip() for h in lines[hdr_idx].split(",")]
+rows = []
+for l in lines[hdr_idx + 1:]:
+    parts = [p.strip() for p in l.split(",")]
+    if not parts or not parts[0]:
+        if rows:
+            break
+        continue
+    if not (parts[0].isdigit() and len(parts[0]) == 6):
+        if rows:
+            break
+        continue
+    rows.append(parts[:len(header)])
+
+df = pd.DataFrame(rows, columns=header)
+df.rename(columns={header[0]: "date"}, inplace=True)
+df["date"] = df["date"].astype(int)
+cols = ["SMALL LoPRIOR", "BIG LoPRIOR", "SMALL HiPRIOR", "BIG HiPRIOR"]
+for c in cols + ["ME1 PRIOR2", "ME2 PRIOR2"]:
+    df[c] = pd.to_numeric(df[c], errors="coerce")
+for c in cols:
+    df.loc[df[c] <= -99.0, c] = np.nan
+
+df["value"] = 0.5 * (df["SMALL LoPRIOR"] + df["BIG LoPRIOR"]) - 0.5 * (df["SMALL HiPRIOR"] + df["BIG HiPRIOR"])
+out = df[["date", "value"]].dropna()
+out.to_csv("output.csv", index=False)
+```

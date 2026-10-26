@@ -1,0 +1,40 @@
+{
+  "id": "msg_011CgRWQtwMkDu7fN3fshdnj",
+  "container": null,
+  "content": [
+    {
+      "signature": "CAQS8woKEAgTGAI4AUIIdGhpbmtpbmcSDFNItDb0zoBxnKiQiBoMOx5vDi2VXF77ZNF6IjD3wy3evn1Rjxa1CLIhGlp8/LGy58VBJHpjvEvik1DBJrL58xOtsN/3ynhVmlYX8XwqkAqOiAQayK4jGUbsW+Xlgw8cEdH0EVBH0kCAFC/f/lsKAEfHSgjDBw8sEwWXkgkniOm+g9ALbXPTEi8IqtzO9r4pRSbvx9F5ksNghlsf7WHtFmXHj8+afbnaTl0kHq5ho5yOxSC+WAQEu2XHa1aJPmANYYy4AuP61ZfL2BuMWM5U0nKRtfcudUpmUApYJxhGpBJqAUxK0d9vvyGevnVYCurozVLcA30d+PHPa+P3ue+Z5iZvgwXq798MNjDx6lSYr0oyIQzT9hAt99SMJt2CsKQKAEWhR4E/jLVkimjQcpxa0x9LL2GpUFiMGA1jhAlZjvrRI1jqVkzbRX+VbaFqDsTUKrvkBWdn7HoTBZ7G4zc/1W6E/ANKEmuEKXc1XITjeC+OZ3+6BFvGF1wfc2iVqeV6P2t91tLd5g7uNqvqf1my2aEwMnKtzf9bVJSn2iDrtwGPEu9kqbVVncMXbYf3waIQaLp1lgz9BS2NJUqtvgl1oAndnnj64Tm6hfY+yH4gefgj7uNSOibqqBmE0/VAxdapofVZcWu5uKWW98q46syP/P1Kduuv39QL4HdAeZRpEfxN8qZXWcSzwtm80cfvW/g5iiNM1+JUnr9lDsoW+eki/XT2XlNmosD3rtWwtLztoTqYt0MkAHe6W/fEXx3PVvwALl1q0vqvB1bhNdgqLkxnBTCuNaDEpCywgm91Ti66L4Poh5nmnWqQ3UxMWc0nCjgBmoYhU3HKTNcDGhRp+tQvy48th9S/LthrO26qfJ77W2L7Ij6brw+IIoibL4Ir66Rc5fzevq+U2fjOobeSE9sqwfGFCNscifbtkaU2rkBxwnKLdaHRUT00XGbM0BTTWMop/dIZBo0SHvwliiV+YFKCRRTxCDlUvWQl36VGY1oPqfwmg4q2oWsZxnm3WVBNBACPuQujYicYwomLiHReRayYwUtswbGr3lZN7YKtmtHxT6qMwW1istqxQyfea2GzrQ23LRsiog9dNf7cIsN1jBHnBYsCAXOvK5nuphPtvVSqMDfbiJ4WKBAyxtf8SCEDsa6MAbQTYXQa1FmG3QgXhMem6x9jYGAQZBV0ewF/mTlcCQI8dT6me0wWlqkiVW6Zn/LTALyJiPOH5u0NYujMuAP4WQjBlz3kAgGsbsFwUSOHT/I2/cCjZgUWGjO8MsSfkyO7mHz3y7mSxHOSceFAh08DcuYYvoirxlg+b3oYxKQuWRkGGDZdIZylDeqmtwGthUY874emSTsrPdEohhtLgsJcl77rD0T4KehUYvwv26ymZiJ/FozL/qXvqF11aqqDkRi7Bfi9Ns9TR9yyIeqYXT1zRBSyVj7ZIsKzyRsApcMlM9NDRvN9NPwCrAYla+cFx3PY69k2t0zYXW31itfl9PJUctlrEpK44Jy4muT+RWOwZ7nu8RGdAv9nTvBKTyVmP+7okZ7E9JyIPHNohrH16MOJX+OZoMuwVP+O1J17r4T/XQnEC3C9Nc6rM+daRpnkNJ1/kfq3bgVkm8sjRkuE2WkVQBwcuQHVjVyHc5GLzm8cP8Golfh5pq8gGRs20bweopz6/KT0jkrn+MH8hb3WRM1HLOPcLx+8bDnsEf/MqrMYT7U5wpdzRrAmP50wgVs+EHfaoi8wsuDsAgte+n7sWaXaQfbiMO1KLk3rdrq4/PSSVHK8H4lMGc1Hc8+f5uv44OGxUaYkmk5XAvS4jV3vrx7ZpgstS9qHddYuaSBZkX+TX14YAQ==",
+      "thinking": "",
+      "type": "thinking"
+    },
+    {
+      "citations": null,
+      "text": "CMA is computed as the average of the two low-investment (conservative) portfolios minus the average of the two high-investment (aggressive) portfolios:\n\nCMA = \u00bd (Small LoINV + Big LoINV) \u2212 \u00bd (Small HiINV + Big HiINV)\n\nThe script works as follows:\n- **Input block:** it reads only the first block of the file, \"Average Value Weighted Returns -- Monthly\", which uses value-weighted returns. Reading stops at the first line that is not a 6-digit YYYYMM row, so the annual and other blocks are ignored.\n- **Missing data:** a month is dropped if any of the four needed returns is a missing code (-99.99 or -999).\n- **Output:** values stay in percent, rounded to 4 decimals.\n\n```python\nimport re\nimport numpy as np\nimport pandas as pd\n\nFILE = \"6_Portfolios_ME_INV_2x3.csv\"\n\nwith open(FILE, \"r\", encoding=\"latin-1\") as f:\n    lines = [l.rstrip(\"\\n\").rstrip(\"\\r\") for l in f]\n\n# locate the monthly value-weighted block\nstart = None\nfor i, l in enumerate(lines):\n    if \"Value Weighted Returns\" in l and \"Monthly\" in l:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Monthly value-weighted block not found\")\n\n# header line\nhdr_idx = start + 1\nwhile lines[hdr_idx].strip() == \"\":\n    hdr_idx += 1\nheader = [h.strip() for h in lines[hdr_idx].split(\",\")]\ncols = header[1:]\n\nrows = []\nfor l in lines[hdr_idx + 1:]:\n    s = l.strip()\n    if not s:\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    if not re.fullmatch(r\"\\d{6}\", parts[0]):\n        break\n    vals = []\n    for p in parts[1:1 + len(cols)]:\n        try:\n            vals.append(float(p))\n        except ValueError:\n            vals.append(np.nan)\n    rows.append([int(parts[0])] + vals)\n\ndf = pd.DataFrame(rows, columns=[\"date\"] + cols)\nfor c in cols:\n    df.loc[df[c] <= -99.99, c] = np.nan\n\ndef find_col(size_keys, inv_key):\n    for c in cols:\n        cu = c.upper().replace(\" \", \"\")\n        if any(k in cu for k in size_keys) and inv_key in cu:\n            return c\n    raise RuntimeError(f\"column not found {size_keys} {inv_key}\")\n\n# Column order per Ken French: SMALL LoINV, ME1 INV2, SMALL HiINV, BIG LoINV, ME2 INV2, BIG HiINV\ntry:\n    sl = find_col([\"SMALL\", \"ME1\"], \"LOINV\")\n    sh = find_col([\"SMALL\", \"ME1\"], \"HIINV\")\n    bl = find_col([\"BIG\", \"ME2\"], \"LOINV\")\n    bh = find_col([\"BIG\", \"ME2\"], \"HIINV\")\nexcept RuntimeError:\n    sl, _, sh, bl, _, bh = cols[:6]\n\ndf[\"value\"] = 0.5 * (df[sl] + df[bl]) - 0.5 * (df[sh] + df[bh])\nout = df[[\"date\", \"value\"]].dropna()\nout[\"date\"] = out[\"date\"].astype(int)\nout[\"value\"] = out[\"value\"].round(4)\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-opus-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2613,
+    "output_tokens": 1490,
+    "output_tokens_details": {
+      "thinking_tokens": 314
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

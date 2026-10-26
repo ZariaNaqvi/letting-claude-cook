@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRWK4EHKCsb3WdvA8UmQ",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "```python\nimport pandas as pd\nimport numpy as np\n\nfname = \"6_Portfolios_ME_Prior_1_0.csv\"\n\nwith open(fname, \"r\") as f:\n    lines = f.readlines()\n\n# Find the first block: 'Average Value Weighted Returns -- Monthly'\nstart = None\nfor i, line in enumerate(lines):\n    if \"Average Value Weighted Returns -- Monthly\" in line:\n        start = i\n        break\nif start is None:\n    raise RuntimeError(\"Could not find the monthly value-weighted block\")\n\n# Header line is the next line\nheader_idx = start + 1\nheader = [h.strip() for h in lines[header_idx].strip().split(\",\")]\n\nrows = []\nfor line in lines[header_idx + 1:]:\n    s = line.strip()\n    if s == \"\":\n        break\n    parts = [p.strip() for p in s.split(\",\")]\n    if not parts[0].isdigit() or len(parts[0]) != 6:\n        break\n    rows.append(parts)\n\ndf = pd.DataFrame(rows, columns=header)\ndf = df.rename(columns={header[0]: \"date\"})\ndf[\"date\"] = df[\"date\"].astype(int)\nfor c in df.columns[1:]:\n    df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n# Handle missing values\nfor c in df.columns[1:]:\n    df.loc[df[c].isin([-99.99, -999.0]), c] = np.nan\n\nsl = df[\"SMALL LoPRIOR\"]\nbl = df[\"BIG LoPRIOR\"]\nsh = df[\"SMALL HiPRIOR\"]\nbh = df[\"BIG HiPRIOR\"]\n\nvalue = 0.5 * (sl + bl) - 0.5 * (sh + bh)\n\nout = pd.DataFrame({\"date\": df[\"date\"].astype(int), \"value\": value.round(4)})\nout = out.dropna(subset=[\"value\"])\nout.to_csv(\"output.csv\", index=False)\n```\n\nThe script parses only the first monthly block (value-weighted returns), computes ST_Rev = \u00bd(SMALL LoPRIOR + BIG LoPRIOR) \u2212 \u00bd(SMALL HiPRIOR + BIG HiPRIOR) for each month, and writes `output.csv` with `date,value`.",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-fable-5-1",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 2708,
+    "output_tokens": 757,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}

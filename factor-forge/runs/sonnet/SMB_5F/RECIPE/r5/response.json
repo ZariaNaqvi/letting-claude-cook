@@ -1,0 +1,35 @@
+{
+  "id": "msg_011CgRWuXrtU8FwACJ6t9Zxo",
+  "container": null,
+  "content": [
+    {
+      "citations": null,
+      "text": "The script finds the first table in each file by locating the header line `Average Value Weighted Returns -- Monthly`. It then reads rows until the first line that is not a 6-digit date row. It drops any month with a missing-data marker (-99.99 or -999) and keeps only months present in all three files.\n\nFor each file, SMB_x is the mean of the three small columns minus the mean of the three big columns. The final value is the average of the three SMB_x series.\n\nI haven't run this against the full files.\n\n```python\nimport csv\nimport pandas as pd\n\nfiles = [\"6_Portfolios_2x3.csv\", \"6_Portfolios_ME_OP_2x3.csv\", \"6_Portfolios_ME_INV_2x3.csv\"]\n\n\ndef read_block(fn):\n    with open(fn, \"r\", encoding=\"latin-1\") as f:\n        lines = f.read().splitlines()\n    start = None\n    for i, l in enumerate(lines):\n        if \"Average Value Weighted Returns\" in l and \"Monthly\" in l:\n            start = i\n            break\n    rows = {}\n    for l in lines[start + 1:]:\n        parts = [p.strip() for p in l.split(\",\")]\n        if len(parts) >= 7 and parts[0].isdigit() and len(parts[0]) == 6:\n            try:\n                vals = [float(x) for x in parts[1:7]]\n            except ValueError:\n                continue\n            rows[int(parts[0])] = vals\n        elif len(parts) >= 7 and parts[0] == \"\":\n            continue  # header\n        else:\n            if rows:\n                break\n    df = pd.DataFrame.from_dict(rows, orient=\"index\")\n    df = df.mask((df <= -99.0))\n    return df\n\n\nseries = []\nfor fn in files:\n    df = read_block(fn)\n    small = df[[0, 1, 2]].mean(axis=1, skipna=False)\n    big = df[[3, 4, 5]].mean(axis=1, skipna=False)\n    series.append(small - big)\n\ncomb = pd.concat(series, axis=1, join=\"inner\").dropna()\nval = comb.mean(axis=1)\nout = pd.DataFrame({\"date\": comb.index.astype(int), \"value\": val.values})\nout = out.sort_values(\"date\")\nout.to_csv(\"output.csv\", index=False)\n```",
+      "type": "text"
+    }
+  ],
+  "diagnostics": null,
+  "model": "claude-sonnet-5-5",
+  "role": "assistant",
+  "stop_details": null,
+  "stop_reason": "end_turn",
+  "stop_sequence": null,
+  "type": "message",
+  "usage": {
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 0,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "cache_creation_input_tokens": 0,
+    "cache_read_input_tokens": 0,
+    "inference_geo": "global",
+    "input_tokens": 6881,
+    "output_tokens": 755,
+    "output_tokens_details": {
+      "thinking_tokens": 0
+    },
+    "server_tool_use": null,
+    "service_tier": "standard",
+    "speed": "standard"
+  }
+}
