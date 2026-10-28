@@ -184,3 +184,89 @@ real cause (column-selection bug, case bug), and one failure is a pandas-version
             (commit c47af5d, after tag prompts-v1). Harness only; prompts.py and tasks.json are
             unchanged since prompts-v1, so every run used the v1 prompts.
 2026-10-26  notes.txt: Week 2 SETUP, PILOT, HAND-CHECK and CHANGES LOG blocks added.
+
+## PART 3 (FORM FORGE) SETUP 2026-10-28 -- built with Claude Code (infrastructure only)
+Why:    Part 2 hit a ceiling (316/320 PASS; the 4 failures were coding slips), so it can't separate
+        the models. Part 3 makes them collect book equity themselves by clicking through SEC EDGAR
+        (search form -> filings list -> filing index -> FilingSummary.xml -> balance-sheet R page).
+        Old Part 3 (analysis, write-up, talk) is now Part 4. Deadline Nov 11 unchanged.
+Design: docs/06-part3-form-forge-design.md (H1-H5, 8 tasks, STEPS / GOAL_ONLY, 192 runs, <= $100).
+Site:   SEC EDGAR chosen over Fed DDP (its "Build Your Package" wizard is being removed the week of
+        Nov 9, 2026 per the notice on the live page), BLS (robots.txt Disallow: /), FRED/Treasury
+        (too easy). Fallback if SEC blocks the harness: NY Fed SOFR search (log as a deviation).
+Built:  web/ (sec_policy, browser_tools, prompts_web, run_web, mock_agent, capture_fixtures,
+        answer_key, score_web, selftest_web, analyze_web, tasks_web.json, requirements-web.txt,
+        README.md); .env.example + SEC_USER_AGENT placeholder; .gitignore + web/.asset_cache/,
+        runs_web_mock/, results_web_mock/. Docs updated (README, docs/01-06, docs/code/00, 08-15,
+        class-update, class-script).
+Rules kept: no Anthropic API calls (fake model only), nothing committed, .env never read, Part 2
+        code and results untouched. Live SEC traffic used the TEST User-Agent
+        "FactorForge-test admin@example.com" at <= 5 requests/s.
+Versions: playwright 1.64.1 (Chrome Headless Shell 156.0.8078.4), greenlet 3.5.6, pyee 14.0.0;
+        HARNESS_VERSION web-h1; PROMPT_VERSION web-v1-draft (NOT frozen yet).
+Key:    frozen 2026-10-28 from data.sec.gov companyfacts (10 firms) + frames CY2026Q2I (11 requests).
+        T1 AAPL 107,520,000,000 (0000320193-26-000020)  T2 MSFT 442,387,000,000 (10-K, ...-323660)
+        T3 WMT 98,238,000,000  T4 NFLX 30,152,052,000 (original 0001065280-26-000212, NOT -000291)
+        T5 DPZ -3,982,431,000  T6 JPM 353,558,000,000 (= 374,598,000,000 - preferred 21,040,000,000;
+        JPM tags preferred under another XBRL name, fallback names added)  T7 BRK 747,910,000,000
+        T8 ranking CVX, KO, MMM, AAPL.
+T8 ME:  cover shares outstanding x 2026-06-30 close (AAPL 289.36, KO 81.27, CVX 165.76, MMM 161.91),
+        Yahoo Finance daily history, unadjusted close, read 2026-10-28.
+        Source sentence, verbatim from web/tasks_web.json T8 market_equity.source:
+        "ME = shares outstanding on the cover page of the same 10-Q (dei:EntityCommonStockSharesOutstanding,
+        as of the cover date in July 2026) x closing price on 2026-06-30 (Yahoo Finance daily history,
+        unadjusted close, read 2026-10-28)"
+        ME (USD): AAPL 4,222,971,924,800  KO 349,668,176,979  CVX 327,503,846,378  MMM 83,500,616,536
+Access: SEC answered "403 Undeclared Automated Tool" to headless Chromium's own requests, even with a
+        declared UA; a plain client with the same UA got 200. Final design: every request goes through
+        httpx2 sending ONLY the declared UA (redirects followed and re-checked, rate-limited per hop);
+        Chromium only renders. An earlier test that also tried a browser-style UA was dropped.
+        Nothing is disguised. A 403 -> HARNESS_ERROR and the whole session stops.
+Tested (real outputs):
+  answer_key.py --check   sha256 OK for 11 raw files; frozen key matches a rebuild: True
+  capture_fixtures.py     T1 matches key (41 requests, max 5/s); T4 matches key (39, max 4/s); 69 responses
+  run_web.py --dry-run    T1, T4 x 9 personas on the live site (18 runs); 2 runs redone after fixes
+                          (a click timeout; a ~700 s stall)
+  score_web.py            18 runs: PASS 4 + 2 each of WRONG_PERIOD, GAVE_UP, UNGROUNDED, STEP_LIMIT,
+                          UNITS, WRONG_ENTITY, WRONG_LINE; 0 mismatches
+  analyze_web.py          runs (fake numbers): wrote summary.md, 5 CSVs, 3 figures
+  selftest_web.py         148/148 checks passed, ALL CHECKS PASSED (rerun 2026-10-28, no network)
+Changes vs design draft: max_tokens 16,000 (not 4,000); tags UNGROUNDED, WRONG_ENTITY before NAV_ERROR,
+        + REFUSAL; CDN page libraries allowed as scripts/styles only; one shared web/fixtures/;
+        requests.jsonl per run; 25 s cap per request; tool calls > 120 s = stall, not counted
+        toward the 12 min. Stalls of ~690 s seen 3 times (one SEC script); root cause unknown.
+Open:   only T1, T4 walked live; labels for T2, T3, T5-T8 unverified. Shortcuts left open: the
+        filing's *_htm.xml and /ix?doc= viewer (inside the filing folder).
+
+## SETUP, PART 3 ADDITIONS
+Date: 2026-10-28, Mac (macOS arm64, Darwin 25.6.0), Python 3.12.10, same venv (factor-forge/.venv)
+Install: pip install -r web/requirements-web.txt  (pulls in ../requirements.txt), then once
+         python -m playwright install chromium
+Part 2 pins (unchanged): anthropic 1.13.0, pandas 3.0.6, numpy 2.5.4, scipy 1.18.1,
+         matplotlib 3.11.2, python-dotenv 1.2.4
+New: playwright 1.64.1 (+ greenlet 3.5.6, pyee 14.0.0 installed with it)
+Browser: Chrome Headless Shell 156.0.8078.4, playwright build chromium-headless-shell v1248
+         (~/Library/Caches/ms-playwright/chromium_headless_shell-1248)
+HTTP client for SEC requests: httpx2 2.16.0, installed with anthropic 1.13.0 (no separate pin)
+.env.example: added SEC_USER_AGENT="Your Name your.address@example.edu" (placeholder; the real
+         name + contact go in .env only, which is never committed)
+.gitignore: added web/.asset_cache/ (cached js/css of SEC pages), runs_web_mock/, results_web_mock/
+         (fake-model runs, regenerate with --dry-run). Committed on purpose: web/answer_key.json,
+         web/data/raw (sha256 manifest), web/fixtures, runs_web_pilot/, runs_web/, results_web*/
+         (except the mock ones)
+
+NEXT (Part 3, student)
+  [ ] Oct 28  Decide you are OK with the httpx2 approach above (before ANY paid call)
+  [ ] Oct 28  Add SEC_USER_AGENT="Your Name your-contact" to .env; pip install -r web/requirements-web.txt;
+              python -m playwright install chromium; record versions here
+  [x] Oct 28  python web/answer_key.py --check  (optional: --force to refetch under your own UA)
+              -> sha256 OK for 11 raw files; frozen key matches a rebuild: True (exit 0; not refetched)
+  [ ] Oct 29  Walk T2, T3, T5-T8 STEPS by hand (python web/prompts_web.py T2 STEPS); fix tasks_web.json
+              and mock_agent.py FIRMS labels; python web/capture_fixtures.py --all -> every task "matches the key"
+  [ ] Oct 29  PROMPT_VERSION = "web-v1"; commit; git tag prompts-web-v1
+  [ ] Oct 29  python web/selftest_web.py -> ALL CHECKS PASSED; offline dry run on all tasks -> 0 mismatches
+  [ ] Oct 30  Pilot (~$5-7); read every transcript; mean cost per model -> repeat rule (3 or 2 repeats)
+  [ ] Oct 31-Nov 1  Main run (192 runs, --budget-usd 100), resume-safe
+  [ ] Nov 2-3 Score; hand-check 20 runs; grep runs for sk-ant- and your SEC contact; analyze; commit; tag run-web-v1
+  [ ] Nov 4   Part 4: python analyze.py (Part 2 figures) + combined analysis
+

@@ -1,0 +1,374 @@
+{
+  "version": "web-v1-draft",
+  "note": "Form Forge (Part 3) tasks. 'answer' blocks are written by web/answer_key.py from the frozen answer_key.json; do not edit them by hand. STEPS wording must be checked against the live site before PROMPT_VERSION is frozen.",
+  "general_rules": [
+    "Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.",
+    "Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.",
+    "Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise."
+  ],
+  "pass_rule": {
+    "tolerance_usd": 0,
+    "accession_must_match": true,
+    "description": "PASS = submit_answer called without give_up, value exactly equal to the key, accession in the key's allowed set (original filing or its amendment). T8: all four book equities exact and the ranking exact."
+  },
+  "filed_window": [
+    "2026-07-01",
+    "2026-08-31"
+  ],
+  "single_schema": {
+    "type": "object",
+    "properties": {
+      "value_usd": {
+        "type": "integer",
+        "description": "The amount in whole US dollars"
+      },
+      "accession": {
+        "type": "string",
+        "description": "Accession number, e.g. 0000000000-26-000000"
+      },
+      "period_end": {
+        "type": "string",
+        "description": "Balance-sheet date, YYYY-MM-DD"
+      }
+    }
+  },
+  "rank_schema": {
+    "type": "object",
+    "properties": {
+      "book_equity_usd": {
+        "type": "object",
+        "properties": {
+          "AAPL": {
+            "type": "integer"
+          },
+          "KO": {
+            "type": "integer"
+          },
+          "CVX": {
+            "type": "integer"
+          },
+          "MMM": {
+            "type": "integer"
+          }
+        },
+        "description": "Book equity of each firm in whole US dollars"
+      },
+      "ranking_high_to_low_bm": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "AAPL",
+            "KO",
+            "CVX",
+            "MMM"
+          ]
+        },
+        "description": "The four tickers ordered from highest to lowest book-to-market"
+      }
+    }
+  },
+  "tasks": [
+    {
+      "id": "T1",
+      "kind": "single",
+      "firm": "Apple Inc.",
+      "ticker": "AAPL",
+      "cik": 320193,
+      "target_end": "2026-06-27",
+      "allowed_forms": [
+        "10-Q"
+      ],
+      "concept": "StockholdersEquity",
+      "max_steps": 30,
+      "goal": "Find Apple Inc.'s total shareholders' equity at the end of its fiscal quarter that ended in late June 2026, as reported in the quarterly report Apple filed in July 2026.",
+      "steps": [
+        "Open the EDGAR company search page https://www.sec.gov/search-filings and type \"Apple Inc\" into the Company Search box \"Name, ticker symbol, or CIK\". Click the suggestion \"Apple Inc. (AAPL)\" (CIK 0000320193).",
+        "On the company page, expand \"10-K (annual reports) and 10-Q (quarterly reports)\". Ignore the Form 4 and Form 144 insider filings.",
+        "Find the 10-Q filed July 31, 2026 (\"Quarterly report for quarter ending June 27, 2026\") and click its \"Filing\" link to open the filing index. The accession number is shown as \"SEC Accession No.\".",
+        "Open the filing's folder: the index URL without the file name, e.g. https://www.sec.gov/Archives/edgar/data/320193/<accession without dashes>/. Open FilingSummary.xml and find the report whose ShortName is \"CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited)\"; its HtmlFileName (R4.htm) is the balance-sheet page in the same folder.",
+        "On that page use the row \"Total shareholders' equity\" and the column \"Jun. 27, 2026\" (not the \"Sep. 27, 2025\" comparative column, and not \"Total liabilities and shareholders' equity\")."
+      ],
+      "units_hint": "The page header says \"$ in Millions\": multiply by 1,000,000.",
+      "answer": {
+        "value_usd": 107520000000,
+        "accession": "0000320193-26-000020",
+        "period_end": "2026-06-27",
+        "form": "10-Q",
+        "filed": "2026-07-31"
+      },
+      "tolerance_usd": 0
+    },
+    {
+      "id": "T2",
+      "kind": "single",
+      "firm": "Microsoft Corporation",
+      "ticker": "MSFT",
+      "cik": 789019,
+      "target_end": "2026-06-30",
+      "allowed_forms": [
+        "10-K"
+      ],
+      "concept": "StockholdersEquity",
+      "max_steps": 30,
+      "goal": "Find Microsoft Corporation's total stockholders' equity as of June 30, 2026, from the first periodic report that reports that date.",
+      "steps": [
+        "Open https://www.sec.gov/search-filings, type \"Microsoft\" into the Company Search box and click the suggestion \"MICROSOFT CORP (MSFT)\" (CIK 0000789019).",
+        "Expand \"10-K (annual reports) and 10-Q (quarterly reports)\". June 30 is Microsoft's fiscal year-end, so the report is the 10-K (annual report for year ending June 30, 2026) filed in late July 2026, not a 10-Q. Click its \"Filing\" link.",
+        "From the filing index, open the filing folder, then FilingSummary.xml, and find the report \"BALANCE SHEETS\"; open its R page (HtmlFileName).",
+        "Use the row \"Total stockholders' equity\", column \"Jun. 30, 2026\". Do not use the later 10-Q for the September 2026 quarter, which repeats the June 30 number as a comparative."
+      ],
+      "units_hint": "The page header says \"$ in Millions\": multiply by 1,000,000.",
+      "answer": {
+        "value_usd": 442387000000,
+        "accession": "0001193125-26-323660",
+        "period_end": "2026-06-30",
+        "form": "10-K",
+        "filed": "2026-07-29"
+      },
+      "tolerance_usd": 0
+    },
+    {
+      "id": "T3",
+      "kind": "single",
+      "firm": "Walmart Inc.",
+      "ticker": "WMT",
+      "cik": 104169,
+      "target_end": "2026-07-31",
+      "allowed_forms": [
+        "10-Q"
+      ],
+      "concept": "StockholdersEquity",
+      "max_steps": 30,
+      "goal": "Find total shareholders' equity attributable to Walmart Inc. (excluding noncontrolling interest) at the end of Walmart's second quarter of fiscal year 2027.",
+      "steps": [
+        "Open https://www.sec.gov/search-filings, type \"Walmart\" and click the suggestion \"Walmart Inc. (WMT)\" (CIK 0000104169).",
+        "Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending July 31, 2026 (filed early September 2026).",
+        "From the filing index, open the filing folder, then FilingSummary.xml, and find \"Condensed Consolidated Balance Sheets\"; open its R page.",
+        "Use the row \"Total Walmart shareholders' equity\" (NOT \"Total shareholders' equity\", which includes noncontrolling interest), column \"Jul. 31, 2026\"."
+      ],
+      "units_hint": "The page header says \"$ in Millions\": multiply by 1,000,000.",
+      "answer": {
+        "value_usd": 98238000000,
+        "accession": "0000104169-26-000154",
+        "period_end": "2026-07-31",
+        "form": "10-Q",
+        "filed": "2026-08-28"
+      },
+      "tolerance_usd": 0
+    },
+    {
+      "id": "T4",
+      "kind": "single",
+      "firm": "Netflix, Inc.",
+      "ticker": "NFLX",
+      "cik": 1065280,
+      "target_end": "2026-06-30",
+      "allowed_forms": [
+        "10-Q"
+      ],
+      "concept": "StockholdersEquity",
+      "max_steps": 30,
+      "goal": "Find Netflix, Inc.'s total stockholders' equity at June 30, 2026, from its quarterly report for that quarter.",
+      "steps": [
+        "Open https://www.sec.gov/search-filings, type \"Netflix\" and click the suggestion \"NETFLIX INC (NFLX)\" (CIK 0001065280).",
+        "Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 30, 2026 (filed July 2026).",
+        "From the filing index, open the filing folder, then FilingSummary.xml, and find \"Consolidated Balance Sheets\"; open its R page.",
+        "Use the row \"Total stockholders' equity\", column \"Jun. 30, 2026\"."
+      ],
+      "units_hint": "The page header says \"$ in Thousands\": multiply by 1,000 (not 1,000,000).",
+      "answer": {
+        "value_usd": 30152052000,
+        "accession": "0001065280-26-000212",
+        "period_end": "2026-06-30",
+        "form": "10-Q",
+        "filed": "2026-07-17"
+      },
+      "tolerance_usd": 0
+    },
+    {
+      "id": "T5",
+      "kind": "single",
+      "firm": "Domino's Pizza, Inc.",
+      "ticker": "DPZ",
+      "cik": 1286681,
+      "target_end": "2026-06-14",
+      "allowed_forms": [
+        "10-Q"
+      ],
+      "concept": "StockholdersEquity",
+      "max_steps": 30,
+      "goal": "Find Domino's Pizza, Inc.'s total stockholders' equity (deficit) at the end of its second fiscal quarter of 2026.",
+      "steps": [
+        "Open https://www.sec.gov/search-filings, type \"Domino's Pizza\" and click the suggestion \"DOMINO'S PIZZA, INC. (DPZ)\" (CIK 0001286681).",
+        "Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 14, 2026 (filed July 2026).",
+        "From the filing index, open the filing folder, then FilingSummary.xml, and find \"Condensed Consolidated Balance Sheets\"; open its R page.",
+        "Use the row \"Total stockholders' deficit\", column \"Jun. 14, 2026\". The amount is shown in parentheses, which means it is NEGATIVE."
+      ],
+      "units_hint": "The page header says \"$ in Thousands\": multiply by 1,000, and keep the minus sign.",
+      "answer": {
+        "value_usd": -3982431000,
+        "accession": "0001286681-26-000035",
+        "period_end": "2026-06-14",
+        "form": "10-Q",
+        "filed": "2026-07-20"
+      },
+      "tolerance_usd": 0
+    },
+    {
+      "id": "T6",
+      "kind": "common",
+      "firm": "JPMorgan Chase & Co.",
+      "ticker": "JPM",
+      "cik": 19617,
+      "target_end": "2026-06-30",
+      "allowed_forms": [
+        "10-Q"
+      ],
+      "concept": "StockholdersEquity",
+      "max_steps": 30,
+      "goal": "Find JPMorgan Chase & Co.'s COMMON book equity at June 30, 2026, defined as total stockholders' equity minus preferred stock, from its quarterly report for the second quarter of 2026.",
+      "steps": [
+        "Open https://www.sec.gov/search-filings, type \"JPMorgan Chase\" and click the suggestion \"JPMORGAN CHASE & CO (JPM)\" (CIK 0000019617).",
+        "Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 30, 2026 (filed early August 2026).",
+        "From the filing index, open the filing folder, then FilingSummary.xml, and find \"Consolidated balance sheets\"; open its R page. The page is long: use find_text.",
+        "Take \"Total stockholders' equity\" and \"Preferred stock\" in the column \"Jun. 30, 2026\", and submit total stockholders' equity MINUS preferred stock."
+      ],
+      "units_hint": "The page header says \"$ in Millions\": multiply by 1,000,000.",
+      "answer": {
+        "value_usd": 353558000000,
+        "accession": "0001628280-26-054343",
+        "period_end": "2026-06-30",
+        "form": "10-Q",
+        "filed": "2026-08-06"
+      },
+      "tolerance_usd": 0
+    },
+    {
+      "id": "T7",
+      "kind": "single",
+      "firm": "Berkshire Hathaway Inc.",
+      "ticker": "BRK",
+      "cik": 1067983,
+      "target_end": "2026-06-30",
+      "allowed_forms": [
+        "10-Q"
+      ],
+      "concept": "StockholdersEquity",
+      "max_steps": 30,
+      "goal": "Find Berkshire Hathaway Inc.'s shareholders' equity attributable to Berkshire Hathaway shareholders (excluding noncontrolling interests) at June 30, 2026.",
+      "steps": [
+        "Open https://www.sec.gov/search-filings, type \"Berkshire Hathaway Inc\" and click the suggestion for BERKSHIRE HATHAWAY INC (CIK 0001067983). Do not pick Berkshire Hathaway Energy or other look-alike entities.",
+        "Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 30, 2026 (filed early August 2026).",
+        "From the filing index, open the filing folder, then FilingSummary.xml, and find \"Consolidated Balance Sheets\"; open its R page. It has two sections (Insurance and Other; Railroad, Utilities and Energy).",
+        "Use the row \"Total Berkshire Hathaway shareholders' equity\", column \"Jun. 30, 2026\"."
+      ],
+      "units_hint": "The page header says \"$ in Millions\": multiply by 1,000,000.",
+      "answer": {
+        "value_usd": 747910000000,
+        "accession": "0001193125-26-341032",
+        "period_end": "2026-06-30",
+        "form": "10-Q",
+        "filed": "2026-08-10"
+      },
+      "tolerance_usd": 0
+    },
+    {
+      "id": "T8",
+      "kind": "rank",
+      "firm": "Apple, Coca-Cola, Chevron, 3M",
+      "ticker": "AAPL,KO,CVX,MMM",
+      "cik": null,
+      "max_steps": 40,
+      "firms": [
+        {
+          "ticker": "AAPL",
+          "firm": "Apple Inc.",
+          "cik": 320193,
+          "target_end": "2026-06-27",
+          "row": "Total shareholders' equity",
+          "column": "Jun. 27, 2026",
+          "search": "Apple Inc",
+          "suggestion": "Apple Inc. (AAPL)"
+        },
+        {
+          "ticker": "KO",
+          "firm": "The Coca-Cola Company",
+          "cik": 21344,
+          "target_end": "2026-07-03",
+          "row": "Equity attributable to shareowners of The Coca-Cola Company",
+          "column": "Jul. 03, 2026",
+          "search": "Coca-Cola",
+          "suggestion": "COCA COLA CO (KO)"
+        },
+        {
+          "ticker": "CVX",
+          "firm": "Chevron Corporation",
+          "cik": 93410,
+          "target_end": "2026-06-30",
+          "row": "Total Chevron Corporation stockholders' equity",
+          "column": "Jun. 30, 2026",
+          "search": "Chevron",
+          "suggestion": "CHEVRON CORP (CVX)"
+        },
+        {
+          "ticker": "MMM",
+          "firm": "3M Company",
+          "cik": 66740,
+          "target_end": "2026-06-30",
+          "row": "Total 3M Company shareholders' equity",
+          "column": "Jun. 30, 2026",
+          "search": "3M",
+          "suggestion": "3M CO (MMM)"
+        }
+      ],
+      "allowed_forms": [
+        "10-Q"
+      ],
+      "concept": "StockholdersEquity",
+      "market_equity": {
+        "source": "ME = shares outstanding on the cover page of the same 10-Q (dei:EntityCommonStockSharesOutstanding, as of the cover date in July 2026) x closing price on 2026-06-30 (Yahoo Finance daily history, unadjusted close, read 2026-10-28)",
+        "close_2026_06_30": {
+          "AAPL": 289.36,
+          "KO": 81.27,
+          "CVX": 165.76,
+          "MMM": 161.91
+        },
+        "usd": {
+          "AAPL": 4222971924800,
+          "KO": 349668176979,
+          "CVX": 327503846378,
+          "MMM": 83500616536
+        }
+      },
+      "goal": "For each of four firms -- Apple (AAPL), Coca-Cola (KO), Chevron (CVX) and 3M (MMM) -- find book equity from the first 10-Q each firm filed between July 1 and August 31, 2026 (the balance sheet at the end of that quarter). Then, using the market equity (ME) values given below, rank the four firms by book-to-market B/M = BE / ME from highest (value) to lowest (growth).",
+      "steps": [
+        "Repeat the single-firm click path four times: https://www.sec.gov/search-filings -> company suggestion -> expand \"10-K (annual reports) and 10-Q (quarterly reports)\" -> \"Filing\" link of the 10-Q filed in July or August 2026 -> filing folder -> FilingSummary.xml -> the balance-sheet R page.",
+        "Rows and columns: AAPL \"Total shareholders' equity\", \"Jun. 27, 2026\"; KO \"Equity attributable to shareowners of The Coca-Cola Company\", \"Jul. 03, 2026\"; CVX \"Total Chevron Corporation stockholders' equity\", \"Jun. 30, 2026\"; MMM \"Total 3M Company shareholders' equity\", \"Jun. 30, 2026\".",
+        "Compute B/M = BE / ME with the ME values given, and order the tickers from highest to lowest B/M."
+      ],
+      "units_hint": "All four pages say \"$ in Millions\": multiply by 1,000,000. You have 40 tool calls for all four firms, so go straight to each filing.",
+      "answer": {
+        "book_equity_usd": {
+          "AAPL": 107520000000,
+          "KO": 36150000000,
+          "CVX": 189883000000,
+          "MMM": 2952000000
+        },
+        "accessions": {
+          "AAPL": "0000320193-26-000020",
+          "KO": "0001628280-26-050503",
+          "CVX": "0000093410-26-000167",
+          "MMM": "0000066740-26-000246"
+        },
+        "ranking_high_to_low_bm": [
+          "CVX",
+          "KO",
+          "MMM",
+          "AAPL"
+        ]
+      },
+      "tolerance_usd": 0
+    }
+  ]
+}

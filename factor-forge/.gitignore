@@ -19,3 +19,10 @@ data/zips/
 # COMMITTED on purpose: data/raw, data/truth, data/reference, tasks.json,
 # runs/ (every prompt, reply, extracted script and meta.json -- ~15 MB for 320 runs),
 # results/ and figures/.
+
+# Part 3 (Form Forge): cached js/css of SEC pages; mock (fake-model) runs, regenerate with --dry-run
+web/.asset_cache/
+runs_web_mock/
+results_web_mock/
+# COMMITTED on purpose: web/answer_key.json, web/data/raw (sha256 manifest), web/fixtures,
+# runs_web_pilot/, runs_web/, results_web*/ (except the mock ones above)

@@ -1,0 +1,68 @@
+{
+ "CIK0000019617.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000019617.json",
+  "fetched_at": "2026-10-28T14:56:09",
+  "sha256": "23c57346e5ce236157529a78933f61919959404935609b07686738e7c08fbc81",
+  "bytes": 8001379
+ },
+ "CIK0000021344.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000021344.json",
+  "fetched_at": "2026-10-28T14:56:10",
+  "sha256": "87a4173fcd3d662d18d19e0e885095aa5e3812b74c54d1ee55808ff1540a8081",
+  "bytes": 5206922
+ },
+ "CIK0000066740.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000066740.json",
+  "fetched_at": "2026-10-28T14:56:10",
+  "sha256": "f386e2155c94359b4e3f3a688c4b1d008d8082be0f87279cea40c15d6a04d209",
+  "bytes": 5302901
+ },
+ "CIK0000093410.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000093410.json",
+  "fetched_at": "2026-10-28T14:56:11",
+  "sha256": "c09b160603412cb45acf1bb9bf3732e531dedfb548afa0e275fd8aefd7ab397e",
+  "bytes": 4810683
+ },
+ "CIK0000104169.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000104169.json",
+  "fetched_at": "2026-10-28T14:56:11",
+  "sha256": "49330f98609f70fcef4054edc90bc811398a58c4bf26dc0b218d607967a8dbe4",
+  "bytes": 3771831
+ },
+ "CIK0000320193.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000320193.json",
+  "fetched_at": "2026-10-28T14:56:12",
+  "sha256": "73a86c6aedc31f77cac2ea4df5f80f0b3bd7e6eb58bb4e01444fbedf3afb9c43",
+  "bytes": 3789099
+ },
+ "CIK0000789019.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0000789019.json",
+  "fetched_at": "2026-10-28T14:56:12",
+  "sha256": "dd0308149a8e96497989ed7c690b5a49a00bef9ceafbb24638bda41e8ae938dd",
+  "bytes": 4888108
+ },
+ "CIK0001065280.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001065280.json",
+  "fetched_at": "2026-10-28T14:56:13",
+  "sha256": "fd31bc147b36495f6912e063188aea71434077236f4e995268620b47fda99e61",
+  "bytes": 3648572
+ },
+ "CIK0001067983.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001067983.json",
+  "fetched_at": "2026-10-28T14:56:13",
+  "sha256": "3fef3a683cac2db4c08b6811eb74cfe84d3a81984524dc1104ea4fcbcba4ce1d",
+  "bytes": 2798312
+ },
+ "CIK0001286681.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/companyfacts/CIK0001286681.json",
+  "fetched_at": "2026-10-28T14:56:14",
+  "sha256": "e115762cca3f1ac00a9b1fcf7bd7ee7c1cf80343e230647936431c783dc1c8aa",
+  "bytes": 2954345
+ },
+ "frames_us-gaap_StockholdersEquity_USD_CY2026Q2I.json.gz": {
+  "url": "https://data.sec.gov/api/xbrl/frames/us-gaap/StockholdersEquity/USD/CY2026Q2I.json",
+  "fetched_at": "2026-10-28T14:56:14",
+  "sha256": "c171cf472ae20a5389c63405e252b5e7d38788849f7dc2d4760d5d7ec00422ef",
+  "bytes": 685486
+ }
+}

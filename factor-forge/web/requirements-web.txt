@@ -1,0 +1,10 @@
+# Form Forge (Part 3) -- tested 2026-10-28 on Python 3.12.10 (macOS arm64).
+# Part 2's pins (anthropic 1.13.0, pandas 3.0.6, numpy 2.5.4, scipy, matplotlib, python-dotenv):
+-r ../requirements.txt
+# Headless browser. After installing run once:  python -m playwright install chromium
+# (installed Chrome Headless Shell 156.0.8078.4, playwright build chromium-headless-shell v1248)
+playwright==1.64.1
+# installed with playwright:
+greenlet==3.5.6
+pyee==14.0.0
+# HTTP client for SEC requests: httpx2 2.16.0 comes with anthropic 1.13.0 (no extra pin needed)

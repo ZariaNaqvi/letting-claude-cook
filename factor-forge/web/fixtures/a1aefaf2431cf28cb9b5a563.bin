@@ -1,0 +1,792 @@
+<?xml version='1.0' encoding='utf-8'?>
+<FilingSummary>
+  <Version>3.26.1</Version>
+  <ProcessingTime/>
+  <ReportFormat>html</ReportFormat>
+  <ContextCount>374</ContextCount>
+  <ElementCount>274</ElementCount>
+  <EntityCount>1</EntityCount>
+  <FootnotesReported>false</FootnotesReported>
+  <SegmentCount>69</SegmentCount>
+  <ScenarioCount>0</ScenarioCount>
+  <TuplesReported>false</TuplesReported>
+  <UnitCount>6</UnitCount>
+  <MyReports>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R1.htm</HtmlFileName>
+      <LongName>0000001 - Document - Cover Page</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CoverPage</Role>
+      <ShortName>Cover Page</ShortName>
+      <MenuCategory>Cover</MenuCategory>
+      <Position>1</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R2.htm</HtmlFileName>
+      <LongName>9952151 - Statement - Consolidated Statements of Operations (unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/ConsolidatedStatementsofOperationsunaudited</Role>
+      <ShortName>Consolidated Statements of Operations (unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>2</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R3.htm</HtmlFileName>
+      <LongName>9952152 - Statement - Consolidated Statements of Comprehensive Income (unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/ConsolidatedStatementsofComprehensiveIncomeunaudited</Role>
+      <ShortName>Consolidated Statements of Comprehensive Income (unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>3</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R4.htm</HtmlFileName>
+      <LongName>9952153 - Statement - Consolidated Statements of Comprehensive Income (unaudited) (Parenthetical)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/ConsolidatedStatementsofComprehensiveIncomeunauditedParenthetical</Role>
+      <ShortName>Consolidated Statements of Comprehensive Income (unaudited) (Parenthetical)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>4</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R5.htm</HtmlFileName>
+      <LongName>9952154 - Statement - Consolidated Statements of Cash Flows (unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/ConsolidatedStatementsofCashFlowsunaudited</Role>
+      <ShortName>Consolidated Statements of Cash Flows (unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>5</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R6.htm</HtmlFileName>
+      <LongName>9952155 - Statement - Consolidated Balance Sheets</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/ConsolidatedBalanceSheets</Role>
+      <ShortName>Consolidated Balance Sheets</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>6</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R7.htm</HtmlFileName>
+      <LongName>9952156 - Statement - Consolidated Balance Sheets (Parenthetical)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/ConsolidatedBalanceSheetsParenthetical</Role>
+      <ShortName>Consolidated Balance Sheets (Parenthetical)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>7</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R8.htm</HtmlFileName>
+      <LongName>9952157 - Statement - Consolidated Statements of Stockholders’ Equity (unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/ConsolidatedStatementsofStockholdersEquityunaudited</Role>
+      <ShortName>Consolidated Statements of Stockholders’ Equity (unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>8</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R9.htm</HtmlFileName>
+      <LongName>9952158 - Disclosure - Basis of Presentation and Summary of Significant Accounting Policies</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BasisofPresentationandSummaryofSignificantAccountingPolicies</Role>
+      <ShortName>Basis of Presentation and Summary of Significant Accounting Policies</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>9</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R10.htm</HtmlFileName>
+      <LongName>9952159 - Disclosure - Revenue Recognition</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/RevenueRecognition</Role>
+      <ShortName>Revenue Recognition</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>10</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R11.htm</HtmlFileName>
+      <LongName>9952160 - Disclosure - Earnings per Share</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/EarningsperShare</Role>
+      <ShortName>Earnings per Share</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>11</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R12.htm</HtmlFileName>
+      <LongName>9952161 - Disclosure - Cash, Cash Equivalents, Restricted Cash, and Short-term Investments</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CashCashEquivalentsRestrictedCashandShorttermInvestments</Role>
+      <ShortName>Cash, Cash Equivalents, Restricted Cash, and Short-term Investments</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>12</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R13.htm</HtmlFileName>
+      <LongName>9952162 - Disclosure - Balance Sheet Components</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BalanceSheetComponents</Role>
+      <ShortName>Balance Sheet Components</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>13</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R14.htm</HtmlFileName>
+      <LongName>9952163 - Disclosure - Acquisitions</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/Acquisitions</Role>
+      <ShortName>Acquisitions</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>14</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R15.htm</HtmlFileName>
+      <LongName>9952164 - Disclosure - Debt</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/Debt</Role>
+      <ShortName>Debt</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>15</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R16.htm</HtmlFileName>
+      <LongName>9952165 - Disclosure - Derivative Financial Instruments and Hedging Activities</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivities</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>16</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R17.htm</HtmlFileName>
+      <LongName>9952166 - Disclosure - Commitments and Contingencies</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CommitmentsandContingencies</Role>
+      <ShortName>Commitments and Contingencies</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>17</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R18.htm</HtmlFileName>
+      <LongName>9952167 - Disclosure - Stockholders' Equity</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquity</Role>
+      <ShortName>Stockholders' Equity</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>18</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R19.htm</HtmlFileName>
+      <LongName>9952168 - Disclosure - Income Taxes</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/IncomeTaxes</Role>
+      <ShortName>Income Taxes</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>19</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R20.htm</HtmlFileName>
+      <LongName>9952169 - Disclosure - Segment and Geographic Information</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/SegmentandGeographicInformation</Role>
+      <ShortName>Segment and Geographic Information</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>20</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R21.htm</HtmlFileName>
+      <LongName>995445 - Disclosure - Insider Trading Arrangements</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements</Role>
+      <ShortName>Insider Trading Arrangements</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>21</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R22.htm</HtmlFileName>
+      <LongName>9955511 - Disclosure - Basis of Presentation and Summary of Significant Accounting Policies (Policies)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BasisofPresentationandSummaryofSignificantAccountingPoliciesPolicies</Role>
+      <ShortName>Basis of Presentation and Summary of Significant Accounting Policies (Policies)</ShortName>
+      <MenuCategory>Policies</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/BasisofPresentationandSummaryofSignificantAccountingPolicies</ParentRole>
+      <Position>22</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R23.htm</HtmlFileName>
+      <LongName>9955512 - Disclosure - Revenue Recognition (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/RevenueRecognitionTables</Role>
+      <ShortName>Revenue Recognition (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/RevenueRecognition</ParentRole>
+      <Position>23</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R24.htm</HtmlFileName>
+      <LongName>9955513 - Disclosure - Earnings per Share (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/EarningsperShareTables</Role>
+      <ShortName>Earnings per Share (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/EarningsperShare</ParentRole>
+      <Position>24</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R25.htm</HtmlFileName>
+      <LongName>9955514 - Disclosure - Cash, Cash Equivalents, Restricted Cash, and Short-term Investments (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CashCashEquivalentsRestrictedCashandShorttermInvestmentsTables</Role>
+      <ShortName>Cash, Cash Equivalents, Restricted Cash, and Short-term Investments (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/CashCashEquivalentsRestrictedCashandShorttermInvestments</ParentRole>
+      <Position>25</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R26.htm</HtmlFileName>
+      <LongName>9955515 - Disclosure - Balance Sheet Components (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BalanceSheetComponentsTables</Role>
+      <ShortName>Balance Sheet Components (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/BalanceSheetComponents</ParentRole>
+      <Position>26</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R27.htm</HtmlFileName>
+      <LongName>9955516 - Disclosure - Debt (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DebtTables</Role>
+      <ShortName>Debt (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/Debt</ParentRole>
+      <Position>27</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R28.htm</HtmlFileName>
+      <LongName>9955517 - Disclosure - Derivative Financial Instruments and Hedging Activities (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesTables</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivities</ParentRole>
+      <Position>28</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R29.htm</HtmlFileName>
+      <LongName>9955518 - Disclosure - Commitments and Contingencies (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CommitmentsandContingenciesTables</Role>
+      <ShortName>Commitments and Contingencies (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/CommitmentsandContingencies</ParentRole>
+      <Position>29</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R30.htm</HtmlFileName>
+      <LongName>9955519 - Disclosure - Stockholders' Equity (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityTables</Role>
+      <ShortName>Stockholders' Equity (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/StockholdersEquity</ParentRole>
+      <Position>30</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R31.htm</HtmlFileName>
+      <LongName>9955520 - Disclosure - Income Taxes (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/IncomeTaxesTables</Role>
+      <ShortName>Income Taxes (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/IncomeTaxes</ParentRole>
+      <Position>31</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R32.htm</HtmlFileName>
+      <LongName>9955521 - Disclosure - Segment and Geographic Information (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/SegmentandGeographicInformationTables</Role>
+      <ShortName>Segment and Geographic Information (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/SegmentandGeographicInformation</ParentRole>
+      <Position>32</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R33.htm</HtmlFileName>
+      <LongName>9955522 - Disclosure - Basis of Presentation and Summary of Significant Accounting Policies - Narrative (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BasisofPresentationandSummaryofSignificantAccountingPoliciesNarrativeDetails</Role>
+      <ShortName>Basis of Presentation and Summary of Significant Accounting Policies - Narrative (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/BasisofPresentationandSummaryofSignificantAccountingPoliciesPolicies</ParentRole>
+      <Position>33</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R34.htm</HtmlFileName>
+      <LongName>9955523 - Disclosure - Revenue Recognition - Narrative (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/RevenueRecognitionNarrativeDetails</Role>
+      <ShortName>Revenue Recognition - Narrative (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>34</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R35.htm</HtmlFileName>
+      <LongName>9955524 - Disclosure - Revenue Recognition - Schedule of Revenue by Region (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/RevenueRecognitionScheduleofRevenuebyRegionDetails</Role>
+      <ShortName>Revenue Recognition - Schedule of Revenue by Region (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>35</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R36.htm</HtmlFileName>
+      <LongName>9955525 - Disclosure - Earnings per Share - Schedule of Computation of Earnings Per Share (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/EarningsperShareScheduleofComputationofEarningsPerShareDetails</Role>
+      <ShortName>Earnings per Share - Schedule of Computation of Earnings Per Share (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>36</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R37.htm</HtmlFileName>
+      <LongName>9955526 - Disclosure - Earnings per Share - Schedule of Potential Common Shares Excluded from Diluted Calculation (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/EarningsperShareScheduleofPotentialCommonSharesExcludedfromDilutedCalculationDetails</Role>
+      <ShortName>Earnings per Share - Schedule of Potential Common Shares Excluded from Diluted Calculation (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>37</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R38.htm</HtmlFileName>
+      <LongName>9955527 - Disclosure - Cash, Cash Equivalents, Restricted Cash, and Short-term Investments (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CashCashEquivalentsRestrictedCashandShorttermInvestmentsDetails</Role>
+      <ShortName>Cash, Cash Equivalents, Restricted Cash, and Short-term Investments (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/CashCashEquivalentsRestrictedCashandShorttermInvestmentsTables</ParentRole>
+      <Position>38</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R39.htm</HtmlFileName>
+      <LongName>9955528 - Disclosure - Balance Sheet Components - Schedule of Components of Content Assets (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BalanceSheetComponentsScheduleofComponentsofContentAssetsDetails</Role>
+      <ShortName>Balance Sheet Components - Schedule of Components of Content Assets (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>39</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R40.htm</HtmlFileName>
+      <LongName>9955529 - Disclosure - Balance Sheet Components - Schedule of Property and Equipment and Accumulated Depreciation (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BalanceSheetComponentsScheduleofPropertyandEquipmentandAccumulatedDepreciationDetails</Role>
+      <ShortName>Balance Sheet Components - Schedule of Property and Equipment and Accumulated Depreciation (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>40</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R41.htm</HtmlFileName>
+      <LongName>9955530 - Disclosure - Balance Sheet Components - Schedule of Information on Right-of-Use Assets and Lease Liabilities (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BalanceSheetComponentsScheduleofInformationonRightofUseAssetsandLeaseLiabilitiesDetails</Role>
+      <ShortName>Balance Sheet Components - Schedule of Information on Right-of-Use Assets and Lease Liabilities (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>41</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R42.htm</HtmlFileName>
+      <LongName>9955531 - Disclosure - Balance Sheet Components - Schedule of Other Current Assets (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/BalanceSheetComponentsScheduleofOtherCurrentAssetsDetails</Role>
+      <ShortName>Balance Sheet Components - Schedule of Other Current Assets (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>42</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R43.htm</HtmlFileName>
+      <LongName>9955532 - Disclosure - Acquisitions (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/AcquisitionsDetails</Role>
+      <ShortName>Acquisitions (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/Acquisitions</ParentRole>
+      <Position>43</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R44.htm</HtmlFileName>
+      <LongName>9955533 - Disclosure - Debt - Narrative (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DebtNarrativeDetails</Role>
+      <ShortName>Debt - Narrative (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>44</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R45.htm</HtmlFileName>
+      <LongName>9955534 - Disclosure - Debt - Schedule of Long-term Debt (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DebtScheduleofLongtermDebtDetails</Role>
+      <ShortName>Debt - Schedule of Long-term Debt (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>45</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R46.htm</HtmlFileName>
+      <LongName>9955535 - Disclosure - Debt - Revolving Credit Facility (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DebtRevolvingCreditFacilityDetails</Role>
+      <ShortName>Debt - Revolving Credit Facility (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>46</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R47.htm</HtmlFileName>
+      <LongName>9955536 - Disclosure - Debt - Commercial Paper (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DebtCommercialPaperDetails</Role>
+      <ShortName>Debt - Commercial Paper (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>47</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R48.htm</HtmlFileName>
+      <LongName>9955537 - Disclosure - Derivative Financial Instruments and Hedging Activities - Schedule of Notional Amount of Derivative Contracts (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesScheduleofNotionalAmountofDerivativeContractsDetails</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities - Schedule of Notional Amount of Derivative Contracts (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>48</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R49.htm</HtmlFileName>
+      <LongName>9955538 - Disclosure - Derivative Financial Instruments and Hedging Activities - Narrative (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesNarrativeDetails</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities - Narrative (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesTables</ParentRole>
+      <Position>49</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R50.htm</HtmlFileName>
+      <LongName>9955539 - Disclosure - Derivative Financial Instruments and Hedging Activities - Schedule of Fair Value of Derivative Contracts (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesScheduleofFairValueofDerivativeContractsDetails</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities - Schedule of Fair Value of Derivative Contracts (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>50</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R51.htm</HtmlFileName>
+      <LongName>9955540 - Disclosure - Derivative Financial Instruments and Hedging Activities - Schedule of Offsetting Derivative Assets and Liabilities (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesScheduleofOffsettingDerivativeAssetsandLiabilitiesDetails</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities - Schedule of Offsetting Derivative Assets and Liabilities (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>51</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R52.htm</HtmlFileName>
+      <LongName>9955541 - Disclosure - Derivative Financial Instruments and Hedging Activities - Schedule of Effect of Derivative Instruments on Consolidated Financial Statements (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesScheduleofEffectofDerivativeInstrumentsonConsolidatedFinancialStatementsDetails</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities - Schedule of Effect of Derivative Instruments on Consolidated Financial Statements (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>52</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R53.htm</HtmlFileName>
+      <LongName>9955542 - Disclosure - Derivative Financial Instruments and Hedging Activities - Schedule of Effects of the Company's Derivative Instruments and Related Hedged Items on the Consolidated Statements of Operations (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/DerivativeFinancialInstrumentsandHedgingActivitiesScheduleofEffectsoftheCompanysDerivativeInstrumentsandRelatedHedgedItemsontheConsolidatedStatementsofOperationsDetails</Role>
+      <ShortName>Derivative Financial Instruments and Hedging Activities - Schedule of Effects of the Company's Derivative Instruments and Related Hedged Items on the Consolidated Statements of Operations (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>53</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R54.htm</HtmlFileName>
+      <LongName>9955543 - Disclosure - Commitments and Contingencies - Streaming Content (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CommitmentsandContingenciesStreamingContentDetails</Role>
+      <ShortName>Commitments and Contingencies - Streaming Content (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>54</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R55.htm</HtmlFileName>
+      <LongName>9955544 - Disclosure - Commitments and Contingencies - Schedule of Expected Timing of Payments for Commitments (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CommitmentsandContingenciesScheduleofExpectedTimingofPaymentsforCommitmentsDetails</Role>
+      <ShortName>Commitments and Contingencies - Schedule of Expected Timing of Payments for Commitments (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>55</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R56.htm</HtmlFileName>
+      <LongName>9955545 - Disclosure - Commitments and Contingencies - Guarantees—Indemnification Obligations (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/CommitmentsandContingenciesGuaranteesIndemnificationObligationsDetails</Role>
+      <ShortName>Commitments and Contingencies - Guarantees—Indemnification Obligations (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>56</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R57.htm</HtmlFileName>
+      <LongName>9955546 - Disclosure - Stockholders' Equity - Narrative (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityNarrativeDetails</Role>
+      <ShortName>Stockholders' Equity - Narrative (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>57</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R58.htm</HtmlFileName>
+      <LongName>9955547 - Disclosure - Stockholders' Equity - Schedule of Activity Related to Stock Options (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityScheduleofActivityRelatedtoStockOptionsDetails</Role>
+      <ShortName>Stockholders' Equity - Schedule of Activity Related to Stock Options (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>58</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R59.htm</HtmlFileName>
+      <LongName>9955548 - Disclosure - Stockholders' Equity - Schedule of Activity Related to Unvested RSUs and PSUs (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityScheduleofActivityRelatedtoUnvestedRSUsandPSUsDetails</Role>
+      <ShortName>Stockholders' Equity - Schedule of Activity Related to Unvested RSUs and PSUs (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>59</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R60.htm</HtmlFileName>
+      <LongName>9955549 - Disclosure - Stockholders' Equity - Stock-based Compensation (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityStockbasedCompensationDetails</Role>
+      <ShortName>Stockholders' Equity - Stock-based Compensation (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>60</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R61.htm</HtmlFileName>
+      <LongName>9955550 - Disclosure - Stockholders' Equity - Stock Repurchases (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityStockRepurchasesDetails</Role>
+      <ShortName>Stockholders' Equity - Stock Repurchases (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>61</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R62.htm</HtmlFileName>
+      <LongName>9955551 - Disclosure - Stockholders' Equity - Schedule of Accumulated Other Comprehensive Loss (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityScheduleofAccumulatedOtherComprehensiveLossDetails</Role>
+      <ShortName>Stockholders' Equity - Schedule of Accumulated Other Comprehensive Loss (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>62</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R63.htm</HtmlFileName>
+      <LongName>9955552 - Disclosure - Stockholders' Equity - Schedule of Amounts Reclassified from AOCI (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/StockholdersEquityScheduleofAmountsReclassifiedfromAOCIDetails</Role>
+      <ShortName>Stockholders' Equity - Schedule of Amounts Reclassified from AOCI (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>63</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R64.htm</HtmlFileName>
+      <LongName>9955553 - Disclosure - Income Taxes (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/IncomeTaxesDetails</Role>
+      <ShortName>Income Taxes (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.netflix.com/role/IncomeTaxesTables</ParentRole>
+      <Position>64</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R65.htm</HtmlFileName>
+      <LongName>9955554 - Disclosure - Segment and Geographic Information - Narrative (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/SegmentandGeographicInformationNarrativeDetails</Role>
+      <ShortName>Segment and Geographic Information - Narrative (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>65</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R66.htm</HtmlFileName>
+      <LongName>9955555 - Disclosure - Segment and Geographic Information - Schedule of Segment Reporting Financial Information, by Segment (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/SegmentandGeographicInformationScheduleofSegmentReportingFinancialInformationbySegmentDetails</Role>
+      <ShortName>Segment and Geographic Information - Schedule of Segment Reporting Financial Information, by Segment (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>66</Position>
+    </Report>
+    <Report instance="nflx-20260630.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R67.htm</HtmlFileName>
+      <LongName>9955556 - Disclosure - Segment and Geographic Information - Schedule of Long-lived Assets by Geographic Areas (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.netflix.com/role/SegmentandGeographicInformationScheduleofLonglivedAssetsbyGeographicAreasDetails</Role>
+      <ShortName>Segment and Geographic Information - Schedule of Long-lived Assets by Geographic Areas (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>67</Position>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <LongName>All Reports</LongName>
+      <ReportType>Book</ReportType>
+      <ShortName>All Reports</ShortName>
+    </Report>
+  </MyReports>
+  <InputFiles>
+    <File doctype="10-Q" isDefinitelyFs="true" isUsgaap="true" original="nflx-20260630.htm">nflx-20260630.htm</File>
+    <File>nflx-20260630.xsd</File>
+    <File>nflx-20260630_cal.xml</File>
+    <File>nflx-20260630_def.xml</File>
+    <File>nflx-20260630_lab.xml</File>
+    <File>nflx-20260630_pre.xml</File>
+  </InputFiles>
+  <SupplementalFiles/>
+  <BaseTaxonomies>
+    <BaseTaxonomy items="1245">http://fasb.org/us-gaap/2026</BaseTaxonomy>
+    <BaseTaxonomy items="29">http://xbrl.sec.gov/dei/2026</BaseTaxonomy>
+    <BaseTaxonomy items="18">http://xbrl.sec.gov/ecd/2026</BaseTaxonomy>
+  </BaseTaxonomies>
+  <HasPresentationLinkbase>true</HasPresentationLinkbase>
+  <HasCalculationLinkbase>true</HasCalculationLinkbase>
+</FilingSummary>
