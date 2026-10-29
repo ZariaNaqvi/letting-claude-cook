@@ -1,0 +1,18 @@
+TASK T2
+
+Find Microsoft Corporation's total stockholders' equity as of June 30, 2026, from the first periodic report that reports that date.
+
+RULES:
+- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.
+- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.
+- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.
+- You may use at most 30 tool calls in total, including submit_answer.
+
+STEPS (a click path that works):
+1. Open https://www.sec.gov/search-filings, type "Microsoft" into the Company Search box and click the suggestion "MICROSOFT CORP (MSFT)" (CIK 0000789019).
+2. Expand "10-K (annual reports) and 10-Q (quarterly reports)". June 30 is Microsoft's fiscal year-end, so the report is the 10-K (annual report for year ending June 30, 2026) filed in late July 2026, not a 10-Q. Click its "Filing" link.
+3. From the filing index, open the filing folder, then FilingSummary.xml, and find the report "BALANCE SHEETS"; open its R page (HtmlFileName).
+4. Use the row "Total stockholders' equity", column "Jun. 30, 2026". Do not use the later 10-Q for the September 2026 quarter, which repeats the June 30 number as a comparative.
+Units: The page header says "$ in Millions": multiply by 1,000,000.
+
+When you have the answer, call submit_answer.

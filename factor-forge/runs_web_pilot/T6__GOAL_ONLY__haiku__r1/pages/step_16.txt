@@ -1,0 +1,372 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm | TITLE: jpm-20260630 | chunk 1/66
+
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM 10-Q
+Quarterly report pursuant to Section 13 or 15(d) of
+the Securities Exchange Act of 1934
+
+For the quarterly period ended		Commission file
+June 30, 2026		number	1-5805
+JPMorgan Chase & Co.
+(Exact name of registrant as specified in its charter)
+
+Delaware		13-2624428
+(State or other jurisdiction of
+incorporation or organization)		(I.R.S. employer
+identification no.)
+
+270 Park Avenue,
+New York,	New York		10017
+(Address of principal executive offices)		(Zip Code)
+Registrant’s telephone number, including area code: (212) 270-6000
+Securities registered pursuant to Section 12(b) of the Act:
+
+Title of each class	Trading Symbol(s)	Name of each exchange on which registered
+Common stock	JPM	The New York Stock Exchange
+
+Depositary Shares, each representing a one-four hundredth interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD
+	JPM PR D	The New York Stock Exchange
+
+Depositary Shares, each representing a one-four hundredth interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE
+	JPM PR C	The New York Stock Exchange
+
+Depositary Shares, each representing a one-four hundredth interest in a share of 4.75% Non-Cumulative Preferred Stock, Series GG
+	JPM PR J	The New York Stock Exchange
+Depositary Shares, each representing a one-four hundredth interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ	JPM PR K	The New York Stock Exchange
+
+Depositary Shares, each representing a one-four hundredth interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL
+
+JPM PR L
+	The New York Stock Exchange
+Depositary Shares, each representing a one-four hundredth interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM	JPM PR M	The New York Stock Exchange
+
+Guarantee of Callable Fixed Rate Notes due June 10, 2032 of JPMorgan Chase Financial Company LLC
+	JPM/32	The New York Stock Exchange
+Guarantee of Alerian MLP Index ETNs due January 28, 2044 of JPMorgan Chase Financial Company LLC	AMJB	NYSE Arca, Inc.
+Guarantee of Inverse VIX Short-Term Futures ETNs due March 22, 2045 of JPMorgan Chase Financial Company LLC	VYLD	NYSE Arca, Inc.
+Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. ☒ Yes ☐ No
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).
+☒ Yes ☐ No
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act.
+
+Large accelerated filer	☒	Accelerated filer	☐
+
+Non-accelerated filer	☐	Smaller reporting company	☐
+
+		Emerging growth company	☐
+
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+
+Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). ☐ Yes ☒ No
+
+Number of shares of common stock outstanding as of June 30, 2026: 2,658,186,195
+
+FORM 10-Q
+TABLE OF CONTENTS
+
+[e1 link] Part I – Financial information
+	Page
+
+Item 1.
+
+[e2 link] Financial Statements
+
+[e3 link] Consolidated Financial Statements – JPMorgan Chase & Co.:
+
+[e4 link] Consolidated statements of income (unaudited) for the three [e5 link] and six [e6 link] months ended [e7 link] June [e8 link] 3[e9 link] 0[e10 link] , 2026 and 2025
+
+[e11 link] 93
+
+[e12 link] Consolidated statements of comprehensive income (unaudited) for the three [e13 link] and six [e14 link] months ended [e15 link] June [e16 link] 3[e17 link] 0[e18 link] , 2026 and 2025
+
+[e19 link] 94
+
+[e20 link] Consolidated balance sheets (unaudited) at [e21 link] June[e22 link] 3[e23 link] 0[e24 link] , 2026 and December 31, 2025
+
+[e25 link] 95
+
+[e26 link] Consolidated statements of changes in stockholders' equity (unaudited) for the three[e27 link] and six[e28 link] months ended [e29 link] June[e30 link] 3[e31 link] 0[e32 link] , 2026 and 2025
+
+[e33 link] 96
+
+[e34 link] Consolidated statements of cash flows (unaudited) for the [e35 link] six[e36 link] months ended [e37 link] June[e38 link] 3[e39 link] 0[e40 link] , 2026 and 2025
+
+[e41 link] 97
+
+[e42 link] Notes to Consolidated Financial Statements (unaudited)
+
+[e43 link] Note 1 - Basis of presentation
+
+[e44 link] 98
+
+[e45 link] Note 2 - Fair value measurement
+
+[e46 link] 99
+
+[e47 link] Note 3 - Fair value option
+
+[e48 link] 114
+
+[e49 link] Note 4 - Derivative instruments
+
+[e50 link] 118
+
+[e51 link] Note 5 - Noninterest revenue and noninterest expense
+
+[e52 link] 130
+
+[e53 link] Note 6 - Interest income and interest expense
+
+[e54 link] 132
+
+[e55 link] Note 7 - Pension and other postretirement employee benefit plans
+
+[e56 link] 133
+
+[e57 link] Note 8 - Employee share-based incentives
+
+[e58 link] 133
+
+[e59 link] Note 9 - Investment securities
+
+[e60 link] 134
+
+[e61 link] Note 10 - Securities financing activities
+
+[e62 link] 138
+
+[e63 link] Note 11 - Loans
+
+[e64 link] 140
+
+[e65 link] Note 12 - Allowance for credit losses
+
+[e66 link] 158
+
+[e67 link] Note 13 - Variable interest entities
+
+[e68 link] 161
+
+[e69 link] Note 14 - Goodwill and mortgage servicing rights
+
+[e70 link] 168
+
+[e71 link] Note 15 - Deposits
+
+[e72 link] 171
+
+[e73 link] Note 16 - Leases
+
+[e74 link] 171
+
+[e75 link] Note 17 - Preferred stock
+
+[e76 link] 172
+
+[e77 link] Note 18 - Earnings per share
+
+[e78 link] 173
+
+[e79 link] Note 19 - Accumulated other comprehensive income/(loss)
+
+[e80 link] 174
+
+[e81 link] Note 20 - Restricted cash and other restricted assets
+
+[e82 link] 176
+
+[e83 link] Note 21 - Regulatory capital
+
+[e84 link] 177
+
+[e85 link] Note 22 - Off-balance sheet lending-related financial instruments, guarantees, and other commitments
+
+[e86 link] 179
+
+[e87 link] Note 23 - Pledged assets and collateral
+
+[e88 link] 182
+
+[e89 link] Note 24 - Litigation
+
+[e90 link] 183
+
+[e91 link] Note 25 - Business segments & Corporate
+
+[e92 link] 186
+
+Page
+
+[e93 link] Report of Independent Registered Public Accounting Firm
+
+[e94 link] 189
+
+[e95 link] Consolidated Average Balance Sheets, Interest and Rates (unaudited) for the three [e96 link] and six [e97 link] months ended [e98 link] June[e99 link] 3[e100 link] 0[e101 link] , 2026 and 2025
+
+[e102 link] 190
+
+[e103 link] Glossary of Terms and Acronyms and Line of Business Metrics
+
+[e104 link] 192
+
+Item 2.
+
+[e105 link] Management’s Discussion and Analysis of Financial Condition and Results of Operations.
+
+[e106 link] Consolidated Financial Highlights
+
+[e107 link] 3
+
+[e108 link] Introduction
+
+[e109 link] 4
+
+[e110 link] Executive Overview
+
+[e111 link] 5
+
+[e112 link] Consolidated Results of Operations
+
+[e113 link] 9
+
+[e114 link] Consolidated Balance Sheets and Cash Flows Analysis
+
+[e115 link] 15
+
+[e116 link] Explanation and Reconciliation of the Firm’s Use of Non-GAAP Financial Measures
+
+[e117 link] 18
+
+[e118 link] Business Segment & Corporate Results
+
+[e119 link] 20
+
+[e120 link] Firmwide Risk Management
+
+[e121 link] 43
+
+[e122 link] Capital Risk Management
+
+[e123 link] 44
+
+[e124 link] Liquidity Risk Management
+
+[e125 link] 52
+
+[e126 link] Consumer Credit Portfolio
+
+[e127 link] 61
+
+[e128 link] Wholesale Credit Portfolio
+
+[e129 link] 66
+
+[e130 link] Allowance for Credit Losses
+
+[e131 link] 75
+
+[e132 link] Investment Portfolio Risk Management
+
+[e133 link] 78
+
+[e134 link] Market Risk Management
+
+[e135 link] 79
+
+[e136 link] Country Risk Management
+
+[e137 link] 86
+
+[e138 link] Critical Accounting Estimates Used by the Firm
+
+[e139 link] 87
+
+[e140 link] Accounting and Reporting Developments
+
+[e141 link] 90
+
+[e142 link] Forward-Looking Statements
+
+[e143 link] 92
+
+Item 3.
+
+[e144 link] Quantitative and Qualitative Disclosures About Market Risk.
+
+[e145 link] 201
+
+Item 4.
+
+[e146 link] Controls and Procedures
+
+[e147 link] 201
+
+[e148 link] Part II – Other information
+
+Item 1.
+[e149 link] Legal Proceedings.
+
+[e150 link] 201
+
+Item 1A.
+[e151 link] Risk Factors.
+
+[e152 link] 201
+
+Item 2.
+[e153 link] Unregistered Sales of Equity Securities and Use of Proceeds.
+
+[e154 link] 201
+
+Item 3.
+[e155 link] Defaults Upon Senior Securities.
+
+[e156 link] 202
+
+Item 4.
+[e157 link] Mine Safety Disclosures.
+
+[e158 link] 202
+
+Item 5.
+[e159 link] Other Information.
+
+[e160 link] 202
+
+Item 6.
+[e161 link] Exhibits.
+
+[e162 link] 203
+
+2
+
+JPMorgan Chase & Co.
+Consolidated financial highlights (unaudited)
+
+As of or for the period ended, (in millions, except per share, ratio, employee data and where otherwise noted)								Six months ended June 30,
+2Q26		1Q26	4Q25		3Q25	2Q25	2026		2025
+Selected income statement data
+Total net revenue	$	57,347
+(e)
+	$	49,836 		$	45,798 			$	46,427 		$	44,912 		$	107,183
+(e)
+	$	90,222
+Total noninterest expense	27,316 			26,850 		23,983 			24,281 		23,779 		54,166 			47,376
+
+Pre-provision profit(a)
+	30,031 			22,986 		21,815 			22,146 		21,133 		53,017 			42,846
+Provision for credit losses	2,515 			2,507 		4,655
+(f)
+	3,403 		2,849 		5,022 			6,154
+Income before income tax expense	27,516 			20,479 		17,160 			18,743 		18,284 		47,995 			36,692
+Income tax expense	6,361 			3,985 		4,135 			4,350 		3,297 		10,346 			7,062
+
+Net income
+	$	21,155 			$	16,494 		$	13,025 			$	14,393 		$	14,987 		$	37,649 			$	29,630
+
+Earnings per share data
+
+Net income:     Basic
+[chunk 1/66; call read_page(page=2) for more]

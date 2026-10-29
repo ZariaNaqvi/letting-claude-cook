@@ -1,0 +1,246 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T6\n\nFind JPMorgan Chase & Co.'s COMMON book equity at June 30, 2026, defined as total stockholders' equity minus preferred stock, from its quarterly report for the second quarter of 2026.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nSTEPS (a click path that works):\n1. Open https://www.sec.gov/search-filings, type \"JPMorgan\" and click the suggestion \"JPMORGAN CHASE & CO (JPM, ...)\" (CIK 0000019617). Do not pick the look-alike \"JPMORGAN CHASE & Co\" without a ticker (CIK 0001325347); typing the full \"JPMorgan Chase\" shows only that look-alike.\n2. Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 30, 2026 (filed early August 2026).\n3. From the filing index, open the filing folder, then FilingSummary.xml, and find \"Consolidated balance sheets\"; open its R page. The page is long: use find_text.\n4. Take \"Total stockholders' equity\" and \"Preferred stock\" in the column \"Jun. 30, 2026\", and submit total stockholders' equity MINUS preferred stock.\nUnits: The page header says \"$ in Millions\": multiply by 1,000,000.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_0132ouPkfkpqdgB13FvbWmz3",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/search-filings"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0132ouPkfkpqdgB13FvbWmz3",
+    "content": "URL: https://www.sec.gov/search-filings | TITLE: SEC.gov | Search Filings | chunk 1/1\n\n[e1 link] Skip to search field\n[e2 link] Skip to main content\n\nAn official website of the United States government\n\n[e3 button] Here\u2019s how you know\n[e4 link]\nSEC homepage\n[e5 button]\nSearch Filings\n[e6 button]\nSubmit Filings\n[e7 button]\nData & Research\n[e8 button]\nRules, Enforcement, & Compliance\n[e9 button]\nFeatured Topics\n[e10 button]\nAbout\n[e11 link]\nSubmit a Tip or Complaint\n[e12 link] Newsroom\n|\n[e13 link] Investors\n[e14 link] Small Businesses\n[e15 link] Whistleblowers\nSearch SEC.gov & EDGAR\n[e16 textbox \"Search SEC.gov & EDGAR\" value=\"\"]\n[e17 button]\nSEARCH\n[e18 link] SEARCH FILINGS\n[e19 link] Full Text Search\n[e20 link] Latest Filings Search\n[e21 link] Insurance Products Search\n[e22 link] Mutual Funds Search\n[e23 link] Confidential Treatment Orders Search\n[e24 link] Standard Industrial Classification (SIC) Code List\n[e25 link] CIK Lookup\n[e26 link] EDGAR Public Dissemination Service (PDS) System\n[e27 link] Effectiveness Notices\n[e28 link] EDGAR Application Programming Interfaces\n[e29 link] EDGAR Search Assistance\n[e30 link] Home  Search Filings\nSearch Filings\n\nEnjoy free public access to millions of informational documents filed by publicly traded companies and others in the SEC's Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system.\n\nCompany Search\nSearch By\n[e31 textbox \"Name, ticker symbol, or CIK\" value=\"\"]\n[e32 button]\nSUBMIT\n[e33 button]\nmore search options\n\nFind registration statements, periodic reports, and other forms by typing the name or ticker symbol of a company ([e34 link \"CIK Lookup\"] CIK lookup info) ([e35 link \"Confidential Treatment Orders Search\"] confidential treatment orders) ([e36 link] SEC correspondence with issuers)\n\nEDGAR Search Tools\n\nSome specific ways to access filings based on time, type, or other categories.\n\n[e37 link] Full Text Search\n\nFind keywords and phrases\u202fin more than 20 years of EDGAR filings, and filter by date, company, person, filing category, or location.\n\n[e38 link] Latest Filings\n\nView a listing of real-time filings as they are submitted into the EDGAR system. Also view daily filings by form type within the past week.\n\n[e39 link] Search Assistance\n\nTutorials and resources to help users locate filings, conduct research, and retrieve specific information in EDGAR.\n\n[e40 link] Mutual Fund Search\n\nView prospectuses, proxy voting records, and other forms by typing the name of a mutual fund or ETF.\n\n[e41 link] Insurance Product Search\n\nFind a product by typing the name of an insurance company, underlying mutual fund, or contract.\n\nEDGAR Resources\n\nData and information to assist users as they navigate the EDGAR system.\n\n[e42 link] SIC Codes\n\nA list of Standard Industrial Classification Codes used to indicate a company's type of business.\n\n[e43 link] CIK Lookup\n\nA search engine to find Central Index Key numbers assigned by the SEC to corporate or individual filers.\n\n[e44 link] Public Dissemination Service (PDS)\n\nAn option to subscribe to a privatized system to receive a dedicated feed of all public EDGAR filings.\n\n[e45 link] EDGAR APIs\n\nRESTful data Application Programming Interfaces that include the submissions history by filer and the XBRL data from financial statements.\n\n[e46 link] EDGAR RSS Feeds\n\nReally Simple Syndication feeds for EDGAR submissions through which users can view, analyze, and manipulate filings.\n\n[e47 link] Return to top\nAbout the SEC\n[e48 link] Budget & Performance\n[e49 link] Careers\n[e50 link] Commission Votes\n[e51 link] Contact\n[e52 link] Contracts\nTransparency\n[e53 link] Accessibility & Disability\n[e54 link] Super Intelligence\n[e55 link] FOIA\n[e56 link] Inspector General\n[e57 link] No FEAR Act Data\n[e58 link] Ombuds\n[e59 link] SEC Excess Personal Property Guidance\nWebsites\n[e60 link] Investor.gov\n[e61 link] Related Sites\n[e62 link] USA.gov\nSite Information\n[e63 link] Plain Writing\n[e64 link] Privacy & Security\n[e65 link] Site Map\nStay connected. Sign up for email updates.\nYour email address\n[e66 textbox \"Your email address\" value=\"\"]\n[e67 button]\nSIGN UP\n[e68 link]\nX\n[e69 link]\nFacebook\n[e70 link]\nInstagram\n[e71 link]\nRSS\n[e72 link \"(opens in a new window)\"]\nYouTube\n[e73 link]\nEmail Updates"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "Try direct browse URL.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_018ngi6sefdLwfSr2eK4FniG",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000019617&type=10-Q&dateb=&owner=include&count=10"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_018ngi6sefdLwfSr2eK4FniG",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000019617&type=10-Q&dateb=&owner=include&count=10 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_012EhUsQFF7xbUs9morPYhGo",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e31",
+     "text": "JPMorgan"
+    },
+    "name": "fill",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_012EhUsQFF7xbUs9morPYhGo",
+    "content": "Typed 'JPMorgan' into e31. URL: https://www.sec.gov/search-filings\nNew elements that appeared (e.g. suggestions):\n[e74 link] JPMORGAN CHASE & CO (JPM, VYLD, AMJB, JPM-PM, JPM-PL, JPM-PK, JPM-PJ, JPM-PD, JP\n[e75 link] CIK\u00a00000019617\n[e76 link] JPMorgan Trust I\n[e77 link] CIK\u00a00001217286\n[e78 link] JPMORGAN TRUST II\n[e79 link] CIK\u00a00000763852\n[e80 link] JPMORGAN CHASE & Co\n[e81 link] CIK\u00a00001325347\n[e82 link] JPMORGAN TRUST IV\n[e83 link] CIK\u00a00001659326\n[e84 link] JPMORGAN BOND FUND\n[e85 link] CIK\u00a00001243050\n[e86 link] JPMorgan Trust III\n[e87 link] CIK\u00a00001592106\n[e88 link] JPMORGAN BOND FUND II\n[e89 link] CIK\u00a00001243102\n[e90 link] JPMorgan Chase Bank, N.A.\n[e91 link] CIK\u00a00000835271\n[e92 link] JPMORGAN CHASE BANK /TA/\n[e93 link] CIK\u00a00000839296\n[e94 link] Search for \"JPMorgan\" in EDGAR filings"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01KEybXmq48sFBvwuw5gQJmA",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e74"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01KEybXmq48sFBvwuw5gQJmA",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=19617&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nJPMORGAN CHASE & CO JPM, JPM-PC, AMJB, JPM-PD, JPM-PJ, JPM-PK, JPM-PL, JPM-PM, VYLD on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 28, 2026 - 424B2: Prospectus [Rule 424(b)(2)]\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 28, 2026 - 424B2: Prospectus [Rule 424(b)(2)]\nOpen document\n[e13 link] Filing\nOpen filing\n[e14 link] October 28, 2026 - 424B3: Prospectus [Rule 424(b)(3)]\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] October 28, 2026 - 424B3: Prospectus [Rule 424(b)(3)]\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] October 28, 2026 - 424B3: Prospectus [Rule 424(b)(3)]\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01LET3serX7Dzwkthaph1tsi",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01LET3serX7Dzwkthaph1tsi",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=19617&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nJPMORGAN CHASE & CO JPM, JPM-PC, AMJB, JPM-PD, JPM-PJ, JPM-PK, JPM-PL, JPM-PM, VYLD on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 28, 2026 - 424B2: Prospectus [Rule 424(b)(2)]\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 28, 2026 - 424B2: Prospectus [Rule 424(b)(2)]\nOpen document\n[e13 link] Filing\nOpen filing\n[e14 link] October 28, 2026 - 424B3: Prospectus [Rule 424(b)(3)]\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] October 28, 2026 - 424B3: Prospectus [Rule 424(b)(3)]\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] October 28, 2026 - 424B3: Prospectus [Rule 424(b)(3)]\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] August 6, 2026 - 10-Q: Quarterly report for quarter ending June 30, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] May 1, 2026 - 10-Q: Quarterly report for quarter ending March 31, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] February 13, 2026 - 10-K: Annual report for year ending December 31, 2025\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] November 4, 2025 - 10-Q: Quarterly report for quarter ending September 30, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01CPuWczneMMrcnfGyGVNqSY",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e28"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01CPuWczneMMrcnfGyGVNqSY",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/0001628280-26-054343-index.htm | TITLE: EDGAR Filing Documents for 0001628280-26-054343 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001628280-26-054343\nFiling Date\n2026-08-06\nAccepted\n2026-08-06 16:19:03\nDocuments\n189\nPeriod of Report\n2026-06-30\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] jpm-20260630.htm \u00a0\u00a0iXBRL\t10-Q\t11513874\n2\tEX-10.1\t[e11 link] corpq22026exhibit101.htm\tEX-10.1\t84254\n3\tEX-15\t[e12 link] corpq22026exhibit15.htm\tEX-15\t6875\n4\tEX-22\t[e13 link] corpq22026exhibit22.htm\tEX-22\t3629\n5\tEX-31.1\t[e14 link] corpq22026exhibit311.htm\tEX-31.1\t8162\n6\tEX-31.2\t[e15 link] corpq22026exhibit312.htm\tEX-31.2\t8130\n7\tEX-32\t[e16 link] corpq22026exhibit32.htm\tEX-32\t9932\n13\t\t[e17 link] jpm-20260630_g1.jpg\tGRAPHIC\t288647\n14\t\t[e18 link] jpm-20260630_g2.jpg\tGRAPHIC\t43555\n15\t\t[e19 link] jpm-20260630_g3.jpg\tGRAPHIC\t42608\n16\t\t[e20 link] jpm-20260630_g4.jpg\tGRAPHIC\t8845\n17\t\t[e21 link] jpm-20260630_g5.jpg\tGRAPHIC\t4713\n18\t\t[e22 link] newlogoa.jpg\tGRAPHIC\t8845\n\u00a0\tComplete submission text file\t[e23 link] 0001628280-26-054343.txt\t\u00a0\t50707093\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n8\tXBRL TAXONOMY EXTENSION SCHEMA DOCUMENT\t[e24 link] jpm-20260630.xsd\tEX-101.SCH\t218215\n9\tXBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT\t[e25 link] jpm-20260630_cal.xml\tEX-101.CAL\t267393\n10\tXBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT\t[e26 link] jpm-20260630_def.xml\tEX-101.DEF\t1349898\n11\tXBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT\t[e27 link] jpm-20260630_lab.xml\tEX-101.LAB\t2040929\n12\tXBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT\t[e28 link] jpm-20260630_pre.xml\tEX-101.PRE\t1701938\n193\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e29 link] jpm-20260630_htm.xml\tXML\t13207316\nMailing Address\n270 PARK AVENUE\nNEW YORK\nNY\n10017\nBusiness Address\n270 PARK AVENUE\nNEW YORK\nNY\n10017\n2122706000\nJPMORGAN CHASE & CO (Filer) CIK: [e30 link] 0000019617 (see all company filings)\n\nEIN.: 132624428 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e31 link] 001-05805 | Film No.: 261249411\nSIC: [e32 link] 6021 National Commercial Banks\n(CF Office: 02 Finance)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "Balance sheet is probably R2 or R4.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01Kh7m5ywrrTMpyWLsWYjgiC",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01LSXbQoJfy6C8EcgW15qDDc",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R5.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Kh7m5ywrrTMpyWLsWYjgiC",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R4.htm | TITLE:  | chunk 1/1\n\nXML 23 R4.htm IDEA: XBRL DOCUMENT\nConsolidated Balance Sheets (Unaudited) - USD ($)\n$ in Millions\n\nJun. 30, 2026\n\nDec. 31, 2025\n\nAssets\nCash and due from banks\t\t$ 24,720\t$ 21,742\nDeposits with banks\t\t285,091\t321,596\nFederal funds sold and securities purchased under resale agreements (included $432,939 and $327,018 at fair value)\t\t446,143\t336,426\nSecurities borrowed (included $118,384 and $98,111 at fair value)\t\t362,487\t286,191\nTrading assets (included assets pledged of $267,907 and $165,927)\t\t1,062,072\t802,873\nAvailable-for-sale securities (amortized cost of $538,689 and $507,226; included assets pledged of $12,007 and $7,735)\t\t536,048\t507,198\nHeld-to-maturity securities\t\t268,474\t270,134\nInvestment securities, net of allowance for credit losses\t\t804,522\t777,332\nLoans (included $62,889 and $70,684 at fair value)\t\t1,542,462\t1,493,429\nAllowance for loan losses\t\t(26,152)\t(25,765)\nLoans, net of allowance for loan losses\t\t1,516,310\t1,467,664\nAccrued interest and accounts receivable\t\t179,939\t111,599\nPremises and equipment\t\t37,701\t36,244\nGoodwill, MSRs and other intangible assets\t\t64,304\t64,458\nOther assets (included $32,431 and $15,849 at fair value and assets pledged of $16,137 and $11,984)\t\t231,780\t198,775\nTotal assets\t[1]\t5,015,069\t4,424,900\nLiabilities\nDeposits (included $26,229 and $20,930 at fair value)\t\t2,713,700\t2,559,320\nFederal funds purchased and securities loaned or sold under repurchase agreements (included $568,730 and $360,194 at fair value)\t\t704,918\t442,396\nShort-term borrowings (included $29,967 and $32,460 at fair value)\t\t72,430\t64,776\nTrading liabilities\t\t275,136\t216,019\nAccounts payable and other liabilities (included $18,383 and $6,660 at fair value)\t\t384,290\t316,794\nBeneficial interests issued by consolidated VIEs (included $5 and $5 at fair value)\t\t29,474\t27,951\nLong-term debt (included $156,056 and $134,559 at fair value)\t\t460,523\t435,206\nTotal liabilities\t[1]\t4,640,471\t4,062,462\nCommitments and contingencies (refer to Notes 22, 23 and 24)\nStockholders\u2019 equity\nPreferred stock ($1 par value; authorized 200,000,000 shares; issued 2,105,375 and 2,005,375 shares)\t\t21,040\t20,045\nCommon stock ($1 par value; authorized 9,000,000,000 shares; issued 4,104,933,895 shares)\t\t4,105\t4,105\nAdditional paid-in capital\t\t90,559\t91,114\nRetained earnings\t\t445,020\t416,055\nAccumulated other comprehensive losses\t\t(7,693)\t(4,290)\nTreasury stock, at cost (1,446,747,700 and 1,408,661,319 shares)\t\t(178,433)\t(164,591)\nTotal stockholders\u2019 equity\t\t374,598\t362,438\nTotal liabilities and stockholders\u2019 equity\t\t5,015,069\t4,424,900\nVIEs consolidated by the Firm\nAssets\nTrading assets (included assets pledged of $267,907 and $165,927)\t\t6,094\t4,835\nLoans, net of allowance for loan losses\t\t34,178\t37,777\nOther assets (included $32,431 and $15,849 at fair value and assets pledged of $16,137 and $11,984)\t\t734\t683\nTotal assets\t\t41,006\t43,295\nLiabilities\nBeneficial interests issued by consolidated VIEs (included $5 and $5 at fair value)\t\t29,474\t27,951\nAll other liabilities\t\t813\t691\nTotal liabilities\t\t$ 30,287\t$ 28,642\n\n[1]\tThe following table presents information on assets and liabilities related to VIEs that are consolidated by the Firm at June\u00a030, 2026 and December\u00a031, 2025. The assets of the consolidated VIEs are used to settle the liabilities of those entities. The holders of the beneficial interests generally do not have recourse to the general credit of JPMorganChase. The assets and liabilities in the table below include third-party assets and liabilities of consolidated VIEs and exclude intercompany balances that eliminate in consolidation. Refer to Note 13 for a further discussion.\n\n(in millions)\tJune 30, 2026\t\tDecember 31, 2025\nAssets\nTrading assets\t$\t6,094\u00a0\t\t\t$\t4,835\nLoans\t34,178\u00a0\t\t\t37,777\nAll other assets\t734\u00a0\t\t\t683\nTotal assets\t$\t41,006\u00a0\t\t\t$\t43,295\nLiabilities\nBeneficial interests issued by consolidated VIEs\t$\t29,474\u00a0\t\t\t$\t27,951\nAll other liabilities\t813\u00a0\t\t\t691\nTotal liabilities\t$\t30,287\u00a0\t\t\t$\t28,642"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01LSXbQoJfy6C8EcgW15qDDc",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R5.htm | TITLE:  | chunk 1/1\n\nXML 24 R5.htm IDEA: XBRL DOCUMENT\nConsolidated Balance Sheets (Unaudited) (Parenthetical) - USD ($)\n$ in Millions\n\nJun. 30, 2026\n\nDec. 31, 2025\n\nAssets\nTrading assets pledged\t$ 1,062,072\t$ 802,873\nAvailable-for-sale securities, amortized cost, net of allowance for credit losses\t538,689\t507,226\nAvailable-for-sale securities\t536,048\t507,198\nLoans at fair value\t62,889\t70,684\nOther assets pledged\t$ 231,780\t$ 198,775\nStockholders' equity\nPreferred stock, par value (in dollars per share)\t$ 1\t$ 1\nPreferred stock, shares authorized (in shares)\t200,000,000\t200,000,000\nPreferred stock, shares issued (in shares)\t2,105,375\t2,005,375\nCommon stock, par value (in dollars per share)\t$ 1\t$ 1\nCommon stock, shares authorized (in shares)\t9,000,000,000\t9,000,000,000\nCommon stock, shares issued (in shares)\t4,104,933,895\t4,104,933,895\nTreasury stock, at cost (in shares)\t1,446,747,700\t1,408,661,319\nAssets pledged\nAssets\nTrading assets pledged\t$ 267,907\t$ 165,927\nAvailable-for-sale securities\t12,007\t7,735\nOther assets pledged\t16,137\t11,984\nRecurring\nAssets\nFederal funds sold and securities purchased under resale agreements at fair value\t432,939\t327,018\nSecurities borrowed at fair value\t118,384\t98,111\nTrading assets pledged\t1,062,072\t802,873\nAvailable-for-sale securities\t536,048\t507,198\nLoans at fair value\t62,889\t70,684\nLiabilities\nDeposits at fair value\t26,229\t20,930\nFederal funds purchased and securities loaned or sold under repurchase agreements at fair value\t568,730\t360,194\nShort-term borrowings at fair value\t29,967\t32,460\nAccounts payable and other liabilities\t18,383\t6,660\nBeneficial interests issued by consolidated VIEs at fair value\t5\t5\nLong-term debt at fair value\t156,056\t134,559\nRecurring | Other assets\nAssets\nOther assets at fair value\t$ 32,431\t$ 15,849"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "374,598 \u2212 21,040 = 353,558 million.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01Mc7oySa93fknXwYcWb4M5q",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "value_usd": 353558000000,
+     "accession": "0001628280-26-054343",
+     "period_end": "2026-06-30",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R4.htm"
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Mc7oySa93fknXwYcWb4M5q",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

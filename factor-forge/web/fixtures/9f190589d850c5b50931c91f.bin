@@ -1,0 +1,562 @@
+<?xml version='1.0' encoding='utf-8'?>
+<FilingSummary>
+  <Version>3.26.1</Version>
+  <ProcessingTime/>
+  <ReportFormat>html</ReportFormat>
+  <ContextCount>315</ContextCount>
+  <ElementCount>234</ElementCount>
+  <EntityCount>1</EntityCount>
+  <FootnotesReported>true</FootnotesReported>
+  <SegmentCount>43</SegmentCount>
+  <ScenarioCount>0</ScenarioCount>
+  <TuplesReported>false</TuplesReported>
+  <UnitCount>7</UnitCount>
+  <MyReports>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R1.htm</HtmlFileName>
+      <LongName>75000 - Document - Cover Page</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/CoverPage</Role>
+      <ShortName>Cover Page</ShortName>
+      <MenuCategory>Cover</MenuCategory>
+      <Position>1</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R2.htm</HtmlFileName>
+      <LongName>75010 - Statement - Condensed Consolidated Balance Sheets (Unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedBalanceSheetsUnaudited</Role>
+      <ShortName>Condensed Consolidated Balance Sheets (Unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>2</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R3.htm</HtmlFileName>
+      <LongName>75020 - Statement - Condensed Consolidated Statements of Income (Unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedStatementsOfIncomeUnaudited</Role>
+      <ShortName>Condensed Consolidated Statements of Income (Unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>3</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R4.htm</HtmlFileName>
+      <LongName>75030 - Statement - Condensed Consolidated Statements of Comprehensive Income (Unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedStatementsOfComprehensiveIncomeUnaudited</Role>
+      <ShortName>Condensed Consolidated Statements of Comprehensive Income (Unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>4</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R5.htm</HtmlFileName>
+      <LongName>75040 - Statement - Condensed Consolidated Statements of Cash Flows (Unaudited)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedStatementsOfCashFlowsUnaudited</Role>
+      <ShortName>Condensed Consolidated Statements of Cash Flows (Unaudited)</ShortName>
+      <MenuCategory>Statements</MenuCategory>
+      <Position>5</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R6.htm</HtmlFileName>
+      <LongName>995410 - Disclosure - Pay vs Performance Disclosure</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://xbrl.sec.gov/ecd/role/PvpDisclosure</Role>
+      <ShortName>Pay vs Performance Disclosure</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>6</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R7.htm</HtmlFileName>
+      <LongName>995445 - Disclosure - Insider Trading Arrangements</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements</Role>
+      <ShortName>Insider Trading Arrangements</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>7</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R8.htm</HtmlFileName>
+      <LongName>995455 - Disclosure - Basis of Presentation</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureBasisOfPresentation</Role>
+      <ShortName>Basis of Presentation</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>8</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R9.htm</HtmlFileName>
+      <LongName>995465 - Disclosure - Segment Information</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/SegmentInformation</Role>
+      <ShortName>Segment Information</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>9</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R10.htm</HtmlFileName>
+      <LongName>995475 - Disclosure - Earnings Per Share</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/EarningsPerShare</Role>
+      <ShortName>Earnings Per Share</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>10</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R11.htm</HtmlFileName>
+      <LongName>995485 - Disclosure - Stockholders' Deficit</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficit</Role>
+      <ShortName>Stockholders' Deficit</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>11</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R12.htm</HtmlFileName>
+      <LongName>995505 - Disclosure - Leverage Ratio and Debt Classification</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureLeverageRatioAndDebtClassification</Role>
+      <ShortName>Leverage Ratio and Debt Classification</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>12</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R13.htm</HtmlFileName>
+      <LongName>995515 - Disclosure - Fair Value Measurements</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/FairValueMeasurements</Role>
+      <ShortName>Fair Value Measurements</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>13</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R14.htm</HtmlFileName>
+      <LongName>995525 - Disclosure - Revenue Disclosures</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/RevenueDisclosures</Role>
+      <ShortName>Revenue Disclosures</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>14</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R15.htm</HtmlFileName>
+      <LongName>995535 - Disclosure - Leases</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/Leases</Role>
+      <ShortName>Leases</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>15</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R16.htm</HtmlFileName>
+      <LongName>995545 - Disclosure - Supplemental Disclosures of Cash Flow Information</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/SupplementalDisclosuresOfCashFlowInformation</Role>
+      <ShortName>Supplemental Disclosures of Cash Flow Information</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>16</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R17.htm</HtmlFileName>
+      <LongName>995555 - Disclosure - Asset Acquisitions and Dispositions</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureAssetAcquisitionsAndDispositions</Role>
+      <ShortName>Asset Acquisitions and Dispositions</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>17</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R18.htm</HtmlFileName>
+      <LongName>995575 - Disclosure - New Accounting Pronouncements</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/NewAccountingPronouncements</Role>
+      <ShortName>New Accounting Pronouncements</ShortName>
+      <MenuCategory>Notes</MenuCategory>
+      <Position>18</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R19.htm</HtmlFileName>
+      <LongName>995585 - Disclosure - Segment Information (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/SegmentInformationTables</Role>
+      <ShortName>Segment Information (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/SegmentInformation</ParentRole>
+      <Position>19</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R20.htm</HtmlFileName>
+      <LongName>995595 - Disclosure - Earnings Per Share (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/EarningsPerShareTables</Role>
+      <ShortName>Earnings Per Share (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/EarningsPerShare</ParentRole>
+      <Position>20</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R21.htm</HtmlFileName>
+      <LongName>995605 - Disclosure - Stockholders' Deficit (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficitTables</Role>
+      <ShortName>Stockholders' Deficit (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficit</ParentRole>
+      <Position>21</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R22.htm</HtmlFileName>
+      <LongName>995615 - Disclosure - Fair Value Measurements (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/FairValueMeasurementsTables</Role>
+      <ShortName>Fair Value Measurements (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/FairValueMeasurements</ParentRole>
+      <Position>22</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R23.htm</HtmlFileName>
+      <LongName>995625 - Disclosure - Revenue Disclosures (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/RevenueDisclosuresTables</Role>
+      <ShortName>Revenue Disclosures (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/RevenueDisclosures</ParentRole>
+      <Position>23</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R24.htm</HtmlFileName>
+      <LongName>995635 - Disclosure - Leases (Tables)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/LeasesTables</Role>
+      <ShortName>Leases (Tables)</ShortName>
+      <MenuCategory>Tables</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/Leases</ParentRole>
+      <Position>24</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R25.htm</HtmlFileName>
+      <LongName>995645 - Disclosure - Segment Information (Additional Information) (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureSegmentInformationAdditionalInformationDetails</Role>
+      <ShortName>Segment Information (Additional Information) (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/SegmentInformationTables</ParentRole>
+      <Position>25</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R26.htm</HtmlFileName>
+      <LongName>995655 - Disclosure - Segment Information - Financial Information by Operating Segment (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureSegmentInformationFinancialInformationByOperatingSegmentDetail</Role>
+      <ShortName>Segment Information - Financial Information by Operating Segment (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>26</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R27.htm</HtmlFileName>
+      <LongName>995665 - Disclosure - Segment Information - Financial Information by Operating Segment (Parenthetical) (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureSegmentInformationFinancialInformationByOperatingSegmentParentheticalDetails</Role>
+      <ShortName>Segment Information - Financial Information by Operating Segment (Parenthetical) (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>27</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R28.htm</HtmlFileName>
+      <LongName>995675 - Disclosure - Segment Information - Reconciliation of Total Segment Income to Consolidated Income Before Provision for Income Taxes (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureSegmentInformationReconciliationOfTotalSegmentIncomeToConsolidatedIncomeBeforeProvisionForIncomeTaxesDetail</Role>
+      <ShortName>Segment Information - Reconciliation of Total Segment Income to Consolidated Income Before Provision for Income Taxes (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>28</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R29.htm</HtmlFileName>
+      <LongName>995685 - Disclosure - Segment Information - Identifiable Asset Information (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureSegmentInformationIdentifiableAssetInformationDetails</Role>
+      <ShortName>Segment Information - Identifiable Asset Information (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>29</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R30.htm</HtmlFileName>
+      <LongName>995695 - Disclosure - Segment Information - Goodwill (Details)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureSegmentInformationGoodwillDetails</Role>
+      <ShortName>Segment Information - Goodwill (Details)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>30</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R31.htm</HtmlFileName>
+      <LongName>995705 - Disclosure - Earnings Per Share - Summary of Computation of Basic and Diluted Earning per Share (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureEarningsPerShareSummaryOfComputationOfBasicAndDilutedEarningPerShareDetail</Role>
+      <ShortName>Earnings Per Share - Summary of Computation of Basic and Diluted Earning per Share (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>31</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R32.htm</HtmlFileName>
+      <LongName>995715 - Disclosure - Earnings Per Share - Schedule of Denominators Used in Calculating Earning Per Common Share (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureEarningsPerShareScheduleOfDenominatorsUsedInCalculatingEarningPerCommonShareDetail</Role>
+      <ShortName>Earnings Per Share - Schedule of Denominators Used in Calculating Earning Per Common Share (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>32</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R33.htm</HtmlFileName>
+      <LongName>995735 - Disclosure - Stockholders' Deficit - Additional Information (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficitAdditionalInformationDetail</Role>
+      <ShortName>Stockholders' Deficit - Additional Information (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>33</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R34.htm</HtmlFileName>
+      <LongName>995745 - Disclosure - Stockholders' Deficit (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficitDetail</Role>
+      <ShortName>Stockholders' Deficit (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficitTables</ParentRole>
+      <Position>34</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R35.htm</HtmlFileName>
+      <LongName>995755 - Disclosure - Stockholders' Deficit (Parenthetical) (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficitParentheticalDetail</Role>
+      <ShortName>Stockholders' Deficit (Parenthetical) (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <ParentRole>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficitTables</ParentRole>
+      <Position>35</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R36.htm</HtmlFileName>
+      <LongName>995785 - Disclosure - Fair Value Measurements - Additional Information (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/FairValueMeasurementsAdditionalInformationDetail</Role>
+      <ShortName>Fair Value Measurements - Additional Information (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>36</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R37.htm</HtmlFileName>
+      <LongName>995795 - Disclosure - Fair Value Measurements - Carrying Amounts and Fair Values of Certain Assets (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureFairValueMeasurementsCarryingAmountsAndFairValuesOfCertainAssetsDetail</Role>
+      <ShortName>Fair Value Measurements - Carrying Amounts and Fair Values of Certain Assets (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>37</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R38.htm</HtmlFileName>
+      <LongName>995815 - Disclosure - Fair Value Measurements - Schedule of Estimated Fair Value (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureFairValueMeasurementsScheduleOfEstimatedFairValueDetail</Role>
+      <ShortName>Fair Value Measurements - Schedule of Estimated Fair Value (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>38</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R39.htm</HtmlFileName>
+      <LongName>995825 - Disclosure - Revenue Disclosures - Additional Information (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/RevenueDisclosuresAdditionalInformationDetail</Role>
+      <ShortName>Revenue Disclosures - Additional Information (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>39</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R40.htm</HtmlFileName>
+      <LongName>995835 - Disclosure - Revenue Disclosures - Schedule of Contract Liabilities Consist of Deferred Franchise Fees and Deferred Development Fees (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureRevenueDisclosuresScheduleOfContractLiabilitiesConsistOfDeferredFranchiseFeesAndDeferredDevelopmentFeesDetail</Role>
+      <ShortName>Revenue Disclosures - Schedule of Contract Liabilities Consist of Deferred Franchise Fees and Deferred Development Fees (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>40</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R41.htm</HtmlFileName>
+      <LongName>995845 - Disclosure - Leases - Components of Operating and Finance Lease Cost (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureLeasesComponentsOfOperatingAndFinanceLeaseCostDetail</Role>
+      <ShortName>Leases - Components of Operating and Finance Lease Cost (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>41</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R42.htm</HtmlFileName>
+      <LongName>995855 - Disclosure - Leases - Supplemental balance sheet information related to the Company's leases (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureLeasesSupplementalBalanceSheetInformationRelatedToTheCompanysLeasesDetail</Role>
+      <ShortName>Leases - Supplemental balance sheet information related to the Company's leases (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>42</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R43.htm</HtmlFileName>
+      <LongName>995865 - Disclosure - Leases - Supplemental Cash Flow Information Related To Leases (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureLeasesSupplementalCashFlowInformationRelatedToLeasesDetail</Role>
+      <ShortName>Leases - Supplemental Cash Flow Information Related To Leases (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>43</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R44.htm</HtmlFileName>
+      <LongName>995875 - Disclosure - Leases - Additional Information (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/LeasesAdditionalInformationDetail</Role>
+      <ShortName>Leases - Additional Information (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>44</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R45.htm</HtmlFileName>
+      <LongName>995885 - Disclosure - Maturities of Lease Liabilities (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/MaturitiesOfLeaseLiabilitiesDetail</Role>
+      <ShortName>Maturities of Lease Liabilities (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>45</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R46.htm</HtmlFileName>
+      <LongName>995925 - Disclosure - Supplemental Disclosures of Cash Flow Information - Additional Information (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/SupplementalDisclosuresOfCashFlowInformationAdditionalInformationDetail</Role>
+      <ShortName>Supplemental Disclosures of Cash Flow Information - Additional Information (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>46</Position>
+    </Report>
+    <Report instance="dpz-20260614.htm">
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <HtmlFileName>R47.htm</HtmlFileName>
+      <LongName>995935 - Disclosure - Asset Acquisitions and Dispositions - Additional Information (Detail)</LongName>
+      <ReportType>Sheet</ReportType>
+      <Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureAssetAcquisitionsAndDispositionsAdditionalInformationDetail</Role>
+      <ShortName>Asset Acquisitions and Dispositions - Additional Information (Detail)</ShortName>
+      <MenuCategory>Details</MenuCategory>
+      <Position>47</Position>
+    </Report>
+    <Report>
+      <IsDefault>false</IsDefault>
+      <HasEmbeddedReports>false</HasEmbeddedReports>
+      <LongName>All Reports</LongName>
+      <ReportType>Book</ReportType>
+      <ShortName>All Reports</ShortName>
+    </Report>
+  </MyReports>
+  <InputFiles>
+    <File doctype="10-Q" isDefinitelyFs="true" isUsgaap="true" original="dpz-20260614.htm">dpz-20260614.htm</File>
+    <File>dpz-20260614.xsd</File>
+  </InputFiles>
+  <SupplementalFiles/>
+  <BaseTaxonomies>
+    <BaseTaxonomy items="1">http://fasb.org/srt/2025</BaseTaxonomy>
+    <BaseTaxonomy items="632">http://fasb.org/us-gaap/2025</BaseTaxonomy>
+    <BaseTaxonomy items="29">http://xbrl.sec.gov/dei/2025</BaseTaxonomy>
+    <BaseTaxonomy items="20">http://xbrl.sec.gov/ecd/2025</BaseTaxonomy>
+  </BaseTaxonomies>
+  <HasPresentationLinkbase>false</HasPresentationLinkbase>
+  <HasCalculationLinkbase>false</HasCalculationLinkbase>
+</FilingSummary>

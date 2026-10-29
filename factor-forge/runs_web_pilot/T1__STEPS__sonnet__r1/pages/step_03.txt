@@ -1,0 +1,23 @@
+Typed 'Apple Inc' into e31. URL: https://www.sec.gov/search-filings
+New elements that appeared (e.g. suggestions):
+[e74 link] Apple Inc. (AAPL)
+[e75 link] CIK 0000320193
+[e76 link] Apple iSports Group, Inc. (AAPI)
+[e77 link] CIK 0001134982
+[e78 link] Apple Hospitality REIT, Inc. (APLE)
+[e79 link] CIK 0001418121
+[e80 link] Red Apple, Inc.
+[e81 link] CIK 0001850395
+[e82 link] APPLETICS INC
+[e83 link] CIK 0001461359
+[e84 link] APPLEWOODS INC
+[e85 link] CIK 0001002522
+[e86 link] ROAD APPLES INC
+[e87 link] CIK 0001121987
+[e88 link] APPLES TO GO INC
+[e89 link] CIK 0001271556
+[e90 link] APPLE SUITES INC
+[e91 link] CIK 0001084681
+[e92 link] Apple Rush Co., Inc
+[e93 link] CIK 0001474644
+[e94 link] Search for "Apple Inc" in EDGAR filings

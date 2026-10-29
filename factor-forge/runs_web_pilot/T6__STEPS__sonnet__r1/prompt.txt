@@ -1,0 +1,18 @@
+TASK T6
+
+Find JPMorgan Chase & Co.'s COMMON book equity at June 30, 2026, defined as total stockholders' equity minus preferred stock, from its quarterly report for the second quarter of 2026.
+
+RULES:
+- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.
+- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.
+- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.
+- You may use at most 30 tool calls in total, including submit_answer.
+
+STEPS (a click path that works):
+1. Open https://www.sec.gov/search-filings, type "JPMorgan" and click the suggestion "JPMORGAN CHASE & CO (JPM, ...)" (CIK 0000019617). Do not pick the look-alike "JPMORGAN CHASE & Co" without a ticker (CIK 0001325347); typing the full "JPMorgan Chase" shows only that look-alike.
+2. Expand "10-K (annual reports) and 10-Q (quarterly reports)" and open the "Filing" link of the 10-Q for the quarter ending June 30, 2026 (filed early August 2026).
+3. From the filing index, open the filing folder, then FilingSummary.xml, and find "Consolidated balance sheets"; open its R page. The page is long: use find_text.
+4. Take "Total stockholders' equity" and "Preferred stock" in the column "Jun. 30, 2026", and submit total stockholders' equity MINUS preferred stock.
+Units: The page header says "$ in Millions": multiply by 1,000,000.
+
+When you have the answer, call submit_answer.

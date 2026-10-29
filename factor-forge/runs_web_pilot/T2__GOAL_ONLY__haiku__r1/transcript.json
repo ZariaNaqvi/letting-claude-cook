@@ -1,0 +1,215 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T2\n\nFind Microsoft Corporation's total stockholders' equity as of June 30, 2026, from the first periodic report that reports that date.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01Y4ViCxuu5NNpSFb1hNm2L7",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-K&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Y4ViCxuu5NNpSFb1hNm2L7",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000789019&type=10-K&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01JdZTtM5HNfQTjSTw8vrC6p",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/789019/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01JdZTtM5HNfQTjSTw8vrC6p",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/789019/ | TITLE: Directory List of /Archives/edgar/data/789019 | chunk 1/25\n\n[e1 link] Search Options\n[e2 link] Skip to Main Content\n[e3 link]\nABOUT\n[e4 link]\nDIVISIONS\n[e5 link]\nENFORCEMENT\n[e6 link]\nREGULATION\n[e7 link]\nEDUCATION\n[e8 link]\nFILINGS\n[e9 link]\nNEWS\nDirectory Listing /Archives/edgar/data/789019\nNAME\tSIZE\tLAST MODIFIED\n[e10 link] 000092189526002869\t\t2026-10-28 17:12:49\n[e11 link] 000119312526436149\t\t2026-10-28 16:11:03\n[e12 link] 000119312526436133\t\t2026-10-28 16:07:39\n[e13 link] 000119312526436122\t\t2026-10-28 16:04:44\n[e14 link] 000121465926013276\t\t2026-10-27 15:31:22\n[e15 link] 000121465926013218\t\t2026-10-26 15:35:14\n[e16 link] 000119312526427876\t\t2026-10-21 16:25:21\n[e17 link] 000119312526427867\t\t2026-10-21 16:20:22\n[e18 link] 000119312526427849\t\t2026-10-21 16:15:40\n[e19 link] 000078901926000228\t\t2026-10-15 18:05:10\n[e20 link] 000078901926000226\t\t2026-10-14 18:08:42\n[e21 link] 000078901926000224\t\t2026-09-17 18:07:20\n[e22 link] 000078901926000223\t\t2026-09-17 18:06:57\n[e23 link] 000078901926000222\t\t2026-09-17 18:06:42\n[e24 link] 000078901926000221\t\t2026-09-17 18:06:27\n[e25 link] 000078901926000220\t\t2026-09-17 18:06:12\n[e26 link] 000078901926000214\t\t2026-09-15 18:04:42\n[e27 link] 000078901926000213\t\t2026-09-15 18:04:25\n[e28 link] 000078901926000212\t\t2026-09-15 18:04:07\n[e29 link] 000195824426000598\t\t2026-09-14 18:00:13\n[e30 link] 000078901926000208\t\t2026-09-11 18:05:32\n[e31 link] 000078901926000207\t\t2026-09-11 18:05:11\n[e32 link] 000078901926000206\t\t2026-09-11 18:04:54\n[e33 link] 000078901926000205\t\t2026-09-11 18:04:39\n[e34 link] 000078901926000204\t\t2026-09-11 18:04:22\n[e35 link] 000078901926000203\t\t2026-09-11 18:04:06\n[e36 link] 000078901926000202\t\t2026-09-11 18:03:51\n[e37 link] 000078901926000201\t\t2026-09-11 18:03:38\n[e38 link] 000078901926000200\t\t2026-09-11 18:03:21\n[e39 link] 000078901926000199\t\t2026-09-11 18:03:03\n[e40 link] 000078901926000188\t\t2026-09-10 18:02:35\n[e41 link] 000121465926011511\t\t2026-09-09 13:31:28\n[e42 link] 000078901926000186\t\t2026-09-08 18:07:34\n[e43 link] 000078901926000185\t\t2026-09-08 18:07:13\n[e44 link] 000078901926000184\t\t2026-09-08 18:06:55\n[e45 link] 000078901926000183\t\t2026-09-08 18:06:35\n[e46 link] 000078901926000182\t\t2026-09-08 18:06:15\n[e47 link] 000078901926000181\t\t2026-09-08 18:05:57\n[e48 link] 000078901926000180\t\t2026-09-08 18:05:32\n[e49 link] 000078901926000179\t\t2026-09-08 18:05:05\n[e50 link] 000078901926000178\t\t2026-09-08 18:04:18\n[e51 link] 000078901926000177\t\t2026-09-08 18:03:58\n[e52 link] 000078901926000176\t\t2026-09-08 18:03:35\n[e53 link] 000078901926000175\t\t2026-09-08 18:03:12\n[e54 link] 000078901926000161\t\t2026-09-02 18:04:41\n[e55 link] 000119312526380280\t\t2026-09-02 16:30:24\n[e56 link] 000078901926000159\t\t2026-09-01 18:09:06\n[e57 link] 000078901926000158\t\t2026-09-01 18:08:46\n[e58 link] 000078901926000157\t\t2026-09-01 18:08:27\n[e59 link] 000078901926000156\t\t2026-09-01 18:08:06\n[e60 link] 000078901926000155\t\t2026-09-01 18:07:40\n[e61 link] 000078901926000154\t\t2026-09-01 18:07:23\n[e62 link] 000078901926000153\t\t2026-09-01 18:06:42\n[e63 link] 000195004726008927\t\t2026-09-01 16:36:48\n[e64 link] 000078901926000145\t\t2026-08-17 18:04:57\n[e65 link] 000078901926000143\t\t2026-08-06 18:01:48\n[e66 link] 000078901926000141\t\t2026-08-05 18:08:55\n[e67 link] 000195917326005674\t\t2026-08-05 15:35:10\n[e68 link] 000195917326005608\t\t2026-08-04 15:19:00\n[e69 link] 000119312526323660\t\t2026-07-29 16:08:01\n[e70 link] 000119312526323632\t\t2026-07-29 16:04:53\n[e71 link] 000121465926008806\t\t2026-07-22 10:59:22\n[e72 link] 000078901926000139\t\t2026-07-15 18:05:53\n[e73 link] 000121465926008121\t\t2026-07-02 12:31:40\n[e74 link] 000078901926000137\t\t2026-07-01 18:03:47\n[e75 link] 000119312526282817\t\t2026-06-25 16:16:55\n[e76 link] 000119312526282773\t\t2026-06-25 16:10:50\n[e77 link] 000078901926000135\t\t2026-06-16 18:07:25\n[e78 link] 000078901926000133\t\t2026-06-15 18:06:19\n[e79 link] 000078901926000131\t\t2026-06-12 18:07:08\n[e80 link] 000078901926000130\t\t2026-06-12 18:06:47\n[e81 link] 000078901926000129\t\t2026-06-12 18:06:25\n[e82 link] 000078901926000128\t\t2026-06-12 18:06:00\n[e83 link] 000078901926000127\t\t2026-06-12 18:05:36\n[e84 link] 000078901926000126\t\t2026-06-12 18:05:02\n[e85 link] 000078901926000125\t\t2026-06-12 18:04:41\n[e86 link] 000078901926000124\t\t2026-06-12 18:04:24\n[e87 link] 000078901926000123\t\t2026-06-12 18:03:55\n[e88 link] 000078901926000122\t\t2026-06-12 18:03:29\n[e89 link] 000078901926000121\t\t2026-06-12 18:03:13\n[e90 link] 000078901926000109\t\t2026-06-10 18:01:46\n[e91 link] 000078901926000107\t\t2026-06-09 18:06:09\n[e92 link] 000078901926000106\t\t2026-06-09 18:05:42\n[e93 link] 000078901926000105\t\t2026-06-09 18:05:16\n[e94 link] 000078901926000104\t\t2026-06-09 18:04:59\n[e95 link] 000078901926000103\t\t2026-06-09 18:04:30\n[e96 link] 000078901926000102\t\t2026-06-09 18:04:05\n[e97 link] 000078901926000101\t\t2026-06-09 18:03:47\n[e98 link] 000078901926000100\t\t2026-06-09 18:03:28\n[e99 link] 000078901926000099\t\t2026-06-09 18:03:03\n[e100 link] 000078901926000098\t\t2026-06-09 18:02:31\n[e101 link] 000078901926000097\t\t2026-06-09 18:01:59\n[e102 link] 000078901926000096\t\t2026-06-09 18:01:20\n[e103 link] 000119312526258667\t\t2026-06-05 10:36:56\n[e104 link] 000195917326004364\t\t2026-06-04 16:15:29\n[e105 link] 000078901926000083\t\t2026-06-02 18:04:31\n[e106 link] 000078901926000081\t\t2026-06-01 18:01:42\n[e107 link] 000078901926000080\t\t2026-06-01 18:01:20\n[e108 link] 000195917326004196\t\t2026-06-01 14:31:48\n[e109 link] 000119312526245474\t\t2026-05-28 17:03:58\n[e110 link] 000078901926000077\t\t2026-05-26 18:02:03\n[e111 link] 000078901926000075\t\t2026-05-18 18:02:08\n[e112 link] 000078901926000074\t\t2026-05-18 18:01:48\n[e113 link] 000119312526224155\t\t2026-05-14 16:28:48\n[e114 link] 000195917326003593\t\t2026-05-14 13:02:24\n[e115 link] 000210011926000820\t\t2026-04-30 11:37:00\n[e116 link] 000119312526191507\t\t2026-04-29 16:06:24\n[e117 link] 000119312526191457\t\t2026-04-29 16:03:31\n[e118 link] 000078901926000070\t\t2026-04-15 18:00:00\n[e119 link] 000010290926001884\t\t2026-03-27 10:52:24\n[e120 link] 000119312526120090\t\t2026-03-23 17:59:18\n[e121 link] 000078901926000066\t\t2026-03-16 18:07:47\n[e122 link] 000078901926000064\t\t2026-03-13 18:04:07\n[e123 link] 000078901926000063\t\t2026-03-13 18:03:40\n[e124 link] 000078901926000062\t\t2026-03-13 18:03:22\n[e125 link] 000078901926000061\t\t2026-03-13 18:03:03\n[e126 link] 000078901926000060\t\t2026-03-13 18:02:44\n[e127 link] 000078901926000059\t\t2026-03-13 18:02:21\n[e128 link] 000078901926000058\t\t2026-03-13 18:01:50\n[e129 link] 000078901926000057\t\t2026-03-13 18:01:32\n[e130 link] 000078901926000048\t\t2026-03-09 18:04:22\n[e131 link] 000195917326002007\t\t2026-03-06 10:09:34\n[e132 link] 000078901926000046\t\t2026-03-03 18:01:15\n[e133 link] 000078901926000045\t\t2026-03-03 18:00:54\n[e134 link] 000078901926000044\t\t2026-03-03 18:00:35\n[e135 link] 000078901926000043\t\t2026-03-03 18:00:14\n[e136 link] 000078901926000042\t\t2026-03-03 17:59:48\n[e137 link] 000078901926000041\t\t2026-03-03 17:59:29\n[e138 link] 000078901926000040\t\t2026-03-03 17:58:50\n[e139 link] 000078901926000028\t\t2026-02-18 18:14:22\n[e140 link] 000078901926000026\t\t2026-02-17 18:06:05\n[e141 link] 000078901926000024\t\t2026-02-03 18:07:25\n[e142 link] 000078901926000023\t\t2026-02-03 18:06:35\n[e143 link] 000078901926000022\t\t2026-02-03 18:06:05\n[e144 link] 000078901926000021\t\t2026-02-03 18:05:43\n[e145 link] 000078901926000020\t\t2026-02-03 18:05:23\n[e146 link] 000078901926000019\t\t2026-02-03 18:05:03\n[e147 link] 000078901926000018\t\t2026-02-03 18:04:43\n[e148 link] 000078901926000017\t\t2026-02-03 18:04:22\n[e149 link] 000078901926000016\t\t2026-02-03 18:03:53\n[e150 link] 000078901926000015\t\t2026-02-03 18:03:26\n[e151 link] 000078901926000014\t\t2026-02-03 18:01:43\n[e152 link] 000119312526027232\t\t2026-01-28 16:11:41\n[e153 link] 000119312526027207\t\t2026-01-28 16:07:34\n[e154 link] 000119312526027198\t\t2026-01-28 16:04:38\n[e155 link] 000078901926000002\t\t2026-01-15 18:00:33\n[e156 link] 000119312525337096\t\t2025-12-30 16:11:18\n[e157 link] 000119312525337091\t\t2025-12-30 16:09:10\n[e158 link] 000119312525337081\t\t2025-12-30 16:06:19\n[e159 link] 000119312525337056\t\t2025-12-30 16:01:56\n[e160 link] 000078901925000133\t\t2025-12-16 18:05:01\n[e161 link] 000078901925000132\t\t2025-12-16 18:04:44\n[e162 link] 000078901925000129\t\t2025-12-12 18:23:05\n[e163 link] 000078901925000128\t\t2025-12-12 18:22:48\n[e164 link] 000078901925000127\t\t2025-12-12 18:22:27\n[e165 link] 000078901925000126\t\t2025-12-12 18:22:07\n[e166 link] 000078901925000125\t\t2025-12-12 18:21:48\n[e167 link] 000078901925000124\t\t2025-12-12 18:21:28\n[e168 link] 000078901925000123\t\t2025-12-12 18:21:10\n[e169 link] 000078901925000122\t\t2025-12-12 18:20:53\n[e170 link] 000078901925000121\t\t2025-12-12 18:20:35\n[e171 link] 000078901925000120\t\t2025-12-12 18:20:17\n[e172 link] 000078901925000110\t\t2025-12-08 18:09:13\n[e173 link] 000119312525311196\t\t2025-12-08 16:00:35\n[e174 link] 000078901925000106\t\t2025-12-05 18:04:20\n[e175 link] 000078901925000105\t\t2025-12-05 18:03:57\n[e176 link] 000078901925000104\t\t2025-12-05 18:03:34\n[e177 link] 000078901925000103\t\t2025-12-05 18:03:10\n[e178 link] 000078901925000102\t\t2025-12-05 18:02:52\n[e179 link] 000078901925000101\t\t2025-12-05 18:02:32\n[e180 link] 000078901925000100\t\t2025-12-05 18:02:08\n[e181 link] 000078901925000099\t\t2025-12-05 18:01:46\n[e182 link] 000078901925000098\t\t2025-12-05 18:01:21\n[e183 link] 000078901925000097\t\t2025-12-05 18:00:59\n[e184 link] 000078901925000096\t\t2025-12-05 18:00:25\n[e185 link] 000078901925000095\t\t2025-12-05 17:58:58\n[e186 link] 000121465925017592\t\t2025-12-04 11:19:04\n[e187 link] 000078901925000077\t\t2025-12-03 18:09:04\n[e188 link] 000195917325007489\t\t2025-12-03 16:45:25\n[e189 link] 000078901925000075\t\t2025-12-02 18:00:41\n[e190 link] 000078901925000074\t\t2025-12-02 18:00:10\n[e191 link] 000195917325007420\t\t2025-12-02 11:34:46\n[e192 link] 000078901925000071\t\t2025-11-21 17:59:16\n[e193 link] 000121465925016907\t\t2025-11-18 17:37:19\n[e194 link] 000078901925000069\t\t2025-11-17 18:01:59\n[e195 link] 000078901925000067\t\t2025-11-12 18:01:56\n[e196 link] 000109690625001786\t\t2025-11-12 08:38:44\n[e197 link] 000109690625001784\t\t2025-11-12 08:35:38\n[e198 link] 000121465925016240\t\t2025-11-12 07:08:19\n[chunk 1/25; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01XTFdCTA5if9poe5GShe947",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01XTFdCTA5if9poe5GShe947",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/ | TITLE: Directory List of /Archives/edgar/data/789019/000119312526323660 | chunk 1/1\n\n[e1 link] Search Options\n[e2 link] Skip to Main Content\n[e3 link]\nABOUT\n[e4 link]\nDIVISIONS\n[e5 link]\nENFORCEMENT\n[e6 link]\nREGULATION\n[e7 link]\nEDUCATION\n[e8 link]\nFILINGS\n[e9 link]\nNEWS\nDirectory Listing /Archives/edgar/data/789019/000119312526323660\n[e10 link] Parent Directory\nNAME\tSIZE\tLAST MODIFIED\n[e11 link] 0001193125-26-323660-index-headers.html\t\t2026-07-29 16:08:01\n[e12 link] 0001193125-26-323660-index.html\t\t2026-07-29 16:08:01\n[e13 link] 0001193125-26-323660.txt\t\t2026-07-29 16:08:01\n[e14 link] 0001193125-26-323660-xbrl.zip\t532447\t2026-07-29 16:08:01\n[e15 link] FilingSummary.xml\t68644\t2026-07-29 16:08:01\n[e16 link] MetaLinks.json\t1601396\t2026-07-29 16:08:01\n[e17 link] msft-20260630.htm\t8585501\t2026-07-29 16:08:01\n[e18 link] msft-20260630.xsd\t2170276\t2026-07-29 16:08:01\n[e19 link] msft-20260630_htm.xml\t10948157\t2026-07-29 16:08:01\n[e20 link] msft-ex19_1.htm\t36625\t2026-07-29 16:08:01\n[e21 link] msft-ex19_2.htm\t37501\t2026-07-29 16:08:01\n[e22 link] msft-ex19_3.htm\t53434\t2026-07-29 16:08:01\n[e23 link] msft-ex21.htm\t16166\t2026-07-29 16:08:01\n[e24 link] msft-ex23_1.htm\t5627\t2026-07-29 16:08:01\n[e25 link] msft-ex31_1.htm\t12647\t2026-07-29 16:08:01\n[e26 link] msft-ex31_2.htm\t12888\t2026-07-29 16:08:01\n[e27 link] msft-ex32_1.htm\t9029\t2026-07-29 16:08:01\n[e28 link] msft-ex32_2.htm\t8699\t2026-07-29 16:08:01\n[e29 link] msft-ex97_1.htm\t42585\t2026-07-29 16:08:01\n[e30 link] R1.htm\t84012\t2026-07-29 16:08:01\n[e31 link] R10.htm\t58180\t2026-07-29 16:08:01\n[e32 link] R100.htm\t17783\t2026-07-29 16:08:01\n[e33 link] R101.htm\t7295\t2026-07-29 16:08:01\n[e34 link] R102.htm\t38122\t2026-07-29 16:08:01\n[e35 link] R103.htm\t13327\t2026-07-29 16:08:01\n[e36 link] R104.htm\t27770\t2026-07-29 16:08:01\n[e37 link] R105.htm\t15007\t2026-07-29 16:08:01\n[e38 link] R106.htm\t7250\t2026-07-29 16:08:01\n[e39 link] R107.htm\t28641\t2026-07-29 16:08:01\n[e40 link] R108.htm\t12977\t2026-07-29 16:08:01\n[e41 link] R109.htm\t14625\t2026-07-29 16:08:01\n[e42 link] R11.htm\t75704\t2026-07-29 16:08:01\n[e43 link] R110.htm\t30839\t2026-07-29 16:08:01\n[e44 link] R111.htm\t11521\t2026-07-29 16:08:01\n[e45 link] R112.htm\t9190\t2026-07-29 16:08:01\n[e46 link] R12.htm\t99308\t2026-07-29 16:08:01\n[e47 link] R13.htm\t159622\t2026-07-29 16:08:01\n[e48 link] R14.htm\t1178032\t2026-07-29 16:08:01\n[e49 link] R15.htm\t492804\t2026-07-29 16:08:01\n[e50 link] R16.htm\t57596\t2026-07-29 16:08:01\n[e51 link] R17.htm\t103002\t2026-07-29 16:08:01\n[e52 link] R18.htm\t119170\t2026-07-29 16:08:01\n[e53 link] R19.htm\t197911\t2026-07-29 16:08:01\n[e54 link] R2.htm\t89716\t2026-07-29 16:08:01\n[e55 link] R20.htm\t289013\t2026-07-29 16:08:01\n[e56 link] R21.htm\t586440\t2026-07-29 16:08:01\n[e57 link] R22.htm\t64179\t2026-07-29 16:08:01\n[e58 link] R23.htm\t338395\t2026-07-29 16:08:01\n[e59 link] R24.htm\t8248\t2026-07-29 16:08:01\n[e60 link] R25.htm\t287443\t2026-07-29 16:08:01\n[e61 link] R26.htm\t211507\t2026-07-29 16:08:01\n[e62 link] R27.htm\t133675\t2026-07-29 16:08:01\n[e63 link] R28.htm\t384439\t2026-07-29 16:08:01\n[e64 link] R29.htm\t134460\t2026-07-29 16:08:01\n[e65 link] R3.htm\t35034\t2026-07-29 16:08:01\n[e66 link] R30.htm\t97150\t2026-07-29 16:08:01\n[e67 link] R31.htm\t161046\t2026-07-29 16:08:01\n[e68 link] R32.htm\t1176995\t2026-07-29 16:08:01\n[e69 link] R33.htm\t479944\t2026-07-29 16:08:01\n[e70 link] R34.htm\t53035\t2026-07-29 16:08:01\n[e71 link] R35.htm\t104484\t2026-07-29 16:08:01\n[e72 link] R36.htm\t116588\t2026-07-29 16:08:01\n[e73 link] R37.htm\t199892\t2026-07-29 16:08:01\n[e74 link] R38.htm\t284393\t2026-07-29 16:08:01\n[e75 link] R39.htm\t575287\t2026-07-29 16:08:01\n[e76 link] R4.htm\t126557\t2026-07-29 16:08:01\n[e77 link] R40.htm\t59710\t2026-07-29 16:08:01\n[e78 link] R41.htm\t338619\t2026-07-29 16:08:01\n[e79 link] R42.htm\t279127\t2026-07-29 16:08:01\n[e80 link] R43.htm\t210642\t2026-07-29 16:08:01\n[e81 link] R44.htm\t126093\t2026-07-29 16:08:01\n[e82 link] R45.htm\t368284\t2026-07-29 16:08:01\n[e83 link] R46.htm\t59914\t2026-07-29 16:08:01\n[e84 link] R47.htm\t44391\t2026-07-29 16:08:01\n[e85 link] R48.htm\t19737\t2026-07-29 16:08:01\n[e86 link] R49.htm\t8380\t2026-07-29 16:08:01\n[e87 link] R5.htm\t15297\t2026-07-29 16:08:01\n[e88 link] R50.htm\t14975\t2026-07-29 16:08:01\n[e89 link] R51.htm\t15144\t2026-07-29 16:08:01\n[e90 link] R52.htm\t110398\t2026-07-29 16:08:01\n[e91 link] R53.htm\t8105\t2026-07-29 16:08:01\n[e92 link] R54.htm\t39017\t2026-07-29 16:08:01\n[e93 link] R55.htm\t31038\t2026-07-29 16:08:01\n[e94 link] R56.htm\t18154\t2026-07-29 16:08:01\n[e95 link] R57.htm\t20904\t2026-07-29 16:08:01\n[e96 link] R58.htm\t100840\t2026-07-29 16:08:01\n[e97 link] R59.htm\t31244\t2026-07-29 16:08:01\n[e98 link] R6.htm\t92655\t2026-07-29 16:08:01\n[e99 link] R60.htm\t13912\t2026-07-29 16:08:01\n[e100 link] R61.htm\t20195\t2026-07-29 16:08:01\n[e101 link] R62.htm\t13376\t2026-07-29 16:08:01\n[e102 link] R63.htm\t20828\t2026-07-29 16:08:01\n[e103 link] R64.htm\t40167\t2026-07-29 16:08:01\n[e104 link] R65.htm\t23375\t2026-07-29 16:08:01\n[e105 link] R66.htm\t24135\t2026-07-29 16:08:01\n[e106 link] R67.htm\t25550\t2026-07-29 16:08:01\n[e107 link] R68.htm\t10030\t2026-07-29 16:08:01\n[e108 link] R69.htm\t30762\t2026-07-29 16:08:01\n[e109 link] R7.htm\t48988\t2026-07-29 16:08:01\n[e110 link] R70.htm\t18705\t2026-07-29 16:08:01\n[e111 link] R71.htm\t6766\t2026-07-29 16:08:01\n[e112 link] R72.htm\t20678\t2026-07-29 16:08:01\n[e113 link] R73.htm\t106019\t2026-07-29 16:08:01\n[e114 link] R74.htm\t44493\t2026-07-29 16:08:01\n[e115 link] R75.htm\t18045\t2026-07-29 16:08:01\n[e116 link] R76.htm\t24675\t2026-07-29 16:08:01\n[e117 link] R77.htm\t32195\t2026-07-29 16:08:01\n[e118 link] R78.htm\t14099\t2026-07-29 16:08:01\n[e119 link] R79.htm\t102479\t2026-07-29 16:08:01\n[e120 link] R8.htm\t17873\t2026-07-29 16:08:01\n[e121 link] R80.htm\t37043\t2026-07-29 16:08:01\n[e122 link] R81.htm\t45689\t2026-07-29 16:08:01\n[e123 link] R82.htm\t15627\t2026-07-29 16:08:01\n[e124 link] R83.htm\t16839\t2026-07-29 16:08:01\n[e125 link] R84.htm\t11590\t2026-07-29 16:08:01\n[e126 link] R85.htm\t11306\t2026-07-29 16:08:01\n[e127 link] R86.htm\t8729\t2026-07-29 16:08:01\n[e128 link] R87.htm\t7995\t2026-07-29 16:08:01\n[e129 link] R88.htm\t10545\t2026-07-29 16:08:01\n[e130 link] R89.htm\t23955\t2026-07-29 16:08:01\n[e131 link] R9.htm\t32740\t2026-07-29 16:08:01\n[e132 link] R90.htm\t12685\t2026-07-29 16:08:01\n[e133 link] R91.htm\t15800\t2026-07-29 16:08:01\n[e134 link] R92.htm\t39475\t2026-07-29 16:08:01\n[e135 link] R93.htm\t50726\t2026-07-29 16:08:01\n[e136 link] R94.htm\t7003\t2026-07-29 16:08:01\n[e137 link] R95.htm\t13673\t2026-07-29 16:08:01\n[e138 link] R96.htm\t14119\t2026-07-29 16:08:01\n[e139 link] R97.htm\t26367\t2026-07-29 16:08:01\n[e140 link] R98.htm\t48805\t2026-07-29 16:08:01\n[e141 link] R99.htm\t41894\t2026-07-29 16:08:01\n[e142 link] report.css\t2768\t2026-07-29 16:08:01\n[e143 link] Show.js\t1086\t2026-07-29 16:08:01\n[e144 link] Site Map | [e145 link] Accessibility | [e146 link] Contracts | [e147 link] Privacy | [e148 link] Inspector General | [e149 link] Careers | [e150 link] Contact\n[e151 link] FOIA | [e152 link] No FEAR Act & EEO Data | [e153 link] Open Government | [e154 link] Plain Writing | [e155 link] Links | [e156 link] Investor.gov | [e157 link] USA.gov"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01SL2X2QH8bPQwTEjcJNvV9K",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R2.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01SL2X2QH8bPQwTEjcJNvV9K",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R2.htm | TITLE:  | chunk 1/1\n\nXML 15 R2.htm IDEA: XBRL DOCUMENT\nINCOME STATEMENTS - USD ($)\nshares in Millions, $ in Millions\n\t12 Months Ended\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nJun. 30, 2024\n\nRevenue\t$ 331,839\t$ 281,724\t$ 245,122\nCost of revenue\t106,374\t87,831\t74,114\nGross margin\t225,465\t193,893\t171,008\nResearch and development\t35,562\t32,488\t29,510\nSales and marketing\t26,710\t25,654\t24,456\nGeneral and administrative\t7,956\t7,223\t7,609\nOperating income\t155,237\t128,528\t109,433\nOther income (expense), net\t10,697\t(4,901)\t(1,646)\nIncome before income taxes\t165,934\t123,627\t107,787\nProvision for income taxes\t32,185\t21,795\t19,651\nNet income\t$ 133,749\t$ 101,832\t$ 88,136\nEarnings per share:\nBasic\t$ 18.00\t$ 13.70\t$ 11.86\nDiluted\t$ 17.95\t$ 13.64\t$ 11.80\nWeighted average shares outstanding:\nBasic\t7,429\t7,433\t7,431\nDiluted\t7,453\t7,465\t7,469\nProduct\nRevenue\t$ 64,696\t$ 63,946\t$ 64,773\nCost of revenue\t12,098\t13,501\t15,272\nService and Other\nRevenue\t267,143\t217,778\t180,349\nCost of revenue\t$ 94,276\t$ 74,330\t$ 58,842"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_014H9oT3NHFc8eUFRxtvCtwt",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_014H9oT3NHFc8eUFRxtvCtwt",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R4.htm | TITLE:  | chunk 1/1\n\nXML 17 R4.htm IDEA: XBRL DOCUMENT\nBALANCE SHEETS - USD ($)\n$ in Millions\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nCurrent assets:\nCash and cash equivalents\t$ 20,935\t$ 30,242\nShort-term investments\t55,908\t64,323\nTotal cash, cash equivalents, and short-term investments\t76,843\t94,565\nAccounts receivable, net of allowance for doubtful accounts of $1,040 and $944\t80,876\t69,905\nInventories\t1,397\t938\nOther current assets\t48,594\t25,723\nTotal current assets\t207,710\t191,131\nProperty and equipment, net of accumulated depreciation of $118,691 and $93,653\t313,076\t204,966\nOperating lease right-of-use assets\t24,177\t24,823\nEquity and other investments\t36,348\t15,405\nGoodwill\t119,651\t119,509\nIntangible assets, net\t18,609\t22,604\nOther long-term assets\t38,805\t40,565\nTotal assets\t758,376\t619,003\nCurrent liabilities:\nAccounts payable\t42,416\t27,724\nCurrent portion of long-term debt\t9,227\t2,999\nAccrued compensation\t14,945\t13,709\nShort-term income taxes\t2,534\t7,211\nShort-term unearned revenue\t72,965\t64,555\nOther current liabilities\t26,738\t25,020\nTotal current liabilities\t168,825\t141,218\nLong-term debt\t31,067\t40,152\nLong-term income taxes\t28,647\t25,986\nLong-term unearned revenue\t2,747\t2,710\nDeferred income taxes\t3,054\t2,835\nOperating lease liabilities\t16,532\t17,437\nOther long-term liabilities\t65,117\t45,186\nTotal liabilities\t315,989\t275,524\nCommitments and contingencies\nStockholders\u2019 equity:\nCommon stock and paid-in capital - shares authorized 24,000; outstanding 7,427 and 7,434\t117,406\t109,095\nRetained earnings\t328,265\t237,731\nAccumulated other comprehensive loss\t(3,284)\t(3,347)\nTotal stockholders\u2019 equity\t442,387\t343,479\nTotal liabilities and stockholders\u2019 equity\t$ 758,376\t$ 619,003"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_016YMji7VeE7UwdxnXJAqR4d",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_016YMji7VeE7UwdxnXJAqR4d",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/ | TITLE: Directory List of /Archives/edgar/data/789019/000119312526323632 | chunk 1/1\n\n[e1 link] Search Options\n[e2 link] Skip to Main Content\n[e3 link]\nABOUT\n[e4 link]\nDIVISIONS\n[e5 link]\nENFORCEMENT\n[e6 link]\nREGULATION\n[e7 link]\nEDUCATION\n[e8 link]\nFILINGS\n[e9 link]\nNEWS\nDirectory Listing /Archives/edgar/data/789019/000119312526323632\n[e10 link] Parent Directory\nNAME\tSIZE\tLAST MODIFIED\n[e11 link] 0001193125-26-323632-index-headers.html\t\t2026-07-29 16:04:53\n[e12 link] 0001193125-26-323632-index.html\t\t2026-07-29 16:04:53\n[e13 link] 0001193125-26-323632.txt\t\t2026-07-29 16:04:53\n[e14 link] 0001193125-26-323632-xbrl.zip\t35426\t2026-07-29 16:04:53\n[e15 link] FilingSummary.xml\t1666\t2026-07-29 16:04:53\n[e16 link] MetaLinks.json\t23064\t2026-07-29 16:04:53\n[e17 link] msft-20260729.htm\t63346\t2026-07-29 16:04:53\n[e18 link] msft-20260729.xsd\t54439\t2026-07-29 16:04:53\n[e19 link] msft-20260729_htm.xml\t7247\t2026-07-29 16:04:53\n[e20 link] msft-ex99_1.htm\t901600\t2026-07-29 16:04:53\n[e21 link] R1.htm\t44844\t2026-07-29 16:04:53\n[e22 link] report.css\t2766\t2026-07-29 16:04:53\n[e23 link] Show.js\t1084\t2026-07-29 16:04:53\n[e24 link] Site Map | [e25 link] Accessibility | [e26 link] Contracts | [e27 link] Privacy | [e28 link] Inspector General | [e29 link] Careers | [e30 link] Contact\n[e31 link] FOIA | [e32 link] No FEAR Act & EEO Data | [e33 link] Open Government | [e34 link] Plain Writing | [e35 link] Links | [e36 link] Investor.gov | [e37 link] USA.gov"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01268fy7oUm3YqejJ6uTv1kD",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0001193125-26-323660",
+     "period_end": "2026-06-30",
+     "value_usd": 442387000000,
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R4.htm"
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01268fy7oUm3YqejJ6uTv1kD",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

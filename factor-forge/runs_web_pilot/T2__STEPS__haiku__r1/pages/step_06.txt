@@ -1,0 +1,59 @@
+URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/0001193125-26-323660-index.htm | TITLE: EDGAR Filing Documents for 0001193125-26-323660 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-K - Annual report [Section 13 and 15(d), not S-K Item 405]:
+SEC Accession No. 0001193125-26-323660
+Filing Date
+2026-07-29
+Accepted
+2026-07-29 16:08:01
+Documents
+130
+Period of Report
+2026-06-30
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-K	[e10 link] msft-20260630.htm   iXBRL	10-K	8585501
+2	EX-19.1	[e11 link] msft-ex19_1.htm	EX-19.1	36625
+3	EX-19.2	[e12 link] msft-ex19_2.htm	EX-19.2	37501
+4	EX-19.3	[e13 link] msft-ex19_3.htm	EX-19.3	53434
+5	EX-21	[e14 link] msft-ex21.htm	EX-21	16166
+6	EX-23.1	[e15 link] msft-ex23_1.htm	EX-23.1	5627
+7	EX-31.1	[e16 link] msft-ex31_1.htm	EX-31.1	12647
+8	EX-31.2	[e17 link] msft-ex31_2.htm	EX-31.2	12888
+9	EX-32.1	[e18 link] msft-ex32_1.htm	EX-32.1	9029
+10	EX-32.2	[e19 link] msft-ex32_2.htm	EX-32.2	8699
+11	EX-97.1	[e20 link] msft-ex97_1.htm	EX-97.1	42585
+ 	Complete submission text file	[e21 link] 0001193125-26-323660.txt	 	36328553
+
+Data Files
+
+Seq	Description	Document	Type	Size
+12	XBRL TAXONOMY EXTENSION SCHEMA WITH EMBEDDED LINKBASES DOCUMENT	[e22 link] msft-20260630.xsd	EX-101.SCH	2170276
+134	EXTRACTED XBRL INSTANCE DOCUMENT	[e23 link] msft-20260630_htm.xml	XML	10948157
+Mailing Address
+ONE MICROSOFT WAY
+REDMOND
+WA
+98052-6399
+Business Address
+ONE MICROSOFT WAY
+REDMOND
+WA
+98052-6399
+425-882-8080
+MICROSOFT CORP (Filer) CIK: [e24 link] 0000789019 (see all company filings)
+
+EIN.: 911144442 | State of Incorp.: WA | Fiscal Year End: 0630
+Type: 10-K | Act: 34 | File No.: [e25 link] 001-37845 | Film No.: 261217433
+SIC: [e26 link] 7372 Services-Prepackaged Software
+(CF Office: 06 Technology)

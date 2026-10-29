@@ -1,0 +1,57 @@
+URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/0000320193-26-000020-index.htm | TITLE: EDGAR Filing Documents for 0000320193-26-000020 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-Q - Quarterly report [Sections 13 or 15(d)]:
+SEC Accession No. 0000320193-26-000020
+Filing Date
+2026-07-31
+Accepted
+2026-07-31 06:01:02
+Documents
+62
+Period of Report
+2026-06-27
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-Q	[e10 link] aapl-20260627.htm   iXBRL	10-Q	1018210
+2	EX-31.1	[e11 link] a10-qexhibit31106272026.htm	EX-31.1	10578
+3	EX-31.2	[e12 link] a10-qexhibit31206272026.htm	EX-31.2	10617
+4	EX-32.1	[e13 link] a10-qexhibit32106272026.htm	EX-32.1	8462
+10		[e14 link] aapl-20260627_g1.jpg	GRAPHIC	10963
+ 	Complete submission text file	[e15 link] 0000320193-26-000020.txt	 	5946811
+
+Data Files
+
+Seq	Description	Document	Type	Size
+5	XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT	[e16 link] aapl-20260627.xsd	EX-101.SCH	36144
+6	XBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT	[e17 link] aapl-20260627_cal.xml	EX-101.CAL	89689
+7	XBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT	[e18 link] aapl-20260627_def.xml	EX-101.DEF	148354
+8	XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT	[e19 link] aapl-20260627_lab.xml	EX-101.LAB	511737
+9	XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT	[e20 link] aapl-20260627_pre.xml	EX-101.PRE	325458
+66	EXTRACTED XBRL INSTANCE DOCUMENT	[e21 link] aapl-20260627_htm.xml	XML	962405
+Mailing Address
+ONE APPLE PARK WAY
+CUPERTINO
+CA
+95014
+Business Address
+ONE APPLE PARK WAY
+CUPERTINO
+CA
+95014
+(408) 996-1010
+Apple Inc. (Filer) CIK: [e22 link] 0000320193 (see all company filings)
+
+EIN.: 942404110 | State of Incorp.: CA | Fiscal Year End: 0926
+Type: 10-Q | Act: 34 | File No.: [e23 link] 001-36743 | Film No.: 261225227
+SIC: [e24 link] 3571 Electronic Computers
+(CF Office: 06 Technology)

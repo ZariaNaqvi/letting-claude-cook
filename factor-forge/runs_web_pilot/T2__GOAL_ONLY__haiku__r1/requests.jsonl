@@ -1,0 +1,79 @@
+{"t": 1793237134.08, "url": "https://www.sec.gov/Archives/edgar/data/789019/", "type": "document", "decision": "net 200 0.4s"}
+{"t": 1793237134.131, "url": "https://www.sec.gov/css/third-party/reset.min.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237134.132, "url": "https://www.sec.gov/css/third-party/960.min.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237134.133, "url": "https://www.sec.gov/css/basic-1.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237134.134, "url": "https://www.sec.gov/js/third-party/jquery-3.7.1.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237134.135, "url": "https://www.sec.gov/js/third-party/jquery.hoverintent.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237134.136, "url": "https://www.sec.gov/js/third-party/superfish.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237134.137, "url": "https://www.sec.gov/js/basic.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237134.137, "url": "https://www.sec.gov/images/global-banner-seal.png", "type": "image", "decision": "skip"}
+{"t": 1793237134.138, "url": "https://www.sec.gov/images/global-banner-org-name.png", "type": "image", "decision": "skip"}
+{"t": 1793237134.139, "url": "https://fonts.googleapis.com/css?family=Crimson+Text:600", "type": "stylesheet", "decision": "BLOCK host fonts.googleapis.com is not part of SEC EDGAR"}
+{"t": 1793237134.139, "url": "https://fonts.googleapis.com/css?family=Raleway:500", "type": "stylesheet", "decision": "BLOCK host fonts.googleapis.com is not part of SEC EDGAR"}
+{"t": 1793237134.14, "url": "https://www.sec.gov/icons/folder.gif", "type": "image", "decision": "skip"}
+{"t": 1793237134.207, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "script", "decision": "net 200 0.1s"}
+{"t": 1793237134.211, "url": "https://www.googletagmanager.com/gtm.js?id=GTM-TD3BKV", "type": "script", "decision": "BLOCK host www.googletagmanager.com is not part of SEC EDGAR"}
+{"t": 1793237134.211, "url": "https://www.sec.gov/icons/folder.gif", "type": "image", "decision": "skip"}
+{"t": 1793237134.233, "url": "https://www.sec.gov/images/global-wrapper-left-and-right.gif", "type": "image", "decision": "skip"}
+{"t": 1793237134.234, "url": "https://www.sec.gov/images/global-wrapper-bottom.gif", "type": "image", "decision": "skip"}
+{"t": 1793237134.235, "url": "https://www.sec.gov/images/global-banner-bg-white.jpg", "type": "image", "decision": "skip"}
+{"t": 1793237134.244, "url": "https://www.sec.gov/icons/folder.gif", "type": "image", "decision": "skip"}
+{"t": 1793237134.633, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.3s"}
+{"t": 1793237135.688, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.2s"}
+{"t": 1793237154.414, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/", "type": "document", "decision": "net 200 0.1s"}
+{"t": 1793237154.494, "url": "https://www.sec.gov/css/third-party/reset.min.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237154.495, "url": "https://www.sec.gov/css/third-party/960.min.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237154.496, "url": "https://www.sec.gov/css/basic-1.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237154.497, "url": "https://www.sec.gov/js/third-party/jquery-3.7.1.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237154.498, "url": "https://www.sec.gov/js/third-party/jquery.hoverintent.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237154.499, "url": "https://www.sec.gov/js/third-party/superfish.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237154.499, "url": "https://www.sec.gov/js/basic.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237154.5, "url": "https://www.sec.gov/images/global-banner-seal.png", "type": "image", "decision": "skip"}
+{"t": 1793237154.501, "url": "https://www.sec.gov/images/global-banner-org-name.png", "type": "image", "decision": "skip"}
+{"t": 1793237154.502, "url": "https://fonts.googleapis.com/css?family=Crimson+Text:600", "type": "stylesheet", "decision": "BLOCK host fonts.googleapis.com is not part of SEC EDGAR"}
+{"t": 1793237154.502, "url": "https://fonts.googleapis.com/css?family=Raleway:500", "type": "stylesheet", "decision": "BLOCK host fonts.googleapis.com is not part of SEC EDGAR"}
+{"t": 1793237154.503, "url": "https://www.sec.gov/icons/back.gif", "type": "image", "decision": "skip"}
+{"t": 1793237154.503, "url": "https://www.sec.gov/icons/text.gif", "type": "image", "decision": "skip"}
+{"t": 1793237154.604, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "script", "decision": "net 200 0.1s"}
+{"t": 1793237154.608, "url": "https://www.sec.gov/icons/compressed.gif", "type": "image", "decision": "skip"}
+{"t": 1793237154.608, "url": "https://www.googletagmanager.com/gtm.js?id=GTM-TD3BKV", "type": "script", "decision": "BLOCK host www.googletagmanager.com is not part of SEC EDGAR"}
+{"t": 1793237154.608, "url": "https://www.sec.gov/images/global-wrapper-left-and-right.gif", "type": "image", "decision": "skip"}
+{"t": 1793237154.609, "url": "https://www.sec.gov/images/global-wrapper-bottom.gif", "type": "image", "decision": "skip"}
+{"t": 1793237154.609, "url": "https://www.sec.gov/images/global-banner-bg-white.jpg", "type": "image", "decision": "skip"}
+{"t": 1793237155.111, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.5s"}
+{"t": 1793237156.036, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.4s"}
+{"t": 1793237158.645, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R2.htm", "type": "document", "decision": "net 200 0.1s"}
+{"t": 1793237159.054, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/include/report.css", "type": "stylesheet", "decision": "net 404 0.4s"}
+{"t": 1793237159.056, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/Show.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237159.206, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "script", "decision": "net 200 0.1s"}
+{"t": 1793237159.596, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.3s"}
+{"t": 1793237160.47, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.2s"}
+{"t": 1793237161.766, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R4.htm", "type": "document", "decision": "net 200 0.1s"}
+{"t": 1793237161.948, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/include/report.css", "type": "stylesheet", "decision": "net 404 0.2s"}
+{"t": 1793237161.95, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/Show.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237162.228, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "script", "decision": "net 200 0.3s"}
+{"t": 1793237162.695, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.4s"}
+{"t": 1793237163.645, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.3s"}
+{"t": 1793237166.275, "url": "https://www.sec.gov/Archives/edgar/data/789019/000119312526323632/", "type": "document", "decision": "net 200 0.1s"}
+{"t": 1793237166.29, "url": "https://www.sec.gov/css/third-party/reset.min.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237166.292, "url": "https://www.sec.gov/css/third-party/960.min.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237166.293, "url": "https://www.sec.gov/css/basic-1.css", "type": "stylesheet", "decision": "asset-cache"}
+{"t": 1793237166.294, "url": "https://www.sec.gov/js/third-party/jquery-3.7.1.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237166.296, "url": "https://www.sec.gov/js/third-party/jquery.hoverintent.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237166.296, "url": "https://www.sec.gov/js/third-party/superfish.min.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237166.297, "url": "https://www.sec.gov/js/basic.js", "type": "script", "decision": "asset-cache"}
+{"t": 1793237166.298, "url": "https://www.sec.gov/images/global-banner-seal.png", "type": "image", "decision": "skip"}
+{"t": 1793237166.299, "url": "https://www.sec.gov/images/global-banner-org-name.png", "type": "image", "decision": "skip"}
+{"t": 1793237166.3, "url": "https://fonts.googleapis.com/css?family=Crimson+Text:600", "type": "stylesheet", "decision": "BLOCK host fonts.googleapis.com is not part of SEC EDGAR"}
+{"t": 1793237166.3, "url": "https://fonts.googleapis.com/css?family=Raleway:500", "type": "stylesheet", "decision": "BLOCK host fonts.googleapis.com is not part of SEC EDGAR"}
+{"t": 1793237166.301, "url": "https://www.sec.gov/icons/back.gif", "type": "image", "decision": "skip"}
+{"t": 1793237166.302, "url": "https://www.sec.gov/icons/text.gif", "type": "image", "decision": "skip"}
+{"t": 1793237166.461, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "script", "decision": "net 200 0.2s"}
+{"t": 1793237166.467, "url": "https://www.sec.gov/icons/compressed.gif", "type": "image", "decision": "skip"}
+{"t": 1793237166.467, "url": "https://www.googletagmanager.com/gtm.js?id=GTM-TD3BKV", "type": "script", "decision": "BLOCK host www.googletagmanager.com is not part of SEC EDGAR"}
+{"t": 1793237166.468, "url": "https://www.sec.gov/icons/text.gif", "type": "image", "decision": "skip"}
+{"t": 1793237166.468, "url": "https://www.sec.gov/images/global-wrapper-left-and-right.gif", "type": "image", "decision": "skip"}
+{"t": 1793237166.469, "url": "https://www.sec.gov/images/global-wrapper-bottom.gif", "type": "image", "decision": "skip"}
+{"t": 1793237166.469, "url": "https://www.sec.gov/images/global-banner-bg-white.jpg", "type": "image", "decision": "skip"}
+{"t": 1793237166.768, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.3s"}
+{"t": 1793237167.817, "url": "https://www.sec.gov/jZLQTK5i/Dbr/vBj/rJBli-Av13/L9h5zbtGJ8rmNb/dyIVCmg/ZS83XHUC/MTA", "type": "xhr", "decision": "net 201 0.3s"}

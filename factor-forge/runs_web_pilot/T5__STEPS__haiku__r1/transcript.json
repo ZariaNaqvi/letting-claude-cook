@@ -1,0 +1,254 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T5\n\nFind Domino's Pizza, Inc.'s total stockholders' equity (deficit) at the end of its second fiscal quarter of 2026.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nSTEPS (a click path that works):\n1. Open https://www.sec.gov/search-filings, type \"Domino\" and click the suggestion \"DOMINOS PIZZA INC (DPZ)\" (CIK 0001286681). (Typing the apostrophe in \"Domino's\" makes the search return no suggestions.)\n2. Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 14, 2026 (filed July 2026).\n3. From the filing index, open the filing folder, then FilingSummary.xml, and find \"Condensed Consolidated Balance Sheets\"; open its R page.\n4. Use the row \"Total stockholders' deficit\", column \"Jun. 14, 2026\". The amount is shown in parentheses, which means it is NEGATIVE.\nUnits: The page header says \"$ in Thousands\": multiply by 1,000, and keep the minus sign.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01XcmT7x89YTwCC2iEsfG9ku",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/search-filings"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01XcmT7x89YTwCC2iEsfG9ku",
+    "content": "URL: https://www.sec.gov/search-filings | TITLE: SEC.gov | Search Filings | chunk 1/1\n\n[e1 link] Skip to search field\n[e2 link] Skip to main content\n\nAn official website of the United States government\n\n[e3 button] Here\u2019s how you know\n[e4 link]\nSEC homepage\n[e5 button]\nSearch Filings\n[e6 button]\nSubmit Filings\n[e7 button]\nData & Research\n[e8 button]\nRules, Enforcement, & Compliance\n[e9 button]\nFeatured Topics\n[e10 button]\nAbout\n[e11 link]\nSubmit a Tip or Complaint\n[e12 link] Newsroom\n|\n[e13 link] Investors\n[e14 link] Small Businesses\n[e15 link] Whistleblowers\nSearch SEC.gov & EDGAR\n[e16 textbox \"Search SEC.gov & EDGAR\" value=\"\"]\n[e17 button]\nSEARCH\n[e18 link] SEARCH FILINGS\n[e19 link] Full Text Search\n[e20 link] Latest Filings Search\n[e21 link] Insurance Products Search\n[e22 link] Mutual Funds Search\n[e23 link] Confidential Treatment Orders Search\n[e24 link] Standard Industrial Classification (SIC) Code List\n[e25 link] CIK Lookup\n[e26 link] EDGAR Public Dissemination Service (PDS) System\n[e27 link] Effectiveness Notices\n[e28 link] EDGAR Application Programming Interfaces\n[e29 link] EDGAR Search Assistance\n[e30 link] Home  Search Filings\nSearch Filings\n\nEnjoy free public access to millions of informational documents filed by publicly traded companies and others in the SEC's Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system.\n\nCompany Search\nSearch By\n[e31 textbox \"Name, ticker symbol, or CIK\" value=\"\"]\n[e32 button]\nSUBMIT\n[e33 button]\nmore search options\n\nFind registration statements, periodic reports, and other forms by typing the name or ticker symbol of a company ([e34 link \"CIK Lookup\"] CIK lookup info) ([e35 link \"Confidential Treatment Orders Search\"] confidential treatment orders) ([e36 link] SEC correspondence with issuers)\n\nEDGAR Search Tools\n\nSome specific ways to access filings based on time, type, or other categories.\n\n[e37 link] Full Text Search\n\nFind keywords and phrases\u202fin more than 20 years of EDGAR filings, and filter by date, company, person, filing category, or location.\n\n[e38 link] Latest Filings\n\nView a listing of real-time filings as they are submitted into the EDGAR system. Also view daily filings by form type within the past week.\n\n[e39 link] Search Assistance\n\nTutorials and resources to help users locate filings, conduct research, and retrieve specific information in EDGAR.\n\n[e40 link] Mutual Fund Search\n\nView prospectuses, proxy voting records, and other forms by typing the name of a mutual fund or ETF.\n\n[e41 link] Insurance Product Search\n\nFind a product by typing the name of an insurance company, underlying mutual fund, or contract.\n\nEDGAR Resources\n\nData and information to assist users as they navigate the EDGAR system.\n\n[e42 link] SIC Codes\n\nA list of Standard Industrial Classification Codes used to indicate a company's type of business.\n\n[e43 link] CIK Lookup\n\nA search engine to find Central Index Key numbers assigned by the SEC to corporate or individual filers.\n\n[e44 link] Public Dissemination Service (PDS)\n\nAn option to subscribe to a privatized system to receive a dedicated feed of all public EDGAR filings.\n\n[e45 link] EDGAR APIs\n\nRESTful data Application Programming Interfaces that include the submissions history by filer and the XBRL data from financial statements.\n\n[e46 link] EDGAR RSS Feeds\n\nReally Simple Syndication feeds for EDGAR submissions through which users can view, analyze, and manipulate filings.\n\n[e47 link] Return to top\nAbout the SEC\n[e48 link] Budget & Performance\n[e49 link] Careers\n[e50 link] Commission Votes\n[e51 link] Contact\n[e52 link] Contracts\nTransparency\n[e53 link] Accessibility & Disability\n[e54 link] Super Intelligence\n[e55 link] FOIA\n[e56 link] Inspector General\n[e57 link] No FEAR Act Data\n[e58 link] Ombuds\n[e59 link] SEC Excess Personal Property Guidance\nWebsites\n[e60 link] Investor.gov\n[e61 link] Related Sites\n[e62 link] USA.gov\nSite Information\n[e63 link] Plain Writing\n[e64 link] Privacy & Security\n[e65 link] Site Map\nStay connected. Sign up for email updates.\nYour email address\n[e66 textbox \"Your email address\" value=\"\"]\n[e67 button]\nSIGN UP\n[e68 link]\nX\n[e69 link]\nFacebook\n[e70 link]\nInstagram\n[e71 link]\nRSS\n[e72 link \"(opens in a new window)\"]\nYouTube\n[e73 link]\nEmail Updates"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_016oVoCzZb1kV4YYbpduGp2t",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001286681&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_016oVoCzZb1kV4YYbpduGp2t",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001286681&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01FdW7bQxZAL2B8tNbT7Dk27",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/search-filings"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01Gx37qsgavdodqTWi9U8QQG",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e31",
+     "text": "Domino"
+    },
+    "name": "fill",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01FdW7bQxZAL2B8tNbT7Dk27",
+    "content": "URL: https://www.sec.gov/search-filings | TITLE: SEC.gov | Search Filings | chunk 1/1\n\n[e1 link] Skip to search field\n[e2 link] Skip to main content\n\nAn official website of the United States government\n\n[e3 button] Here\u2019s how you know\n[e4 link]\nSEC homepage\n[e5 button]\nSearch Filings\n[e6 button]\nSubmit Filings\n[e7 button]\nData & Research\n[e8 button]\nRules, Enforcement, & Compliance\n[e9 button]\nFeatured Topics\n[e10 button]\nAbout\n[e11 link]\nSubmit a Tip or Complaint\n[e12 link] Newsroom\n|\n[e13 link] Investors\n[e14 link] Small Businesses\n[e15 link] Whistleblowers\nSearch SEC.gov & EDGAR\n[e16 textbox \"Search SEC.gov & EDGAR\" value=\"\"]\n[e17 button]\nSEARCH\n[e18 link] SEARCH FILINGS\n[e19 link] Full Text Search\n[e20 link] Latest Filings Search\n[e21 link] Insurance Products Search\n[e22 link] Mutual Funds Search\n[e23 link] Confidential Treatment Orders Search\n[e24 link] Standard Industrial Classification (SIC) Code List\n[e25 link] CIK Lookup\n[e26 link] EDGAR Public Dissemination Service (PDS) System\n[e27 link] Effectiveness Notices\n[e28 link] EDGAR Application Programming Interfaces\n[e29 link] EDGAR Search Assistance\n[e30 link] Home  Search Filings\nSearch Filings\n\nEnjoy free public access to millions of informational documents filed by publicly traded companies and others in the SEC's Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system.\n\nCompany Search\nSearch By\n[e31 textbox \"Name, ticker symbol, or CIK\" value=\"\"]\n[e32 button]\nSUBMIT\n[e33 button]\nmore search options\n\nFind registration statements, periodic reports, and other forms by typing the name or ticker symbol of a company ([e34 link \"CIK Lookup\"] CIK lookup info) ([e35 link \"Confidential Treatment Orders Search\"] confidential treatment orders) ([e36 link] SEC correspondence with issuers)\n\nEDGAR Search Tools\n\nSome specific ways to access filings based on time, type, or other categories.\n\n[e37 link] Full Text Search\n\nFind keywords and phrases\u202fin more than 20 years of EDGAR filings, and filter by date, company, person, filing category, or location.\n\n[e38 link] Latest Filings\n\nView a listing of real-time filings as they are submitted into the EDGAR system. Also view daily filings by form type within the past week.\n\n[e39 link] Search Assistance\n\nTutorials and resources to help users locate filings, conduct research, and retrieve specific information in EDGAR.\n\n[e40 link] Mutual Fund Search\n\nView prospectuses, proxy voting records, and other forms by typing the name of a mutual fund or ETF.\n\n[e41 link] Insurance Product Search\n\nFind a product by typing the name of an insurance company, underlying mutual fund, or contract.\n\nEDGAR Resources\n\nData and information to assist users as they navigate the EDGAR system.\n\n[e42 link] SIC Codes\n\nA list of Standard Industrial Classification Codes used to indicate a company's type of business.\n\n[e43 link] CIK Lookup\n\nA search engine to find Central Index Key numbers assigned by the SEC to corporate or individual filers.\n\n[e44 link] Public Dissemination Service (PDS)\n\nAn option to subscribe to a privatized system to receive a dedicated feed of all public EDGAR filings.\n\n[e45 link] EDGAR APIs\n\nRESTful data Application Programming Interfaces that include the submissions history by filer and the XBRL data from financial statements.\n\n[e46 link] EDGAR RSS Feeds\n\nReally Simple Syndication feeds for EDGAR submissions through which users can view, analyze, and manipulate filings.\n\n[e47 link] Return to top\nAbout the SEC\n[e48 link] Budget & Performance\n[e49 link] Careers\n[e50 link] Commission Votes\n[e51 link] Contact\n[e52 link] Contracts\nTransparency\n[e53 link] Accessibility & Disability\n[e54 link] Super Intelligence\n[e55 link] FOIA\n[e56 link] Inspector General\n[e57 link] No FEAR Act Data\n[e58 link] Ombuds\n[e59 link] SEC Excess Personal Property Guidance\nWebsites\n[e60 link] Investor.gov\n[e61 link] Related Sites\n[e62 link] USA.gov\nSite Information\n[e63 link] Plain Writing\n[e64 link] Privacy & Security\n[e65 link] Site Map\nStay connected. Sign up for email updates.\nYour email address\n[e66 textbox \"Your email address\" value=\"\"]\n[e67 button]\nSIGN UP\n[e68 link]\nX\n[e69 link]\nFacebook\n[e70 link]\nInstagram\n[e71 link]\nRSS\n[e72 link \"(opens in a new window)\"]\nYouTube\n[e73 link]\nEmail Updates"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Gx37qsgavdodqTWi9U8QQG",
+    "content": "Typed 'Domino' into e31. URL: https://www.sec.gov/search-filings\nNew elements that appeared (e.g. suggestions):\n[e74 link] DOMINOS PIZZA INC (DPZ)\n[e75 link] CIK\u00a00001286681\n[e76 link] DOMINOS INC\n[e77 link] CIK\u00a00001079458\n[e78 link] Domino Joel C\n[e79 link] CIK\u00a00001710404\n[e80 link] DOMINO JOSEPH F\n[e81 link] CIK\u00a00001187151\n[e82 link] CARL DOMINO INC\n[e83 link] CIK\u00a00001308523\n[e84 link] DOMINO RICHARD J\n[e85 link] CIK\u00a00001227663\n[e86 link] DOMINOS PIZZA LLC\n[e87 link] CIK\u00a00001079459\n[e88 link] DOMINOS PIZZA NS CO\n[e89 link] CIK\u00a00001256920\n[e90 link] DOMINO KATHRYN ANN\n[e91 link] CIK\u00a00001600172\n[e92 link] Domino Data Lab, Inc.\n[e93 link] CIK\u00a00001639562\n[e94 link] Search for \"Domino\" in EDGAR filings"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01KdpytWabfgcabfNx45ysFh",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e74"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01KdpytWabfgcabfNx45ysFh",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1286681&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nDOMINOS PIZZA INC DPZ on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 13, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 8, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 6, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01CmWABG27kwcGbEFEJGko2t",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01CmWABG27kwcGbEFEJGko2t",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1286681&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nDOMINOS PIZZA INC DPZ on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 13, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 8, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 6, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] July 20, 2026 - 10-Q: Quarterly report for quarter ending June 14, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] April 27, 2026 - 10-Q: Quarterly report for quarter ending March 22, 2026\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] February 23, 2026 - 10-K: Annual report for year ending December 28, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01EJEMzxztPoegbyt7fCbpbG",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e30"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01EJEMzxztPoegbyt7fCbpbG",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/0001286681-26-000035-index.htm | TITLE: EDGAR Filing Documents for 0001286681-26-000035 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001286681-26-000035\nFiling Date\n2026-07-20\nAccepted\n2026-07-20 06:09:41\nDocuments\n59\nPeriod of Report\n2026-06-14\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] dpz-20260614.htm \u00a0\u00a0iXBRL\t10-Q\t3285945\n2\tEX-31.1\t[e11 link] dpz-ex31_1.htm\tEX-31.1\t17494\n3\tEX-31.2\t[e12 link] dpz-ex31_2.htm\tEX-31.2\t16674\n4\tEX-32.1\t[e13 link] dpz-ex32_1.htm\tEX-32.1\t12383\n5\tEX-32.2\t[e14 link] dpz-ex32_2.htm\tEX-32.2\t11980\n\u00a0\tComplete submission text file\t[e15 link] 0001286681-26-000035.txt\t\u00a0\t12980823\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n6\tXBRL TAXONOMY EXTENSION SCHEMA WITH EMBEDDED LINKBASES DOCUMENT\t[e16 link] dpz-20260614.xsd\tEX-101.SCH\t1222003\n63\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e17 link] dpz-20260614_htm.xml\tXML\t3338551\nMailing Address\n30 FRANK LLOYD WRIGHT DRIVE\nANN ARBOR\nMI\n48105\nBusiness Address\n30 FRANK LLOYD WRIGHT DRIVE\nANN ARBOR\nMI\n48105\n(734) 930-3030\nDOMINOS PIZZA INC (Filer) CIK: [e18 link] 0001286681 (see all company filings)\n\nEIN.: 382511577 | State of Incorp.: DE | Fiscal Year End: 0102\nType: 10-Q | Act: 34 | File No.: [e19 link] 001-32242 | Film No.: 261185103\nSIC: [e20 link] 5140 Wholesale-Groceries & Related Products\n(CF Office: 07 Trade & Services)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01VVeCANS31CSszoXV6jLMQm",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R2.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01VVeCANS31CSszoXV6jLMQm",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R2.htm | TITLE:  | chunk 1/1\n\nXML 9 R2.htm IDEA: XBRL DOCUMENT\nCondensed Consolidated Balance Sheets (Unaudited) - USD ($)\n$ in Thousands\n\nJun. 14, 2026\n\nDec. 28, 2025\n\nCurrent assets:\nCash and cash equivalents\t$ 164,836\t$ 125,675\nRestricted cash and cash equivalents\t187,885\t216,110\nAccounts receivable, net\t303,182\t315,958\nInventories\t75,057\t79,189\nPrepaid expenses and other\t55,049\t39,767\nAdvertising fund assets, restricted\t119,410\t117,502\nTotal current assets\t905,419\t894,201\nProperty, plant and equipment:\nLand and buildings\t172,241\t105,559\nLeasehold and other improvements\t186,158\t193,673\nEquipment\t388,323\t413,303\nConstruction in progress\t31,741\t46,184\nProperty, plant and equipment, Gross\t778,463\t758,719\nAccumulated depreciation and amortization\t(404,017)\t(434,697)\nProperty, plant and equipment, net\t374,446\t324,022\nOther assets:\nOperating lease\u00a0right-of-use\u00a0assets\t227,793\t219,485\nGoodwill\t7,870\t10,726\nCapitalized software, net\t161,277\t159,256\nInvestment in DPC Dash\t17,714\t36,070\nDeferred income tax assets, net\t16,805\t22,101\nOther assets\t51,998\t50,598\nTotal other assets\t483,457\t498,236\nTotal assets\t1,763,322\t1,716,459\nCurrent liabilities:\nCurrent portion of long-term debt\t7,423\t6,131\nAccounts payable\t137,429\t135,029\nOperating lease liabilities\t45,964\t47,553\nInsurance reserves\t25,895\t26,169\nDividends payable\t67,912\t2,714\nAdvertising fund liabilities\t117,830\t115,412\nOther accrued liabilities\t186,217\t208,613\nTotal current liabilities\t588,670\t541,621\nLong-term liabilities:\nLong-term debt, less current portion\t4,876,221\t4,810,683\nOperating lease liabilities\t193,245\t183,917\nInsurance reserves\t36,722\t32,959\nOther accrued liabilities\t50,895\t48,421\nTotal long-term liabilities\t5,157,083\t5,075,980\nStockholders' deficit\nCommon stock\t331\t336\nAdditional paid-in capital\t841\t1,910\nRetained deficit\t(3,977,546)\t(3,898,622)\nAccumulated other comprehensive loss\t(6,057)\t(4,766)\nTotal stockholders' deficit\t(3,982,431)\t(3,901,142)\nTotal liabilities and stockholders' deficit\t$ 1,763,322\t$ 1,716,459"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_015LPKmBpMkXLpzYfL5fJhzv",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0001286681-26-000035",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R2.htm",
+     "period_end": "2026-06-14",
+     "value_usd": -3982431000
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_015LPKmBpMkXLpzYfL5fJhzv",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

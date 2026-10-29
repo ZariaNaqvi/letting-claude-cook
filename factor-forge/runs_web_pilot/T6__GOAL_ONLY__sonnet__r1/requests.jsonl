@@ -1,0 +1,2 @@
+{"t": 1793237838.691, "url": "https://data.sec.gov/submissions/CIK0000019617.json", "type": "document", "decision": "net 200 0.3s"}
+{"t": 1793237850.425, "url": "https://efts.sec.gov/LatestSearch/rest/search-index?q=%22JPMorgan%22&forms=10-Q&dateRange=custom&startdt=2026-07-01&enddt=2026-12-31&ciks=0000019617", "type": "document", "decision": "net 403 0.2s"}

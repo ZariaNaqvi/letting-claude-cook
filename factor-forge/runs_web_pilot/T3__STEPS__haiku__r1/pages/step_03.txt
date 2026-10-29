@@ -1,0 +1,62 @@
+URL: https://www.sec.gov/edgar/search/#/ciks=0000104169&forms=10-Q | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] FAQ
+[e5 link] Other search tools
+Document word or phrase[e6 button] ? [e7 textbox "Keywords to search for in filing documents" value=""]
+Company name, ticker, CIK number or individual's name [e8 textbox "Company name, ticker, CIK number or individual's name" value=""]
+Filing types
+[e9 link] Browse filing types
+[e10 textbox "Filing types" value="10-Q"]
+[e11 button] cancel
+Filed date range [e12 select "Filed date range" value="5y" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]
+All (since 2001)
+Last 10 years
+Last 5 years
+Last year
+Last 30 days
+Custom
+Filed from [e13 textbox "Filed from" value="2021-10-29"]
+Filed to [e14 textbox "Filed to" value="2026-10-29"]
+[e15 button] Principal executive offices in
+ [e16 button] ?
+[e17 button "Location dropdown"] View all
+[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all
+Refine search results by:
+[e21 tab] [e22 link]
+Entity
+[e23 tab] [e24 link]
+Form
+[e25 tab] [e26 link]
+Principal executive offices located in
+Click headings to show top filters.
+Document counts shown in #
+15 search results
+Show Columns
+[e27 checkbox "Filed" checked]
+Filed [e28 checkbox "Reporting for" checked]
+Reporting for [e29 checkbox "CIK" unchecked]
+CIK [e30 checkbox "Located" unchecked]
+Located [e31 checkbox "Incorporated" unchecked]
+Incorporated [e32 checkbox "File number" unchecked]
+File number [e33 checkbox "Film number" unchecked]
+Film number
+Form & File	Filed ↓	Reporting for	Filing entity/person
+[e34 link] 10-Q (Quarterly report)	2026-08-28	2026-07-31	Walmart Inc. (WMT)
+[e35 link] 10-Q (Quarterly report)	2026-05-29	2026-04-30	Walmart Inc. (WMT)
+[e36 link] 10-Q (Quarterly report)	2025-12-03	2025-10-31	Walmart Inc. (WMT)
+[e37 link] 10-Q (Quarterly report)	2025-08-29	2025-07-31	Walmart Inc. (WMT)
+[e38 link] 10-Q (Quarterly report)	2025-06-06	2025-04-30	Walmart Inc. (WMT)
+[e39 link] 10-Q (Quarterly report)	2024-12-06	2024-10-31	Walmart Inc. (WMT)
+[e40 link] 10-Q (Quarterly report)	2024-08-30	2024-07-31	Walmart Inc. (WMT)
+[e41 link] 10-Q (Quarterly report)	2024-06-07	2024-04-30	Walmart Inc. (WMT)
+[e42 link] 10-Q (Quarterly report)	2023-11-30	2023-10-31	Walmart Inc. (WMT)
+[e43 link] 10-Q (Quarterly report)	2023-09-01	2023-07-31	Walmart Inc. (WMT)
+[e44 link] 10-Q (Quarterly report)	2023-06-02	2023-04-30	Walmart Inc. (WMT)
+[e45 link] 10-Q (Quarterly report)	2022-12-01	2022-10-31	Walmart Inc. (WMT)
+[e46 link] 10-Q (Quarterly report)	2022-09-02	2022-07-31	Walmart Inc. (WMT)
+[e47 link] 10-Q (Quarterly report)	2022-06-03	2022-04-30	Walmart Inc. (WMT)
+[e48 link] 10-Q (Quarterly report)	2021-12-01	2021-10-31	Walmart Inc. (WMT)
+[e49 link] Accessibility [e50 link] Budget & Performance [e51 link] Careers [e52 link] Contact [e53 link] Contracts [e54 link] Data [e55 link] FOIA [e56 link] Inspector General [e57 link] Investor.gov [e58 link] No FEAR Act & EEO Data [e59 link] Ombudsman [e60 link] Plain Writing [e61 link] Privacy [e62 link] Related Sites [e63 link] Site Map [e64 link] USA.gov [e65 link] Votes [e66 link] Vulnerability Disclosure Policy [e67 link] Whistleblower Protection

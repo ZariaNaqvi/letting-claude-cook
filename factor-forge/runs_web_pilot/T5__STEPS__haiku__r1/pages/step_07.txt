@@ -1,0 +1,53 @@
+URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/0001286681-26-000035-index.htm | TITLE: EDGAR Filing Documents for 0001286681-26-000035 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-Q - Quarterly report [Sections 13 or 15(d)]:
+SEC Accession No. 0001286681-26-000035
+Filing Date
+2026-07-20
+Accepted
+2026-07-20 06:09:41
+Documents
+59
+Period of Report
+2026-06-14
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-Q	[e10 link] dpz-20260614.htm   iXBRL	10-Q	3285945
+2	EX-31.1	[e11 link] dpz-ex31_1.htm	EX-31.1	17494
+3	EX-31.2	[e12 link] dpz-ex31_2.htm	EX-31.2	16674
+4	EX-32.1	[e13 link] dpz-ex32_1.htm	EX-32.1	12383
+5	EX-32.2	[e14 link] dpz-ex32_2.htm	EX-32.2	11980
+ 	Complete submission text file	[e15 link] 0001286681-26-000035.txt	 	12980823
+
+Data Files
+
+Seq	Description	Document	Type	Size
+6	XBRL TAXONOMY EXTENSION SCHEMA WITH EMBEDDED LINKBASES DOCUMENT	[e16 link] dpz-20260614.xsd	EX-101.SCH	1222003
+63	EXTRACTED XBRL INSTANCE DOCUMENT	[e17 link] dpz-20260614_htm.xml	XML	3338551
+Mailing Address
+30 FRANK LLOYD WRIGHT DRIVE
+ANN ARBOR
+MI
+48105
+Business Address
+30 FRANK LLOYD WRIGHT DRIVE
+ANN ARBOR
+MI
+48105
+(734) 930-3030
+DOMINOS PIZZA INC (Filer) CIK: [e18 link] 0001286681 (see all company filings)
+
+EIN.: 382511577 | State of Incorp.: DE | Fiscal Year End: 0102
+Type: 10-Q | Act: 34 | File No.: [e19 link] 001-32242 | Film No.: 261185103
+SIC: [e20 link] 5140 Wholesale-Groceries & Related Products
+(CF Office: 07 Trade & Services)

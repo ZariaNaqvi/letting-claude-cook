@@ -205,7 +205,8 @@ class BrowserSession:
             try:
                 resp = self.page.goto(url, wait_until="domcontentloaded", timeout=LOAD_TIMEOUT_MS)
                 self._settle()
-                self.last_status = resp.status if resp else None
+                # after a redirect the page shown is a later document than the one goto() returned
+                self.last_status = self.policy.doc_status.get(self.page.url, resp.status if resp else None)
                 return self.last_status, None
             except Exception as e:  # noqa: BLE001
                 err = f"{type(e).__name__}: {str(e).splitlines()[0][:160]}"
@@ -240,8 +241,8 @@ class BrowserSession:
             head += f" | HTTP {self.last_status}"
         body = self.chunks[page - 1]
         foot = f"\n[chunk {page}/{n}; call read_page(page={page + 1}) for more]" if page < n else ""
-        obs = (note + "\n" if note else "") + head + "\n\n" + body + foot
-        obs = obs[:MAX_OBS_CHARS]
+        top = (note + "\n" if note else "") + head + "\n\n"
+        obs = top + body[:MAX_OBS_CHARS - len(top) - len(foot)] + foot     # the cap never cuts the footer
         self.pages_seen.append(obs)
         return obs
 

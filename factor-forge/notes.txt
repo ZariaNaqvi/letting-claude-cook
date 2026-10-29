@@ -255,6 +255,59 @@ HTTP client for SEC requests: httpx2 2.16.0, installed with anthropic 1.13.0 (no
          web/data/raw (sha256 manifest), web/fixtures, runs_web_pilot/, runs_web/, results_web*/
          (except the mock ones)
 
+## PILOT 2026-10-28 (runs_web_pilot/, Form Forge)
+Prompt: web-v1-draft (NOT the tagged web-v1, see Flagged)   Harness: web-h2   Playwright: 1.64.1
+Runs: 28, $1.58 total (spend.jsonl sum = scored CSV sum). 3 invocations: haiku T1 STEPS smoke test
+        (21:22:54); haiku + sonnet, both conditions (21:23:23, stopped after T6); fable + opus,
+        T1 and T4 GOAL_ONLY only (21:42:24).
+Mean $/run: fable 0.1985 (n=2)   opus 0.0673 (n=2)   sonnet 0.0842 (n=12)   haiku 0.0036 (n=12)
+        (sonnet GOAL_ONLY 0.1337 / STEPS 0.0346; haiku GOAL_ONLY 0.0049 / STEPS 0.0023)
+Projected main run (x48 per model): fable 9.53 + opus 3.23 + sonnet 4.04 + haiku 0.17 = $16.97
+Check with Sonnet's GOAL_ONLY runs as the guide (their token counts priced at fable/opus rates:
+        fable 0.546, opus 0.235 $/run): 26.22 + 11.27 + 4.04 + 0.17 = $41.70
+Decision: repeats = 3 (192 runs), because both projections are under $100 ($17 from the pilot means,
+        $42 with Sonnet GOAL_ONLY as the guide). The fable/opus runs were not unusual (no errors,
+        7-10 steps), only shorter than Sonnet's GOAL_ONLY runs (11-16 steps), so I used Sonnet as
+        the conservative check. Main run keeps --budget-usd 100 as a hard stop.
+Flagged:
+  - T7 and T8 were not piloted (the "all" run stopped after T6; no T7/T8 spend in spend.jsonl).
+        T8 (4 firms, max_steps 50) is probably the most expensive task. Even at 4x the mean cost
+        for T7/T8, the Sonnet-guided projection stays under $100.
+  - Version mismatch: the pilot ran with PROMPT_VERSION "web-v1-draft", harness web-h2, and an
+        UNCOMMITTED web/tasks_web.json (edited 20:35, after the prompts-web-v1 tag at 19:33):
+        T5 step 1 (type "Domino", no apostrophe), T6 step 1 (JPM look-alike CIK 0001325347),
+        T7 step 4 (row "Berkshire shareholders' equity"), T8 max_steps 40 -> 50 + units_hint.
+        web/run_web.py is also uncommitted (budget spent_before). Before the main run: set
+        PROMPT_VERSION to a new version (the tag prompts-web-v1 is on the OLD tasks_web.json), log it
+        here, commit, then tag again.
+  - 403: T6 GOAL_ONLY sonnet -> HARNESS_ERROR. After data.sec.gov/submissions it called the
+        efts.sec.gov full-text search API, and SEC answered 403 ("undeclared automated tool").
+        The run cost $0.049 and stopped at 17 s. Decide BEFORE the main run how a 403 is counted
+        (re-run or score as a failure). Any harness change is for bugs only.
+  - T6 GOAL_ONLY haiku: 2 site_errors, 140.6 s wall time (the slowest run), 4 blocked attempts.
+  - Blocked attempts in all 28 runs (1-4 each; e.g. the first call in T1 STEPS haiku was the
+        blocked cgi-bin/browse-edgar URL). visited_search_form True in 12/28 runs.
+  - None seen: loops, refusals, stalls (n_stalls 0, stall_s 0), nudges, max_tokens stops.
+  - Cache works: every run has cache_read >> cache_creation, and only 14-32 input tokens uncached.
+Pass/tags: 27/28 PASS, 1 HARNESS_ERROR (T6 GOAL_ONLY sonnet, 403). From
+        results_web_pilot/runs_scored.csv; NOT pooled with the main run.
+Transcripts: not yet read one by one (the steps above are from final.json / steps.jsonl only).
+
+## CHANGES AFTER THE PILOT (2026-10-28, before the main run)
+PROMPT_VERSION web-v1-draft -> web-v2. web-v2 = the prompts-web-v1 tag + the tasks_web.json edits the
+        pilot already ran with: T5 step 1 (type "Domino"), T6 step 1 (JPM look-alike CIK), T7 step 4
+        (row "Berkshire shareholders' equity"), T8 max_steps 40 -> 50 + units_hint. No prompt change
+        after the pilot. Tag: prompts-web-v2.
+HARNESS_VERSION web-h2 -> web-h3. Bug fix only: a 403 now halts the session only when it comes from a
+        www.sec.gov page (SEC blocking the harness). A 403 from efts.sec.gov / data.sec.gov opened
+        directly as a page (the search API refuses that; it caused the one pilot HARNESS_ERROR) is
+        shown to the model as an HTTP 403 page and counted in final.json as api_403. Before, such a
+        run halted ALL runs and was redone, so GOAL_ONLY runs that tried the API would have been
+        dropped. selftest_web.py: 2 new checks (section G) -> 164/164 ALL CHECKS PASSED (no network).
+403 probe: 3 direct requests to efts.sec.gov with the declared UA at ~22:00 all got 403 (incl. the
+        autocomplete URL that returned 200 as xhr 87/87 times in the pilot). Before the main run, wait
+        10+ min, then do a $0 live check: python web/run_web.py --dry-run --tasks T1 T6 --conds STEPS
+
 NEXT (Part 3, student)
   [ ] Oct 28  Decide you are OK with the httpx2 approach above (before ANY paid call)
   [ ] Oct 28  Add SEC_USER_AGENT="Your Name your-contact" to .env; pip install -r web/requirements-web.txt;

@@ -1,0 +1,332 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T4\n\nFind Netflix, Inc.'s total stockholders' equity at June 30, 2026, from its quarterly report for that quarter.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nSTEPS (a click path that works):\n1. Open https://www.sec.gov/search-filings, type \"Netflix\" and click the suggestion \"NETFLIX INC (NFLX)\" (CIK 0001065280).\n2. Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 30, 2026 (filed July 2026).\n3. From the filing index, open the filing folder, then FilingSummary.xml, and find \"Consolidated Balance Sheets\"; open its R page.\n4. Use the row \"Total stockholders' equity\", column \"Jun. 30, 2026\".\nUnits: The page header says \"$ in Thousands\": multiply by 1,000 (not 1,000,000).\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01AVPYQEedyR1qRMFXc6rpTa",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/search-filings"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01E2EqmpqT2oWJjhG2UmyKvu",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001065280&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01AVPYQEedyR1qRMFXc6rpTa",
+    "content": "URL: https://www.sec.gov/search-filings | TITLE: SEC.gov | Search Filings | chunk 1/1\n\n[e1 link] Skip to search field\n[e2 link] Skip to main content\n\nAn official website of the United States government\n\n[e3 button] Here\u2019s how you know\n[e4 link]\nSEC homepage\n[e5 button]\nSearch Filings\n[e6 button]\nSubmit Filings\n[e7 button]\nData & Research\n[e8 button]\nRules, Enforcement, & Compliance\n[e9 button]\nFeatured Topics\n[e10 button]\nAbout\n[e11 link]\nSubmit a Tip or Complaint\n[e12 link] Newsroom\n|\n[e13 link] Investors\n[e14 link] Small Businesses\n[e15 link] Whistleblowers\nSearch SEC.gov & EDGAR\n[e16 textbox \"Search SEC.gov & EDGAR\" value=\"\"]\n[e17 button]\nSEARCH\n[e18 link] SEARCH FILINGS\n[e19 link] Full Text Search\n[e20 link] Latest Filings Search\n[e21 link] Insurance Products Search\n[e22 link] Mutual Funds Search\n[e23 link] Confidential Treatment Orders Search\n[e24 link] Standard Industrial Classification (SIC) Code List\n[e25 link] CIK Lookup\n[e26 link] EDGAR Public Dissemination Service (PDS) System\n[e27 link] Effectiveness Notices\n[e28 link] EDGAR Application Programming Interfaces\n[e29 link] EDGAR Search Assistance\n[e30 link] Home  Search Filings\nSearch Filings\n\nEnjoy free public access to millions of informational documents filed by publicly traded companies and others in the SEC's Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system.\n\nCompany Search\nSearch By\n[e31 textbox \"Name, ticker symbol, or CIK\" value=\"\"]\n[e32 button]\nSUBMIT\n[e33 button]\nmore search options\n\nFind registration statements, periodic reports, and other forms by typing the name or ticker symbol of a company ([e34 link \"CIK Lookup\"] CIK lookup info) ([e35 link \"Confidential Treatment Orders Search\"] confidential treatment orders) ([e36 link] SEC correspondence with issuers)\n\nEDGAR Search Tools\n\nSome specific ways to access filings based on time, type, or other categories.\n\n[e37 link] Full Text Search\n\nFind keywords and phrases\u202fin more than 20 years of EDGAR filings, and filter by date, company, person, filing category, or location.\n\n[e38 link] Latest Filings\n\nView a listing of real-time filings as they are submitted into the EDGAR system. Also view daily filings by form type within the past week.\n\n[e39 link] Search Assistance\n\nTutorials and resources to help users locate filings, conduct research, and retrieve specific information in EDGAR.\n\n[e40 link] Mutual Fund Search\n\nView prospectuses, proxy voting records, and other forms by typing the name of a mutual fund or ETF.\n\n[e41 link] Insurance Product Search\n\nFind a product by typing the name of an insurance company, underlying mutual fund, or contract.\n\nEDGAR Resources\n\nData and information to assist users as they navigate the EDGAR system.\n\n[e42 link] SIC Codes\n\nA list of Standard Industrial Classification Codes used to indicate a company's type of business.\n\n[e43 link] CIK Lookup\n\nA search engine to find Central Index Key numbers assigned by the SEC to corporate or individual filers.\n\n[e44 link] Public Dissemination Service (PDS)\n\nAn option to subscribe to a privatized system to receive a dedicated feed of all public EDGAR filings.\n\n[e45 link] EDGAR APIs\n\nRESTful data Application Programming Interfaces that include the submissions history by filer and the XBRL data from financial statements.\n\n[e46 link] EDGAR RSS Feeds\n\nReally Simple Syndication feeds for EDGAR submissions through which users can view, analyze, and manipulate filings.\n\n[e47 link] Return to top\nAbout the SEC\n[e48 link] Budget & Performance\n[e49 link] Careers\n[e50 link] Commission Votes\n[e51 link] Contact\n[e52 link] Contracts\nTransparency\n[e53 link] Accessibility & Disability\n[e54 link] Super Intelligence\n[e55 link] FOIA\n[e56 link] Inspector General\n[e57 link] No FEAR Act Data\n[e58 link] Ombuds\n[e59 link] SEC Excess Personal Property Guidance\nWebsites\n[e60 link] Investor.gov\n[e61 link] Related Sites\n[e62 link] USA.gov\nSite Information\n[e63 link] Plain Writing\n[e64 link] Privacy & Security\n[e65 link] Site Map\nStay connected. Sign up for email updates.\nYour email address\n[e66 textbox \"Your email address\" value=\"\"]\n[e67 button]\nSIGN UP\n[e68 link]\nX\n[e69 link]\nFacebook\n[e70 link]\nInstagram\n[e71 link]\nRSS\n[e72 link \"(opens in a new window)\"]\nYouTube\n[e73 link]\nEmail Updates"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01E2EqmpqT2oWJjhG2UmyKvu",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001065280&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01L54irNVnq493PDY4zaZs6g",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e31",
+     "text": "Netflix"
+    },
+    "name": "fill",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01L54irNVnq493PDY4zaZs6g",
+    "content": "Typed 'Netflix' into e31. URL: https://www.sec.gov/search-filings\nNew elements that appeared (e.g. suggestions):\n[e74 link] NETFLIX INC (NFLX)\n[e75 link] CIK\u00a00001065280\n[e76 link] Search for \"Netflix\" in EDGAR filings"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_018n55Hyq5o2AQQTaprDkVVk",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e74"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_018n55Hyq5o2AQQTaprDkVVk",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1065280&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nNETFLIX INC NFLX on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 26, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 21, 2026 - 10-Q: Quarterly report for quarter ending September 30, 2026\nOpen document\n [e13 link] Filing\nOpen filing\n[e14 link] October 20, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e16 link] September 10, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] September 9, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01KwKdCZLGemQyVSMaaN5tuT",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01KwKdCZLGemQyVSMaaN5tuT",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1065280&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nNETFLIX INC NFLX on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 26, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 21, 2026 - 10-Q: Quarterly report for quarter ending September 30, 2026\nOpen document\n [e13 link] Filing\nOpen filing\n[e14 link] October 20, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e16 link] September 10, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] September 9, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] October 21, 2026 - 10-Q: Quarterly report for quarter ending September 30, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] July 17, 2026 - 10-Q: Quarterly report for quarter ending June 30, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] April 17, 2026 - 10-Q: Quarterly report for quarter ending March 31, 2026\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] January 23, 2026 - 10-K: Annual report for year ending December 31, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_016MpAgAsEHBRbMpHj4TZr3g",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e30"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_016MpAgAsEHBRbMpHj4TZr3g",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/0001065280-26-000212-index.htm | TITLE: EDGAR Filing Documents for 0001065280-26-000212 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001065280-26-000212\nFiling Date\n2026-07-17\nAccepted\n2026-07-17 16:02:51\nDocuments\n83\nPeriod of Report\n2026-06-30\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] nflx-20260630.htm \u00a0\u00a0iXBRL\t10-Q\t1815616\n2\tEX-31.1\t[e11 link] ex311_q226.htm\tEX-31.1\t12249\n3\tEX-31.2\t[e12 link] ex312_q226.htm\tEX-31.2\t12246\n4\tEX-31.3\t[e13 link] ex313_q226.htm\tEX-31.3\t12144\n5\tEX-32.1\t[e14 link] ex321_q226.htm\tEX-32.1\t14656\n\u00a0\tComplete submission text file\t[e15 link] 0001065280-26-000212.txt\t\u00a0\t10009964\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n6\tXBRL TAXONOMY EXTENSION SCHEMA DOCUMENT\t[e16 link] nflx-20260630.xsd\tEX-101.SCH\t48554\n7\tXBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT\t[e17 link] nflx-20260630_cal.xml\tEX-101.CAL\t77289\n8\tXBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT\t[e18 link] nflx-20260630_def.xml\tEX-101.DEF\t242181\n9\tXBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT\t[e19 link] nflx-20260630_lab.xml\tEX-101.LAB\t623569\n10\tXBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT\t[e20 link] nflx-20260630_pre.xml\tEX-101.PRE\t456478\n87\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e21 link] nflx-20260630_htm.xml\tXML\t2101320\nMailing Address\n121 ALBRIGHT WAY\nLOS GATOS\nCA\n95032-7606\nBusiness Address\n121 ALBRIGHT WAY\nLOS GATOS\nCA\n95032\n408-540-3700\nNETFLIX INC (Filer) CIK: [e22 link] 0001065280 (see all company filings)\n\nEIN.: 770467272 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e23 link] 001-35727 | Film No.: 261183709\nSIC: [e24 link] 7841 Services-Video Tape Rental\n(CF Office: 07 Trade & Services)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01SpSH8rFJyU6Fo3RhsdSu3c",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R2.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01SpSH8rFJyU6Fo3RhsdSu3c",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R2.htm | TITLE:  | chunk 1/1\n\nXML 13 R2.htm IDEA: XBRL DOCUMENT\nConsolidated Statements of Operations (unaudited) - USD ($)\nshares in Thousands, $ in Thousands\n\t3 Months Ended\t6 Months Ended\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nIncome Statement [Abstract]\nRevenues\t$ 12,559,938\t$ 11,079,166\t$ 24,809,695\t$ 21,621,967\nCost of revenues\t6,036,965\t5,325,311\t11,925,203\t10,588,458\nSales and marketing\t823,838\t713,265\t1,666,055\t1,401,635\nTechnology and development\t1,007,675\t824,683\t1,967,371\t1,647,506\nGeneral and administrative\t498,850\t441,213\t1,101,459\t862,675\nOperating income\t4,192,610\t3,774,694\t8,149,607\t7,121,693\nOther income (expense):\nInterest expense\t(175,685)\t(182,649)\t(437,762)\t(366,821)\nInterest and other income (expense)\t51,661\t39,630\t2,903,827\t90,529\nIncome before income taxes\t4,068,586\t3,631,675\t10,615,672\t6,845,401\nProvision for income taxes\t(667,172)\t(506,262)\t(1,931,467)\t(829,637)\nNet income\t$ 3,401,414\t$ 3,125,413\t$ 8,684,205\t$ 6,015,764\nEarnings per share:\nBasic (in USD per share)\t$ 0.81\t$ 0.74\t$ 2.06\t$ 1.41\nDiluted (in USD per share)\t$ 0.80\t$ 0.72\t$ 2.03\t$ 1.38\nWeighted-average shares of common stock outstanding:\nBasic (in shares)\t4,189,303\t4,252,112\t4,205,952\t4,262,347\nDiluted (in shares)\t4,261,300\t4,348,825\t4,279,776\t4,359,167"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_016VwAm66GCRU7i4WZhL9f1a",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_016VwAm66GCRU7i4WZhL9f1a",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R4.htm | TITLE:  | chunk 1/1\n\nXML 15 R4.htm IDEA: XBRL DOCUMENT\nConsolidated Statements of Comprehensive Income (unaudited) (Parenthetical) - USD ($)\n$ in Millions\n\t3 Months Ended\t6 Months Ended\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nStatement of Comprehensive Income [Abstract]\nForeign currency translation adjustments, income tax benefit (expense)\t$ (3.0)\t$ 21.0\t$ (12.0)\t$ 32.0\nChange in unrealized gains (losses) on available-for-sale securities, income tax benefit\t0.0\t0.2\t0.0\t1.0\nNet change, income tax benefit (expense)\t(39.0)\t272.0\t(159.0)\t421.0\nNet unrealized gains / losses excluded from the assessment of effectiveness, income tax benefit (expense)\t$ (1.0)\t$ 1.0\t$ (2.0)\t$ 2.0"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01UivLZr4pDiAo8FUPdT3qKu",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R5.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01UivLZr4pDiAo8FUPdT3qKu",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R5.htm | TITLE:  | chunk 1/1\n\nXML 16 R5.htm IDEA: XBRL DOCUMENT\nConsolidated Statements of Cash Flows (unaudited) - USD ($)\n$ in Thousands\n\t3 Months Ended\t6 Months Ended\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nCash flows from operating activities:\nNet income\t$ 3,401,414\t$ 3,125,413\t$ 8,684,205\t$ 6,015,764\nAdjustments to reconcile net income to net cash provided by operating activities:\nAdditions to content assets\t(4,927,523)\t(3,835,813)\t(9,774,440)\t(7,385,470)\nChange in content liabilities\t(181,794)\t(214,052)\t(136,578)\t(625,305)\nAmortization of content assets\t4,311,309\t3,832,074\t8,529,209\t7,655,186\nDepreciation and amortization of property, equipment and intangibles\t100,530\t80,013\t199,105\t160,080\nStock-based compensation expense\t131,312\t80,862\t271,717\t152,839\nForeign currency remeasurement loss (gain) on debt\t(8,813)\t55,238\t(18,923)\t83,785\nOther non-cash items\t141,356\t120,139\t339,583\t234,869\nDeferred income taxes\t81,260\t(135,755)\t140,079\t(299,683)\nChanges in operating assets and liabilities:\nOther current assets\t111,713\t(176,683)\t(592,927)\t(308,050)\nAccounts payable\t(157,397)\t11,046\t(157,243)\t(265,380)\nAccrued expenses and other liabilities\t(1,249,793)\t(267,235)\t46,111\t39,178\nDeferred revenue\t54,008\t118,635\t21,726\t207,548\nOther non-current assets and liabilities\t(63,770)\t(370,624)\t(517,607)\t(452,904)\nNet cash provided by operating activities\t1,743,812\t2,423,258\t7,034,017\t5,212,457\nCash flows from investing activities:\nPurchases of property and equipment\t(218,644)\t(155,889)\t(414,774)\t(284,166)\nAcquisitions\t0\t0\t(585,744)\t0\nPurchases of investments\t0\t(1,650)\t0\t(157,665)\nProceeds from maturities and sales of investments\t0\t962,413\t0\t1,732,367\nOther investing activities\t0\t(36,190)\t0\t(36,190)\nNet cash provided by (used in) investing activities\t(218,644)\t768,684\t(1,000,518)\t1,254,346\nCash flows from financing activities:\nRepayments of debt\t0\t(1,033,450)\t0\t(1,833,450)\nProceeds from issuance of common stock\t59,980\t169,066\t109,290\t520,668\nRepurchases of common stock\t(4,714,403)\t(1,654,327)\t(5,984,991)\t(5,190,723)\nTaxes paid related to net share settlement of equity awards\t(6,631)\t(6,114)\t(35,861)\t(33,984)\nOther financing activities\t(8,573)\t21,957\t11,121\t6,305\nNet cash used in financing activities\t(4,669,627)\t(2,502,868)\t(5,900,441)\t(6,531,184)\nEffect of exchange rate changes on cash, cash equivalents and restricted cash\t(19,628)\t287,471\t(69,466)\t437,617\nNet increase (decrease) in cash, cash equivalents and restricted cash\t(3,164,087)\t976,545\t63,592\t373,236\nCash, cash equivalents and restricted cash at beginning of period\t12,266,873\t7,204,028\t9,039,194\t7,807,337\nCash, cash equivalents and restricted cash at end of period\t$ 9,102,786\t$ 8,180,573\t$ 9,102,786\t$ 8,180,573"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01Vr9qCcrXK5pfxMftMq3rM7",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R3.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Vr9qCcrXK5pfxMftMq3rM7",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R3.htm | TITLE:  | chunk 1/1\n\nXML 14 R3.htm IDEA: XBRL DOCUMENT\nConsolidated Statements of Comprehensive Income (unaudited) - USD ($)\n$ in Thousands\n\t3 Months Ended\t6 Months Ended\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nJun. 30, 2026\n\nJun. 30, 2025\n\nStatement of Comprehensive Income [Abstract]\nNet income\t$ 3,401,414\t$ 3,125,413\t$ 8,684,205\t$ 6,015,764\nOther comprehensive income (loss):\nForeign currency translation adjustments, net of income tax benefit (expense) of $(3) million, $21 million, $(12) million, and $32 million, respectively\t3,549\t97,341\t(49,329)\t154,256\nNet change in unrealized gains (losses) on available-for-sale securities, net of income tax benefit (expense) of $0, $0.2 million, $0, and $1 million, respectively\t0\t(699)\t0\t(2,511)\nCash flow hedges:\nNet unrealized gains (losses)\t92,357\t(941,572)\t388,509\t(1,316,744)\nReclassification of net (gains) losses included in net income\t37,301\t28,537\t138,480\t(96,624)\nNet change, net of income tax benefit (expense) of $(39)\u00a0million, $272\u00a0million, $(159) million, and $421 million, respectively\t129,658\t(913,035)\t526,989\t(1,413,368)\nFair value hedges:\nNet change in unrealized gains (losses) excluded from the assessment of effectiveness, net of income tax benefit (expense) of $(1) million, $1 million, $(2) million, and $2 million, respectively\t4,707\t(2,540)\t5,605\t(5,207)\nTotal other comprehensive income (loss)\t137,914\t(818,933)\t483,265\t(1,266,830)\nComprehensive income\t$ 3,539,328\t$ 2,306,480\t$ 9,167,470\t$ 4,748,934"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01L8GzAUtHRd2J7yeSQws2cT",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R6.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01L8GzAUtHRd2J7yeSQws2cT",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R6.htm | TITLE:  | chunk 1/1\n\nXML 17 R6.htm IDEA: XBRL DOCUMENT\nConsolidated Balance Sheets - USD ($)\n$ in Thousands\n\nJun. 30, 2026\n\nDec. 31, 2025\n\nCurrent assets:\nCash and cash equivalents\t$ 9,099,232\t$ 9,033,681\nShort-term investments\t28,678\t28,678\nOther current assets\t4,725,393\t3,957,832\nTotal current assets\t13,853,303\t13,020,191\nContent assets, net\t33,837,573\t32,778,392\nProperty and equipment, net\t2,398,848\t2,004,350\nOther non-current assets\t8,360,717\t7,794,060\nTotal assets\t58,450,441\t55,596,993\nCurrent liabilities:\nCurrent content liabilities\t3,866,522\t4,084,854\nAccounts payable\t814,551\t900,612\nAccrued expenses and other liabilities\t3,172,611\t3,220,869\nDeferred revenue\t1,797,456\t1,775,730\nShort-term debt\t2,483,758\t998,865\nTotal current liabilities\t12,134,898\t10,980,930\nNon-current content liabilities\t1,625,600\t1,579,476\nLong-term debt\t11,825,548\t13,463,971\nOther non-current liabilities\t2,712,343\t2,957,128\nTotal liabilities\t28,298,389\t28,981,505\nCommitments and contingencies (Note 9)\nStockholders\u2019 equity:\nCommon stock, $0.001 par value; 49,900,000,000 shares authorized at June\u00a030, 2026 and December\u00a031, 2025; 4,163,939,676 and 4,222,162,150 issued and outstanding at June\u00a030, 2026 and December\u00a031, 2025, respectively\t7,670,503\t7,286,410\nTreasury stock at cost (413,373,678 and 346,541,145 shares at June\u00a030, 2026 and December\u00a031, 2025, respectively)\t(28,387,657)\t(22,372,658)\nAccumulated other comprehensive loss\t(97,117)\t(580,382)\nRetained earnings\t50,966,323\t42,282,118\nTotal stockholders\u2019 equity\t30,152,052\t26,615,488\nTotal liabilities and stockholders\u2019 equity\t$ 58,450,441\t$ 55,596,993"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01VmPgQKUKF9CGYqbkEjWJhM",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0001065280-26-000212",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R6.htm",
+     "period_end": "2026-06-30",
+     "value_usd": 30152052000
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01VmPgQKUKF9CGYqbkEjWJhM",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

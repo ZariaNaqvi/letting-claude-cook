@@ -1,0 +1,9 @@
+URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm | find_text 'shareholders’ equity': 8 match(es)
+(chunk 1) LIABILITIES AND SHAREHOLDERS’ EQUITY: / Current liabilities:
+(chunk 1) Shareholders’ equity:
+(chunk 1) Accumulated other comprehensive loss	(4,508)			(5,571) / Total shareholders’ equity	107,520 			73,733 / Total liabilities and shareholders’ equity	$	383,266 			$	359,241
+(chunk 1) Total shareholders’ equity	107,520 			73,733 / Total liabilities and shareholders’ equity	$	383,266 			$	359,241 / See accompanying Notes to Condensed Consolidated Financial Statements.
+(chunk 1) Apple Inc. / CONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS’ EQUITY (Unaudited) / (In millions, except per-share amounts)
+(chunk 1) 2025 / Total shareholders’ equity, beginning balances	$	106,491 			$	66,796 			$	73,733 			$	56,950
+(chunk 2) Total shareholders’ equity, ending balances	$	107,520 			$	65,830 			$	107,520 			$	65,830
+(chunk 3) As of June 27, 2026 and September 27, 2025, the Company had outstanding fixed-rate notes with varying maturities for an aggregate carrying amount of $82.3 billion and $90.7 billion, respectively (collectively the “Notes”). As of June 27, 2026 and September 27, 2025, the fair value of the Company’s Notes, based on Level 2 inputs, was $71.2 billion and $80.4 billion, respectively. / Note 7 – Shareho

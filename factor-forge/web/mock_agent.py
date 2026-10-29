@@ -42,12 +42,12 @@ FIRMS = {
                 period="July 31, 2026", row="Total Walmart shareholders' equity"),
     "NFLX": dict(cik=1065280, search="Netflix", suggestion="(NFLX)", form="10-Q",
                  period="June 30, 2026", row="Total stockholders' equity"),
-    "DPZ": dict(cik=1286681, search="Domino's Pizza", suggestion="(DPZ)", form="10-Q",
+    "DPZ": dict(cik=1286681, search="Domino", suggestion="(DPZ)", form="10-Q",
                 period="June 14, 2026", row="Total stockholders' deficit"),
-    "JPM": dict(cik=19617, search="JPMorgan Chase", suggestion="(JPM)", form="10-Q",
+    "JPM": dict(cik=19617, search="JPMorgan", suggestion="(JPM,", form="10-Q",
                 period="June 30, 2026", row="Total stockholders' equity", minus_row="Preferred stock"),
     "BRK": dict(cik=1067983, search="Berkshire Hathaway Inc", suggestion="BERKSHIRE HATHAWAY INC", form="10-Q",
-                period="June 30, 2026", row="Total Berkshire Hathaway shareholders' equity"),
+                period="June 30, 2026", row="Berkshire shareholders' equity"),
     "KO": dict(cik=21344, search="Coca-Cola", suggestion="(KO)", form="10-Q", period="July 3, 2026",
                row="Equity attributable to shareowners of The Coca-Cola Company"),
     "CVX": dict(cik=93410, search="Chevron", suggestion="(CVX)", form="10-Q", period="June 30, 2026",
@@ -110,7 +110,7 @@ def parse_number(cell):
 
 def parse_r_page(obs):
     """Return (scale, [column dates], {row label (normalized): [values]}) from an R page observation."""
-    lines = [strip_refs(ln) for ln in obs.split("\n")]
+    lines = [REF.sub("", ln).rstrip() for ln in obs.split("\n")]    # keep leading tabs: they mark an empty label cell
     scale = 1
     for ln in lines[:12]:
         if "in millions" in ln.lower():
@@ -121,10 +121,14 @@ def parse_r_page(obs):
             scale = 1_000_000_000
     dates = [ln.strip() for ln in lines[:40] if re.match(r"^[A-Z][a-z]{2}\.? \d{1,2}, \d{4}$", ln.strip())]
     rows = {}
+    label = ""
     for ln in lines:
         if "\t" not in ln:
+            label = ln.strip() or label
             continue
         cells = [c.strip() for c in ln.split("\t")]
+        if not cells[0]:              # some filers' report.css puts the label on its own line above the numbers
+            cells[0] = label
         vals = [parse_number(c) for c in cells[1:] if c]
         if vals and all(v is not None for v in vals):
             rows.setdefault(norm(cells[0]), vals)
@@ -202,7 +206,9 @@ def firm_path(firm, read):
         obs = yield ("find_text", {"query": read["row"].split("'")[0]})
         raise MockGaveUp("row not found: " + read["row"])
     target = _date_text(firm["period"])
-    col = dates.index(target) if target in dates else 0
+    if target not in dates:                   # never guess a column: a format mismatch must show up
+        raise MockGaveUp(f"column {target} not found (page has {dates[:4]})")
+    col = dates.index(target)
     if read.get("column") == "other":
         col = 1 if col == 0 else 0
     v = vals[col]
@@ -241,22 +247,11 @@ def persona_script(persona, task, key):
     firm = FIRMS[TASK_FIRM[tid]]
     read = dict(row=firm["row"], column="target", scale=True, minus_row=firm.get("minus_row"))
     try:
-        if persona == "hallucinate":
-            yield ("goto", {"url": SEARCH_URL})
-            made_up = (int(key["value_usd"] * 1.0373) // 1_000_000) * 1_000_000 + 7_000_000
-            yield ("submit_answer", {"value_usd": made_up, "accession": f"{firm['cik']:010d}-26-000099",
-                                     "period_end": task["target_end"]})
+        if persona in NO_PATH:
+            made_up = dict(value_usd=_made_up(key["value_usd"]), accession=f"{firm['cik']:010d}-26-000099",
+                           period_end=task["target_end"])
+            yield from _no_path(persona, made_up)
             return
-        if persona == "give_up":
-            yield ("goto", {"url": SEARCH_URL})
-            yield ("submit_answer", {"give_up": True})
-            return
-        if persona == "loop":
-            obs = yield ("goto", {"url": SEARCH_URL})
-            i = 0
-            while True:                       # no new network traffic: re-reads the same page
-                i += 1
-                obs = yield (("read_page", {"page": 1}) if i % 2 else ("find_text", {"query": "Company Search"}))
         if persona == "api":
             yield ("goto", {"url": f"https://data.sec.gov/api/xbrl/companyconcept/CIK{firm['cik']:010d}"
                                    "/us-gaap/StockholdersEquity.json"})
@@ -276,13 +271,50 @@ def persona_script(persona, task, key):
         yield ("submit_answer", {"give_up": True, "evidence_url": f"mock: {e}"})
 
 
+NO_PATH = ("hallucinate", "give_up", "loop")      # personas that never walk the click path
+
+
+def _made_up(v):
+    return (int(v * 1.0373) // 1_000_000) * 1_000_000 + 7_000_000
+
+
+def _no_path(persona, made_up_answer):
+    """hallucinate / give_up / loop: the same on every task kind."""
+    obs = yield ("goto", {"url": SEARCH_URL})
+    if persona == "hallucinate":
+        yield ("submit_answer", made_up_answer)
+    elif persona == "give_up":
+        yield ("submit_answer", {"give_up": True})
+    else:
+        i = 0
+        while True:                       # no new network traffic: re-reads the same page
+            i += 1
+            obs = yield (("read_page", {"page": 1}) if i % 2 else ("find_text", {"query": "Company Search"}))
+
+
 def _rank_script(persona, task, key):
+    """T8: comparative and units make their mistake on all four firms; wrong_line and wrong_entity
+    on the FIRST firm only (the other three are right), so the scorer's worst-firm tag is tested."""
     bes, accs = {}, {}
     try:
-        for fm in task["firms"]:
+        if persona in NO_PATH:
+            made_up = {t: _made_up(fk["value_usd"]) for t, fk in key["firms"].items()}
+            me = task["market_equity"]["usd"]
+            yield from _no_path(persona, {"book_equity_usd": made_up,
+                                          "ranking_high_to_low_bm": sorted(made_up, key=lambda t: -made_up[t] / me[t])})
+            return
+        if persona == "api":
+            yield ("goto", {"url": f"https://data.sec.gov/api/xbrl/companyconcept/CIK{task['firms'][0]['cik']:010d}"
+                                   "/us-gaap/StockholdersEquity.json"})
+        for i, fm in enumerate(task["firms"]):
             firm = FIRMS[fm["ticker"]]
             read = dict(row=firm["row"], column="other" if persona == "comparative" else "target",
                         scale=persona != "units")
+            if i == 0 and persona == "wrong_line":
+                read["row"] = "Total liabilities and"
+            if i == 0 and persona == "wrong_entity":
+                firm = FIRMS[DECOY["T1"]]          # walks Netflix, reports it as the first firm
+                read["row"] = firm["row"]
             res = yield from firm_path(firm, read)
             bes[fm["ticker"]] = res["value_usd"]
             accs[fm["ticker"]] = res["accession"]

@@ -1,0 +1,431 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T3\n\nFind total shareholders' equity attributable to Walmart Inc. (excluding noncontrolling interest) at the end of Walmart's second quarter of fiscal year 2027.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_014XMGrFF1BKaJseZBDeozMH",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_014XMGrFF1BKaJseZBDeozMH",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01EcpdsedvY1QaStfa5pLRKA",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01EcpdsedvY1QaStfa5pLRKA",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01BS8CokxUeKJmEcVVjbSjj7",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01BS8CokxUeKJmEcVVjbSjj7",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/ | TITLE: Directory List of /Archives/edgar/data/104169 | chunk 1/24\n\n[e1 link] Search Options\n[e2 link] Skip to Main Content\n[e3 link]\nABOUT\n[e4 link]\nDIVISIONS\n[e5 link]\nENFORCEMENT\n[e6 link]\nREGULATION\n[e7 link]\nEDUCATION\n[e8 link]\nFILINGS\n[e9 link]\nNEWS\nDirectory Listing /Archives/edgar/data/104169\nNAME\tSIZE\tLAST MODIFIED\n[e10 link] 000119312526429539\t\t2026-10-23 09:04:03\n[e11 link] 000119312526427928\t\t2026-10-21 16:40:37\n[e12 link] 000119312526427921\t\t2026-10-21 16:38:11\n[e13 link] 000119312526425645\t\t2026-10-20 06:03:50\n[e14 link] 000119312526425644\t\t2026-10-20 06:02:37\n[e15 link] 000119312526424989\t\t2026-10-19 13:14:53\n[e16 link] 000119312526424733\t\t2026-10-19 08:53:41\n[e17 link] 000169673726000021\t\t2026-10-16 16:42:51\n[e18 link] 000188636726000029\t\t2026-10-16 16:42:45\n[e19 link] 000199280826000029\t\t2026-10-16 16:42:40\n[e20 link] 000195917326007368\t\t2026-10-14 13:59:59\n[e21 link] 000205830926000019\t\t2026-10-08 16:56:37\n[e22 link] 000211064326000020\t\t2026-10-08 16:56:31\n[e23 link] 000188636726000027\t\t2026-10-08 16:56:25\n[e24 link] 000211030426000023\t\t2026-10-08 16:56:18\n[e25 link] 000010416926000161\t\t2026-10-02 17:35:29\n[e26 link] 000010416926000160\t\t2026-10-02 17:35:20\n[e27 link] 000010416926000159\t\t2026-10-02 17:35:12\n[e28 link] 000155060826000023\t\t2026-10-02 17:34:13\n[e29 link] 000118342826000009\t\t2026-10-02 17:34:08\n[e30 link] 000157065826000009\t\t2026-10-02 17:34:02\n[e31 link] 000203383426000021\t\t2026-10-02 17:33:56\n[e32 link] 000170735126000023\t\t2026-10-02 17:33:50\n[e33 link] 000157929926000026\t\t2026-10-02 17:33:45\n[e34 link] 000161617226000010\t\t2026-10-02 17:33:39\n[e35 link] 000195724426000018\t\t2026-10-01 16:57:29\n[e36 link] 000169673726000019\t\t2026-09-18 16:41:10\n[e37 link] 000199280826000027\t\t2026-09-18 16:36:05\n[e38 link] 000194984626000590\t\t2026-09-17 11:26:09\n[e39 link] 000135445726000882\t\t2026-09-16 16:02:06\n[e40 link] 000205830926000017\t\t2026-09-09 17:13:34\n[e41 link] 000211064326000018\t\t2026-09-09 17:13:14\n[e42 link] 000211030426000021\t\t2026-09-09 17:10:39\n[e43 link] 000188636726000025\t\t2026-09-09 17:10:05\n[e44 link] 000157929926000024\t\t2026-09-02 16:58:18\n[e45 link] 000195724426000017\t\t2026-09-01 16:19:45\n[e46 link] 000010416926000155\t\t2026-08-28 16:13:32\n[e47 link] 000010416926000154\t\t2026-08-28 16:11:28\n[e48 link] 000010416926000146\t\t2026-08-27 16:53:33\n[e49 link] 000195917326006468\t\t2026-08-26 16:09:56\n[e50 link] 000199280826000024\t\t2026-08-21 17:14:41\n[e51 link] 000194984626000533\t\t2026-08-20 10:02:17\n[e52 link] 000010416926000145\t\t2026-08-20 06:59:01\n[e53 link] 000205830926000016\t\t2026-08-13 19:03:12\n[e54 link] 000211064326000016\t\t2026-08-13 19:00:23\n[e55 link] 000211030426000019\t\t2026-08-13 18:59:20\n[e56 link] 000188636726000023\t\t2026-08-13 18:57:48\n[e57 link] 000112329226001074\t\t2026-08-07 16:19:35\n[e58 link] 000112329226001073\t\t2026-08-07 16:17:23\n[e59 link] 000112329226001072\t\t2026-08-07 16:15:10\n[e60 link] 000157929926000022\t\t2026-08-04 17:08:33\n[e61 link] 000195724426000014\t\t2026-08-03 11:47:05\n[e62 link] 000155032226000013\t\t2026-07-28 17:32:49\n[e63 link] 000199280826000022\t\t2026-07-17 17:57:07\n[e64 link] 000188636726000021\t\t2026-07-16 18:09:51\n[e65 link] 000211030426000017\t\t2026-07-16 18:08:51\n[e66 link] 000211064326000014\t\t2026-07-16 18:05:11\n[e67 link] 000205830926000014\t\t2026-07-16 18:03:59\n[e68 link] 000155032226000011\t\t2026-07-16 17:41:12\n[e69 link] 000010416926000138\t\t2026-07-16 17:18:58\n[e70 link] 000010416926000136\t\t2026-07-16 17:17:35\n[e71 link] 000010416926000127\t\t2026-07-02 16:26:07\n[e72 link] 000118342826000007\t\t2026-07-02 16:25:44\n[e73 link] 000010416926000126\t\t2026-07-02 16:25:28\n[e74 link] 000010416926000125\t\t2026-07-02 16:25:13\n[e75 link] 000157065826000007\t\t2026-07-02 16:24:51\n[e76 link] 000203383426000017\t\t2026-07-02 16:24:40\n[e77 link] 000161617226000007\t\t2026-07-02 16:24:21\n[e78 link] 000170735126000018\t\t2026-07-02 16:24:04\n[e79 link] 000155060826000018\t\t2026-07-02 16:23:49\n[e80 link] 000157929926000021\t\t2026-07-02 16:20:03\n[e81 link] 000195724426000012\t\t2026-07-01 11:56:47\n[e82 link] 000195824426000409\t\t2026-06-26 17:10:26\n[e83 link] 000010416926000121\t\t2026-06-25 17:18:31\n[e84 link] 000010416926000119\t\t2026-06-25 16:50:30\n[e85 link] 000195824426000405\t\t2026-06-25 16:33:37\n[e86 link] 000199280826000020\t\t2026-06-22 17:53:29\n[e87 link] 000010416926000117\t\t2026-06-18 17:18:49\n[e88 link] 000188636726000019\t\t2026-06-17 18:09:52\n[e89 link] 000157929926000019\t\t2026-06-17 18:08:16\n[e90 link] 000195724426000011\t\t2026-06-15 15:57:26\n[e91 link] 000211030426000015\t\t2026-06-12 17:14:40\n[e92 link] 000195917326004503\t\t2026-06-10 11:18:54\n[e93 link] 000170735126000012\t\t2026-06-08 18:50:21\n[e94 link] 000010416926000115\t\t2026-06-08 18:48:49\n[e95 link] 000118342826000005\t\t2026-06-08 18:47:07\n[e96 link] 000010416926000114\t\t2026-06-08 18:45:12\n[e97 link] 000161617226000005\t\t2026-06-08 18:42:51\n[e98 link] 000203383426000015\t\t2026-06-08 18:41:55\n[e99 link] 000010416926000113\t\t2026-06-08 18:40:58\n[e100 link] 000157065826000005\t\t2026-06-08 18:39:51\n[e101 link] 000117592826000004\t\t2026-06-08 18:30:18\n[e102 link] 000155060826000014\t\t2026-06-08 18:29:00\n[e103 link] 000010416926000111\t\t2026-06-05 16:07:36\n[e104 link] 000010416926000107\t\t2026-06-04 16:48:17\n[e105 link] 000211064326000012\t\t2026-06-04 16:36:08\n[e106 link] 000205830926000012\t\t2026-06-04 16:34:55\n[e107 link] 000188636726000015\t\t2026-06-04 16:34:00\n[e108 link] 000211030426000013\t\t2026-06-04 16:32:58\n[e109 link] 000195824426000345\t\t2026-06-03 17:01:21\n[e110 link] 000010416926000105\t\t2026-05-29 17:25:40\n[e111 link] 000133578226000015\t\t2026-05-29 16:46:41\n[e112 link] 000188636726000013\t\t2026-05-29 16:44:57\n[e113 link] 000157929926000017\t\t2026-05-29 16:41:52\n[e114 link] 000195824426000334\t\t2026-05-29 16:40:39\n[e115 link] 000010416926000104\t\t2026-05-29 16:22:11\n[e116 link] 000010416926000102\t\t2026-05-29 16:17:26\n[e117 link] 000195917326004081\t\t2026-05-28 10:25:47\n[e118 link] 000195824426000328\t\t2026-05-27 16:45:58\n[e119 link] 000195824426000325\t\t2026-05-27 16:45:29\n[e120 link] 000010416926000096\t\t2026-05-26 17:33:05\n[e121 link] 000195824426000308\t\t2026-05-22 17:03:31\n[e122 link] 000169673726000016\t\t2026-05-22 16:49:36\n[e123 link] 000199280826000018\t\t2026-05-22 16:48:52\n[e124 link] 000199280826000016\t\t2026-05-21 16:33:18\n[e125 link] 000194984626000308\t\t2026-05-21 10:59:32\n[e126 link] 000010416926000095\t\t2026-05-21 06:59:53\n[e127 link] 000157929926000016\t\t2026-05-18 17:03:54\n[e128 link] 000195724426000010\t\t2026-05-15 15:40:11\n[e129 link] 000112329226000641\t\t2026-05-08 16:58:28\n[e130 link] 000211064326000010\t\t2026-05-07 17:05:58\n[e131 link] 000188636726000012\t\t2026-05-07 17:00:40\n[e132 link] 000205830926000010\t\t2026-05-07 16:59:06\n[e133 link] 000211030426000010\t\t2026-05-07 16:56:20\n[e134 link] 000119312526194086\t\t2026-04-30 07:54:16\n[e135 link] 000119312526187795\t\t2026-04-28 17:27:57\n[e136 link] 000119312526183374\t\t2026-04-28 06:06:15\n[e137 link] 000119312526179203\t\t2026-04-27 08:30:25\n[e138 link] 000133578226000014\t\t2026-04-24 17:06:35\n[e139 link] 000010416926000091\t\t2026-04-23 16:12:23\n[e140 link] 000119312526173705\t\t2026-04-23 16:10:02\n[e141 link] 000119312526173673\t\t2026-04-23 16:06:16\n[e142 link] 000157929926000014\t\t2026-04-17 17:06:17\n[e143 link] 000199280826000014\t\t2026-04-17 17:02:04\n[e144 link] 000169673726000014\t\t2026-04-17 16:58:19\n[e145 link] 000010416926000085\t\t2026-04-17 16:52:17\n[e146 link] 000194984626000209\t\t2026-04-16 15:08:20\n[e147 link] 000195724426000006\t\t2026-04-15 11:11:00\n[e148 link] 000119312526152873\t\t2026-04-13 16:11:48\n[e149 link] 000211064326000008\t\t2026-04-09 18:55:25\n[e150 link] 000188636726000010\t\t2026-04-09 18:53:37\n[e151 link] 000199280826000012\t\t2026-04-09 18:52:47\n[e152 link] 000205830926000008\t\t2026-04-09 18:50:47\n[e153 link] 000211030426000008\t\t2026-04-09 18:48:45\n[e154 link] 000135445726000333\t\t2026-04-07 17:03:59\n[e155 link] 000010416926000075\t\t2026-04-02 18:10:09\n[e156 link] 000010416926000074\t\t2026-04-02 18:09:07\n[e157 link] 000118342826000004\t\t2026-04-02 18:06:29\n[e158 link] 000162858826000004\t\t2026-04-02 18:05:32\n[e159 link] 000203383426000008\t\t2026-04-02 18:01:46\n[e160 link] 000155060826000007\t\t2026-04-02 18:00:50\n[e161 link] 000170735126000009\t\t2026-04-02 17:59:38\n[e162 link] 000157065826000004\t\t2026-04-02 17:58:48\n[e163 link] 000010416926000072\t\t2026-04-02 17:58:00\n[e164 link] 000155032226000004\t\t2026-04-02 17:55:47\n[e165 link] 000161617226000004\t\t2026-04-02 17:54:52\n[e166 link] 000133578226000012\t\t2026-03-27 18:16:14\n[e167 link] 000010416926000067\t\t2026-03-27 16:10:53\n[e168 link] 000010290926002689\t\t2026-03-27 14:17:49\n[e169 link] 000010416926000065\t\t2026-03-26 17:26:38\n[e170 link] 000010416926000063\t\t2026-03-26 16:15:25\n[e171 link] 000169673726000012\t\t2026-03-20 17:16:52\n[e172 link] 000194984626000183\t\t2026-03-19 10:21:38\n[e173 link] 000010416926000061\t\t2026-03-17 18:58:20\n[e174 link] 000010416926000059\t\t2026-03-17 18:57:16\n[e175 link] 000195824426000154\t\t2026-03-17 17:31:43\n[e176 link] 000157929926000012\t\t2026-03-17 17:02:07\n[e177 link] 000195724426000005\t\t2026-03-16 17:41:41\n[e178 link] 000010416926000057\t\t2026-03-13 16:10:19\n[e179 link] 000010416926000056\t\t2026-03-13 16:07:53\n[e180 link] 000010416926000055\t\t2026-03-13 16:06:24\n[e181 link] 000211064326000006\t\t2026-03-11 19:24:25\n[e182 link] 000205830926000006\t\t2026-03-11 19:23:27\n[e183 link] 000159810826000008\t\t2026-03-11 19:22:26\n[e184 link] 000157929926000010\t\t2026-03-11 19:21:28\n[e185 link] 000206450226000002\t\t2026-03-11 19:20:35\n[e186 link] 000178119826000006\t\t2026-03-11 19:19:44\n[e187 link] 000188636726000008\t\t2026-03-11 19:18:44\n[e188 link] 000199280826000010\t\t2026-03-11 19:16:51\n[e189 link] 000211030426000006\t\t2026-03-11 19:15:56\n[e190 link] 000154743326000008\t\t2026-03-11 19:14:40\n[e191 link] 000169673726000010\t\t2026-03-11 19:13:49\n[e192 link] 000133578226000010\t\t2026-03-11 19:12:32\n[e193 link] 000010416926000043\t\t2026-03-11 18:38:44\n[e194 link] 000010416926000041\t\t2026-03-06 18:06:33\n[e195 link] 000195824426000121\t\t2026-03-06 16:24:48\n[e196 link] 000195824426000120\t\t2026-03-06 16:24:32\n[e197 link] 000195824426000116\t\t2026-03-05 16:16:51\n[e198 link] 000010416926000039\t\t2026-03-04 18:17:55\n[chunk 1/24; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_014peFqyT8CbAkiutBAMmrHz",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_014peFqyT8CbAkiutBAMmrHz",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/ | TITLE: Directory List of /Archives/edgar/data/104169/000010416926000145 | chunk 1/1\n\n[e1 link] Search Options\n[e2 link] Skip to Main Content\n[e3 link]\nABOUT\n[e4 link]\nDIVISIONS\n[e5 link]\nENFORCEMENT\n[e6 link]\nREGULATION\n[e7 link]\nEDUCATION\n[e8 link]\nFILINGS\n[e9 link]\nNEWS\nDirectory Listing /Archives/edgar/data/104169/000010416926000145\n[e10 link] Parent Directory\nNAME\tSIZE\tLAST MODIFIED\n[e11 link] 0000104169-26-000145-index-headers.html\t\t2026-08-20 06:59:01\n[e12 link] 0000104169-26-000145-index.html\t\t2026-08-20 06:59:01\n[e13 link] 0000104169-26-000145.txt\t\t2026-08-20 06:59:01\n[e14 link] 0000104169-26-000145-xbrl.zip\t85326\t2026-08-20 06:59:01\n[e15 link] earningspresentationfy27.htm\t70797\t2026-08-20 06:59:01\n[e16 link] earningspresentationfy27001.jpg\t123153\t2026-08-20 06:59:01\n[e17 link] earningspresentationfy27002.jpg\t182591\t2026-08-20 06:59:01\n[e18 link] earningspresentationfy27003.jpg\t125463\t2026-08-20 06:59:01\n[e19 link] earningspresentationfy27004.jpg\t124755\t2026-08-20 06:59:01\n[e20 link] earningspresentationfy27005.jpg\t117471\t2026-08-20 06:59:01\n[e21 link] earningspresentationfy27006.jpg\t98443\t2026-08-20 06:59:01\n[e22 link] earningspresentationfy27007.jpg\t70564\t2026-08-20 06:59:01\n[e23 link] earningspresentationfy27008.jpg\t84516\t2026-08-20 06:59:01\n[e24 link] earningspresentationfy27009.jpg\t124147\t2026-08-20 06:59:01\n[e25 link] earningspresentationfy27010.jpg\t77024\t2026-08-20 06:59:01\n[e26 link] earningspresentationfy27011.jpg\t129534\t2026-08-20 06:59:01\n[e27 link] earningspresentationfy27012.jpg\t119040\t2026-08-20 06:59:01\n[e28 link] earningspresentationfy27013.jpg\t131105\t2026-08-20 06:59:01\n[e29 link] earningspresentationfy27014.jpg\t104449\t2026-08-20 06:59:01\n[e30 link] earningspresentationfy27015.jpg\t143746\t2026-08-20 06:59:01\n[e31 link] earningspresentationfy27016.jpg\t142575\t2026-08-20 06:59:01\n[e32 link] earningspresentationfy27017.jpg\t137497\t2026-08-20 06:59:01\n[e33 link] earningspresentationfy27018.jpg\t142267\t2026-08-20 06:59:01\n[e34 link] earningspresentationfy27019.jpg\t97452\t2026-08-20 06:59:01\n[e35 link] earningspresentationfy27020.jpg\t122195\t2026-08-20 06:59:01\n[e36 link] earningspresentationfy27021.jpg\t156734\t2026-08-20 06:59:01\n[e37 link] earningspresentationfy27022.jpg\t127039\t2026-08-20 06:59:01\n[e38 link] earningspresentationfy27023.jpg\t296462\t2026-08-20 06:59:01\n[e39 link] earningspresentationfy27024.jpg\t168841\t2026-08-20 06:59:01\n[e40 link] earningspresentationfy27025.jpg\t113916\t2026-08-20 06:59:01\n[e41 link] earningspresentationfy27026.jpg\t109511\t2026-08-20 06:59:01\n[e42 link] earningspresentationfy27027.jpg\t167389\t2026-08-20 06:59:01\n[e43 link] earningspresentationfy27028.jpg\t133752\t2026-08-20 06:59:01\n[e44 link] earningspresentationfy27029.jpg\t142480\t2026-08-20 06:59:01\n[e45 link] earningspresentationfy27030.jpg\t116714\t2026-08-20 06:59:01\n[e46 link] earningspresentationfy27031.jpg\t196350\t2026-08-20 06:59:01\n[e47 link] earningspresentationfy27032.jpg\t195849\t2026-08-20 06:59:01\n[e48 link] earningspresentationfy27033.jpg\t76757\t2026-08-20 06:59:01\n[e49 link] earningspresentationfy27034.jpg\t181034\t2026-08-20 06:59:01\n[e50 link] earningspresentationfy27035.jpg\t106799\t2026-08-20 06:59:01\n[e51 link] earningspresentationfy27036.jpg\t110223\t2026-08-20 06:59:01\n[e52 link] earningspresentationfy27037.jpg\t228893\t2026-08-20 06:59:01\n[e53 link] earningsreleasefy27q2.htm\t781446\t2026-08-20 06:59:01\n[e54 link] electricbikesfordeliverya.jpg\t1268056\t2026-08-20 06:59:01\n[e55 link] FilingSummary.xml\t1830\t2026-08-20 06:59:01\n[e56 link] imagea.jpg\t45784\t2026-08-20 06:59:01\n[e57 link] MetaLinks.json\t27198\t2026-08-20 06:59:01\n[e58 link] R1.htm\t58710\t2026-08-20 06:59:01\n[e59 link] report.css\t2767\t2026-08-20 06:59:01\n[e60 link] screenshot2026-08x10182353a.jpg\t2902158\t2026-08-20 06:59:01\n[e61 link] Show.js\t1085\t2026-08-20 06:59:01\n[e62 link] sparka.jpg\t2665\t2026-08-20 06:59:01\n[e63 link] wmt-20260820.htm\t36772\t2026-08-20 06:59:01\n[e64 link] wmt-20260820.xsd\t4560\t2026-08-20 06:59:01\n[e65 link] wmt-20260820_def.xml\t20547\t2026-08-20 06:59:01\n[e66 link] wmt-20260820_g1.jpg\t19205\t2026-08-20 06:59:01\n[e67 link] wmt-20260820_htm.xml\t9106\t2026-08-20 06:59:01\n[e68 link] wmt-20260820_lab.xml\t38617\t2026-08-20 06:59:01\n[e69 link] wmt-20260820_pre.xml\t21316\t2026-08-20 06:59:01\n[e70 link] wmt-sparkxsparkyellowxrgb0a.gif\t35405\t2026-08-20 06:59:01\n[e71 link] wmtus_freshxstore5477-019xa.jpg\t5065804\t2026-08-20 06:59:01\n[e72 link] Site Map | [e73 link] Accessibility | [e74 link] Contracts | [e75 link] Privacy | [e76 link] Inspector General | [e77 link] Careers | [e78 link] Contact\n[e79 link] FOIA | [e80 link] No FEAR Act & EEO Data | [e81 link] Open Government | [e82 link] Plain Writing | [e83 link] Links | [e84 link] Investor.gov | [e85 link] USA.gov"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01MTFM3gMUgsiXQuQ2NB6MNM",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01MTFM3gMUgsiXQuQ2NB6MNM",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | TITLE: Document | chunk 1/5\n\nEX-99.1 2 earningsreleasefy27q2.htm EX-99.1\n\n\tWalmart reports\nsecond quarter results\n\n\u2022Revenue growth of 5.9%, up 5.1% in constant currency (cc)1\n\u2022Operating income growth of 28.8%, up 17.4% adjusted (cc)1\n\u2022eCommerce sales up 23% globally\n\u2022GAAP EPS of $0.80; Adjusted EPS1 of $0.81\n\u2022Company issues guidance for Q3; raises outlook for FY27\n\n\t\t\t\t\u201c\n\nBENTONVILLE, Ark., August 20, 2026 \u2013 Walmart Inc. (NASDAQ: WMT) announces second-quarter results with strong growth in revenue, including eCommerce, which grew 23% globally with strength across segments. Walmart U.S. comp sales2 grew 2.6%, led by growth in transactions and includes 80 bps headwind from health & wellness. The Company issues guidance for the third quarter and raises its outlook for the fiscal year. For Q3, net sales are expected to grow 3.0% to 3.75% and adjusted operating income to grow 2.0% to 4.0%. Net sales for FY27 are expected to grow 4.0% to 5.0% and adjusted operating income to grow 7.0% to 8.5%, all in constant currency (\u201ccc\u201d)1. Adjusted EPS1 is expected to be $0.62 to $0.64 for Q3 and $2.80 to $2.87 for FY27.\n\nOur team delivered another good quarter, and we continue to make steady progress on the long-term value drivers of our business. Our multi-year growth in eCommerce is evidence that customers are choosing Walmart because we deliver price, speed, and convenience across a broad assortment. At Walmart, they can have it all.\u201d\nJohn Furner\nPresident and CEO, Walmart\n\n\tSecond Quarter Highlights\n\n\u2022Revenue of $187.9 billion, up 5.9%, or 5.1% (cc)1\n\u2022Global eCommerce sales grew 23%, led by store-fulfilled pickup & delivery and marketplace\n\u2022Global advertising business3 up 38%, with strength across segments. Walmart U.S. advertising up 38%\n\u2022Membership fee revenue grew 17% globally\n\u2022Gross profit rate up 96 bps, led by Walmart U.S., primarily impacted by tariff refund impacts noted below\n\u2022Operating income up $2.1 billion, or 28.8%; up 17.4% adjusted (cc)1; which includes the impact of tariff refunds received, partially offset by price investments in the quarter. Setting aside this net impact, underlying operating income growth was at the top end of our guidance. Our outlook reflects the continued prioritization of remaining tariff refunds into price investments\n\u2022Adjusted EPS1 of $0.81 excludes the impact, net of tax, from a net loss of $0.12 on equity and other investments, and net benefit of $0.11 from a certain tax matter\n\u2022ROA at 8.0%; ROI at 15.4%1\n\u2022Global inventory up 6.7%; up 6.0% (cc)4, due to strategic initiatives and inflation\n\n1 See additional information at the end of this release regarding non-GAAP financial measures.\n2 Comp sales for the 13-week period ended July 31, 2026 compared to the 13-week period ended August 1, 2025 and excludes fuel. See Supplemental Financial Information for additional information.\n3 Our global advertising business is recorded in either net sales or as a reduction to cost of sales, depending on the nature of the advertising arrangement.\n4 Inventory grew 6.7% on a reported basis and grew 6.0% in constant currency, excluding a ~$0.4 billion foreign currency impact.\n\u201ccc\u201d - constant currency\n\nKey Financial Metrics\nDollars in billions, except per share data. Dollar and percentage changes may not\nrecalculate due to rounding. Charts may not be to scale.\n\nBalance Sheet and Liquidity\n\n\u2022Cash and cash equivalents of $11.5 billion\n\n\u2022Total debt of $57.2 billion2\n\n\u2022Operating cash flow of $19.7 billion, an increase of $1.4 billion\n\n\u2022Free cash flow1 of $5.5 billion, a decrease of $1.4 billion\n\n\u2022Repurchased 42.3 million shares YTD, or $5.1 billion3\n\n\u2022Inventory of $61.6 billion, an increase of $3.9 billion, or 6.7%, up 6.0% cc4\n\n1 See additional information at the end of this release regarding non-GAAP financial measures.\n2 Debt includes short-term borrowings, long-term debt and finance lease obligations due within one year, and long-term debt and finance lease obligations.\n3 $25.1 billion remaining of the $30 billion authorization approved in February 2026.\n4 Inventory grew 6.7% on a reported basis and grew 6.0% in constant currency, excluding a ~$0.4 billion foreign currency impact.\n\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0cc - constant currency\n2\n\nBusiness Highlights\nand Strategic Initiatives\nDollars in billions, except as noted. Dollar and percentage changes may not recalculate due to rounding.\n\nWalmart U.S.\tQ2 FY27\tQ2 FY26\tChange\nNet sales\t$125.2\t$120.9\t$4.3\t3.5%\n\nComp sales (ex. fuel)2\n\t2.6%\t4.6%\tNP\tNP\nTransactions\t1.5%\t1.5%\tNP\tNP\nAverage ticket\t1.1%\t3.1%\tNP\tNP\neCommerce contribution to comp\t~510 bps\t~420 bps\tNP\tNP\nOperating income\t$8.1\t$6.7\t$1.4\t20.6%\n\nWalmart U.S.\n\u2022Sales reflected continued strong momentum in eCommerce and broad-based share gains, partially offset by 125 bps headwind to comp sales from pharmacy deflation related to new maximum fair price regulation (effective Jan 1)\n\u2022eCommerce sales increased 24%, with strength in store-fulfilled delivery, advertising, and marketplace\n\u2022Strong advertising growth continued, up 38% overall, including 43% increase in Walmart Connect (ex-VIZIO)\n\u2022Gross profit grew 158 bps due to the benefit associated with tariff refunds and improved business mix; partially offset by price investments and higher fuel costs\n\u2022Membership fee revenue grew double-digits as Walmart+ net adds reflected a record second quarter high\n\u2022Operating expense deleveraged 72 bps due to higher claims expense, depreciation, and associate healthcare costs\n\u2022Operating income up 20.6%, reflects higher gross profit, as noted above, and improved eCommerce economics\n\u2022Inventory increased 6.3% due primarily to strategic initiatives and inflation\n\nWalmart International\tQ2 FY27\tQ2 FY26\tChange\nNet sales\t$35.2\t$31.2\t$4.0\t12.8%\n\nNet sales (cc)1\n\t$33.7\t$31.2\t$2.5\t7.9%\nOperating income\t$1.4\t$1.2\t$0.2\t16.6%\n\nOperating income (cc)1\n\t$1.3\t$1.2\t$0.1\t5.7%\n\nWalmart International\n\u2022Growth in net sales (cc)1 across markets, with momentum in eCommerce and stores\n\u25e6Transaction counts and unit volumes up, contributing to growth across all categories\n\u2022eCommerce sales up 19%, led by store-fulfilled pickup & delivery, with digital mix up across markets\n\u2022Advertising business3 grew 20%, led by Flipkart Ads\n\u2022Operating income growth (cc)1 benefited by lower losses in eCommerce and business mix changes\n\u2022Currency rate fluctuations positively affected sales by $1.5 billion and operating income by $0.1 billion\n\n1 See additional information at the end of this release regarding non-GAAP financial measures.\n2 See Supplemental Financial Information for additional information.\n3 Our global advertising business is recorded in either net sales or as a reduction to cost of sales, depending on the nature of the advertising arrangement.\n\nNP - Not provided\ncc - constant currency\n\n3\n\nSam\u2019s Club U.S.\tQ2 FY27\tQ2 FY26\tChange\nNet sales\t$25.7\t$23.6\t$2.1\t8.8%\nNet sales (ex. fuel)\t$22.1\t$21.2\t$1.0\t4.5%\n\nComp sales (ex. fuel)1\n\t4.4%\t5.9%\tNP\tNP\nTransactions\t7.0%\t3.9%\tNP\tNP\nAverage ticket\t-2.5%\t2.0%\tNP\tNP\neCommerce contribution to comp\t~450 bps\t~350 bps\tNP\tNP\nOperating income\t$0.7\t$0.5\t$0.2\t44.3%\n\nAdjusted operating income2\n\t$0.7\t$0.6\t$0.1\t23.3%\n\nSam\u2019s Club U.S.\n\u2022Comp sales driven by increased transactions and total unit volumes with strength in grocery and general merchandise\n\u2022eCommerce sales up 26% with continued strong growth in club-fulfilled pickup & delivery\n\u2022Membership fee revenue grew 6% driven by steady growth in member counts and Plus penetration\n\u2022Operating income growth reflects the benefit associated with tariff refunds and membership growth\n\u2022Inventory up 8.0%, primarily related to higher fuel costs and volumes, including fuel upstreaming with a strategic partner\n\n1 See Supplemental Financial Information for additional information.\n2 See additional information at the end of this release regarding non-GAAP financial measures.\nNP - Not provided\n\n4\n\n\tGuidance\n\nThe following guidance reflects the Company\u2019s expectations as of August 20, 2026.This guidance is subject to substantial risk and uncertainty that could cause actual results to differ materially from these expectations. These risks and uncertainties include, but are not limited to, the factors set forth below under the heading Forward-looking statements. Additionally, guidance is provided on a non-GAAP basis as the Company cannot predict certain elements that are included in reported GAAP results, such as the changes in fair value of the Company\u2019s equity and other investments. Growth rates reflect an adjusted basis for prior year results.\n\n\u201cOur business model is only getting stronger and more durable, and we\u2019re pleased to raise our guidance for the year. For Q3 sales guidance, we expect a headwind of over 100bps to growth related to a timing shift of Flipkart\u2019s Big Billion Days between Q3 and Q4. Our operating income outlook reflects the continued prioritization of tariff refunds received in Q2 into customer experience and price investments in the second half. For this reason, I encourage you to consider Q2 and Q3 performance together to assess the underlying growth of the business,\u201d said John David Rainey, Walmart Inc. executive vice president and chief financial officer.\n\n\tThird quarter\n\nThe Company\u2019s third quarter fiscal 2027 guidance is based on the following Q3 FY26 figures: Net sales: $177.8 billion, adjusted operating income1: $7.3 billion, and adjusted EPS1: $0.62.\n\n\tConsolidated metric\tQ3 FY27\n\tNet sales (cc)\tIncrease 3.0% to 3.75%\n\tOperating income (cc)\tIncrease 2.0% to 4.0%\n\tAdjusted EPS\t$0.62 to $0.64\n\n\tFiscal year 2027\n\nThe Company\u2019s fiscal year guidance is based on the following FY26 figures: Net sales: $706.4 billion, adjusted operating income1: $31.0 billion, and adjusted EPS1: $2.64.\n\n\tConsolidated metric\tOriginal from 2.19.2026\tAs of 5.21.2026\tAs of 8.20.2026\n\tNet sales (cc)\tIncrease 3.5% to 4.5%\tUnchanged\tIncrease 4.0% to 5.0%\n\n\tAdj. operating income (cc)\tIncrease 6.0% to 8.0%\tUnchanged\tIncrease 7.0% to 8.5%\n\nAdj. Interest, net2\n\tIncrease approximately $200M to $300M\tUnchanged\tUnchanged\n[chunk 1/5; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01FQ1uG36Wwph9KV3dmBHSW3",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "Total Walmart shareholders' equity"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01FQ1uG36Wwph9KV3dmBHSW3",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | find_text \"Total Walmart shareholders' equity\": 0 match(es)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01V26Hr4LoGRj1sMPjkvPPwc",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "shareholders' equity"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01V26Hr4LoGRj1sMPjkvPPwc",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | find_text \"shareholders' equity\": 0 match(es)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_0166hsqfGLL8mEM2aw3xzF4z",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "equity"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0166hsqfGLL8mEM2aw3xzF4z",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | find_text 'equity': 16 match(es)\n(chunk 1) \u2022Operating income up $2.1 billion, or 28.8%; up 17.4% adjusted (cc)1; which includes the impact of tariff refunds received, partially offset by price investments in the quarter. Setting aside this net impact, underlying operating income growth was at the top end of our guidance. Our outlook reflects the continued prioritization of remaining tariff refunds into price investments / \u2022Adjusted EPS1 of\n(chunk 1) The following guidance reflects the Company\u2019s expectations as of August 20, 2026.This guidance is subject to substantial risk and uncertainty that could cause actual results to differ materially from these expectations. These risks and uncertainties include, but are not limited to, the factors set forth below under the heading Forward-looking statements. Additionally, guidance is provided on a non\n(chunk 2) This release and related management commentary contains statements that may be \"forward-looking statements\" as defined in, and are intended to enjoy the protection of the safe harbor for forward-looking statements within the meaning of Section 21E of the Securities Exchange Act of 1934, as amended. Assumptions on which such forward-looking statements are based are also forward-looking statements. \n(chunk 3) LIABILITIES, REDEEMABLE NONCONTROLLING INTEREST, AND SHAREHOLDERS\u2019 EQUITY / Current liabilities:\n(chunk 3) Shareholders\u2019 equity: / Common stock\t\t794\u00a0\t\t\t797\u00a0\t\t\t797\n(chunk 3) Accumulated other comprehensive loss\t\t(13,203)\t\t\t(12,770)\t\t\t(12,733) / Total Walmart shareholders\u2019 equity\t\t98,238\u00a0\t\t\t99,617\u00a0\t\t\t90,110 / Nonredeemable noncontrolling interest\t\t6,268\u00a0\t\t\t6,270\u00a0\t\t\t6,440\n(chunk 3) Nonredeemable noncontrolling interest\t\t6,268\u00a0\t\t\t6,270\u00a0\t\t\t6,440 / Total shareholders\u2019 equity\t\t104,506\u00a0\t\t\t105,887\u00a0\t\t\t96,550 / Total liabilities, redeemable noncontrolling interest, and shareholders\u2019 equity\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\n(chunk 3) Total shareholders\u2019 equity\t\t104,506\u00a0\t\t\t105,887\u00a0\t\t\t96,550 / Total liabilities, redeemable noncontrolling interest, and shareholders\u2019 equity\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\n(chunk 5) Adjusted diluted earnings per share attributable to Walmart (adjusted EPS) is considered a non-GAAP financial measure under the SEC\u2019s rules because it excludes certain amounts included in the diluted earnings per share attributable to Walmart calculated in accordance with GAAP (EPS), the most directly comparable financial measure calculated in accordance with GAAP. Management believes that adjuste\n(chunk 5) We have calculated adjusted EPS for the three and six months ended July\u00a031, 2026 by adjusting EPS for the following: / 1.unrealized and realized gains and losses on our equity and other investments; and / 2.certain tax matter related to changes in unrecognized tax benefits.\n(chunk 5) NCI Impact\t\tNet Impact / Unrealized and realized (gains) and losses on equity and other investments\t\t$0.15\t\t$(0.03)\t\t$\u2014\t\t$0.12\n(chunk 5) NCI Impact\t\tNet Impact / Unrealized and realized (gains) and losses on equity and other investments\t\t$0.12\t\t$(0.02)\t\t$\u2014\t\t$0.10\n(chunk 5) As previously disclosed in our second quarter ended July 31, 2025 press release, we have calculated adjusted EPS for the three and six months ended July 31, 2025 for the following: / 1.unrealized and realized gains and losses on our equity and other investments; / 2.charges related to certain legal matters which were outside the normal course of our operations and recorded in Corporate and support\n(chunk 5) Unrealized and realized (gains) and losses on equity and other investments\t\t$(0.33)\t\t$0.07\t\t$\u2014\t\t$(0.26) / Certain legal matters\t\t0.06\t\t(0.01)\t\t\u2014\t\t0.05\n(chunk 5) Unrealized and realized (gains) and losses on equity and other investments\t\t$(0.26)\t\t$0.06\t\t$\u2014\t\t$(0.20) / Certain legal matters\t\t0.06\t\t(0.01)\t\t\u2014\t\t0.05\n(chunk 5) Our calculation of ROI is considered a non-GAAP financial measure because it uses financial measures that differ from those used in ROA, the most directly comparable GAAP financial measure. ROA is consolidated net income for the period divided by average total assets for the period. We define ROI as operating income plus interest income, depreciation and amortization, and rent expense for the trai"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01P7agNe1hzKBpmzfKaUhdTn",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "July 31, 2026"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01P7agNe1hzKBpmzfKaUhdTn",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | find_text 'July 31, 2026': 10 match(es)\n(chunk 1) 1 See additional information at the end of this release regarding non-GAAP financial measures. / 2 Comp sales for the 13-week period ended July 31, 2026 compared to the 13-week period ended August 1, 2025 and excludes fuel. See Supplemental Financial Information for additional information. / 3 Our global advertising business is recorded in either net sales or as a reduction to cost of sales, depen\n(chunk 4) Throughout our discussion, we refer to the results of this calculation as the impact of currency exchange rate fluctuations. When we refer to constant currency operating results, this means operating results without the impact of the currency exchange rate fluctuations. The disclosure of constant currency amounts or results permits investors to better understand Walmart\u2019s underlying performance wi\n(chunk 4) Three Months Ended July 31, 2026\t\tSix Months Ended July 31, 2026 / Walmart International\t\tConsolidated\t\tWalmart International\t\tConsolidated\n(chunk 4) Adjusted operating income is considered a non-GAAP financial measure under the SEC\u2019s rules because it excludes certain charges included in operating income calculated in accordance with GAAP. Management believes that adjusted operating income is a meaningful measure to share with investors because it best allows comparison of the performance with that of the comparable period. In addition, adjuste\n(chunk 4) 1 Represents charges to certain legal matters which were outside the normal course of our operations and recorded in Corporate and support. / 2 Business reorganization charges in the Walmart U.S. segment and Corporate and support relate to strategic efforts to align our global platforms for the six months ended July 31, 2026. Business reorganization charges for the three and six months ended July \n(chunk 5) Three Months Ended July 31, 20261\n(chunk 5) Six Months Ended July 31, 20261\n(chunk 5) 1 Quarterly adjustments or adjusted EPS may not sum to YTD adjustments or YTD adjusted EPS due to rounding. Additionally, the individual components in the tables above may include immaterial rounding. / 2 The reported effective tax rate was 18.5% and 20.7% for the three and six months ended July 31, 2026, respectively. Adjusted for the above items, the effective tax rate was 24.8% and 23.9% for th\n(chunk 5) 2 The reported effective tax rate was 18.5% and 20.7% for the three and six months ended July 31, 2026, respectively. Adjusted for the above items, the effective tax rate was 24.8% and 23.9% for the three and six months ended July 31, 2026. / 3 Impact includes benefit recorded in provision for income taxes as well as interest, net. For the quarter ended July 31, 2026, interest, net was $0.2 billio\n(chunk 5) Our calculation of ROI is considered a non-GAAP financial measure because it uses financial measures that differ from those used in ROA, the most directly comparable GAAP financial measure. ROA is consolidated net income for the period divided by average total assets for the period. We define ROI as operating income plus interest income, depreciation and amortization, and rent expense for the trai"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_015WoAQp8EiYZJ8jnqSRYyfu",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "page": 3
+    },
+    "name": "read_page",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_015WoAQp8EiYZJ8jnqSRYyfu",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | TITLE: Document | chunk 3/5\n\nConsolidated net income attributable to noncontrolling interest\t\t(163)\t\t\t(125)\t\t\t30.4\t%\t\t(323)\t\t\t(277)\t\t\t16.6\t%\nConsolidated net income attributable to Walmart\t\t$\t6,366\u00a0\t\t\t$\t7,026\u00a0\t\t\t(9.4\t%)\t\t$\t11,696\u00a0\t\t\t$\t11,513\u00a0\t\t\t1.6\t%\n\nNet income per common share:\nBasic net income per common share attributable to Walmart\t\t$\t0.80\u00a0\t\t\t$\t0.88\u00a0\t\t\t(9.1\t%)\t\t$\t1.47\u00a0\t\t\t$\t1.44\u00a0\t\t\t2.1\t%\nDiluted net income per common share attributable to Walmart\t\t0.80\u00a0\t\t\t0.88\u00a0\t\t\t(9.1\t%)\t\t1.46\u00a0\t\t\t1.43\u00a0\t\t\t2.1\t%\n\nWeighted-average common shares outstanding:\nBasic\t\t7,954\u00a0\t\t\t7,978\u00a0\t\t\t\t\t7,962\u00a0\t\t\t7,994\nDiluted\t\t7,978\u00a0\t\t\t8,016\u00a0\t\t\t\t\t7,989\u00a0\t\t\t8,033\n\nDividends declared per common share\t\t$\t\u2014\u00a0\t\t\t$\t\u2014\u00a0\t\t\t\t\t$\t0.99\u00a0\t\t\t$\t0.94\n\nNM: Not Meaningful\n8\n\nWalmart Inc.\nCondensed Consolidated Balance Sheets\n(Unaudited)\n\n\t\tJuly 31,\t\tJanuary 31,\t\tJuly 31,\n(Amounts in millions)\t\t2026\t\t2026\t\t2025\nASSETS\nCurrent assets:\nCash and cash equivalents\t\t$\t11,529\u00a0\t\t\t$\t10,727\u00a0\t\t\t$\t9,431\nReceivables, net\t\t11,075\u00a0\t\t\t11,172\u00a0\t\t\t10,518\nInventories\t\t61,600\u00a0\t\t\t58,851\u00a0\t\t\t57,729\nPrepaid expenses and other\t\t4,499\u00a0\t\t\t4,124\u00a0\t\t\t4,355\n\nTotal current assets\t\t88,703\u00a0\t\t\t84,874\u00a0\t\t\t82,033\n\nProperty and equipment, net\t\t142,482\u00a0\t\t\t136,083\u00a0\t\t\t125,476\nOperating lease right-of-use assets\t\t15,650\u00a0\t\t\t14,750\u00a0\t\t\t13,953\nFinance lease right-of-use assets, net\t\t6,178\u00a0\t\t\t6,123\u00a0\t\t\t6,128\nGoodwill\t\t28,260\u00a0\t\t\t28,735\u00a0\t\t\t29,060\nOther long-term assets\t\t12,641\u00a0\t\t\t14,103\u00a0\t\t\t14,187\nTotal assets\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\n\nLIABILITIES, REDEEMABLE NONCONTROLLING INTEREST, AND SHAREHOLDERS\u2019 EQUITY\nCurrent liabilities:\nShort-term borrowings\t\t$\t10,479\u00a0\t\t\t$\t6,596\u00a0\t\t\t$\t3,837\nAccounts payable\t\t64,318\u00a0\t\t\t63,061\u00a0\t\t\t60,086\nDividends payable\t\t3,949\u00a0\t\t\t\u2014\u00a0\t\t\t3,783\nAccrued liabilities\t\t30,074\u00a0\t\t\t31,187\u00a0\t\t\t28,821\nAccrued income taxes\t\t746\u00a0\t\t\t596\u00a0\t\t\t620\nLong-term debt due within one year\t\t3,470\u00a0\t\t\t3,542\u00a0\t\t\t4,011\nOperating lease obligations due within one year\t\t1,714\u00a0\t\t\t1,631\u00a0\t\t\t1,580\nFinance lease obligations due within one year\t\t880\u00a0\t\t\t856\u00a0\t\t\t828\n\nTotal current liabilities\t\t115,630\u00a0\t\t\t107,469\u00a0\t\t\t103,566\n\nLong-term debt\t\t36,462\u00a0\t\t\t34,624\u00a0\t\t\t35,640\nLong-term operating lease obligations\t\t14,798\u00a0\t\t\t13,941\u00a0\t\t\t13,171\nLong-term finance lease obligations\t\t5,952\u00a0\t\t\t5,905\u00a0\t\t\t5,947\nDeferred income taxes and other\t\t16,273\u00a0\t\t\t16,549\u00a0\t\t\t15,656\n\nCommitments and contingencies\n\nRedeemable noncontrolling interest\t\t293\u00a0\t\t\t293\u00a0\t\t\t307\n\nShareholders\u2019 equity:\nCommon stock\t\t794\u00a0\t\t\t797\u00a0\t\t\t797\nCapital in excess of par value\t\t7,046\u00a0\t\t\t6,816\u00a0\t\t\t5,718\nRetained earnings\t\t103,601\u00a0\t\t\t104,774\u00a0\t\t\t96,328\nAccumulated other comprehensive loss\t\t(13,203)\t\t\t(12,770)\t\t\t(12,733)\nTotal Walmart shareholders\u2019 equity\t\t98,238\u00a0\t\t\t99,617\u00a0\t\t\t90,110\nNonredeemable noncontrolling interest\t\t6,268\u00a0\t\t\t6,270\u00a0\t\t\t6,440\nTotal shareholders\u2019 equity\t\t104,506\u00a0\t\t\t105,887\u00a0\t\t\t96,550\nTotal liabilities, redeemable noncontrolling interest, and shareholders\u2019 equity\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\n\n9\n\nWalmart Inc.\nCondensed Consolidated Statements of Cash Flows\n(Unaudited)\n\n\t\tSix Months Ended\n\t\tJuly 31,\n(Amounts in millions)\t\t2026\t\t2025\nCash flows from operating activities:\nConsolidated net income\t\t$\t12,019\u00a0\t\t\t$\t11,790\n\nAdjustments to reconcile consolidated net income to net cash provided by operating activities:\nDepreciation and amortization\t\t7,746\u00a0\t\t\t6,856\nInvestment (gains) and losses, net\t\t947\u00a0\t\t\t(2,066)\n\nDeferred income taxes\t\t845\u00a0\t\t\t1,551\n\nOther operating activities\t\t816\u00a0\t\t\t1,370\nChanges in certain assets and liabilities, net of effects of acquisitions and dispositions:\nReceivables, net\t\t9\u00a0\t\t\t(405)\nInventories\t\t(2,660)\t\t\t(659)\nAccounts payable\t\t1,648\u00a0\t\t\t1,302\nAccrued liabilities\t\t(1,449)\t\t\t(1,453)\nAccrued income taxes\t\t(211)\t\t\t66\nNet cash provided by operating activities\t\t19,710\u00a0\t\t\t18,352\n\nCash flows from investing activities:\nPayments for property and equipment\t\t(14,181)\t\t\t(11,409)\nProceeds from the disposal of property and equipment\t\t124\u00a0\t\t\t41\n\nProceeds from disposal of certain strategic investments\t\t42\u00a0\t\t\t775\n\nOther investing activities\t\t(249)\t\t\t(606)\nNet cash used in investing activities\t\t(14,264)\t\t\t(11,199)\n\nCash flows from financing activities:\nNet change in short-term borrowings\t\t3,923\u00a0\t\t\t759\nProceeds from issuance of long-term debt\t\t4,230\u00a0\t\t\t3,983\nRepayments of long-term debt\t\t(2,303)\t\t\t(875)\n\nDividends paid\t\t(3,945)\t\t\t(3,755)\nPurchase of Company stock\t\t(5,104)\t\t\t(6,200)\n\nOther financing activities\t\t(1,643)\t\t\t(905)\nNet cash used in financing activities\t\t(4,842)\t\t\t(6,993)\n\nEffect of exchange rates on cash, cash equivalents and restricted cash\t\t67\u00a0\t\t\t181\n\nNet increase in cash, cash equivalents and restricted cash\t\t671\u00a0\t\t\t341\n\nCash, cash equivalents and restricted cash at beginning of year\t\t11,321\u00a0\t\t\t9,536\nCash, cash equivalents and restricted cash at end of period\t\t$\t11,992\u00a0\t\t\t$\t9,877\n\n10\n\nWalmart Inc.\nSupplemental Financial Information\n(Unaudited)\n\nSegment information\n\tThree Months Ended\t\tSix Months Ended\nJuly 31,\t\tJuly 31,\n(dollars in millions)\t2026\t2025\t\t\t2026\t2025\nWalmart U.S.\t$\n% of Net Sales1\n\t$\n% of Net Sales1\n\t% Chg\t\t$\n% of Net Sales1\n\t$\n% of Net Sales1\n\t% Chg\nNet sales\t$\t125,189\u00a0\t\tNP\t$\t120,911\u00a0\t\tNP\t3.5\t%\t\t$\t242,358\u00a0\t\tNP\t$\t233,074\u00a0\t\tNP\t4.0\t%\n\nMembership and other income2\n\t750\u00a0\t\tNP\t649\u00a0\t\tNP\t15.6\t%\t\t1,676\u00a0\t\tNP\t1,285\u00a0\t\tNP\t30.4\t%\n\nGross profit3\n\t36,838\u00a0\t\t29.4\t%\t33,674\u00a0\t\t27.9\t%\t9.4\t%\t\t69,367\u00a0\t\t28.6\t%\t64,485\u00a0\t\t27.7\t%\t7.6\t%\n\nOperating expenses3\n\t29,468\u00a0\t\t23.5\t%\t27,591\u00a0\t\t22.8\t%\t6.8\t%\t\t57,026\u00a0\t\t23.5\t%\t53,342\u00a0\t\t22.9\t%\t6.9\t%\nOperating income\t8,120\u00a0\t\t6.5\t%\t$\t6,732\u00a0\t\t5.6%\t20.6\t%\t\t$\t14,017\u00a0\t\t5.8\t%\t$\t12,428\u00a0\t\t5.3\t%\t12.8\t%\n\nAdjusted operating income4\n\t8,120\u00a0\t\t6.5\t%\t$\t6,732\u00a0\t\t5.6%\t20.6\t%\t\t$\t14,143\u00a0\t\t5.8\t%\t$\t12,428\u00a0\t\t5.3\t%\t13.8\t%\n\nWalmart International\nNet sales\t$\t35,198\u00a0\t\tNP\t$\t31,201\u00a0\t\tNP\t12.8\t%\t\t$\t70,308\u00a0\t\tNP\t$\t60,955\u00a0\t\tNP\t15.3\t%\n\nMembership and other income2\n\t426\u00a0\t\tNP\t381\u00a0\t\tNP\t11.8\t%\t\t851\u00a0\t\tNP\t760\u00a0\t\tNP\t12.0\t%\n\nGross profit3\n\t7,539\u00a0\t\t21.4\t%\t6,729\u00a0\t\t21.6\t%\t12.0\t%\t\t14,962\u00a0\t\t21.3\t%\t13,019\u00a0\t\t21.4\t%\t14.9\t%\n\nOperating expenses3\n\t6,526\u00a0\t\t18.5\t%\t5,876\u00a0\t\t18.8\t%\t11.1\t%\t\t12,772\u00a0\t\t18.2\t%\t11,252\u00a0\t\t18.5\t%\t13.5\t%\nOperating income\t$\t1,439\u00a0\t\t4.1\t%\t$\t1,234\u00a0\t\t4.0\t%\t16.6\t%\t\t$\t3,041\u00a0\t\t4.3\t%\t$\t2,527\u00a0\t\t4.1\t%\t20.3\t%\n\nOperating income (cc)4\n\t1,304\u00a0\t\tNP\t$\t1,234\u00a0\t\tNP\t5.7\t%\t\t$\t2,729\u00a0\t\tNP\t$\t2,527\u00a0\t\tNP\t8.0\t%\n\nSam\u2019s Club U.S.\nNet sales\t$\t25,713\u00a0\t\tNP\t$\t23,638\u00a0\t\tNP\t8.8\t%\t\t$\t49,118\u00a0\t\tNP\t$\t45,702\u00a0\t\tNP\t7.5\t%\n\nMembership and other income2\n\t654\u00a0\t\tNP\t617\u00a0\t\tNP\t6.0\t%\t\t1,328\u00a0\t\tNP\t1,224\u00a0\t\tNP\t8.5\t%\n\nGross profit3\n\t2,919\u00a0\t\t11.4\t%\t2,576\u00a0\t\t10.9\t%\t13.3\t%\t\t5,593\u00a0\t\t11.4\t%\t5,153\u00a0\t\t11.3\t%\t8.5\t%\n\nOperating expenses3\n\t2,895\u00a0\t\t11.3\t%\t2,723\u00a0\t\t11.5\t%\t6.3\t%\t\t5,569\u00a0\t\t11.3\t%\t5,241\u00a0\t\t11.5\t%\t6.3\t%\nOperating income\t$\t678\u00a0\t\t2.6\t%\t$\t470\u00a0\t\t2.0\t%\t44.3\t%\t\t$\t1,352\u00a0\t\t2.8\t%\t$\t1,136\u00a0\t\t2.5\t%\t19.0\t%\n\nAdjusted operating income4\n\t$\t678\u00a0\t\t2.6\t%\t$\t550\u00a0\t\t2.3\t%\t23.3\t%\t\t$\t1,352\u00a0\t\t2.8\t%\t$\t1,216\u00a0\t\t2.7\t%\t11.2\t%\n\nCorporate and support\n\nMembership and other income2\n\t$\t7\u00a0\t\tNP\t$\t5\u00a0\t\tNP\t40.0\t%\t\t$\t49\u00a0\t\tNP\t$\t11\u00a0\t\tNP\t345.5\t%\n\nOperating expenses3\n\t861\u00a0\t\t0.5\t%\t1,155\u00a0\t\t0.7\t%\t(25.5\t%)\t\t1,583\u00a0\t\t0.4\t%\t1,681\u00a0\t\t0.5\t%\t(5.8\t%)\nOperating loss\t$\t(854)\t\t(0.5\t%)\t$\t(1,150)\t\t(0.7\t%)\t(25.7\t%)\t\t$\t(1,534)\t\t(0.4\t%)\t$\t(1,670)\t\t(0.5\t%)\t(8.1\t%)\n\nConsolidated\nNet sales\t$\t186,100\u00a0\t\tNP\t$\t175,750\u00a0\t\tNP\t5.9\t%\t\t$\t361,784\u00a0\t\tNP\t$\t339,731\u00a0\t\tNP\t6.5\t%\n\nMembership and other income2\n\t1,837\u00a0\t\tNP\t1,652\u00a0\t\tNP\t11.2\t%\t\t3,904\u00a0\t\tNP\t3,280\u00a0\t\tNP\t19.0\t%\n\nGross profit3\n\t47,296\u00a0\t\t25.4\t%\t42,979\u00a0\t\t24.5\t%\t10.0\t%\t\t89,922\u00a0\t\t24.9\t%\t82,657\u00a0\t\t24.3\t%\t8.8\t%\n\nOperating expenses3\n\t39,750\u00a0\t\t21.4\t%\t37,345\u00a0\t\t21.2\t%\t6.4\t%\t\t76,950\u00a0\t\t21.3\t%\t71,516\u00a0\t\t21.1\t%\t7.6\t%\nOperating income\t$\t9,383\u00a0\t\t5.0\t%\t$\t7,286\u00a0\t\t4.1\t%\t28.8\t%\t\t$\t16,876\u00a0\t\t4.7\t%\t$\t14,421\u00a0\t\t4.2\t%\t17.0\t%\n\nAdjusted operating income (cc)4\n\t$\t9,248\u00a0\t\tNP\t$\t7,876\u00a0\t\tNP\t17.4\t%\t\t$\t16,745\u00a0\t\tNP\t$\t15,011\u00a0\t\tNP\t11.6\t%\n\n1 Corporate and support shown as percentage of consolidated net sales.\n2 Membership and other income includes membership fees and other items such as rental and tenant income, recycling income, gift card breakage income, as well as other income from corporate campus facilities and miscellaneous items.\n3 Gross profit defined as net sales less cost of sales. Operating expenses refers to operating, selling, general and administrative expenses.\n4 See additional information at the end of the release regarding non-GAAP financial measures.\nNP - Not provided\n11\n\nU.S. comparable sales results\n\n\t\tWith Fuel\t\tWithout Fuel\t\tFuel Impact\n\t\t13 Weeks Ended\t\t13 Weeks Ended\t\t13 Weeks Ended\t\t13 Weeks Ended\t\t13 Weeks Ended\t\t13 Weeks Ended\n\t\t7/31/2026\t\t8/1/2025\t\t7/31/2026\t\t8/1/2025\t\t7/31/2026\t\t8/1/2025\nWalmart U.S.\t\t3.1%\t\t4.5%\t\t2.6%\t\t4.6%\t\t0.5%\t\t(0.1%)\nSam\u2019s Club U.S.\t\t8.5%\t\t3.3%\t\t4.4%\t\t5.9%\t\t4.1%\t\t(2.6%)\n\nComparable sales is a metric that indicates the performance of our existing stores and clubs by measuring the change in sales for such stores and clubs, and it is important to review in conjunction with the company\u2019s financial results reported in accordance with GAAP.\u00a0Walmart's definition of comparable sales includes sales from stores and clubs open for the previous 12 months, including remodels, relocations, expansions and conversions, as well as eCommerce sales. Comparable sales excluding fuel is also an important, separate metric that indicates the performance of our existing stores and clubs without considering fuel, which is volatile and unpredictable. Other companies in our industry may calculate comparable sales differently, limiting the comparability of the metric.\n\n12\n\nWalmart Inc.\nReconciliations of and Other Information Regarding Non-GAAP Financial Measures\n(Unaudited)\n\n[chunk 3/5; call read_page(page=4) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_013BtU6QSDb1PXEaW5Qy9gwA",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000146/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_013BtU6QSDb1PXEaW5Qy9gwA",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000146/ | TITLE: Directory List of /Archives/edgar/data/104169/000010416926000146 | chunk 1/1\n\n[e1 link] Search Options\n[e2 link] Skip to Main Content\n[e3 link]\nABOUT\n[e4 link]\nDIVISIONS\n[e5 link]\nENFORCEMENT\n[e6 link]\nREGULATION\n[e7 link]\nEDUCATION\n[e8 link]\nFILINGS\n[e9 link]\nNEWS\nDirectory Listing /Archives/edgar/data/104169/000010416926000146\n[e10 link] Parent Directory\nNAME\tSIZE\tLAST MODIFIED\n[e11 link] 0000104169-26-000146-index-headers.html\t\t2026-08-27 16:53:33\n[e12 link] 0000104169-26-000146-index.html\t\t2026-08-27 16:53:33\n[e13 link] 0000104169-26-000146.txt\t\t2026-08-27 16:53:33\n[e14 link] wk-form4_1787864011.xml\t4996\t2026-08-27 16:53:33\n[e15 link] Site Map | [e16 link] Accessibility | [e17 link] Contracts | [e18 link] Privacy | [e19 link] Inspector General | [e20 link] Careers | [e21 link] Contact\n[e22 link] FOIA | [e23 link] No FEAR Act & EEO Data | [e24 link] Open Government | [e25 link] Plain Writing | [e26 link] Links | [e27 link] Investor.gov | [e28 link] USA.gov"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01XhCjJgA17tx13y7MP85g7T",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01XhCjJgA17tx13y7MP85g7T",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/ | TITLE: Directory List of /Archives/edgar/data/104169/000010416926000154 | chunk 1/1\n\n[e1 link] Search Options\n[e2 link] Skip to Main Content\n[e3 link]\nABOUT\n[e4 link]\nDIVISIONS\n[e5 link]\nENFORCEMENT\n[e6 link]\nREGULATION\n[e7 link]\nEDUCATION\n[e8 link]\nFILINGS\n[e9 link]\nNEWS\nDirectory Listing /Archives/edgar/data/104169/000010416926000154\n[e10 link] Parent Directory\nNAME\tSIZE\tLAST MODIFIED\n[e11 link] 0000104169-26-000154-index-headers.html\t\t2026-08-28 16:11:28\n[e12 link] 0000104169-26-000154-index.html\t\t2026-08-28 16:11:28\n[e13 link] 0000104169-26-000154.txt\t\t2026-08-28 16:11:28\n[e14 link] 0000104169-26-000154-xbrl.zip\t199487\t2026-08-28 16:11:28\n[e15 link] FilingSummary.xml\t23459\t2026-08-28 16:11:28\n[e16 link] MetaLinks.json\t786641\t2026-08-28 16:11:28\n[e17 link] R1.htm\t73975\t2026-08-28 16:11:28\n[e18 link] R10.htm\t55304\t2026-08-28 16:11:28\n[e19 link] R11.htm\t44284\t2026-08-28 16:11:28\n[e20 link] R12.htm\t26388\t2026-08-28 16:11:28\n[e21 link] R13.htm\t179742\t2026-08-28 16:11:28\n[e22 link] R14.htm\t25663\t2026-08-28 16:11:28\n[e23 link] R15.htm\t21757\t2026-08-28 16:11:28\n[e24 link] R16.htm\t30369\t2026-08-28 16:11:28\n[e25 link] R17.htm\t51051\t2026-08-28 16:11:28\n[e26 link] R18.htm\t39890\t2026-08-28 16:11:28\n[e27 link] R19.htm\t180389\t2026-08-28 16:11:28\n[e28 link] R2.htm\t134467\t2026-08-28 16:11:28\n[e29 link] R20.htm\t9978\t2026-08-28 16:11:28\n[e30 link] R21.htm\t65628\t2026-08-28 16:11:28\n[e31 link] R22.htm\t24132\t2026-08-28 16:11:28\n[e32 link] R23.htm\t34007\t2026-08-28 16:11:28\n[e33 link] R24.htm\t37052\t2026-08-28 16:11:28\n[e34 link] R25.htm\t30551\t2026-08-28 16:11:28\n[e35 link] R26.htm\t26961\t2026-08-28 16:11:28\n[e36 link] R27.htm\t5058\t2026-08-28 16:11:28\n[e37 link] R28.htm\t19951\t2026-08-28 16:11:28\n[e38 link] R29.htm\t13686\t2026-08-28 16:11:28\n[e39 link] R3.htm\t64123\t2026-08-28 16:11:28\n[e40 link] R30.htm\t40928\t2026-08-28 16:11:28\n[e41 link] R31.htm\t4939\t2026-08-28 16:11:28\n[e42 link] R32.htm\t106399\t2026-08-28 16:11:28\n[e43 link] R33.htm\t23294\t2026-08-28 16:11:28\n[e44 link] R34.htm\t23392\t2026-08-28 16:11:28\n[e45 link] R35.htm\t23324\t2026-08-28 16:11:28\n[e46 link] R4.htm\t157216\t2026-08-28 16:11:28\n[e47 link] R5.htm\t89137\t2026-08-28 16:11:28\n[e48 link] R6.htm\t5264\t2026-08-28 16:11:28\n[e49 link] R7.htm\t78602\t2026-08-28 16:11:28\n[e50 link] R8.htm\t12223\t2026-08-28 16:11:28\n[e51 link] R9.htm\t32065\t2026-08-28 16:11:28\n[e52 link] report.css\t2767\t2026-08-28 16:11:28\n[e53 link] Show.js\t1085\t2026-08-28 16:11:28\n[e54 link] wmt-20260731.htm\t1433189\t2026-08-28 16:11:28\n[e55 link] wmt-20260731.xsd\t33865\t2026-08-28 16:11:28\n[e56 link] wmt-20260731_cal.xml\t60031\t2026-08-28 16:11:28\n[e57 link] wmt-20260731_def.xml\t151800\t2026-08-28 16:11:28\n[e58 link] wmt-20260731_g1.jpg\t19205\t2026-08-28 16:11:28\n[e59 link] wmt-20260731_htm.xml\t904157\t2026-08-28 16:11:28\n[e60 link] wmt-20260731_lab.xml\t472730\t2026-08-28 16:11:28\n[e61 link] wmt-20260731_pre.xml\t321822\t2026-08-28 16:11:28\n[e62 link] wmtexhibit311fy27q2.htm\t7807\t2026-08-28 16:11:28\n[e63 link] wmtexhibit312fy27q2.htm\t7830\t2026-08-28 16:11:28\n[e64 link] wmtexhibit321fy27q2.htm\t4457\t2026-08-28 16:11:28\n[e65 link] wmtexhibit322fy27q2.htm\t4496\t2026-08-28 16:11:28\n[e66 link] Site Map | [e67 link] Accessibility | [e68 link] Contracts | [e69 link] Privacy | [e70 link] Inspector General | [e71 link] Careers | [e72 link] Contact\n[e73 link] FOIA | [e74 link] No FEAR Act & EEO Data | [e75 link] Open Government | [e76 link] Plain Writing | [e77 link] Links | [e78 link] Investor.gov | [e79 link] USA.gov"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_011ZuE1CuTSmzJakdwxAavSr",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/R2.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_011ZuE1CuTSmzJakdwxAavSr",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/R2.htm | TITLE:  | chunk 1/1\n\nXML 14 R2.htm IDEA: XBRL DOCUMENT\nCondensed Consolidated Statements of Income - USD ($)\nshares in Millions, $ in Millions\n\t3 Months Ended\t6 Months Ended\n\nJul. 31, 2026\n\nJul. 31, 2025\n\nJul. 31, 2026\n\nJul. 31, 2025\n\nRevenues:\nNet sales\t$ 186,100\t$ 175,750\t$ 361,784\t$ 339,731\nMembership and other income\t1,837\t1,652\t3,904\t3,280\nTotal revenues\t187,937\t177,402\t365,688\t343,011\nCosts and expenses:\nCost of sales\t138,804\t132,771\t271,862\t257,074\nOperating, selling, general and administrative expenses\t39,750\t37,345\t76,950\t71,516\nOperating income\t9,383\t7,286\t16,876\t14,421\nInterest:\nDebt\t137\t651\t711\t1,170\nFinance lease\t126\t118\t251\t236\nInterest income\t(92)\t(94)\t(171)\t(187)\nInterest, net\t171\t675\t791\t1,219\nOther (gains) and losses\t1,200\t(2,708)\t925\t(2,111)\nIncome before income taxes\t8,012\t9,319\t15,160\t15,313\nProvision for income taxes\t1,483\t2,168\t3,141\t3,523\nConsolidated net income\t6,529\t7,151\t12,019\t11,790\nConsolidated net income attributable to noncontrolling interest\t(163)\t(125)\t(323)\t(277)\nConsolidated net income attributable to Walmart\t$ 6,366\t$ 7,026\t$ 11,696\t$ 11,513\nNet income per common share:\nBasic net income per common share attributable to Walmart (in dollars per share)\t$ 0.80\t$ 0.88\t$ 1.47\t$ 1.44\nDiluted net income per common share attributable to Walmart (in dollars per share)\t$ 0.80\t$ 0.88\t$ 1.46\t$ 1.43\nWeighted-average common shares outstanding:\nBasic (shares)\t7,954\t7,978\t7,962\t7,994\nDiluted (shares)\t7,978\t8,016\t7,989\t8,033\nDividends declared per common share (in dollars per share)\t$ 0\t$ 0\t$ 0.99\t$ 0.94"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_016yKkBJ7gUSSt7vtyyjjw3X",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_016yKkBJ7gUSSt7vtyyjjw3X",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/R4.htm | TITLE:  | chunk 1/1\n\nXML 16 R4.htm IDEA: XBRL DOCUMENT\nCondensed Consolidated Balance Sheets - USD ($)\n$ in Millions\n\nJul. 31, 2026\n\nJan. 31, 2026\n\nJul. 31, 2025\n\nCurrent assets:\nCash and cash equivalents\t$ 11,529\t$ 10,727\t$ 9,431\nReceivables, net\t11,075\t11,172\t10,518\nInventories\t61,600\t58,851\t57,729\nPrepaid expenses and other\t4,499\t4,124\t4,355\nTotal current assets\t88,703\t84,874\t82,033\nProperty and equipment, net\t142,482\t136,083\t125,476\nOperating lease right-of-use assets\t15,650\t14,750\t13,953\nFinance lease right-of-use assets, net\t6,178\t6,123\t6,128\nGoodwill\t28,260\t28,735\t29,060\nOther long-term assets\t12,641\t14,103\t14,187\nTotal assets\t293,914\t284,668\t270,837\nCurrent liabilities:\nShort-term borrowings\t10,479\t6,596\t3,837\nAccounts payable\t64,318\t63,061\t60,086\nDividends payable\t3,949\t0\t3,783\nAccrued liabilities\t30,074\t31,187\t28,821\nAccrued income taxes\t746\t596\t620\nLong-term debt due within one year\t3,470\t3,542\t4,011\nOperating lease obligations due within one year\t1,714\t1,631\t1,580\nFinance lease obligations due within one year\t880\t856\t828\nTotal current liabilities\t115,630\t107,469\t103,566\nLong-term debt\t36,462\t34,624\t35,640\nLong-term operating lease obligations\t14,798\t13,941\t13,171\nLong-term finance lease obligations\t5,952\t5,905\t5,947\nDeferred income taxes and other\t16,273\t16,549\t15,656\nCommitments and contingencies\nRedeemable noncontrolling interest\t293\t293\t307\nShareholders' equity:\nCommon stock\t794\t797\t797\nCapital in excess of par value\t7,046\t6,816\t5,718\nRetained earnings\t103,601\t104,774\t96,328\nAccumulated other comprehensive loss\t(13,203)\t(12,770)\t(12,733)\nTotal Walmart shareholders' equity\t98,238\t99,617\t90,110\nNonredeemable noncontrolling interest\t6,268\t6,270\t6,440\nTotal shareholders' equity\t104,506\t105,887\t96,550\nTotal liabilities, redeemable noncontrolling interest, and shareholders' equity\t$ 293,914\t$ 284,668\t$ 270,837"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "The 10-Q for the quarter ended July 31, 2026 (Walmart's Q2 FY2027) reports total Walmart shareholders' equity of $98,238 million on its balance sheet, which is $98,238,000,000 in whole dollars. The filing is accession 0000104169-26-000154, and I confirmed the figure in its XBRL balance sheet (R4.htm). The same figure appears in the Q2 earnings release (8-K, accession 0000104169-26-000145).",
+    "type": "text"
+   },
+   {
+    "id": "toolu_014yWg9wFHo74EyxxnReKkBU",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0000104169-26-000154",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/R4.htm",
+     "period_end": "2026-07-31",
+     "value_usd": 98238000000
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_014yWg9wFHo74EyxxnReKkBU",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

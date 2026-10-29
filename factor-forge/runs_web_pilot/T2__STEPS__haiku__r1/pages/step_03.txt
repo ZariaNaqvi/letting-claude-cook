@@ -1,0 +1,7 @@
+Typed 'Microsoft' into e31. URL: https://www.sec.gov/search-filings
+New elements that appeared (e.g. suggestions):
+[e74 link] MICROSOFT CORP (MSFT)
+[e75 link] CIK 0000789019
+[e76 link] Microsoft AVN Holdings, Inc.
+[e77 link] CIK 0001356955
+[e78 link] Search for "Microsoft" in EDGAR filings

@@ -1,0 +1,41 @@
+URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/R2.htm | TITLE:  | chunk 1/1
+
+XML 14 R2.htm IDEA: XBRL DOCUMENT
+Condensed Consolidated Statements of Income - USD ($)
+shares in Millions, $ in Millions
+	3 Months Ended	6 Months Ended
+
+Jul. 31, 2026
+
+Jul. 31, 2025
+
+Jul. 31, 2026
+
+Jul. 31, 2025
+
+Revenues:
+Net sales	$ 186,100	$ 175,750	$ 361,784	$ 339,731
+Membership and other income	1,837	1,652	3,904	3,280
+Total revenues	187,937	177,402	365,688	343,011
+Costs and expenses:
+Cost of sales	138,804	132,771	271,862	257,074
+Operating, selling, general and administrative expenses	39,750	37,345	76,950	71,516
+Operating income	9,383	7,286	16,876	14,421
+Interest:
+Debt	137	651	711	1,170
+Finance lease	126	118	251	236
+Interest income	(92)	(94)	(171)	(187)
+Interest, net	171	675	791	1,219
+Other (gains) and losses	1,200	(2,708)	925	(2,111)
+Income before income taxes	8,012	9,319	15,160	15,313
+Provision for income taxes	1,483	2,168	3,141	3,523
+Consolidated net income	6,529	7,151	12,019	11,790
+Consolidated net income attributable to noncontrolling interest	(163)	(125)	(323)	(277)
+Consolidated net income attributable to Walmart	$ 6,366	$ 7,026	$ 11,696	$ 11,513
+Net income per common share:
+Basic net income per common share attributable to Walmart (in dollars per share)	$ 0.80	$ 0.88	$ 1.47	$ 1.44
+Diluted net income per common share attributable to Walmart (in dollars per share)	$ 0.80	$ 0.88	$ 1.46	$ 1.43
+Weighted-average common shares outstanding:
+Basic (shares)	7,954	7,978	7,962	7,994
+Diluted (shares)	7,978	8,016	7,989	8,033
+Dividends declared per common share (in dollars per share)	$ 0	$ 0	$ 0.99	$ 0.94

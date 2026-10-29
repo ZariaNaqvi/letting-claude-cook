@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | find_text "Total stockholders' equity": 0 match(es)

@@ -1,0 +1,49 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R2.htm | TITLE:  | chunk 1/1
+
+XML 21 R2.htm IDEA: XBRL DOCUMENT
+Consolidated Statements of Income (Unaudited) - USD ($)
+shares in Millions, $ in Millions
+	3 Months Ended	6 Months Ended
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Revenue
+Investment banking fees	$ 3,208	$ 2,499	$ 6,066	$ 4,677
+Principal transactions	9,007	7,149	16,994	14,763
+Lending- and deposit-related fees	2,511	2,248	4,905	4,380
+Asset management fees	5,658	4,806	11,173	9,506
+Commissions and other fees	2,614	2,194	5,096	4,227
+Investment securities losses	(395)	(54)	(331)	(91)
+Mortgage fees and related income	336	363	645	641
+Card income	1,348	1,344	2,538	2,560
+Other income	7,549	1,154	9,220	3,077
+Noninterest revenue	31,836	21,703	56,306	43,740
+Interest income	50,624	48,241	99,815	95,094
+Interest expense	25,113	25,032	48,938	48,612
+Net interest income	25,511	23,209	50,877	46,482
+Total net revenue	57,347	44,912	107,183	90,222
+Provision for credit losses	2,515	2,849	5,022	6,154
+Noninterest expense
+Compensation expense	15,159	13,710	30,498	27,803
+Occupancy expense	1,482	1,264	2,929	2,566
+Technology, communications and equipment expense	3,107	2,704	6,128	5,282
+Professional and outside services	3,855	3,006	7,338	5,845
+Marketing	1,670	1,279	3,274	2,583
+Other expense	2,043	1,816	3,999	3,297
+Total noninterest expense	27,316	23,779	54,166	47,376
+Income/(loss) before income tax expense/(benefit)	27,516	18,284	47,995	36,692
+Income tax expense	6,361	3,297	10,346	7,062
+Net income	21,155	14,987	37,649	29,630
+Basic net income applicable to common stockholders	20,752	14,630	36,901	28,948
+Diluted net income applicable to common stockholders	$ 20,752	$ 14,630	$ 36,901	$ 28,948
+Net income per common share data
+Basic earnings per share (in dollars per share)	$ 7.71	$ 5.25	$ 13.65	$ 10.32
+Diluted earnings per share (in dollars per share)	$ 7.70	$ 5.24	$ 13.63	$ 10.31
+Weighted-average basic shares (in shares)	2,689.9	2,788.7	2,703.1	2,804.0
+Weighted-average diluted shares (in shares)	2,694.2	2,793.7	2,707.2	2,809.0

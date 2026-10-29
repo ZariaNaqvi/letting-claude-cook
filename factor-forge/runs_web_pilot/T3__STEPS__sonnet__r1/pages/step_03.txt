@@ -1,0 +1,7 @@
+Typed 'Walmart' into e31. URL: https://www.sec.gov/search-filings
+New elements that appeared (e.g. suggestions):
+[e74 link] Walmart Inc. (WMT)
+[e75 link] CIK 0000104169
+[e76 link] WALMART STORES
+[e77 link] CIK 0000217476
+[e78 link] Search for "Walmart" in EDGAR filings

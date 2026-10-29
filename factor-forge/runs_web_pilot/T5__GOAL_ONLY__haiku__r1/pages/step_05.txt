@@ -1,0 +1,85 @@
+URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/ | TITLE: Directory List of /Archives/edgar/data/1286681/000128668126000035 | chunk 1/1
+
+[e1 link] Search Options
+[e2 link] Skip to Main Content
+[e3 link]
+ABOUT
+[e4 link]
+DIVISIONS
+[e5 link]
+ENFORCEMENT
+[e6 link]
+REGULATION
+[e7 link]
+EDUCATION
+[e8 link]
+FILINGS
+[e9 link]
+NEWS
+Directory Listing /Archives/edgar/data/1286681/000128668126000035
+[e10 link] Parent Directory
+NAME	SIZE	LAST MODIFIED
+[e11 link] 0001286681-26-000035-index-headers.html		2026-07-20 06:09:41
+[e12 link] 0001286681-26-000035-index.html		2026-07-20 06:09:41
+[e13 link] 0001286681-26-000035.txt		2026-07-20 06:09:41
+[e14 link] 0001286681-26-000035-xbrl.zip	240798	2026-07-20 06:09:41
+[e15 link] dpz-20260614.htm	3285945	2026-07-20 06:09:41
+[e16 link] dpz-20260614.xsd	1222003	2026-07-20 06:09:41
+[e17 link] dpz-20260614_htm.xml	3338551	2026-07-20 06:09:41
+[e18 link] dpz-ex31_1.htm	17494	2026-07-20 06:09:41
+[e19 link] dpz-ex31_2.htm	16674	2026-07-20 06:09:41
+[e20 link] dpz-ex32_1.htm	12383	2026-07-20 06:09:41
+[e21 link] dpz-ex32_2.htm	11980	2026-07-20 06:09:41
+[e22 link] FilingSummary.xml	29807	2026-07-20 06:09:41
+[e23 link] MetaLinks.json	946187	2026-07-20 06:09:41
+[e24 link] R1.htm	51517	2026-07-20 06:09:41
+[e25 link] R10.htm	91233	2026-07-20 06:09:41
+[e26 link] R11.htm	416975	2026-07-20 06:09:41
+[e27 link] R12.htm	5876	2026-07-20 06:09:41
+[e28 link] R13.htm	166983	2026-07-20 06:09:41
+[e29 link] R14.htm	40451	2026-07-20 06:09:41
+[e30 link] R15.htm	130928	2026-07-20 06:09:41
+[e31 link] R16.htm	8245	2026-07-20 06:09:41
+[e32 link] R17.htm	21268	2026-07-20 06:09:41
+[e33 link] R18.htm	21322	2026-07-20 06:09:41
+[e34 link] R19.htm	504116	2026-07-20 06:09:41
+[e35 link] R2.htm	139055	2026-07-20 06:09:41
+[e36 link] R20.htm	92245	2026-07-20 06:09:41
+[e37 link] R21.htm	406794	2026-07-20 06:09:41
+[e38 link] R22.htm	149382	2026-07-20 06:09:41
+[e39 link] R23.htm	26152	2026-07-20 06:09:41
+[e40 link] R24.htm	124602	2026-07-20 06:09:41
+[e41 link] R25.htm	5224	2026-07-20 06:09:41
+[e42 link] R26.htm	123574	2026-07-20 06:09:41
+[e43 link] R27.htm	6352	2026-07-20 06:09:41
+[e44 link] R28.htm	37695	2026-07-20 06:09:41
+[e45 link] R29.htm	14744	2026-07-20 06:09:41
+[e46 link] R3.htm	111599	2026-07-20 06:09:41
+[e47 link] R30.htm	8167	2026-07-20 06:09:41
+[e48 link] R31.htm	40018	2026-07-20 06:09:41
+[e49 link] R32.htm	13979	2026-07-20 06:09:41
+[e50 link] R33.htm	17845	2026-07-20 06:09:41
+[e51 link] R34.htm	70956	2026-07-20 06:09:41
+[e52 link] R35.htm	3157	2026-07-20 06:09:41
+[e53 link] R36.htm	14197	2026-07-20 06:09:41
+[e54 link] R37.htm	27992	2026-07-20 06:09:41
+[e55 link] R38.htm	34509	2026-07-20 06:09:41
+[e56 link] R39.htm	16848	2026-07-20 06:09:41
+[e57 link] R4.htm	24861	2026-07-20 06:09:41
+[e58 link] R40.htm	9957	2026-07-20 06:09:41
+[e59 link] R41.htm	11765	2026-07-20 06:09:41
+[e60 link] R42.htm	18983	2026-07-20 06:09:41
+[e61 link] R43.htm	20577	2026-07-20 06:09:41
+[e62 link] R44.htm	8717	2026-07-20 06:09:41
+[e63 link] R45.htm	4466	2026-07-20 06:09:41
+[e64 link] R46.htm	7165	2026-07-20 06:09:41
+[e65 link] R47.htm	40469	2026-07-20 06:09:41
+[e66 link] R5.htm	90641	2026-07-20 06:09:41
+[e67 link] R6.htm	18055	2026-07-20 06:09:41
+[e68 link] R7.htm	41878	2026-07-20 06:09:41
+[e69 link] R8.htm	8433	2026-07-20 06:09:41
+[e70 link] R9.htm	512382	2026-07-20 06:09:41
+[e71 link] report.css	2767	2026-07-20 06:09:41
+[e72 link] Show.js	1085	2026-07-20 06:09:41
+[e73 link] Site Map | [e74 link] Accessibility | [e75 link] Contracts | [e76 link] Privacy | [e77 link] Inspector General | [e78 link] Careers | [e79 link] Contact
+[e80 link] FOIA | [e81 link] No FEAR Act & EEO Data | [e82 link] Open Government | [e83 link] Plain Writing | [e84 link] Links | [e85 link] Investor.gov | [e86 link] USA.gov

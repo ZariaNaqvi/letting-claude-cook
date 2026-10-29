@@ -44,7 +44,8 @@ import prompts_web  # noqa: E402
 import sec_policy  # noqa: E402
 from run_experiment import MODEL_ORDER, MODELS  # noqa: E402  (Part 2's table, read only)
 
-HARNESS_VERSION = "web-h1"
+HARNESS_VERSION = "web-h3"
+SPEND_LEDGER = "spend.jsonl"            # one line per real API response, append-only
 FIXTURES = os.path.join(HERE, "fixtures")
 KEY_JSON = os.path.join(HERE, "answer_key.json")
 
@@ -80,8 +81,10 @@ def turn_cost(alias, u):
             + u["output_tokens"] * p_out) / 1e6
 
 
-def worst_case_cost(alias, steps, prefix=3000, per_step_in=2000, per_step_out=500):
-    """Cost if the model uses every step (design token model), with caching."""
+def worst_case_cost(alias, steps, prefix=3000, per_step_in=bt.MAX_OBS_CHARS // 4 + 300, per_step_out=2000):
+    """Cost if the model uses every step, with caching: every observation at the size cap (+ the
+    tool call) and ~2K output tokens a turn (thinking at --effort high). Not a hard bound -- a turn
+    may use up to --max-tokens -- so do_run also stops a run once the budget is actually reached."""
     total = 0.0
     for i in range(steps):
         ctx = prefix + per_step_in * i
@@ -100,8 +103,9 @@ class ClaudeCaller:
     def __init__(self, client, model_id, tools, effort, max_tokens):
         self.client, self.model_id, self.effort, self.max_tokens = client, model_id, effort, max_tokens
         self.tools = [dict(t) for t in tools]
-        self.tools[-1]["cache_control"] = {"type": "ephemeral"}       # caches tools + system prompt
-        self.system = [{"type": "text", "text": prompts_web.SYSTEM_PROMPT}]
+        # The cache prefix runs tools -> system -> messages, so the breakpoint goes on the system
+        # block (the end of the fixed part) to cache tools AND system prompt together.
+        self.system = [{"type": "text", "text": prompts_web.SYSTEM_PROMPT, "cache_control": {"type": "ephemeral"}}]
 
     def respond(self, messages):
         kwargs = dict(model=self.model_id, max_tokens=self.max_tokens, system=self.system, tools=self.tools,
@@ -154,7 +158,7 @@ def run_dir_for(out, job):
     return os.path.join(out, f"{job['task']}__{job['condition']}__{job['model']}__r{job['repeat']}")
 
 
-def do_run(job, args, client, doc, tasks, key, ua):
+def do_run(job, args, client, doc, tasks, key, ua, spent_before=0.0):
     task = tasks[job["task"]]
     alias, cond = job["model"], job["condition"]
     rd = run_dir_for(args.out, job)
@@ -184,7 +188,7 @@ def do_run(job, args, client, doc, tasks, key, ua):
     else:
         caller = ClaudeCaller(client, MODELS[alias][0], tools, args.effort, args.max_tokens)
 
-    browser = None
+    browser, steps_fh = None, None
     messages = [{"role": "user", "content": prompt}]
     tot = dict(input_tokens=0, output_tokens=0, cache_creation_input_tokens=0, cache_read_input_tokens=0)
     cost, steps, turns, nudges, stall_s, n_stalls = 0.0, 0, 0, 0, 0.0, 0
@@ -198,11 +202,16 @@ def do_run(job, args, client, doc, tasks, key, ua):
             if time.time() - t0 - stall_s > args.time_limit:
                 stop = "time_limit"
                 break
+            if not args.dry_run and spent_before + cost >= args.budget_usd:
+                stop, error = "harness_error", "budget reached mid-run"     # redone on the next resume
+                break
             resp = _call_with_retries(caller, messages, args)
             turns += 1
             for k in tot:
                 tot[k] += resp["usage"][k]
             cost += turn_cost(alias, resp["usage"])
+            if not args.dry_run:
+                log_spend(args.out, final["run_key"], turn_cost(alias, resp["usage"]))
             last_stop_reason = resp["stop_reason"]
             if resp.get("refusal_category"):
                 final["refusal_category"] = resp["refusal_category"]
@@ -253,17 +262,19 @@ def do_run(job, args, client, doc, tasks, key, ua):
                 stop, error = "harness_error", "site_error on 3 page loads"
             if browser.policy.http_403:
                 stop, error = "harness_error", "SEC answered 403 (undeclared automated tool) -- back off"
-        steps_fh.close()
     except SystemExit:
         raise
     except Exception as e:  # noqa: BLE001 -- anything else is a harness problem, rerun later
         stop, error = "harness_error", f"{type(e).__name__}: {str(e)[:300]}"
     finally:
+        if steps_fh is not None:
+            steps_fh.close()
         if browser is not None:
             visited = list(browser.visited)
             pages_seen = len(browser.pages_seen)
             pol = browser.policy
             blocked, n_net, misses, n403 = browser.blocked_attempts, pol.n_network, len(pol.offline_misses), pol.http_403
+            api403 = pol.api_403
             site_errors = browser.site_errors
             with open(os.path.join(rd, "requests.jsonl"), "w") as fh:     # every request and the policy decision
                 for t_, u_, rt_, dec_ in pol.log:
@@ -271,6 +282,7 @@ def do_run(job, args, client, doc, tasks, key, ua):
             browser.close()
         else:
             visited, pages_seen, blocked, n_net, misses, n403, site_errors = [], 0, 0, 0, 0, 0, 0
+            api403 = 0
 
     with open(os.path.join(rd, "transcript.json"), "w") as fh:
         json.dump(transcript_copy(messages), fh, indent=1, default=str)
@@ -280,7 +292,7 @@ def do_run(job, args, client, doc, tasks, key, ua):
                  blocked_attempts=blocked,
                  visited_search_form=any("/search-filings" in u or "/edgar/searchedgar" in u for u in visited),
                  visited_urls=visited, n_observations=pages_seen, network_requests=n_net,
-                 offline_misses=misses, http_403=n403, site_errors=site_errors,
+                 offline_misses=misses, http_403=n403, api_403=api403, site_errors=site_errors,
                  finished_at=dt.datetime.now().isoformat(timespec="seconds"))
     tmp = os.path.join(rd, "final.json.tmp")
     with open(tmp, "w") as fh:
@@ -314,7 +326,20 @@ def read_final(rd):
         return json.load(fh)
 
 
+def log_spend(out, run_key, usd):
+    """Append one API response's cost to <out>/spend.jsonl. Unlike final.json, this ledger is
+    never overwritten, so redone harness_error runs and interrupted runs still count."""
+    with open(os.path.join(out, SPEND_LEDGER), "a") as fh:
+        fh.write(json.dumps(dict(t=round(time.time(), 1), run_key=run_key, usd=round(usd, 6))) + "\n")
+
+
 def spent_usd(out):
+    """Real money spent in this --out folder: the spend ledger, or for folders made before the
+    ledger existed (harness web-h1), the sum of the finished runs' cost_usd."""
+    ledger = os.path.join(out, SPEND_LEDGER)
+    if os.path.exists(ledger):
+        with open(ledger) as fh:
+            return sum(json.loads(ln)["usd"] for ln in fh if ln.strip())
     total = 0.0
     if not os.path.isdir(out):
         return 0.0
@@ -445,9 +470,13 @@ def main():
                 log(f"BUDGET STOP: spent ${spent:.2f}, next run could cost up to ${worst:.2f}, "
                     f"budget ${args.budget_usd:.2f}. {len(pending) - i + 1} runs not started.")
                 break
-        f = do_run(j, args, client, doc, tasks, key, ua)
+        f = do_run(j, args, client, doc, tasks, key, ua, spent_before=spent)
         if not f.get("cost_is_fake"):
             spent += f["cost_usd"]
+        if f.get("error") == "budget reached mid-run":
+            log(f"BUDGET STOP during {f['run_key']}: spent ${spent:.2f} of ${args.budget_usd:.2f}. "
+                "That run will be redone on the next resume.")
+            break
         if f.get("http_403"):
             log(f"[{i}/{len(pending)}] {f['run_key']}: SEC returned HTTP 403 (undeclared automated tool). "
                 "Stopping ALL runs. Wait at least 10 minutes, check SEC_USER_AGENT, then rerun (resume-safe).")

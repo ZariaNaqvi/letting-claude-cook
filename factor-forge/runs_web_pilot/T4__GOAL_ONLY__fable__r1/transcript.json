@@ -1,0 +1,251 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T4\n\nFind Netflix, Inc.'s total stockholders' equity at June 30, 2026, from its quarterly report for that quarter.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01JqgfemS8HTg2dDPVSRadKj",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001065280&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01JqgfemS8HTg2dDPVSRadKj",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001065280&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_012YSf9c3b5AR9HPbPDraYHX",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/search/#/q=%2210-Q%22&dateRange=custom&ciks=0001065280&forms=10-Q&startdt=2026-07-01&enddt=2026-12-31"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_012YSf9c3b5AR9HPbPDraYHX",
+    "content": "URL: https://www.sec.gov/edgar/search/#/q=%2210-Q%22&dateRange=custom&ciks=0001065280&forms=10-Q&startdt=2026-07-01&enddt=2026-12-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"10-Q\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-12-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n10 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report) EX-32.1\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e35 link] 10-Q (Quarterly report) EX-32.1\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e36 link] 10-Q (Quarterly report) EX-31.3\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e37 link] 10-Q (Quarterly report) EX-31.2\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e38 link] 10-Q (Quarterly report) EX-31.1\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e39 link] 10-Q (Quarterly report) EX-31.1\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e40 link] 10-Q (Quarterly report) EX-31.3\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e41 link] 10-Q (Quarterly report) EX-31.2\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e42 link] 10-Q (Quarterly report)\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e43 link] 10-Q (Quarterly report)\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e44 link] Accessibility [e45 link] Budget & Performance [e46 link] Careers [e47 link] Contact [e48 link] Contracts [e49 link] Data [e50 link] FOIA [e51 link] Inspector General [e52 link] Investor.gov [e53 link] No FEAR Act & EEO Data [e54 link] Ombudsman [e55 link] Plain Writing [e56 link] Privacy [e57 link] Related Sites [e58 link] Site Map [e59 link] USA.gov [e60 link] Votes [e61 link] Vulnerability Disclosure Policy [e62 link] Whistleblower Protection"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01QAyvewPzBqMjoMc92CQzQe",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e42"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01QAyvewPzBqMjoMc92CQzQe",
+    "content": "URL: https://www.sec.gov/edgar/search/#/q=%2210-Q%22&dateRange=custom&ciks=0001065280&forms=10-Q&startdt=2026-07-01&enddt=2026-12-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"10-Q\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-12-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n10 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report) EX-32.1\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e35 link] 10-Q (Quarterly report) EX-32.1\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e36 link] 10-Q (Quarterly report) EX-31.3\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e37 link] 10-Q (Quarterly report) EX-31.2\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e38 link] 10-Q (Quarterly report) EX-31.1\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e39 link] 10-Q (Quarterly report) EX-31.1\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e40 link] 10-Q (Quarterly report) EX-31.3\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e41 link] 10-Q (Quarterly report) EX-31.2\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e42 link] 10-Q (Quarterly report)\t2026-07-17\t2026-06-30\tNETFLIX INC (NFLX)\n[e43 link] 10-Q (Quarterly report)\t2026-10-21\t2026-09-30\tNETFLIX INC (NFLX)\n[e44 link] Accessibility [e45 link] Budget & Performance [e46 link] Careers [e47 link] Contact [e48 link] Contracts [e49 link] Data [e50 link] FOIA [e51 link] Inspector General [e52 link] Investor.gov [e53 link] No FEAR Act & EEO Data [e54 link] Ombudsman [e55 link] Plain Writing [e56 link] Privacy [e57 link] Related Sites [e58 link] Site Map [e59 link] USA.gov [e60 link] Votes [e61 link] Vulnerability Disclosure Policy [e62 link] Whistleblower Protection\nFinding \"10-Q\" in 10-Q (Quarterly report) of filed (2026-07-17) [e63 button] \u2039 Previous 1 of 10 [e64 button] Next \u203a\n[e65 button \"Close\"] \u00d7\nLoading document preview\n[e66 link] [e67 button] Open document\n[e68 link] [e69 button] Open filing\n[e70 button] Close"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_018wdAD7WcNZihrwmFosxQWJ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e69"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_018wdAD7WcNZihrwmFosxQWJ",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/0001065280-26-000212-index.html | TITLE: EDGAR Filing Documents for 0001065280-26-000212 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001065280-26-000212\nFiling Date\n2026-07-17\nAccepted\n2026-07-17 16:02:51\nDocuments\n83\nPeriod of Report\n2026-06-30\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] nflx-20260630.htm \u00a0\u00a0iXBRL\t10-Q\t1815616\n2\tEX-31.1\t[e11 link] ex311_q226.htm\tEX-31.1\t12249\n3\tEX-31.2\t[e12 link] ex312_q226.htm\tEX-31.2\t12246\n4\tEX-31.3\t[e13 link] ex313_q226.htm\tEX-31.3\t12144\n5\tEX-32.1\t[e14 link] ex321_q226.htm\tEX-32.1\t14656\n\u00a0\tComplete submission text file\t[e15 link] 0001065280-26-000212.txt\t\u00a0\t10009964\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n6\tXBRL TAXONOMY EXTENSION SCHEMA DOCUMENT\t[e16 link] nflx-20260630.xsd\tEX-101.SCH\t48554\n7\tXBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT\t[e17 link] nflx-20260630_cal.xml\tEX-101.CAL\t77289\n8\tXBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT\t[e18 link] nflx-20260630_def.xml\tEX-101.DEF\t242181\n9\tXBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT\t[e19 link] nflx-20260630_lab.xml\tEX-101.LAB\t623569\n10\tXBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT\t[e20 link] nflx-20260630_pre.xml\tEX-101.PRE\t456478\n87\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e21 link] nflx-20260630_htm.xml\tXML\t2101320\nMailing Address\n121 ALBRIGHT WAY\nLOS GATOS\nCA\n95032-7606\nBusiness Address\n121 ALBRIGHT WAY\nLOS GATOS\nCA\n95032\n408-540-3700\nNETFLIX INC (Filer) CIK: [e22 link] 0001065280 (see all company filings)\n\nEIN.: 770467272 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e23 link] 001-35727 | Film No.: 261183709\nSIC: [e24 link] 7841 Services-Video Tape Rental\n(CF Office: 07 Trade & Services)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01E3ZHHqyPrvCkpsgUBLyFU7",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e10"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01E3ZHHqyPrvCkpsgUBLyFU7",
+    "content": "URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | TITLE: Inline Viewer: Netflix, Inc. 10-Q 2026-06-30 | chunk 1/1\n\n"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01PgE9pU8DZZRLXdHP3d1cwq",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "Total stockholders' equity"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01PgE9pU8DZZRLXdHP3d1cwq",
+    "content": "URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | find_text \"Total stockholders' equity\": 0 match(es)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_0124tnwtHtUF4R6xER9bxnTD",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0124tnwtHtUF4R6xER9bxnTD",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | TITLE: nflx-20260630 | chunk 1/13\n\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\n\nFORM 10-Q\n\n(Mark One)\n\u2612 QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June 30, 2026\nOR\n\n\u2610 TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 to\nCommission File Number: 001-35727\n\nNetflix, Inc.\n(Exact name of Registrant as specified in its charter)\n\nDelaware\t77-0467272\n(State or other jurisdiction of\nincorporation or organization)\t(I.R.S. Employer\nIdentification Number)\n\n121 Albright Way,\tLos Gatos,\tCalifornia\t95032\n(Address of principal executive offices)\t(Zip Code)\n(408) 540-3700\n(Registrant\u2019s telephone number, including area code)\n\nSecurities registered pursuant to Section 12(b) of the Act:\n\nTitle of each class\tTrading Symbol(s)\tName of each exchange on which registered\nCommon stock, par value $0.001 per share\tNFLX\tNASDAQ Global Select Market\nIndicate by check mark whether the registrant (1)\u00a0has filed all reports required to be filed by Section\u00a013 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and (2)\u00a0has been subject to such filing requirements for the past 90 days.\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such\u00a0files).\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\n\nLarge Accelerated Filer\t\u2612\t\tAccelerated\u00a0filer\n\u2610\n\nNon-accelerated filer\n\u2610\n\t\tSmaller\u00a0reporting\u00a0company\n\u2610\n\n\t\t\tEmerging growth company\n\u2610\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by check mark whether the registrant is a shell company (as defined by Rule 12b-2 of the Exchange Act).\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2610\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2612\nAs of June\u00a030, 2026, there were 4,163,939,676 shares of the registrant\u2019s common stock, par value $0.001, outstanding.\n\nTable of Contents\n\n\t\tPage\n\tPart I. Financial Information\n\nItem\u00a01.\n\n[e1 link] Consolidated Financial Statements\n\n[e2 link] Consolidated Statements of Operations\n\n[e3 link] 3\n\n[e4 link] Consolidated Statements of Comprehensive Income\n\n[e5 link] 4\n\n[e6 link] Consolidated Statements of Cash Flows\n\n[e7 link] 5\n\n[e8 link] Consolidated Balance Sheets\n\n[e9 link] 6\n\n[e10 link] Consolidated Statements of Stockholders\u2019 Equity\n\n[e11 link] 7\n\n[e12 link] Notes to Consolidated Financial Statements\n\n[e13 link] 8\n\nItem\u00a02.\n\n[e14 link] Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n\n[e15 link] 26\n\nItem\u00a03.\n\n[e16 link] Quantitative and Qualitative Disclosures About Market Risk\n\n[e17 link] 37\n\nItem\u00a04.\n\n[e18 link] Controls and Procedures\n\n[e19 link] 38\n\n\tPart II. Other Information\n\nItem\u00a01.\n\n[e20 link] Legal Proceedings\n\n[e21 link] 38\n\nItem\u00a01A.\n\n[e22 link] Risk Factors\n\n[e23 link] 39\n\nItem\u00a02.\n\n[e24 link] Unregistered Sales of Equity Securities and Use of Proceeds\n\n[e25 link] 39\n\nItem 5.\n[e26 link] Other Information\n\n[e27 link] 39\n\nItem\u00a06.\n\n[e28 link] Exhibits\n\n[e29 link] 39\n\n[e30 link] Exhibit\u00a0Index\n\n[e31 link] 40\n\n[e32 link] Signatures\n\n[e33 link] 40\n\n2\n[e34 link] Table of Contents\n\nNETFLIX, INC.\nConsolidated Statements of Operations\n(unaudited)\n(in thousands, except per share data)\n\n\tThree Months Ended\t\tSix Months Ended\n\tJune 30,\n2026\t\tJune 30,\n2025\t\tJune 30,\n2026\t\tJune 30,\n2025\n\nRevenues\n\t$\t12,559,938\u00a0\t\t\t$\t11,079,166\u00a0\t\t\t$\t24,809,695\u00a0\t\t\t$\t21,621,967\n\nCost of revenues\n\t6,036,965\u00a0\t\t\t5,325,311\u00a0\t\t\t11,925,203\u00a0\t\t\t10,588,458\nSales and marketing\t823,838\u00a0\t\t\t713,265\u00a0\t\t\t1,666,055\u00a0\t\t\t1,401,635\n\nTechnology and development\n\t1,007,675\u00a0\t\t\t824,683\u00a0\t\t\t1,967,371\u00a0\t\t\t1,647,506\n\nGeneral and administrative\n\t498,850\u00a0\t\t\t441,213\u00a0\t\t\t1,101,459\u00a0\t\t\t862,675\n\nOperating income\n\t4,192,610\u00a0\t\t\t3,774,694\u00a0\t\t\t8,149,607\u00a0\t\t\t7,121,693\n\nOther income (expense):\n\nInterest expense\n\t(175,685)\t\t\t(182,649)\t\t\t(437,762)\t\t\t(366,821)\nInterest and other income (expense)\t51,661\u00a0\t\t\t39,630\u00a0\t\t\t2,903,827\u00a0\t\t\t90,529\n\nIncome before income taxes\n\t4,068,586\u00a0\t\t\t3,631,675\u00a0\t\t\t10,615,672\u00a0\t\t\t6,845,401\nProvision for income taxes\t(667,172)\t\t\t(506,262)\t\t\t(1,931,467)\t\t\t(829,637)\n\nNet income\n\t$\t3,401,414\u00a0\t\t\t$\t3,125,413\u00a0\t\t\t$\t8,684,205\u00a0\t\t\t$\t6,015,764\n\nEarnings per share:\n\nBasic\n\t$\t0.81\u00a0\t\t\t$\t0.74\u00a0\t\t\t$\t2.06\u00a0\t\t\t$\t1.41\n\nDiluted\n\t$\t0.80\u00a0\t\t\t$\t0.72\u00a0\t\t\t$\t2.03\u00a0\t\t\t$\t1.38\n\nWeighted-average shares of common stock outstanding:\n\nBasic\n\t4,189,303\u00a0\t\t\t4,252,112\u00a0\t\t\t4,205,952\u00a0\t\t\t4,262,347\n\nDiluted\n\t4,261,300\u00a0\t\t\t4,348,825\u00a0\t\t\t4,279,776\u00a0\t\t\t4,359,167\n\nSee accompanying notes to the consolidated financial statements.\n3\n[e35 link] Table of Contents\nNETFLIX, INC.\nConsolidated Statements of Comprehensive Income\n(unaudited)\n(in thousands)\n\n\tThree Months Ended\t\tSix Months Ended\n\tJune 30,\n2026\t\tJune 30,\n2025\t\tJune 30,\n2026\t\tJune 30,\n2025\nNet income\t$\t3,401,414\u00a0\t\t\t$\t3,125,413\u00a0\t\t\t$\t8,684,205\u00a0\t\t\t$\t6,015,764\nOther comprehensive income (loss):\n\nForeign currency translation adjustments, net of income tax benefit (expense) of $(3) million, $21 million, $(12) million, and $32 million, respectively\n\t3,549\u00a0\t\t\t97,341\u00a0\t\t\t(49,329)\t\t\t154,256\n\nNet change in unrealized gains (losses) on available-for-sale securities, net of income tax benefit (expense) of $0, $0.2 million, $0, and $1 million, respectively\n\t\u2014\u00a0\t\t\t(699)\t\t\t\u2014\u00a0\t\t\t(2,511)\nCash flow hedges:\nNet unrealized gains (losses)\t92,357\u00a0\t\t\t(941,572)\t\t\t388,509\u00a0\t\t\t(1,316,744)\nReclassification of net (gains) losses included in net income\t37,301\u00a0\t\t\t28,537\u00a0\t\t\t138,480\u00a0\t\t\t(96,624)\n\nNet change, net of income tax benefit (expense) of $(39)\u00a0million, $272\u00a0million, $(159) million, and $421 million, respectively\n\t129,658\u00a0\t\t\t(913,035)\t\t\t526,989\u00a0\t\t\t(1,413,368)\nFair value hedges:\n\nNet change in unrealized gains (losses) excluded from the assessment of effectiveness, net of income tax benefit (expense) of $(1) million, $1 million, $(2) million, and $2 million, respectively\n\t4,707\u00a0\t\t\t(2,540)\t\t\t5,605\u00a0\t\t\t(5,207)\nTotal other comprehensive income (loss)\t137,914\u00a0\t\t\t(818,933)\t\t\t483,265\u00a0\t\t\t(1,266,830)\nComprehensive income\t$\t3,539,328\u00a0\t\t\t$\t2,306,480\u00a0\t\t\t$\t9,167,470\u00a0\t\t\t$\t4,748,934\n\nSee accompanying notes to the consolidated financial statements.\n4\n[e36 link] Table of Contents\nNETFLIX, INC.\n\nConsolidated Statements of Cash Flows\n(unaudited)\n(in thousands)\n\n\tThree Months Ended\t\tSix Months Ended\n\n\tJune 30,\n2026\t\tJune 30,\n2025\t\tJune 30,\n2026\t\tJune 30,\n2025\nCash flows from operating activities:\nNet income\t$\t3,401,414\u00a0\t\t\t$\t3,125,413\u00a0\t\t\t$\t8,684,205\u00a0\t\t\t$\t6,015,764\nAdjustments to reconcile net income to net cash provided by operating activities:\nAdditions to content assets\t(4,927,523)\t\t\t(3,835,813)\t\t\t(9,774,440)\t\t\t(7,385,470)\nChange in content liabilities\t(181,794)\t\t\t(214,052)\t\t\t(136,578)\t\t\t(625,305)\nAmortization of content assets\t4,311,309\u00a0\t\t\t3,832,074\u00a0\t\t\t8,529,209\u00a0\t\t\t7,655,186\nDepreciation and amortization of property, equipment and intangibles\t100,530\u00a0\t\t\t80,013\u00a0\t\t\t199,105\u00a0\t\t\t160,080\nStock-based compensation expense\t131,312\u00a0\t\t\t80,862\u00a0\t\t\t271,717\u00a0\t\t\t152,839\nForeign currency remeasurement loss (gain) on debt\t(8,813)\t\t\t55,238\u00a0\t\t\t(18,923)\t\t\t83,785\nOther non-cash items\t141,356\u00a0\t\t\t120,139\u00a0\t\t\t339,583\u00a0\t\t\t234,869\nDeferred income taxes\t81,260\u00a0\t\t\t(135,755)\t\t\t140,079\u00a0\t\t\t(299,683)\nChanges in operating assets and liabilities:\nOther current assets\t111,713\u00a0\t\t\t(176,683)\t\t\t(592,927)\t\t\t(308,050)\nAccounts payable\t(157,397)\t\t\t11,046\u00a0\t\t\t(157,243)\t\t\t(265,380)\nAccrued expenses and other liabilities\t(1,249,793)\t\t\t(267,235)\t\t\t46,111\u00a0\t\t\t39,178\nDeferred revenue\t54,008\u00a0\t\t\t118,635\u00a0\t\t\t21,726\u00a0\t\t\t207,548\nOther non-current assets and liabilities\t(63,770)\t\t\t(370,624)\t\t\t(517,607)\t\t\t(452,904)\nNet cash provided by operating activities\t1,743,812\u00a0\t\t\t2,423,258\u00a0\t\t\t7,034,017\u00a0\t\t\t5,212,457\nCash flows from investing activities:\nPurchases of property and equipment\t(218,644)\t\t\t(155,889)\t\t\t(414,774)\t\t\t(284,166)\n\nAcquisitions\t\u2014\u00a0\t\t\t\u2014\u00a0\t\t\t(585,744)\t\t\t\u2014\nPurchases of investments\t\u2014\u00a0\t\t\t(1,650)\t\t\t\u2014\u00a0\t\t\t(157,665)\n\nProceeds from maturities and sales of investments\t\u2014\u00a0\t\t\t962,413\u00a0\t\t\t\u2014\u00a0\t\t\t1,732,367\nOther investing activities\t\u2014\u00a0\t\t\t(36,190)\t\t\t\u2014\u00a0\t\t\t(36,190)\nNet cash provided by (used in) investing activities\t(218,644)\t\t\t768,684\u00a0\t\t\t(1,000,518)\t\t\t1,254,346\nCash flows from financing activities:\n\nRepayments of debt\t\u2014\u00a0\t\t\t(1,033,450)\t\t\t\u2014\u00a0\t\t\t(1,833,450)\nProceeds from issuance of common stock\t59,980\u00a0\t\t\t169,066\u00a0\t\t\t109,290\u00a0\t\t\t520,668\nRepurchases of common stock\t(4,714,403)\t\t\t(1,654,327)\t\t\t(5,984,991)\t\t\t(5,190,723)\nTaxes paid related to net share settlement of equity awards\t(6,631)\t\t\t(6,114)\t\t\t(35,861)\t\t\t(33,984)\nOther financing activities\t(8,573)\t\t\t21,957\u00a0\t\t\t11,121\u00a0\t\t\t6,305\nNet cash used in financing activities\t(4,669,627)\t\t\t(2,502,868)\t\t\t(5,900,441)\t\t\t(6,531,184)\nEffect of exchange rate changes on cash, cash equivalents and restricted cash\t(19,628)\t\t\t287,471\u00a0\t\t\t(69,466)\t\t\t437,617\nNet increase (decrease) in cash, cash equivalents and restricted cash\t(3,164,087)\t\t\t976,545\u00a0\t\t\t63,592\u00a0\t\t\t373,236\nCash, cash equivalents and restricted cash at beginning of period\t12,266,873\u00a0\t\t\t7,204,028\u00a0\t\t\t9,039,194\u00a0\t\t\t7,807,337\nCash, cash equivalents and restricted cash at end of period\t$\t9,102,786\u00a0\t\t\t$\t8,180,573\u00a0\t\t\t$\t9,102,786\u00a0\t\t\t$\t8,180,573\n\nSee accompanying notes to the consolidated financial statements.\n5\n[e37 link] Table of Contents\nNETFLIX, INC.\nConsolidated Balance Sheets\n(in thousands, except share and par value data)\n\n\tAs of\n\n\tJune 30,\n2026\t\tDecember 31,\n2025\n\t(unaudited)\n\n[chunk 1/13; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_019kf2j9m56KHfRbq4CAP854",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "page": 2
+    },
+    "name": "read_page",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_019kf2j9m56KHfRbq4CAP854",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | TITLE: nflx-20260630 | chunk 2/13\n\nAssets\n\nCurrent assets:\n\nCash and cash equivalents\n\t$\t9,099,232\u00a0\t\t\t$\t9,033,681\nShort-term investments\t28,678\u00a0\t\t\t28,678\n\nOther current assets\n\t4,725,393\u00a0\t\t\t3,957,832\n\nTotal current assets\n\t13,853,303\u00a0\t\t\t13,020,191\n\nContent assets, net\n\t33,837,573\u00a0\t\t\t32,778,392\n\nProperty and equipment, net\n\t2,398,848\u00a0\t\t\t2,004,350\n\nOther non-current assets\n\t8,360,717\u00a0\t\t\t7,794,060\n\nTotal assets\n\t$\t58,450,441\u00a0\t\t\t$\t55,596,993\n\nLiabilities and Stockholders\u2019 Equity\n\nCurrent liabilities:\n\nCurrent content liabilities\n\t$\t3,866,522\u00a0\t\t\t$\t4,084,854\n\nAccounts payable\n\t814,551\u00a0\t\t\t900,612\n\nAccrued expenses and other liabilities\n\t3,172,611\u00a0\t\t\t3,220,869\n\nDeferred revenue\n\t1,797,456\u00a0\t\t\t1,775,730\n\nShort-term debt\n\t2,483,758\u00a0\t\t\t998,865\n\nTotal current liabilities\n\t12,134,898\u00a0\t\t\t10,980,930\n\nNon-current content liabilities\n\t1,625,600\u00a0\t\t\t1,579,476\n\nLong-term debt\n\t11,825,548\u00a0\t\t\t13,463,971\n\nOther non-current liabilities\n\t2,712,343\u00a0\t\t\t2,957,128\n\nTotal liabilities\n\t28,298,389\u00a0\t\t\t28,981,505\nCommitments and contingencies (Note 9)\n\nStockholders\u2019 equity:\n\nCommon stock, $0.001 par value; 49,900,000,000 shares authorized at June\u00a030, 2026 and December\u00a031, 2025; 4,163,939,676 and 4,222,162,150 issued and outstanding at June\u00a030, 2026 and December\u00a031, 2025, respectively\n\t7,670,503\u00a0\t\t\t7,286,410\n\nTreasury stock at cost (413,373,678 and 346,541,145 shares at June\u00a030, 2026 and December\u00a031, 2025, respectively)\n\t(28,387,657)\t\t\t(22,372,658)\nAccumulated other comprehensive loss\t(97,117)\t\t\t(580,382)\n\nRetained earnings\n\t50,966,323\u00a0\t\t\t42,282,118\n\nTotal stockholders\u2019 equity\n\t30,152,052\u00a0\t\t\t26,615,488\n\nTotal liabilities and stockholders\u2019 equity\n\t$\t58,450,441\u00a0\t\t\t$\t55,596,993\n\nSee accompanying notes to the consolidated financial statements.\n6\n[e38 link] Table of Contents\nNETFLIX, INC.\nConsolidated Statements of Stockholders\u2019 Equity\n(unaudited)\n(in thousands)\n\n\tThree Months Ended\t\tSix Months Ended\n\u00a0\tJune 30,\n2026\t\tJune 30,\n2025\t\tJune 30,\n2026\t\tJune 30,\n2025\nTotal stockholders\u2019 equity, beginning balances\t$\t31,126,399\u00a0\t\t\t$\t24,028,073\u00a0\t\t\t$\t26,615,488\u00a0\t\t\t$\t24,743,567\n\nCommon stock and additional paid-in capital:\n\nBeginning balances\n\t$\t7,478,495\u00a0\t\t\t$\t6,677,469\u00a0\t\t\t$\t7,286,410\u00a0\t\t\t$\t6,252,126\nIssuance of common stock\t60,696\u00a0\t\t\t174,497\u00a0\t\t\t112,376\u00a0\t\t\t527,863\n\u00a0Stock-based compensation expense\t131,312\u00a0\t\t\t80,862\u00a0\t\t\t271,717\u00a0\t\t\t152,839\nEnding balances\t$\t7,670,503\u00a0\t\t\t$\t6,932,828\u00a0\t\t\t$\t7,670,503\u00a0\t\t\t$\t6,932,828\n\nTreasury stock:\n\nBeginning balances\n\t$\t(23,681,974)\t\t\t$\t(16,754,929)\t\t\t$\t(22,372,658)\t\t\t$\t(13,171,638)\nRepurchases of common stock to be held as treasury stock\t(4,705,683)\t\t\t(1,638,013)\t\t\t(6,014,999)\t\t\t(5,221,304)\nEnding balances\t$\t(28,387,657)\t\t\t$\t(18,392,942)\t\t\t$\t(28,387,657)\t\t\t$\t(18,392,942)\n\nAccumulated other comprehensive income (loss):\n\nBeginning balances\n\t$\t(235,031)\t\t\t$\t(85,735)\t\t\t$\t(580,382)\t\t\t$\t362,162\nOther comprehensive income (loss)\t137,914\u00a0\t\t\t(818,933)\t\t\t483,265\u00a0\t\t\t(1,266,830)\nEnding balances\t$\t(97,117)\t\t\t$\t(904,668)\t\t\t$\t(97,117)\t\t\t$\t(904,668)\n\nRetained earnings:\nBeginning balances\t$\t47,564,909\u00a0\t\t\t$\t34,191,268\u00a0\t\t\t$\t42,282,118\u00a0\t\t\t$\t31,300,917\n\nNet income\n\t3,401,414\u00a0\t\t\t3,125,413\u00a0\t\t\t8,684,205\u00a0\t\t\t6,015,764\nEnding balances\t$\t50,966,323\u00a0\t\t\t$\t37,316,681\u00a0\t\t\t$\t50,966,323\u00a0\t\t\t$\t37,316,681\n\nTotal stockholders\u2019 equity, ending balances\t$\t30,152,052\u00a0\t\t\t$\t24,951,899\u00a0\t\t\t$\t30,152,052\u00a0\t\t\t$\t24,951,899\n\nSee accompanying notes to the consolidated financial statements.\n7\n[e39 link] Table of Contents\nNETFLIX, INC.\nNotes to Consolidated Financial Statements\n(unaudited)\n\n1. Basis of Presentation and Summary of Significant Accounting Policies\nThe accompanying interim consolidated financial statements of Netflix, Inc. and its wholly owned subsidiaries (the \u201cCompany\u201d) have been prepared in conformity with accounting principles generally accepted in the United States (\u201cU.S.\u201d) and are consistent in all material respects with those applied in the Company\u2019s Annual Report on Form 10-K for the year ended December\u00a031, 2025 filed with the Securities and Exchange Commission (the \u201cSEC\u201d) on January 23, 2026. The preparation of consolidated financial statements in conformity with U.S. generally accepted accounting principles (\u201cGAAP\u201d) requires management to make estimates and judgments that affect the amounts reported in the consolidated financial statements and accompanying notes. Significant items subject to such estimates and assumptions include the amortization of content assets and the recognition and measurement of income tax assets and liabilities. The Company bases its estimates on historical experience and on various other assumptions that the Company believes to be reasonable under the circumstances. On a regular basis, the Company evaluates the assumptions, judgments and estimates. Actual results may differ from these estimates.\nThe interim financial information is unaudited, but reflects all normal recurring adjustments that are, in the opinion of management, necessary to fairly present the information set forth herein. The interim consolidated financial statements should be read in conjunction with the audited consolidated financial statements and related notes included in the Company\u2019s Annual Report on Form 10-K for the year ended December\u00a031, 2025. Interim results are not necessarily indicative of the results for a full year.\nStock Split\nOn November 14, 2025, the Company completed a ten-for-one forward stock split of the Company\u2019s issued common stock (the \u201cStock Split\u201d). Each shareholder as of the record date of November 10, 2025 received nine additional shares of common stock for every share held. References made to share or per share amounts in the accompanying consolidated financial statements and applicable disclosures have been retroactively adjusted to reflect the Stock Split.\nSignificant Accounting Policies\nThe following is provided to update the Company\u2019s significant accounting policies previously described in the Company\u2019s Annual Report on Form 10-K for the year ended\u00a0December\u00a031, 2025.\nDerivative Financial Instruments and Hedging Activities\nThe Company uses derivative and non-derivative instruments to manage foreign exchange risk and interest rate risk related to its ongoing business operations.\nInterest Rate Risk\nFair value hedges\nThe Company enters into interest rate swap agreements to manage its exposure to changes in the fair value of its fixed-rate debt attributable to changes in the benchmark interest rate. These hedges may reduce, but do not entirely eliminate, the effect of interest rate movements, and the Company may choose not to hedge the full amount of its exposure. The Company designates these agreements as fair value hedges of specifically identified tranches of its fixed-rate debt. Changes in the fair value of the interest rate swap instruments are recognized in \u201cInterest expense\u201d on the Consolidated Statements of Operations, net with the offsetting changes in the fair value of the designated hedged debt attributable to changes in the benchmark interest rate. Net periodic settlements between the Company and its swap counterparties are recognized as adjustments to \u201cInterest expense\u201d in the period in which they accrue. Cash flows from hedging activities are classified within \u201cNet cash provided by operating activities\u201d on the Consolidated Statements of Cash Flows, consistent with the classification of interest payments on the hedged debt.\nSee Note 8 Derivative Financial Instruments and Hedging Activities to the consolidated financial statements for further information regarding the Company\u2019s derivative and non-derivative financial instruments.\nRecently issued accounting pronouncements not yet adopted\nIn November 2024, the Financial Accounting Standards Board (\u201cFASB\u201d) issued Accounting Standards Update (\u201cASU\u201d) 2024-03, Income Statement-Reporting Comprehensive Income-Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses, requiring public entities to disclose additional information about specific expense categories in the notes to the financial statements on an interim and annual basis. ASU 2024-03 is effective for fiscal years beginning after December 15, 2026, and for interim periods beginning after December 15, 2027, with early adoption permitted. The Company is currently evaluating the impact of adopting ASU 2024-03.\n8\n[e40 link] Table of Contents\nIn December 2025, the FASB issued ASU 2025-10, Government Grants (Topic 832): Accounting for Government Grants Received by Business Entities, which establishes authoritative guidance on the recognition, measurement, presentation, and disclosure of government grants. Under ASU 2025-10, government grants are recognized when it is probable that the entity will both comply with the conditions of the grant and the grant will be received. The ASU provides specific accounting models for grants related to assets and grants related to income, including options to recognize government grants as deferred income or as a reduction of the asset\u2019s cost basis. The ASU also requires enhanced disclosures regarding the nature of government grants, significant terms and conditions, accounting policies applied, and amounts recognized in the financial statements. ASU 2025-10 is effective for fiscal years beginning after December 15, 2028, including interim periods within those fiscal years, with early adoption permitted. The Company is currently evaluating the impact of adopting ASU 2025-10.\n[chunk 2/13; call read_page(page=3) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "The balance sheet in Netflix's 10-Q for the quarter ended June 30, 2026 shows total stockholders' equity of $30,152,052 thousand.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01PUwpyTRcrVSejX66NEvYKR",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0001065280-26-000212",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm",
+     "period_end": "2026-06-30",
+     "value_usd": 30152052000
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01PUwpyTRcrVSejX66NEvYKR",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

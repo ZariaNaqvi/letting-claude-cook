@@ -1,0 +1,18 @@
+TASK T3
+
+Find total shareholders' equity attributable to Walmart Inc. (excluding noncontrolling interest) at the end of Walmart's second quarter of fiscal year 2027.
+
+RULES:
+- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.
+- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.
+- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.
+- You may use at most 30 tool calls in total, including submit_answer.
+
+STEPS (a click path that works):
+1. Open https://www.sec.gov/search-filings, type "Walmart" and click the suggestion "Walmart Inc. (WMT)" (CIK 0000104169).
+2. Expand "10-K (annual reports) and 10-Q (quarterly reports)" and open the "Filing" link of the 10-Q for the quarter ending July 31, 2026 (filed early September 2026).
+3. From the filing index, open the filing folder, then FilingSummary.xml, and find "Condensed Consolidated Balance Sheets"; open its R page.
+4. Use the row "Total Walmart shareholders' equity" (NOT "Total shareholders' equity", which includes noncontrolling interest), column "Jul. 31, 2026".
+Units: The page header says "$ in Millions": multiply by 1,000,000.
+
+When you have the answer, call submit_answer.

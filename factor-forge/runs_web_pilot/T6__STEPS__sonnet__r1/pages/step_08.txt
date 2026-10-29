@@ -1,0 +1,46 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R5.htm | TITLE:  | chunk 1/1
+
+XML 24 R5.htm IDEA: XBRL DOCUMENT
+Consolidated Balance Sheets (Unaudited) (Parenthetical) - USD ($)
+$ in Millions
+
+Jun. 30, 2026
+
+Dec. 31, 2025
+
+Assets
+Trading assets pledged	$ 1,062,072	$ 802,873
+Available-for-sale securities, amortized cost, net of allowance for credit losses	538,689	507,226
+Available-for-sale securities	536,048	507,198
+Loans at fair value	62,889	70,684
+Other assets pledged	$ 231,780	$ 198,775
+Stockholders' equity
+Preferred stock, par value (in dollars per share)	$ 1	$ 1
+Preferred stock, shares authorized (in shares)	200,000,000	200,000,000
+Preferred stock, shares issued (in shares)	2,105,375	2,005,375
+Common stock, par value (in dollars per share)	$ 1	$ 1
+Common stock, shares authorized (in shares)	9,000,000,000	9,000,000,000
+Common stock, shares issued (in shares)	4,104,933,895	4,104,933,895
+Treasury stock, at cost (in shares)	1,446,747,700	1,408,661,319
+Assets pledged
+Assets
+Trading assets pledged	$ 267,907	$ 165,927
+Available-for-sale securities	12,007	7,735
+Other assets pledged	16,137	11,984
+Recurring
+Assets
+Federal funds sold and securities purchased under resale agreements at fair value	432,939	327,018
+Securities borrowed at fair value	118,384	98,111
+Trading assets pledged	1,062,072	802,873
+Available-for-sale securities	536,048	507,198
+Loans at fair value	62,889	70,684
+Liabilities
+Deposits at fair value	26,229	20,930
+Federal funds purchased and securities loaned or sold under repurchase agreements at fair value	568,730	360,194
+Short-term borrowings at fair value	29,967	32,460
+Accounts payable and other liabilities	18,383	6,660
+Beneficial interests issued by consolidated VIEs at fair value	5	5
+Long-term debt at fair value	156,056	134,559
+Recurring | Other assets
+Assets
+Other assets at fair value	$ 32,431	$ 15,849

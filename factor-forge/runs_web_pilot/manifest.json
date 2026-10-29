@@ -1,0 +1,148 @@
+[
+  {
+    "time": "2026-10-28T21:22:54",
+    "argv": [
+      "web/run_web.py",
+      "--pilot",
+      "--models",
+      "haiku",
+      "--tasks",
+      "T1",
+      "--conds",
+      "STEPS",
+      "--repeats",
+      "1",
+      "--out",
+      "runs_web_pilot"
+    ],
+    "dry_run": false,
+    "offline": false,
+    "pilot": true,
+    "effort": "high",
+    "max_tokens": 16000,
+    "time_limit_s": 720,
+    "budget_usd": 100.0,
+    "models": {
+      "haiku": [
+        "claude-haiku-5-5",
+        0.1,
+        0.5
+      ]
+    },
+    "cache_read_mult": {
+      "fable": 0.025,
+      "opus": 0.05,
+      "sonnet": 0.1,
+      "haiku": 0.1
+    },
+    "n_jobs": 1,
+    "prompt_version": "web-v1-draft",
+    "harness_version": "web-h2",
+    "anthropic_sdk": "1.13.0",
+    "playwright": "1.64.1",
+    "python": "3.12.10",
+    "max_rps": 5.0
+  },
+  {
+    "time": "2026-10-28T21:23:23",
+    "argv": [
+      "web/run_web.py",
+      "--pilot",
+      "--models",
+      "haiku",
+      "sonnet",
+      "--tasks",
+      "all",
+      "--conds",
+      "STEPS",
+      "GOAL_ONLY",
+      "--repeats",
+      "1",
+      "--out",
+      "runs_web_pilot"
+    ],
+    "dry_run": false,
+    "offline": false,
+    "pilot": true,
+    "effort": "high",
+    "max_tokens": 16000,
+    "time_limit_s": 720,
+    "budget_usd": 100.0,
+    "models": {
+      "haiku": [
+        "claude-haiku-5-5",
+        0.1,
+        0.5
+      ],
+      "sonnet": [
+        "claude-sonnet-5-5",
+        2.0,
+        10.0
+      ]
+    },
+    "cache_read_mult": {
+      "fable": 0.025,
+      "opus": 0.05,
+      "sonnet": 0.1,
+      "haiku": 0.1
+    },
+    "n_jobs": 31,
+    "prompt_version": "web-v1-draft",
+    "harness_version": "web-h2",
+    "anthropic_sdk": "1.13.0",
+    "playwright": "1.64.1",
+    "python": "3.12.10",
+    "max_rps": 5.0
+  },
+  {
+    "time": "2026-10-28T21:42:24",
+    "argv": [
+      "web/run_web.py",
+      "--pilot",
+      "--models",
+      "fable",
+      "opus",
+      "--tasks",
+      "T1",
+      "T4",
+      "--conds",
+      "GOAL_ONLY",
+      "--repeats",
+      "1",
+      "--out",
+      "runs_web_pilot"
+    ],
+    "dry_run": false,
+    "offline": false,
+    "pilot": true,
+    "effort": "high",
+    "max_tokens": 16000,
+    "time_limit_s": 720,
+    "budget_usd": 100.0,
+    "models": {
+      "fable": [
+        "claude-fable-5-1",
+        10.0,
+        50.0
+      ],
+      "opus": [
+        "claude-opus-5-5",
+        4.0,
+        20.0
+      ]
+    },
+    "cache_read_mult": {
+      "fable": 0.025,
+      "opus": 0.05,
+      "sonnet": 0.1,
+      "haiku": 0.1
+    },
+    "n_jobs": 4,
+    "prompt_version": "web-v1-draft",
+    "harness_version": "web-h2",
+    "anthropic_sdk": "1.13.0",
+    "playwright": "1.64.1",
+    "python": "3.12.10",
+    "max_rps": 5.0
+  }
+]

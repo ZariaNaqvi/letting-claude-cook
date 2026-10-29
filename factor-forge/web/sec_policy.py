@@ -13,7 +13,8 @@ Every request the headless browser makes (pages AND sub-resources) passes throug
   6. serves .js/.css from a local cache after the first download (web/.asset_cache/)
   7. makes every allowed request with a plain HTTP client that sends ONLY the
      declared User-Agent (Chromium renders the result). This keeps the traffic
-     exactly what SEC asks automated tools to send.
+     exactly what SEC asks automated tools to send. The client follows redirects;
+     a redirected page is handed to Chromium so that it lands on the FINAL URL.
   8. optional: records every response to a fixture folder (--record) or serves ONLY
      from fixtures (--offline), so the self-test never touches the network
 
@@ -149,7 +150,7 @@ def ua_digest(ua):
 # Rate limiter: global token bucket shared by every request
 # ---------------------------------------------------------------------------
 class RateLimiter:
-    def __init__(self, rps=MAX_RPS, burst=1):
+    def __init__(self, rps=MAX_RPS):
         self.interval = 1.0 / rps
         self.lock = threading.Lock()
         self.next_t = 0.0
@@ -231,9 +232,14 @@ class Policy:
         self.n_network = 0
         self.offline_misses = []
         self.http_403 = 0
+        self.api_403 = 0              # 403 from efts/data.sec.gov opened as a page: shown to the model, no halt
         self.fetch_errors = 0
         self.http = None
-        self._pool = ThreadPoolExecutor(max_workers=4)
+        self.doc_status = {}          # url -> HTTP status of the last document served for it
+        self._redirected = {}         # final url -> (status, content_type, body) fetched via a redirect
+        # A request that misses FETCH_DEADLINE_S keeps its worker thread until httpx's own timeouts
+        # end it, so the pool is sized for a few stuck requests without starving the next ones.
+        self._pool = ThreadPoolExecutor(max_workers=8)
         if mode != "offline":
             import httpx2   # installed with anthropic; verifies TLS with the system store
             # Redirects are followed HERE: a redirect handed back to Chromium would be fetched by
@@ -296,10 +302,19 @@ class Policy:
                                      body="OFFLINE: page not in fixtures")
             e, body = hit
             self._note(url, rtype, "fixture")
+            if rtype == "document":
+                self.doc_status[url] = e["status"]
             headers = {"content-type": e["content_type"]}
             if e.get("location"):
                 headers["location"] = e["location"]
             return route.fulfill(status=e["status"], headers=headers, body=body)
+
+        # second half of a redirected page load (see below): serve what was already fetched
+        if rtype == "document" and url in self._redirected:
+            status, ctype, body = self._redirected.pop(url)
+            self._note(url, rtype, f"redirect-target {status}")
+            self.doc_status[url] = status
+            return route.fulfill(status=status, content_type=ctype, body=body)
 
         # static asset cache (js/css only; page HTML is always live)
         if self._is_asset(url, rtype):
@@ -314,7 +329,7 @@ class Policy:
 
         # live / record: the request is made by a plain HTTP client that sends the
         # declared User-Agent (SEC's fair-access rule for automated tools); Chromium
-        # only renders what comes back. Redirects are passed back to the browser.
+        # only renders what comes back.
         fwd = {k: v for k, v in req.headers.items() if k.lower() in ("content-type",)}
         t_start = time.time()
         # hard wall-clock deadline per request: httpx's timeouts are per read, so a slowly
@@ -329,14 +344,28 @@ class Policy:
             return route.abort("timedout" if isinstance(e, TimeoutError) else "failed")
         body = resp.content
         ctype = resp.headers.get("content-type", "application/octet-stream")
-        loc = None
-        if str(resp.url) != url:                    # followed a redirect; must still be an allowed URL
-            ok2, why2 = classify(str(resp.url))
+        final = str(resp.url)
+        if final != url:                            # followed a redirect; must still be an allowed URL
+            ok2, why2 = classify(final)
             if not ok2:
-                self._note(str(resp.url), rtype, "BLOCK after redirect " + why2)
+                self._note(final, rtype, "BLOCK after redirect " + why2)
+                if rtype == "document":
+                    self.blocked_docs.append((final, "redirect to " + why2))
                 return route.abort("blockedbyclient")
+            if rtype == "document":
+                # Served under the old URL, the page would show the wrong address and resolve its
+                # relative links wrongly. A 3xx is no fix: Chromium follows it itself, outside this
+                # handler. So the old URL gets a stub that moves the browser to the final URL, and
+                # that request is answered from the response already in hand (no new network hit).
+                self._redirected[final] = (resp.status_code, ctype, body)
+                stub = f"<!doctype html><script>location.replace({json.dumps(final)})</script>".encode()
+                if self.mode == "record":
+                    self.store.put(method, url, 200, "text/html", stub)
+                    self.store.put("GET", final, resp.status_code, ctype, body)
+                self._note(url, rtype, f"net {resp.status_code} {time.time() - t_start:.1f}s redirect -> {final[:200]}")
+                return route.fulfill(status=200, content_type="text/html", body=stub)
         if self.mode == "record":
-            self.store.put(method, url, resp.status_code, ctype, body, loc)
+            self.store.put(method, url, resp.status_code, ctype, body)
         if self._is_asset(url, rtype) and resp.status_code == 200:
             os.makedirs(self.asset_cache, exist_ok=True)
             with open(self._asset_path(url), "wb") as fh:
@@ -344,12 +373,16 @@ class Policy:
             with open(self._asset_path(url) + ".type", "w") as fh:
                 fh.write(ctype)
         if resp.status_code == 403 and rtype == "document":
-            self.http_403 += 1
+            # Only a 403 on a www.sec.gov page means SEC is blocking the harness. The search API
+            # (efts) also answers 403 when a model opens its URL directly as a page.
+            if (urlsplit(url).hostname or "").lower() in SEC_HOSTS:
+                self.http_403 += 1
+            else:
+                self.api_403 += 1
         self._note(url, rtype, f"net {resp.status_code} {time.time() - t_start:.1f}s")
-        headers = {"content-type": ctype}
-        if loc:
-            headers["location"] = loc
-        return route.fulfill(status=resp.status_code, headers=headers, body=body)
+        if rtype == "document":
+            self.doc_status[url] = resp.status_code
+        return route.fulfill(status=resp.status_code, content_type=ctype, body=body)
 
 
 if __name__ == "__main__":

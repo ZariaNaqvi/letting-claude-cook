@@ -24,7 +24,7 @@ import sys
 HERE = os.path.dirname(os.path.abspath(__file__))
 TASKS_JSON = os.path.join(HERE, "tasks_web.json")
 
-PROMPT_VERSION = "web-v1-draft"
+PROMPT_VERSION = "web-v2"
 CONDITIONS = ["STEPS", "GOAL_ONLY"]
 
 SYSTEM_PROMPT = (

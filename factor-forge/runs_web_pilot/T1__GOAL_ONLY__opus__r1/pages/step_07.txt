@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm | find_text 'Total shareholders’ equity': 0 match(es)
