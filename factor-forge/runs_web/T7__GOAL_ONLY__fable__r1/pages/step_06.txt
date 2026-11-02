@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm | find_text "Berkshire Hathaway shareholders' equity": 0 match(es)

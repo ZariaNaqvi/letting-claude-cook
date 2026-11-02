@@ -1,0 +1,228 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm | TITLE: jpm-20260630 | chunk 31/66
+
+Defined benefit pension and OPEB plans		37 		(28)			41 			(44)
+DVA on fair value option elected liabilities		(383)		(305)			642 			(88)
+
+Total other comprehensive income/(loss), after–tax
+		(1,004)		1,868 			$	(3,403)			5,213
+Comprehensive income		$	20,151 		$	16,855 			$	34,246 			$	34,843
+The Notes to Consolidated Financial Statements (unaudited) are an integral part of these statements.
+
+94
+
+JPMorgan Chase & Co.
+Consolidated balance sheets (unaudited)
+
+(in millions, except share data)	June 30, 2026		December 31, 2025
+Assets
+Cash and due from banks	$	24,720 			$	21,742
+Deposits with banks	285,091 			321,596
+
+Federal funds sold and securities purchased under resale agreements (included $432,939 and $327,018 at fair value)
+	446,143 			336,426
+
+Securities borrowed (included $118,384 and $98,111 at fair value)
+	362,487 			286,191
+
+Trading assets (included assets pledged of $267,907 and $165,927)
+	1,062,072 			802,873
+
+Available-for-sale securities (amortized cost of $538,689 and $507,226; included assets pledged of $12,007 and $7,735)
+	536,048 			507,198
+Held-to-maturity securities	268,474 			270,134
+Investment securities, net of allowance for credit losses	804,522 			777,332
+
+Loans (included $62,889 and $70,684 at fair value)
+	1,542,462 			1,493,429
+Allowance for loan losses	(26,152)			(25,765)
+Loans, net of allowance for loan losses	1,516,310 			1,467,664
+Accrued interest and accounts receivable	179,939 			111,599
+Premises and equipment	37,701 			36,244
+Goodwill, MSRs and other intangible assets	64,304 			64,458
+
+Other assets (included $32,431 and $15,849 at fair value and assets pledged of $16,137 and $11,984)
+	231,780 			198,775
+
+Total assets(a)
+	$	5,015,069 			$	4,424,900
+Liabilities
+
+Deposits (included $26,229 and $20,930 at fair value)
+	$	2,713,700 			$	2,559,320
+
+Federal funds purchased and securities loaned or sold under repurchase agreements (included $568,730 and $360,194 at fair value)
+	704,918 			442,396
+
+Short-term borrowings (included $29,967 and $32,460 at fair value)
+	72,430 			64,776
+Trading liabilities	275,136 			216,019
+
+Accounts payable and other liabilities (included $18,383 and $6,660 at fair value)
+	384,290 			316,794
+
+Beneficial interests issued by consolidated VIEs (included $5 and $5 at fair value)
+	29,474 			27,951
+
+Long-term debt (included $156,056 and $134,559 at fair value)
+	460,523 			435,206
+
+Total liabilities(a)
+	4,640,471 			4,062,462
+
+Commitments and contingencies (refer to Notes 22, 23 and 24)
+
+Stockholders’ equity
+
+Preferred stock ($1 par value; authorized 200,000,000 shares; issued 2,105,375 and 2,005,375 shares)
+	21,040 			20,045
+
+Common stock ($1 par value; authorized 9,000,000,000 shares; issued 4,104,933,895 shares)
+	4,105 			4,105
+Additional paid-in capital	90,559 			91,114
+Retained earnings	445,020 			416,055
+Accumulated other comprehensive losses	(7,693)			(4,290)
+
+Treasury stock, at cost (1,446,747,700 and 1,408,661,319 shares)
+	(178,433)			(164,591)
+Total stockholders’ equity	374,598 			362,438
+Total liabilities and stockholders’ equity	$	5,015,069 			$	4,424,900
+(a)The following table presents information on assets and liabilities related to VIEs that are consolidated by the Firm at June 30, 2026 and December 31, 2025. The assets of the consolidated VIEs are used to settle the liabilities of those entities. The holders of the beneficial interests generally do not have recourse to the general credit of JPMorganChase. The assets and liabilities in the table below include third-party assets and liabilities of consolidated VIEs and exclude intercompany balances that eliminate in consolidation. Refer to Note 13 for a further discussion.
+
+(in millions)	June 30, 2026		December 31, 2025
+Assets
+Trading assets	$	6,094 			$	4,835
+Loans	34,178 			37,777
+All other assets	734 			683
+Total assets	$	41,006 			$	43,295
+Liabilities
+Beneficial interests issued by consolidated VIEs	$	29,474 			$	27,951
+All other liabilities	813 			691
+Total liabilities	$	30,287 			$	28,642
+The Notes to Consolidated Financial Statements (unaudited) are an integral part of these statements.
+95
+
+JPMorgan Chase & Co.
+Consolidated statements of changes in stockholders’ equity (unaudited)
+
+		Three months ended June 30,		Six months ended June 30,
+(in millions, except per share data)		2026		2025		2026		2025
+Preferred stock
+Balance at the beginning of the period		$	20,045 			$	20,045 			$	20,045 			$	20,050
+Issuance		2,995 			— 			2,995 			2,995
+Redemption		(2,000)			— 			(2,000)			(3,000)
+Balance at June 30,		21,040 			20,045 			21,040 			20,045
+
+Common stock
+Balance at the beginning and end of the period		4,105 			4,105 			4,105 			4,105
+
+Additional paid-in capital
+Balance at the beginning of the period		90,087 			90,223 			91,114 			90,911
+Shares issued and commitments to issue common stock for employee share-based compensation awards, and related tax effects		470 			374 			(557)			(318)
+
+Other
+		2 			(21)			2 			(17)
+Balance at June 30,		90,559 			90,576 			90,559 			90,576
+
+Retained earnings
+Balance at the beginning of the period		428,206 			386,616 			416,055 			376,166
+
+Net income		21,155 			14,987 			37,649 			29,630
+
+Preferred stock dividends
+		(308)			(282)			(584)			(537)
+
+Common stock dividends ($1.50 and $1.40 per share and $3.00 and $2.80 per share, respectively)
+		(4,033)			(3,897)			(8,100)			(7,835)
+Balance at June 30,		445,020 			397,424 			445,020 			397,424
+
+Accumulated other comprehensive income/(loss)
+Balance at the beginning of the period		(6,689)			(9,111)			(4,290)			(12,456)
+
+Other comprehensive income/(loss), after-tax
+		(1,004)			1,868 			(3,403)			5,213
+Balance at June 30,		(7,693)			(7,243)			(7,693)			(7,243)
+
+Treasury stock, at cost
+Balance at the beginning of the period		(171,716)			(140,458)			(164,591)			(134,018)
+Repurchase		(6,768)			(7,574)			(15,146)			(15,185)
+Reissuance		51 			49 			1,304 			1,220
+Balance at June 30,		(178,433)			(147,983)			(178,433)			(147,983)
+
+Total stockholders’ equity		$	374,598 			$	356,924 			$	374,598 			$	356,924
+The Notes to Consolidated Financial Statements (unaudited) are an integral part of these statements.
+96
+
+JPMorgan Chase & Co.
+Consolidated statements of cash flows (unaudited)
+
+	Six months ended June 30,
+(in millions)	2026		2025
+Operating activities
+Net income	$	37,649 			$	29,630
+Adjustments to reconcile net income to net cash used in operating activities:
+Provision for credit losses	5,022 			6,154
+Depreciation and amortization	4,681 			4,240
+Deferred tax (benefit)/expense	127 			(418)
+
+Initial gain on the Visa share exchange	(4,509)			—
+Other	1,432 			979
+Originations and purchases of loans held-for-sale	(138,988)			(133,098)
+Proceeds from sales, securitizations and paydowns of loans held-for-sale	145,881 			120,504
+Net change in:
+Trading assets	(253,978)			(245,618)
+Securities borrowed	(76,298)			(4,434)
+Accrued interest and accounts receivable	(69,352)			(23,853)
+Other assets	(24,142)			(5,048)
+Trading liabilities	74,762 			29,763
+Accounts payable and other liabilities	59,493 			(7,760)
+Other operating adjustments	1,176 			6,667
+Net cash (used in) operating activities	(237,044)			(222,292)
+Investing activities
+Net change in:
+Federal funds sold and securities purchased under resale agreements	(109,784)			(175,516)
+Held-to-maturity securities:
+Proceeds from paydowns and maturities	24,438 			18,147
+Purchases	(23,058)			(3,167)
+Available-for-sale securities:
+Proceeds from paydowns and maturities	26,155 			17,957
+Proceeds from sales	110,842 			85,495
+Purchases	(172,073)			(172,126)
+Proceeds from sales and securitizations of loans held-for-investment	29,127 			25,940
+Other changes in loans, net	(91,082)			(83,166)
+
+All other investing activities, net	(5,941)			(4,700)
+
+Net cash (used in) investing activities
+	(211,376)			(291,136)
+Financing activities
+Net change in:
+Deposits	149,395 			153,462
+Federal funds purchased and securities loaned or sold under repurchase agreements	262,558 			298,493
+Short-term borrowings	6,954 			10,772
+Beneficial interests issued by consolidated VIEs	(517)			(31)
+Proceeds from long-term borrowings	85,466 			53,884
+Payments of long-term borrowings	(59,953)			(50,821)
+Proceeds from issuance of preferred stock	3,000 			3,000
+Redemption of preferred stock	(2,000)			(3,000)
+Treasury stock repurchased	(15,113)			(15,034)
+Dividends paid	(8,716)			(8,028)
+All other financing activities, net	(1,595)			(1,834)
+Net cash provided by financing activities	419,479 			440,863
+Effect of exchange rate changes on cash and due from banks and deposits with banks	(4,586)			23,575
+
+Net decrease in cash and due from banks and deposits with banks
+	(33,527)			(48,990)
+Cash and due from banks and deposits with banks at the beginning of the period	343,338 			469,317
+Cash and due from banks and deposits with banks at the end of the period	$	309,811 			$	420,327
+Cash interest paid	$	48,435 			$	47,937
+Cash income taxes paid, net	6,036 			4,685
+The Notes to Consolidated Financial Statements (unaudited) are an integral part of these statements.
+97
+
+Refer to the Glossary of Terms and Acronyms on pages 192-198 for definitions of terms and acronyms used throughout the Notes to Consolidated Financial Statements.
+
+NOTES TO CONSOLIDATED FINANCIAL STATEMENTS (unaudited)
+Note 1 – Basis of presentation
+JPMorgan Chase & Co. (“JPMorganChase” or the “Firm”), a financial holding company incorporated under Delaware law in 1968, is a leading financial services firm based in the U.S., with operations worldwide. The Firm is a leader in investment banking, financial services for consumers and small businesses, commercial banking, financial transaction processing and asset management. Refer to Note 25 for further discussion of the Firm's reportable business segments.
+The accounting and financial reporting policies of JPMorganChase and its subsidiaries conform to U.S. GAAP. Additionally, where applicable, the policies conform to the accounting and reporting guidelines prescribed by regulatory authorities.
+[chunk 31/66; call read_page(page=32) for more]

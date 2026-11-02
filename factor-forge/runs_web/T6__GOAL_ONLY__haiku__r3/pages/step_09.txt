@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/index.json | find_text '0000019617-26': 0 match(es)

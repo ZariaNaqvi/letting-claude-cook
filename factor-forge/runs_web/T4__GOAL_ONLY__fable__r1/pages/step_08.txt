@@ -1,0 +1,154 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | TITLE: nflx-20260630 | chunk 2/13
+
+Assets
+
+Current assets:
+
+Cash and cash equivalents
+	$	9,099,232 			$	9,033,681
+Short-term investments	28,678 			28,678
+
+Other current assets
+	4,725,393 			3,957,832
+
+Total current assets
+	13,853,303 			13,020,191
+
+Content assets, net
+	33,837,573 			32,778,392
+
+Property and equipment, net
+	2,398,848 			2,004,350
+
+Other non-current assets
+	8,360,717 			7,794,060
+
+Total assets
+	$	58,450,441 			$	55,596,993
+
+Liabilities and Stockholders’ Equity
+
+Current liabilities:
+
+Current content liabilities
+	$	3,866,522 			$	4,084,854
+
+Accounts payable
+	814,551 			900,612
+
+Accrued expenses and other liabilities
+	3,172,611 			3,220,869
+
+Deferred revenue
+	1,797,456 			1,775,730
+
+Short-term debt
+	2,483,758 			998,865
+
+Total current liabilities
+	12,134,898 			10,980,930
+
+Non-current content liabilities
+	1,625,600 			1,579,476
+
+Long-term debt
+	11,825,548 			13,463,971
+
+Other non-current liabilities
+	2,712,343 			2,957,128
+
+Total liabilities
+	28,298,389 			28,981,505
+Commitments and contingencies (Note 9)
+
+Stockholders’ equity:
+
+Common stock, $0.001 par value; 49,900,000,000 shares authorized at June 30, 2026 and December 31, 2025; 4,163,939,676 and 4,222,162,150 issued and outstanding at June 30, 2026 and December 31, 2025, respectively
+	7,670,503 			7,286,410
+
+Treasury stock at cost (413,373,678 and 346,541,145 shares at June 30, 2026 and December 31, 2025, respectively)
+	(28,387,657)			(22,372,658)
+Accumulated other comprehensive loss	(97,117)			(580,382)
+
+Retained earnings
+	50,966,323 			42,282,118
+
+Total stockholders’ equity
+	30,152,052 			26,615,488
+
+Total liabilities and stockholders’ equity
+	$	58,450,441 			$	55,596,993
+
+See accompanying notes to the consolidated financial statements.
+6
+[e38 link] Table of Contents
+NETFLIX, INC.
+Consolidated Statements of Stockholders’ Equity
+(unaudited)
+(in thousands)
+
+	Three Months Ended		Six Months Ended
+ 	June 30,
+2026		June 30,
+2025		June 30,
+2026		June 30,
+2025
+Total stockholders’ equity, beginning balances	$	31,126,399 			$	24,028,073 			$	26,615,488 			$	24,743,567
+
+Common stock and additional paid-in capital:
+
+Beginning balances
+	$	7,478,495 			$	6,677,469 			$	7,286,410 			$	6,252,126
+Issuance of common stock	60,696 			174,497 			112,376 			527,863
+ Stock-based compensation expense	131,312 			80,862 			271,717 			152,839
+Ending balances	$	7,670,503 			$	6,932,828 			$	7,670,503 			$	6,932,828
+
+Treasury stock:
+
+Beginning balances
+	$	(23,681,974)			$	(16,754,929)			$	(22,372,658)			$	(13,171,638)
+Repurchases of common stock to be held as treasury stock	(4,705,683)			(1,638,013)			(6,014,999)			(5,221,304)
+Ending balances	$	(28,387,657)			$	(18,392,942)			$	(28,387,657)			$	(18,392,942)
+
+Accumulated other comprehensive income (loss):
+
+Beginning balances
+	$	(235,031)			$	(85,735)			$	(580,382)			$	362,162
+Other comprehensive income (loss)	137,914 			(818,933)			483,265 			(1,266,830)
+Ending balances	$	(97,117)			$	(904,668)			$	(97,117)			$	(904,668)
+
+Retained earnings:
+Beginning balances	$	47,564,909 			$	34,191,268 			$	42,282,118 			$	31,300,917
+
+Net income
+	3,401,414 			3,125,413 			8,684,205 			6,015,764
+Ending balances	$	50,966,323 			$	37,316,681 			$	50,966,323 			$	37,316,681
+
+Total stockholders’ equity, ending balances	$	30,152,052 			$	24,951,899 			$	30,152,052 			$	24,951,899
+
+See accompanying notes to the consolidated financial statements.
+7
+[e39 link] Table of Contents
+NETFLIX, INC.
+Notes to Consolidated Financial Statements
+(unaudited)
+
+1. Basis of Presentation and Summary of Significant Accounting Policies
+The accompanying interim consolidated financial statements of Netflix, Inc. and its wholly owned subsidiaries (the “Company”) have been prepared in conformity with accounting principles generally accepted in the United States (“U.S.”) and are consistent in all material respects with those applied in the Company’s Annual Report on Form 10-K for the year ended December 31, 2025 filed with the Securities and Exchange Commission (the “SEC”) on January 23, 2026. The preparation of consolidated financial statements in conformity with U.S. generally accepted accounting principles (“GAAP”) requires management to make estimates and judgments that affect the amounts reported in the consolidated financial statements and accompanying notes. Significant items subject to such estimates and assumptions include the amortization of content assets and the recognition and measurement of income tax assets and liabilities. The Company bases its estimates on historical experience and on various other assumptions that the Company believes to be reasonable under the circumstances. On a regular basis, the Company evaluates the assumptions, judgments and estimates. Actual results may differ from these estimates.
+The interim financial information is unaudited, but reflects all normal recurring adjustments that are, in the opinion of management, necessary to fairly present the information set forth herein. The interim consolidated financial statements should be read in conjunction with the audited consolidated financial statements and related notes included in the Company’s Annual Report on Form 10-K for the year ended December 31, 2025. Interim results are not necessarily indicative of the results for a full year.
+Stock Split
+On November 14, 2025, the Company completed a ten-for-one forward stock split of the Company’s issued common stock (the “Stock Split”). Each shareholder as of the record date of November 10, 2025 received nine additional shares of common stock for every share held. References made to share or per share amounts in the accompanying consolidated financial statements and applicable disclosures have been retroactively adjusted to reflect the Stock Split.
+Significant Accounting Policies
+The following is provided to update the Company’s significant accounting policies previously described in the Company’s Annual Report on Form 10-K for the year ended December 31, 2025.
+Derivative Financial Instruments and Hedging Activities
+The Company uses derivative and non-derivative instruments to manage foreign exchange risk and interest rate risk related to its ongoing business operations.
+Interest Rate Risk
+Fair value hedges
+The Company enters into interest rate swap agreements to manage its exposure to changes in the fair value of its fixed-rate debt attributable to changes in the benchmark interest rate. These hedges may reduce, but do not entirely eliminate, the effect of interest rate movements, and the Company may choose not to hedge the full amount of its exposure. The Company designates these agreements as fair value hedges of specifically identified tranches of its fixed-rate debt. Changes in the fair value of the interest rate swap instruments are recognized in “Interest expense” on the Consolidated Statements of Operations, net with the offsetting changes in the fair value of the designated hedged debt attributable to changes in the benchmark interest rate. Net periodic settlements between the Company and its swap counterparties are recognized as adjustments to “Interest expense” in the period in which they accrue. Cash flows from hedging activities are classified within “Net cash provided by operating activities” on the Consolidated Statements of Cash Flows, consistent with the classification of interest payments on the hedged debt.
+See Note 8 Derivative Financial Instruments and Hedging Activities to the consolidated financial statements for further information regarding the Company’s derivative and non-derivative financial instruments.
+Recently issued accounting pronouncements not yet adopted
+In November 2024, the Financial Accounting Standards Board (“FASB”) issued Accounting Standards Update (“ASU”) 2024-03, Income Statement-Reporting Comprehensive Income-Expense Disaggregation Disclosures (Subtopic 220-40): Disaggregation of Income Statement Expenses, requiring public entities to disclose additional information about specific expense categories in the notes to the financial statements on an interim and annual basis. ASU 2024-03 is effective for fiscal years beginning after December 15, 2026, and for interim periods beginning after December 15, 2027, with early adoption permitted. The Company is currently evaluating the impact of adopting ASU 2024-03.
+8
+[e40 link] Table of Contents
+In December 2025, the FASB issued ASU 2025-10, Government Grants (Topic 832): Accounting for Government Grants Received by Business Entities, which establishes authoritative guidance on the recognition, measurement, presentation, and disclosure of government grants. Under ASU 2025-10, government grants are recognized when it is probable that the entity will both comply with the conditions of the grant and the grant will be received. The ASU provides specific accounting models for grants related to assets and grants related to income, including options to recognize government grants as deferred income or as a reduction of the asset’s cost basis. The ASU also requires enhanced disclosures regarding the nature of government grants, significant terms and conditions, accounting policies applied, and amounts recognized in the financial statements. ASU 2025-10 is effective for fiscal years beginning after December 15, 2028, including interim periods within those fiscal years, with early adoption permitted. The Company is currently evaluating the impact of adopting ASU 2025-10.
+[chunk 2/13; call read_page(page=3) for more]

@@ -1,0 +1,2 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R4.htm | find_text 'Preferred stock': 1 match(es)
+(chunk 1) Stockholders’ equity / Preferred stock ($1 par value; authorized 200,000,000 shares; issued 2,105,375 and 2,005,375 shares)		21,040	20,045 / Common stock ($1 par value; authorized 9,000,000,000 shares; issued 4,104,933,895 shares)		4,105	4,105

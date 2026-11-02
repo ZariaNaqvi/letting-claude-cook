@@ -1,0 +1,2 @@
+URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/mmm-20260630.htm | find_text 'Total 3M Company shareholders': 1 match(es)
+(chunk 2) Accumulated other comprehensive income (loss)		(5,053)			(5,069) / Total 3M Company shareholders’ equity		2,952 			4,702

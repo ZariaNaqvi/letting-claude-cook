@@ -1,0 +1,220 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T7\n\nFind Berkshire Hathaway Inc.'s shareholders' equity attributable to Berkshire Hathaway shareholders (excluding noncontrolling interests) at June 30, 2026.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nSTEPS (a click path that works):\n1. Open https://www.sec.gov/search-filings, type \"Berkshire Hathaway Inc\" and click the suggestion for BERKSHIRE HATHAWAY INC (CIK 0001067983). Do not pick Berkshire Hathaway Energy or other look-alike entities.\n2. Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 30, 2026 (filed early August 2026).\n3. From the filing index, open the filing folder, then FilingSummary.xml, and find \"Consolidated Balance Sheets\"; open its R page. It has two sections (Insurance and Other; Railroad, Utilities and Energy).\n4. Use the row \"Berkshire shareholders' equity\" (NOT \"Total shareholders' equity\", which includes noncontrolling interests), column \"Jun. 30, 2026\".\nUnits: The page header says \"$ in Millions\": multiply by 1,000,000.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_0131fCUrFBYj2nBWKxiBX3p2",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/search-filings"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01HZeBEtXz8MgSYdRHHxGDf4",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001067983&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0131fCUrFBYj2nBWKxiBX3p2",
+    "content": "URL: https://www.sec.gov/search-filings | TITLE: SEC.gov | Search Filings | chunk 1/1\n\n[e1 link] Skip to search field\n[e2 link] Skip to main content\n\nAn official website of the United States government\n\n[e3 button] Here\u2019s how you know\n[e4 link]\nSEC homepage\n[e5 button]\nSearch Filings\n[e6 button]\nSubmit Filings\n[e7 button]\nData & Research\n[e8 button]\nRules, Enforcement, & Compliance\n[e9 button]\nFeatured Topics\n[e10 button]\nAbout\n[e11 link]\nSubmit a Tip or Complaint\n[e12 link] Newsroom\n|\n[e13 link] Investors\n[e14 link] Small Businesses\n[e15 link] Whistleblowers\nSearch SEC.gov & EDGAR\n[e16 textbox \"Search SEC.gov & EDGAR\" value=\"\"]\n[e17 button]\nSEARCH\n[e18 link] SEARCH FILINGS\n[e19 link] Full Text Search\n[e20 link] Latest Filings Search\n[e21 link] Insurance Products Search\n[e22 link] Mutual Funds Search\n[e23 link] Confidential Treatment Orders Search\n[e24 link] Standard Industrial Classification (SIC) Code List\n[e25 link] CIK Lookup\n[e26 link] EDGAR Public Dissemination Service (PDS) System\n[e27 link] Effectiveness Notices\n[e28 link] EDGAR Application Programming Interfaces\n[e29 link] EDGAR Search Assistance\n[e30 link] Home  Search Filings\nSearch Filings\n\nEnjoy free public access to millions of informational documents filed by publicly traded companies and others in the SEC's Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system.\n\nCompany Search\nSearch By\n[e31 textbox \"Name, ticker symbol, or CIK\" value=\"\"]\n[e32 button]\nSUBMIT\n[e33 button]\nmore search options\n\nFind registration statements, periodic reports, and other forms by typing the name or ticker symbol of a company ([e34 link \"CIK Lookup\"] CIK lookup info) ([e35 link \"Confidential Treatment Orders Search\"] confidential treatment orders) ([e36 link] SEC correspondence with issuers)\n\nEDGAR Search Tools\n\nSome specific ways to access filings based on time, type, or other categories.\n\n[e37 link] Full Text Search\n\nFind keywords and phrases\u202fin more than 20 years of EDGAR filings, and filter by date, company, person, filing category, or location.\n\n[e38 link] Latest Filings\n\nView a listing of real-time filings as they are submitted into the EDGAR system. Also view daily filings by form type within the past week.\n\n[e39 link] Search Assistance\n\nTutorials and resources to help users locate filings, conduct research, and retrieve specific information in EDGAR.\n\n[e40 link] Mutual Fund Search\n\nView prospectuses, proxy voting records, and other forms by typing the name of a mutual fund or ETF.\n\n[e41 link] Insurance Product Search\n\nFind a product by typing the name of an insurance company, underlying mutual fund, or contract.\n\nEDGAR Resources\n\nData and information to assist users as they navigate the EDGAR system.\n\n[e42 link] SIC Codes\n\nA list of Standard Industrial Classification Codes used to indicate a company's type of business.\n\n[e43 link] CIK Lookup\n\nA search engine to find Central Index Key numbers assigned by the SEC to corporate or individual filers.\n\n[e44 link] Public Dissemination Service (PDS)\n\nAn option to subscribe to a privatized system to receive a dedicated feed of all public EDGAR filings.\n\n[e45 link] EDGAR APIs\n\nRESTful data Application Programming Interfaces that include the submissions history by filer and the XBRL data from financial statements.\n\n[e46 link] EDGAR RSS Feeds\n\nReally Simple Syndication feeds for EDGAR submissions through which users can view, analyze, and manipulate filings.\n\n[e47 link] Return to top\nAbout the SEC\n[e48 link] Budget & Performance\n[e49 link] Careers\n[e50 link] Commission Votes\n[e51 link] Contact\n[e52 link] Contracts\nTransparency\n[e53 link] Accessibility & Disability\n[e54 link] Super Intelligence\n[e55 link] FOIA\n[e56 link] Inspector General\n[e57 link] No FEAR Act Data\n[e58 link] Ombuds\n[e59 link] SEC Excess Personal Property Guidance\nWebsites\n[e60 link] Investor.gov\n[e61 link] Related Sites\n[e62 link] USA.gov\nSite Information\n[e63 link] Plain Writing\n[e64 link] Privacy & Security\n[e65 link] Site Map\nStay connected. Sign up for email updates.\nYour email address\n[e66 textbox \"Your email address\" value=\"\"]\n[e67 button]\nSIGN UP\n[e68 link]\nX\n[e69 link]\nFacebook\n[e70 link]\nInstagram\n[e71 link]\nRSS\n[e72 link \"(opens in a new window)\"]\nYouTube\n[e73 link]\nEmail Updates"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01HZeBEtXz8MgSYdRHHxGDf4",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001067983&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_017ZejGNJ1u3oE8AUeDrekir",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e31",
+     "text": "Berkshire Hathaway Inc"
+    },
+    "name": "fill",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_017ZejGNJ1u3oE8AUeDrekir",
+    "content": "Typed 'Berkshire Hathaway Inc' into e31. URL: https://www.sec.gov/search-filings\nNew elements that appeared (e.g. suggestions):\n[e74 link] BERKSHIRE HATHAWAY INC (BRK-B, BRK-A)\n[e75 link] CIK\u00a00001067983\n[e76 link] Search for \"Berkshire Hathaway Inc\" in EDGAR filings"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01RufenQKoYb9EqqwqmtFCab",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e74"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01RufenQKoYb9EqqwqmtFCab",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1067983&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nBERKSHIRE HATHAWAY INC BRK-B, BRK-A on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 7, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] September 25, 2026 - SD: Specialized disclosure\nOpen document\n [e13 link] Filing\nOpen filing\n[e14 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e15 link] Filing\nOpen filing\n[e16 link] August 14, 2026 - SCHEDULE 13G: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 14, 2026 - 13F-HR: Quarterly report filed by institutional managers, Holdings\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01StjXUBXLUDLpzKoCVP6Lcx",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01StjXUBXLUDLpzKoCVP6Lcx",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1067983&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nBERKSHIRE HATHAWAY INC BRK-B, BRK-A on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 7, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] September 25, 2026 - SD: Specialized disclosure\nOpen document\n [e13 link] Filing\nOpen filing\n[e14 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e15 link] Filing\nOpen filing\n[e16 link] August 14, 2026 - SCHEDULE 13G: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 14, 2026 - 13F-HR: Quarterly report filed by institutional managers, Holdings\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] August 10, 2026 - 10-Q: Quarterly report for quarter ending June 30, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] May 4, 2026 - 10-Q: Quarterly report for quarter ending March 31, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] March 2, 2026 - 10-K: Annual report for year ending December 31, 2025\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] November 3, 2025 - 10-Q: Quarterly report for quarter ending September 30, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_015eWyp31aDZLdsLqNsSFu46",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e28"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_015eWyp31aDZLdsLqNsSFu46",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/0001193125-26-341032-index.htm | TITLE: EDGAR Filing Documents for 0001193125-26-341032 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001193125-26-341032\nFiling Date\n2026-08-10\nAccepted\n2026-08-10 06:01:51\nDocuments\n123\nPeriod of Report\n2026-06-30\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] brka-20260630.htm \u00a0\u00a0iXBRL\t10-Q\t6344310\n2\tEX-31.1\t[e11 link] brka-ex31_1.htm\tEX-31.1\t14227\n3\tEX-31.2\t[e12 link] brka-ex31_2.htm\tEX-31.2\t14531\n4\tEX-32.1\t[e13 link] brka-ex32_1.htm\tEX-32.1\t6800\n5\tEX-32.2\t[e14 link] brka-ex32_2.htm\tEX-32.2\t6985\n6\tEX-95\t[e15 link] brka-ex95.htm\tEX-95\t179867\n\u00a0\tComplete submission text file\t[e16 link] 0001193125-26-341032.txt\t\u00a0\t27497625\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n7\tXBRL TAXONOMY EXTENSION SCHEMA WITH EMBEDDED LINKBASES DOCUMENT\t[e17 link] brka-20260630.xsd\tEX-101.SCH\t2185086\n127\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e18 link] brka-20260630_htm.xml\tXML\t7605871\nMailing Address\n3555 FARNAM STREET\nOMAHA\nNE\n68131\nBusiness Address\n3555 FARNAM STREET\nOMAHA\nNE\n68131\n4023461400\nBERKSHIRE HATHAWAY INC (Filer) CIK: [e19 link] 0001067983 (see all company filings)\n\nEIN.: 470813844 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e20 link] 001-14905 | Film No.: 261256025\nSIC: [e21 link] 6331 Fire, Marine & Casualty Insurance\n(CF Office: 02 Finance)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01EapapyMpJikZ9kcZ2aerkU",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/R2.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01EapapyMpJikZ9kcZ2aerkU",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/R2.htm | TITLE:  | chunk 1/1\n\nXML 10 R2.htm IDEA: XBRL DOCUMENT\nConsolidated Balance Sheets - USD ($)\n$ in Millions\n\nJun. 30, 2026\n\nDec. 31, 2025\n\nAssets:\nInvestments in fixed maturity securities\t\t$ 17,034\t$ 17,816\nInvestments in equity securities\t\t323,779\t297,778\nEquity method investments\t\t19,948\t19,978\nLoans and finance receivables\t\t30,724\t29,836\nInventories\t\t26,575\t24,424\nEquipment held for lease\t\t18,912\t18,535\nGoodwill\t[1]\t83,173\t83,074\nTotal assets\t\t1,263,071\t1,222,176\nLiabilities:\nLife, annuity and health insurance benefits\t\t17,738\nPayable for purchases of U.S. Treasury Bills\t\t771\t167\nIncome taxes, principally deferred\t\t90,176\t86,955\nTotal liabilities\t\t512,894\t502,473\nShareholders\u2019 equity:\nCommon stock at par value\t\t8\t8\nCapital in excess of par value\t\t35,615\t35,612\nAccumulated other comprehensive income\t\t(2,971)\t(2,448)\nRetained earnings\t\t798,959\t763,186\nTreasury stock, at cost\t\t(83,701)\t(78,939)\nBerkshire shareholders' equity\t\t747,910\t717,419\nNoncontrolling interests\t\t2,267\t2,284\nTotal shareholders\u2019 equity\t\t750,177\t719,703\nTotal liabilities and shareholders' equity\t\t1,263,071\t1,222,176\nInsurance and Other [Member]\nAssets:\nCash and cash equivalents\t[2]\t35,096\t47,719\nShort-term investments in U.S. Treasury Bills\t[3]\t324,905\t321,434\nInvestments in fixed maturity securities\t\t17,034\t17,816\nInvestments in equity securities\t\t323,779\t297,778\nEquity method investments\t\t19,948\t19,978\nLoans and finance receivables\t\t30,724\t29,836\nOther receivables\t\t48,635\t44,331\nInventories\t\t26,575\t24,424\nProperty, plant and equipment\t\t39,409\t31,885\nEquipment held for lease\t\t18,912\t18,535\nGoodwill\t\t56,192\t55,945\nOther intangible assets\t\t33,949\t33,802\nDeferred charges - retroactive reinsurance\t\t7,675\t8,104\nOther\t\t27,813\t24,413\nTotal assets\t\t1,010,646\t976,000\nLiabilities:\nUnpaid losses and loss adjustment expenses\t\t122,875\t120,713\nUnpaid losses and loss adjustment expenses - retroactive reinsurance\t\t29,978\t31,048\nUnearned insurance premiums\t\t32,754\t31,339\nLife, annuity and health insurance benefits\t\t17,738\t17,890\nOther insurance policyholder liabilities\t\t9,942\t10,312\nAccounts payable, accruals and other liabilities\t\t41,422\t38,019\nPayable for purchases of U.S. Treasury Bills\t\t771\t167\nAircraft repurchase liabilities and unearned lease revenues\t\t11,217\t10,686\nNotes payable and other borrowings\t\t43,302\t45,763\nLiabilities, excluding income taxes, principally deferred, Total\t\t309,999\t305,937\nRailroad, Utilities and Energy [Member]\nAssets:\nCash and cash equivalents\t[2]\t5,513\t4,158\nReceivables\t\t4,562\t4,387\nProperty, plant and equipment\t\t185,815\t184,740\nGoodwill\t\t26,981\t27,129\nRegulatory assets\t\t4,385\t4,821\nOther\t\t25,169\t20,941\nTotal assets\t\t252,425\t246,176\nLiabilities:\nAccounts payable, accruals and other liabilities\t\t20,424\t19,250\nRegulatory liabilities\t\t6,998\t7,013\nNotes payable and other borrowings\t\t85,297\t83,318\nLiabilities, excluding income taxes, principally deferred, Total\t\t$ 112,719\t$ 109,581\n\n[1]\tNet of accumulated goodwill impairments of $13.0 billion as of June 30, 2026 and December 31, 2025 and $11.5 billion as of December 31, 2024.\n[2]\tIncludes U.S. Treasury Bills with maturities of three months or less when purchased of $3.2 billion at June 30, 2026 and $17.6 billion at December 31, 2025.\n[3]\tIncludes unsettled purchases of U.S. Treasury Bills of $771 million at June 30, 2026 and $167 million at December 31, 2025. Such amounts were also included in liabilities and were paid shortly after the respective balance sheet date."
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01ANTaWtdcX8oVjxXaA2Xwkh",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0001193125-26-341032",
+     "period_end": "2026-06-30",
+     "value_usd": 747910000000,
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/R2.htm"
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01ANTaWtdcX8oVjxXaA2Xwkh",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

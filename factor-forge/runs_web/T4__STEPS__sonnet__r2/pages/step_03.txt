@@ -1,0 +1,5 @@
+Typed 'Netflix' into e31. URL: https://www.sec.gov/search-filings
+New elements that appeared (e.g. suggestions):
+[e74 link] NETFLIX INC (NFLX)
+[e75 link] CIK 0001065280
+[e76 link] Search for "Netflix" in EDGAR filings

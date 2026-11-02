@@ -1,0 +1,51 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000160/ | TITLE: Directory List of /Archives/edgar/data/93410/000009341026000160 | chunk 1/1
+
+[e1 link] Search Options
+[e2 link] Skip to Main Content
+[e3 link]
+ABOUT
+[e4 link]
+DIVISIONS
+[e5 link]
+ENFORCEMENT
+[e6 link]
+REGULATION
+[e7 link]
+EDUCATION
+[e8 link]
+FILINGS
+[e9 link]
+NEWS
+Directory Listing /Archives/edgar/data/93410/000009341026000160
+[e10 link] Parent Directory
+NAME	SIZE	LAST MODIFIED
+[e11 link] 0000093410-26-000160-index-headers.html		2026-06-24 17:30:20
+[e12 link] 0000093410-26-000160-index.html		2026-06-24 17:30:20
+[e13 link] 0000093410-26-000160.txt		2026-06-24 17:30:20
+[e14 link] 0000093410-26-000160-xbrl.zip	42428	2026-06-24 17:30:20
+[e15 link] a202611-kex231consenthess.htm	2064	2026-06-24 17:30:20
+[e16 link] a202611-kex232consenthess.htm	2080	2026-06-24 17:30:20
+[e17 link] FilingSummary.xml	7272	2026-06-24 17:30:20
+[e18 link] hes-20260624.htm	152316	2026-06-24 17:30:20
+[e19 link] hes-20260624.xsd	10466	2026-06-24 17:30:20
+[e20 link] hes-20260624_cal.xml	14451	2026-06-24 17:30:20
+[e21 link] hes-20260624_def.xml	84976	2026-06-24 17:30:20
+[e22 link] hes-20260624_htm.xml	114136	2026-06-24 17:30:20
+[e23 link] hes-20260624_lab.xml	113675	2026-06-24 17:30:20
+[e24 link] hes-20260624_pre.xml	91125	2026-06-24 17:30:20
+[e25 link] MetaLinks.json	139754	2026-06-24 17:30:20
+[e26 link] R1.htm	11634	2026-06-24 17:30:20
+[e27 link] R10.htm	50179	2026-06-24 17:30:20
+[e28 link] R11.htm	35812	2026-06-24 17:30:20
+[e29 link] R2.htm	32371	2026-06-24 17:30:20
+[e30 link] R3.htm	39914	2026-06-24 17:30:20
+[e31 link] R4.htm	22310	2026-06-24 17:30:20
+[e32 link] R5.htm	12702	2026-06-24 17:30:20
+[e33 link] R6.htm	37978	2026-06-24 17:30:20
+[e34 link] R7.htm	8350	2026-06-24 17:30:20
+[e35 link] R8.htm	25736	2026-06-24 17:30:20
+[e36 link] R9.htm	34805	2026-06-24 17:30:20
+[e37 link] report.css	2767	2026-06-24 17:30:20
+[e38 link] Show.js	1085	2026-06-24 17:30:20
+[e39 link] Site Map | [e40 link] Accessibility | [e41 link] Contracts | [e42 link] Privacy | [e43 link] Inspector General | [e44 link] Careers | [e45 link] Contact
+[e46 link] FOIA | [e47 link] No FEAR Act & EEO Data | [e48 link] Open Government | [e49 link] Plain Writing | [e50 link] Links | [e51 link] Investor.gov | [e52 link] USA.gov

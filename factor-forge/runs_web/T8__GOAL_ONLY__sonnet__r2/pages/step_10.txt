@@ -1,0 +1,29 @@
+URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/R3.htm | TITLE:  | chunk 1/1
+
+XML 14 R3.htm IDEA: XBRL DOCUMENT
+CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited) - USD ($)
+$ in Millions
+	3 Months Ended	9 Months Ended
+
+Jun. 27, 2026
+
+Jun. 28, 2025
+
+Jun. 27, 2026
+
+Jun. 28, 2025
+
+Statement of Comprehensive Income [Abstract]
+Net income	$ 29,789	$ 23,434	$ 101,464	$ 84,544
+Other comprehensive income/(loss):
+Change in foreign currency translation, net of tax	(24)	449	(116)	(86)
+Change in unrealized gains/losses on derivative instruments, net of tax:
+Change in fair value of derivative instruments	356	(523)	729	810
+Adjustment for net (gains)/losses realized and included in net income	67	(571)	348	(415)
+Total change in unrealized gains/losses on derivative instruments	423	(1,094)	1,077	395
+Change in unrealized gains/losses on marketable debt securities, net of tax:
+Change in fair value of marketable debt securities	441	640	57	90
+Adjustment for net (gains)/losses realized and included in net income	27	(1)	45	404
+Total change in unrealized gains/losses on marketable debt securities	468	639	102	494
+Other comprehensive income/(loss)	867	(6)	1,063	803
+Total comprehensive income	$ 30,656	$ 23,428	$ 102,527	$ 85,347

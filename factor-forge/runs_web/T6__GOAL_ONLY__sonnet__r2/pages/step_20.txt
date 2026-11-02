@@ -1,0 +1,2 @@
+URL: https://data.sec.gov/submissions/CIK0000019617.json | find_text 'jpm-20260630.htm': 1 match(es)
+(chunk 353) ,"ea0301804-01_424b2.htm","ea0301805-01_424b2.htm","ea0301806-01_424b2.htm","ea0301711-01_424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","xslForm13F_X02/primary_doc.xml","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","form424b2.htm","ea0301525

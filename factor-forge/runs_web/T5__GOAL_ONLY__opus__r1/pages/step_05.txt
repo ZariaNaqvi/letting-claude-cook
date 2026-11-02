@@ -1,0 +1,1063 @@
+URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/dpz-20260614.htm | TITLE: 10-Q | chunk 1/12
+
+l
+
+UNITED STATES
+
+SECURITIES AND EXCHANGE COMMISSION
+
+WASHINGTON, DC 20549
+
+FORM 10-Q
+
+(Mark One)
+
+☒	QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+
+For the quarterly period ended June 14, 2026
+
+OR
+
+☐	TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+
+For the transition period from                 to
+
+Commission file number: 001-32242
+
+Domino’s Pizza, Inc.
+
+(Exact Name of Registrant as Specified in Its Charter)
+
+Delaware
+
+38-2511577
+
+(State or Other Jurisdiction of
+
+Incorporation or Organization)
+
+(I.R.S. Employer
+
+Identification No.)
+
+30 Frank Lloyd Wright Drive
+
+Ann Arbor, Michigan
+
+48105
+
+(Address of Principal Executive Offices)
+
+(Zip Code)
+
+(734) 930-3030
+
+(Registrant’s Telephone Number, Including Area Code)
+
+Securities registered pursuant to Section 12(b) of the Exchange Act:
+
+Title of Each Class
+
+Trading Symbol
+
+Name of Each Exchange on Which Registered
+
+Domino’s Pizza, Inc. Common Stock, $0.01 par value
+
+DPZ
+
+The Nasdaq Stock Market LLC
+
+Indicate by check mark whether registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.    Yes  ☒    No  ☐
+
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).    Yes  ☒    No  ☐
+
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act.
+
+Large accelerated filer
+
+☒
+
+Accelerated filer
+
+☐
+
+Non-accelerated filer
+
+☐
+
+Smaller reporting company
+
+☐
+
+Emerging growth company
+
+☐
+
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+
+Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).  Yes  ☐    No  ☒
+
+As of July 13, 2026, Domino’s Pizza, Inc. had 33,081,735 shares of common stock, par value $0.01 per share, outstanding.
+
+Domino’s Pizza, Inc.
+
+TABLE OF CONTENTS
+
+Page No.
+
+PART I.
+
+[e1 link] FINANCIAL INFORMATION
+
+Item 1.
+
+[e2 link] Financial Statements
+
+3
+
+[e3 link] Condensed Consolidated Balance Sheets (Unaudited) – As of June 14, 2026 and December 28, 2025
+
+3
+
+[e4 link] Condensed Consolidated Statements of Income (Unaudited) – Fiscal quarters and two fiscal quarters ended June 14, 2026 and June 15, 2025
+
+4
+
+[e5 link] Condensed Consolidated Statements of Comprehensive Income (Unaudited) – Fiscal quarters and two fiscal quarters ended June 14, 2026 and June 15, 2025
+
+5
+
+[e6 link] Condensed Consolidated Statements of Cash Flows (Unaudited) – Two fiscal quarters ended June 14, 2026 and June 15, 2025
+
+6
+
+[e7 link] Notes to Condensed Consolidated Financial Statements (Unaudited)
+
+7
+
+Item 2.
+
+[e8 link] Management’s Discussion and Analysis of Financial Condition and Results of Operations
+
+17
+
+Item 3.
+
+[e9 link] Quantitative and Qualitative Disclosures About Market Risk
+
+30
+
+Item 4.
+
+[e10 link] Controls and Procedures
+
+30
+
+PART II.
+
+[e11 link] OTHER INFORMATION
+
+Item 1.
+
+[e12 link] Legal Proceedings
+
+31
+
+Item 1A.
+
+[e13 link] Risk Factors
+
+31
+
+Item 2.
+
+[e14 link] Unregistered Sales of Equity Securities and Use of Proceeds
+
+31
+
+Item 3.
+
+[e15 link] Defaults Upon Senior Securities
+
+31
+
+Item 4.
+
+[e16 link] Mine Safety Disclosures
+
+31
+
+Item 5.
+
+[e17 link] Other Information
+
+32
+
+Item 6.
+
+[e18 link] Exhibits
+
+33
+
+[e19 link] SIGNATURES
+
+34
+
+2
+
+PART I. FINANCIAL INFORMATION
+
+Item 1. Financial Statements.
+
+Domino’s Pizza, Inc. and Subsidiaries
+
+Condensed Consolidated Balance Sheets
+
+(Unaudited)
+
+(In thousands)
+
+June 14, 2026
+
+December 28, 2025
+
+Assets
+
+Current assets:
+
+Cash and cash equivalents
+
+$
+
+164,836
+
+$
+
+125,675
+
+Restricted cash and cash equivalents
+
+187,885
+
+216,110
+
+Accounts receivable, net
+
+303,182
+
+315,958
+
+Inventories
+
+75,057
+
+79,189
+
+Prepaid expenses and other
+
+55,049
+
+39,767
+
+Advertising fund assets, restricted
+
+119,410
+
+117,502
+
+Total current assets
+
+905,419
+
+894,201
+
+Property, plant and equipment:
+
+Land and buildings
+
+172,241
+
+105,559
+
+Leasehold and other improvements
+
+186,158
+
+193,673
+
+Equipment
+
+388,323
+
+413,303
+
+Construction in progress
+
+31,741
+
+46,184
+
+778,463
+
+758,719
+
+Accumulated depreciation and amortization
+
+(404,017
+
+)
+
+(434,697
+
+)
+
+Property, plant and equipment, net
+
+374,446
+
+324,022
+
+Other assets:
+
+Operating lease right-of-use assets
+
+227,793
+
+219,485
+
+Goodwill
+
+7,870
+
+10,726
+
+Capitalized software, net
+
+161,277
+
+159,256
+
+Investment in DPC Dash
+
+17,714
+
+36,070
+
+Deferred income tax assets, net
+
+16,805
+
+22,101
+
+Other assets
+
+51,998
+
+50,598
+
+Total other assets
+
+483,457
+
+498,236
+
+Total assets
+
+$
+
+1,763,322
+
+$
+
+1,716,459
+
+Liabilities and stockholders’ deficit
+
+Current liabilities:
+
+Current portion of long-term debt
+
+$
+
+7,423
+
+$
+
+6,131
+
+Accounts payable
+
+137,429
+
+135,029
+
+Operating lease liabilities
+
+45,964
+
+47,553
+
+Insurance reserves
+
+25,895
+
+26,169
+
+Dividends payable
+
+67,912
+
+2,714
+
+Advertising fund liabilities
+
+117,830
+
+115,412
+
+Other accrued liabilities
+
+186,217
+
+208,613
+
+Total current liabilities
+
+588,670
+
+541,621
+
+Long-term liabilities:
+
+Long-term debt, less current portion
+
+4,876,221
+
+4,810,683
+
+Operating lease liabilities
+
+193,245
+
+183,917
+
+Insurance reserves
+
+36,722
+
+32,959
+
+Other accrued liabilities
+
+50,895
+
+48,421
+
+Total long-term liabilities
+
+5,157,083
+
+5,075,980
+
+Stockholders’ deficit:
+
+Common stock
+
+331
+
+336
+
+Additional paid-in capital
+
+841
+
+1,910
+
+Retained deficit
+
+(3,977,546
+
+)
+
+(3,898,622
+
+)
+
+Accumulated other comprehensive loss
+
+(6,057
+
+)
+
+(4,766
+
+)
+
+Total stockholders’ deficit
+
+(3,982,431
+
+)
+
+(3,901,142
+
+)
+
+Total liabilities and stockholders’ deficit
+
+$
+
+1,763,322
+
+$
+
+1,716,459
+
+The accompanying notes are an integral part of these condensed consolidated financial statements.
+
+3
+
+Domino’s Pizza, Inc. and Subsidiaries
+
+Condensed Consolidated Statements of Income
+
+(Unaudited)
+
+Fiscal Quarter Ended
+
+Two Fiscal Quarters Ended
+
+June 14,
+
+June 15,
+
+June 14,
+
+June 15,
+
+(In thousands, except per share data)
+
+2026
+
+2025
+
+2026
+
+2025
+
+Revenues:
+
+U.S. Company-owned stores
+
+$
+
+81,829
+
+$
+
+92,456
+
+$
+
+163,927
+
+$
+
+184,054
+
+U.S. franchise royalties and fees
+
+164,165
+
+156,261
+
+322,179
+
+307,261
+
+Supply chain
+
+731,708
+
+687,062
+
+1,430,681
+
+1,356,986
+
+International franchise royalties and fees
+
+81,822
+
+77,164
+
+162,802
+
+152,723
+
+U.S. franchise advertising
+
+134,903
+
+132,201
+
+265,432
+
+256,176
+
+Total revenues
+
+1,194,427
+
+1,145,144
+
+2,345,021
+
+2,257,200
+
+Cost of sales:
+
+U.S. Company-owned stores
+
+72,517
+
+78,073
+
+144,563
+
+154,984
+
+Supply chain
+
+643,682
+
+606,101
+
+1,257,718
+
+1,198,099
+
+Total cost of sales
+
+716,199
+
+684,174
+
+1,402,281
+
+1,353,083
+
+Gross margin
+
+478,228
+
+460,970
+
+942,740
+
+904,117
+
+General and administrative
+
+115,373
+
+107,608
+
+226,779
+
+216,685
+
+U.S. franchise advertising
+
+134,903
+
+132,201
+
+265,432
+
+256,176
+
+Refranchising gain
+
+(4,087
+
+)
+
+(3,883
+
+)
+
+(4,087
+
+)
+
+(3,883
+
+)
+
+Gain on sale of assets
+
+—
+
+—
+
+(7,780
+
+)
+
+—
+
+Income from operations
+
+232,039
+
+225,044
+
+462,396
+
+435,139
+
+Other (expense) income
+
+(12,366
+
+)
+
+(15,974
+
+)
+
+(18,356
+
+)
+
+8,053
+
+Interest income
+
+1,613
+
+3,829
+
+4,115
+
+7,774
+
+Interest expense
+
+(46,057
+
+)
+
+(44,648
+
+)
+
+(92,284
+
+)
+
+(90,233
+
+)
+
+Income before provision for income taxes
+
+175,229
+
+168,251
+
+355,871
+
+360,733
+
+Provision for income taxes
+
+39,479
+
+37,160
+
+80,310
+
+79,991
+
+Net income
+
+$
+
+135,750
+
+$
+
+131,091
+
+$
+
+275,561
+
+$
+
+280,742
+
+Earnings per share:
+
+Common stock - basic
+
+$
+
+4.09
+
+$
+
+3.84
+
+$
+
+8.25
+
+$
+
+8.20
+
+Common stock - diluted
+
+$
+
+4.07
+
+$
+
+3.81
+
+$
+
+8.21
+
+$
+
+8.14
+
+The accompanying notes are an integral part of these condensed consolidated financial statements.
+
+4
+
+Domino’s Pizza, Inc. and Subsidiaries
+
+Condensed Consolidated Statements of Comprehensive Income
+
+(Unaudited)
+
+Fiscal Quarter Ended
+
+Two Fiscal Quarters Ended
+
+June 14,
+
+June 15,
+
+June 14,
+
+June 15,
+
+(In thousands)
+
+2026
+
+2025
+
+2026
+
+2025
+
+Net income
+
+$
+
+135,750
+
+$
+
+131,091
+
+$
+
+275,561
+
+$
+
+280,742
+
+Currency translation adjustment
+
+(960
+
+)
+
+2,462
+
+(1,291
+
+)
+
+2,805
+
+Comprehensive income
+
+$
+
+134,790
+
+$
+
+133,553
+
+$
+
+274,270
+
+$
+
+283,547
+
+The accompanying notes are an integral part of these condensed consolidated financial statements.
+
+5
+
+Domino’s Pizza, Inc. and Subsidiaries
+
+Condensed Consolidated Statements of Cash Flows
+
+(Unaudited)
+
+Two Fiscal Quarters Ended
+
+June 14,
+
+June 15,
+
+(In thousands)
+
+2026
+
+2025
+
+Cash flows from operating activities:
+
+Net income
+
+$
+
+275,561
+
+$
+
+280,742
+
+Adjustments to reconcile net income to net cash provided by operating activities:
+
+Depreciation and amortization
+
+40,781
+
+40,713
+
+Refranchising gain
+
+(4,087
+
+)
+
+(3,883
+
+)
+
+Gain on sale of assets
+
+(7,780
+
+)
+
+—
+
+Loss on disposal of assets
+
+496
+
+612
+
+Amortization of debt issuance costs
+
+2,970
+
+2,419
+
+Provision (benefit) for deferred income taxes
+
+5,150
+
+(2,700
+
+)
+
+Non-cash equity-based compensation expense
+
+21,146
+
+21,356
+
+Excess tax benefits from equity-based compensation
+
+(625
+
+)
+
+(2,343
+
+)
+
+Provision (benefit) for losses on accounts and notes receivable
+
+38
+
+(4
+
+)
+
+Unrealized and realized loss (gain) on investments
+
+18,356
+
+(8,053
+
+)
+
+Changes in operating assets and liabilities
+
+(1,197
+
+)
+
+19,663
+
+Changes in advertising fund assets and liabilities, restricted
+
+1,794
+
+18,338
+
+Net cash provided by operating activities
+
+352,603
+
+366,860
+
+Cash flows from investing activities:
+
+Capital expenditures
+
+(39,008
+
+)
+
+[chunk 1/12; call read_page(page=2) for more]

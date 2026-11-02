@@ -1,0 +1,460 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T8\n\nFor each of four firms -- Apple (AAPL), Coca-Cola (KO), Chevron (CVX) and 3M (MMM) -- find book equity from the first 10-Q each firm filed between July 1 and August 31, 2026 (the balance sheet at the end of that quarter). Then, using the market equity (ME) values given below, rank the four firms by book-to-market B/M = BE / ME from highest (value) to lowest (growth).\n\nMARKET EQUITY (ME) to use, in US dollars, as of June 30, 2026:\n  AAPL: $4,222,971,924,800\n  KO: $349,668,176,979\n  CVX: $327,503,846,378\n  MMM: $83,500,616,536\n\nRULES:\n- Give each book equity as a whole number of US dollars (not millions or thousands).\n- Book equity means the parent company's total stockholders' (shareholders') equity line (excluding noncontrolling interests).\n- Give the ranking as a list of the four tickers, highest B/M first.\n- You may use at most 50 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01RHzNkv2N41X1VEYebh83GE",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01RHzNkv2N41X1VEYebh83GE",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_011XKVrLzTZPvFutRn8579F8",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/search/"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_011XKVrLzTZPvFutRn8579F8",
+    "content": "URL: https://www.sec.gov/edgar/search/ | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nThe new EDGAR advanced search gives you access to the full text of electronic filings since 2001.\n[e6 textbox \"Search by keyword, ticker, company name, CIK number or indiv\" value=\"\"]\n[e7 link] + more search options\n[e8 button] SEARCH [e9 button] Clear all\n\n[e10 link] Accessibility [e11 link] Budget & Performance [e12 link] Careers [e13 link] Contact [e14 link] Contracts [e15 link] Data [e16 link] FOIA [e17 link] Inspector General [e18 link] Investor.gov [e19 link] No FEAR Act & EEO Data [e20 link] Ombudsman [e21 link] Plain Writing [e22 link] Privacy [e23 link] Related Sites [e24 link] Site Map [e25 link] USA.gov [e26 link] Votes [e27 link] Vulnerability Disclosure Policy [e28 link] Whistleblower Protection"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "Let me try the full-text search URL directly.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_014KctoJzHgd2gY3tDrZbM9x",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/search/#/category=custom&ciks=0000320193&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_014KctoJzHgd2gY3tDrZbM9x",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000320193&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e29 button] ? [e30 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e31 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling category\n[e32 link] Browse filing types\n[e33 button \"Filing category\"] Enter the filing types\nFiling types\n[e34 link] Browse filing types\n[e35 textbox \"Filing types\" value=\"10-Q\"]\n[e36 button] cancel\nFiled date range [e37 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e38 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e39 textbox \"Filed to\" value=\"2026-08-31\"]\n[e40 button] Principal executive offices in\n [e41 button] ?\n[e42 button \"Location dropdown\"] View all\n[e43 link] - less search options [e8 button] SEARCH [e9 button] Clear all\nRefine search results by:\n[e44 tab] [e45 link]\nEntity\n[e46 tab] [e47 link]\nForm\n[e48 tab] [e49 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e50 checkbox \"Filed\" checked]\nFiled [e51 checkbox \"Reporting for\" checked]\nReporting for [e52 checkbox \"CIK\" unchecked]\nCIK [e53 checkbox \"Located\" unchecked]\nLocated [e54 checkbox \"Incorporated\" unchecked]\nIncorporated [e55 checkbox \"File number\" unchecked]\nFile number [e56 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e57 link] 10-Q (Quarterly report)\t2026-07-31\t2026-06-27\tApple Inc. (AAPL)\n[e10 link] Accessibility [e11 link] Budget & Performance [e12 link] Careers [e13 link] Contact [e14 link] Contracts [e15 link] Data [e16 link] FOIA [e17 link] Inspector General [e18 link] Investor.gov [e19 link] No FEAR Act & EEO Data [e20 link] Ombudsman [e21 link] Plain Writing [e22 link] Privacy [e23 link] Related Sites [e24 link] Site Map [e25 link] USA.gov [e26 link] Votes [e27 link] Vulnerability Disclosure Policy [e28 link] Whistleblower Protection"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01YBZYnkdsyXVoaJKutHs5dn",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e57"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01YBZYnkdsyXVoaJKutHs5dn",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000320193&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e29 button] ? [e30 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e31 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e34 link] Browse filing types\n[e35 textbox \"Filing types\" value=\"10-Q\"]\n[e36 button] cancel\nFiled date range [e37 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e38 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e39 textbox \"Filed to\" value=\"2026-08-31\"]\n[e40 button] Principal executive offices in\n [e41 button] ?\n[e42 button \"Location dropdown\"] View all\n[e43 link] - less search options [e8 button] SEARCH [e9 button] Clear all\nRefine search results by:\n[e44 tab] [e45 link]\nEntity\n[e46 tab] [e47 link]\nForm\n[e48 tab] [e49 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e50 checkbox \"Filed\" checked]\nFiled [e51 checkbox \"Reporting for\" checked]\nReporting for [e52 checkbox \"CIK\" unchecked]\nCIK [e53 checkbox \"Located\" unchecked]\nLocated [e54 checkbox \"Incorporated\" unchecked]\nIncorporated [e55 checkbox \"File number\" unchecked]\nFile number [e56 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e57 link] 10-Q (Quarterly report)\t2026-07-31\t2026-06-27\tApple Inc. (AAPL)\n[e10 link] Accessibility [e11 link] Budget & Performance [e12 link] Careers [e13 link] Contact [e14 link] Contracts [e15 link] Data [e16 link] FOIA [e17 link] Inspector General [e18 link] Investor.gov [e19 link] No FEAR Act & EEO Data [e20 link] Ombudsman [e21 link] Plain Writing [e22 link] Privacy [e23 link] Related Sites [e24 link] Site Map [e25 link] USA.gov [e26 link] Votes [e27 link] Vulnerability Disclosure Policy [e28 link] Whistleblower Protection\n[e58 button \"Close\"] \u00d7\nLoading document preview\n[e59 link] [e60 button] Open document\n[e61 link] [e62 button] Open filing\n[e63 button] Close"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01DBzCLeUyvbRZpNaNPmt2uv",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e60"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01DBzCLeUyvbRZpNaNPmt2uv",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/aapl-20260627.htm | TITLE: aapl-20260627 | chunk 1/9\n\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\n\nFORM 10-Q\n\n(Mark One)\n\u2612 QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June\u00a027, 2026\nor\n\u2610 TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 to \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0.\nCommission File Number: 001-36743\n\nApple Inc.\n(Exact name of Registrant as specified in its charter)\n\nCalifornia\t\t94-2404110\n(State or other jurisdiction\nof incorporation or organization)\t\t(I.R.S. Employer Identification No.)\n\nOne Apple Park Way\n\nCupertino, California\n\t\t95014\n(Address of principal executive offices)\t\t(Zip Code)\n(408) 996-1010\n(Registrant\u2019s telephone number, including area code)\n\nSecurities registered pursuant to Section 12(b) of the Act:\n\nTitle of each class\tTrading symbol(s)\tName of each exchange on which registered\n\nCommon Stock, $0.00001 par value per share\n\tAAPL\tThe Nasdaq Stock Market LLC\n1.625% Notes due 2026\t\u2014\tThe Nasdaq Stock Market LLC\n2.000% Notes due 2027\t\u2014\tThe Nasdaq Stock Market LLC\n1.375% Notes due 2029\t\u2014\tThe Nasdaq Stock Market LLC\n3.050% Notes due 2029\t\u2014\tThe Nasdaq Stock Market LLC\n0.500% Notes due 2031\t\u2014\tThe Nasdaq Stock Market LLC\n3.600% Notes due 2042\t\u2014\tThe Nasdaq Stock Market LLC\n\nIndicate by check mark whether the Registrant (1)\u00a0has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2)\u00a0has been subject to such filing requirements for the past 90 days.\nYes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2610\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files).\nYes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2610\nIndicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\n\nLarge accelerated filer\t\t\u2612\t\tAccelerated filer\t\t\u2610\nNon-accelerated filer\t\t\u2610\t\tSmaller reporting company\t\t\u2610\n\t\t\t\tEmerging growth company\t\t\u2610\nIf an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\nYes\u00a0\u00a0\u2610\u00a0\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2612\n14,594,180,000 shares of common stock were issued and outstanding as of July\u00a017, 2026.\n\nApple Inc.\n\nForm 10-Q\nFor the Fiscal Quarter Ended June\u00a027, 2026\nTABLE OF CONTENTS\n\n\tPage\n\n[e1 link] Part I\n\n[e2 link] Item 1.\n\n[e3 link] Financial Statements\n\n[e4 link] 1\n\n[e5 link] Item 2.\n\n[e6 link] Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n\n[e7 link] 13\n\n[e8 link] Item 3.\n\n[e9 link] Quantitative and Qualitative Disclosures About Market Risk\n\n[e10 link] 19\n\n[e11 link] Item 4.\n\n[e12 link] Controls and Procedures\n\n[e13 link] 19\n\n[e14 link] Part II\n\n[e15 link] Item 1.\n\n[e16 link] Legal Proceedings\n\n[e17 link] 20\n\n[e18 link] Item 1A.\n\n[e19 link] Risk Factors\n\n[e20 link] 21\n\n[e21 link] Item 2.\n\n[e22 link] Unregistered Sales of Equity Securities and Use of Proceeds\n\n[e23 link] 24\n\n[e24 link] Item 3.\n\n[e25 link] Defaults Upon Senior Securities\n\n[e26 link] 24\n\n[e27 link] Item 4.\n\n[e28 link] Mine Safety Disclosures\n\n[e29 link] 24\n\n[e30 link] Item 5.\n\n[e31 link] Other Information\n\n[e32 link] 25\n\n[e33 link] Item 6.\n\n[e34 link] Exhibits\n\n[e35 link] 25\n\nPART I \u2014 FINANCIAL INFORMATION\nItem 1.\u00a0\u00a0\u00a0\u00a0Financial Statements\nApple Inc.\nCONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS (Unaudited)\n(In millions, except number of shares, which are reflected in thousands, and per-share amounts)\n\n\tThree Months Ended\t\tNine Months Ended\n\tJune 27,\n2026\t\tJune 28,\n2025\t\tJune 27,\n2026\t\tJune 28,\n2025\nNet sales:\n\u00a0\u00a0\u00a0Products\t$\t78,678\u00a0\t\t\t$\t66,613\u00a0\t\t\t$\t272,629\u00a0\t\t\t$\t233,287\n\u00a0\u00a0\u00a0Services\t30,739\u00a0\t\t\t27,423\u00a0\t\t\t91,728\u00a0\t\t\t80,408\nTotal net sales\t109,417\u00a0\t\t\t94,036\u00a0\t\t\t364,357\u00a0\t\t\t313,695\n\nCost of sales:\n\u00a0\u00a0\u00a0Products\t47,153\u00a0\t\t\t43,620\u00a0\t\t\t163,810\u00a0\t\t\t147,097\n\u00a0\u00a0\u00a0Services\t7,494\u00a0\t\t\t6,698\u00a0\t\t\t21,765\u00a0\t\t\t19,738\nTotal cost of sales\t54,647\u00a0\t\t\t50,318\u00a0\t\t\t185,575\u00a0\t\t\t166,835\nGross margin\t54,770\u00a0\t\t\t43,718\u00a0\t\t\t178,782\u00a0\t\t\t146,860\n\nOperating expenses:\nResearch and development\t11,729\u00a0\t\t\t8,866\u00a0\t\t\t34,035\u00a0\t\t\t25,684\nSelling, general and administrative\t7,346\u00a0\t\t\t6,650\u00a0\t\t\t22,315\u00a0\t\t\t20,553\nTotal operating expenses\t19,075\u00a0\t\t\t15,516\u00a0\t\t\t56,350\u00a0\t\t\t46,237\n\nOperating income\t35,695\u00a0\t\t\t28,202\u00a0\t\t\t122,432\u00a0\t\t\t100,623\nOther income/(expense), net\t572\u00a0\t\t\t(171)\t\t\t670\u00a0\t\t\t(698)\nIncome before provision for income taxes\t36,267\u00a0\t\t\t28,031\u00a0\t\t\t123,102\u00a0\t\t\t99,925\nProvision for income taxes\t6,478\u00a0\t\t\t4,597\u00a0\t\t\t21,638\u00a0\t\t\t15,381\nNet income\t$\t29,789\u00a0\t\t\t$\t23,434\u00a0\t\t\t$\t101,464\u00a0\t\t\t$\t84,544\n\nEarnings per share:\nBasic\t$\t2.03\u00a0\t\t\t$\t1.57\u00a0\t\t\t$\t6.91\u00a0\t\t\t$\t5.64\nDiluted\t$\t2.02\u00a0\t\t\t$\t1.57\u00a0\t\t\t$\t6.88\u00a0\t\t\t$\t5.62\n\nShares used in computing earnings per share:\nBasic\t14,656,110\u00a0\t\t\t14,902,886\u00a0\t\t\t14,692,515\u00a0\t\t\t14,992,898\nDiluted\t14,714,676\u00a0\t\t\t14,948,179\u00a0\t\t\t14,750,302\u00a0\t\t\t15,051,726\nSee accompanying Notes to Condensed Consolidated Financial Statements.\nApple Inc. | Q3 2026 Form 10-Q | 1\n\nApple Inc.\nCONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME (Unaudited)\n(In millions)\n\n\tThree Months Ended\t\tNine Months Ended\n\tJune 27,\n2026\t\tJune 28,\n2025\t\tJune 27,\n2026\t\tJune 28,\n2025\nNet income\t$\t29,789\u00a0\t\t\t$\t23,434\u00a0\t\t\t$\t101,464\u00a0\t\t\t$\t84,544\nOther comprehensive income/(loss):\nChange in foreign currency translation, net of tax\t(24)\t\t\t449\u00a0\t\t\t(116)\t\t\t(86)\n\nChange in unrealized gains/losses on derivative instruments, net of tax:\nChange in fair value of derivative instruments\t356\u00a0\t\t\t(523)\t\t\t729\u00a0\t\t\t810\nAdjustment for net (gains)/losses realized and included in net income\t67\u00a0\t\t\t(571)\t\t\t348\u00a0\t\t\t(415)\nTotal change in unrealized gains/losses on derivative instruments\t423\u00a0\t\t\t(1,094)\t\t\t1,077\u00a0\t\t\t395\n\nChange in unrealized gains/losses on marketable debt securities, net of tax:\nChange in fair value of marketable debt securities\t441\u00a0\t\t\t640\u00a0\t\t\t57\u00a0\t\t\t90\nAdjustment for net (gains)/losses realized and included in net income\t27\u00a0\t\t\t(1)\t\t\t45\u00a0\t\t\t404\nTotal change in unrealized gains/losses on marketable debt securities\t468\u00a0\t\t\t639\u00a0\t\t\t102\u00a0\t\t\t494\n\nTotal other comprehensive income/(loss)\t867\u00a0\t\t\t(6)\t\t\t1,063\u00a0\t\t\t803\nTotal comprehensive income\t$\t30,656\u00a0\t\t\t$\t23,428\u00a0\t\t\t$\t102,527\u00a0\t\t\t$\t85,347\nSee accompanying Notes to Condensed Consolidated Financial Statements.\nApple Inc. | Q3 2026 Form 10-Q | 2\n\nApple Inc.\nCONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited)\n(In millions, except number of shares, which are reflected in thousands, and par value)\n\n\tJune 27,\n2026\t\tSeptember 27,\n2025\nASSETS:\nCurrent assets:\nCash and cash equivalents\t$\t39,544\u00a0\t\t\t$\t35,934\nMarketable securities\t22,855\u00a0\t\t\t18,763\nAccounts receivable, net\t31,398\u00a0\t\t\t39,777\nVendor non-trade receivables\t27,509\u00a0\t\t\t33,180\nInventories\t11,092\u00a0\t\t\t5,718\nOther current assets\t17,420\u00a0\t\t\t14,585\nTotal current assets\t149,818\u00a0\t\t\t147,957\n\nNon-current assets:\nMarketable securities\t84,118\u00a0\t\t\t77,723\nProperty, plant and equipment, net\t51,431\u00a0\t\t\t49,834\nIntangible assets, net\t20,342\u00a0\t\t\t11,093\nOther non-current assets\t77,557\u00a0\t\t\t72,634\nTotal non-current assets\t233,448\u00a0\t\t\t211,284\nTotal assets\t$\t383,266\u00a0\t\t\t$\t359,241\n\nLIABILITIES AND SHAREHOLDERS\u2019 EQUITY:\nCurrent liabilities:\nAccounts payable\t$\t64,525\u00a0\t\t\t$\t69,860\nOther current liabilities\t62,259\u00a0\t\t\t66,387\nDeferred revenue\t9,538\u00a0\t\t\t9,055\nCommercial paper\t1,997\u00a0\t\t\t7,979\nTerm debt\t11,007\u00a0\t\t\t12,350\nTotal current liabilities\t149,326\u00a0\t\t\t165,631\n\nNon-current liabilities:\nTerm debt\t71,340\u00a0\t\t\t78,328\nOther non-current liabilities\t55,080\u00a0\t\t\t41,549\nTotal non-current liabilities\t126,420\u00a0\t\t\t119,877\nTotal liabilities\t275,746\u00a0\t\t\t285,508\n\nCommitments and contingencies\n\nShareholders\u2019 equity:\n\nCommon stock and additional paid-in capital, $0.00001 par value: 50,400,000 shares authorized; 14,608,963 and 14,773,260 shares issued and outstanding, respectively\n\t100,702\u00a0\t\t\t93,568\nRetained earnings/(Accumulated deficit)\t11,326\u00a0\t\t\t(14,264)\nAccumulated other comprehensive loss\t(4,508)\t\t\t(5,571)\nTotal shareholders\u2019 equity\t107,520\u00a0\t\t\t73,733\nTotal liabilities and shareholders\u2019 equity\t$\t383,266\u00a0\t\t\t$\t359,241\nSee accompanying Notes to Condensed Consolidated Financial Statements.\nApple Inc. | Q3 2026 Form 10-Q | 3\n\nApple Inc.\nCONDENSED CONSOLIDATED STATEMENTS OF SHAREHOLDERS\u2019 EQUITY (Unaudited)\n(In millions, except per-share amounts)\n\n\tThree Months Ended\t\tNine Months Ended\n\tJune 27,\n2026\t\tJune 28,\n2025\t\tJune 27,\n2026\t\tJune 28,\n2025\nTotal shareholders\u2019 equity, beginning balances\t$\t106,491\u00a0\t\t\t$\t66,796\u00a0\t\t\t$\t73,733\u00a0\t\t\t$\t56,950\n\nCommon stock and additional paid-in capital:\nBeginning balances\t99,507\u00a0\t\t\t88,711\u00a0\t\t\t93,568\u00a0\t\t\t83,276\nCommon stock issued\t\u2014\u00a0\t\t\t\u2014\u00a0\t\t\t878\u00a0\t\t\t825\nCommon stock withheld related to net share settlement of equity awards\t(2,396)\t\t\t(2,163)\t\t\t(4,704)\t\t\t(4,260)\nShare-based compensation\t3,591\u00a0\t\t\t3,258\u00a0\t\t\t10,960\u00a0\t\t\t9,965\nEnding balances\t100,702\u00a0\t\t\t89,806\u00a0\t\t\t100,702\u00a0\t\t\t89,806\n\nRetained earnings/(Accumulated deficit):\nBeginning balances\t12,359\u00a0\t\t\t(15,552)\t\t\t(14,264)\t\t\t(19,154)\nNet income\t29,789\u00a0\t\t\t23,434\u00a0\t\t\t101,464\u00a0\t\t\t84,544\nDividends and dividend equivalents declared\t(3,998)\t\t\t(3,912)\t\t\t(11,733)\t\t\t(11,525)\nCommon stock withheld related to net share settlement of equity awards\t(875)\t\t\t(411)\t\t\t(1,899)\t\t\t(1,598)\nCommon stock repurchased\t(25,949)\t\t\t(21,166)\t\t\t(62,242)\t\t\t(69,874)\nEnding balances\t11,326\u00a0\t\t\t(17,607)\t\t\t11,326\u00a0\t\t\t(17,607)\n\nAccumulated other comprehensive loss:\nBeginning balances\t(5,375)\t\t\t(6,363)\t\t\t(5,571)\t\t\t(7,172)\nOther comprehensive income/(loss)\t867\u00a0\t\t\t(6)\t\t\t1,063\u00a0\t\t\t803\n[chunk 1/9; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01TKpe79jh4wCnAS7HeBwJXx",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/search/#/category=custom&ciks=0000021344&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01TKpe79jh4wCnAS7HeBwJXx",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000021344&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-08-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report)\t2026-07-29\t2026-07-03\tCOCA COLA CO (KO)\n[e35 link] Accessibility [e36 link] Budget & Performance [e37 link] Careers [e38 link] Contact [e39 link] Contracts [e40 link] Data [e41 link] FOIA [e42 link] Inspector General [e43 link] Investor.gov [e44 link] No FEAR Act & EEO Data [e45 link] Ombudsman [e46 link] Plain Writing [e47 link] Privacy [e48 link] Related Sites [e49 link] Site Map [e50 link] USA.gov [e51 link] Votes [e52 link] Vulnerability Disclosure Policy [e53 link] Whistleblower Protection"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_015KC9bK44a1zrmS8XsNT1vW",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e34"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_015KC9bK44a1zrmS8XsNT1vW",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000021344&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-08-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report)\t2026-07-29\t2026-07-03\tCOCA COLA CO (KO)\n[e35 link] Accessibility [e36 link] Budget & Performance [e37 link] Careers [e38 link] Contact [e39 link] Contracts [e40 link] Data [e41 link] FOIA [e42 link] Inspector General [e43 link] Investor.gov [e44 link] No FEAR Act & EEO Data [e45 link] Ombudsman [e46 link] Plain Writing [e47 link] Privacy [e48 link] Related Sites [e49 link] Site Map [e50 link] USA.gov [e51 link] Votes [e52 link] Vulnerability Disclosure Policy [e53 link] Whistleblower Protection\n[e54 button \"Close\"] \u00d7\nLoading document preview\n[e55 link] [e56 button] Open document\n[e57 link] [e58 button] Open filing\n[e59 button] Close"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01TxHtWJ72qKEKD4ghSQoohj",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e56"
+    },
+    "name": "click",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_013g31wJSYD4wd9PtZtJVRFS",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "Equity attributable to shareowners"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01TxHtWJ72qKEKD4ghSQoohj",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/ko-20260703.htm | TITLE: ko-20260703 | chunk 1/23\n\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-Q\n(Mark One)\n\u2612\u00a0QUARTERLY REPORT PURSUANT TO SECTION\u00a013 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF\u00a01934\nFor the quarterly period ended July 3, 2026\nOR\n\u2610\u00a0TRANSITION REPORT PURSUANT TO SECTION\u00a013 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF\u00a01934\nFor the transition period from\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0to\nCommission File Number:\u00a0001-02217\nCOCA COLA CO\n(Exact name of Registrant as specified in its charter)\n\nDelaware\t\u00a0\t58-0628465\n(State or other jurisdiction of incorporation or organization)\t\t(I.R.S. Employer Identification No.)\nOne Coca-Cola Plaza\nAtlanta,\tGeorgia\t\t30313\n(Address of principal executive offices)\t\t(Zip Code)\nRegistrant\u2019s telephone number, including area code:\u00a0(404) 676-2121\nSecurities registered pursuant to Section 12(b) of the Act:\n\nTitle of each class\tTrading Symbol(s)\tName of each exchange on which registered\nCommon Stock, $0.25 Par Value\tKO\tNew York Stock Exchange\n1.875% Notes Due 2026\tKO26\tNew York Stock Exchange\n0.750% Notes Due 2026\tKO26C\tNew York Stock Exchange\n1.125% Notes Due 2027\tKO27\tNew York Stock Exchange\n0.125% Notes Due 2029\tKO29A\tNew York Stock Exchange\n0.125% Notes Due 2029\tKO29B\tNew York Stock Exchange\n0.400% Notes Due 2030\tKO30B\tNew York Stock Exchange\n1.250% Notes Due 2031\tKO31\tNew York Stock Exchange\n3.125% Notes Due 2032\tKO32\tNew York Stock Exchange\n0.375% Notes Due 2033\tKO33\tNew York Stock Exchange\n0.500% Notes Due 2033\tKO33A\tNew York Stock Exchange\n1.625% Notes Due 2035\tKO35\tNew York Stock Exchange\n1.100% Notes Due 2036\tKO36\tNew York Stock Exchange\n0.950% Notes Due 2036\tKO36A\tNew York Stock Exchange\n3.375% Notes Due 2037\tKO37\tNew York Stock Exchange\n0.800% Notes Due 2040\tKO40B\tNew York Stock Exchange\n1.000% Notes Due 2041\tKO41\tNew York Stock Exchange\n3.500% Notes Due 2044\tKO44\tNew York Stock Exchange\n3.750% Notes Due 2053\tKO53\tNew York Stock Exchange\n\nIndicate by check mark whether the Registrant (1)\u00a0has filed all reports required to be filed by Section\u00a013 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12\u00a0months (or for such shorter period that the Registrant was required to file such reports), and (2)\u00a0has been subject to such filing requirements for the past 90\u00a0days. Yes\u00a0\u2612\u00a0\u00a0\u00a0\u00a0No\u00a0\u2610\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule\u00a0405 of Regulation\u00a0S-T (\u00a7\u00a0232.405 of this chapter) during the preceding 12\u00a0months (or for such shorter period that the Registrant was required to submit such files). Yes\u00a0\u2612\u00a0\u00a0\u00a0\u00a0No\u00a0\u2610\nIndicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company\u201d and \u201cemerging growth company\u201d in Rule\u00a012b-2 of the Exchange Act.\n\nLarge accelerated filer\t\u2612\t\t\tAccelerated filer\u00a0\t\u2610\nNon-accelerated filer\t\u2610\t\t\tSmaller reporting company\t\u2610\nEmerging growth company\t\u2610\nIf an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.\t\u2610\nIndicate by check mark if the Registrant is a shell company (as defined in Rule\u00a012b-2 of the Exchange Act). Yes\u00a0\u2610\u00a0\u00a0\u00a0\u00a0No\u00a0\u2612\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock as of the latest practicable date.\n\nClass of Common Stock\u00a0\t\u00a0\tShares Outstanding as of July 27, 2026\n$0.25 Par Value\t\u00a0\t4,302,549,243\n\nTHE COCA-COLA COMPANY AND SUBSIDIARIES\nTable of Contents\n\n\u00a0\t\u00a0\tPage\n\n[e1 link] Forward-Looking Statements\n\n[e2 link] 1\n\n[e3 link] Part\u00a0I. Financial Information\n\n[e4 link] Item\u00a01.\n\n[e5 link] Financial Statements\n\n[e6 link] 2\n\n[e7 link] Consolidated Statements of Income \u2014 Three [e8 link] and Six [e9 link] Months Ended [e10 link] July[e11 link] 3, 2026 and [e12 link] June[e13 link] 2[e14 link] 7[e15 link] , 2025\n\n[e16 link] 2\n\n[e17 link] Consolidated Statements of Comprehensive Income \u2014 Three [e18 link] and Six [e19 link] Months Ended [e20 link] July[e21 link] 3, 2026 and\n[e22 link] June 27[e23 link] ,[e24 link] 2025\n\n[e25 link] 3\n\n[e26 link] Consolidated Balance Sheets \u2014 [e27 link] July[e28 link] 3, 2026 and December 31, 2025\n\n[e29 link] 4\n\n[e30 link] Consolidated Statements of Cash Flows \u2014 [e31 link] Six [e32 link] Months Ended [e33 link] July[e34 link] 3, 2026 and [e35 link] June[e36 link] 2[e37 link] 7[e38 link] , 2025\n\n[e39 link] 5\n\n[e40 link] Notes to Consolidated Financial Statements\n\n[e41 link] 6\n\n[e42 link] Item\u00a02.\n\n[e43 link] Management\u2019s Discussion and Analysis of Financial Condition and Results of\u00a0Operations\n\n[e44 link] 31\n\n[e45 link] Item\u00a03.\n\n[e46 link] Quantitative and Qualitative Disclosures About Market Risk\n\n[e47 link] 46\n\n[e48 link] Item\u00a04.\n\n[e49 link] Controls and Procedures\n\n[e50 link] 46\n\n[e51 link] Part\u00a0II. Other Information\n\n[e52 link] Item\u00a01.\n\n[e53 link] Legal Proceedings\n\n[e54 link] 46\n\n[e55 link] Item\u00a01A.\n\n[e56 link] Risk Factors\n\n[e57 link] 48\n\n[e58 link] Item\u00a02.\n\n[e59 link] Unregistered Sales of Equity Securities and Use of Proceeds\n\n[e60 link] 49\n\n[e61 link] Item 5.\n\n[e62 link] Other Information\n\n[e63 link] 49\n\n[e64 link] Item\u00a06.\n\n[e65 link] Exhibits\n\n[e66 link] 49\n\n[e67 link] Signatures\n\n[e68 link] 53\n\nFORWARD-LOOKING STATEMENTS\nThis report contains information that may constitute \u201cforward-looking statements.\u201d Generally, the words \u201cbelieve,\u201d \u201cexpect,\u201d \u201cintend,\u201d \u201cestimate,\u201d \u201canticipate,\u201d \u201cproject,\u201d \u201cwill\u201d and similar expressions identify forward-looking statements, which generally are not historical in nature. However, the absence of these words or similar expressions does not mean that a statement is not forward-looking. All statements that address operating performance, events or developments that we expect or anticipate will occur in the future\u00a0are forward-looking statements. Management believes that these forward-looking statements are reasonable as and when made. However, caution should be taken not to place undue reliance on any such forward-looking statements because such statements speak only as of the date when made. Our Company undertakes no obligation to publicly update or revise any forward-looking statements, whether as a result of new information, future events or otherwise, except as required by law. In addition, forward-looking statements are subject to certain risks and uncertainties that could cause our Company\u2019s actual results to differ materially from historical experience and our present expectations or projections. These risks and uncertainties include, but are not limited to, the possibility that the assumptions used to calculate our estimated aggregate incremental tax and interest liability related to the potential unfavorable outcome of the ongoing tax dispute with the United States Internal Revenue Service could significantly change; those described in Part II, \u201cItem 1A. Risk Factors\u201d and elsewhere in this report and in our Annual Report on Form 10-K for the year ended December\u00a031, 2025; and those described from time to time in our future reports filed with the Securities and Exchange Commission.\n1\n\nPart\u00a0I. Financial Information\nItem\u00a01.\u00a0Financial Statements\nTHE COCA-COLA COMPANY AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF INCOME\n(In millions except per share data)\n\n\tThree Months Ended\t\tSix Months Ended\n\tJuly 3,\n2026\tJune 27,\n2025\t\tJuly 3,\n2026\tJune 27,\n2025\nNet Operating Revenues\t$\t13,380\u00a0\t\t$\t12,535\u00a0\t\t\t$\t25,852\u00a0\t\t$\t23,664\nCost of goods sold\t4,965\u00a0\t\t4,714\u00a0\t\t\t9,585\u00a0\t\t8,877\nGross Profit\t8,415\u00a0\t\t7,821\u00a0\t\t\t16,267\u00a0\t\t14,787\nSelling, general and administrative expenses\t3,720\u00a0\t\t3,470\u00a0\t\t\t7,192\u00a0\t\t6,704\nOther operating charges\t23\u00a0\t\t71\u00a0\t\t\t44\u00a0\t\t144\nOperating Income\t4,672\u00a0\t\t4,280\u00a0\t\t\t9,031\u00a0\t\t7,939\nInterest income\t198\u00a0\t\t188\u00a0\t\t\t420\u00a0\t\t368\nInterest expense\t369\u00a0\t\t445\u00a0\t\t\t744\u00a0\t\t832\nEquity income (loss)\u00a0\u2014 net\t604\u00a0\t\t561\u00a0\t\t\t988\u00a0\t\t912\nOther income (loss)\u00a0\u2014 net\t370\u00a0\t\t212\u00a0\t\t\t391\u00a0\t\t466\nIncome Before Income Taxes\t5,475\u00a0\t\t4,796\u00a0\t\t\t10,086\u00a0\t\t8,853\nIncome taxes\t1,037\u00a0\t\t993\u00a0\t\t\t1,682\u00a0\t\t1,715\nConsolidated Net Income\t4,438\u00a0\t\t3,803\u00a0\t\t\t8,404\u00a0\t\t7,138\nLess: Net income (loss) attributable to noncontrolling interests\t13\u00a0\t\t(7)\t\t\t55\u00a0\t\t(2)\nNet Income Attributable to Shareowners of The\u00a0Coca-Cola Company\t$\t4,425\u00a0\t\t$\t3,810\u00a0\t\t\t$\t8,349\u00a0\t\t$\t7,140\n\nBasic Net Income Per Share1\n\t$\t1.03\u00a0\t\t$\t0.89\u00a0\t\t\t$\t1.94\u00a0\t\t$\t1.66\n\nDiluted Net Income Per Share1\n\t$\t1.03\u00a0\t\t$\t0.88\u00a0\t\t\t$\t1.94\u00a0\t\t$\t1.65\nAverage Shares Outstanding \u2014 Basic\t4,303\u00a0\t\t4,304\u00a0\t\t\t4,302\u00a0\t\t4,303\nEffect of dilutive securities\t10\u00a0\t\t11\u00a0\t\t\t11\u00a0\t\t11\nAverage Shares Outstanding \u2014 Diluted\t4,313\u00a0\t\t4,315\u00a0\t\t\t4,313\u00a0\t\t4,314\n1 Calculated based on net income attributable to shareowners of The Coca-Cola Company.\nRefer to Notes to Consolidated Financial Statements.\n\n2\n\nTHE COCA-COLA COMPANY AND SUBSIDIARIES\nCONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME\n(In millions)\n\n\tThree Months Ended\t\tSix Months Ended\n\tJuly 3,\n2026\tJune 27,\n2025\t\tJuly 3,\n2026\tJune 27,\n2025\nConsolidated Net Income\t$\t4,438\u00a0\t\t$\t3,803\u00a0\t\t\t$\t8,404\u00a0\t\t$\t7,138\nOther Comprehensive Income:\nNet foreign currency translation adjustments\t399\u00a0\t\t1,103\u00a0\t\t\t357\u00a0\t\t1,722\nNet gains (losses) on derivatives\t60\u00a0\t\t(344)\t\t\t131\u00a0\t\t(601)\nNet change in unrealized gains (losses) on available-for-sale debt securities\t(3)\t\t10\u00a0\t\t\t(14)\t\t23\nNet change in pension and other postretirement benefit liabilities\t14\u00a0\t\t1\u00a0\t\t\t43\u00a0\t\t20\nTotal Comprehensive Income\t4,908\u00a0\t\t4,573\u00a0\t\t\t8,921\u00a0\t\t8,302\nLess: Comprehensive income (loss) attributable to noncontrolling interests\t69\u00a0\t\t39\u00a0\t\t\t67\u00a0\t\t77\nTotal Comprehensive Income Attributable to Shareowners of The Coca-Cola Company\t$\t4,839\u00a0\t\t$\t4,534\u00a0\t\t\t$\t8,854\u00a0\t\t$\t8,225\nRefer to Notes to Consolidated Financial Statements.\n\n3\n\nTHE COCA-COLA COMPANY AND SUBSIDIARIES\nCONSOLIDATED BALANCE SHEETS\n(In millions except par value)\n\n\tJuly 3,\n2026\tDecember 31,\n2025\nASSETS\nCurrent Assets\nCash and cash equivalents\t$\t12,907\u00a0\t\t$\t10,270\n[chunk 1/23; call read_page(page=2) for more]"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_013g31wJSYD4wd9PtZtJVRFS",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/ko-20260703.htm | find_text 'Equity attributable to shareowners': 2 match(es)\n(chunk 2) (56,894)\t\t(56,423) / Equity Attributable to Shareowners of The Coca-Cola Company\t36,150\u00a0\t\t32,169 / Equity attributable to noncontrolling interests\t2,165\u00a0\t\t2,106\n(chunk 8) NOTE 11: CHANGES IN EQUITY / The following tables provide a reconciliation of the beginning and ending carrying amounts of total equity, equity attributable to shareowners of The Coca-Cola Company and equity attributable to noncontrolling interests (in millions):"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_017h2uuhrqf1egc25kb5fA31",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/search/#/category=custom&ciks=0000093410&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_017h2uuhrqf1egc25kb5fA31",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000093410&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-08-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report)\t2026-08-06\t2026-06-30\tCHEVRON CORP (CVX)\n[e35 link] Accessibility [e36 link] Budget & Performance [e37 link] Careers [e38 link] Contact [e39 link] Contracts [e40 link] Data [e41 link] FOIA [e42 link] Inspector General [e43 link] Investor.gov [e44 link] No FEAR Act & EEO Data [e45 link] Ombudsman [e46 link] Plain Writing [e47 link] Privacy [e48 link] Related Sites [e49 link] Site Map [e50 link] USA.gov [e51 link] Votes [e52 link] Vulnerability Disclosure Policy [e53 link] Whistleblower Protection"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_017pFCHXNNi396YGYMvwmhNe",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e34"
+    },
+    "name": "click",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_017Tjm2n2y5qyJsAznxqYWvg",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e56"
+    },
+    "name": "click",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01KPVy3aniTTHdosVK4QN7rL",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "Total Chevron Corporation Stockholders"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_017pFCHXNNi396YGYMvwmhNe",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000093410&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-08-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report)\t2026-08-06\t2026-06-30\tCHEVRON CORP (CVX)\n[e35 link] Accessibility [e36 link] Budget & Performance [e37 link] Careers [e38 link] Contact [e39 link] Contracts [e40 link] Data [e41 link] FOIA [e42 link] Inspector General [e43 link] Investor.gov [e44 link] No FEAR Act & EEO Data [e45 link] Ombudsman [e46 link] Plain Writing [e47 link] Privacy [e48 link] Related Sites [e49 link] Site Map [e50 link] USA.gov [e51 link] Votes [e52 link] Vulnerability Disclosure Policy [e53 link] Whistleblower Protection\n[e54 button \"Close\"] \u00d7\nLoading document preview\n[e55 link] [e56 button] Open document\n[e57 link] [e58 button] Open filing\n[e59 button] Close"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_017Tjm2n2y5qyJsAznxqYWvg",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/cvx-20260630.htm | TITLE: cvx-20260630 | chunk 1/16\n\nUNITED STATES SECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nForm 10-Q\n\u2611\u00a0\u00a0\u00a0\u00a0QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June\u00a030, 2026\nor\n\u2610\u00a0\u00a0\u00a0\u00a0TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d)\nOF THE SECURITIES EXCHANGE ACT OF 1934\nCommission file number 001-00368\nChevron Corporation\n(Exact name of registrant as specified in its charter)\n\n\t\t\t\t1400 Smith Street\nDelaware\t\t94-0890210\t\tHouston,\tTX\t77002-7327\n(State or other jurisdiction of\nincorporation or organization)\t\t(I.R.S. Employer\nIdentification No.)\t\t(Address of principal executive offices)\n(Zip\u00a0Code)\n\nRegistrant\u2019s telephone number, including area code: (832)\u00a0854-1000\n\n\t\tNONE\n\t(Former name, former address and former fiscal year, if changed since last report.)\nSecurities registered pursuant to Section 12(b) of the Act:\n\nTitle of each class\t\tTrading Symbol\t\tName of each exchange on which registered\nCommon stock, par value $.75 per share\t\tCVX\t\tNew York Stock Exchange\nIndicate by check mark whether the registrant (1)\u00a0has filed all reports required to be filed by Section\u00a013 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2)\u00a0has been subject to such filing requirements for the past 90 days.\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2611\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7\u00a0232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2611\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\n\nLarge accelerated filer\t\u2611\t\tAccelerated\u00a0filer\t\u2610\nNon-accelerated\u00a0filer\t\u2610\t\tSmaller reporting company\t\u2610\n\t\t\tEmerging growth company\t\u2610\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.\u00a0\u2610\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\u00a0\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2610\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2611\nThere were 1,975,771,274 shares of the company\u2019s common stock outstanding on June\u00a030, 2026.\n\n[e1 link] Table of Contents\n\nTABLE OF CONTENTS\n\n\t\tPage\u00a0No.\n\n[e2 link] Cautionary Statements Relevant to Forward-Looking Information for the Purpose of \u201cSafe Harbor\u201d Provisions of the Private Securities Litigation Reform Act of 1995\n\n[e3 link] 2\n\n[e4 link] PART I\nFINANCIAL INFORMATION\n\n[e5 link] Item\u00a01.\n\n[e6 link] Consolidated Financial Statements\n\n[e7 link] Consolidated Statement of Income for the Three and Six [e8 link] Months Ended June\u00a030, 2026[e9 link] and 2025\n\n[e10 link] 3\n\n[e11 link] Consolidated Statement of Comprehensive Income for the Three and Six [e12 link] Months Ended June\u00a030, 2026 [e13 link] and 2025\n\n[e14 link] 4\n\n[e15 link] Consolidated Balance Sheet at June\u00a030, 2026[e16 link] and[e17 link] December\u00a031, 2025\n\n[e18 link] 5\n\n[e19 link] Consolidated Statement of Cash Flows for the Three and Six [e20 link] Months Ended June\u00a030, 2026 [e21 link] and 2025\n\n[e22 link] 6\n\n[e23 link] Consolidated Statement of Equity for the Three and Six [e24 link] Months Ended June\u00a030, 2026[e25 link] and 2025\n\n[e26 link] 7\n\n[e27 link] Notes to Consolidated Financial Statements\n\n[e28 link] 8\n\n[e29 link] Item\u00a02.\n\n[e30 link] Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n\n[e31 link] 26\n\n[e32 link] Item\u00a03.\n\n[e33 link] Quantitative and Qualitative Disclosures About Market Risk\n\n[e34 link] 44\n\n[e35 link] Item\u00a04.\n\n[e36 link] Controls and Procedures\n\n[e37 link] 44\n\n[e38 link] PART II\nOTHER INFORMATION\n\n[e39 link] Item\u00a01.\n\n[e40 link] Legal Proceedings\n\n[e41 link] 44\n\n[e42 link] Item\u00a01A.\n\n[e43 link] Risk Factors\n\n[e44 link] 45\n\n[e45 link] Item\u00a02.\n\n[e46 link] Unregistered Sales of Equity Securities and Use of Proceeds\n\n[e47 link] 45\n\n[e48 link] Item 5.\n\n[e49 link] Other Information\n\n[e50 link] 45\n\n[e51 link] Item\u00a06.\n\n[e52 link] Exhibits\n\n[e53 link] 46\n\n[e54 link] Signature\n\n[e55 link] 47\n\n1\n[e56 link] Table of Contents\n\nCAUTIONARY STATEMENTS RELEVANT TO FORWARD-LOOKING INFORMATION\nFOR THE PURPOSE OF \u201cSAFE HARBOR\u201d PROVISIONS OF THE\nPRIVATE SECURITIES LITIGATION REFORM ACT OF 1995\nThis quarterly report on Form 10-Q of Chevron Corporation contains forward-looking statements relating to Chevron\u2019s operations, assets, and strategy that are based on management\u2019s current expectations, estimates and projections about the petroleum, chemicals and other energy-related industries. Words or phrases such as \u201canticipates,\u201d \u201cexpects,\u201d \u201cintends,\u201d \u201cplans,\u201d \u201ctargets,\u201d \u201cadvances,\u201d \u201ccommits,\u201d \u201cdrives,\u201d \u201caims,\u201d \u201cforecasts,\u201d \u201cprojects,\u201d \u201cbelieves,\u201d \u201capproaches,\u201d \u201cseeks,\u201d \u201cschedules,\u201d \u201cestimates,\u201d \u201cpositions,\u201d \u201cpursues,\u201d \u201cprogress,\u201d \u201cdesign,\u201d \u201cenable,\u201d \u201cmay,\u201d \u201ccan,\u201d \u201ccould,\u201d \u201cshould,\u201d \u201cwill,\u201d \u201cbudgets,\u201d \u201coutlook,\u201d \u201ctrends,\u201d \u201cguidance,\u201d \u201cfocus,\u201d \u201con track,\u201d \u201ctrajectory,\u201d \u201cgoals,\u201d \u201cobjectives,\u201d \u201cstrategies,\u201d \u201copportunities,\u201d \u201cpoised,\u201d \u201cpotential,\u201d \u201cambitions,\u201d \u201cfuture,\u201d \u201caspires\u201d and similar expressions, and variations or negatives of these words, are intended to identify such forward-looking statements, but not all forward-looking statements include such words. These statements are not guarantees of future performance and are subject to numerous risks, uncertainties and other factors, many of which are beyond the company\u2019s control and are difficult to predict. Therefore, actual outcomes and results may differ materially from what is expressed or forecasted in such forward-looking statements. The reader should not place undue reliance on these forward-looking statements, which speak only as of the date of this report. Unless legally required, Chevron undertakes no obligation to update publicly any forward-looking statements, whether as a result of new information, future events or otherwise.\n[chunk 1/16; call read_page(page=2) for more]"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01KPVy3aniTTHdosVK4QN7rL",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/cvx-20260630.htm | find_text 'Total Chevron Corporation Stockholders': 1 match(es)\n(chunk 3) (56,190)\t\t\t(51,929) / Total Chevron Corporation Stockholders\u2019 Equity\t\t189,883\u00a0\t\t\t186,450 / Noncontrolling interests\t\t5,675\u00a0\t\t\t5,726"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01Sng9kL3xyLvju2BAgm5oRd",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/search/#/category=custom&ciks=0000066740&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Sng9kL3xyLvju2BAgm5oRd",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000066740&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-08-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report)\t2026-07-21\t2026-06-30\t3M CO (MMM)\n[e35 link] Accessibility [e36 link] Budget & Performance [e37 link] Careers [e38 link] Contact [e39 link] Contracts [e40 link] Data [e41 link] FOIA [e42 link] Inspector General [e43 link] Investor.gov [e44 link] No FEAR Act & EEO Data [e45 link] Ombudsman [e46 link] Plain Writing [e47 link] Privacy [e48 link] Related Sites [e49 link] Site Map [e50 link] USA.gov [e51 link] Votes [e52 link] Vulnerability Disclosure Policy [e53 link] Whistleblower Protection"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01ACDuP6zZMoedtUqC6HpX3z",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e34"
+    },
+    "name": "click",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_015k3CPr5afzL6k27vstF5nC",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e56"
+    },
+    "name": "click",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_018BQxuxx2q88T3u5U8LuPZd",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "Total 3M Company shareholders"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01ACDuP6zZMoedtUqC6HpX3z",
+    "content": "URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000066740&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] FAQ\n[e5 link] Other search tools\nDocument word or phrase[e6 button] ? [e7 textbox \"Keywords to search for in filing documents\" value=\"\"]\nCompany name, ticker, CIK number or individual's name [e8 textbox \"Company name, ticker, CIK number or individual's name\" value=\"\"]\nFiling types\n[e9 link] Browse filing types\n[e10 textbox \"Filing types\" value=\"10-Q\"]\n[e11 button] cancel\nFiled date range [e12 select \"Filed date range\" value=\"custom\" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]\nAll (since 2001)\nLast 10 years\nLast 5 years\nLast year\nLast 30 days\nCustom\nFiled from [e13 textbox \"Filed from\" value=\"2026-07-01\"]\nFiled to [e14 textbox \"Filed to\" value=\"2026-08-31\"]\n[e15 button] Principal executive offices in\n [e16 button] ?\n[e17 button \"Location dropdown\"] View all\n[e18 link] - less search options [e19 button] SEARCH [e20 button] Clear all\nRefine search results by:\n[e21 tab] [e22 link]\nEntity\n[e23 tab] [e24 link]\nForm\n[e25 tab] [e26 link]\nPrincipal executive offices located in\nClick headings to show top filters.\nDocument counts shown in #\n1 search results\nShow Columns\n[e27 checkbox \"Filed\" checked]\nFiled [e28 checkbox \"Reporting for\" checked]\nReporting for [e29 checkbox \"CIK\" unchecked]\nCIK [e30 checkbox \"Located\" unchecked]\nLocated [e31 checkbox \"Incorporated\" unchecked]\nIncorporated [e32 checkbox \"File number\" unchecked]\nFile number [e33 checkbox \"Film number\" unchecked]\nFilm number\nForm & File\tFiled \u2193\tReporting for\tFiling entity/person\n[e34 link] 10-Q (Quarterly report)\t2026-07-21\t2026-06-30\t3M CO (MMM)\n[e35 link] Accessibility [e36 link] Budget & Performance [e37 link] Careers [e38 link] Contact [e39 link] Contracts [e40 link] Data [e41 link] FOIA [e42 link] Inspector General [e43 link] Investor.gov [e44 link] No FEAR Act & EEO Data [e45 link] Ombudsman [e46 link] Plain Writing [e47 link] Privacy [e48 link] Related Sites [e49 link] Site Map [e50 link] USA.gov [e51 link] Votes [e52 link] Vulnerability Disclosure Policy [e53 link] Whistleblower Protection\n[e54 button \"Close\"] \u00d7\nLoading document preview\n[e55 link] [e56 button] Open document\n[e57 link] [e58 button] Open filing\n[e59 button] Close"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_015k3CPr5afzL6k27vstF5nC",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/mmm-20260630.htm | TITLE: mmm-20260630 | chunk 1/25\n\n[e1 link] Table of Contents\n\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWASHINGTON, D.C. 20549\nFORM 10-Q\n\u2612 QUARTERLY REPORT PURSUANT TO SECTION\u00a013 OR 15(d)\u00a0OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the quarterly period ended June\u00a030, 2026\nor\no TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\nFor the transition period from __________ to __________\nCommission file number: 1-3285\n3M COMPANY\n(Exact name of registrant as specified in its charter)\nDelaware\t\t41-0417775\n(State or other jurisdiction of incorporation)\t\t(IRS Employer Identification No.)\n\n3M Center, St. Paul, Minnesota\n\t\t55144-1000\n(Address of Principal Executive Offices)\t\t(Zip Code)\n\n(Registrant\u2019s Telephone Number, Including Area Code) (651) 733-1110\n\nNot Applicable\n\n(Former Name or Former Address, if Changed Since Last Report)\n\nSecurities registered pursuant to Section 12(b) of the Act:\nTitle of each class\t\tTrading Symbol(s)\t\tName of each exchange on which registered\nCommon Stock, Par Value $.01 Per Share\t\tMMM\t\tNew York Stock Exchange\n\t\tMMM\t\tNYSE Texas, Inc.\n1.500% Notes due 2026\t\tMMM26\t\tNew York Stock Exchange\n1.750% Notes due 2030\t\tMMM30\t\tNew York Stock Exchange\n1.500% Notes due 2031\t\tMMM31\t\tNew York Stock ExchangeNote: The common stock of the Registrant is also traded on the SIX Swiss Exchange.\nIndicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes \u2612 No \u2610\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes \u2612 No \u2610\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.:\n\nLarge accelerated filer\t\u2612\tAccelerated filer\t\u2610\n\nNon-accelerated filer\t\u2610\tSmaller reporting company\t\u2610\n\n\t\tEmerging growth company\t\u2610\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes \u2610 No \u2612\nIndicate the number of shares outstanding of each of the issuer\u2019s classes of common stock, as of the latest practicable date.\n\nClass\nOutstanding at June\u00a030, 2026\n\nCommon Stock, $0.01 par value per share\n515,722,417 shares\n\n1\n[e2 link] Table of Contents\n3M COMPANY\nForm 10-Q for the Quarterly Period Ended June\u00a030, 2026\n\nTABLE OF CONTENTS\n\nPAGE\n\n[e3 link] PART I. Financial Information\n\n[e4 link] 3\n\n[e5 link] Item 1. Financial Statements\n\n[e6 link] 3\n\n[e7 link] Consolidated Statement of Income\n\n[e8 link] 3\n\n[e9 link] Consolidated Statement of Comprehensive Income\n\n[e10 link] 4\n\n[e11 link] Consolidated Balance Sheet\n\n[e12 link] 5\n\n[e13 link] Consolidated Statement of Cash Flows\n\n[e14 link] 6\n\n[e15 link] Notes to Consolidated Financial Statements\n\n[e16 link] 7\n\n[e17 link] Note 1. Significant Accounting Policies\n\n[e18 link] 7\n\n[e19 link] Note 2. Revenue\n\n[e20 link] 7\n\n[e21 link] Note 3. Acquisitions and Divestitures\n\n[e22 link] 8\n\n[e23 link] Note 4. Goodwill and Intangible Assets\n\n[e24 link] 9\n\n[e25 link] Note 5. Restructuring Actions\n\n[e26 link] 9\n\n[e27 link] Note 6. Supplemental Income Statement Information\n\n[e28 link] 10\n\n[e29 link] Note 7. Supplemental Balance Sheet Information\n\n[e30 link] 10\n\n[e31 link] Note 8. Supplemental Equity and Comprehensive Income Information\n\n[e32 link] 11\n\n[e33 link] Note 9. Income Taxes\n\n[e34 link] 13\n\n[e35 link] Note 10. Earnings Per Share\n\n[e36 link] 13\n\n[e37 link] Note 11. Long-Term Debt and Short-Term Borrowings\n\n[e38 link] 13\n\n[e39 link] Note 12. Pension and Postretirement Benefit Plans\n\n[e40 link] 14\n\n[e41 link] Note 13. Derivatives\n\n[e42 link] 14\n\n[e43 link] Note 14. Fair Value Measurements and Marketable Securities\n\n[e44 link] 16\n\n[e45 link] Note 15. Commitments and Contingencies\n\n[e46 link] 18\n\n[e47 link] Note 16. Business Segments\n\n[e48 link] 40\n\n[e49 link] Item 2. Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n\n[e50 link] 42\n\n[e51 link] Overview\n\n[e52 link] 43\n\n[e53 link] Results of Operations\n\n[e54 link] 44\n\n[e55 link] Performance by Business Segment\n\n[e56 link] 46\n\n[e57 link] Financial Condition and Liquidity\n\n[e58 link] 49\n\n[e59 link] Item 3. Quantitative and Qualitative Disclosures About Market Risk\n\n[e60 link] 52\n\n[e61 link] Item 4. Controls and Procedures\n\n[e62 link] 52\n\n[e63 link] PART II. Other Information\n\n[e64 link] 53\n\n[e65 link] Item 1. Legal Proceedings\n\n[e66 link] 53\n\n[e67 link] Item 1A. Risk Factors\n\n[e68 link] 53\n\n[e69 link] Item 2. Unregistered Sales of Equity Securities and Use of Proceeds\n\n[e70 link] 53\n\n[e71 link] Item 3. Defaults Upon Senior Securities\n\n[e72 link] 53\n\n[e73 link] Item 4. Mine Safety Disclosures\n\n[e74 link] 53\n\n[e75 link] Item 5. Other Information\n\n[e76 link] 53\n\n[e77 link] Item 6. Exhibits\n\n[e78 link] 54\n2\n[e79 link] Table of Contents\n3M COMPANY\nFORM 10-Q\nFor the Quarterly Period Ended June\u00a030, 2026\nPART I. Financial Information\nItem 1. Financial Statements\n3M Company and Subsidiaries\nConsolidated Statement of Income\n(Unaudited)\n\n\t\tThree months ended\nJune 30,\t\tSix months ended\nJune 30,\n\n(Millions, except per share amounts)\t\t2026\t\t2025\t\t2026\t\t2025\nNet sales\t\t$\t6,500\u00a0\t\t\t$\t6,344\u00a0\t\t\t$\t12,530\u00a0\t\t\t$\t12,298\n\nOperating expenses\nCost of sales\t\t3,817\u00a0\t\t\t3,646\u00a0\t\t\t7,391\u00a0\t\t\t7,124\nSelling, general and administrative expenses\t\t1,061\u00a0\t\t\t1,267\u00a0\t\t\t1,805\u00a0\t\t\t2,212\nResearch, development and related expenses\t\t302\u00a0\t\t\t288\u00a0\t\t\t610\u00a0\t\t\t573\nLoss on business divestitures\t\t336\u00a0\t\t\t3\u00a0\t\t\t343\u00a0\t\t\t3\nTotal operating expenses\t\t5,516\u00a0\t\t\t5,204\u00a0\t\t\t10,149\u00a0\t\t\t9,912\nOperating income\t\t984\u00a0\t\t\t1,140\u00a0\t\t\t2,381\u00a0\t\t\t2,386\n\nOther expense (income), net\t\t(136)\t\t\t217\u00a0\t\t\t383\u00a0\t\t\t78\n\nIncome before income taxes\t\t1,120\u00a0\t\t\t923\u00a0\t\t\t1,998\u00a0\t\t\t2,308\nProvision for income taxes\t\t183\u00a0\t\t\t245\u00a0\t\t\t404\u00a0\t\t\t510\nIncome of consolidated group\t\t937\u00a0\t\t\t678\u00a0\t\t\t1,594\u00a0\t\t\t1,798\n\nIncome from unconsolidated subsidiaries, net of taxes\t\t1\u00a0\t\t\t47\u00a0\t\t\t3\u00a0\t\t\t49\n\nNet income including noncontrolling interest\n\t\t938\u00a0\t\t\t725\u00a0\t\t\t1,597\u00a0\t\t\t1,847\n\nLess: net income attributable to noncontrolling interest\n\t\t5\u00a0\t\t\t2\u00a0\t\t\t11\u00a0\t\t\t8\n\nNet income attributable to 3M\t\t$\t933\u00a0\t\t\t$\t723\u00a0\t\t\t$\t1,586\u00a0\t\t\t$\t1,839\n\nEarnings per share attributable to 3M common shareholders:\nWeighted average 3M common shares outstanding \u2014 basic\t\t519.7\u00a0\t\t\t537.4\u00a0\t\t\t524.4\u00a0\t\t\t540.6\n\nEarnings per share \u2014 basic\t\t$\t1.79\u00a0\t\t\t$\t1.35\u00a0\t\t\t$\t3.02\u00a0\t\t\t$\t3.40\n\nWeighted average 3M common shares outstanding \u2014 diluted\t\t522.4\u00a0\t\t\t540.6\u00a0\t\t\t527.6\u00a0\t\t\t544.2\n\nEarnings per share \u2014 diluted\t\t$\t1.78\u00a0\t\t\t$\t1.34\u00a0\t\t\t$\t3.01\u00a0\t\t\t$\t3.38\nThe accompanying Notes to Consolidated Financial Statements are an integral part of this statement.\n3\n[e80 link] Table of Contents\n3M Company and Subsidiaries\nConsolidated Statement of Comprehensive Income\n(Unaudited)\n\n\t\tThree months ended\nJune 30,\t\tSix months ended\nJune 30,\n\n(Millions)\t\t2026\t\t2025\t\t2026\t\t2025\n\nNet income including noncontrolling interest\t\t$\t938\u00a0\t\t\t$\t725\u00a0\t\t\t$\t1,597\u00a0\t\t\t$\t1,847\nOther comprehensive income (loss), net of tax:\nCumulative translation adjustment\t\t(2)\t\t\t339\u00a0\t\t\t(97)\t\t\t510\nDefined benefit pension and postretirement plans adjustment\t\t47\u00a0\t\t\t49\u00a0\t\t\t94\u00a0\t\t\t107\nCash flow hedging instruments\t\t1\u00a0\t\t\t(83)\t\t\t16\u00a0\t\t\t(112)\nTotal other comprehensive income (loss), net of tax\t\t46\u00a0\t\t\t305\u00a0\t\t\t13\u00a0\t\t\t505\n\nComprehensive income including noncontrolling interest\n\t\t984\u00a0\t\t\t1,030\u00a0\t\t\t1,610\u00a0\t\t\t2,352\n\nComprehensive (income) attributable to noncontrolling interest\n\t\t(5)\t\t\t(2)\t\t\t(8)\t\t\t(8)\nComprehensive income attributable to 3M\t\t$\t979\u00a0\t\t\t$\t1,028\u00a0\t\t\t$\t1,602\u00a0\t\t\t$\t2,344\nThe accompanying Notes to Consolidated Financial Statements are an integral part of this statement.\n4\n[e81 link] Table of Contents\n3M Company and Subsidiaries\nConsolidated Balance Sheet\n(Unaudited)\n\n(Dollars in millions, except per share amount)\t\tJune 30, 2026\t\tDecember 31, 2025\nAssets\nCurrent assets\nCash and cash equivalents\t\t$\t2,955\u00a0\t\t\t$\t5,235\nMarketable securities\t\t375\u00a0\t\t\t698\n\nAccounts receivable \u2014 net of allowances of $51 and $61\n\t\t3,927\u00a0\t\t\t3,533\nInventories\t\t3,770\u00a0\t\t\t3,661\nPrepaids\t\t492\u00a0\t\t\t391\nAssets held for sale\t\t\u2014\u00a0\t\t\t46\nOther current assets\t\t2,593\u00a0\t\t\t2,823\nTotal current assets\t\t14,112\u00a0\t\t\t16,387\nProperty, plant and equipment \u2014 net\t\t6,877\u00a0\t\t\t7,101\nGoodwill\t\t6,374\u00a0\t\t\t6,419\nIntangible assets \u2014 net\t\t1,053\u00a0\t\t\t1,103\nOther assets\t\t6,508\u00a0\t\t\t6,723\nTotal assets\t\t$\t34,924\u00a0\t\t\t$\t37,733\n\nLiabilities and equity\n\nCurrent liabilities\nShort-term borrowings and current portion of long-term debt\t\t$\t1,647\u00a0\t\t\t$\t1,670\nAccounts payable\t\t3,108\u00a0\t\t\t2,702\nAccrued payroll\t\t522\u00a0\t\t\t718\nLiabilities held for sale\t\t\u2014\u00a0\t\t\t55\nOther current liabilities\t\t6,102\u00a0\t\t\t4,450\nTotal current liabilities\t\t11,379\u00a0\t\t\t9,595\nLong-term debt\t\t10,904\u00a0\t\t\t10,932\nPension and postretirement benefits\t\t1,502\u00a0\t\t\t1,631\nOther liabilities\t\t8,134\u00a0\t\t\t10,828\nTotal liabilities\t\t31,919\u00a0\t\t\t32,986\n\nCommitments and contingencies (Note 15)\n\n3M Company shareholders\u2019 equity:\n\nCommon stock par value, $.01 per share; 944,033,056 shares issued\n\t\t9\u00a0\t\t\t9\n\nShares outstanding - June\u00a030, 2026: 515,722,417; December\u00a031, 2025: 530,279,131\n\nAdditional paid-in capital\t\t7,540\u00a0\t\t\t7,440\nRetained earnings\t\t38,633\u00a0\t\t\t38,258\nTreasury stock, at cost\t\t(38,177)\t\t\t(35,936)\n\nShares at June\u00a030, 2026: 428,310,639; December\u00a031, 2025: 413,753,925\n\n[chunk 1/25; call read_page(page=2) for more]"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_018BQxuxx2q88T3u5U8LuPZd",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/mmm-20260630.htm | find_text 'Total 3M Company shareholders': 1 match(es)\n(chunk 2) Accumulated other comprehensive income (loss)\t\t(5,053)\t\t\t(5,069) / Total 3M Company shareholders\u2019 equity\t\t2,952\u00a0\t\t\t4,702"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01N73ckk7rwu73U2JgPwqETN",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "book_equity_usd": {
+      "AAPL": 107520000000,
+      "KO": 36150000000,
+      "CVX": 189883000000,
+      "MMM": 2952000000
+     },
+     "ranking_high_to_low_bm": [
+      "CVX",
+      "KO",
+      "MMM",
+      "AAPL"
+     ],
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/cvx-20260630.htm"
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01N73ckk7rwu73U2JgPwqETN",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

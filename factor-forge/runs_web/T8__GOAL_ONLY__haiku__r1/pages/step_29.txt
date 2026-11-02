@@ -1,0 +1,121 @@
+URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/ | TITLE: Directory List of /Archives/edgar/data/66740/000006674026000246 | chunk 1/1
+
+[e1 link] Search Options
+[e2 link] Skip to Main Content
+[e3 link]
+ABOUT
+[e4 link]
+DIVISIONS
+[e5 link]
+ENFORCEMENT
+[e6 link]
+REGULATION
+[e7 link]
+EDUCATION
+[e8 link]
+FILINGS
+[e9 link]
+NEWS
+Directory Listing /Archives/edgar/data/66740/000006674026000246
+[e10 link] Parent Directory
+NAME	SIZE	LAST MODIFIED
+[e11 link] 0000066740-26-000246-index-headers.html		2026-07-21 12:08:01
+[e12 link] 0000066740-26-000246-index.html		2026-07-21 12:08:01
+[e13 link] 0000066740-26-000246.txt		2026-07-21 12:08:01
+[e14 link] 0000066740-26-000246-xbrl.zip	414100	2026-07-21 12:08:01
+[e15 link] exhibit101-jvxcreditagreem.htm	644530	2026-07-21 12:08:01
+[e16 link] FilingSummary.xml	46933	2026-07-21 12:08:01
+[e17 link] MetaLinks.json	1303307	2026-07-21 12:08:01
+[e18 link] mmm-20260630.htm	2252289	2026-07-21 12:08:01
+[e19 link] mmm-20260630.xsd	73032	2026-07-21 12:08:01
+[e20 link] mmm-20260630_cal.xml	94303	2026-07-21 12:08:01
+[e21 link] mmm-20260630_def.xml	379541	2026-07-21 12:08:01
+[e22 link] mmm-20260630_g1.jpg	7896	2026-07-21 12:08:01
+[e23 link] mmm-20260630_htm.xml	2448487	2026-07-21 12:08:01
+[e24 link] mmm-20260630_lab.xml	815677	2026-07-21 12:08:01
+[e25 link] mmm-20260630_pre.xml	545999	2026-07-21 12:08:01
+[e26 link] q22026exhibit311.htm	10019	2026-07-21 12:08:01
+[e27 link] q22026exhibit312.htm	9723	2026-07-21 12:08:01
+[e28 link] q22026exhibit321.htm	4196	2026-07-21 12:08:01
+[e29 link] q22026exhibit322.htm	4258	2026-07-21 12:08:01
+[e30 link] q22026exhibit95.htm	39617	2026-07-21 12:08:01
+[e31 link] R1.htm	63191	2026-07-21 12:08:01
+[e32 link] R10.htm	67025	2026-07-21 12:08:01
+[e33 link] R11.htm	7010	2026-07-21 12:08:01
+[e34 link] R12.htm	40507	2026-07-21 12:08:01
+[e35 link] R13.htm	28188	2026-07-21 12:08:01
+[e36 link] R14.htm	206570	2026-07-21 12:08:01
+[e37 link] R15.htm	22207	2026-07-21 12:08:01
+[e38 link] R16.htm	41133	2026-07-21 12:08:01
+[e39 link] R17.htm	15849	2026-07-21 12:08:01
+[e40 link] R18.htm	74818	2026-07-21 12:08:01
+[e41 link] R19.htm	71314	2026-07-21 12:08:01
+[e42 link] R2.htm	115763	2026-07-21 12:08:01
+[e43 link] R20.htm	83982	2026-07-21 12:08:01
+[e44 link] R21.htm	183213	2026-07-21 12:08:01
+[e45 link] R22.htm	152365	2026-07-21 12:08:01
+[e46 link] R23.htm	8465	2026-07-21 12:08:01
+[e47 link] R24.htm	29985	2026-07-21 12:08:01
+[e48 link] R25.htm	72971	2026-07-21 12:08:01
+[e49 link] R26.htm	19813	2026-07-21 12:08:01
+[e50 link] R27.htm	75266	2026-07-21 12:08:01
+[e51 link] R28.htm	49039	2026-07-21 12:08:01
+[e52 link] R29.htm	27752	2026-07-21 12:08:01
+[e53 link] R3.htm	46240	2026-07-21 12:08:01
+[e54 link] R30.htm	197438	2026-07-21 12:08:01
+[e55 link] R31.htm	27784	2026-07-21 12:08:01
+[e56 link] R32.htm	42345	2026-07-21 12:08:01
+[e57 link] R33.htm	70539	2026-07-21 12:08:01
+[e58 link] R34.htm	62688	2026-07-21 12:08:01
+[e59 link] R35.htm	80441	2026-07-21 12:08:01
+[e60 link] R36.htm	139333	2026-07-21 12:08:01
+[e61 link] R37.htm	66309	2026-07-21 12:08:01
+[e62 link] R38.htm	41580	2026-07-21 12:08:01
+[e63 link] R39.htm	35611	2026-07-21 12:08:01
+[e64 link] R4.htm	163876	2026-07-21 12:08:01
+[e65 link] R40.htm	21869	2026-07-21 12:08:01
+[e66 link] R41.htm	5518	2026-07-21 12:08:01
+[e67 link] R42.htm	29804	2026-07-21 12:08:01
+[e68 link] R43.htm	26012	2026-07-21 12:08:01
+[e69 link] R44.htm	12197	2026-07-21 12:08:01
+[e70 link] R45.htm	22298	2026-07-21 12:08:01
+[e71 link] R46.htm	6103	2026-07-21 12:08:01
+[e72 link] R47.htm	37962	2026-07-21 12:08:01
+[e73 link] R48.htm	5798	2026-07-21 12:08:01
+[e74 link] R49.htm	15939	2026-07-21 12:08:01
+[e75 link] R5.htm	19844	2026-07-21 12:08:01
+[e76 link] R50.htm	80886	2026-07-21 12:08:01
+[e77 link] R51.htm	73031	2026-07-21 12:08:01
+[e78 link] R52.htm	4943	2026-07-21 12:08:01
+[e79 link] R53.htm	8126	2026-07-21 12:08:01
+[e80 link] R54.htm	49428	2026-07-21 12:08:01
+[e81 link] R55.htm	5118	2026-07-21 12:08:01
+[e82 link] R56.htm	37141	2026-07-21 12:08:01
+[e83 link] R57.htm	38751	2026-07-21 12:08:01
+[e84 link] R58.htm	16039	2026-07-21 12:08:01
+[e85 link] R59.htm	17086	2026-07-21 12:08:01
+[e86 link] R6.htm	95690	2026-07-21 12:08:01
+[e87 link] R60.htm	12118	2026-07-21 12:08:01
+[e88 link] R61.htm	13590	2026-07-21 12:08:01
+[e89 link] R62.htm	11197	2026-07-21 12:08:01
+[e90 link] R63.htm	11698	2026-07-21 12:08:01
+[e91 link] R64.htm	11984	2026-07-21 12:08:01
+[e92 link] R65.htm	56833	2026-07-21 12:08:01
+[e93 link] R66.htm	15270	2026-07-21 12:08:01
+[e94 link] R67.htm	10191	2026-07-21 12:08:01
+[e95 link] R68.htm	12793	2026-07-21 12:08:01
+[e96 link] R69.htm	402298	2026-07-21 12:08:01
+[e97 link] R7.htm	7099	2026-07-21 12:08:01
+[e98 link] R70.htm	4029	2026-07-21 12:08:01
+[e99 link] R71.htm	29156	2026-07-21 12:08:01
+[e100 link] R72.htm	25237	2026-07-21 12:08:01
+[e101 link] R73.htm	10737	2026-07-21 12:08:01
+[e102 link] R74.htm	4769	2026-07-21 12:08:01
+[e103 link] R75.htm	4842	2026-07-21 12:08:01
+[e104 link] R76.htm	112033	2026-07-21 12:08:01
+[e105 link] R8.htm	76231	2026-07-21 12:08:01
+[e106 link] R9.htm	21656	2026-07-21 12:08:01
+[e107 link] report.css	2767	2026-07-21 12:08:01
+[e108 link] Show.js	1085	2026-07-21 12:08:01
+[e109 link] Site Map | [e110 link] Accessibility | [e111 link] Contracts | [e112 link] Privacy | [e113 link] Inspector General | [e114 link] Careers | [e115 link] Contact
+[e116 link] FOIA | [e117 link] No FEAR Act & EEO Data | [e118 link] Open Government | [e119 link] Plain Writing | [e120 link] Links | [e121 link] Investor.gov | [e122 link] USA.gov

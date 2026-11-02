@@ -1,0 +1,6 @@
+{"t": 1793473423.143, "url": "https://data.sec.gov/submissions/CIK0000104169.json", "type": "document", "decision": "net 200 0.1s"}
+{"t": 1793473441.236, "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm", "type": "document", "decision": "net 200 0.2s"}
+{"t": 1793473441.28, "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731_g1.jpg", "type": "image", "decision": "skip"}
+{"t": 1793473441.347, "url": "https://www.sec.gov/xSSjOa/YcdAV5/X/U1X/onnK_mporS8/EuO1rp6zcJVSrr7hOQ/DFcpSVE/EVghe/HZ9Mg8", "type": "script", "decision": "net 200 0.1s"}
+{"t": 1793473441.598, "url": "https://www.sec.gov/xSSjOa/YcdAV5/X/U1X/onnK_mporS8/EuO1rp6zcJVSrr7hOQ/DFcpSVE/EVghe/HZ9Mg8", "type": "xhr", "decision": "net 201 0.2s"}
+{"t": 1793473442.806, "url": "https://www.sec.gov/xSSjOa/YcdAV5/X/U1X/onnK_mporS8/EuO1rp6zcJVSrr7hOQ/DFcpSVE/EVghe/HZ9Mg8", "type": "xhr", "decision": "net 201 0.3s"}

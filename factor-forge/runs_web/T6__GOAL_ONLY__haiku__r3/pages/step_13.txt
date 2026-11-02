@@ -1,0 +1,22 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm | find_text 'Preferred stock': 37 match(es)
+(chunk 1) Depositary Shares, each representing a one-four hundredth interest in a share of 5.75% Non-Cumulative Preferred Stock, Series DD / JPM PR D	The New York Stock Exchange
+(chunk 1) Depositary Shares, each representing a one-four hundredth interest in a share of 6.00% Non-Cumulative Preferred Stock, Series EE / JPM PR C	The New York Stock Exchange
+(chunk 1) Depositary Shares, each representing a one-four hundredth interest in a share of 4.75% Non-Cumulative Preferred Stock, Series GG / JPM PR J	The New York Stock Exchange
+(chunk 1) JPM PR J	The New York Stock Exchange / Depositary Shares, each representing a one-four hundredth interest in a share of 4.55% Non-Cumulative Preferred Stock, Series JJ	JPM PR K	The New York Stock Exchange
+(chunk 1) Depositary Shares, each representing a one-four hundredth interest in a share of 4.625% Non-Cumulative Preferred Stock, Series LL
+(chunk 1) The New York Stock Exchange / Depositary Shares, each representing a one-four hundredth interest in a share of 4.20% Non-Cumulative Preferred Stock, Series MM	JPM PR M	The New York Stock Exchange
+(chunk 1) [e75 link] Note 17 - Preferred stock
+(chunk 6) Long-term debt increased driven by net issuances of structured notes in Markets due to client demand and net issuances of long-term debt in Treasury and CIO. Refer to Liquidity Risk Management on pages 52-58 for additional information. / Stockholders’ equity increased, as a result of the Firm's net income, largely offset by the impact of capital actions, primarily net repurchases of common shares 
+(chunk 6) •In 2025, cash provided reflected higher securities loaned or sold under repurchase agreements, higher deposits, and net proceeds from long- and short-term borrowings. / •For both periods, cash was used for repurchases of common stock and cash dividends on common and preferred stock. / * * *
+(chunk 15) Total stockholders’ equity	$	374,598 			$	362,438 / Less: Preferred stock	21,040 			20,045 / Common stockholders’ equity	353,558 			342,393
+(chunk 15) $	302,619 			$	288,469 / Add: Preferred stock	21,040 			20,045 / Less: Other Tier 1 adjustments	939
+(chunk 15) 14,150 / Net issuances of noncumulative perpetual preferred stock	995 / Other	(55)
+(chunk 16) Refer to Part II, Item 2: Unregistered Sales of Equity Securities and Use of Proceeds and Part II, Item 5: Market for Registrant’s Common Equity, Related Stockholder Matters and Issuer Purchases of Equity Securities on pages 201-202 of this Form 10-Q and page 33 of JPMorganChase’s 2025 Form 10-K, respectively, for additional information regarding repurchases of the Firm’s equity securities. / Pref
+(chunk 16) Preferred stock / Preferred stock dividends were $308 million and $282 million, and $584 million and $537 million, for the three and six months ended June 30, 2026 and 2025, respectively. / During the six months ended June 30, 2026, the Firm issued and redeemed certain series of noncumulative preferred stock. Refer to Note 17 of this Form 10-Q and Note 21 of JPMorganChase’s 2025 Form 10-K for addi
+(chunk 16) Preferred stock dividends were $308 million and $282 million, and $584 million and $537 million, for the three and six months ended June 30, 2026 and 2025, respectively. / During the six months ended June 30, 2026, the Firm issued and redeemed certain series of noncumulative preferred stock. Refer to Note 17 of this Form 10-Q and Note 21 of JPMorganChase’s 2025 Form 10-K for additional information
+(chunk 19) Preferred stock(f) / $	21,040 			$	20,045 			$	21,196 			$	20,045 			$	20,624 			$	20,029
+(chunk 19) (e)Includes long-term structured notes that are secured. / (f)Refer to Capital Risk Management on pages 44-51 and Consolidated statements of changes in stockholders’ equity on page 96 of this Form 10-Q, and Note 21 and Note 22 of JPMorganChase’s 2025 Form 10-K for additional information on preferred stock and common stockholders’ equity. / Short-term funding
+(chunk 31) Preferred stock ($1 par value; authorized 200,000,000 shares; issued 2,105,375 and 2,005,375 shares) / 21,040 			20,045
+(chunk 31) (in millions, except per share data)		2026		2025		2026		2025 / Preferred stock / Balance at the beginning of the period		$	20,045 			$	20,045 			$	20,045 			$	20,050
+(chunk 31) Preferred stock dividends / (308)			(282)			(584)			(537)
+(more matches not shown)

@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm | find_text "Total stockholders' equity": 0 match(es)

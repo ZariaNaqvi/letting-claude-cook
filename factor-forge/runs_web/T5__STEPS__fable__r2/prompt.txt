@@ -1,0 +1,18 @@
+TASK T5
+
+Find Domino's Pizza, Inc.'s total stockholders' equity (deficit) at the end of its second fiscal quarter of 2026.
+
+RULES:
+- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.
+- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.
+- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.
+- You may use at most 30 tool calls in total, including submit_answer.
+
+STEPS (a click path that works):
+1. Open https://www.sec.gov/search-filings, type "Domino" and click the suggestion "DOMINOS PIZZA INC (DPZ)" (CIK 0001286681). (Typing the apostrophe in "Domino's" makes the search return no suggestions.)
+2. Expand "10-K (annual reports) and 10-Q (quarterly reports)" and open the "Filing" link of the 10-Q for the quarter ending June 14, 2026 (filed July 2026).
+3. From the filing index, open the filing folder, then FilingSummary.xml, and find "Condensed Consolidated Balance Sheets"; open its R page.
+4. Use the row "Total stockholders' deficit", column "Jun. 14, 2026". The amount is shown in parentheses, which means it is NEGATIVE.
+Units: The page header says "$ in Thousands": multiply by 1,000, and keep the minus sign.
+
+When you have the answer, call submit_answer.

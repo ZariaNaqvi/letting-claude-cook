@@ -1,0 +1,38 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/R5.htm | TITLE:  | chunk 1/1
+
+XML 93 R5.htm IDEA: XBRL DOCUMENT
+CONSOLIDATED BALANCE SHEET (Unaudited) (Parenthetical) - USD ($)
+$ in Millions
+
+Jun. 30, 2026
+
+Dec. 31, 2025
+
+Statement of Financial Position [Abstract]
+
+Allowance for accounts and notes receivable, current
+	$ 178	$ 176
+
+Allowance for long-term receivables
+	$ 216	$ 216
+
+Preferred stock, shares authorized (in shares)
+	100,000,000	100,000,000
+
+Preferred stock, par value (in dollars per share)
+	$ 1.00	$ 1.00
+
+Preferred stock, shares issued (in shares)
+	0	0
+
+Common stock, shares authorized (in shares)
+	6,000,000,000	6,000,000,000
+
+Common stock, par value (in dollars per share)
+	$ 0.75	$ 0.75
+
+Common stock, shares issued (in shares)
+	2,442,676,580	2,442,676,580
+
+Treasury stock (in shares)
+	466,905,306	448,260,458

@@ -90,3 +90,12 @@ Here's one test:
 
 ## The takeaway I'm aiming for
 "By the end, I'll be able to say something concrete, like: *this model gets it exactly right 95 percent of the time, that one 60 percent, and here's the specific mistake the weaker one keeps making.* That's the evidence you'd want before trusting an AI with real financial data."
+
+## Update (Oct 28): Part 2 results, and why there is a Part 3
+"The full run is done: **316 of 320 passed**, for $11 in API fees. Sonnet got 80 out of 80, Haiku and Opus 79, Fable 78. With the formula given, every single run passed. The 4 failures were small coding slips, like a text search that could never match, not finance mistakes. So my prediction that bigger models do better was wrong, and the test hit a ceiling: it can't tell the models apart.
+
+So I'm adding a harder part, called **Form Forge**. Real research is hard because *finding* the right number is hard. In Form Forge the model gets no files and no Python, only a web browser it controls through tools: open a page, click, type. It has to click through **SEC EDGAR**, the government site where companies file their reports, a bit like clicking through the query forms on the SkyServer astronomy site. It searches for the company, finds the right quarterly report among dozens of insider-trading forms, opens the balance sheet, and reads off **book equity**, the 'B' in the book-to-market ratio behind the value factor.
+
+The traps are real ones: last year's column next to this quarter's, a 'total liabilities and equity' row right below, numbers in thousands instead of millions, a company with negative equity, and Microsoft's June number being in its annual report, not a quarterly one. Every filing is from after July 2026, so the models can't remember the answer. The answer key comes from SEC's data API, which my harness blocks for the models.
+
+It's the same 4 models, two versions of the instructions (click path given, or just the goal), 3 repeats, 192 runs, graded to the exact dollar, with a $100 cap. I've built and tested it with a fake model that makes planted mistakes, and the grader caught every one. The pilot is Oct 30 and the main run Oct 31 to Nov 1."

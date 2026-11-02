@@ -1,0 +1,15 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R7.htm | TITLE:  | chunk 1/1
+
+XML 18 R7.htm IDEA: XBRL DOCUMENT
+Consolidated Balance Sheets (Parenthetical) - $ / shares
+
+Jun. 30, 2026
+
+Dec. 31, 2025
+
+Statement of Financial Position [Abstract]
+Common stock, par value (in USD per share)	$ 0.001	$ 0.001
+Common stock, shares authorized (in shares)	49,900,000,000	49,900,000,000
+Common stock, shares issued (in shares)	4,163,939,676	4,222,162,150
+Common stock, shares outstanding (in shares)	4,163,939,676	4,222,162,150
+Treasury stock (in shares)	413,373,678	346,541,145

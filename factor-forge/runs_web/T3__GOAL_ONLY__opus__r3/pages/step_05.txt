@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/0000104169/000010416926000154/wmt-20260731.htm | find_text "Total Walmart shareholders' equity": 0 match(es)

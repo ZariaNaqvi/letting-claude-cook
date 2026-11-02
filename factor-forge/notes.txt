@@ -308,6 +308,95 @@ HARNESS_VERSION web-h2 -> web-h3. Bug fix only: a 403 now halts the session only
         autocomplete URL that returned 200 as xhr 87/87 times in the pilot). Before the main run, wait
         10+ min, then do a $0 live check: python web/run_web.py --dry-run --tasks T1 T6 --conds STEPS
 
+## HAND-CHECK 2026-11-02 (Form Forge, seed 2026)
+Sample: results_web/runs_scored.csv (192 runs). OTHER_WRONG runs: 0, so all 20 runs are
+        d.sample(20, random_state=2026) -> 19 PASS + 1 TIME_LIMIT. Not blind: the tags were printed
+        next to the folder names. Method: read steps.jsonl top to bottom, opened the last 2-3
+        pages/step_NN.txt, checked that the submitted number is on the right line and column of the
+        right filing, then compared that with the tag.
+Result: agree 19/20, disagree 1/20. score_web.py NOT changed: no scorer bug found (the one
+        disagreement comes from the harness clock, not the scorer). No rescore, no reruns.
+
+T1__STEPS__haiku__r1          PASS  agree. search-filings form -> Apple 10-Q 0000320193-26-000020 -> R4
+        "Total shareholders' equity 107,520" ($ in millions), current column.
+T1__GOAL_ONLY__haiku__r3      PASS  agree. Archives directory listing -> same filing -> R4 107,520.
+T2__STEPS__opus__r1           PASS  agree. form -> MSFT 10-K 0001193125-26-323660 -> FilingSummary -> R4
+        "Total stockholders' equity 442,387 | 343,479", took the current-year column.
+T2__STEPS__opus__r3           PASS  agree. same path as r1, R4 442,387.
+T2__STEPS__sonnet__r2         PASS  agree. form -> R4 442,387 (also opened R2 income statement, no effect).
+T2__GOAL_ONLY__fable__r1      PASS  agree. browse page -> full 10-K htm, find_text, chunk 21 shows 442,387.
+T3__GOAL_ONLY__haiku__r2      PASS  agree. Archives listing, opened 4 accession folders (145, 146, 154,
+        155) before picking 154 = the 10-Q. R4 "Total Walmart shareholders' equity 98,238", not the
+        trap "Total shareholders' equity 104,506" (includes NCI).
+T3__GOAL_ONLY__haiku__r3      PASS  agree. First read the earnings release (folder 145), found no
+        balance sheet there, moved on to the 10-Q (154). R4 98,238, NCI line correctly excluded.
+T3__GOAL_ONLY__opus__r3       PASS  agree. browse page -> inline 10-Q htm, 98,238 Walmart-only line.
+T4__STEPS__opus__r1           PASS  agree. form -> Netflix 10-Q 0001065280-26-000212 -> R6
+        "Total stockholders' equity 30,152,052" ($ in thousands) -> 30,152,052,000, units right.
+T5__STEPS__opus__r1           PASS  agree. search-filings errored once (54 s), went to the browse page
+        instead -> Domino's 10-Q -> R2 "Total stockholders' deficit (3,982,431)" ($ thousands)
+        -> -3,982,431,000, sign and units right.
+T5__STEPS__sonnet__r3         PASS  agree. form "Domino" -> same R2 -> -3,982,431,000.
+T6__STEPS__fable__r1          PASS  agree. form -> JPM 10-Q 0001628280-26-054343 -> R4: total SE
+        374,598 minus preferred 21,040 = 353,558. Model's last message shows the subtraction.
+T6__STEPS__sonnet__r1         PASS  agree. same R4, same subtraction (not the 374,598 trap).
+T6__GOAL_ONLY__fable__r3      PASS  agree. browse page -> R4 in 5 steps, 353,558.
+T8__STEPS__opus__r1           PASS  agree. 4 R4 pages, one per firm, each on the key's accession:
+        AAPL 107,520 / KO 36,150 (equity attributable to shareowners) / CVX 189,883 (Total Chevron
+        Corporation stockholders' equity) / MMM 2,952 (Total 3M Company shareholders' equity, excl.
+        NCI). Ranking CVX > KO > MMM > AAPL = key (ME is given in the prompt).
+T8__STEPS__haiku__r3          PASS  agree. same 4 R4 pages after 4 blocked cgi-bin tries; give_up is
+        boolean false (checked). Ranking = key.
+T8__GOAL_ONLY__opus__r2       PASS  agree. full-text search UI -> inline 10-Qs, find_text for each
+        equity line; all 4 values seen on pages. Ranking = key.
+T8__GOAL_ONLY__sonnet__r2     PASS  agree, but the path was wasteful: submissions JSON, then opened 9 CVX
+        and 7 MMM accession folders one by one (37 of 50 steps). All 4 values from R4 pages.
+T4__GOAL_ONLY__sonnet__r2     TIME_LIMIT (wall_s 14,952)  DISAGREE about the cause.
+        What happened: 12 steps, ~40 s of model+tool time (13:09:04-13:09:45), on the right track
+        (submissions JSON -> found the Q2 10-Q -> step 12 opened folder 000106528026000212, the key's
+        filing). The next API turn did not return until 17:18:14, 4 h 8 min later. pmset -g log shows
+        the Mac asleep on battery (11% charge, DarkWake/Sleep cycles) the whole gap, and runlog_web.txt
+        shows "API attempt 1 failed: ReadTimeout" right before this run's line. The model did not run out
+        of time; the laptop slept during an API call.
+        Scorer: tag is mechanically right (final.json stop_reason = time_limit), so this is not a
+        score_web.py bug. Cause is in run_web.py: the time limit uses time.time() wall clock, and
+        stall_s only subtracts slow TOOL calls (> STALL_S 120 s), not slow or slept-through API calls.
+
+### Extra: the other 9 TIME_LIMIT runs (not in the sample; timing checked, transcripts not read)
+All 10 TIME_LIMIT runs have wall_s far over the 720 s cap and pmset sleep events inside the run window:
+        T2 GOAL_ONLY haiku r2 6470 s | T2 STEPS haiku r2 7127 s | T3 GOAL_ONLY opus r2 25107 s |
+        T3 GOAL_ONLY sonnet r2 6908 s | T3 STEPS opus r2 1391 s (Mac slept 02:01:26-02:16:47; the fill
+        tool call took 461 s, counted as a stall, still 929 s over) | T4 GOAL_ONLY sonnet r2 14952 s |
+        T4 STEPS haiku r2 5708 s | T5 STEPS haiku r2 786 s (1 step; 'Clamshell Sleep' 09:07:16, DarkWake
+        09:19:52, run ended 09:20:07) | T8 GOAL_ONLY haiku r1 9062 s | T8 GOAL_ONLY sonnet r1 16125 s.
+        Tool time in these runs was 1.5-26 s, apart from T2 GOAL_ONLY haiku r2 (234 s) and T3 STEPS opus r2 (464 s).
+So: probably none of the 10 TIME_LIMIT tags is a real model time-out. They are environment failures
+        (closer to HARNESS_ERROR, which the design excludes and reruns). Not changed here: the rule says
+        never rerun, and relabelling 10 of 13 non-PASS runs is a design decision, not a scorer bug fix.
+        Open decision (student): (a) keep as TIME_LIMIT and footnote it, (b) exclude them from failure
+        analysis as environment failures, or (c) treat as HARNESS_ERROR and rerun (breaks the no-rerun
+        rule). For any future run: caffeinate -i python web/run_web.py ..., stay on mains power, and/or
+        time the cap with time.monotonic() minus API stall time.
+Other non-PASS runs not in the sample: T4 GOAL_ONLY sonnet r3 GAVE_UP, T6 GOAL_ONLY sonnet r2/r3
+        STEP_LIMIT (normal wall times 27-198 s; not hand-checked).
+
+## SLEEP-AFFECTED RERUN 2026-11-02 (decision: option c, rerun only the confirmed sleep runs)
+Check (all 10 TIME_LIMIT runs, epoch times vs pmset -g log, Sleep -> next Wake/DarkWake = asleep):
+        awake time before the stall 0-60 s; Mac asleep 89-100% of each stall gap; 0 full Wake events in
+        any gap; every transcript ends on a tool_result (harness waiting on the next API reply, or in
+        T3 STEPS opus r2 inside a 461 s fill that the sleep covered). None timed out while awake -> all
+        10 sleep-affected, 0 kept as real model failures.
+Rerun: the 10 folders moved (not deleted) to runs_web_sleep_affected/. Same command as the main run
+        (manifest argv), same commit 654e29b, web-v2 / web-h3, no code change, wrapped in caffeinate -i:
+        "192 runs requested, 182 already done, 10 to do". All 10 answered, 23-134 s each, $1.07.
+        Ledger total in runs_web: $25.25 (includes the sleep-affected originals' spend).
+Rescore: score_web.py on all 192 (score_web.py unchanged). The 182 other tags are identical. The 10 reruns are all PASS.
+        Before: 179/192 (13 failures, 10 of them TIME_LIMIT). After: 189/192 = 98.4% [95.5, 99.5].
+        Failures left: sonnet only: T4 GOAL_ONLY r3 GAVE_UP, T6 GOAL_ONLY r2/r3 STEP_LIMIT.
+        H1 316/320 vs 189/192 p_holm 1.00 (was 0.019). No H2 or H3 test is significant (all p_holm 1.00).
+        Old results kept: results_web/runs_scored_before_sleep_rerun.csv, summary_before_sleep_rerun.md.
+Caveat: the 10 reruns ran on Nov 2, not in the original repeat-major order.
+
 NEXT (Part 3, student)
   [ ] Oct 28  Decide you are OK with the httpx2 approach above (before ANY paid call)
   [ ] Oct 28  Add SEC_USER_AGENT="Your Name your-contact" to .env; pip install -r web/requirements-web.txt;

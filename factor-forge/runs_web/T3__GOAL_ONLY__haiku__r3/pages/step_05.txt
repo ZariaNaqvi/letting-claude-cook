@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | find_text "Total Walmart shareholders' equity": 0 match(es)

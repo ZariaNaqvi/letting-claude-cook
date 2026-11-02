@@ -1,0 +1,5 @@
+Typed 'Berkshire Hathaway Inc' into e31. URL: https://www.sec.gov/search-filings
+New elements that appeared (e.g. suggestions):
+[e74 link] BERKSHIRE HATHAWAY INC (BRK-B, BRK-A)
+[e75 link] CIK 0001067983
+[e76 link] Search for "Berkshire Hathaway Inc" in EDGAR filings

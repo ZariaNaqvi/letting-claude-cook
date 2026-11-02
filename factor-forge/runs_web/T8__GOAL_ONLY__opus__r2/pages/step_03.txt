@@ -1,0 +1,51 @@
+URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000320193&forms=10-Q&startdt=2026-07-01&enddt=2026-08-31 | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] FAQ
+[e5 link] Other search tools
+Document word or phrase[e29 button] ? [e30 textbox "Keywords to search for in filing documents" value=""]
+Company name, ticker, CIK number or individual's name [e31 textbox "Company name, ticker, CIK number or individual's name" value=""]
+Filing category
+[e32 link] Browse filing types
+[e33 button "Filing category"] Enter the filing types
+Filing types
+[e34 link] Browse filing types
+[e35 textbox "Filing types" value="10-Q"]
+[e36 button] cancel
+Filed date range [e37 select "Filed date range" value="custom" options=[all=All (since 2001) | 10y=Last 10 years | 5y=Last 5 years | 1y=Last year | 30d=Last 30 days | custom=Custom]]
+All (since 2001)
+Last 10 years
+Last 5 years
+Last year
+Last 30 days
+Custom
+Filed from [e38 textbox "Filed from" value="2026-07-01"]
+Filed to [e39 textbox "Filed to" value="2026-08-31"]
+[e40 button] Principal executive offices in
+ [e41 button] ?
+[e42 button "Location dropdown"] View all
+[e43 link] - less search options [e8 button] SEARCH [e9 button] Clear all
+Refine search results by:
+[e44 tab] [e45 link]
+Entity
+[e46 tab] [e47 link]
+Form
+[e48 tab] [e49 link]
+Principal executive offices located in
+Click headings to show top filters.
+Document counts shown in #
+1 search results
+Show Columns
+[e50 checkbox "Filed" checked]
+Filed [e51 checkbox "Reporting for" checked]
+Reporting for [e52 checkbox "CIK" unchecked]
+CIK [e53 checkbox "Located" unchecked]
+Located [e54 checkbox "Incorporated" unchecked]
+Incorporated [e55 checkbox "File number" unchecked]
+File number [e56 checkbox "Film number" unchecked]
+Film number
+Form & File	Filed ↓	Reporting for	Filing entity/person
+[e57 link] 10-Q (Quarterly report)	2026-07-31	2026-06-27	Apple Inc. (AAPL)
+[e10 link] Accessibility [e11 link] Budget & Performance [e12 link] Careers [e13 link] Contact [e14 link] Contracts [e15 link] Data [e16 link] FOIA [e17 link] Inspector General [e18 link] Investor.gov [e19 link] No FEAR Act & EEO Data [e20 link] Ombudsman [e21 link] Plain Writing [e22 link] Privacy [e23 link] Related Sites [e24 link] Site Map [e25 link] USA.gov [e26 link] Votes [e27 link] Vulnerability Disclosure Policy [e28 link] Whistleblower Protection

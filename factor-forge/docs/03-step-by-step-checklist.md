@@ -179,35 +179,178 @@ source .venv/bin/activate        # your prompt should now start with (.venv)
 
 ---
 
-## Week 3 — Oct 28 to Nov 3: analyze
+## Week 3 — Oct 28 to Nov 3: Part 3, Form Forge (the harder test)
 
-### Step 12. Numbers and figures (Oct 28–30)
-- [ ] Run `python analyze.py`. It writes:
-  - `results/summary.md`
-  - `results/pass_rates.csv`, `results/fisher_tests.csv`, `results/cost.csv`, `results/error_tags.csv`
-  - `figures/pass_rate.png`, `figures/task_heatmap.png`, `figures/error_tags.png`
-- [ ] Read the summary and figures:
+Part 2 ended at 316/320 PASS, so the models tied. In Part 3 each model gets only a web browser and must click through SEC EDGAR to find book equity in filings made after July 1, 2026. Read [06 — Part 3 design](06-part3-form-forge-design.md) first. The code is already in `web/` and was tested on Oct 28 with a fake model only (no API calls).
+
+Every command below runs from `~/letting-claude-cook/factor-forge` with the venv active.
+
+### Step 12. Set up the browser and your SEC User-Agent (Oct 28)
+- [ ] Install Playwright and its browser:
   ```bash
-  code results/summary.md
-  open figures/*.png
+  pip install -r web/requirements-web.txt
+  python -m playwright install chromium
+  pip show playwright | head -2        # Version: 1.64.1
   ```
-  For each hypothesis H1–H3, write one sentence in `notes.txt`: supported, not supported, or unclear, and why. See [code/07-analyze.md](code/07-analyze.md).
-- [ ] Commit, tag `results-v1`, and push.
+  *Why:* the models drive a real headless Chrome. `requirements-web.txt` first installs Part 2's pins (`-r ../requirements.txt`), so pandas, numpy and anthropic don't change.
+- [ ] Add your SEC User-Agent to `.env` (open it with `code .env`; never commit it):
+  ```
+  SEC_USER_AGENT="Firstname Lastname contact@yourdomain"
+  ```
+  *Why:* SEC asks every automated tool to say who runs it. The harness refuses to start if this line is missing, still the placeholder from `.env.example`, or the test value.
+- [ ] Check it loads (prints only a hash, never the address):
+  ```bash
+  python -c "import sys; sys.path.insert(0,'web'); import sec_policy; print(sec_policy.ua_digest(sec_policy.load_user_agent())[:12])"
+  ```
+  *Done when:* it prints 12 hex characters. An error starting `SEC_USER_AGENT is missing` means the `.env` line is wrong.
+- [ ] Write the Playwright version and today's setup in `notes.txt`.
 
-### Step 13. The stories behind the numbers (Oct 31–Nov 2)
-- [ ] Pick 3 interesting failures and 1 impressive success. Read each model's own explanation in `response.txt`.
-- [ ] Look for "right number, wrong reasons" or "wrong number, right reasoning." These make the best talk slides.
+### Step 13. Check the frozen answer key (Oct 28–29)
+- [ ] Re-verify the key with no network:
+  ```bash
+  python web/answer_key.py --check
+  ```
+  *Expected output (shortened):*
+  ```
+  sha256 OK for 11 raw files
+  T1    Apple Inc.                      107,520,000,000 0000320193-26-000020   10-Q  2026-07-31 2026-06-27
+  T2    Microsoft Corporation           442,387,000,000 0001193125-26-323660   10-K  2026-07-29 2026-06-30
+  T3    Walmart Inc.                     98,238,000,000 0000104169-26-000154   10-Q  2026-08-28 2026-07-31
+  T4    Netflix, Inc.                    30,152,052,000 0001065280-26-000212   10-Q  2026-07-17 2026-06-30
+  T5    Domino’s Pizza, Inc.             -3,982,431,000 0001286681-26-000035   10-Q  2026-07-20 2026-06-14
+  T6    JPMORGAN CHASE & CO             353,558,000,000 0001628280-26-054343   10-Q  2026-08-06 2026-06-30  (SE 374,598,000,000 - preferred 21,040,000,000)
+  T7    BERKSHIRE HATHAWAY INC          747,910,000,000 0001193125-26-341032   10-Q  2026-08-10 2026-06-30
+  T8    ranking high->low B/M: ['CVX', 'KO', 'MMM', 'AAPL']
+  frozen key matches a rebuild from raw files: True
+  ```
+  *Checkpoints:* T1 is `107,520,000,000 0000320193-26-000020`; T2's form is `10-K`; T6's preferred is non-zero (21,040,000,000).
+  *Why:* the key was fetched on Oct 28 from SEC's XBRL API (11 requests) and saved with sha256 hashes. `--check` proves nothing changed.
+- [ ] Optional: refetch with your own User-Agent (the key was frozen with the test one; the data is the same):
+  ```bash
+  python web/answer_key.py --force       # 11 SEC requests, overwrites web/answer_key.json and the answers in tasks_web.json
+  python web/answer_key.py --check
+  ```
+- [ ] Record the T8 market-equity source in `notes.txt`: shares outstanding on each 10-Q cover × the June 30, 2026 close (AAPL 289.36, KO 81.27, CVX 165.76, MMM 161.91, Yahoo Finance daily history, read 2026-10-28).
+
+### Step 14. Walk every STEPS path by hand, then capture the pages (Oct 29)
+- [ ] Print each task's prompt and follow its STEPS in Chrome, starting at https://www.sec.gov/search-filings:
+  ```bash
+  python web/prompts_web.py T2 STEPS      # then T3, T5, T6, T7, T8 (T1 and T4 were already walked live)
+  ```
+  Check every button label, report title, row name and column date against the live page.
+- [ ] If a label differs, fix it in `web/tasks_web.json` (the `steps` text) **and** in the `FIRMS` table at the top of `web/mock_agent.py` (`search`, `suggestion`, `period`, `row`).
+- [ ] Save the pages for offline tests (about 40–60 requests per task, at most 5 per second):
+  ```bash
+  python web/capture_fixtures.py --all
+  ```
+  *Expected:* for every task, `-> matches the key; N network requests; max 5 requests in any 1 s window`, then `fixtures: N saved responses`. On Oct 28, T1 used 41 requests and T4 39.
+  *If a task says `DOES NOT match the key`:* its STEPS wording or mock labels are off. Fix them and rerun that task: `python web/capture_fixtures.py --tasks T6`.
+  *If it prints `SEC answered 403`:* stop, wait at least 10 minutes, and check `SEC_USER_AGENT`.
+- [ ] Freeze the prompts: in `web/prompts_web.py` change `PROMPT_VERSION = "web-v1-draft"` to `PROMPT_VERSION = "web-v1"`, and `"version"` at the top of `web/tasks_web.json` to `"web-v1"`. Then commit and tag:
+  ```bash
+  cd ~/letting-claude-cook
+  git add factor-forge/web factor-forge/docs factor-forge/.env.example factor-forge/.gitignore factor-forge/README.md factor-forge/notes.txt
+  git status                              # .env and web/.asset_cache must NOT be listed
+  git commit -m "Form Forge: Part 3 harness, frozen answer key, prompts web-v1"
+  git tag prompts-web-v1
+  git push origin main --tags
+  ```
+
+### Step 15. Test everything for free (Oct 29)
+- [ ] Self-test (no API, no network, 1–3 minutes):
+  ```bash
+  python web/selftest_web.py
+  ```
+  *Done when:* it ends with `148/148 checks passed` and `ALL CHECKS PASSED`. It checks the access rules (A), the rate limit (B), the User-Agent refusal (C), every planted mistake on all 8 tasks (D), the API request shape against a fake server (F), and all 9 personas end to end offline on T1 and T4 (E).
+- [ ] Fake model on the saved pages, all 8 tasks (no network):
+  ```bash
+  python web/run_web.py --dry-run --offline --tasks all --conds STEPS --repeats 1 --out runs_web_mock/offline
+  python web/score_web.py --runs runs_web_mock/offline --out results_web_mock/offline
+  ```
+  *Done when:* the last lines say `0 mismatches`. Every persona gets its planted tag (good and api → PASS, comparative → WRONG_PERIOD, units → UNITS, wrong_line → WRONG_LINE, wrong_entity → WRONG_ENTITY, hallucinate → UNGROUNDED, give_up → GAVE_UP, loop → STEP_LIMIT).
+- [ ] Look at one run folder, e.g. `runs_web_mock/offline/T1__STEPS__mock-good__r1/`: `prompt.txt`, `steps.jsonl`, `pages/step_01.txt` … (exactly what the model saw), `requests.jsonl`, `transcript.json`, `final.json`.
+- [ ] Run the analysis on the fake runs, to check the figures work:
+  ```bash
+  python web/analyze_web.py --in results_web_mock/offline/runs_scored.csv --part2 results/runs_scored.csv --out results_web_mock/offline
+  ```
+  It ends with `wrote ... summary.md, 5 CSVs and 3 figures`. The summary is headed **DRY RUN … NOT real results**.
+
+  (The live-site dry run from Oct 28 is already in `runs_web_mock/`: 18 runs on T1 and T4, `0 mismatches`. Rerunning `python web/run_web.py --dry-run --tasks T1 T4 --conds STEPS --repeats 1 --out runs_web_mock` prints `18 runs requested, 18 already done, 0 to do`.)
+
+### Step 16. Pilot: about 36 real runs (Oct 30), about $5–7
+- [ ] **Before any paid call:** read the "How the browser reaches SEC" note in `web/README.md` and decide you are comfortable with it (a plain HTTP client sends your declared User-Agent; Chromium only renders).
+- [ ] Check `ANTHROPIC_API_KEY` and `SEC_USER_AGENT` are both in `.env`. Check your Console spend limit.
+- [ ] Run the pilot (one run at a time; each takes about 2–5 minutes):
+  ```bash
+  python web/run_web.py --pilot --models haiku sonnet --tasks all --conds STEPS GOAL_ONLY --repeats 1 --out runs_web_pilot
+  python web/run_web.py --pilot --models fable opus --tasks T1 T4 --conds GOAL_ONLY --repeats 1 --out runs_web_pilot
+  python web/score_web.py --runs runs_web_pilot --out results_web_pilot
+  ```
+  Each finished run prints one line like `[3/32] T1|STEPS|sonnet|r1 stop=answered steps=12 value=... accn=... blocked=0 net=... tok=.../... $0.2 ...s`.
+- [ ] **Read every pilot transcript** (`runs_web_pilot/*/transcript.json` and `pages/`). Look for harness problems: pages that came back empty, refs that didn't work, SEC errors.
+- [ ] Measure the cost per run:
+  ```bash
+  python -c "import pandas as pd; d=pd.read_csv('results_web_pilot/runs_scored.csv'); print(d.groupby('model_alias').cost_usd.agg(['count','mean','sum']))"
+  ```
+  **Repeat rule:** projected cost = sum over models of (mean cost per run × 48). If it is over $100, use `--repeats 2` in Step 17 (128 runs). Write the numbers and the decision in `notes.txt` **before** the main run.
+- [ ] Pilot runs are never pooled with the main run.
+
+### Step 17. Main run: 192 runs (Oct 31 – Nov 1), at most $100
+- [ ] Start it (about 8–14 hours in total, so spread it over 2–3 sessions):
+  ```bash
+  caffeinate -i python web/run_web.py --models fable opus sonnet haiku --tasks all --conds STEPS GOAL_ONLY \
+         --repeats 3 --effort high --budget-usd 100 --out runs_web 2>&1 | tee -a runlog_web.txt
+  ```
+  - Order is repeat-major: every task × condition × model for r1, then r2, then r3. If it stops early, every model has the same number of finished repeats.
+  - **Ctrl-C is safe.** Rerun the same command; runs with a `final.json` are skipped (harness errors are redone).
+  - `BUDGET STOP: spent $..., next run could cost up to $...` means the $100 cap was reached. Stop there and write it in `notes.txt`.
+  - `SEC returned HTTP 403 ... Stopping ALL runs` means SEC blocked the harness. Wait at least 10 minutes, check `SEC_USER_AGENT`, rerun. If it keeps happening, use the NY Fed fallback (design §1) and log it as a protocol deviation.
+- [ ] Watch spend in the Anthropic Console.
+
+### Step 18. Score, hand-check, analyze (Nov 2–3)
+- [ ] Score and analyze:
+  ```bash
+  python web/score_web.py --runs runs_web --out results_web
+  python web/analyze_web.py --in results_web/runs_scored.csv --part2 results/runs_scored.csv --out results_web
+  ```
+  This writes `results_web/runs_scored.csv`, `pass_rates.csv`, `fisher_tests.csv`, `error_tags.csv`, `efficiency.csv`, `behavior.csv`, `summary.md` and `fig_task_heatmap.png`, `fig_cost_per_correct.png`, `fig_steps_success.png`.
+- [ ] **Hand-check 20 runs:** all `OTHER_WRONG` runs plus a random sample of passes and failures. Read `pages/` and `transcript.json` and say whether you agree with each tag. If the scorer is wrong, fix `score_web.py` and **rescore; never rerun**.
+- [ ] Leak checks, both must print nothing:
+  ```bash
+  grep -rl "sk-ant-" runs_web runs_web_pilot
+  grep -rl "your-contact-address" runs_web runs_web_pilot     # put your real SEC contact address here
+  ```
+- [ ] Write the headline numbers and H1–H5 verdicts in `notes.txt`. Commit `web/`, `runs_web_pilot/`, `results_web_pilot/`, `runs_web/`, `results_web/`, `runlog_web.txt` and `notes.txt`; tag `run-web-v1`; push.
 
 ---
 
-## Week 4 — Nov 3 to Nov 11: write, present, publish
+## Week 4 — Nov 4 to Nov 11: Part 4, analyze, write, present
 
-- [ ] **Write-up (Nov 3–8):** 4–6 pages. Sections: question, data, method, results, error analysis, limitations, conclusion. See the guide, Part 3, section 4.
-- [ ] **Talk (Nov 6–10):** about 9 slides in 10 minutes, built around the pass-rate figure. Rehearse out loud twice with a timer.
-- [ ] **Portfolio (Nov 9–11):**
-  - Polish `README.md` with the headline figure.
-  - Check for leaked keys before making the repo public: `git log -p | grep "sk-ant-" | grep -v "sk-ant-REPLACE-ME"` must print nothing.
+### Step 19. Combined analysis (Nov 4)
+- [ ] Run the Part 2 analysis (free, no API): `python analyze.py`. It writes:
+  - `results/summary.md`
+  - `results/pass_rates.csv`, `results/fisher_tests.csv`, `results/cost.csv`, `results/error_tags.csv`
+  - `figures/pass_rate.png`, `figures/task_heatmap.png`, `figures/error_tags.png`
+- [ ] Read both summaries and all figures:
+  ```bash
+  code results/summary.md results_web/summary.md
+  open figures/*.png results_web/*.png
+  ```
+  For each hypothesis (Part 2 H1–H3, Part 3 H1–H5), write one sentence in `notes.txt`: supported, not supported, or unclear, and why. See [code/07-analyze.md](code/07-analyze.md) and [code/15](code/15-score_web-and-analyze_web.md).
+- [ ] Commit, tag `results-v1`, and push.
+
+### Step 20. The stories behind the numbers (Nov 5)
+- [ ] Pick 6–8 runs to annotate: Part 2 failures (read `response.txt`) and Part 3 transcripts. Look for "right number, wrong row", "right page, wrong column", "never found the filing", and guesses.
+- [ ] These make the best talk slides.
+
+### Step 21. Write, present, publish (Nov 6–11)
+- [ ] **Write-up (Nov 6–8):** 4–6 pages. Sections: question, data, method, Part 2 results, Part 3 results (its own section), error analysis, limitations, conclusion. See the guide, Part 4.
+- [ ] **Talk (Nov 9–10):** about 11 slides in 10 minutes, built around the pass-rate figure, plus 2 new slides: the EDGAR click path, and the Part 2 vs Part 3 table. Rehearse out loud twice with a timer.
+- [ ] **Portfolio (Nov 10–11):**
+  - Polish `README.md` with the headline figures and the Part 3 results.
+  - Check for leaked keys before making the repo public: `git log -p | grep "sk-ant-" | grep -v "sk-ant-REPLACE-ME"` must print nothing. Do the same for your SEC contact address.
   - Add the resume bullet with your real numbers.
+- [ ] **Nov 11: submit** the paper, repo and talk.
 
 ## If you fall behind: the smaller version
 
@@ -218,5 +361,13 @@ python score.py
 python analyze.py
 ```
 That is 72 runs, which is still a real, defensible result.
+
+**Smaller Part 3**, if the pilot is slow or costly: 2 repeats instead of 3 (128 runs), or fewer tasks and models:
+```bash
+python web/run_web.py --models opus sonnet haiku --tasks T1 T3 T4 T5 T6 --conds STEPS GOAL_ONLY --repeats 2 --budget-usd 60 --out runs_web
+python web/score_web.py --runs runs_web --out results_web
+python web/analyze_web.py --in results_web/runs_scored.csv --part2 results/runs_scored.csv --out results_web
+```
+That is 60 runs. Write the change in `notes.txt` before you start.
 
 Next: [04 — The data and its traps](04-the-data-and-its-traps.md)

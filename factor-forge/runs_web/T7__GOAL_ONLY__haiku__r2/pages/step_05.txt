@@ -1,0 +1,80 @@
+URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/R2.htm | TITLE:  | chunk 1/1
+
+XML 10 R2.htm IDEA: XBRL DOCUMENT
+Consolidated Balance Sheets - USD ($)
+$ in Millions
+
+Jun. 30, 2026
+
+Dec. 31, 2025
+
+Assets:
+Investments in fixed maturity securities		$ 17,034	$ 17,816
+Investments in equity securities		323,779	297,778
+Equity method investments		19,948	19,978
+Loans and finance receivables		30,724	29,836
+Inventories		26,575	24,424
+Equipment held for lease		18,912	18,535
+Goodwill	[1]	83,173	83,074
+Total assets		1,263,071	1,222,176
+Liabilities:
+Life, annuity and health insurance benefits		17,738
+Payable for purchases of U.S. Treasury Bills		771	167
+Income taxes, principally deferred		90,176	86,955
+Total liabilities		512,894	502,473
+Shareholders’ equity:
+Common stock at par value		8	8
+Capital in excess of par value		35,615	35,612
+Accumulated other comprehensive income		(2,971)	(2,448)
+Retained earnings		798,959	763,186
+Treasury stock, at cost		(83,701)	(78,939)
+Berkshire shareholders' equity		747,910	717,419
+Noncontrolling interests		2,267	2,284
+Total shareholders’ equity		750,177	719,703
+Total liabilities and shareholders' equity		1,263,071	1,222,176
+Insurance and Other [Member]
+Assets:
+Cash and cash equivalents	[2]	35,096	47,719
+Short-term investments in U.S. Treasury Bills	[3]	324,905	321,434
+Investments in fixed maturity securities		17,034	17,816
+Investments in equity securities		323,779	297,778
+Equity method investments		19,948	19,978
+Loans and finance receivables		30,724	29,836
+Other receivables		48,635	44,331
+Inventories		26,575	24,424
+Property, plant and equipment		39,409	31,885
+Equipment held for lease		18,912	18,535
+Goodwill		56,192	55,945
+Other intangible assets		33,949	33,802
+Deferred charges - retroactive reinsurance		7,675	8,104
+Other		27,813	24,413
+Total assets		1,010,646	976,000
+Liabilities:
+Unpaid losses and loss adjustment expenses		122,875	120,713
+Unpaid losses and loss adjustment expenses - retroactive reinsurance		29,978	31,048
+Unearned insurance premiums		32,754	31,339
+Life, annuity and health insurance benefits		17,738	17,890
+Other insurance policyholder liabilities		9,942	10,312
+Accounts payable, accruals and other liabilities		41,422	38,019
+Payable for purchases of U.S. Treasury Bills		771	167
+Aircraft repurchase liabilities and unearned lease revenues		11,217	10,686
+Notes payable and other borrowings		43,302	45,763
+Liabilities, excluding income taxes, principally deferred, Total		309,999	305,937
+Railroad, Utilities and Energy [Member]
+Assets:
+Cash and cash equivalents	[2]	5,513	4,158
+Receivables		4,562	4,387
+Property, plant and equipment		185,815	184,740
+Goodwill		26,981	27,129
+Regulatory assets		4,385	4,821
+Other		25,169	20,941
+Total assets		252,425	246,176
+Liabilities:
+Accounts payable, accruals and other liabilities		20,424	19,250
+Regulatory liabilities		6,998	7,013
+Notes payable and other borrowings		85,297	83,318
+Liabilities, excluding income taxes, principally deferred, Total		$ 112,719	$ 109,581
+
+[1]	Net of accumulated goodwill impairments of $13.0 billion as of June 30, 2026 and December 31, 2025 and $11.5 billion as of December 31, 2024.
+[2]	Includes U.S. Treasury Bills with maturities of three months or less when purchased of $3.2 billion at June 30, 2026 and $17.6 billion at December 31, 2025.
+[3]	Includes unsettled purchases of U.S. Treasury Bills of $771 million at June 30, 2026 and $167 million at December 31, 2025. Such amounts were also included in liabilities and were paid shortly after the respective balance sheet date.

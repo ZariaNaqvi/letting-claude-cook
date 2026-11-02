@@ -1,0 +1,347 @@
+URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/mmm-20260630.htm | TITLE: mmm-20260630 | chunk 1/25
+
+[e1 link] Table of Contents
+
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+WASHINGTON, D.C. 20549
+FORM 10-Q
+☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the quarterly period ended June 30, 2026
+or
+o TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the transition period from __________ to __________
+Commission file number: 1-3285
+3M COMPANY
+(Exact name of registrant as specified in its charter)
+Delaware		41-0417775
+(State or other jurisdiction of incorporation)		(IRS Employer Identification No.)
+
+3M Center, St. Paul, Minnesota
+		55144-1000
+(Address of Principal Executive Offices)		(Zip Code)
+
+(Registrant’s Telephone Number, Including Area Code) (651) 733-1110
+
+Not Applicable
+
+(Former Name or Former Address, if Changed Since Last Report)
+
+Securities registered pursuant to Section 12(b) of the Act:
+Title of each class		Trading Symbol(s)		Name of each exchange on which registered
+Common Stock, Par Value $.01 Per Share		MMM		New York Stock Exchange
+		MMM		NYSE Texas, Inc.
+1.500% Notes due 2026		MMM26		New York Stock Exchange
+1.750% Notes due 2030		MMM30		New York Stock Exchange
+1.500% Notes due 2031		MMM31		New York Stock ExchangeNote: The common stock of the Registrant is also traded on the SIX Swiss Exchange.
+Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒ No ☐
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). Yes ☒ No ☐
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act.:
+
+Large accelerated filer	☒	Accelerated filer	☐
+
+Non-accelerated filer	☐	Smaller reporting company	☐
+
+		Emerging growth company	☐
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes ☐ No ☒
+Indicate the number of shares outstanding of each of the issuer’s classes of common stock, as of the latest practicable date.
+
+Class
+Outstanding at June 30, 2026
+
+Common Stock, $0.01 par value per share
+515,722,417 shares
+
+1
+[e2 link] Table of Contents
+3M COMPANY
+Form 10-Q for the Quarterly Period Ended June 30, 2026
+
+TABLE OF CONTENTS
+
+PAGE
+
+[e3 link] PART I. Financial Information
+
+[e4 link] 3
+
+[e5 link] Item 1. Financial Statements
+
+[e6 link] 3
+
+[e7 link] Consolidated Statement of Income
+
+[e8 link] 3
+
+[e9 link] Consolidated Statement of Comprehensive Income
+
+[e10 link] 4
+
+[e11 link] Consolidated Balance Sheet
+
+[e12 link] 5
+
+[e13 link] Consolidated Statement of Cash Flows
+
+[e14 link] 6
+
+[e15 link] Notes to Consolidated Financial Statements
+
+[e16 link] 7
+
+[e17 link] Note 1. Significant Accounting Policies
+
+[e18 link] 7
+
+[e19 link] Note 2. Revenue
+
+[e20 link] 7
+
+[e21 link] Note 3. Acquisitions and Divestitures
+
+[e22 link] 8
+
+[e23 link] Note 4. Goodwill and Intangible Assets
+
+[e24 link] 9
+
+[e25 link] Note 5. Restructuring Actions
+
+[e26 link] 9
+
+[e27 link] Note 6. Supplemental Income Statement Information
+
+[e28 link] 10
+
+[e29 link] Note 7. Supplemental Balance Sheet Information
+
+[e30 link] 10
+
+[e31 link] Note 8. Supplemental Equity and Comprehensive Income Information
+
+[e32 link] 11
+
+[e33 link] Note 9. Income Taxes
+
+[e34 link] 13
+
+[e35 link] Note 10. Earnings Per Share
+
+[e36 link] 13
+
+[e37 link] Note 11. Long-Term Debt and Short-Term Borrowings
+
+[e38 link] 13
+
+[e39 link] Note 12. Pension and Postretirement Benefit Plans
+
+[e40 link] 14
+
+[e41 link] Note 13. Derivatives
+
+[e42 link] 14
+
+[e43 link] Note 14. Fair Value Measurements and Marketable Securities
+
+[e44 link] 16
+
+[e45 link] Note 15. Commitments and Contingencies
+
+[e46 link] 18
+
+[e47 link] Note 16. Business Segments
+
+[e48 link] 40
+
+[e49 link] Item 2. Management’s Discussion and Analysis of Financial Condition and Results of Operations
+
+[e50 link] 42
+
+[e51 link] Overview
+
+[e52 link] 43
+
+[e53 link] Results of Operations
+
+[e54 link] 44
+
+[e55 link] Performance by Business Segment
+
+[e56 link] 46
+
+[e57 link] Financial Condition and Liquidity
+
+[e58 link] 49
+
+[e59 link] Item 3. Quantitative and Qualitative Disclosures About Market Risk
+
+[e60 link] 52
+
+[e61 link] Item 4. Controls and Procedures
+
+[e62 link] 52
+
+[e63 link] PART II. Other Information
+
+[e64 link] 53
+
+[e65 link] Item 1. Legal Proceedings
+
+[e66 link] 53
+
+[e67 link] Item 1A. Risk Factors
+
+[e68 link] 53
+
+[e69 link] Item 2. Unregistered Sales of Equity Securities and Use of Proceeds
+
+[e70 link] 53
+
+[e71 link] Item 3. Defaults Upon Senior Securities
+
+[e72 link] 53
+
+[e73 link] Item 4. Mine Safety Disclosures
+
+[e74 link] 53
+
+[e75 link] Item 5. Other Information
+
+[e76 link] 53
+
+[e77 link] Item 6. Exhibits
+
+[e78 link] 54
+2
+[e79 link] Table of Contents
+3M COMPANY
+FORM 10-Q
+For the Quarterly Period Ended June 30, 2026
+PART I. Financial Information
+Item 1. Financial Statements
+3M Company and Subsidiaries
+Consolidated Statement of Income
+(Unaudited)
+
+		Three months ended
+June 30,		Six months ended
+June 30,
+
+(Millions, except per share amounts)		2026		2025		2026		2025
+Net sales		$	6,500 			$	6,344 			$	12,530 			$	12,298
+
+Operating expenses
+Cost of sales		3,817 			3,646 			7,391 			7,124
+Selling, general and administrative expenses		1,061 			1,267 			1,805 			2,212
+Research, development and related expenses		302 			288 			610 			573
+Loss on business divestitures		336 			3 			343 			3
+Total operating expenses		5,516 			5,204 			10,149 			9,912
+Operating income		984 			1,140 			2,381 			2,386
+
+Other expense (income), net		(136)			217 			383 			78
+
+Income before income taxes		1,120 			923 			1,998 			2,308
+Provision for income taxes		183 			245 			404 			510
+Income of consolidated group		937 			678 			1,594 			1,798
+
+Income from unconsolidated subsidiaries, net of taxes		1 			47 			3 			49
+
+Net income including noncontrolling interest
+		938 			725 			1,597 			1,847
+
+Less: net income attributable to noncontrolling interest
+		5 			2 			11 			8
+
+Net income attributable to 3M		$	933 			$	723 			$	1,586 			$	1,839
+
+Earnings per share attributable to 3M common shareholders:
+Weighted average 3M common shares outstanding — basic		519.7 			537.4 			524.4 			540.6
+
+Earnings per share — basic		$	1.79 			$	1.35 			$	3.02 			$	3.40
+
+Weighted average 3M common shares outstanding — diluted		522.4 			540.6 			527.6 			544.2
+
+Earnings per share — diluted		$	1.78 			$	1.34 			$	3.01 			$	3.38
+The accompanying Notes to Consolidated Financial Statements are an integral part of this statement.
+3
+[e80 link] Table of Contents
+3M Company and Subsidiaries
+Consolidated Statement of Comprehensive Income
+(Unaudited)
+
+		Three months ended
+June 30,		Six months ended
+June 30,
+
+(Millions)		2026		2025		2026		2025
+
+Net income including noncontrolling interest		$	938 			$	725 			$	1,597 			$	1,847
+Other comprehensive income (loss), net of tax:
+Cumulative translation adjustment		(2)			339 			(97)			510
+Defined benefit pension and postretirement plans adjustment		47 			49 			94 			107
+Cash flow hedging instruments		1 			(83)			16 			(112)
+Total other comprehensive income (loss), net of tax		46 			305 			13 			505
+
+Comprehensive income including noncontrolling interest
+		984 			1,030 			1,610 			2,352
+
+Comprehensive (income) attributable to noncontrolling interest
+		(5)			(2)			(8)			(8)
+Comprehensive income attributable to 3M		$	979 			$	1,028 			$	1,602 			$	2,344
+The accompanying Notes to Consolidated Financial Statements are an integral part of this statement.
+4
+[e81 link] Table of Contents
+3M Company and Subsidiaries
+Consolidated Balance Sheet
+(Unaudited)
+
+(Dollars in millions, except per share amount)		June 30, 2026		December 31, 2025
+Assets
+Current assets
+Cash and cash equivalents		$	2,955 			$	5,235
+Marketable securities		375 			698
+
+Accounts receivable — net of allowances of $51 and $61
+		3,927 			3,533
+Inventories		3,770 			3,661
+Prepaids		492 			391
+Assets held for sale		— 			46
+Other current assets		2,593 			2,823
+Total current assets		14,112 			16,387
+Property, plant and equipment — net		6,877 			7,101
+Goodwill		6,374 			6,419
+Intangible assets — net		1,053 			1,103
+Other assets		6,508 			6,723
+Total assets		$	34,924 			$	37,733
+
+Liabilities and equity
+
+Current liabilities
+Short-term borrowings and current portion of long-term debt		$	1,647 			$	1,670
+Accounts payable		3,108 			2,702
+Accrued payroll		522 			718
+Liabilities held for sale		— 			55
+Other current liabilities		6,102 			4,450
+Total current liabilities		11,379 			9,595
+Long-term debt		10,904 			10,932
+Pension and postretirement benefits		1,502 			1,631
+Other liabilities		8,134 			10,828
+Total liabilities		31,919 			32,986
+
+Commitments and contingencies (Note 15)
+
+3M Company shareholders’ equity:
+
+Common stock par value, $.01 per share; 944,033,056 shares issued
+		9 			9
+
+Shares outstanding - June 30, 2026: 515,722,417; December 31, 2025: 530,279,131
+
+Additional paid-in capital		7,540 			7,440
+Retained earnings		38,633 			38,258
+Treasury stock, at cost		(38,177)			(35,936)
+
+Shares at June 30, 2026: 428,310,639; December 31, 2025: 413,753,925
+
+[chunk 1/25; call read_page(page=2) for more]

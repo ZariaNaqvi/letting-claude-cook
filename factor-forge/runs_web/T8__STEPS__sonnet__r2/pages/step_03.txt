@@ -1,0 +1,7 @@
+Typed 'AAPL' into e31. URL: https://www.sec.gov/search-filings
+New elements that appeared (e.g. suggestions):
+[e74 link] Apple Inc. (AAPL)
+[e75 link] CIK 0000320193
+[e76 link] Permuto Capital AAPL Trust I
+[e77 link] CIK 0002055491
+[e78 link] Search for "AAPL" in EDGAR filings

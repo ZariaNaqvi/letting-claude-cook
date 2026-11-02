@@ -1,0 +1,65 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/0001628280-26-054343-index.htm | TITLE: EDGAR Filing Documents for 0001628280-26-054343 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-Q - Quarterly report [Sections 13 or 15(d)]:
+SEC Accession No. 0001628280-26-054343
+Filing Date
+2026-08-06
+Accepted
+2026-08-06 16:19:03
+Documents
+189
+Period of Report
+2026-06-30
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-Q	[e10 link] jpm-20260630.htm   iXBRL	10-Q	11513874
+2	EX-10.1	[e11 link] corpq22026exhibit101.htm	EX-10.1	84254
+3	EX-15	[e12 link] corpq22026exhibit15.htm	EX-15	6875
+4	EX-22	[e13 link] corpq22026exhibit22.htm	EX-22	3629
+5	EX-31.1	[e14 link] corpq22026exhibit311.htm	EX-31.1	8162
+6	EX-31.2	[e15 link] corpq22026exhibit312.htm	EX-31.2	8130
+7	EX-32	[e16 link] corpq22026exhibit32.htm	EX-32	9932
+13		[e17 link] jpm-20260630_g1.jpg	GRAPHIC	288647
+14		[e18 link] jpm-20260630_g2.jpg	GRAPHIC	43555
+15		[e19 link] jpm-20260630_g3.jpg	GRAPHIC	42608
+16		[e20 link] jpm-20260630_g4.jpg	GRAPHIC	8845
+17		[e21 link] jpm-20260630_g5.jpg	GRAPHIC	4713
+18		[e22 link] newlogoa.jpg	GRAPHIC	8845
+ 	Complete submission text file	[e23 link] 0001628280-26-054343.txt	 	50707093
+
+Data Files
+
+Seq	Description	Document	Type	Size
+8	XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT	[e24 link] jpm-20260630.xsd	EX-101.SCH	218215
+9	XBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT	[e25 link] jpm-20260630_cal.xml	EX-101.CAL	267393
+10	XBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT	[e26 link] jpm-20260630_def.xml	EX-101.DEF	1349898
+11	XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT	[e27 link] jpm-20260630_lab.xml	EX-101.LAB	2040929
+12	XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT	[e28 link] jpm-20260630_pre.xml	EX-101.PRE	1701938
+193	EXTRACTED XBRL INSTANCE DOCUMENT	[e29 link] jpm-20260630_htm.xml	XML	13207316
+Mailing Address
+270 PARK AVENUE
+NEW YORK
+NY
+10017
+Business Address
+270 PARK AVENUE
+NEW YORK
+NY
+10017
+2122706000
+JPMORGAN CHASE & CO (Filer) CIK: [e30 link] 0000019617 (see all company filings)
+
+EIN.: 132624428 | State of Incorp.: DE | Fiscal Year End: 1231
+Type: 10-Q | Act: 34 | File No.: [e31 link] 001-05805 | Film No.: 261249411
+SIC: [e32 link] 6021 National Commercial Banks
+(CF Office: 02 Finance)

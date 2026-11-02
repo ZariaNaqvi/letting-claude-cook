@@ -1,0 +1,4 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | find_text 'Total stockholders’ equity': 3 match(es)
+(chunk 2) Total stockholders’ equity / 30,152,052 			26,615,488
+(chunk 2) 2025 / Total stockholders’ equity, beginning balances	$	31,126,399 			$	24,028,073 			$	26,615,488 			$	24,743,567
+(chunk 2) Total stockholders’ equity, ending balances	$	30,152,052 			$	24,951,899 			$	30,152,052 			$	24,951,899

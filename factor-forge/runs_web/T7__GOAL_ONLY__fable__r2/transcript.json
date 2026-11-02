@@ -1,0 +1,203 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T7\n\nFind Berkshire Hathaway Inc.'s shareholders' equity attributable to Berkshire Hathaway shareholders (excluding noncontrolling interests) at June 30, 2026.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "text": "I'll start by looking up Berkshire Hathaway's filings on EDGAR.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01NqzuYKrb6387CyYtcfbohy",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001067983&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01NqzuYKrb6387CyYtcfbohy",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001067983&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_016uhtB1fXUhfCFgugnouVrV",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/browse/?CIK=1067983"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_016uhtB1fXUhfCFgugnouVrV",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1067983 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nBERKSHIRE HATHAWAY INC BRK-B, BRK-A on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 7, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] September 25, 2026 - SD: Specialized disclosure\nOpen document\n [e13 link] Filing\nOpen filing\n[e14 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e15 link] Filing\nOpen filing\n[e16 link] August 14, 2026 - SCHEDULE 13G: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 14, 2026 - 13F-HR: Quarterly report filed by institutional managers, Holdings\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01URtga35FyrXpknEe4GqtzU",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01URtga35FyrXpknEe4GqtzU",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1067983 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nBERKSHIRE HATHAWAY INC BRK-B, BRK-A on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 7, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] September 25, 2026 - SD: Specialized disclosure\nOpen document\n [e13 link] Filing\nOpen filing\n[e14 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e15 link] Filing\nOpen filing\n[e16 link] August 14, 2026 - SCHEDULE 13G: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 14, 2026 - 13F-HR: Quarterly report filed by institutional managers, Holdings\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] August 10, 2026 - 10-Q: Quarterly report for quarter ending June 30, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] May 4, 2026 - 10-Q: Quarterly report for quarter ending March 31, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] March 2, 2026 - 10-K: Annual report for year ending December 31, 2025\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] November 3, 2025 - 10-Q: Quarterly report for quarter ending September 30, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01VQpHv963tEBuen5iTLb5Pq",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e28"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01VQpHv963tEBuen5iTLb5Pq",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/0001193125-26-341032-index.htm | TITLE: EDGAR Filing Documents for 0001193125-26-341032 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001193125-26-341032\nFiling Date\n2026-08-10\nAccepted\n2026-08-10 06:01:51\nDocuments\n123\nPeriod of Report\n2026-06-30\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] brka-20260630.htm \u00a0\u00a0iXBRL\t10-Q\t6344310\n2\tEX-31.1\t[e11 link] brka-ex31_1.htm\tEX-31.1\t14227\n3\tEX-31.2\t[e12 link] brka-ex31_2.htm\tEX-31.2\t14531\n4\tEX-32.1\t[e13 link] brka-ex32_1.htm\tEX-32.1\t6800\n5\tEX-32.2\t[e14 link] brka-ex32_2.htm\tEX-32.2\t6985\n6\tEX-95\t[e15 link] brka-ex95.htm\tEX-95\t179867\n\u00a0\tComplete submission text file\t[e16 link] 0001193125-26-341032.txt\t\u00a0\t27497625\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n7\tXBRL TAXONOMY EXTENSION SCHEMA WITH EMBEDDED LINKBASES DOCUMENT\t[e17 link] brka-20260630.xsd\tEX-101.SCH\t2185086\n127\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e18 link] brka-20260630_htm.xml\tXML\t7605871\nMailing Address\n3555 FARNAM STREET\nOMAHA\nNE\n68131\nBusiness Address\n3555 FARNAM STREET\nOMAHA\nNE\n68131\n4023461400\nBERKSHIRE HATHAWAY INC (Filer) CIK: [e19 link] 0001067983 (see all company filings)\n\nEIN.: 470813844 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e20 link] 001-14905 | Film No.: 261256025\nSIC: [e21 link] 6331 Fire, Marine & Casualty Insurance\n(CF Office: 02 Finance)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01M3KeDGMrPXQ9wwmFD18sGZ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e10"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01M3KeDGMrPXQ9wwmFD18sGZ",
+    "content": "URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm | TITLE: XBRL Viewer | chunk 1/1\n\n"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01LFv2fPrLaYEUBzvkaPEXPZ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01LFv2fPrLaYEUBzvkaPEXPZ",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm | TITLE: 10-Q | chunk 1/20\n\nUNITED STATES SECURITIES AND EXCHANGE COMMISSION\n\nWashington, D.C. 20549\n\nFORM 10-Q\n\n(Mark One)\n\n\u2612\n\nQUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n\nFor the quarterly period ended June 30, 2026\n\nOR\n\n\u2610\n\nTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n\nFor the transition period from                  to\n\nCommission file number 001-14905\n\nBERKSHIRE HATHAWAY INC.\n\n(Exact name of Registrant as specified in its charter)\n\nDelaware\n\n47-0813844\n\n(State or other jurisdiction of incorporation or organization)\n\n(I.R.S. Employer Identification Number)\n\n3555 Farnam Street, Omaha, Nebraska 68131\n\n(Address of principal executive office) (Zip Code)\n\n(402) 346-1400\n\n(Registrant\u2019s telephone number, including area code)\n\n(Former name, former address and former fiscal year, if changed since last report)\n\nSecurities registered pursuant to Section 12(b) of the Act:\n\nTitle of each class\n\nTrading Symbols\n\nName of each exchange on which registered\n\nClass A Common Stock\n\nClass B Common Stock\n\n1.125% Senior Notes due 2027\n\n2.150% Senior Notes due 2028\n\n1.500% Senior Notes due 2030\n\n2.000% Senior Notes due 2034\n\n1.625% Senior Notes due 2035\n\n2.375% Senior Notes due 2039\n\n0.500% Senior Notes due 2041\n\n2.625% Senior Notes due 2059\n\nBRK.A\n\nBRK.B\n\nBRK27\n\nBRK28\n\nBRK30\n\nBRK34\n\nBRK35\n\nBRK39\n\nBRK41\n\nBRK59\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nNew York Stock Exchange\n\nIndicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.    Yes  \u2612    No  \u2610\n\nIndicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files).    Yes  \u2612    No  \u2610\n\nIndicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\n\nLarge accelerated filer\n\n\u2612\n\nAccelerated filer\n\n\u2610\n\nNon-accelerated filer\n\n\u2610\n\nSmaller reporting company\n\n\u2610\n\nEmerging growth company\n\n\u2610\n\nIf an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.  \u2610\n\nIndicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\n\nYes  \u2610    No  \u2612\n\nNumber of shares of common stock outstanding as of July 29, 2026:\n\nClass A \u2014\n\n488,450\u00a0shares\n\nClass B \u2014\n\n1,408,035,161\u00a0shares\n\nBERKSHIRE HATHAWAY INC.\n\nPage No.\n\n[e1 link] Part I \u2013 Financial Information\n\n2\n\n[e2 link] Item 1.  Financial Statements\n\n2\n\n[e3 link] Consolidated Balance Sheets\u2014June 30, 2026 and December 31, 2025\n\n2\n\n[e4 link] Consolidated Statements of Earnings\u2014Second Quarter and First Six Months 2026 and 2025\n\n4\n\n[e5 link] Consolidated Statements of Comprehensive Income\u2014Second Quarter and First Six Months 2026 and 2025\n\n5\n\n[e6 link] Consolidated Statements of Changes in Shareholders\u2019 Equity\u2014Second Quarter and First Six Months 2026\n\n[e7 link]      and 2025\n\n6\n\n[e8 link] Consolidated Statements of Cash Flows\u2014First Six Months 2026 and 2025\n\n7\n\n[e9 link] Notes to Consolidated Financial Statements\n\n8\n\nItem 2.\n\n[e10 link] Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n\n33\n\nItem 3.\n\n[e11 link] Quantitative and Qualitative Disclosures About Market Risk\n\n51\n\nItem 4.\n\n[e12 link] Controls and Procedures\n\n51\n\n[e13 link] Part II \u2013 Other Information\n\n51\n\nItem 1.\n\n[e14 link] Legal Proceedings\n\n51\n\nItem 1A.\n\n[e15 link] Risk Factors\n\n51\n\nItem 2.\n\n[e16 link] Unregistered Sales of Equity Securities and Use of Proceeds and Issuer Repurchases of Equity Securities\n\n51\n\nItem 3.\n\n[e17 link] Defaults Upon Senior Securities\n\n51\n\nItem 4.\n\n[e18 link] Mine Safety Disclosures\n\n52\n\nItem 5.\n\n[e19 link] Other Information\n\n52\n\nItem 6.\n\n[e20 link] Exhibits\n\n52\n\n[e21 link] Signature\n\n52\n\n1\n\nPart I Financial Information\n\nItem 1. Financial Statements\n\nBERKSHIRE HATHAWAY INC.\n\nand Subsidiaries\n\nCONSOLIDATED BALANCE SHEETS\n\n(dollars in millions)\n\nJune 30,\n2026\n\nDecember 31,\n2025\n\n(Unaudited)\n\nAssets:\n\nInsurance and Other:\n\nCash and cash equivalents*\n\n$\n\n35,096\n\n$\n\n47,719\n\nShort-term investments in U.S. Treasury Bills**\n\n324,905\n\n321,434\n\nInvestments in fixed maturity securities\n\n17,034\n\n17,816\n\nInvestments in equity securities\n\n323,779\n\n297,778\n\nEquity method investments\n\n19,948\n\n19,978\n\nLoans and finance receivables\n\n30,724\n\n29,836\n\nOther receivables\n\n48,635\n\n44,331\n\nInventories\n\n26,575\n\n24,424\n\nProperty, plant and equipment\n\n39,409\n\n31,885\n\nEquipment held for lease\n\n18,912\n\n18,535\n\nGoodwill\n\n56,192\n\n55,945\n\nOther intangible assets\n\n33,949\n\n33,802\n\nDeferred charges - retroactive reinsurance\n\n7,675\n\n8,104\n\nOther\n\n27,813\n\n24,413\n\n1,010,646\n\n976,000\n\nRailroad, Utilities and Energy:\n\nCash and cash equivalents*\n\n5,513\n\n4,158\n\nReceivables\n\n4,562\n\n4,387\n\nProperty, plant and equipment\n\n185,815\n\n184,740\n\nGoodwill\n\n26,981\n\n27,129\n\nRegulatory assets\n\n4,385\n\n4,821\n\nOther\n\n25,169\n\n20,941\n\n252,425\n\n246,176\n\nTotal assets\n\n$\n\n1,263,071\n\n$\n\n1,222,176\n\n\u2014\u2014\u2014\u2014\u2014\u2014\n\n* Includes U.S. Treasury Bills with maturities of three months or less when purchased of $3.2 billion at June 30, 2026 and $17.6 billion at December 31, 2025.\n\n** Includes unsettled purchases of U.S. Treasury Bills of $771 million at June 30, 2026 and $167 million at December 31, 2025. Such amounts were also included in liabilities and were paid shortly after the respective balance sheet date.\n\nSee accompanying Notes to Consolidated Financial Statements\n\n2\n\nBERKSHIRE HATHAWAY INC.\n\nand Subsidiaries\n\nCONSOLIDATED BALANCE SHEETS\n\n(dollars in millions)\n\nJune 30,\n2026\n\nDecember 31,\n2025\n\n(Unaudited)\n\nLiabilities:\n\nInsurance and Other:\n\nUnpaid losses and loss adjustment expenses\n\n$\n\n122,875\n\n$\n\n120,713\n\nUnpaid losses and loss adjustment expenses - retroactive reinsurance\n\n29,978\n\n31,048\n\nUnearned insurance premiums\n\n32,754\n\n31,339\n\nLife, annuity and health insurance benefits\n\n17,738\n\n17,890\n\nOther insurance policyholder liabilities\n\n9,942\n\n10,312\n\nAccounts payable, accruals and other liabilities\n\n41,422\n\n38,019\n\nPayable for purchases of U.S. Treasury Bills\n\n771\n\n167\n\nAircraft repurchase liabilities and unearned lease revenues\n\n11,217\n\n10,686\n\nNotes payable and other borrowings\n\n43,302\n\n45,763\n\n309,999\n\n305,937\n\nRailroad, Utilities and Energy:\n\nAccounts payable, accruals and other liabilities\n\n20,424\n\n19,250\n\nRegulatory liabilities\n\n6,998\n\n7,013\n\nNotes payable and other borrowings\n\n85,297\n\n83,318\n\n112,719\n\n109,581\n\nIncome taxes, principally deferred\n\n90,176\n\n86,955\n\nTotal liabilities\n\n512,894\n\n502,473\n\nShareholders\u2019 equity:\n\nCommon stock at par value\n\n8\n\n8\n\nCapital in excess of par value\n\n35,615\n\n35,612\n\nAccumulated other comprehensive income\n\n(2,971\n\n)\n\n(2,448\n\n)\n\nRetained earnings\n\n798,959\n\n763,186\n\nTreasury stock, at cost\n\n(83,701\n\n)\n\n(78,939\n\n)\n\nBerkshire shareholders\u2019 equity\n\n747,910\n\n717,419\n\nNoncontrolling interests\n\n2,267\n\n2,284\n\nTotal shareholders\u2019 equity\n\n750,177\n\n719,703\n\nTotal liabilities and shareholders\u2019 equity\n\n$\n\n1,263,071\n\n$\n\n1,222,176\n\nSee accompanying Notes to Consolidated Financial Statements\n\n3\n\nBERKSHIRE HATHAWAY INC.\n\nand Subsidiaries\n\nCONSOLIDATED STATEMENTS OF EARNINGS\n\n(dollars in millions except per share amounts)\n\n(Unaudited)\n\nSecond Quarter\n\nFirst Six Months\n\n2026\n\n2025\n\n2026\n\n2025\n\nRevenues:\n\nInsurance and Other:\n\nInsurance premiums earned\n\n$\n\n22,475\n\n$\n\n22,195\n\n$\n\n44,480\n\n$\n\n43,999\n\nSales and service revenues\n\n57,282\n\n49,658\n\n108,228\n\n97,473\n\nLeasing revenues\n\n2,887\n\n2,509\n\n5,558\n\n4,940\n\nInterest, dividend and other investment income\n\n5,857\n\n6,002\n\n11,287\n\n11,634\n\n88,501\n\n80,364\n\n169,553\n\n158,046\n\nRailroad, Utilities and Energy:\n\nRailroad transportation revenues\n\n6,553\n\n5,718\n\n12,493\n\n11,389\n\nUtilities and energy operating revenues\n\n5,408\n\n5,118\n\n11,215\n\n10,612\n\nService revenues and other income\n\n1,346\n\n1,315\n\n2,222\n\n2,193\n\n13,307\n\n12,151\n\n25,930\n\n24,194\n\nTotal revenues\n\n101,808\n\n92,515\n\n195,483\n\n182,240\n\nInvestment gains (losses)\n\n16,077\n\n6,364\n\n14,472\n\n(71\n\n)\n\nCosts and expenses:\n\nInsurance and Other:\n\nInsurance losses and loss adjustment expenses\n\n14,274\n\n14,073\n\n28,478\n\n28,719\n\nLife, annuity and health insurance benefits\n\n1,233\n\n1,132\n\n2,252\n\n2,200\n\nInsurance underwriting expenses\n\n4,788\n\n4,456\n\n9,305\n\n8,824\n\nCost of sales and services\n\n45,947\n\n39,616\n\n87,154\n\n78,167\n\nCost of leasing\n\n2,141\n\n1,887\n\n4,168\n\n3,774\n\nSelling, general and administrative expenses\n\n6,724\n\n7,931\n\n13,280\n\n15,612\n\nInterest expense\n\n315\n\n318\n\n639\n\n658\n\n75,422\n\n69,413\n\n145,276\n\n137,954\n\nRailroad, Utilities and Energy:\n\nRailroad transportation expenses\n\n4,308\n\n3,729\n\n8,231\n\n7,602\n\nUtilities and energy cost of sales and other expenses\n\n4,134\n\n4,156\n\n8,451\n\n8,247\n\nOther expenses\n\n1,186\n\n1,151\n\n2,042\n\n1,997\n\nInterest expense\n\n1,020\n\n935\n\n1,997\n\n1,852\n\n10,648\n\n9,971\n\n20,721\n\n19,698\n\nTotal costs and expenses\n\n86,070\n\n79,384\n\n165,997\n\n157,652\n\nEarnings before income taxes and equity method earnings\n\n31,815\n\n19,495\n\n43,958\n\n24,517\n\nEquity method earnings (losses)\n\n248\n\n(4,745\n\n)\n\n424\n\n(4,619\n\n)\n\nEarnings before income taxes\n\n32,063\n\n14,750\n\n44,382\n\n19,898\n\nIncome tax expense\n\n6,291\n\n2,293\n\n8,431\n\n2,769\n\nNet earnings\n\n25,772\n\n12,457\n\n35,951\n\n[chunk 1/20; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "The balance sheet in the 10-Q for the quarter ended June 30, 2026 shows \"Berkshire shareholders' equity\" of $747,910 million (excluding noncontrolling interests of $2,267 million).",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01Nab2pPVcJNQ8opH3JNeae6",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0001193125-26-341032",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm",
+     "period_end": "2026-06-30",
+     "value_usd": 747910000000
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Nab2pPVcJNQ8opH3JNeae6",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

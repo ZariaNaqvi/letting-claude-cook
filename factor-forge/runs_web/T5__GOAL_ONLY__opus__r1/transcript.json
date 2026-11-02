@@ -1,0 +1,173 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T5\n\nFind Domino's Pizza, Inc.'s total stockholders' equity (deficit) at the end of its second fiscal quarter of 2026.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01QdLj9VpFWhpit1Gr8YQkN5",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1286681&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01QdLj9VpFWhpit1Gr8YQkN5",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=1286681&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01HzHhS6MZzz1BHk3Qib2TRg",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/browse/?CIK=1286681"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01HzHhS6MZzz1BHk3Qib2TRg",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1286681 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nDOMINOS PIZZA INC DPZ on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 13, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 8, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 6, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01FC6i9SNBkF6ca8YQaekkrN",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01FC6i9SNBkF6ca8YQaekkrN",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1286681 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nDOMINOS PIZZA INC DPZ on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 13, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 8, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 6, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] July 20, 2026 - 10-Q: Quarterly report for quarter ending June 14, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] April 27, 2026 - 10-Q: Quarterly report for quarter ending March 22, 2026\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] February 23, 2026 - 10-K: Annual report for year ending December 28, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01RPeeSs5AY4Hx3jdnmjD7FR",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e29"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01RPeeSs5AY4Hx3jdnmjD7FR",
+    "content": "URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/0001286681/000128668126000035/dpz-20260614.htm | TITLE: Inline Viewer: Domino\u2019s Pizza, Inc. 10-Q 2026-06-14 | chunk 1/1\n\n"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01EKo9fjA9t4MRbMNRSU73PX",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/0001286681/000128668126000035/dpz-20260614.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01EKo9fjA9t4MRbMNRSU73PX",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/dpz-20260614.htm | TITLE: 10-Q | chunk 1/12\n\nl\n\nUNITED STATES\n\nSECURITIES AND EXCHANGE COMMISSION\n\nWASHINGTON, DC 20549\n\nFORM 10-Q\n\n(Mark One)\n\n\u2612\tQUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n\nFor the quarterly period ended June 14, 2026\n\nOR\n\n\u2610\tTRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934\n\nFor the transition period from                 to\n\nCommission file number: 001-32242\n\nDomino\u2019s Pizza, Inc.\n\n(Exact Name of Registrant as Specified in Its Charter)\n\nDelaware\n\n38-2511577\n\n(State or Other Jurisdiction of\n\nIncorporation or Organization)\n\n(I.R.S. Employer\n\nIdentification No.)\n\n30 Frank Lloyd Wright Drive\n\nAnn Arbor, Michigan\n\n48105\n\n(Address of Principal Executive Offices)\n\n(Zip Code)\n\n(734) 930-3030\n\n(Registrant\u2019s Telephone Number, Including Area Code)\n\nSecurities registered pursuant to Section 12(b) of the Exchange Act:\n\nTitle of Each Class\n\nTrading Symbol\n\nName of Each Exchange on Which Registered\n\nDomino\u2019s Pizza, Inc. Common Stock, $0.01 par value\n\nDPZ\n\nThe Nasdaq Stock Market LLC\n\nIndicate by check mark whether registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.    Yes  \u2612    No  \u2610\n\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).    Yes  \u2612    No  \u2610\n\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of \u201clarge accelerated filer,\u201d \u201caccelerated filer,\u201d \u201csmaller reporting company,\u201d and \u201cemerging growth company\u201d in Rule 12b-2 of the Exchange Act.\n\nLarge accelerated filer\n\n\u2612\n\nAccelerated filer\n\n\u2610\n\nNon-accelerated filer\n\n\u2610\n\nSmaller reporting company\n\n\u2610\n\nEmerging growth company\n\n\u2610\n\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\n\nIndicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).  Yes  \u2610    No  \u2612\n\nAs of July 13, 2026, Domino\u2019s Pizza, Inc. had 33,081,735 shares of common stock, par value $0.01 per share, outstanding.\n\nDomino\u2019s Pizza, Inc.\n\nTABLE OF CONTENTS\n\nPage No.\n\nPART I.\n\n[e1 link] FINANCIAL INFORMATION\n\nItem 1.\n\n[e2 link] Financial Statements\n\n3\n\n[e3 link] Condensed Consolidated Balance Sheets (Unaudited) \u2013 As of June 14, 2026 and December 28, 2025\n\n3\n\n[e4 link] Condensed Consolidated Statements of Income (Unaudited) \u2013 Fiscal quarters and two fiscal quarters ended June 14, 2026 and June 15, 2025\n\n4\n\n[e5 link] Condensed Consolidated Statements of Comprehensive Income (Unaudited) \u2013 Fiscal quarters and two fiscal quarters ended June 14, 2026 and June 15, 2025\n\n5\n\n[e6 link] Condensed Consolidated Statements of Cash Flows (Unaudited) \u2013 Two fiscal quarters ended June 14, 2026 and June 15, 2025\n\n6\n\n[e7 link] Notes to Condensed Consolidated Financial Statements (Unaudited)\n\n7\n\nItem 2.\n\n[e8 link] Management\u2019s Discussion and Analysis of Financial Condition and Results of Operations\n\n17\n\nItem 3.\n\n[e9 link] Quantitative and Qualitative Disclosures About Market Risk\n\n30\n\nItem 4.\n\n[e10 link] Controls and Procedures\n\n30\n\nPART II.\n\n[e11 link] OTHER INFORMATION\n\nItem 1.\n\n[e12 link] Legal Proceedings\n\n31\n\nItem 1A.\n\n[e13 link] Risk Factors\n\n31\n\nItem 2.\n\n[e14 link] Unregistered Sales of Equity Securities and Use of Proceeds\n\n31\n\nItem 3.\n\n[e15 link] Defaults Upon Senior Securities\n\n31\n\nItem 4.\n\n[e16 link] Mine Safety Disclosures\n\n31\n\nItem 5.\n\n[e17 link] Other Information\n\n32\n\nItem 6.\n\n[e18 link] Exhibits\n\n33\n\n[e19 link] SIGNATURES\n\n34\n\n2\n\nPART I. FINANCIAL INFORMATION\n\nItem 1. Financial Statements.\n\nDomino\u2019s Pizza, Inc. and Subsidiaries\n\nCondensed Consolidated Balance Sheets\n\n(Unaudited)\n\n(In thousands)\n\nJune 14, 2026\n\nDecember 28, 2025\n\nAssets\n\nCurrent assets:\n\nCash and cash equivalents\n\n$\n\n164,836\n\n$\n\n125,675\n\nRestricted cash and cash equivalents\n\n187,885\n\n216,110\n\nAccounts receivable, net\n\n303,182\n\n315,958\n\nInventories\n\n75,057\n\n79,189\n\nPrepaid expenses and other\n\n55,049\n\n39,767\n\nAdvertising fund assets, restricted\n\n119,410\n\n117,502\n\nTotal current assets\n\n905,419\n\n894,201\n\nProperty, plant and equipment:\n\nLand and buildings\n\n172,241\n\n105,559\n\nLeasehold and other improvements\n\n186,158\n\n193,673\n\nEquipment\n\n388,323\n\n413,303\n\nConstruction in progress\n\n31,741\n\n46,184\n\n778,463\n\n758,719\n\nAccumulated depreciation and amortization\n\n(404,017\n\n)\n\n(434,697\n\n)\n\nProperty, plant and equipment, net\n\n374,446\n\n324,022\n\nOther assets:\n\nOperating lease right-of-use assets\n\n227,793\n\n219,485\n\nGoodwill\n\n7,870\n\n10,726\n\nCapitalized software, net\n\n161,277\n\n159,256\n\nInvestment in DPC Dash\n\n17,714\n\n36,070\n\nDeferred income tax assets, net\n\n16,805\n\n22,101\n\nOther assets\n\n51,998\n\n50,598\n\nTotal other assets\n\n483,457\n\n498,236\n\nTotal assets\n\n$\n\n1,763,322\n\n$\n\n1,716,459\n\nLiabilities and stockholders\u2019 deficit\n\nCurrent liabilities:\n\nCurrent portion of long-term debt\n\n$\n\n7,423\n\n$\n\n6,131\n\nAccounts payable\n\n137,429\n\n135,029\n\nOperating lease liabilities\n\n45,964\n\n47,553\n\nInsurance reserves\n\n25,895\n\n26,169\n\nDividends payable\n\n67,912\n\n2,714\n\nAdvertising fund liabilities\n\n117,830\n\n115,412\n\nOther accrued liabilities\n\n186,217\n\n208,613\n\nTotal current liabilities\n\n588,670\n\n541,621\n\nLong-term liabilities:\n\nLong-term debt, less current portion\n\n4,876,221\n\n4,810,683\n\nOperating lease liabilities\n\n193,245\n\n183,917\n\nInsurance reserves\n\n36,722\n\n32,959\n\nOther accrued liabilities\n\n50,895\n\n48,421\n\nTotal long-term liabilities\n\n5,157,083\n\n5,075,980\n\nStockholders\u2019 deficit:\n\nCommon stock\n\n331\n\n336\n\nAdditional paid-in capital\n\n841\n\n1,910\n\nRetained deficit\n\n(3,977,546\n\n)\n\n(3,898,622\n\n)\n\nAccumulated other comprehensive loss\n\n(6,057\n\n)\n\n(4,766\n\n)\n\nTotal stockholders\u2019 deficit\n\n(3,982,431\n\n)\n\n(3,901,142\n\n)\n\nTotal liabilities and stockholders\u2019 deficit\n\n$\n\n1,763,322\n\n$\n\n1,716,459\n\nThe accompanying notes are an integral part of these condensed consolidated financial statements.\n\n3\n\nDomino\u2019s Pizza, Inc. and Subsidiaries\n\nCondensed Consolidated Statements of Income\n\n(Unaudited)\n\nFiscal Quarter Ended\n\nTwo Fiscal Quarters Ended\n\nJune 14,\n\nJune 15,\n\nJune 14,\n\nJune 15,\n\n(In thousands, except per share data)\n\n2026\n\n2025\n\n2026\n\n2025\n\nRevenues:\n\nU.S. Company-owned stores\n\n$\n\n81,829\n\n$\n\n92,456\n\n$\n\n163,927\n\n$\n\n184,054\n\nU.S. franchise royalties and fees\n\n164,165\n\n156,261\n\n322,179\n\n307,261\n\nSupply chain\n\n731,708\n\n687,062\n\n1,430,681\n\n1,356,986\n\nInternational franchise royalties and fees\n\n81,822\n\n77,164\n\n162,802\n\n152,723\n\nU.S. franchise advertising\n\n134,903\n\n132,201\n\n265,432\n\n256,176\n\nTotal revenues\n\n1,194,427\n\n1,145,144\n\n2,345,021\n\n2,257,200\n\nCost of sales:\n\nU.S. Company-owned stores\n\n72,517\n\n78,073\n\n144,563\n\n154,984\n\nSupply chain\n\n643,682\n\n606,101\n\n1,257,718\n\n1,198,099\n\nTotal cost of sales\n\n716,199\n\n684,174\n\n1,402,281\n\n1,353,083\n\nGross margin\n\n478,228\n\n460,970\n\n942,740\n\n904,117\n\nGeneral and administrative\n\n115,373\n\n107,608\n\n226,779\n\n216,685\n\nU.S. franchise advertising\n\n134,903\n\n132,201\n\n265,432\n\n256,176\n\nRefranchising gain\n\n(4,087\n\n)\n\n(3,883\n\n)\n\n(4,087\n\n)\n\n(3,883\n\n)\n\nGain on sale of assets\n\n\u2014\n\n\u2014\n\n(7,780\n\n)\n\n\u2014\n\nIncome from operations\n\n232,039\n\n225,044\n\n462,396\n\n435,139\n\nOther (expense) income\n\n(12,366\n\n)\n\n(15,974\n\n)\n\n(18,356\n\n)\n\n8,053\n\nInterest income\n\n1,613\n\n3,829\n\n4,115\n\n7,774\n\nInterest expense\n\n(46,057\n\n)\n\n(44,648\n\n)\n\n(92,284\n\n)\n\n(90,233\n\n)\n\nIncome before provision for income taxes\n\n175,229\n\n168,251\n\n355,871\n\n360,733\n\nProvision for income taxes\n\n39,479\n\n37,160\n\n80,310\n\n79,991\n\nNet income\n\n$\n\n135,750\n\n$\n\n131,091\n\n$\n\n275,561\n\n$\n\n280,742\n\nEarnings per share:\n\nCommon stock - basic\n\n$\n\n4.09\n\n$\n\n3.84\n\n$\n\n8.25\n\n$\n\n8.20\n\nCommon stock - diluted\n\n$\n\n4.07\n\n$\n\n3.81\n\n$\n\n8.21\n\n$\n\n8.14\n\nThe accompanying notes are an integral part of these condensed consolidated financial statements.\n\n4\n\nDomino\u2019s Pizza, Inc. and Subsidiaries\n\nCondensed Consolidated Statements of Comprehensive Income\n\n(Unaudited)\n\nFiscal Quarter Ended\n\nTwo Fiscal Quarters Ended\n\nJune 14,\n\nJune 15,\n\nJune 14,\n\nJune 15,\n\n(In thousands)\n\n2026\n\n2025\n\n2026\n\n2025\n\nNet income\n\n$\n\n135,750\n\n$\n\n131,091\n\n$\n\n275,561\n\n$\n\n280,742\n\nCurrency translation adjustment\n\n(960\n\n)\n\n2,462\n\n(1,291\n\n)\n\n2,805\n\nComprehensive income\n\n$\n\n134,790\n\n$\n\n133,553\n\n$\n\n274,270\n\n$\n\n283,547\n\nThe accompanying notes are an integral part of these condensed consolidated financial statements.\n\n5\n\nDomino\u2019s Pizza, Inc. and Subsidiaries\n\nCondensed Consolidated Statements of Cash Flows\n\n(Unaudited)\n\nTwo Fiscal Quarters Ended\n\nJune 14,\n\nJune 15,\n\n(In thousands)\n\n2026\n\n2025\n\nCash flows from operating activities:\n\nNet income\n\n$\n\n275,561\n\n$\n\n280,742\n\nAdjustments to reconcile net income to net cash provided by operating activities:\n\nDepreciation and amortization\n\n40,781\n\n40,713\n\nRefranchising gain\n\n(4,087\n\n)\n\n(3,883\n\n)\n\nGain on sale of assets\n\n(7,780\n\n)\n\n\u2014\n\nLoss on disposal of assets\n\n496\n\n612\n\nAmortization of debt issuance costs\n\n2,970\n\n2,419\n\nProvision (benefit) for deferred income taxes\n\n5,150\n\n(2,700\n\n)\n\nNon-cash equity-based compensation expense\n\n21,146\n\n21,356\n\nExcess tax benefits from equity-based compensation\n\n(625\n\n)\n\n(2,343\n\n)\n\nProvision (benefit) for losses on accounts and notes receivable\n\n38\n\n(4\n\n)\n\nUnrealized and realized loss (gain) on investments\n\n18,356\n\n(8,053\n\n)\n\nChanges in operating assets and liabilities\n\n(1,197\n\n)\n\n19,663\n\nChanges in advertising fund assets and liabilities, restricted\n\n1,794\n\n18,338\n\nNet cash provided by operating activities\n\n352,603\n\n366,860\n\nCash flows from investing activities:\n\nCapital expenditures\n\n(39,008\n\n)\n\n[chunk 1/12; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_018y6JyWLk39Qag8yuVvAi1y",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "value_usd": -3982431000,
+     "accession": "0001286681-26-000035",
+     "period_end": "2026-06-14",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/dpz-20260614.htm"
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_018y6JyWLk39Qag8yuVvAi1y",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

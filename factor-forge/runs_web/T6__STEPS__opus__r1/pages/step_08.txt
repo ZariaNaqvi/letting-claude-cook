@@ -1,0 +1,5 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/FilingSummary.xml | find_text 'balance sheets': 4 match(es)
+(chunk 1) <HtmlFileName>R4.htm</HtmlFileName> / <LongName>9952153 - Statement - Consolidated Balance Sheets (Unaudited)</LongName> / <ReportType>Sheet</ReportType>
+(chunk 1) <Role>http://www.jpmorganchase.com/role/ConsolidatedBalanceSheetsUnaudited</Role> / <ShortName>Consolidated Balance Sheets (Unaudited)</ShortName> / <MenuCategory>Statements</MenuCategory>
+(chunk 1) <HtmlFileName>R5.htm</HtmlFileName> / <LongName>9952154 - Statement - Consolidated Balance Sheets (Unaudited) (Parenthetical)</LongName> / <ReportType>Sheet</ReportType>
+(chunk 1) <Role>http://www.jpmorganchase.com/role/ConsolidatedBalanceSheetsUnauditedParenthetical</Role> / <ShortName>Consolidated Balance Sheets (Unaudited) (Parenthetical)</ShortName> / <MenuCategory>Statements</MenuCategory>

@@ -1,0 +1,20 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R4.htm | TITLE:  | chunk 1/1
+
+XML 15 R4.htm IDEA: XBRL DOCUMENT
+Consolidated Statements of Comprehensive Income (unaudited) (Parenthetical) - USD ($)
+$ in Millions
+	3 Months Ended	6 Months Ended
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Statement of Comprehensive Income [Abstract]
+Foreign currency translation adjustments, income tax benefit (expense)	$ (3.0)	$ 21.0	$ (12.0)	$ 32.0
+Change in unrealized gains (losses) on available-for-sale securities, income tax benefit	0.0	0.2	0.0	1.0
+Net change, income tax benefit (expense)	(39.0)	272.0	(159.0)	421.0
+Net unrealized gains / losses excluded from the assessment of effectiveness, income tax benefit (expense)	$ (1.0)	$ 1.0	$ (2.0)	$ 2.0

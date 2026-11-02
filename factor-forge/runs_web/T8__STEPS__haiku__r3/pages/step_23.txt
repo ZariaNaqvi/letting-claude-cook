@@ -1,0 +1,62 @@
+URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/0000066740-26-000246-index.htm | TITLE: EDGAR Filing Documents for 0000066740-26-000246 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-Q - Quarterly report [Sections 13 or 15(d)]:
+SEC Accession No. 0000066740-26-000246
+Filing Date
+2026-07-21
+Accepted
+2026-07-21 12:08:01
+Documents
+95
+Period of Report
+2026-06-30
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-Q	[e10 link] mmm-20260630.htm   iXBRL	10-Q	2252289
+2	EX-10.1	[e11 link] exhibit101-jvxcreditagreem.htm	EX-10.1	644530
+3	EX-31.1	[e12 link] q22026exhibit311.htm	EX-31.1	10019
+4	EX-31.2	[e13 link] q22026exhibit312.htm	EX-31.2	9723
+5	EX-32.1	[e14 link] q22026exhibit321.htm	EX-32.1	4196
+6	EX-32.2	[e15 link] q22026exhibit322.htm	EX-32.2	4258
+7	EX-95	[e16 link] q22026exhibit95.htm	EX-95	39617
+13		[e17 link] mmm-20260630_g1.jpg	GRAPHIC	7896
+ 	Complete submission text file	[e18 link] 0000066740-26-000246.txt	 	13173852
+
+Data Files
+
+Seq	Description	Document	Type	Size
+8	XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT	[e19 link] mmm-20260630.xsd	EX-101.SCH	73032
+9	XBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT	[e20 link] mmm-20260630_cal.xml	EX-101.CAL	94303
+10	XBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT	[e21 link] mmm-20260630_def.xml	EX-101.DEF	379541
+11	XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT	[e22 link] mmm-20260630_lab.xml	EX-101.LAB	815677
+12	XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT	[e23 link] mmm-20260630_pre.xml	EX-101.PRE	545999
+99	EXTRACTED XBRL INSTANCE DOCUMENT	[e24 link] mmm-20260630_htm.xml	XML	2448487
+Mailing Address
+3M CENTER
+BLDG. 220-9E-02
+ST. PAUL
+MN
+55144-1000
+Business Address
+3M CENTER
+BLDG. 220-9E-02
+ST PAUL
+MN
+55144-1000
+6517331110
+3M CO (Filer) CIK: [e25 link] 0000066740 (see all company filings)
+
+EIN.: 410417775 | State of Incorp.: DE | Fiscal Year End: 1231
+Type: 10-Q | Act: 34 | File No.: [e26 link] 001-03285 | Film No.: 261189133
+SIC: [e27 link] 3841 Surgical & Medical Instruments & Apparatus
+(CF Office: 08 Industrial Applications and Services)

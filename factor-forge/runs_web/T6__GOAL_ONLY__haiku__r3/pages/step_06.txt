@@ -1,0 +1,1 @@
+ERROR: could not load https://www.sec.gov/Archives/edgar/full-index/2026/QTR3/form.idx (Error: Page.goto: Download is starting)

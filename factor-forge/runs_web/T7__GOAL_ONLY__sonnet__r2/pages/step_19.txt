@@ -1,0 +1,464 @@
+URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630_htm.xml | TITLE:  | chunk 1/624
+
+            0001067983
+
+                srt:SubsidiariesMember
+                brka:RailroadUtilitiesAndEnergyMember
+                srt:MinimumMember
+                brka:BurlingtonNorthernSantaFeAndSubsidiariesMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                brka:PGEEntitiesMember
+                brka:PacificorpMember
+
+            2026-02-15
+            2026-02-15
+
+            0001067983
+
+                brka:EquitySecuritiesFvNiMember
+                brka:InvestmentConcentrationRiskMember
+                brka:AmericanExpressCompanyAppleIncBankOfAmericaCorporationCocaColaCompanyAndChevronCorporationMember
+
+            2025-01-01
+            2025-12-31
+
+            0001067983
+
+                brka:RailroadUtilitiesAndEnergyMember
+
+            2025-06-30
+
+            0001067983
+
+                brka:OccidentalPetroleumCorporationMember
+
+            2025-12-31
+
+            0001067983
+
+                brka:CorporateReconcilingItemsAndEliminationsMember
+
+            2025-04-01
+            2025-06-30
+
+            0001067983
+
+                brka:CorporateReconcilingItemsAndEliminationsMember
+
+            2026-06-30
+
+            0001067983
+
+                brka:BerkadiaCommercialMortgageMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                brka:InsuranceCorporateAndOtherMember
+
+            2026-04-01
+            2026-06-30
+
+            0001067983
+
+                brka:BerkadiaCommercialMortgageMember
+
+            2025-04-01
+            2025-06-30
+
+            0001067983
+
+                srt:SubsidiariesMember
+                brka:RailroadUtilitiesAndEnergyMember
+                brka:TermLoanMember
+                brka:BurlingtonNorthernSantaFeCorporationMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                srt:SubsidiariesMember
+                currency:GBP
+                brka:InsuranceAndOtherMember
+                brka:BerkshireHathawayFinanceCorporationMember
+
+            2026-06-30
+
+            0001067983
+
+                us-gaap:ServiceMember
+                brka:BurlingtonNorthernSantaFeCorporationMember
+
+            2025-04-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:EstimateOfFairValueFairValueDisclosureMember
+                us-gaap:FairValueMeasurementsRecurringMember
+
+            2025-12-31
+
+            0001067983
+
+                brka:BurlingtonNorthernSantaFeCorporationMember
+
+            2025-01-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:OperatingSegmentsMember
+                brka:McLaneCompanyMember
+
+            2025-04-01
+            2025-06-30
+
+            0001067983
+
+                brka:ManufacturedIndustrialAndCommercialProductsMember
+
+            2025-01-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:RetainedEarningsMember
+
+            2025-03-31
+
+            0001067983
+
+                srt:ParentCompanyMember
+                brka:InsuranceAndOtherMember
+                srt:MinimumMember
+                brka:DebtDueTwoThousandTwentyNineToTwoThousandFiftySixMember
+                us-gaap:SeniorNotesMember
+
+            2026-04-01
+            2026-04-30
+
+            0001067983
+
+                us-gaap:CarryingReportedAmountFairValueDisclosureMember
+                us-gaap:FairValueMeasurementsRecurringMember
+
+            2025-12-31
+
+            0001067983
+
+                us-gaap:AccumulatedOtherComprehensiveIncomeMember
+
+            2025-12-31
+
+            0001067983
+
+                us-gaap:FairValueInputsLevel2Member
+                us-gaap:FairValueMeasurementsRecurringMember
+                us-gaap:USTreasuryAndGovernmentMember
+
+            2025-12-31
+
+            0001067983
+
+                brka:WildfiresMember
+                brka:PacificorpMember
+
+            2025-12-31
+
+            0001067983
+
+                brka:BurlingtonNorthernSantaFeCorporationMember
+
+            2025-04-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:FoodAndBeverageMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                us-gaap:NoncontrollingInterestMember
+
+            2026-06-30
+
+            0001067983
+
+                brka:InsuranceAndOtherMember
+                us-gaap:FairValueInputsLevel3Member
+                us-gaap:FairValueMeasurementsRecurringMember
+
+            2025-12-31
+
+            0001067983
+
+                us-gaap:OperatingSegmentsMember
+                brka:ServiceAndRetailingBusinessesMember
+
+            2026-06-30
+
+            0001067983
+
+                brka:ManufacturedBuildingProductsMember
+                brka:ManufacturingBusinessesMember
+
+            2025-01-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:CommonStockIncludingAdditionalPaidInCapitalMember
+
+            2025-03-31
+
+            0001067983
+
+                brka:InsuranceAndOtherMember
+                us-gaap:TrademarksAndTradeNamesMember
+
+            2026-06-30
+
+            0001067983
+
+                srt:ParentCompanyMember
+                currency:JPY
+                brka:InsuranceAndOtherMember
+
+            2025-12-31
+
+            0001067983
+
+                brka:InsuranceAndOtherMember
+                us-gaap:CarryingReportedAmountFairValueDisclosureMember
+                us-gaap:FairValueMeasurementsRecurringMember
+
+            2025-12-31
+
+            0001067983
+
+                us-gaap:CommonStockIncludingAdditionalPaidInCapitalMember
+
+            2026-03-31
+
+            0001067983
+
+                us-gaap:CarryingReportedAmountFairValueDisclosureMember
+                us-gaap:FairValueMeasurementsRecurringMember
+                us-gaap:ForeignGovernmentDebtSecuritiesMember
+
+            2025-12-31
+
+            0001067983
+
+                us-gaap:CommonClassBMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                srt:ParentCompanyMember
+                currency:USD
+                brka:InsuranceAndOtherMember
+                srt:MinimumMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                brka:PeriodicPaymentAnnuitiesMember
+
+            2025-06-30
+
+            0001067983
+
+                brka:ElectricityAndNaturalGasMember
+
+            2025-04-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:AccumulatedOtherComprehensiveIncomeMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                brka:InsuranceAndOtherMember
+                us-gaap:FairValueInputsLevel2Member
+                us-gaap:FairValueMeasurementsRecurringMember
+
+            2026-06-30
+
+            0001067983
+
+                us-gaap:OperatingSegmentsMember
+                us-gaap:InvestmentsSegmentMember
+                brka:BerkshireHathawayInsuranceGroupMember
+
+            2026-04-01
+            2026-06-30
+
+            0001067983
+
+                brka:InsuranceAndOtherMember
+                us-gaap:OtherIntangibleAssetsMember
+
+            2025-12-31
+
+            0001067983
+
+                us-gaap:CommonStockIncludingAdditionalPaidInCapitalMember
+
+            2026-01-01
+            2026-03-31
+
+            0001067983
+
+                us-gaap:AccumulatedOtherComprehensiveIncomeMember
+
+            2025-01-01
+            2025-03-31
+
+            0001067983
+
+                us-gaap:FairValueInputsLevel2Member
+                us-gaap:FairValueMeasurementsRecurringMember
+
+            2026-06-30
+
+            0001067983
+
+                brka:OccidentalPetroleumCorporationMember
+
+            2026-01-01
+            2026-03-31
+
+            0001067983
+
+                us-gaap:OperatingSegmentsMember
+                brka:ManufacturingBusinessesMember
+
+            2025-01-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:FoodAndBeverageMember
+                brka:McLaneCompanyMember
+
+            2026-04-01
+            2026-06-30
+
+            0001067983
+
+                us-gaap:OperatingSegmentsMember
+
+            2026-04-01
+            2026-06-30
+
+            0001067983
+
+                brka:OccidentalPetroleumCorporationMember
+
+            2025-04-01
+            2025-06-30
+
+            0001067983
+
+                brka:TheKraftHeinzCompanyMember
+
+            2025-09-27
+
+            0001067983
+
+                brka:PropertyAndCasualtyInsuranceAndReinsuranceExcludingRetroactiveReinsuranceMember
+
+            2025-01-01
+            2025-06-30
+
+            0001067983
+
+                brka:ElectricityAndNaturalGasMember
+
+                    2026-07-01
+
+            2026-06-30
+
+            0001067983
+
+                us-gaap:NoncontrollingInterestMember
+
+            2026-01-01
+            2026-03-31
+
+            0001067983
+
+                us-gaap:OperatingSegmentsMember
+                brka:McLaneCompanyMember
+
+            2026-06-30
+
+            0001067983
+
+                us-gaap:OperatingSegmentsMember
+                us-gaap:InvestmentsSegmentMember
+                brka:BerkshireHathawayInsuranceGroupMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                brka:OccidentalPetroleumCorporationMember
+
+            2026-06-30
+
+            0001067983
+
+                brka:CommonStockRepurchaseProgramMember
+
+            2026-01-01
+            2026-06-30
+
+            0001067983
+
+                brka:CorporateReconcilingItemsAndEliminationsMember
+
+            2025-01-01
+            2025-06-30
+
+            0001067983
+
+                us-gaap:FairValueInputsLevel3Member
+                us-gaap:FairValueMeasurementsRecurringMember
+
+            2025-12-31
+
+            0001067983
+
+                us-gaap:FairValueInputsLevel3Member
+                us-gaap:FairValueMeasurementsRecurringMember
+                us-gaap:PreferredStockMember
+                us-gaap:ValuationTechniqueDiscountedCashFlowMember
+
+            2026-06-30
+
+            0001067983
+
+[chunk 1/624; call read_page(page=2) for more]

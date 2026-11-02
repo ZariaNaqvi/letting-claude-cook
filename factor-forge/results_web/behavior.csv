@@ -1,0 +1,9 @@
+model_alias,condition,tried_blocked,used_search_form
+fable,GOAL_ONLY,1.0,0.0
+fable,STEPS,1.0,1.0
+haiku,GOAL_ONLY,1.0,0.0
+haiku,STEPS,0.9166666666666666,1.0
+opus,GOAL_ONLY,1.0,0.0
+opus,STEPS,1.0,0.9583333333333334
+sonnet,GOAL_ONLY,1.0,0.0
+sonnet,STEPS,1.0,1.0

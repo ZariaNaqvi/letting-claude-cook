@@ -1,0 +1,54 @@
+URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/0001193125-26-341032-index.html | TITLE: EDGAR Filing Documents for 0001193125-26-341032 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-Q - Quarterly report [Sections 13 or 15(d)]:
+SEC Accession No. 0001193125-26-341032
+Filing Date
+2026-08-10
+Accepted
+2026-08-10 06:01:51
+Documents
+123
+Period of Report
+2026-06-30
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-Q	[e10 link] brka-20260630.htm   iXBRL	10-Q	6344310
+2	EX-31.1	[e11 link] brka-ex31_1.htm	EX-31.1	14227
+3	EX-31.2	[e12 link] brka-ex31_2.htm	EX-31.2	14531
+4	EX-32.1	[e13 link] brka-ex32_1.htm	EX-32.1	6800
+5	EX-32.2	[e14 link] brka-ex32_2.htm	EX-32.2	6985
+6	EX-95	[e15 link] brka-ex95.htm	EX-95	179867
+ 	Complete submission text file	[e16 link] 0001193125-26-341032.txt	 	27497625
+
+Data Files
+
+Seq	Description	Document	Type	Size
+7	XBRL TAXONOMY EXTENSION SCHEMA WITH EMBEDDED LINKBASES DOCUMENT	[e17 link] brka-20260630.xsd	EX-101.SCH	2185086
+127	EXTRACTED XBRL INSTANCE DOCUMENT	[e18 link] brka-20260630_htm.xml	XML	7605871
+Mailing Address
+3555 FARNAM STREET
+OMAHA
+NE
+68131
+Business Address
+3555 FARNAM STREET
+OMAHA
+NE
+68131
+4023461400
+BERKSHIRE HATHAWAY INC (Filer) CIK: [e19 link] 0001067983 (see all company filings)
+
+EIN.: 470813844 | State of Incorp.: DE | Fiscal Year End: 1231
+Type: 10-Q | Act: 34 | File No.: [e20 link] 001-14905 | Film No.: 261256025
+SIC: [e21 link] 6331 Fire, Marine & Casualty Insurance
+(CF Office: 02 Finance)

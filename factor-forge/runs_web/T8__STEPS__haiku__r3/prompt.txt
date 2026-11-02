@@ -1,0 +1,23 @@
+TASK T8
+
+For each of four firms -- Apple (AAPL), Coca-Cola (KO), Chevron (CVX) and 3M (MMM) -- find book equity from the first 10-Q each firm filed between July 1 and August 31, 2026 (the balance sheet at the end of that quarter). Then, using the market equity (ME) values given below, rank the four firms by book-to-market B/M = BE / ME from highest (value) to lowest (growth).
+
+MARKET EQUITY (ME) to use, in US dollars, as of June 30, 2026:
+  AAPL: $4,222,971,924,800
+  KO: $349,668,176,979
+  CVX: $327,503,846,378
+  MMM: $83,500,616,536
+
+RULES:
+- Give each book equity as a whole number of US dollars (not millions or thousands).
+- Book equity means the parent company's total stockholders' (shareholders') equity line (excluding noncontrolling interests).
+- Give the ranking as a list of the four tickers, highest B/M first.
+- You may use at most 50 tool calls in total, including submit_answer.
+
+STEPS (a click path that works):
+1. Repeat the single-firm click path four times: https://www.sec.gov/search-filings -> company suggestion -> expand "10-K (annual reports) and 10-Q (quarterly reports)" -> "Filing" link of the 10-Q filed in July or August 2026 -> filing folder -> FilingSummary.xml -> the balance-sheet R page.
+2. Rows and columns: AAPL "Total shareholders' equity", "Jun. 27, 2026"; KO "Equity attributable to shareowners of The Coca-Cola Company", "Jul. 03, 2026"; CVX "Total Chevron Corporation stockholders' equity", "Jun. 30, 2026"; MMM "Total 3M Company shareholders' equity", "Jun. 30, 2026".
+3. Compute B/M = BE / ME with the ME values given, and order the tickers from highest to lowest B/M.
+Units: All four pages say "$ in Millions": multiply by 1,000,000. You have 50 tool calls for all four firms, so go straight to each filing.
+
+When you have the answer, call submit_answer.

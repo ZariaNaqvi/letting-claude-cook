@@ -83,12 +83,47 @@ Factor Forge fixes that in three ways:
 | Chats run by hand, one per model | An automated harness runs 320 identical, logged API calls |
 | Right number, wrong reasons went undetected | Automatic error tags say *how* each failure happened |
 
+## Why there is a Part 3: Form Forge
+
+### What Part 2 found
+
+Part 2 ran all 320 tests. **316 passed.** Sonnet got 80 of 80, Haiku and Opus 79, Fable 78. Every RECIPE run passed. The 4 failures were small coding slips, like a text search that could never match, not finance mistakes. The whole run cost $11.16.
+
+That is a good result for the models, but a bad one for the experiment. When everyone scores 98 to 100 percent, the test can't tell the models apart. It's the Replication Swarm problem again, only at a higher level. The test hit a ceiling.
+
+### What Part 3 changes
+
+Real research is not hard because of the arithmetic. It's hard because **finding the right number** is hard. So in Part 3 the model gets no files and no Python. It gets only a web browser that it drives through tools: open a page, read it, click a link, type in a box.
+
+The website is **SEC EDGAR**, where every US public company files its reports. It works a lot like SkyServer, the astronomy data site, where you click through search and query forms to reach the data. To find one number, the model has to:
+
+1. type the company name into the search form and pick the right company from the suggestions,
+2. find the right report in a long list of filings, most of them insider-trading forms,
+3. open the filing's index and its list of financial tables (`FilingSummary.xml`),
+4. open the balance sheet and pick the right row and the right column.
+
+The number it looks for is **book equity**: what the company's accounts say it is worth to shareholders. That is the "B" in book-to-market (B/M), the ratio behind the value factor HML from Part 2. So Part 3 asks the models to collect the raw input that Part 2's portfolios were built from.
+
+### Why it is harder
+
+- **Many steps, each depending on the last.** One wrong click and the rest of the path is wrong.
+- **Look-alike numbers on the same page.** Last year's column sits next to this quarter's. "Total liabilities and equity" is one row below "Total equity". Some firms show equity with and without minority owners (noncontrolling interests).
+- **Units.** Some pages are in millions, some in thousands, and the answer must be in whole dollars.
+- **Odd calendars and signs.** Apple's quarter ended June 27. Microsoft's June 30 number is in its annual report, not a quarterly one. Domino's has *negative* equity.
+- **No memory to lean on.** Every filing was made after July 1, 2026, which is after the models' training cutoff. A guess shows up because the number never appeared on any page the model saw.
+
+### How it is graded
+
+The answer key comes from a different part of SEC's site, the XBRL data API. The models' browser **cannot reach that API**, so they have to use the pages. A run passes only if the dollar figure is **exact** and the filing's ID (its accession number) is right. Like Part 2, there are two conditions: **STEPS** gives the click path (like RECIPE), and **GOAL_ONLY** gives only the goal (like NAME_ONLY). Each failure gets a tag that says how it went wrong: wrong row, wrong column, wrong units, wrong company, never found the filing, and so on.
+
+The full design is in [06 — Part 3 design](06-part3-form-forge-design.md).
+
 ## What you will have at the end (target: Nov 11)
 
-1. A GitHub folder with the code, the raw data, all 320 model responses and the scored results, so anyone can reproduce the study.
-2. Figures: pass rate by model and condition, a per-factor heatmap, and an error breakdown.
+1. A GitHub folder with the code, the raw data, all 320 Part 2 responses, all Part 3 runs (every page each model saw) and the scored results, so anyone can reproduce the study.
+2. Figures: pass rate by model and condition, a per-factor heatmap, and an error breakdown for Part 2; a task × model heatmap, cost per correct answer and steps to success for Part 3; and one Part 2 vs Part 3 table.
 3. A 4–6 page write-up.
 4. A 10-minute talk.
-5. A resume bullet like: *"Built an automated benchmark that tested 4 Claude models on rebuilding the Fama-French factors from raw data (320 runs, scored to 1 bp)."*
+5. A resume bullet like: *"Built an automated benchmark that tested 4 Claude models on rebuilding the Fama-French factors from raw data (320 runs, scored to 1 bp), then on collecting book equity by browsing SEC EDGAR (192 agent runs, scored to the exact dollar)."*
 
 Next: [02 — Goal, hypotheses and scoring](02-goal-hypotheses-and-scoring.md)

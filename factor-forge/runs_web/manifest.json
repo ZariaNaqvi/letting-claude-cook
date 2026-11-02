@@ -1,0 +1,200 @@
+[
+  {
+    "time": "2026-10-28T23:04:16",
+    "argv": [
+      "web/run_web.py",
+      "--models",
+      "fable",
+      "opus",
+      "sonnet",
+      "haiku",
+      "--tasks",
+      "all",
+      "--conds",
+      "STEPS",
+      "GOAL_ONLY",
+      "--repeats",
+      "3",
+      "--effort",
+      "high",
+      "--budget-usd",
+      "100",
+      "--out",
+      "runs_web"
+    ],
+    "dry_run": false,
+    "offline": false,
+    "pilot": false,
+    "effort": "high",
+    "max_tokens": 16000,
+    "time_limit_s": 720,
+    "budget_usd": 100.0,
+    "models": {
+      "fable": [
+        "claude-fable-5-1",
+        10.0,
+        50.0
+      ],
+      "opus": [
+        "claude-opus-5-5",
+        4.0,
+        20.0
+      ],
+      "sonnet": [
+        "claude-sonnet-5-5",
+        2.0,
+        10.0
+      ],
+      "haiku": [
+        "claude-haiku-5-5",
+        0.1,
+        0.5
+      ]
+    },
+    "cache_read_mult": {
+      "fable": 0.025,
+      "opus": 0.05,
+      "sonnet": 0.1,
+      "haiku": 0.1
+    },
+    "n_jobs": 192,
+    "prompt_version": "web-v2",
+    "harness_version": "web-h3",
+    "anthropic_sdk": "1.13.0",
+    "playwright": "1.64.1",
+    "python": "3.12.10",
+    "max_rps": 5.0
+  },
+  {
+    "time": "2026-10-31T14:57:14",
+    "argv": [
+      "web/run_web.py",
+      "--models",
+      "fable",
+      "opus",
+      "sonnet",
+      "haiku",
+      "--tasks",
+      "all",
+      "--conds",
+      "STEPS",
+      "GOAL_ONLY",
+      "--repeats",
+      "3",
+      "--effort",
+      "high",
+      "--budget-usd",
+      "100",
+      "--out",
+      "runs_web"
+    ],
+    "dry_run": false,
+    "offline": false,
+    "pilot": false,
+    "effort": "high",
+    "max_tokens": 16000,
+    "time_limit_s": 720,
+    "budget_usd": 100.0,
+    "models": {
+      "fable": [
+        "claude-fable-5-1",
+        10.0,
+        50.0
+      ],
+      "opus": [
+        "claude-opus-5-5",
+        4.0,
+        20.0
+      ],
+      "sonnet": [
+        "claude-sonnet-5-5",
+        2.0,
+        10.0
+      ],
+      "haiku": [
+        "claude-haiku-5-5",
+        0.1,
+        0.5
+      ]
+    },
+    "cache_read_mult": {
+      "fable": 0.025,
+      "opus": 0.05,
+      "sonnet": 0.1,
+      "haiku": 0.1
+    },
+    "n_jobs": 89,
+    "prompt_version": "web-v2",
+    "harness_version": "web-h3",
+    "anthropic_sdk": "1.13.0",
+    "playwright": "1.64.1",
+    "python": "3.12.10",
+    "max_rps": 5.0
+  },
+  {
+    "time": "2026-11-02T13:25:30",
+    "argv": [
+      "web/run_web.py",
+      "--models",
+      "fable",
+      "opus",
+      "sonnet",
+      "haiku",
+      "--tasks",
+      "all",
+      "--conds",
+      "STEPS",
+      "GOAL_ONLY",
+      "--repeats",
+      "3",
+      "--effort",
+      "high",
+      "--budget-usd",
+      "100",
+      "--out",
+      "runs_web"
+    ],
+    "dry_run": false,
+    "offline": false,
+    "pilot": false,
+    "effort": "high",
+    "max_tokens": 16000,
+    "time_limit_s": 720,
+    "budget_usd": 100.0,
+    "models": {
+      "fable": [
+        "claude-fable-5-1",
+        10.0,
+        50.0
+      ],
+      "opus": [
+        "claude-opus-5-5",
+        4.0,
+        20.0
+      ],
+      "sonnet": [
+        "claude-sonnet-5-5",
+        2.0,
+        10.0
+      ],
+      "haiku": [
+        "claude-haiku-5-5",
+        0.1,
+        0.5
+      ]
+    },
+    "cache_read_mult": {
+      "fable": 0.025,
+      "opus": 0.05,
+      "sonnet": 0.1,
+      "haiku": 0.1
+    },
+    "n_jobs": 10,
+    "prompt_version": "web-v2",
+    "harness_version": "web-h3",
+    "anthropic_sdk": "1.13.0",
+    "playwright": "1.64.1",
+    "python": "3.12.10",
+    "max_rps": 5.0
+  }
+]

@@ -1,0 +1,16 @@
+URL: https://www.sec.gov/Archives/edgar/data/789019/000119312526323660/R5.htm | TITLE:  | chunk 1/1
+
+XML 18 R5.htm IDEA: XBRL DOCUMENT
+BALANCE SHEETS (Parenthetical) - USD ($)
+$ in Millions
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Statement of Financial Position [Abstract]
+Accounts receivable, allowance for doubtful accounts	$ 1,040	$ 944
+Property and equipment, accumulated depreciation	$ 118,691	$ 93,653
+Common stock, shares authorized	24,000,000,000	24,000,000,000
+Common stock, issued	7,427,000,000	7,434,000,000
+Common stock, outstanding	7,427,000,000	7,434,000,000

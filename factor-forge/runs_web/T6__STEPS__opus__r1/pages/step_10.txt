@@ -1,0 +1,4 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R4.htm | find_text 'stockholders': 3 match(es)
+(chunk 1) Commitments and contingencies (refer to Notes 22, 23 and 24) / Stockholders’ equity / Preferred stock ($1 par value; authorized 200,000,000 shares; issued 2,105,375 and 2,005,375 shares)		21,040	20,045
+(chunk 1) Treasury stock, at cost (1,446,747,700 and 1,408,661,319 shares)		(178,433)	(164,591) / Total stockholders’ equity		374,598	362,438 / Total liabilities and stockholders’ equity		5,015,069	4,424,900
+(chunk 1) Total stockholders’ equity		374,598	362,438 / Total liabilities and stockholders’ equity		5,015,069	4,424,900 / VIEs consolidated by the Firm

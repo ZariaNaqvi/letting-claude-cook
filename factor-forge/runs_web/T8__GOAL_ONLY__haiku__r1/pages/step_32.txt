@@ -1,0 +1,88 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/R2.htm | TITLE:  | chunk 1/1
+
+XML 90 R2.htm IDEA: XBRL DOCUMENT
+CONSOLIDATED STATEMENT OF INCOME (Unaudited) - USD ($)
+shares in Thousands, $ in Millions
+	3 Months Ended	6 Months Ended
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Revenues and Other Income
+
+Sales and other operating revenues
+	$ 67,199	$ 44,375	$ 114,755	$ 90,476
+
+Income (loss) from equity affiliates
+	2,125	536	2,870	1,356
+
+Other income (loss)
+	731	(89)	1,037	600
+
+Total Revenues and Other Income
+	70,055	44,822	118,662	92,432
+
+Costs and Other Deductions
+
+Purchased crude oil and products
+	36,607	26,858	64,872	55,468
+
+Operating expenses
+	7,451	6,674	15,127	13,082
+
+Selling, general and administrative expenses
+	1,314	889	2,380	2,110
+
+Exploration expenses
+	256	252	461	439
+
+Depreciation, depletion and amortization
+	6,082	4,344	11,890	8,467
+
+Taxes other than on income
+	1,213	1,301	2,527	2,556
+
+Interest and debt expense
+	352	274	697	486
+
+Other components of net periodic benefit costs
+	96	83	78	94
+
+Total Costs and Other Deductions
+	53,371	40,675	98,032	82,702
+
+Income (Loss) Before Income Tax Expense
+	16,684	4,147	20,630	9,730
+
+Income Tax Expense (Benefit)
+	4,470	1,632	6,123	3,703
+
+Net Income (Loss)
+	12,214	2,515	14,507	6,027
+
+Less: Net income (loss) attributable to noncontrolling interests
+	142	25	225	37
+
+Net Income (Loss) Attributable to Chevron Corporation
+	$ 12,072	$ 2,490	$ 14,282	$ 5,990
+
+Net Income (Loss) Attributable to Chevron Corporation
+
+Basic (in dollars per share)
+	$ 6.13	$ 1.45	$ 7.23	$ 3.46
+
+Diluted (in dollars per share)
+	$ 6.11	$ 1.45	$ 7.21	$ 3.45
+
+Weighted Average Number of Shares Outstanding (000s)
+
+Basic (in shares)
+	1,969,868	1,719,184	1,974,979	1,731,836
+
+Diluted (in shares)
+	1,975,087	1,724,397	1,980,464	1,737,844

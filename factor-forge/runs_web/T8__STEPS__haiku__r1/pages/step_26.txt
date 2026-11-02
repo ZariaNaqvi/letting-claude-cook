@@ -1,0 +1,23 @@
+Typed 'MMM' into e31. URL: https://www.sec.gov/search-filings
+New elements that appeared (e.g. suggestions):
+[e74 link] 3M CO (MMM)
+[e75 link] CIK 0000066740
+[e76 link] Mmmly Inc.
+[e77 link] CIK 0001927496
+[e78 link] MASS MEGAWATTS WIND POWER INC (MMMW)
+[e79 link] CIK 0001117228
+[e80 link] 2018 MMM Colt LLC
+[e81 link] CIK 0001796020
+[e82 link] MMM GLOBAL TRUST
+[e83 link] CIK 0001810415
+[e84 link] GMF MMM CAMPUS LLC
+[e85 link] CIK 0001806286
+[e86 link] MMM SECURITIES LLC
+[e87 link] CIK 0001905659
+[e88 link] MMM ACQUISITION LLC
+[e89 link] CIK 0001458238
+[e90 link] MMMK Development, Inc.
+[e91 link] CIK 0001756618
+[e92 link] MMM REAL ESTATE HOLDINGS LLC
+[e93 link] CIK 0001585894
+[e94 link] Search for "MMM" in EDGAR filings

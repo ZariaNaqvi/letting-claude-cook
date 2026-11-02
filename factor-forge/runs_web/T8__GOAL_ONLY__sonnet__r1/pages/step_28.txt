@@ -1,0 +1,46 @@
+URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/R4.htm | TITLE:  | chunk 1/1
+
+XML 18 R4.htm IDEA: XBRL DOCUMENT
+Consolidated Balance Sheet (Unaudited) - USD ($)
+$ in Millions
+
+Jun. 30, 2026
+
+Dec. 31, 2025
+
+Current assets
+Cash and cash equivalents	$ 2,955	$ 5,235
+Marketable securities	375	698
+Accounts receivable — net of allowances of $51 and $61	3,927	3,533
+Inventories	3,770	3,661
+Prepaids	492	391
+Assets held for sale	0	46
+Other current assets	2,593	2,823
+Total current assets	14,112	16,387
+Property, plant and equipment — net	6,877	7,101
+Goodwill	6,374	6,419
+Intangible assets — net	1,053	1,103
+Other assets	6,508	6,723
+Total assets	34,924	37,733
+Current liabilities
+Short-term borrowings and current portion of long-term debt	1,647	1,670
+Accounts payable	3,108	2,702
+Accrued payroll	522	718
+Liabilities held for sale	0	55
+Other current liabilities	6,102	4,450
+Total current liabilities	11,379	9,595
+Long-term debt	10,904	10,932
+Pension and postretirement benefits	1,502	1,631
+Other liabilities	8,134	10,828
+Total liabilities	31,919	32,986
+Commitments and contingencies (Note 15)
+3M Company shareholders’ equity:
+Common stock	9	9
+Additional paid-in capital	7,540	7,440
+Retained earnings	38,633	38,258
+Treasury stock, at cost	(38,177)	(35,936)
+Accumulated other comprehensive income (loss)	(5,053)	(5,069)
+Total 3M Company shareholders’ equity	2,952	4,702
+Noncontrolling interest	53	45
+Total equity	3,005	4,747
+Total liabilities and equity	$ 34,924	$ 37,733

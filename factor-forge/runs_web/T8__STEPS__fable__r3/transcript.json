@@ -1,0 +1,624 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T8\n\nFor each of four firms -- Apple (AAPL), Coca-Cola (KO), Chevron (CVX) and 3M (MMM) -- find book equity from the first 10-Q each firm filed between July 1 and August 31, 2026 (the balance sheet at the end of that quarter). Then, using the market equity (ME) values given below, rank the four firms by book-to-market B/M = BE / ME from highest (value) to lowest (growth).\n\nMARKET EQUITY (ME) to use, in US dollars, as of June 30, 2026:\n  AAPL: $4,222,971,924,800\n  KO: $349,668,176,979\n  CVX: $327,503,846,378\n  MMM: $83,500,616,536\n\nRULES:\n- Give each book equity as a whole number of US dollars (not millions or thousands).\n- Book equity means the parent company's total stockholders' (shareholders') equity line (excluding noncontrolling interests).\n- Give the ranking as a list of the four tickers, highest B/M first.\n- You may use at most 50 tool calls in total, including submit_answer.\n\nSTEPS (a click path that works):\n1. Repeat the single-firm click path four times: https://www.sec.gov/search-filings -> company suggestion -> expand \"10-K (annual reports) and 10-Q (quarterly reports)\" -> \"Filing\" link of the 10-Q filed in July or August 2026 -> filing folder -> FilingSummary.xml -> the balance-sheet R page.\n2. Rows and columns: AAPL \"Total shareholders' equity\", \"Jun. 27, 2026\"; KO \"Equity attributable to shareowners of The Coca-Cola Company\", \"Jul. 03, 2026\"; CVX \"Total Chevron Corporation stockholders' equity\", \"Jun. 30, 2026\"; MMM \"Total 3M Company shareholders' equity\", \"Jun. 30, 2026\".\n3. Compute B/M = BE / ME with the ME values given, and order the tickers from highest to lowest B/M.\nUnits: All four pages say \"$ in Millions\": multiply by 1,000,000. You have 50 tool calls for all four firms, so go straight to each filing.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "text": "I'll pull up the 10-Q filing lists for all four companies in parallel.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01M9snA8yzMtspVNZqfsM7dM",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-Q&dateb=&owner=include&count=10"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_0134odsuW68y4tmQsTWAns4h",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000021344&type=10-Q&dateb=&owner=include&count=10"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01RUPmMLFQnD2Dkp8VMpoY4H",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000093410&type=10-Q&dateb=&owner=include&count=10"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01AiK7PVbVDFGjxtZ4kpFrJM",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000066740&type=10-Q&dateb=&owner=include&count=10"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01M9snA8yzMtspVNZqfsM7dM",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000320193&type=10-Q&dateb=&owner=include&count=10 -- disallowed by www.sec.gov/robots.txt"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0134odsuW68y4tmQsTWAns4h",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000021344&type=10-Q&dateb=&owner=include&count=10 -- disallowed by www.sec.gov/robots.txt"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01RUPmMLFQnD2Dkp8VMpoY4H",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000093410&type=10-Q&dateb=&owner=include&count=10 -- disallowed by www.sec.gov/robots.txt"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01AiK7PVbVDFGjxtZ4kpFrJM",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000066740&type=10-Q&dateb=&owner=include&count=10 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "Those are blocked; I'll follow the prescribed path starting from the search-filings page.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01WaUiHy2XAsv4NjAzHv3Mma",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/search-filings"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01WaUiHy2XAsv4NjAzHv3Mma",
+    "content": "URL: https://www.sec.gov/search-filings | TITLE: SEC.gov | Search Filings | chunk 1/1\n\n[e1 link] Skip to search field\n[e2 link] Skip to main content\n\nAn official website of the United States government\n\n[e3 button] Here\u2019s how you know\n[e4 link]\nSEC homepage\n[e5 button]\nSearch Filings\n[e6 button]\nSubmit Filings\n[e7 button]\nData & Research\n[e8 button]\nRules, Enforcement, & Compliance\n[e9 button]\nFeatured Topics\n[e10 button]\nAbout\n[e11 link]\nSubmit a Tip or Complaint\n[e12 link] Newsroom\n|\n[e13 link] Investors\n[e14 link] Small Businesses\n[e15 link] Whistleblowers\nSearch SEC.gov & EDGAR\n[e16 textbox \"Search SEC.gov & EDGAR\" value=\"\"]\n[e17 button]\nSEARCH\n[e18 link] SEARCH FILINGS\n[e19 link] Full Text Search\n[e20 link] Latest Filings Search\n[e21 link] Insurance Products Search\n[e22 link] Mutual Funds Search\n[e23 link] Confidential Treatment Orders Search\n[e24 link] Standard Industrial Classification (SIC) Code List\n[e25 link] CIK Lookup\n[e26 link] EDGAR Public Dissemination Service (PDS) System\n[e27 link] Effectiveness Notices\n[e28 link] EDGAR Application Programming Interfaces\n[e29 link] EDGAR Search Assistance\n[e30 link] Home  Search Filings\nSearch Filings\n\nEnjoy free public access to millions of informational documents filed by publicly traded companies and others in the SEC's Electronic Data Gathering, Analysis, and Retrieval (EDGAR) system.\n\nCompany Search\nSearch By\n[e31 textbox \"Name, ticker symbol, or CIK\" value=\"\"]\n[e32 button]\nSUBMIT\n[e33 button]\nmore search options\n\nFind registration statements, periodic reports, and other forms by typing the name or ticker symbol of a company ([e34 link \"CIK Lookup\"] CIK lookup info) ([e35 link \"Confidential Treatment Orders Search\"] confidential treatment orders) ([e36 link] SEC correspondence with issuers)\n\nEDGAR Search Tools\n\nSome specific ways to access filings based on time, type, or other categories.\n\n[e37 link] Full Text Search\n\nFind keywords and phrases\u202fin more than 20 years of EDGAR filings, and filter by date, company, person, filing category, or location.\n\n[e38 link] Latest Filings\n\nView a listing of real-time filings as they are submitted into the EDGAR system. Also view daily filings by form type within the past week.\n\n[e39 link] Search Assistance\n\nTutorials and resources to help users locate filings, conduct research, and retrieve specific information in EDGAR.\n\n[e40 link] Mutual Fund Search\n\nView prospectuses, proxy voting records, and other forms by typing the name of a mutual fund or ETF.\n\n[e41 link] Insurance Product Search\n\nFind a product by typing the name of an insurance company, underlying mutual fund, or contract.\n\nEDGAR Resources\n\nData and information to assist users as they navigate the EDGAR system.\n\n[e42 link] SIC Codes\n\nA list of Standard Industrial Classification Codes used to indicate a company's type of business.\n\n[e43 link] CIK Lookup\n\nA search engine to find Central Index Key numbers assigned by the SEC to corporate or individual filers.\n\n[e44 link] Public Dissemination Service (PDS)\n\nAn option to subscribe to a privatized system to receive a dedicated feed of all public EDGAR filings.\n\n[e45 link] EDGAR APIs\n\nRESTful data Application Programming Interfaces that include the submissions history by filer and the XBRL data from financial statements.\n\n[e46 link] EDGAR RSS Feeds\n\nReally Simple Syndication feeds for EDGAR submissions through which users can view, analyze, and manipulate filings.\n\n[e47 link] Return to top\nAbout the SEC\n[e48 link] Budget & Performance\n[e49 link] Careers\n[e50 link] Commission Votes\n[e51 link] Contact\n[e52 link] Contracts\nTransparency\n[e53 link] Accessibility & Disability\n[e54 link] Super Intelligence\n[e55 link] FOIA\n[e56 link] Inspector General\n[e57 link] No FEAR Act Data\n[e58 link] Ombuds\n[e59 link] SEC Excess Personal Property Guidance\nWebsites\n[e60 link] Investor.gov\n[e61 link] Related Sites\n[e62 link] USA.gov\nSite Information\n[e63 link] Plain Writing\n[e64 link] Privacy & Security\n[e65 link] Site Map\nStay connected. Sign up for email updates.\nYour email address\n[e66 textbox \"Your email address\" value=\"\"]\n[e67 button]\nSIGN UP\n[e68 link]\nX\n[e69 link]\nFacebook\n[e70 link]\nInstagram\n[e71 link]\nRSS\n[e72 link \"(opens in a new window)\"]\nYouTube\n[e73 link]\nEmail Updates"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01XDfQrNK7GgMVYvdQecPh6U",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e31",
+     "text": "AAPL"
+    },
+    "name": "fill",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01XDfQrNK7GgMVYvdQecPh6U",
+    "content": "Typed 'AAPL' into e31. URL: https://www.sec.gov/search-filings\nNew elements that appeared (e.g. suggestions):\n[e74 link] Apple Inc. (AAPL)\n[e75 link] CIK\u00a00000320193\n[e76 link] Permuto Capital AAPL Trust I\n[e77 link] CIK\u00a00002055491\n[e78 link] Search for \"AAPL\" in EDGAR filings"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01JxJTLfMpWFx9c4Z9otVHtQ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e74"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01JxJTLfMpWFx9c4Z9otVHtQ",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nApple Inc. AAPL on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 16, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 2, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e13 link] Filing\nOpen filing\n[e14 link] October 2, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] October 2, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] September 22, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01WniR8N23JSvZakGc8P2d98",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01WniR8N23JSvZakGc8P2d98",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=320193&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nApple Inc. AAPL on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 16, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 2, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e13 link] Filing\nOpen filing\n[e14 link] October 2, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] October 2, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] September 22, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] July 31, 2026 - 10-Q: Quarterly report for quarter ending June 27, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] May 1, 2026 - 10-Q: Quarterly report for quarter ending March 28, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] January 30, 2026 - 10-Q: Quarterly report for quarter ending December 27, 2025\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] October 31, 2025 - 10-K: Annual report for year ending September 27, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01TZUFreKMcUCHRApanvVcc2",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e28"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01TZUFreKMcUCHRApanvVcc2",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/0000320193-26-000020-index.htm | TITLE: EDGAR Filing Documents for 0000320193-26-000020 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0000320193-26-000020\nFiling Date\n2026-07-31\nAccepted\n2026-07-31 06:01:02\nDocuments\n62\nPeriod of Report\n2026-06-27\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] aapl-20260627.htm \u00a0\u00a0iXBRL\t10-Q\t1018210\n2\tEX-31.1\t[e11 link] a10-qexhibit31106272026.htm\tEX-31.1\t10578\n3\tEX-31.2\t[e12 link] a10-qexhibit31206272026.htm\tEX-31.2\t10617\n4\tEX-32.1\t[e13 link] a10-qexhibit32106272026.htm\tEX-32.1\t8462\n10\t\t[e14 link] aapl-20260627_g1.jpg\tGRAPHIC\t10963\n\u00a0\tComplete submission text file\t[e15 link] 0000320193-26-000020.txt\t\u00a0\t5946811\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n5\tXBRL TAXONOMY EXTENSION SCHEMA DOCUMENT\t[e16 link] aapl-20260627.xsd\tEX-101.SCH\t36144\n6\tXBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT\t[e17 link] aapl-20260627_cal.xml\tEX-101.CAL\t89689\n7\tXBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT\t[e18 link] aapl-20260627_def.xml\tEX-101.DEF\t148354\n8\tXBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT\t[e19 link] aapl-20260627_lab.xml\tEX-101.LAB\t511737\n9\tXBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT\t[e20 link] aapl-20260627_pre.xml\tEX-101.PRE\t325458\n66\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e21 link] aapl-20260627_htm.xml\tXML\t962405\nMailing Address\nONE APPLE PARK WAY\nCUPERTINO\nCA\n95014\nBusiness Address\nONE APPLE PARK WAY\nCUPERTINO\nCA\n95014\n(408) 996-1010\nApple Inc. (Filer) CIK: [e22 link] 0000320193 (see all company filings)\n\nEIN.: 942404110 | State of Incorp.: CA | Fiscal Year End: 0926\nType: 10-Q | Act: 34 | File No.: [e23 link] 001-36743 | Film No.: 261225227\nSIC: [e24 link] 3571 Electronic Computers\n(CF Office: 06 Technology)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01RjkyLoRitnAnKJSNfKTiUP",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01RjkyLoRitnAnKJSNfKTiUP",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/R4.htm | TITLE:  | chunk 1/1\n\nXML 15 R4.htm IDEA: XBRL DOCUMENT\nCONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) - USD ($)\n$ in Millions\n\nJun. 27, 2026\n\nSep. 27, 2025\n\nCurrent assets:\nCash and cash equivalents\t$ 39,544\t$ 35,934\nMarketable securities\t22,855\t18,763\nAccounts receivable, net\t31,398\t39,777\nVendor non-trade receivables\t27,509\t33,180\nInventories\t11,092\t5,718\nOther current assets\t17,420\t14,585\nTotal current assets\t149,818\t147,957\nNon-current assets:\nMarketable securities\t84,118\t77,723\nProperty, plant and equipment, net\t51,431\t49,834\nIntangible assets, net\t20,342\t11,093\nOther non-current assets\t77,557\t72,634\nTotal non-current assets\t233,448\t211,284\nTotal assets\t383,266\t359,241\nCurrent liabilities:\nAccounts payable\t64,525\t69,860\nOther current liabilities\t62,259\t66,387\nDeferred revenue\t9,538\t9,055\nCommercial paper\t1,997\t7,979\nTerm debt\t11,007\t12,350\nTotal current liabilities\t149,326\t165,631\nNon-current liabilities:\nTerm debt\t71,340\t78,328\nOther non-current liabilities\t55,080\t41,549\nTotal non-current liabilities\t126,420\t119,877\nTotal liabilities\t275,746\t285,508\nCommitments and contingencies\nShareholders\u2019 equity:\nCommon stock and additional paid-in capital, $0.00001 par value: 50,400,000 shares authorized; 14,608,963 and 14,773,260 shares issued and outstanding, respectively\t100,702\t93,568\nRetained earnings/(Accumulated deficit)\t11,326\t(14,264)\nAccumulated other comprehensive loss\t(4,508)\t(5,571)\nTotal shareholders\u2019 equity\t107,520\t73,733\nTotal liabilities and shareholders\u2019 equity\t$ 383,266\t$ 359,241"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "AAPL: $107,520 million. Now Coca-Cola.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01JEZAQav5yxE9ZRixfmMGB5",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/browse/?CIK=21344&owner=exclude"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01JEZAQav5yxE9ZRixfmMGB5",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=21344&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nCOCA COLA CO KO on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 28, 2026 - 10-Q: Quarterly report for quarter ending October 2, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 27, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] September 28, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] September 22, 2026 - 25-NSE: Notification filed by national security exchange to report the removal from listing and registration of matured, redeemed or retired securities\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] August 20, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01Ds8SFxmDjS246FgxRyBSD9",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Ds8SFxmDjS246FgxRyBSD9",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=21344&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nCOCA COLA CO KO on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 28, 2026 - 10-Q: Quarterly report for quarter ending October 2, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 27, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] September 28, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] September 22, 2026 - 25-NSE: Notification filed by national security exchange to report the removal from listing and registration of matured, redeemed or retired securities\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] August 20, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] October 28, 2026 - 10-Q: Quarterly report for quarter ending October 2, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] July 29, 2026 - 10-Q: Quarterly report for quarter ending July 3, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] April 30, 2026 - 10-Q: Quarterly report for quarter ending April 3, 2026\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] February 20, 2026 - 10-K: Annual report for year ending December 31, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01X4zzg1qtPVXNLJEe4sBLTe",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e30"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01X4zzg1qtPVXNLJEe4sBLTe",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/0001628280-26-050503-index.htm | TITLE: EDGAR Filing Documents for 0001628280-26-050503 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001628280-26-050503\nFiling Date\n2026-07-29\nAccepted\n2026-07-29 14:04:37\nDocuments\n92\nPeriod of Report\n2026-07-03\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] ko-20260703.htm \u00a0\u00a0iXBRL\t10-Q\t2187535\n2\tEX-10.1\t[e11 link] a20260703ex-101.htm\tEX-10.1\t98452\n3\tEX-10.2\t[e12 link] a20260703ex-102.htm\tEX-10.2\t11557\n4\tEX-10.3\t[e13 link] a20260703ex-103.htm\tEX-10.3\t13228\n5\tEX-31.1\t[e14 link] a20260703ex-311.htm\tEX-31.1\t9946\n6\tEX-31.2\t[e15 link] a20260703ex-312.htm\tEX-31.2\t9964\n7\tEX-32.1\t[e16 link] a20260703ex-321.htm\tEX-32.1\t5603\n13\tIMAGE\t[e17 link] image_0.jpg\tGRAPHIC\t805\n14\tIMAGE\t[e18 link] image_01.jpg\tGRAPHIC\t805\n15\tIMAGE\t[e19 link] image_1.jpg\tGRAPHIC\t9493\n16\tIMAGE\t[e20 link] image_11.jpg\tGRAPHIC\t9493\n17\tIMAGE\t[e21 link] ko-20260703_g1.jpg\tGRAPHIC\t235131\n\u00a0\tComplete submission text file\t[e22 link] 0001628280-26-050503.txt\t\u00a0\t14099008\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n8\tXBRL TAXONOMY EXTENSION SCHEMA DOCUMENT\t[e23 link] ko-20260703.xsd\tEX-101.SCH\t67793\n9\tXBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT\t[e24 link] ko-20260703_cal.xml\tEX-101.CAL\t174008\n10\tXBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT\t[e25 link] ko-20260703_def.xml\tEX-101.DEF\t482032\n11\tXBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT\t[e26 link] ko-20260703_lab.xml\tEX-101.LAB\t805158\n12\tXBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT\t[e27 link] ko-20260703_pre.xml\tEX-101.PRE\t589342\n95\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e28 link] ko-20260703_htm.xml\tXML\t2921566\nMailing Address\nONE COCA COLA PLAZA\nATLANTA\nGA\n30313\nBusiness Address\nONE COCA COLA PLAZA\nATLANTA\nGA\n30313\n404-676-2121\nCOCA COLA CO (Filer) CIK: [e29 link] 0000021344 (see all company filings)\n\nEIN.: 580628465 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e30 link] 001-02217 | Film No.: 261216406\nSIC: [e31 link] 2080 Beverages\n(CF Office: 04 Manufacturing)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01HrJrDrsbeG7MnuDDEyHKrw",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01HrJrDrsbeG7MnuDDEyHKrw",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/R4.htm | TITLE:  | chunk 1/1\n\nXML 22 R4.htm IDEA: XBRL DOCUMENT\nCONDENSED CONSOLIDATED BALANCE SHEETS - USD ($)\n$ in Millions\n\nJul. 03, 2026\n\nDec. 31, 2025\n\nCURRENT ASSETS\nCash and cash equivalents\t$ 12,907\t$ 10,270\nShort-term investments\t622\t3,602\nTotal Cash, Cash Equivalents and Short-Term Investments\t13,529\t13,872\nMarketable securities\t2,842\t1,934\nTrade accounts receivable, less allowances of $492 and $495, respectively\t3,732\t3,038\nInventories\t4,647\t4,425\nPrepaid expenses and other current assets\t2,688\t2,433\nAssets held for sale\t5,438\t5,342\nTotal Current Assets\t32,876\t31,044\nEquity method investments\t20,782\t20,235\nDeferred income tax assets\t1,090\t1,206\nProperty, plant and equipment, less accumulated depreciation of $9,328 and $9,119, respectively\t9,636\t9,613\nTrademarks with indefinite lives\t12,500\t12,531\nGoodwill\t15,456\t15,491\nOther noncurrent assets\t15,582\t14,696\nTotal Assets\t107,922\t104,816\nCURRENT LIABILITIES\nAccounts payable and accrued expenses\t15,434\t14,813\nLoans and notes payable\t48\t1,551\nCurrent maturities of long-term debt\t6,494\t1,822\nAccrued income taxes\t782\t525\nLiabilities held for sale\t2,442\t2,570\nTotal Current Liabilities\t25,200\t21,281\nLong-term debt\t37,001\t42,119\nOther noncurrent liabilities\t4,627\t4,735\nDeferred income tax liabilities\t2,779\t2,406\nTHE COCA-COLA COMPANY SHAREOWNERS' EQUITY\nCommon stock, $0.25 par value; authorized\u00a0\u2014 11,200\u00a0shares; issued\u00a0\u2014 7,040\u00a0shares\t1,760\t1,760\nCapital surplus\t20,741\t20,581\nReinvested earnings\t84,169\t80,382\nAccumulated other comprehensive income (loss)\t(13,626)\t(14,131)\nTreasury stock, at cost\u00a0\u2014 2,737 and 2,738 shares, respectively\t(56,894)\t(56,423)\nEquity Attributable to Shareowners of The Coca-Cola Company\t36,150\t32,169\nEquity attributable to noncontrolling interests\t2,165\t2,106\nTotal Equity\t38,315\t34,275\nTotal Liabilities and Equity\t$ 107,922\t$ 104,816"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "KO: $36,150 million. Now Chevron.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01T8aDC2vp7syyr5p6nwa3Eb",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/browse/?CIK=93410&owner=exclude"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01T8aDC2vp7syyr5p6nwa3Eb",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=93410&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nCHEVRON CORP CVX on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 19, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 6, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n7.01 - Regulation FD Disclosure\n8.01 - Other Events (The registrant can use this Item to report events that are not specifically called for by Form 8-K, that the registrant considers to be of importance to security holders.)\n9.01 - Financial Statements and Exhibits\n[e14 link] October 5, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] September 23, 2026 - SD: Specialized disclosure\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 18, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01Q1kzz2D1mmpjaEeLKC2eDT",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Q1kzz2D1mmpjaEeLKC2eDT",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=93410&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nCHEVRON CORP CVX on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 19, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e11 link] Filing\nOpen filing\n[e12 link] October 6, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n7.01 - Regulation FD Disclosure\n8.01 - Other Events (The registrant can use this Item to report events that are not specifically called for by Form 8-K, that the registrant considers to be of importance to security holders.)\n9.01 - Financial Statements and Exhibits\n[e14 link] October 5, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] September 23, 2026 - SD: Specialized disclosure\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 18, 2026 - 144: Report of proposed sale of securities\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] August 6, 2026 - 10-Q: Quarterly report for quarter ending June 30, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] May 7, 2026 - 10-Q: Quarterly report for quarter ending March 31, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] February 24, 2026 - 10-K: Annual report for year ending December 31, 2025\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] November 6, 2025 - 10-Q: Quarterly report for quarter ending September 30, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01LhHZQbbrr5aixh786Cjzfk",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e28"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01LhHZQbbrr5aixh786Cjzfk",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/0000093410-26-000167-index.htm | TITLE: EDGAR Filing Documents for 0000093410-26-000167 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0000093410-26-000167\nFiling Date\n2026-08-06\nAccepted\n2026-08-06 11:12:47\nDocuments\n83\nPeriod of Report\n2026-06-30\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] cvx-20260630.htm \u00a0\u00a0iXBRL\t10-Q\t2090760\n2\tEX-31.1\t[e11 link] a06302026ex311ceo-sox302.htm\tEX-31.1\t11110\n3\tEX-31.2\t[e12 link] a06302026ex312cfo-sox302.htm\tEX-31.2\t10612\n4\tEX-32.1\t[e13 link] a06302026ex321ceo-sox906.htm\tEX-32.1\t5316\n5\tEX-32.2\t[e14 link] a06302026ex322cfo-sox906.htm\tEX-32.2\t4906\n11\tGRAPHIC\t[e15 link] cvx-20260630_g1.jpg\tGRAPHIC\t97523\n\u00a0\tComplete submission text file\t[e16 link] 0000093410-26-000167.txt\t\u00a0\t10652799\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n6\tXBRL TAXONOMY EXTENSION SCHEMA DOCUMENT\t[e17 link] cvx-20260630.xsd\tEX-101.SCH\t53282\n7\tXBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT\t[e18 link] cvx-20260630_cal.xml\tEX-101.CAL\t118365\n8\tXBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT\t[e19 link] cvx-20260630_def.xml\tEX-101.DEF\t232123\n9\tXBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT\t[e20 link] cvx-20260630_lab.xml\tEX-101.LAB\t694928\n10\tXBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT\t[e21 link] cvx-20260630_pre.xml\tEX-101.PRE\t471153\n88\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e22 link] cvx-20260630_htm.xml\tXML\t1945530\nMailing Address\n1400 SMITH STREET\nHOUSTON\nTX\n77002\nBusiness Address\n1400 SMITH STREET\nHOUSTON\nTX\n77002\n832-854-1000\nCHEVRON CORP (Filer) CIK: [e23 link] 0000093410 (see all company filings)\n\nEIN.: 940890210 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e24 link] 001-00368 | Film No.: 261247497\nSIC: [e25 link] 2911 Petroleum Refining\n(CF Office: 01 Energy & Transportation)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_018e1TNWFshbSp2rmdtgELzi",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_018e1TNWFshbSp2rmdtgELzi",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/R4.htm | TITLE:  | chunk 1/1\n\nXML 92 R4.htm IDEA: XBRL DOCUMENT\nCONSOLIDATED BALANCE SHEET (Unaudited) - USD ($)\n$ in Millions\n\nJun. 30, 2026\n\nDec. 31, 2025\n\nAssets\n\nCash and cash equivalents\n\t\t$ 8,527\t$ 6,293\n\nTime deposits\n\t\t3\t4\n\nAccounts and notes receivable (less allowance: 2026 - $178; 2025 - $176)\n\t\t24,575\t18,075\n\nInventories:\n\nCrude oil and products\n\t\t7,168\t6,640\n\nChemicals\n\t\t632\t571\n\nMaterials, supplies and other\n\t\t2,722\t2,500\n\nTotal inventories\n\t\t10,522\t9,711\n\nPrepaid expenses and other current assets\n\t\t5,509\t4,469\n\nTotal Current Assets\n\t\t49,136\t38,552\n\nLong-term receivables (less allowance: 2026 - $216; 2025 - $216)\n\t\t903\t1,035\n\nInvestments and advances\n\t\t42,346\t43,867\n\nProperties, plant and equipment, at cost\n\t\t440,714\t434,955\n\nLess: Accumulated depreciation, depletion and amortization\n\t\t224,777\t215,226\n\nProperties, plant and equipment, net\n\t\t215,937\t219,729\n\nDeferred charges and other assets\n\t\t16,465\t16,236\n\nGoodwill\n\t\t4,568\t4,568\n\nAssets held for sale\n\t\t780\t25\n\nTotal Assets\n\t\t330,135\t324,012\n\nLiabilities and Equity\n\nShort-term debt\n\t\t401\t977\n\nAccounts payable\n\t\t24,419\t19,280\n\nAccrued liabilities\n\t\t10,840\t10,763\n\nFederal and other taxes on income\n\t\t2,204\t844\n\nOther taxes payable\n\t\t1,377\t1,523\n\nTotal Current Liabilities\n\t\t39,241\t33,387\n\nLong-term debt\n\t\t36,674\t39,781\n\nDeferred credits and other noncurrent obligations\n\t\t24,392\t24,543\n\nNoncurrent deferred income taxes\n\t\t30,338\t30,014\n\nNoncurrent employee benefit plans\n\t\t3,932\t4,111\n\nTotal Liabilities\n\t[1]\t134,577\t131,836\n\nPreferred stock (authorized 100,000,000 shares; $1.00 par value; none issued)\n\t\t0\t0\n\nCommon stock (authorized 6,000,000,000 shares, $0.75 par value; 2,442,676,580\u00a0shares issued at June\u00a030, 2026 and December 31, 2025)\n\t\t1,832\t1,832\n\nCapital in excess of par value\n\t\t33,999\t33,886\n\nRetained earnings\n\t\t212,595\t205,365\n\nAccumulated other comprehensive losses\n\t\t(2,113)\t(2,464)\n\nDeferred compensation and benefit plan trust\n\t\t(240)\t(240)\n\nTreasury stock, at cost (466,905,306 and 448,260,458 shares at June\u00a030, 2026 and December 31, 2025, respectively)\n\t\t(56,190)\t(51,929)\n\nTotal Chevron Corporation Stockholders\u2019 Equity\n\t\t189,883\t186,450\n\nNoncontrolling interests\n\t\t5,675\t5,726\n\nTotal Equity\n\t\t195,558\t192,176\n\nTotal Liabilities and Equity\n\t\t$ 330,135\t$ 324,012\n\n[1]\n* Refer to [e1 link] Note 12 Other Contingencies and Commitments."
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "text": "CVX: $189,883 million. Now 3M.",
+    "type": "text"
+   },
+   {
+    "id": "toolu_01BxMFJvVW5dVbJYRkwq5Uh3",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/browse/?CIK=66740&owner=exclude"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01BxMFJvVW5dVbJYRkwq5Uh3",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=66740&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\n3M CO MMM on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 20, 2026 - 10-Q: Quarterly report for quarter ending September 30, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 20, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 19, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n7.01 - Regulation FD Disclosure\n[e16 link] October 16, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] September 11, 2026 - CERT: *\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_0162NGQJV6g7PgdvLsdSrkRm",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0162NGQJV6g7PgdvLsdSrkRm",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=66740&owner=exclude | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\n3M CO MMM on NYSE\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 20, 2026 - 10-Q: Quarterly report for quarter ending September 30, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 20, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 19, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n7.01 - Regulation FD Disclosure\n[e16 link] October 16, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] September 11, 2026 - CERT: *\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] October 20, 2026 - 10-Q: Quarterly report for quarter ending September 30, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] July 21, 2026 - 10-Q: Quarterly report for quarter ending June 30, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] April 21, 2026 - 10-Q: Quarterly report for quarter ending March 31, 2026\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] February 3, 2026 - 10-K: Annual report for year ending December 31, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01ERSwLeCjhB9hDa1k6LMrAt",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e30"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01ERSwLeCjhB9hDa1k6LMrAt",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/0000066740-26-000246-index.htm | TITLE: EDGAR Filing Documents for 0000066740-26-000246 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0000066740-26-000246\nFiling Date\n2026-07-21\nAccepted\n2026-07-21 12:08:01\nDocuments\n95\nPeriod of Report\n2026-06-30\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] mmm-20260630.htm \u00a0\u00a0iXBRL\t10-Q\t2252289\n2\tEX-10.1\t[e11 link] exhibit101-jvxcreditagreem.htm\tEX-10.1\t644530\n3\tEX-31.1\t[e12 link] q22026exhibit311.htm\tEX-31.1\t10019\n4\tEX-31.2\t[e13 link] q22026exhibit312.htm\tEX-31.2\t9723\n5\tEX-32.1\t[e14 link] q22026exhibit321.htm\tEX-32.1\t4196\n6\tEX-32.2\t[e15 link] q22026exhibit322.htm\tEX-32.2\t4258\n7\tEX-95\t[e16 link] q22026exhibit95.htm\tEX-95\t39617\n13\t\t[e17 link] mmm-20260630_g1.jpg\tGRAPHIC\t7896\n\u00a0\tComplete submission text file\t[e18 link] 0000066740-26-000246.txt\t\u00a0\t13173852\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n8\tXBRL TAXONOMY EXTENSION SCHEMA DOCUMENT\t[e19 link] mmm-20260630.xsd\tEX-101.SCH\t73032\n9\tXBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT\t[e20 link] mmm-20260630_cal.xml\tEX-101.CAL\t94303\n10\tXBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT\t[e21 link] mmm-20260630_def.xml\tEX-101.DEF\t379541\n11\tXBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT\t[e22 link] mmm-20260630_lab.xml\tEX-101.LAB\t815677\n12\tXBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT\t[e23 link] mmm-20260630_pre.xml\tEX-101.PRE\t545999\n99\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e24 link] mmm-20260630_htm.xml\tXML\t2448487\nMailing Address\n3M CENTER\nBLDG. 220-9E-02\nST. PAUL\nMN\n55144-1000\nBusiness Address\n3M CENTER\nBLDG. 220-9E-02\nST PAUL\nMN\n55144-1000\n6517331110\n3M CO (Filer) CIK: [e25 link] 0000066740 (see all company filings)\n\nEIN.: 410417775 | State of Incorp.: DE | Fiscal Year End: 1231\nType: 10-Q | Act: 34 | File No.: [e26 link] 001-03285 | Film No.: 261189133\nSIC: [e27 link] 3841 Surgical & Medical Instruments & Apparatus\n(CF Office: 08 Industrial Applications and Services)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_019ywGRWHwgUwgG9m6UeZQ4V",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/R4.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_019ywGRWHwgUwgG9m6UeZQ4V",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/R4.htm | TITLE:  | chunk 1/1\n\nXML 18 R4.htm IDEA: XBRL DOCUMENT\nConsolidated Balance Sheet (Unaudited) - USD ($)\n$ in Millions\n\nJun. 30, 2026\n\nDec. 31, 2025\n\nCurrent assets\nCash and cash equivalents\t$ 2,955\t$ 5,235\nMarketable securities\t375\t698\nAccounts receivable \u2014 net of allowances of $51 and $61\t3,927\t3,533\nInventories\t3,770\t3,661\nPrepaids\t492\t391\nAssets held for sale\t0\t46\nOther current assets\t2,593\t2,823\nTotal current assets\t14,112\t16,387\nProperty, plant and equipment \u2014 net\t6,877\t7,101\nGoodwill\t6,374\t6,419\nIntangible assets \u2014 net\t1,053\t1,103\nOther assets\t6,508\t6,723\nTotal assets\t34,924\t37,733\nCurrent liabilities\nShort-term borrowings and current portion of long-term debt\t1,647\t1,670\nAccounts payable\t3,108\t2,702\nAccrued payroll\t522\t718\nLiabilities held for sale\t0\t55\nOther current liabilities\t6,102\t4,450\nTotal current liabilities\t11,379\t9,595\nLong-term debt\t10,904\t10,932\nPension and postretirement benefits\t1,502\t1,631\nOther liabilities\t8,134\t10,828\nTotal liabilities\t31,919\t32,986\nCommitments and contingencies (Note 15)\n3M Company shareholders\u2019 equity:\nCommon stock\t9\t9\nAdditional paid-in capital\t7,540\t7,440\nRetained earnings\t38,633\t38,258\nTreasury stock, at cost\t(38,177)\t(35,936)\nAccumulated other comprehensive income (loss)\t(5,053)\t(5,069)\nTotal 3M Company shareholders\u2019 equity\t2,952\t4,702\nNoncontrolling interest\t53\t45\nTotal equity\t3,005\t4,747\nTotal liabilities and equity\t$ 34,924\t$ 37,733"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01DfG95SUbe1CqRVBe9w3T8Y",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "book_equity_usd": {
+      "AAPL": 107520000000,
+      "KO": 36150000000,
+      "CVX": 189883000000,
+      "MMM": 2952000000
+     },
+     "ranking_high_to_low_bm": [
+      "CVX",
+      "KO",
+      "MMM",
+      "AAPL"
+     ],
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/R4.htm",
+     "give_up": false
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01DfG95SUbe1CqRVBe9w3T8Y",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

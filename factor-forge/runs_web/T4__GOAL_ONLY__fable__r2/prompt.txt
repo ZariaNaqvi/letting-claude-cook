@@ -1,0 +1,11 @@
+TASK T4
+
+Find Netflix, Inc.'s total stockholders' equity at June 30, 2026, from its quarterly report for that quarter.
+
+RULES:
+- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.
+- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.
+- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.
+- You may use at most 30 tool calls in total, including submit_answer.
+
+When you have the answer, call submit_answer.

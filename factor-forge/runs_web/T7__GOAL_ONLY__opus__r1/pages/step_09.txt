@@ -1,0 +1,973 @@
+URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/brka-20260630.htm | TITLE: 10-Q | chunk 1/20
+
+UNITED STATES SECURITIES AND EXCHANGE COMMISSION
+
+Washington, D.C. 20549
+
+FORM 10-Q
+
+(Mark One)
+
+☒
+
+QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+
+For the quarterly period ended June 30, 2026
+
+OR
+
+☐
+
+TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+
+For the transition period from                  to
+
+Commission file number 001-14905
+
+BERKSHIRE HATHAWAY INC.
+
+(Exact name of Registrant as specified in its charter)
+
+Delaware
+
+47-0813844
+
+(State or other jurisdiction of incorporation or organization)
+
+(I.R.S. Employer Identification Number)
+
+3555 Farnam Street, Omaha, Nebraska 68131
+
+(Address of principal executive office) (Zip Code)
+
+(402) 346-1400
+
+(Registrant’s telephone number, including area code)
+
+(Former name, former address and former fiscal year, if changed since last report)
+
+Securities registered pursuant to Section 12(b) of the Act:
+
+Title of each class
+
+Trading Symbols
+
+Name of each exchange on which registered
+
+Class A Common Stock
+
+Class B Common Stock
+
+1.125% Senior Notes due 2027
+
+2.150% Senior Notes due 2028
+
+1.500% Senior Notes due 2030
+
+2.000% Senior Notes due 2034
+
+1.625% Senior Notes due 2035
+
+2.375% Senior Notes due 2039
+
+0.500% Senior Notes due 2041
+
+2.625% Senior Notes due 2059
+
+BRK.A
+
+BRK.B
+
+BRK27
+
+BRK28
+
+BRK30
+
+BRK34
+
+BRK35
+
+BRK39
+
+BRK41
+
+BRK59
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+New York Stock Exchange
+
+Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.    Yes  ☒    No  ☐
+
+Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files).    Yes  ☒    No  ☐
+
+Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act.
+
+Large accelerated filer
+
+☒
+
+Accelerated filer
+
+☐
+
+Non-accelerated filer
+
+☐
+
+Smaller reporting company
+
+☐
+
+Emerging growth company
+
+☐
+
+If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.  ☐
+
+Indicate by check mark whether the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).
+
+Yes  ☐    No  ☒
+
+Number of shares of common stock outstanding as of July 29, 2026:
+
+Class A —
+
+488,450 shares
+
+Class B —
+
+1,408,035,161 shares
+
+BERKSHIRE HATHAWAY INC.
+
+Page No.
+
+[e1 link] Part I – Financial Information
+
+2
+
+[e2 link] Item 1.  Financial Statements
+
+2
+
+[e3 link] Consolidated Balance Sheets—June 30, 2026 and December 31, 2025
+
+2
+
+[e4 link] Consolidated Statements of Earnings—Second Quarter and First Six Months 2026 and 2025
+
+4
+
+[e5 link] Consolidated Statements of Comprehensive Income—Second Quarter and First Six Months 2026 and 2025
+
+5
+
+[e6 link] Consolidated Statements of Changes in Shareholders’ Equity—Second Quarter and First Six Months 2026
+
+[e7 link]      and 2025
+
+6
+
+[e8 link] Consolidated Statements of Cash Flows—First Six Months 2026 and 2025
+
+7
+
+[e9 link] Notes to Consolidated Financial Statements
+
+8
+
+Item 2.
+
+[e10 link] Management’s Discussion and Analysis of Financial Condition and Results of Operations
+
+33
+
+Item 3.
+
+[e11 link] Quantitative and Qualitative Disclosures About Market Risk
+
+51
+
+Item 4.
+
+[e12 link] Controls and Procedures
+
+51
+
+[e13 link] Part II – Other Information
+
+51
+
+Item 1.
+
+[e14 link] Legal Proceedings
+
+51
+
+Item 1A.
+
+[e15 link] Risk Factors
+
+51
+
+Item 2.
+
+[e16 link] Unregistered Sales of Equity Securities and Use of Proceeds and Issuer Repurchases of Equity Securities
+
+51
+
+Item 3.
+
+[e17 link] Defaults Upon Senior Securities
+
+51
+
+Item 4.
+
+[e18 link] Mine Safety Disclosures
+
+52
+
+Item 5.
+
+[e19 link] Other Information
+
+52
+
+Item 6.
+
+[e20 link] Exhibits
+
+52
+
+[e21 link] Signature
+
+52
+
+1
+
+Part I Financial Information
+
+Item 1. Financial Statements
+
+BERKSHIRE HATHAWAY INC.
+
+and Subsidiaries
+
+CONSOLIDATED BALANCE SHEETS
+
+(dollars in millions)
+
+June 30,
+2026
+
+December 31,
+2025
+
+(Unaudited)
+
+Assets:
+
+Insurance and Other:
+
+Cash and cash equivalents*
+
+$
+
+35,096
+
+$
+
+47,719
+
+Short-term investments in U.S. Treasury Bills**
+
+324,905
+
+321,434
+
+Investments in fixed maturity securities
+
+17,034
+
+17,816
+
+Investments in equity securities
+
+323,779
+
+297,778
+
+Equity method investments
+
+19,948
+
+19,978
+
+Loans and finance receivables
+
+30,724
+
+29,836
+
+Other receivables
+
+48,635
+
+44,331
+
+Inventories
+
+26,575
+
+24,424
+
+Property, plant and equipment
+
+39,409
+
+31,885
+
+Equipment held for lease
+
+18,912
+
+18,535
+
+Goodwill
+
+56,192
+
+55,945
+
+Other intangible assets
+
+33,949
+
+33,802
+
+Deferred charges - retroactive reinsurance
+
+7,675
+
+8,104
+
+Other
+
+27,813
+
+24,413
+
+1,010,646
+
+976,000
+
+Railroad, Utilities and Energy:
+
+Cash and cash equivalents*
+
+5,513
+
+4,158
+
+Receivables
+
+4,562
+
+4,387
+
+Property, plant and equipment
+
+185,815
+
+184,740
+
+Goodwill
+
+26,981
+
+27,129
+
+Regulatory assets
+
+4,385
+
+4,821
+
+Other
+
+25,169
+
+20,941
+
+252,425
+
+246,176
+
+Total assets
+
+$
+
+1,263,071
+
+$
+
+1,222,176
+
+——————
+
+* Includes U.S. Treasury Bills with maturities of three months or less when purchased of $3.2 billion at June 30, 2026 and $17.6 billion at December 31, 2025.
+
+** Includes unsettled purchases of U.S. Treasury Bills of $771 million at June 30, 2026 and $167 million at December 31, 2025. Such amounts were also included in liabilities and were paid shortly after the respective balance sheet date.
+
+See accompanying Notes to Consolidated Financial Statements
+
+2
+
+BERKSHIRE HATHAWAY INC.
+
+and Subsidiaries
+
+CONSOLIDATED BALANCE SHEETS
+
+(dollars in millions)
+
+June 30,
+2026
+
+December 31,
+2025
+
+(Unaudited)
+
+Liabilities:
+
+Insurance and Other:
+
+Unpaid losses and loss adjustment expenses
+
+$
+
+122,875
+
+$
+
+120,713
+
+Unpaid losses and loss adjustment expenses - retroactive reinsurance
+
+29,978
+
+31,048
+
+Unearned insurance premiums
+
+32,754
+
+31,339
+
+Life, annuity and health insurance benefits
+
+17,738
+
+17,890
+
+Other insurance policyholder liabilities
+
+9,942
+
+10,312
+
+Accounts payable, accruals and other liabilities
+
+41,422
+
+38,019
+
+Payable for purchases of U.S. Treasury Bills
+
+771
+
+167
+
+Aircraft repurchase liabilities and unearned lease revenues
+
+11,217
+
+10,686
+
+Notes payable and other borrowings
+
+43,302
+
+45,763
+
+309,999
+
+305,937
+
+Railroad, Utilities and Energy:
+
+Accounts payable, accruals and other liabilities
+
+20,424
+
+19,250
+
+Regulatory liabilities
+
+6,998
+
+7,013
+
+Notes payable and other borrowings
+
+85,297
+
+83,318
+
+112,719
+
+109,581
+
+Income taxes, principally deferred
+
+90,176
+
+86,955
+
+Total liabilities
+
+512,894
+
+502,473
+
+Shareholders’ equity:
+
+Common stock at par value
+
+8
+
+8
+
+Capital in excess of par value
+
+35,615
+
+35,612
+
+Accumulated other comprehensive income
+
+(2,971
+
+)
+
+(2,448
+
+)
+
+Retained earnings
+
+798,959
+
+763,186
+
+Treasury stock, at cost
+
+(83,701
+
+)
+
+(78,939
+
+)
+
+Berkshire shareholders’ equity
+
+747,910
+
+717,419
+
+Noncontrolling interests
+
+2,267
+
+2,284
+
+Total shareholders’ equity
+
+750,177
+
+719,703
+
+Total liabilities and shareholders’ equity
+
+$
+
+1,263,071
+
+$
+
+1,222,176
+
+See accompanying Notes to Consolidated Financial Statements
+
+3
+
+BERKSHIRE HATHAWAY INC.
+
+and Subsidiaries
+
+CONSOLIDATED STATEMENTS OF EARNINGS
+
+(dollars in millions except per share amounts)
+
+(Unaudited)
+
+Second Quarter
+
+First Six Months
+
+2026
+
+2025
+
+2026
+
+2025
+
+Revenues:
+
+Insurance and Other:
+
+Insurance premiums earned
+
+$
+
+22,475
+
+$
+
+22,195
+
+$
+
+44,480
+
+$
+
+43,999
+
+Sales and service revenues
+
+57,282
+
+49,658
+
+108,228
+
+97,473
+
+Leasing revenues
+
+2,887
+
+2,509
+
+5,558
+
+4,940
+
+Interest, dividend and other investment income
+
+5,857
+
+6,002
+
+11,287
+
+11,634
+
+88,501
+
+80,364
+
+169,553
+
+158,046
+
+Railroad, Utilities and Energy:
+
+Railroad transportation revenues
+
+6,553
+
+5,718
+
+12,493
+
+11,389
+
+Utilities and energy operating revenues
+
+5,408
+
+5,118
+
+11,215
+
+10,612
+
+Service revenues and other income
+
+1,346
+
+1,315
+
+2,222
+
+2,193
+
+13,307
+
+12,151
+
+25,930
+
+24,194
+
+Total revenues
+
+101,808
+
+92,515
+
+195,483
+
+182,240
+
+Investment gains (losses)
+
+16,077
+
+6,364
+
+14,472
+
+(71
+
+)
+
+Costs and expenses:
+
+Insurance and Other:
+
+Insurance losses and loss adjustment expenses
+
+14,274
+
+14,073
+
+28,478
+
+28,719
+
+Life, annuity and health insurance benefits
+
+1,233
+
+1,132
+
+2,252
+
+2,200
+
+Insurance underwriting expenses
+
+4,788
+
+4,456
+
+9,305
+
+8,824
+
+Cost of sales and services
+
+45,947
+
+39,616
+
+87,154
+
+78,167
+
+Cost of leasing
+
+2,141
+
+1,887
+
+4,168
+
+3,774
+
+Selling, general and administrative expenses
+
+6,724
+
+7,931
+
+13,280
+
+15,612
+
+Interest expense
+
+315
+
+318
+
+639
+
+658
+
+75,422
+
+69,413
+
+145,276
+
+137,954
+
+Railroad, Utilities and Energy:
+
+Railroad transportation expenses
+
+4,308
+
+3,729
+
+8,231
+
+7,602
+
+Utilities and energy cost of sales and other expenses
+
+4,134
+
+4,156
+
+8,451
+
+8,247
+
+Other expenses
+
+1,186
+
+1,151
+
+2,042
+
+1,997
+
+Interest expense
+
+1,020
+
+935
+
+1,997
+
+1,852
+
+10,648
+
+9,971
+
+20,721
+
+19,698
+
+Total costs and expenses
+
+86,070
+
+79,384
+
+165,997
+
+157,652
+
+Earnings before income taxes and equity method earnings
+
+31,815
+
+19,495
+
+43,958
+
+24,517
+
+Equity method earnings (losses)
+
+248
+
+(4,745
+
+)
+
+424
+
+(4,619
+
+)
+
+Earnings before income taxes
+
+32,063
+
+14,750
+
+44,382
+
+19,898
+
+Income tax expense
+
+6,291
+
+2,293
+
+8,431
+
+2,769
+
+Net earnings
+
+25,772
+
+12,457
+
+35,951
+
+[chunk 1/20; call read_page(page=2) for more]

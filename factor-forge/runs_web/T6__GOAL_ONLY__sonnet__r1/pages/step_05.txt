@@ -1,0 +1,1 @@
+BLOCKED: https://www.sec.gov/cgi-bin/srch-edgar?text=form-type%3D10-Q+company-name%3Djpmorgan&first=2026&last=2026 -- disallowed by www.sec.gov/robots.txt

@@ -1,0 +1,333 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T3\n\nFind total shareholders' equity attributable to Walmart Inc. (excluding noncontrolling interest) at the end of Walmart's second quarter of fiscal year 2027.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_011tk5TZZh9SJcGhyPZBGC6N",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q&dateb=&owner=include&count=10"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_011tk5TZZh9SJcGhyPZBGC6N",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q&dateb=&owner=include&count=10 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01WNVq2JwiEHok5RuMDRawr8",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://data.sec.gov/submissions/CIK0000104169.json"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01WNVq2JwiEHok5RuMDRawr8",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | TITLE:  | chunk 1/16\n\n{\"cik\":\"0000104169\",\"entityType\":\"operating\",\"sic\":\"5331\",\"sicDescription\":\"Retail-Variety Stores\",\"ownerOrg\":\"07 Trade & Services\",\"insiderTransactionForOwnerExists\":1,\"insiderTransactionForIssuerExists\":1,\"name\":\"Walmart Inc.\",\"tickers\":[\"WMT\"],\"exchanges\":[\"Nasdaq\"],\"ein\":\"710415188\",\"lei\":null,\"description\":\"\",\"website\":\"\",\"investorWebsite\":\"\",\"category\":\"Large accelerated filer\",\"fiscalYearEnd\":\"0131\",\"stateOfIncorporation\":\"DE\",\"stateOfIncorporationDescription\":\"DE\",\"addresses\":{\"mailing\":{\"street1\":\"1 CUSTOMER DRIVE\",\"street2\":null,\"city\":\"BENTONVILLE\",\"stateOrCountry\":\"AR\",\"zipCode\":\"72716\",\"stateOrCountryDescription\":\"AR\",\"isForeignLocation\":0,\"foreignStateTerritory\":null,\"country\":null,\"countryCode\":null},\"business\":{\"street1\":\"1 CUSTOMER DRIVE\",\"street2\":null,\"city\":\"BENTONVILLE\",\"stateOrCountry\":\"AR\",\"zipCode\":\"72716\",\"stateOrCountryDescription\":\"AR\",\"isForeignLocation\":null,\"foreignStateTerritory\":null,\"country\":null,\"countryCode\":null}},\"phone\":\"5012734000\",\"flags\":\"\",\"formerNames\":[{\"name\":\"Walmart Inc.\",\"from\":\"2018-01-31T05:00:00.000Z\",\"to\":\"2026-10-30T04:00:00.000Z\"},{\"name\":\"WAL MART STORES INC\",\"from\":\"1994-02-14T05:00:00.000Z\",\"to\":\"2018-01-30T05:00:00.000Z\"}],\"filings\":{\"recent\":{\"accessionNumber\":[\"0001959173-26-007561\",\"0001193125-26-429539\",\"0001193125-26-427928\",\"0001193125-26-427921\",\"0001193125-26-425645\",\"0001193125-26-425644\",\"0001193125-26-424989\",\"0001193125-26-424733\",\"0001696737-26-000021\",\"0001886367-26-000029\",\"0001992808-26-000029\",\"0001959173-26-007368\",\"0002058309-26-000019\",\"0002110643-26-000020\",\"0001886367-26-000027\",\"0002110304-26-000023\",\"0000104169-26-000161\",\"0000104169-26-000160\",\"0000104169-26-000159\",\"0001550608-26-000023\",\"0001183428-26-000009\",\"0001570658-26-000009\",\"0002033834-26-000021\",\"0001707351-26-000023\",\"0001579299-26-000026\",\"0001616172-26-000010\",\"0001957244-26-000018\",\"0001696737-26-000019\",\"0001992808-26-000027\",\"0001949846-26-000590\",\"0001354457-26-000882\",\"0002058309-26-000017\",\"0002110643-26-000018\",\"0002110304-26-000021\",\"0001886367-26-000025\",\"0001579299-26-000024\",\"0001957244-26-000017\",\"0000104169-26-000155\",\"0000104169-26-000154\",\"0000104169-26-000146\",\"0001959173-26-006468\",\"0001992808-26-000024\",\"0001949846-26-000533\",\"0000104169-26-000145\",\"0002058309-26-000016\",\"0002110643-26-000016\",\"0002110304-26-000019\",\"0001886367-26-000023\",\"0001123292-26-001074\",\"0001123292-26-001073\",\"0001123292-26-001072\",\"0001579299-26-000022\",\"0001957244-26-000014\",\"0001550322-26-000013\",\"0001992808-26-000022\",\"0001886367-26-000021\",\"0002110304-26-000017\",\"0002110643-26-000014\",\"0002058309-26-000014\",\"0001550322-26-000011\",\"0000104169-26-000138\",\"0000104169-26-000136\",\"0000104169-26-000127\",\"0001183428-26-000007\",\"0000104169-26-000126\",\"0000104169-26-000125\",\"0001570658-26-000007\",\"0002033834-26-000017\",\"0001616172-26-000007\",\"0001707351-26-000018\",\"0001550608-26-000018\",\"0001579299-26-000021\",\"0001957244-26-000012\",\"0001958244-26-000409\",\"0000104169-26-000121\",\"0000104169-26-000119\",\"0001958244-26-000405\",\"0001992808-26-000020\",\"0000104169-26-000117\",\"0001886367-26-000019\",\"0001579299-26-000019\",\"0001957244-26-000011\",\"0002110304-26-000015\",\"0001959173-26-004503\",\"0001707351-26-000012\",\"0000104169-26-000115\",\"0001183428-26-000005\",\"0000104169-26-000114\",\"0001616172-26-000005\",\"0002033834-26-000015\",\"0000104169-26-000113\",\"0001570658-26-000005\",\"0001175928-26-000004\",\"0001550608-26-000014\",\"0000104169-26-000111\",\"0000104169-26-000107\",\"0002110643-26-000012\",\"0002058309-26-000012\",\"0001886367-26-000015\",\"0002110304-26-000013\",\"0001958244-26-000345\",\"0000104169-26-000105\",\"0001335782-26-000015\",\"0001886367-26-000013\",\"0001579299-26-000017\",\"0001958244-26-000334\",\"0000104169-26-000104\",\"0000104169-26-000102\",\"0001959173-26-004081\",\"0001958244-26-000328\",\"0001958244-26-000325\",\"0000104169-26-000096\",\"0001958244-26-000308\",\"0001696737-26-000016\",\"0001992808-26-000018\",\"0001992808-26-000016\",\"0001949846-26-000308\",\"0000104169-26-000095\",\"0001579299-26-000016\",\"0001957244-26-000010\",\"0001123292-26-000641\",\"0002110643-26-000010\",\"0001886367-26-000012\",\"0002058309-26-000010\",\"0002110304-26-000010\",\"0001193125-26-194086\",\"0001193125-26-187795\",\"0001193125-26-183374\",\"0001193125-26-179203\",\"0001335782-26-000014\",\"0000104169-26-000091\",\"0001193125-26-173705\",\"0001193125-26-173673\",\"0001579299-26-000014\",\"0001992808-26-000014\",\"0001696737-26-000014\",\"0000104169-26-000085\",\"0001949846-26-000209\",\"0001957244-26-000006\",\"0001193125-26-152873\",\"0002110643-26-000008\",\"0001886367-26-000010\",\"0001992808-26-000012\",\"0002058309-26-000008\",\"0002110304-26-000008\",\"0001354457-26-000333\",\"0000104169-26-000075\",\"0000104169-26-000074\",\"0001183428-26-000004\",\"0001628588-26-000004\",\"0002033834-26-000008\",\"0001550608-26-000007\",\"0001707351-26-000009\",\"0001570658-26-000004\",\"0000104169-26-000072\",\"0001550322-26-000004\",\"0001616172-26-000004\",\"0001335782-26-000012\",\"0000104169-26-000067\",\"0000102909-26-002689\",\"0000104169-26-000065\",\"0000104169-26-000063\",\"0001696737-26-000012\",\"0001949846-26-000183\",\"0000104169-26-000061\",\"0000104169-26-000059\",\"0001958244-26-000154\",\"0001579299-26-000012\",\"0001957244-26-000005\",\"0000104169-26-000057\",\"0000104169-26-000056\",\"0000104169-26-000055\",\"0002110643-26-000006\",\"0002058309-26-000006\",\"0001598108-26-000008\",\"0001579299-26-000010\",\"0002064502-26-000002\",\"0001781198-26-000006\",\"0001886367-26-000008\",\"0001992808-26-000010\",\"0002110304-26-000006\",\"0001547433-26-000008\",\"0001696737-26-000010\",\"0001335782-26-000010\",\"0000104169-26-000043\",\"0000104169-26-000041\",\"0001958244-26-000121\",\"0001958244-26-000120\",\"0001958244-26-000116\",\"0000104169-26-000039\",\"0000104169-26-000037\",\"0001547433-26-000006\",\"0001140361-26-007628\",\"0000104169-26-000035\",\"0001335782-26-000008\",\"0001958244-26-000104\",\"0000104169-26-000033\",\"0001886367-26-000006\",\"0001992808-26-000008\",\"0001696737-26-000008\",\"0001959173-26-001331\",\"0001958244-26-000093\",\"0001959173-26-001289\",\"0001949846-26-000090\",\"0001579299-26-000008\",\"0000104169-26-000032\",\"0001957244-26-000003\",\"0002110643-26-000004\",\"0002058309-26-000004\",\"0001886367-26-000004\",\"0001992808-26-000006\",\"0002110304-26-000004\",\"0002110643-26-000002\",\"0002058309-26-000002\",\"0001886367-26-000002\",\"0002110304-26-000002\",\"0001123292-26-000127\",\"0001598108-26-000006\",\"0001598108-26-000004\",\"0001736097-26-000003\",\"0001992808-26-000004\",\"0001781198-26-000004\",\"0001335782-26-000006\",\"0001696737-26-000006\",\"0001547433-26-000004\",\"0001579299-26-000006\",\"0001794573-26-000004\",\"0001502438-26-000004\",\"0001959173-26-000566\",\"0001968582-26-000073\",\"0000104169-26-000028\",\"0001335782-26-000004\",\"0001579299-26-000004\",\"0001696737-26-000004\",\"0000104169-26-000024\",\"0000104169-26-000023\",\"0000104169-26-000019\",\"0001502438-26-000002\",\"0001781198-26-000002\",\"0001794573-26-000002\",\"0000104169-26-000017\",\"0001547433-26-000002\",\"0001598108-26-000002\",\"0001579299-26-000002\",\"0001992808-26-000002\",\"0001696737-26-000002\",\"0001335782-26-000002\",\"0001957244-26-000001\",\"0001959173-26-000296\",\"0001959173-26-000295\",\"0000104169-26-000012\",\"0000104169-26-000011\",\"0000104169-26-000008\",\"0000104169-26-000004\",\"0000104169-26-000002\",\"0001183428-26-000002\",\"0001628588-26-000002\",\"0002033834-26-000002\",\"0001550608-26-000002\",\"0001707351-26-000002\",\"0001570658-26-000002\",\"0001550322-26-000002\",\"0001616172-26-000002\",\"0001335782-25-000016\",\"0000104169-25-000238\",\"0001958244-25-004574\",\"0001958244-25-004572\",\"0000104169-25-000234\",\"0000104169-25-000232\",\"0001794573-25-000016\",\"0001696737-25-000013\",\"0001628280-25-058115\",\"0001958244-25-004564\",\"0001958244-25-004563\",\"0000104169-25-000230\",\"0000104169-25-000227\",\"0000104169-25-000226\",\"0000104169-25-000225\",\"0000104169-25-000224\",\"0001949846-25-000700\",\"0000104169-25-000211\",\"0000104169-25-000209\",\"0001502438-25-000015\",\"0001579299-25-000016\",\"0001958244-25-004553\",\"0001958244-25-004544\",\"0001957244-25-000021\",\"0000104169-25-000207\",\"0000104169-25-000205\",\"0000104169-25-000203\",\"0001354457-25-001230\",\"0000104169-25-000201\",\"0000104169-25-000199\",\"0001958244-25-004515\",\"0001992808-25-000011\",\"0000104169-25-000193\",\"0000104169-25-000191\",\"0001958244-25-004506\",\"0001547433-25-000011\",\"0001335782-25-000014\",\"0000104169-25-000186\",\"0001502438-25-000013\",\"0001959173-25-007310\",\"0000104169-25-000183\",\"0000104169-25-000181\",\"0001958244-25-004479\",\"0001959173-25-007266\",\"0001696737-25-000011\",\"0001794573-25-000014\",\"0001502438-25-000011\",\"0000104169-25-000177\",\"0001579299-25-000014\",\"0001957244-25-000020\",\"0000104169-25-000172\",\"0001992808-25-000009\",\"0001547433-25-000009\",\"0001335782-25-000012\",\"0001123292-25-000584\",\"0001794573-25-000012\",\"0000104169-25-000168\",\"0001696737-25-000009\",\"0001579299-25-000012\",\"0001957244-25-000018\",\"0001123292-25-000537\",\"0001502438-25-000009\",\"0001992808-25-000007\",\"0001547433-25-000007\",\"0000104169-25-000164\",\"0000104169-25-000162\",\"0001183428-25-000006\",\"0001628588-25-000007\",\"0002033834-25-000007\",\"0001550608-25-000007\",\"0001707351-25-000004\",\"0001570658-25-000005\",\"0001550322-25-000006\",\"0001616172-25-000007\",\"0001335782-25-000010\",\"0001598108-25-000005\",\"0000104169-25-000155\",\"0001794573-25-000010\",\"0001696737-25-000007\",\"0000104169-25-000153\",\"0000104169-25-000151\",\"0001628280-25-042072\",\"0001949846-25-000492\",\"0000104169-25-000147\",\"0001958244-25-004340\",\"0001579299-25-000010\",\"0001781198-25-000006\",\"0001957244-25-000017\",\"0001959173-25-005985\",\"0001992808-25-000005\",\"0001502438-25-000006\",\"0000104169-25-000145\",\"0001958244-25-004320\",\"0001958244-25-004319\",\"0000104169-25-000143\",\"0001547433-25-000005\",\"0001335782-25-000007\",\"0001968582-25-000833\",\"0000104169-25-000141\",\"0001123292-25-000392\",\"0000104169-25-000139\",\"0000104169-25-000137\",\"0001958244-25-004278\",\"0001958244-25-004277\",\"0000104169-25-000131\",\"0000104169-25-000126\",\"0001696737-25-000005\",\"0001794573-25-000008\",\"0000104169-25-000120\",\"0002064502-25-000007\",\"0002064502-25-000005\",\"0001579299-25-000008\",\"0001957244-25-000015\",\"0001502438-25-000004\",\"0001992808-25-000003\",\"0001123292-25-000345\",\"0000104169-25-000115\",\"0001335782-25-00000\n[chunk 1/16; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_012drJw4gxbNswPhiNzvNyEJ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "\"form\":[\""
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_01NxtQp9beeqpyzqq8Uvqvvy",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "2026-07-31"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_012drJw4gxbNswPhiNzvNyEJ",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | find_text '\"form\":[\"': 1 match(es)\n(chunk 8) \"2024-02-24T00:34:38.000Z\",\"2024-02-23T22:31:07.000Z\",\"2024-02-23T22:07:45.000Z\",\"2024-02-23T21:19:48.000Z\",\"2024-02-23T21:17:58.000Z\",\"2024-02-21T23:10:45.000Z\",\"2024-02-21T22:40:57.000Z\",\"2024-02-20T11:59:55.000Z\",\"2024-02-14T23:07:03.000Z\",\"2024-02-14T23:05:08.000Z\",\"2024-02-13T21:55:58.000Z\",\"2024-02-13T21:23:55.000Z\",\"2024-02-13T21:22:42.000Z\",\"2024-02-09T21:07:07.000Z\",\"2024-02-05T22:28:51.0"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01NxtQp9beeqpyzqq8Uvqvvy",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | find_text '2026-07-31': 1 match(es)\n(chunk 4) 025-05-22\",\"2025-05-21\",\"2025-05-21\",\"2025-05-20\",\"2025-05-19\",\"2025-05-19\",\"2025-05-16\",\"2025-05-16\",\"2025-05-15\",\"2025-05-15\",\"2025-05-12\",\"2025-05-08\",\"2025-05-08\",\"2025-05-05\",\"2025-04-30\",\"2025-04-30\",\"2025-04-30\",\"2025-04-28\",\"2025-04-28\",\"2025-04-25\",\"2025-04-25\",\"2025-04-24\",\"2025-04-24\",\"2025-04-24\",\"2025-04-24\",\"2025-04-24\",\"2025-04-23\",\"2025-04-23\",\"2025-04-23\",\"2025-04-23\",\"2025-04-23\""
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01UkFyvadJRWat7qU4yDnSPq",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://data.sec.gov/api/xbrl/companyconcept/CIK0000104169/us-gaap/StockholdersEquity.json"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01UkFyvadJRWat7qU4yDnSPq",
+    "content": "BLOCKED: https://data.sec.gov/api/xbrl/companyconcept/CIK0000104169/us-gaap/StockholdersEquity.json -- XBRL API is blocked in this experiment (collect data through the EDGAR web pages)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01Mma7H2URLw2FFvi6EpMU4T",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "10-Q\""
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Mma7H2URLw2FFvi6EpMU4T",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | find_text '10-Q\"': 4 match(es)\n(chunk 8) \"2024-02-24T00:34:38.000Z\",\"2024-02-23T22:31:07.000Z\",\"2024-02-23T22:07:45.000Z\",\"2024-02-23T21:19:48.000Z\",\"2024-02-23T21:17:58.000Z\",\"2024-02-21T23:10:45.000Z\",\"2024-02-21T22:40:57.000Z\",\"2024-02-20T11:59:55.000Z\",\"2024-02-14T23:07:03.000Z\",\"2024-02-14T23:05:08.000Z\",\"2024-02-13T21:55:58.000Z\",\"2024-02-13T21:23:55.000Z\",\"2024-02-13T21:22:42.000Z\",\"2024-02-09T21:07:07.000Z\",\"2024-02-05T22:28:51.0\n(chunk 9) \"4\",\"4\",\"8-K\",\"144\",\"144\",\"4\",\"4\",\"4\",\"4\",\"144\",\"144\",\"144\",\"S-8\",\"S-8 POS\",\"S-8 POS\",\"S-8 POS\",\"S-8 POS\",\"144\",\"4\",\"4\",\"4\",\"4\",\"144\",\"144\",\"144\",\"4\",\"4\",\"4\",\"CERT\",\"25\",\"8-A12B\",\"144\",\"4\",\"IRANNOTICE\",\"10-Q\",\"144\",\"4\",\"4\",\"4\",\"4\",\"144/A\",\"144\",\"4\",\"144\",\"144\",\"4\",\"4\",\"4\",\"8-K\",\"4\",\"144\",\"8-K\",\"4\",\"4\",\"4\",\"13F-HR/A\",\"4\",\"8-K\",\"4\",\"4\",\"144\",\"13F-HR\",\"4\",\"4\",\"4\",\"4\",\"4\",\"4\",\"4\",\"4\",\"4\",\"4\",\"4\",\"4\",\"\n(chunk 15) xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xsl144X01/primary_doc.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"xslF345X05/form4.xml\",\"wmt-2024022\n(chunk 16) IMARY DOCUMENT\",\"\",\"PRIMARY DOCUMENT\",\"8-K\",\"\",\"\",\"\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"\",\"PRIMARY DOCUMENT\",\"\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUMENT\",\"PRIMARY DOCUME"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_015qAV95CqXhxN4T5FELv8KP",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "wmt-2026"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_015qAV95CqXhxN4T5FELv8KP",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | find_text 'wmt-2026': 2 match(es)\n(chunk 12) 0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,\n(chunk 13) l144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1782422308.xml\",\"xsl144X01/primary_doc.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1782165207.xml\",\"xslF345X06/wk-form4_1781817527.xml\",\"xslF345X06/wk-form4_1781734189.xml\",\"xslF345X06/wk-form4_1781734093.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1781298877.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1780959019.xml\",\"xsl"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_011S9RrcpvizT3hVoSwcM3Ei",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "wmt-20260731"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_0114rB8YKSsfGPcbZYHpPtH3",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "wmt-20260430"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_011S9RrcpvizT3hVoSwcM3Ei",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | find_text 'wmt-20260731': 1 match(es)\n(chunk 12) 0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0114rB8YKSsfGPcbZYHpPtH3",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | find_text 'wmt-20260430': 1 match(es)\n(chunk 13) l144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1782422308.xml\",\"xsl144X01/primary_doc.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1782165207.xml\",\"xslF345X06/wk-form4_1781817527.xml\",\"xslF345X06/wk-form4_1781734189.xml\",\"xslF345X06/wk-form4_1781734093.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1781298877.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1780959019.xml\",\"xsl"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01VvBwUsNQRwrxjnPfvZoDcn",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "page": 12
+    },
+    "name": "read_page",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01VvBwUsNQRwrxjnPfvZoDcn",
+    "content": "URL: https://data.sec.gov/submissions/CIK0000104169.json | TITLE:  | chunk 12/16\n\n0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"isInlineXBRL\":[0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],\"isXBRLNumeric\":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null,null],\"primaryDocument\":[\"xsl144X01/primary_doc.xml\",\"d184548d8k.htm\",\"d61801d424b5.htm\",\"d38470d424b5.htm\",\"d503593dfwp.htm\",\"d48472dfwp.htm\",\"d61801d424b5.htm\",\"d38470d424b5.htm\",\"xslF345X06/wk-form4_1792183368.xml\",\"xslF345X06/wk-form4_1792183363.xml\",\"xslF345X06/wk-form4_1792183357.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1791492995.xml\",\"xslF345X06/wk-form4_1791492988.xml\",\"xslF345X06/wk-form4_1791492982.xml\",\"xslF345X06/wk-form4_1791492976.xml\",\"xslF345X06/wk-form4_1790976925.xml\",\"xslF345X06/wk-form4_1790976918.xml\",\"xslF345X06/wk-form4_1790976910.xml\",\"xslF345X06/wk-form4_1790976851.xml\",\"xslF345X06/wk-form4_1790976845.xml\",\"xslF345X06/wk-form4_1790976839.xml\",\"xslF345X06/wk-form4_1790976834.xml\",\"xslF345X06/wk-form4_1790976828.xml\",\"xslF345X06/wk-form4_1790976822.xml\",\"xslF345X06/wk-form4_1790976816.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1789764067.xml\",\"xslF345X06/wk-form4_1789763762.xml\",\"xsl144X01/primary_doc.xml\",\"xslF25X02/primary_doc.xml\",\"xslF345X06/wk-form4_1788988410.xml\",\"xslF345X06/wk-form4_1788988391.xml\",\"xslF345X06/wk-form4_1788988237.xml\",\"xslF345X06/wk-form4_1788988202.xml\",\"xslF345X06/wk-form4_1788382695.xml\",\"xsl144X01/primary_doc.xml\",\"irannotice828.htm\",\"wmt-20260731.htm\",\"xslF345X06/wk-form4_1787864011.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1787346878.xml\",\"xsl144X01/primary_doc.xml\",\"wmt-20260820.htm\",\"xslF345X06/wk-form4_1786662189.xml\",\"xslF345X06/wk-form4_1786662021.xml\",\"xslF345X06/wk-form4_1786661957.xml\",\"xslF345X06/wk-form4_1786661865.xml\",\"xslN-PX_X01/primary_doc.xml\",\"xslSCHEDULE_13D_X02/primary_doc.xml\",\"xslForm13F_X02/primary_doc.xml\",\"xslF345X06/wk-form4_1785877710.xml\",\"xsl144X01/primary_doc.xml\",\"xsl144X01/primary_doc.xml\",\"xslF345X06/wk-form4_1784325425.xml\",\"xslF345X06/wk-form4_1784239788.xml\",\"xslF345X06/wk-form4_1784239729.xml\",\"xslF345X06/wk-form4_1784239509.xml\",\"xslF345X06/wk-form4_1784239437.xml\",\"xsl144X01/primary_doc.xml\",\"wmt-20260716.htm\",\"wmt-20260716.htm\",\"xslF345X06/wk-form4_1783023964.xml\",\"xslF345X06/wk-form4_1783023942.xml\",\"xslF345X06/wk-form4_1783023926.xml\",\"xslF345X06/wk-form4_1783023911.xml\",\"xslF345X06/wk-form4_1783023888.xml\",\"xslF345X06/wk-form4_1783023875.xml\",\"xslF345X06/wk-form4_1783023857.xml\",\"xslF345X06/wk-form4_1783023841.xml\",\"xslF345X06/wk-form4_1783023826.xml\",\"xslF345X06/wk-form4_1783023600.xml\",\"xsl144X01/primary_doc.xml\",\"xs\n[chunk 12/16; call read_page(page=13) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01GnR7xB2rDqSczxkPSpM3nx",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01GnR7xB2rDqSczxkPSpM3nx",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm | TITLE: wmt-20260731 | chunk 1/14\n\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n(Mark One)\n\n\u2612\tQuarterly Report Pursuant to Section\u00a013 or 15(d) of the Securities Exchange Act of 1934.\nFor the quarterly period ended July\u00a031, 2026.\nor\n\n\u2610\nTransition Report Pursuant to Section\u00a013 or 15(d) of the Securities Exchange Act of 1934. For the transition period from \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 to \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0.\nCommission File Number 001-06991\nWALMART INC.\n(Exact name of registrant as specified in its charter)\n\nDelaware\t\t71-0415188\n\n(State or other jurisdiction of incorporation or organization)\n\n(I.R.S. Employer Identification No.)\n\n1 Customer Drive\n\n72716\n\nBentonville\tAR\n(Address of principal executive offices)\t\t(Zip Code)\nRegistrant's telephone number, including area code: (479) 273-4000\nFormer name, former address and former fiscal year, if changed since last report: N/A\nSecurities registered pursuant to Section 12(b) of the Act:\n\nTitle of each class\t\tTrading Symbol(s)\t\tName of each exchange on which registered\nCommon Stock, par value $0.10 per share\t\tWMT\t\tThe Nasdaq Stock Market LLC\n1.050% Notes due 2026\t\tWMT26A\t\tThe Nasdaq Stock Market LLC\n1.500% Notes due 2028\t\tWMT28C\t\tThe Nasdaq Stock Market LLC\n4.875% Notes due 2029\t\tWMT29B\t\tThe Nasdaq Stock Market LLC\n5.750% Notes due 2030\t\tWMT30B\t\tThe Nasdaq Stock Market LLC\n1.800% Notes due 2031\t\tWMT31A\t\tThe Nasdaq Stock Market LLC\n5.625% Notes due 2034\t\tWMT34\t\tThe Nasdaq Stock Market LLC\n5.250% Notes due 2035\t\tWMT35A\t\tThe Nasdaq Stock Market LLC\n4.875% Notes due 2039\t\tWMT39\t\tThe Nasdaq Stock Market LLC\nIndicate by check mark whether the registrant (1)\u00a0has filed all reports required to be filed by Section\u00a013 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or such shorter periods that the registrant was required to file such reports), and (2)\u00a0has been subject to such filing requirements for the past 90 days.\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0 No\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). \u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company,\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.\n\nLarge Accelerated Filer\t\t\u2612\t\u00a0\u00a0\tAccelerated\u00a0Filer\t\t\u2610\nNon-Accelerated Filer\t\t\u2610\t\u00a0\u00a0\tSmaller\u00a0Reporting\u00a0Company\t\t\u2610\n\t\t\t\tEmerging Growth Company\t\t\u2610\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by a check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2610\u00a0\u00a0\u00a0No\u00a0\u00a0\u2612\nThe registrant had 7,933,746,241 shares of common stock outstanding as of August\u00a026, 2026.\n\n[e1 link] Table of Contents\nWalmart Inc.\nForm 10-Q\nFor the Quarterly Period Ended July\u00a031, 2026\n\nTable of Contents\n\n\t\t\tPage\n\n[e2 link] Part I. Financial Information\n\n[e3 link] Item 1. Financial Statements\n\n[e4 link] Condensed Consolidated Statements of Income\n\n[e5 link] 3\n\n[e6 link] Condensed Consolidated Statements of Comprehensive Income\n\n[e7 link] 4\n\n[e8 link] Condensed Consolidated Balance Sheets\n\n[e9 link] 5\n\n[e10 link] Condensed Consolidated Statements of Shareholders' Equity\n\n[e11 link] 6\n\n[e12 link] Condensed Consolidated Statements of Cash Flows\n\n[e13 link] 7\n\n[e14 link] Notes to Condensed Consolidated Financial Statements\n\n[e15 link] 8\n\n[e16 link] Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations\n\n[e17 link] 17\n\n[e18 link] Item 3. Quantitative and Qualitative Disclosures About Market Risk\n\n[e19 link] 27\n\n[e20 link] Item 4. Controls and Procedures\n\n[e21 link] 28\n\n[e22 link] Part II. Other Information\n\n[e23 link] Item 1. Legal Proceedings\n\n[e24 link] 29\n\n[e25 link] Item 1A. Risk Factors\n\n[e26 link] 29\n\n[e27 link] Item 2. Unregistered Sales of Equity Securities and Use of Proceeds\n\n[e28 link] 30\n\n[e29 link] Item 5. Other Information\n\n[e30 link] 30\n\n[e31 link] Item 6. Exhibits\n\n[e32 link] 34\n\n[e33 link] Signatures\n\n[e34 link] 35\n\n[e35 link] Table of Contents\nPART I. FINANCIAL INFORMATION\nItem 1.Financial Statements\nWalmart Inc.\nCondensed Consolidated Statements of Income\n(Unaudited)\n\n\t\tThree Months Ended July 31,\t\tSix Months Ended July 31,\n(Amounts in millions, except per share data)\t\t2026\t\t2025\t\t2026\t\t2025\nRevenues:\nNet sales\t\t$\t186,100\u00a0\t\t\t$\t175,750\u00a0\t\t\t$\t361,784\u00a0\t\t\t$\t339,731\nMembership and other income\t\t1,837\u00a0\t\t\t1,652\u00a0\t\t\t3,904\u00a0\t\t\t3,280\nTotal revenues\t\t187,937\u00a0\t\t\t177,402\u00a0\t\t\t365,688\u00a0\t\t\t343,011\nCosts and expenses:\nCost of sales\t\t138,804\u00a0\t\t\t132,771\u00a0\t\t\t271,862\u00a0\t\t\t257,074\nOperating, selling, general and administrative expenses\t\t39,750\u00a0\t\t\t37,345\u00a0\t\t\t76,950\u00a0\t\t\t71,516\nOperating income\t\t9,383\u00a0\t\t\t7,286\u00a0\t\t\t16,876\u00a0\t\t\t14,421\nInterest:\nDebt\t\t137\u00a0\t\t\t651\u00a0\t\t\t711\u00a0\t\t\t1,170\nFinance lease\t\t126\u00a0\t\t\t118\u00a0\t\t\t251\u00a0\t\t\t236\nInterest income\t\t(92)\t\t\t(94)\t\t\t(171)\t\t\t(187)\nInterest, net\t\t171\u00a0\t\t\t675\u00a0\t\t\t791\u00a0\t\t\t1,219\n\nOther (gains) and losses\t\t1,200\u00a0\t\t\t(2,708)\t\t\t925\u00a0\t\t\t(2,111)\nIncome before income taxes\t\t8,012\u00a0\t\t\t9,319\u00a0\t\t\t15,160\u00a0\t\t\t15,313\nProvision for income taxes\t\t1,483\u00a0\t\t\t2,168\u00a0\t\t\t3,141\u00a0\t\t\t3,523\n\nConsolidated net income\t\t6,529\u00a0\t\t\t7,151\u00a0\t\t\t12,019\u00a0\t\t\t11,790\nConsolidated net income attributable to noncontrolling interest\t\t(163)\t\t\t(125)\t\t\t(323)\t\t\t(277)\nConsolidated net income attributable to Walmart\t\t$\t6,366\u00a0\t\t\t$\t7,026\u00a0\t\t\t$\t11,696\u00a0\t\t\t$\t11,513\n\nNet income per common share:\nBasic net income per common share attributable to Walmart\t\t$\t0.80\u00a0\t\t\t$\t0.88\u00a0\t\t\t$\t1.47\u00a0\t\t\t$\t1.44\n\nDiluted net income per common share attributable to Walmart\t\t0.80\u00a0\t\t\t0.88\u00a0\t\t\t1.46\u00a0\t\t\t1.43\n\nWeighted-average common shares outstanding:\nBasic\t\t7,954\u00a0\t\t\t7,978\u00a0\t\t\t7,962\u00a0\t\t\t7,994\nDiluted\t\t7,978\u00a0\t\t\t8,016\u00a0\t\t\t7,989\u00a0\t\t\t8,033\n\nDividends declared per common share\t\t$\t\u2014\u00a0\t\t\t$\t\u2014\u00a0\t\t\t$\t0.99\u00a0\t\t\t$\t0.94\nSee accompanying notes.\n3\n[e36 link] Table of Contents\nWalmart Inc.\nCondensed Consolidated Statements of Comprehensive Income\n(Unaudited)\n\n\t\tThree Months Ended July 31,\t\tSix Months Ended July 31,\n(Amounts in millions)\t\t2026\t\t2025\t\t2026\t\t2025\nConsolidated net income\t\t$\t6,529\u00a0\t\t\t$\t7,151\u00a0\t\t\t$\t12,019\u00a0\t\t\t$\t11,790\nConsolidated net income attributable to noncontrolling interest\t\t(163)\t\t\t(125)\t\t\t(323)\t\t\t(277)\n\nConsolidated net income attributable to Walmart\t\t6,366\u00a0\t\t\t7,026\u00a0\t\t\t11,696\u00a0\t\t\t11,513\n\nOther comprehensive income (loss), net of income taxes\t\t534\u00a0\t\t\t750\u00a0\t\t\t(432)\t\t\t1,095\nOther comprehensive income attributable to noncontrolling interest\t\t(132)\t\t\t(187)\t\t\t(1)\t\t\t(223)\n\nOther comprehensive income (loss) attributable to Walmart\t\t402\u00a0\t\t\t563\u00a0\t\t\t(433)\t\t\t872\n\nComprehensive income, net of income taxes\t\t7,063\u00a0\t\t\t7,901\u00a0\t\t\t11,587\u00a0\t\t\t12,885\nComprehensive income attributable to noncontrolling interest\t\t(295)\t\t\t(312)\t\t\t(324)\t\t\t(500)\n\nComprehensive income attributable to Walmart\t\t$\t6,768\u00a0\t\t\t$\t7,589\u00a0\t\t\t$\t11,263\u00a0\t\t\t$\t12,385\nSee accompanying notes.\n4\n[e37 link] Table of Contents\nWalmart Inc.\nCondensed Consolidated Balance Sheets\n(Unaudited)\n\n\t\tJuly 31,\t\tJanuary 31,\t\tJuly 31,\n(Amounts in millions)\t\t2026\t\t2026\t\t2025\nASSETS\nCurrent assets:\nCash and cash equivalents\t\t$\t11,529\u00a0\t\t\t$\t10,727\u00a0\t\t\t$\t9,431\nReceivables, net\t\t11,075\u00a0\t\t\t11,172\u00a0\t\t\t10,518\nInventories\t\t61,600\u00a0\t\t\t58,851\u00a0\t\t\t57,729\nPrepaid expenses and other\t\t4,499\u00a0\t\t\t4,124\u00a0\t\t\t4,355\n\nTotal current assets\t\t88,703\u00a0\t\t\t84,874\u00a0\t\t\t82,033\n\nProperty and equipment, net\t\t142,482\u00a0\t\t\t136,083\u00a0\t\t\t125,476\nOperating lease right-of-use assets\t\t15,650\u00a0\t\t\t14,750\u00a0\t\t\t13,953\nFinance lease right-of-use assets, net\t\t6,178\u00a0\t\t\t6,123\u00a0\t\t\t6,128\n\nGoodwill\t\t28,260\u00a0\t\t\t28,735\u00a0\t\t\t29,060\nOther long-term assets\t\t12,641\u00a0\t\t\t14,103\u00a0\t\t\t14,187\nTotal assets\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\n\nLIABILITIES, REDEEMABLE NONCONTROLLING INTEREST, AND SHAREHOLDERS' EQUITY\n\nCurrent liabilities:\nShort-term borrowings\t\t$\t10,479\u00a0\t\t\t$\t6,596\u00a0\t\t\t$\t3,837\nAccounts payable\t\t64,318\u00a0\t\t\t63,061\u00a0\t\t\t60,086\nDividends payable\t\t3,949\u00a0\t\t\t\u2014\u00a0\t\t\t3,783\nAccrued liabilities\t\t30,074\u00a0\t\t\t31,187\u00a0\t\t\t28,821\nAccrued income taxes\t\t746\u00a0\t\t\t596\u00a0\t\t\t620\nLong-term debt due within one year\t\t3,470\u00a0\t\t\t3,542\u00a0\t\t\t4,011\nOperating lease obligations due within one year\t\t1,714\u00a0\t\t\t1,631\u00a0\t\t\t1,580\nFinance lease obligations due within one year\t\t880\u00a0\t\t\t856\u00a0\t\t\t828\n\nTotal current liabilities\t\t115,630\u00a0\t\t\t107,469\u00a0\t\t\t103,566\n\nLong-term debt\t\t36,462\u00a0\t\t\t34,624\u00a0\t\t\t35,640\nLong-term operating lease obligations\t\t14,798\u00a0\t\t\t13,941\u00a0\t\t\t13,171\nLong-term finance lease obligations\t\t5,952\u00a0\t\t\t5,905\u00a0\t\t\t5,947\n\nDeferred income taxes and other\t\t16,273\u00a0\t\t\t16,549\u00a0\t\t\t15,656\n\nCommitments and contingencies\n\nRedeemable noncontrolling interest\t\t293\u00a0\t\t\t293\u00a0\t\t\t307\n\nShareholders' equity:\n\nCommon stock\t\t794\u00a0\t\t\t797\u00a0\t\t\t797\nCapital in excess of par value\t\t7,046\u00a0\t\t\t6,816\u00a0\t\t\t5,718\nRetained earnings\t\t103,601\u00a0\t\t\t104,774\u00a0\t\t\t96,328\nAccumulated other comprehensive loss\t\t(13,203)\t\t\t(12,770)\t\t\t(12,733)\nTotal Walmart shareholders' equity\t\t98,238\u00a0\t\t\t99,617\u00a0\t\t\t90,110\nNonredeemable noncontrolling interest\t\t6,268\u00a0\t\t\t6,270\u00a0\t\t\t6,440\n\nTotal shareholders' equity\n\t\t104,506\u00a0\t\t\t105,887\u00a0\t\t\t96,550\n\nTotal liabilities, redeemable noncontrolling interest, and shareholders' equity\n\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\u00a0\tSee accompanying notes.\n5\n[e38 link] Table of Contents\nWalmart Inc.\nCondensed Consolidated Statements of Shareholders' Equity\n(Unaudited)\n\n\t\t\t\t\t\t\t\t\tAccumulated\t\tTotal\n\t\t\t\t\tCapital in\t\t\t\tOther\t\tWalmart\t\tNonredeemable\n(Amounts in millions)\tCommon Stock\t\tExcess of\t\tRetained\t\tComprehensive\t\tShareholders'\t\tNoncontrolling\t\tTotal\nShares\t\tAmount\t\tPar\u00a0Value\t\tEarnings\t\tLoss\t\tEquity\t\tInterest\t\tEquity\nBalances as of February 1, 2026\t7,969\u00a0\t\t\t$\t797\u00a0\t\t\t$\t6,816\u00a0\t\t\t$\t104,774\u00a0\t\t\t$\t(12,770)\t\t\t$\t99,617\u00a0\t\t\t$\t6,270\u00a0\t\t\t$\t105,887\n[chunk 1/14; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_015LqABVLe7925APijynQsxJ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "value_usd": 98238000000,
+     "accession": "0000104169-26-000154",
+     "period_end": "2026-07-31",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm"
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_015LqABVLe7925APijynQsxJ",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

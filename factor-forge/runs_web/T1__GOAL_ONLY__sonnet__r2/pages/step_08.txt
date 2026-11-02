@@ -1,0 +1,14 @@
+URL: https://www.sec.gov/Archives/edgar/data/320193/000032019326000020/R5.htm | TITLE:  | chunk 1/1
+
+XML 16 R5.htm IDEA: XBRL DOCUMENT
+CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited) (Parenthetical) - $ / shares
+
+Jun. 27, 2026
+
+Sep. 27, 2025
+
+Statement of Financial Position [Abstract]
+Common stock, par value (in dollars per share)	$ 0.00001	$ 0.00001
+Common stock, shares authorized (in shares)	50,400,000,000	50,400,000,000
+Common stock, shares issued (in shares)	14,608,963,000	14,773,260,000
+Common stock, shares outstanding (in shares)	14,608,963,000	14,773,260,000

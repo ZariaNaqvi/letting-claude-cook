@@ -1,0 +1,2 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/cvx-20260630.htm | find_text 'Total Chevron Corporation stockholders': 1 match(es)
+(chunk 3) (56,190)			(51,929) / Total Chevron Corporation Stockholders’ Equity		189,883 			186,450 / Noncontrolling interests		5,675 			5,726

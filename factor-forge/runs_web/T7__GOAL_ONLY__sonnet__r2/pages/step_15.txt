@@ -1,0 +1,11 @@
+URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312626341032/brka-20260630.htm | TITLE:  | chunk 1/1 | HTTP 404
+
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+
+<Error>
+<Code>NoSuchKey</Code>
+<Message>The specified key does not exist.</Message>
+<Key>edgar/data/1067983/000119312626341032/brka-20260630.htm</Key>
+<RequestId>8GY6PRK6FYYEQAXT</RequestId>
+<HostId>Sslc+XnjPm4LrjnsBIRG28CChaSNKEEjankaNIOvsTjdD1cmbuepB1KTxcL0DR4WwScVC9zfzlH16pw0XqfesQMyfWDxCVLR</HostId>
+</Error>

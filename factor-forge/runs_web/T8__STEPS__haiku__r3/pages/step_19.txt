@@ -1,0 +1,58 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/0000093410-26-000167-index.htm | TITLE: EDGAR Filing Documents for 0000093410-26-000167 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-Q - Quarterly report [Sections 13 or 15(d)]:
+SEC Accession No. 0000093410-26-000167
+Filing Date
+2026-08-06
+Accepted
+2026-08-06 11:12:47
+Documents
+83
+Period of Report
+2026-06-30
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-Q	[e10 link] cvx-20260630.htm   iXBRL	10-Q	2090760
+2	EX-31.1	[e11 link] a06302026ex311ceo-sox302.htm	EX-31.1	11110
+3	EX-31.2	[e12 link] a06302026ex312cfo-sox302.htm	EX-31.2	10612
+4	EX-32.1	[e13 link] a06302026ex321ceo-sox906.htm	EX-32.1	5316
+5	EX-32.2	[e14 link] a06302026ex322cfo-sox906.htm	EX-32.2	4906
+11	GRAPHIC	[e15 link] cvx-20260630_g1.jpg	GRAPHIC	97523
+ 	Complete submission text file	[e16 link] 0000093410-26-000167.txt	 	10652799
+
+Data Files
+
+Seq	Description	Document	Type	Size
+6	XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT	[e17 link] cvx-20260630.xsd	EX-101.SCH	53282
+7	XBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT	[e18 link] cvx-20260630_cal.xml	EX-101.CAL	118365
+8	XBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT	[e19 link] cvx-20260630_def.xml	EX-101.DEF	232123
+9	XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT	[e20 link] cvx-20260630_lab.xml	EX-101.LAB	694928
+10	XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT	[e21 link] cvx-20260630_pre.xml	EX-101.PRE	471153
+88	EXTRACTED XBRL INSTANCE DOCUMENT	[e22 link] cvx-20260630_htm.xml	XML	1945530
+Mailing Address
+1400 SMITH STREET
+HOUSTON
+TX
+77002
+Business Address
+1400 SMITH STREET
+HOUSTON
+TX
+77002
+832-854-1000
+CHEVRON CORP (Filer) CIK: [e23 link] 0000093410 (see all company filings)
+
+EIN.: 940890210 | State of Incorp.: DE | Fiscal Year End: 1231
+Type: 10-Q | Act: 34 | File No.: [e24 link] 001-00368 | Film No.: 261247497
+SIC: [e25 link] 2911 Petroleum Refining
+(CF Office: 01 Energy & Transportation)

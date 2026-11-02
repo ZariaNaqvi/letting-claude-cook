@@ -1,0 +1,270 @@
+URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm | TITLE: wmt-20260731 | chunk 1/14
+
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+FORM 10-Q
+(Mark One)
+
+☒	Quarterly Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934.
+For the quarterly period ended July 31, 2026.
+or
+
+☐
+Transition Report Pursuant to Section 13 or 15(d) of the Securities Exchange Act of 1934. For the transition period from        to       .
+Commission File Number 001-06991
+WALMART INC.
+(Exact name of registrant as specified in its charter)
+
+Delaware		71-0415188
+
+(State or other jurisdiction of incorporation or organization)
+
+(I.R.S. Employer Identification No.)
+
+1 Customer Drive
+
+72716
+
+Bentonville	AR
+(Address of principal executive offices)		(Zip Code)
+Registrant's telephone number, including area code: (479) 273-4000
+Former name, former address and former fiscal year, if changed since last report: N/A
+Securities registered pursuant to Section 12(b) of the Act:
+
+Title of each class		Trading Symbol(s)		Name of each exchange on which registered
+Common Stock, par value $0.10 per share		WMT		The Nasdaq Stock Market LLC
+1.050% Notes due 2026		WMT26A		The Nasdaq Stock Market LLC
+1.500% Notes due 2028		WMT28C		The Nasdaq Stock Market LLC
+4.875% Notes due 2029		WMT29B		The Nasdaq Stock Market LLC
+5.750% Notes due 2030		WMT30B		The Nasdaq Stock Market LLC
+1.800% Notes due 2031		WMT31A		The Nasdaq Stock Market LLC
+5.625% Notes due 2034		WMT34		The Nasdaq Stock Market LLC
+5.250% Notes due 2035		WMT35A		The Nasdaq Stock Market LLC
+4.875% Notes due 2039		WMT39		The Nasdaq Stock Market LLC
+Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or such shorter periods that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.    Yes  ☒    No  ☐
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).    Yes  ☒    No  ☐
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of "large accelerated filer," "accelerated filer," "smaller reporting company," and "emerging growth company" in Rule 12b-2 of the Exchange Act.
+
+Large Accelerated Filer		☒	  	Accelerated Filer		☐
+Non-Accelerated Filer		☐	  	Smaller Reporting Company		☐
+				Emerging Growth Company		☐
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+Indicate by a check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).    Yes  ☐   No  ☒
+The registrant had 7,933,746,241 shares of common stock outstanding as of August 26, 2026.
+
+[e1 link] Table of Contents
+Walmart Inc.
+Form 10-Q
+For the Quarterly Period Ended July 31, 2026
+
+Table of Contents
+
+			Page
+
+[e2 link] Part I. Financial Information
+
+[e3 link] Item 1. Financial Statements
+
+[e4 link] Condensed Consolidated Statements of Income
+
+[e5 link] 3
+
+[e6 link] Condensed Consolidated Statements of Comprehensive Income
+
+[e7 link] 4
+
+[e8 link] Condensed Consolidated Balance Sheets
+
+[e9 link] 5
+
+[e10 link] Condensed Consolidated Statements of Shareholders' Equity
+
+[e11 link] 6
+
+[e12 link] Condensed Consolidated Statements of Cash Flows
+
+[e13 link] 7
+
+[e14 link] Notes to Condensed Consolidated Financial Statements
+
+[e15 link] 8
+
+[e16 link] Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations
+
+[e17 link] 17
+
+[e18 link] Item 3. Quantitative and Qualitative Disclosures About Market Risk
+
+[e19 link] 27
+
+[e20 link] Item 4. Controls and Procedures
+
+[e21 link] 28
+
+[e22 link] Part II. Other Information
+
+[e23 link] Item 1. Legal Proceedings
+
+[e24 link] 29
+
+[e25 link] Item 1A. Risk Factors
+
+[e26 link] 29
+
+[e27 link] Item 2. Unregistered Sales of Equity Securities and Use of Proceeds
+
+[e28 link] 30
+
+[e29 link] Item 5. Other Information
+
+[e30 link] 30
+
+[e31 link] Item 6. Exhibits
+
+[e32 link] 34
+
+[e33 link] Signatures
+
+[e34 link] 35
+
+[e35 link] Table of Contents
+PART I. FINANCIAL INFORMATION
+Item 1.Financial Statements
+Walmart Inc.
+Condensed Consolidated Statements of Income
+(Unaudited)
+
+		Three Months Ended July 31,		Six Months Ended July 31,
+(Amounts in millions, except per share data)		2026		2025		2026		2025
+Revenues:
+Net sales		$	186,100 			$	175,750 			$	361,784 			$	339,731
+Membership and other income		1,837 			1,652 			3,904 			3,280
+Total revenues		187,937 			177,402 			365,688 			343,011
+Costs and expenses:
+Cost of sales		138,804 			132,771 			271,862 			257,074
+Operating, selling, general and administrative expenses		39,750 			37,345 			76,950 			71,516
+Operating income		9,383 			7,286 			16,876 			14,421
+Interest:
+Debt		137 			651 			711 			1,170
+Finance lease		126 			118 			251 			236
+Interest income		(92)			(94)			(171)			(187)
+Interest, net		171 			675 			791 			1,219
+
+Other (gains) and losses		1,200 			(2,708)			925 			(2,111)
+Income before income taxes		8,012 			9,319 			15,160 			15,313
+Provision for income taxes		1,483 			2,168 			3,141 			3,523
+
+Consolidated net income		6,529 			7,151 			12,019 			11,790
+Consolidated net income attributable to noncontrolling interest		(163)			(125)			(323)			(277)
+Consolidated net income attributable to Walmart		$	6,366 			$	7,026 			$	11,696 			$	11,513
+
+Net income per common share:
+Basic net income per common share attributable to Walmart		$	0.80 			$	0.88 			$	1.47 			$	1.44
+
+Diluted net income per common share attributable to Walmart		0.80 			0.88 			1.46 			1.43
+
+Weighted-average common shares outstanding:
+Basic		7,954 			7,978 			7,962 			7,994
+Diluted		7,978 			8,016 			7,989 			8,033
+
+Dividends declared per common share		$	— 			$	— 			$	0.99 			$	0.94
+See accompanying notes.
+3
+[e36 link] Table of Contents
+Walmart Inc.
+Condensed Consolidated Statements of Comprehensive Income
+(Unaudited)
+
+		Three Months Ended July 31,		Six Months Ended July 31,
+(Amounts in millions)		2026		2025		2026		2025
+Consolidated net income		$	6,529 			$	7,151 			$	12,019 			$	11,790
+Consolidated net income attributable to noncontrolling interest		(163)			(125)			(323)			(277)
+
+Consolidated net income attributable to Walmart		6,366 			7,026 			11,696 			11,513
+
+Other comprehensive income (loss), net of income taxes		534 			750 			(432)			1,095
+Other comprehensive income attributable to noncontrolling interest		(132)			(187)			(1)			(223)
+
+Other comprehensive income (loss) attributable to Walmart		402 			563 			(433)			872
+
+Comprehensive income, net of income taxes		7,063 			7,901 			11,587 			12,885
+Comprehensive income attributable to noncontrolling interest		(295)			(312)			(324)			(500)
+
+Comprehensive income attributable to Walmart		$	6,768 			$	7,589 			$	11,263 			$	12,385
+See accompanying notes.
+4
+[e37 link] Table of Contents
+Walmart Inc.
+Condensed Consolidated Balance Sheets
+(Unaudited)
+
+		July 31,		January 31,		July 31,
+(Amounts in millions)		2026		2026		2025
+ASSETS
+Current assets:
+Cash and cash equivalents		$	11,529 			$	10,727 			$	9,431
+Receivables, net		11,075 			11,172 			10,518
+Inventories		61,600 			58,851 			57,729
+Prepaid expenses and other		4,499 			4,124 			4,355
+
+Total current assets		88,703 			84,874 			82,033
+
+Property and equipment, net		142,482 			136,083 			125,476
+Operating lease right-of-use assets		15,650 			14,750 			13,953
+Finance lease right-of-use assets, net		6,178 			6,123 			6,128
+
+Goodwill		28,260 			28,735 			29,060
+Other long-term assets		12,641 			14,103 			14,187
+Total assets		$	293,914 			$	284,668 			$	270,837
+
+LIABILITIES, REDEEMABLE NONCONTROLLING INTEREST, AND SHAREHOLDERS' EQUITY
+
+Current liabilities:
+Short-term borrowings		$	10,479 			$	6,596 			$	3,837
+Accounts payable		64,318 			63,061 			60,086
+Dividends payable		3,949 			— 			3,783
+Accrued liabilities		30,074 			31,187 			28,821
+Accrued income taxes		746 			596 			620
+Long-term debt due within one year		3,470 			3,542 			4,011
+Operating lease obligations due within one year		1,714 			1,631 			1,580
+Finance lease obligations due within one year		880 			856 			828
+
+Total current liabilities		115,630 			107,469 			103,566
+
+Long-term debt		36,462 			34,624 			35,640
+Long-term operating lease obligations		14,798 			13,941 			13,171
+Long-term finance lease obligations		5,952 			5,905 			5,947
+
+Deferred income taxes and other		16,273 			16,549 			15,656
+
+Commitments and contingencies
+
+Redeemable noncontrolling interest		293 			293 			307
+
+Shareholders' equity:
+
+Common stock		794 			797 			797
+Capital in excess of par value		7,046 			6,816 			5,718
+Retained earnings		103,601 			104,774 			96,328
+Accumulated other comprehensive loss		(13,203)			(12,770)			(12,733)
+Total Walmart shareholders' equity		98,238 			99,617 			90,110
+Nonredeemable noncontrolling interest		6,268 			6,270 			6,440
+
+Total shareholders' equity
+		104,506 			105,887 			96,550
+
+Total liabilities, redeemable noncontrolling interest, and shareholders' equity
+		$	293,914 			$	284,668 			$	270,837 	See accompanying notes.
+5
+[e38 link] Table of Contents
+Walmart Inc.
+Condensed Consolidated Statements of Shareholders' Equity
+(Unaudited)
+
+									Accumulated		Total
+					Capital in				Other		Walmart		Nonredeemable
+(Amounts in millions)	Common Stock		Excess of		Retained		Comprehensive		Shareholders'		Noncontrolling		Total
+Shares		Amount		Par Value		Earnings		Loss		Equity		Interest		Equity
+Balances as of February 1, 2026	7,969 			$	797 			$	6,816 			$	104,774 			$	(12,770)			$	99,617 			$	6,270 			$	105,887
+[chunk 1/14; call read_page(page=2) for more]

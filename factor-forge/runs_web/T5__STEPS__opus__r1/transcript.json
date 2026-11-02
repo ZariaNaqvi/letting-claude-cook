@@ -1,0 +1,221 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T5\n\nFind Domino's Pizza, Inc.'s total stockholders' equity (deficit) at the end of its second fiscal quarter of 2026.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nSTEPS (a click path that works):\n1. Open https://www.sec.gov/search-filings, type \"Domino\" and click the suggestion \"DOMINOS PIZZA INC (DPZ)\" (CIK 0001286681). (Typing the apostrophe in \"Domino's\" makes the search return no suggestions.)\n2. Expand \"10-K (annual reports) and 10-Q (quarterly reports)\" and open the \"Filing\" link of the 10-Q for the quarter ending June 14, 2026 (filed July 2026).\n3. From the filing index, open the filing folder, then FilingSummary.xml, and find \"Condensed Consolidated Balance Sheets\"; open its R page.\n4. Use the row \"Total stockholders' deficit\", column \"Jun. 14, 2026\". The amount is shown in parentheses, which means it is NEGATIVE.\nUnits: The page header says \"$ in Thousands\": multiply by 1,000, and keep the minus sign.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01M4a2fACB1jELbsW4SFJe3a",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001286681&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01M4a2fACB1jELbsW4SFJe3a",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0001286681&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01L2EtXJAaKK55pcSjip9m6N",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/search-filings"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01L2EtXJAaKK55pcSjip9m6N",
+    "content": "ERROR: could not load https://www.sec.gov/search-filings (TimeoutError: Page.goto: Timeout 20000ms exceeded.)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_0128WsJewct8JrZHafDyfUjA",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/browse/?CIK=1286681"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0128WsJewct8JrZHafDyfUjA",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1286681 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nDOMINOS PIZZA INC DPZ on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 13, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 8, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 6, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01EUt4vd19RhttHL6U9dYkUH",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01EUt4vd19RhttHL6U9dYkUH",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=1286681 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nDOMINOS PIZZA INC DPZ on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e11 link] Filing\nOpen filing\n[e12 link] October 13, 2026 - 8-K: Current report\nOpen document\n[e13 link] Filing\nOpen filing\n **Earnings release**\n2.02 - Results of Operations and Financial Condition\n9.01 - Financial Statements and Exhibits\n[e14 link] October 8, 2026 - 8-K: Current report\nOpen document\n[e15 link] Filing\nOpen filing\n5.02 - Departure of Directors or Certain Officers Election of Directors Appointment of Certain Officers Compensatory Arrangements of Certain Officers\n[e16 link] August 14, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e17 link] Filing\nOpen filing\n[e18 link] August 6, 2026 - SCHEDULE 13G/A: Schedule filed by certain investors to report beneficial ownership of more than 5% of a class of equity securities - amendment\nOpen document\n [e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] October 13, 2026 - 10-Q: Quarterly report for quarter ending September 6, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] July 20, 2026 - 10-Q: Quarterly report for quarter ending June 14, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] April 27, 2026 - 10-Q: Quarterly report for quarter ending March 22, 2026\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] February 23, 2026 - 10-K: Annual report for year ending December 28, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_016CyvxuBqXAPvhrFCkH9Qs4",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e30"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_016CyvxuBqXAPvhrFCkH9Qs4",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/0001286681-26-000035-index.htm | TITLE: EDGAR Filing Documents for 0001286681-26-000035 | chunk 1/1\n\n[e1 link]\n[e2 link] SEC.gov\n[e3 link] EDGAR\n[e4 link] Latest Filings\n[e5 link] Filings search tools\nFiling Detail\n[e6 link] SEC Home \u00bb [e7 link] Company Search \u00bb Current Page\nForm 10-Q - Quarterly report [Sections 13 or 15(d)]:\nSEC Accession No. 0001286681-26-000035\nFiling Date\n2026-07-20\nAccepted\n2026-07-20 06:09:41\nDocuments\n59\nPeriod of Report\n2026-06-14\n[e8 link] \u00a0[e9 button] Interactive Data\n\nDocument Format Files\n\nSeq\tDescription\tDocument\tType\tSize\n1\t10-Q\t[e10 link] dpz-20260614.htm \u00a0\u00a0iXBRL\t10-Q\t3285945\n2\tEX-31.1\t[e11 link] dpz-ex31_1.htm\tEX-31.1\t17494\n3\tEX-31.2\t[e12 link] dpz-ex31_2.htm\tEX-31.2\t16674\n4\tEX-32.1\t[e13 link] dpz-ex32_1.htm\tEX-32.1\t12383\n5\tEX-32.2\t[e14 link] dpz-ex32_2.htm\tEX-32.2\t11980\n\u00a0\tComplete submission text file\t[e15 link] 0001286681-26-000035.txt\t\u00a0\t12980823\n\nData Files\n\nSeq\tDescription\tDocument\tType\tSize\n6\tXBRL TAXONOMY EXTENSION SCHEMA WITH EMBEDDED LINKBASES DOCUMENT\t[e16 link] dpz-20260614.xsd\tEX-101.SCH\t1222003\n63\tEXTRACTED XBRL INSTANCE DOCUMENT\t[e17 link] dpz-20260614_htm.xml\tXML\t3338551\nMailing Address\n30 FRANK LLOYD WRIGHT DRIVE\nANN ARBOR\nMI\n48105\nBusiness Address\n30 FRANK LLOYD WRIGHT DRIVE\nANN ARBOR\nMI\n48105\n(734) 930-3030\nDOMINOS PIZZA INC (Filer) CIK: [e18 link] 0001286681 (see all company filings)\n\nEIN.: 382511577 | State of Incorp.: DE | Fiscal Year End: 0102\nType: 10-Q | Act: 34 | File No.: [e19 link] 001-32242 | Film No.: 261185103\nSIC: [e20 link] 5140 Wholesale-Groceries & Related Products\n(CF Office: 07 Trade & Services)"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01PkwAentSmkHxdUrFvyuXZr",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/FilingSummary.xml"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01PkwAentSmkHxdUrFvyuXZr",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/FilingSummary.xml | TITLE:  | chunk 1/3\n\nThis XML file does not appear to have any style information associated with it. The document tree is shown below.\n\n<FilingSummary>\n<Version>3.26.1</Version>\n<ProcessingTime/>\n<ReportFormat>html</ReportFormat>\n<ContextCount>315</ContextCount>\n<ElementCount>234</ElementCount>\n<EntityCount>1</EntityCount>\n<FootnotesReported>true</FootnotesReported>\n<SegmentCount>43</SegmentCount>\n<ScenarioCount>0</ScenarioCount>\n<TuplesReported>false</TuplesReported>\n<UnitCount>7</UnitCount>\n<MyReports>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R1.htm</HtmlFileName>\n<LongName>75000 - Document - Cover Page</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/CoverPage</Role>\n<ShortName>Cover Page</ShortName>\n<MenuCategory>Cover</MenuCategory>\n<Position>1</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R2.htm</HtmlFileName>\n<LongName>75010 - Statement - Condensed Consolidated Balance Sheets (Unaudited)</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedBalanceSheetsUnaudited</Role>\n<ShortName>Condensed Consolidated Balance Sheets (Unaudited)</ShortName>\n<MenuCategory>Statements</MenuCategory>\n<Position>2</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R3.htm</HtmlFileName>\n<LongName>75020 - Statement - Condensed Consolidated Statements of Income (Unaudited)</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedStatementsOfIncomeUnaudited</Role>\n<ShortName>Condensed Consolidated Statements of Income (Unaudited)</ShortName>\n<MenuCategory>Statements</MenuCategory>\n<Position>3</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R4.htm</HtmlFileName>\n<LongName>75030 - Statement - Condensed Consolidated Statements of Comprehensive Income (Unaudited)</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedStatementsOfComprehensiveIncomeUnaudited</Role>\n<ShortName>Condensed Consolidated Statements of Comprehensive Income (Unaudited)</ShortName>\n<MenuCategory>Statements</MenuCategory>\n<Position>4</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R5.htm</HtmlFileName>\n<LongName>75040 - Statement - Condensed Consolidated Statements of Cash Flows (Unaudited)</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/StatementCondensedConsolidatedStatementsOfCashFlowsUnaudited</Role>\n<ShortName>Condensed Consolidated Statements of Cash Flows (Unaudited)</ShortName>\n<MenuCategory>Statements</MenuCategory>\n<Position>5</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R6.htm</HtmlFileName>\n<LongName>995410 - Disclosure - Pay vs Performance Disclosure</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://xbrl.sec.gov/ecd/role/PvpDisclosure</Role>\n<ShortName>Pay vs Performance Disclosure</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>6</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R7.htm</HtmlFileName>\n<LongName>995445 - Disclosure - Insider Trading Arrangements</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://xbrl.sec.gov/ecd/role/InsiderTradingArrangements</Role>\n<ShortName>Insider Trading Arrangements</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>7</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R8.htm</HtmlFileName>\n<LongName>995455 - Disclosure - Basis of Presentation</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureBasisOfPresentation</Role>\n<ShortName>Basis of Presentation</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>8</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R9.htm</HtmlFileName>\n<LongName>995465 - Disclosure - Segment Information</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/SegmentInformation</Role>\n<ShortName>Segment Information</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>9</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R10.htm</HtmlFileName>\n<LongName>995475 - Disclosure - Earnings Per Share</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/EarningsPerShare</Role>\n<ShortName>Earnings Per Share</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>10</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R11.htm</HtmlFileName>\n<LongName>995485 - Disclosure - Stockholders' Deficit</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/StockholdersDeficit</Role>\n<ShortName>Stockholders' Deficit</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>11</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R12.htm</HtmlFileName>\n<LongName>995505 - Disclosure - Leverage Ratio and Debt Classification</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureLeverageRatioAndDebtClassification</Role>\n<ShortName>Leverage Ratio and Debt Classification</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>12</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R13.htm</HtmlFileName>\n<LongName>995515 - Disclosure - Fair Value Measurements</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/FairValueMeasurements</Role>\n<ShortName>Fair Value Measurements</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>13</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R14.htm</HtmlFileName>\n<LongName>995525 - Disclosure - Revenue Disclosures</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/RevenueDisclosures</Role>\n<ShortName>Revenue Disclosures</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>14</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R15.htm</HtmlFileName>\n<LongName>995535 - Disclosure - Leases</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/Leases</Role>\n<ShortName>Leases</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>15</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R16.htm</HtmlFileName>\n<LongName>995545 - Disclosure - Supplemental Disclosures of Cash Flow Information</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/SupplementalDisclosuresOfCashFlowInformation</Role>\n<ShortName>Supplemental Disclosures of Cash Flow Information</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>16</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R17.htm</HtmlFileName>\n<LongName>995555 - Disclosure - Asset Acquisitions and Dispositions</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/DisclosureAssetAcquisitionsAndDispositions</Role>\n<ShortName>Asset Acquisitions and Dispositions</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>17</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R18.htm</HtmlFileName>\n<LongName>995575 - Disclosure - New Accounting Pronouncements</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/NewAccountingPronouncements</Role>\n<ShortName>New Accounting Pronouncements</ShortName>\n<MenuCategory>Notes</MenuCategory>\n<Position>18</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R19.htm</HtmlFileName>\n<LongName>995585 - Disclosure - Segment Information (Tables)</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/SegmentInformationTables</Role>\n<ShortName>Segment Information (Tables)</ShortName>\n<MenuCategory>Tables</MenuCategory>\n<ParentRole>http://www.dominos.com/20260614/taxonomy/role/SegmentInformation</ParentRole>\n<Position>19</Position>\n</Report>\n<Report instance=\"dpz-20260614.htm\">\n<IsDefault>false</IsDefault>\n<HasEmbeddedReports>false</HasEmbeddedReports>\n<HtmlFileName>R20.htm</HtmlFileName>\n<LongName>995595 - Disclosure - Earnings Per Share (Tables)</LongName>\n<ReportType>Sheet</ReportType>\n<Role>http://www.dominos.com/20260614/taxonomy/role/EarningsPerShareTables</Role>\n<ShortName>Earnings Per Share (Tables)</ShortName>\n<MenuCategory>Tables</MenuCategory>\n[chunk 1/3; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01SjeQwpDLgJXoA1YFwA7g2m",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R2.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01SjeQwpDLgJXoA1YFwA7g2m",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R2.htm | TITLE:  | chunk 1/1\n\nXML 9 R2.htm IDEA: XBRL DOCUMENT\nCondensed Consolidated Balance Sheets (Unaudited) - USD ($)\n$ in Thousands\n\nJun. 14, 2026\n\nDec. 28, 2025\n\nCurrent assets:\nCash and cash equivalents\t$ 164,836\t$ 125,675\nRestricted cash and cash equivalents\t187,885\t216,110\nAccounts receivable, net\t303,182\t315,958\nInventories\t75,057\t79,189\nPrepaid expenses and other\t55,049\t39,767\nAdvertising fund assets, restricted\t119,410\t117,502\nTotal current assets\t905,419\t894,201\nProperty, plant and equipment:\nLand and buildings\t172,241\t105,559\nLeasehold and other improvements\t186,158\t193,673\nEquipment\t388,323\t413,303\nConstruction in progress\t31,741\t46,184\nProperty, plant and equipment, Gross\t778,463\t758,719\nAccumulated depreciation and amortization\t(404,017)\t(434,697)\nProperty, plant and equipment, net\t374,446\t324,022\nOther assets:\nOperating lease\u00a0right-of-use\u00a0assets\t227,793\t219,485\nGoodwill\t7,870\t10,726\nCapitalized software, net\t161,277\t159,256\nInvestment in DPC Dash\t17,714\t36,070\nDeferred income tax assets, net\t16,805\t22,101\nOther assets\t51,998\t50,598\nTotal other assets\t483,457\t498,236\nTotal assets\t1,763,322\t1,716,459\nCurrent liabilities:\nCurrent portion of long-term debt\t7,423\t6,131\nAccounts payable\t137,429\t135,029\nOperating lease liabilities\t45,964\t47,553\nInsurance reserves\t25,895\t26,169\nDividends payable\t67,912\t2,714\nAdvertising fund liabilities\t117,830\t115,412\nOther accrued liabilities\t186,217\t208,613\nTotal current liabilities\t588,670\t541,621\nLong-term liabilities:\nLong-term debt, less current portion\t4,876,221\t4,810,683\nOperating lease liabilities\t193,245\t183,917\nInsurance reserves\t36,722\t32,959\nOther accrued liabilities\t50,895\t48,421\nTotal long-term liabilities\t5,157,083\t5,075,980\nStockholders' deficit\nCommon stock\t331\t336\nAdditional paid-in capital\t841\t1,910\nRetained deficit\t(3,977,546)\t(3,898,622)\nAccumulated other comprehensive loss\t(6,057)\t(4,766)\nTotal stockholders' deficit\t(3,982,431)\t(3,901,142)\nTotal liabilities and stockholders' deficit\t$ 1,763,322\t$ 1,716,459"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01RpLjM4PScT89PT1HEcNUoP",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0001286681-26-000035",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R2.htm",
+     "period_end": "2026-06-14",
+     "value_usd": -3982431000
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01RpLjM4PScT89PT1HEcNUoP",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

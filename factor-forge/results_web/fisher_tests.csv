@@ -1,0 +1,15 @@
+hypothesis,comparison,a,b,p_value,p_holm
+H1,all models: Part 2 vs Part 3,316/320,189/192,1.0,1.0
+H1,fable: Part 2 vs Part 3,78/80,48/48,0.5275590551181103,1.0
+H1,opus: Part 2 vs Part 3,79/80,48/48,1.0,1.0
+H1,sonnet: Part 2 vs Part 3,80/80,45/48,0.050665541807274096,0.7093175853018373
+H1,haiku: Part 2 vs Part 3,79/80,48/48,1.0,1.0
+H2,fable vs haiku,48/48,48/48,1.0,1.0
+H2,opus vs sonnet,48/48,45/48,0.24210526315789474,1.0
+H2,fable vs opus,48/48,48/48,1.0,1.0
+H2,sonnet vs haiku,45/48,48/48,0.24210526315789474,1.0
+H3,all models: STEPS vs GOAL_ONLY,96/96,93/96,0.24607329842931938,1.0
+H3,fable: STEPS vs GOAL_ONLY,24/24,24/24,1.0,1.0
+H3,opus: STEPS vs GOAL_ONLY,24/24,24/24,1.0,1.0
+H3,sonnet: STEPS vs GOAL_ONLY,24/24,21/24,0.2340425531914893,1.0
+H3,haiku: STEPS vs GOAL_ONLY,24/24,24/24,1.0,1.0

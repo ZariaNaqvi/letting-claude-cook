@@ -1,0 +1,57 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/0001065280-26-000212-index.htm | TITLE: EDGAR Filing Documents for 0001065280-26-000212 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 10-Q - Quarterly report [Sections 13 or 15(d)]:
+SEC Accession No. 0001065280-26-000212
+Filing Date
+2026-07-17
+Accepted
+2026-07-17 16:02:51
+Documents
+83
+Period of Report
+2026-06-30
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	10-Q	[e10 link] nflx-20260630.htm   iXBRL	10-Q	1815616
+2	EX-31.1	[e11 link] ex311_q226.htm	EX-31.1	12249
+3	EX-31.2	[e12 link] ex312_q226.htm	EX-31.2	12246
+4	EX-31.3	[e13 link] ex313_q226.htm	EX-31.3	12144
+5	EX-32.1	[e14 link] ex321_q226.htm	EX-32.1	14656
+ 	Complete submission text file	[e15 link] 0001065280-26-000212.txt	 	10009964
+
+Data Files
+
+Seq	Description	Document	Type	Size
+6	XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT	[e16 link] nflx-20260630.xsd	EX-101.SCH	48554
+7	XBRL TAXONOMY EXTENSION CALCULATION LINKBASE DOCUMENT	[e17 link] nflx-20260630_cal.xml	EX-101.CAL	77289
+8	XBRL TAXONOMY EXTENSION DEFINITION LINKBASE DOCUMENT	[e18 link] nflx-20260630_def.xml	EX-101.DEF	242181
+9	XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT	[e19 link] nflx-20260630_lab.xml	EX-101.LAB	623569
+10	XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT	[e20 link] nflx-20260630_pre.xml	EX-101.PRE	456478
+87	EXTRACTED XBRL INSTANCE DOCUMENT	[e21 link] nflx-20260630_htm.xml	XML	2101320
+Mailing Address
+121 ALBRIGHT WAY
+LOS GATOS
+CA
+95032-7606
+Business Address
+121 ALBRIGHT WAY
+LOS GATOS
+CA
+95032
+408-540-3700
+NETFLIX INC (Filer) CIK: [e22 link] 0001065280 (see all company filings)
+
+EIN.: 770467272 | State of Incorp.: DE | Fiscal Year End: 1231
+Type: 10-Q | Act: 34 | File No.: [e23 link] 001-35727 | Film No.: 261183709
+SIC: [e24 link] 7841 Services-Video Tape Rental
+(CF Office: 07 Trade & Services)

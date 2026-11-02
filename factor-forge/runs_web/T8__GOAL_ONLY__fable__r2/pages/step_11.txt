@@ -1,0 +1,138 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/R4.htm | TITLE:  | chunk 1/1
+
+XML 92 R4.htm IDEA: XBRL DOCUMENT
+CONSOLIDATED BALANCE SHEET (Unaudited) - USD ($)
+$ in Millions
+
+Jun. 30, 2026
+
+Dec. 31, 2025
+
+Assets
+
+Cash and cash equivalents
+		$ 8,527	$ 6,293
+
+Time deposits
+		3	4
+
+Accounts and notes receivable (less allowance: 2026 - $178; 2025 - $176)
+		24,575	18,075
+
+Inventories:
+
+Crude oil and products
+		7,168	6,640
+
+Chemicals
+		632	571
+
+Materials, supplies and other
+		2,722	2,500
+
+Total inventories
+		10,522	9,711
+
+Prepaid expenses and other current assets
+		5,509	4,469
+
+Total Current Assets
+		49,136	38,552
+
+Long-term receivables (less allowance: 2026 - $216; 2025 - $216)
+		903	1,035
+
+Investments and advances
+		42,346	43,867
+
+Properties, plant and equipment, at cost
+		440,714	434,955
+
+Less: Accumulated depreciation, depletion and amortization
+		224,777	215,226
+
+Properties, plant and equipment, net
+		215,937	219,729
+
+Deferred charges and other assets
+		16,465	16,236
+
+Goodwill
+		4,568	4,568
+
+Assets held for sale
+		780	25
+
+Total Assets
+		330,135	324,012
+
+Liabilities and Equity
+
+Short-term debt
+		401	977
+
+Accounts payable
+		24,419	19,280
+
+Accrued liabilities
+		10,840	10,763
+
+Federal and other taxes on income
+		2,204	844
+
+Other taxes payable
+		1,377	1,523
+
+Total Current Liabilities
+		39,241	33,387
+
+Long-term debt
+		36,674	39,781
+
+Deferred credits and other noncurrent obligations
+		24,392	24,543
+
+Noncurrent deferred income taxes
+		30,338	30,014
+
+Noncurrent employee benefit plans
+		3,932	4,111
+
+Total Liabilities
+	[1]	134,577	131,836
+
+Preferred stock (authorized 100,000,000 shares; $1.00 par value; none issued)
+		0	0
+
+Common stock (authorized 6,000,000,000 shares, $0.75 par value; 2,442,676,580 shares issued at June 30, 2026 and December 31, 2025)
+		1,832	1,832
+
+Capital in excess of par value
+		33,999	33,886
+
+Retained earnings
+		212,595	205,365
+
+Accumulated other comprehensive losses
+		(2,113)	(2,464)
+
+Deferred compensation and benefit plan trust
+		(240)	(240)
+
+Treasury stock, at cost (466,905,306 and 448,260,458 shares at June 30, 2026 and December 31, 2025, respectively)
+		(56,190)	(51,929)
+
+Total Chevron Corporation Stockholders’ Equity
+		189,883	186,450
+
+Noncontrolling interests
+		5,675	5,726
+
+Total Equity
+		195,558	192,176
+
+Total Liabilities and Equity
+		$ 330,135	$ 324,012
+
+[1]
+* Refer to [e1 link] Note 12 Other Contingencies and Commitments.

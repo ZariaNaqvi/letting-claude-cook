@@ -1,0 +1,40 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/R1.htm | TITLE:  | chunk 1/1
+
+XML 12 R1.htm IDEA: XBRL DOCUMENT
+Cover Page
+
+	6 Months Ended
+
+Jun. 30, 2026
+shares
+
+Cover [Abstract]
+Document Type	10-Q
+Document Quarterly Report	true
+Document Period End Date	Jun. 30, 2026
+Document Transition Report	false
+Entity File Number	001-35727
+Entity Registrant Name	Netflix, Inc.
+Entity Incorporation, State or Country Code	DE
+Entity Tax Identification Number	77-0467272
+Entity Address, Address Line One	121 Albright Way,
+Entity Address, City or Town	Los Gatos,
+Entity Address, State or Province	CA
+Entity Address, Postal Zip Code	95032
+City Area Code	408
+Local Phone Number	540-3700
+Title of 12(b) Security	Common stock, par value $0.001 per share
+Trading Symbol	NFLX
+Security Exchange Name	NASDAQ
+Entity Current Reporting Status	Yes
+Entity Interactive Data Current	Yes
+Entity Filer Category	Large Accelerated Filer
+Entity Small Business	false
+Entity Emerging Growth Company	false
+Entity Shell Company	false
+Entity Common Stock, Shares Outstanding	4,163,939,676
+Entity Central Index Key	0001065280
+Document Fiscal Year Focus	2026
+Document Fiscal Period Focus	Q2
+Amendment Flag	false
+Current Fiscal Year End Date	--12-31

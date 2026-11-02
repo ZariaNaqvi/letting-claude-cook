@@ -1,0 +1,308 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | TITLE: nflx-20260630 | chunk 1/13
+
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+
+FORM 10-Q
+
+(Mark One)
+☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the quarterly period ended June 30, 2026
+OR
+
+☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the transition period from                  to
+Commission File Number: 001-35727
+
+Netflix, Inc.
+(Exact name of Registrant as specified in its charter)
+
+Delaware	77-0467272
+(State or other jurisdiction of
+incorporation or organization)	(I.R.S. Employer
+Identification Number)
+
+121 Albright Way,	Los Gatos,	California	95032
+(Address of principal executive offices)	(Zip Code)
+(408) 540-3700
+(Registrant’s telephone number, including area code)
+
+Securities registered pursuant to Section 12(b) of the Act:
+
+Title of each class	Trading Symbol(s)	Name of each exchange on which registered
+Common stock, par value $0.001 per share	NFLX	NASDAQ Global Select Market
+Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports) and (2) has been subject to such filing requirements for the past 90 days.    Yes  ☒    No  ☐
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).    Yes  ☒    No   ☐
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act.
+
+Large Accelerated Filer	☒		Accelerated filer
+☐
+
+Non-accelerated filer
+☐
+		Smaller reporting company
+☐
+
+			Emerging growth company
+☐
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+Indicate by check mark whether the registrant is a shell company (as defined by Rule 12b-2 of the Exchange Act).    Yes  ☐    No  ☒
+As of June 30, 2026, there were 4,163,939,676 shares of the registrant’s common stock, par value $0.001, outstanding.
+
+Table of Contents
+
+		Page
+	Part I. Financial Information
+
+Item 1.
+
+[e1 link] Consolidated Financial Statements
+
+[e2 link] Consolidated Statements of Operations
+
+[e3 link] 3
+
+[e4 link] Consolidated Statements of Comprehensive Income
+
+[e5 link] 4
+
+[e6 link] Consolidated Statements of Cash Flows
+
+[e7 link] 5
+
+[e8 link] Consolidated Balance Sheets
+
+[e9 link] 6
+
+[e10 link] Consolidated Statements of Stockholders’ Equity
+
+[e11 link] 7
+
+[e12 link] Notes to Consolidated Financial Statements
+
+[e13 link] 8
+
+Item 2.
+
+[e14 link] Management’s Discussion and Analysis of Financial Condition and Results of Operations
+
+[e15 link] 26
+
+Item 3.
+
+[e16 link] Quantitative and Qualitative Disclosures About Market Risk
+
+[e17 link] 37
+
+Item 4.
+
+[e18 link] Controls and Procedures
+
+[e19 link] 38
+
+	Part II. Other Information
+
+Item 1.
+
+[e20 link] Legal Proceedings
+
+[e21 link] 38
+
+Item 1A.
+
+[e22 link] Risk Factors
+
+[e23 link] 39
+
+Item 2.
+
+[e24 link] Unregistered Sales of Equity Securities and Use of Proceeds
+
+[e25 link] 39
+
+Item 5.
+[e26 link] Other Information
+
+[e27 link] 39
+
+Item 6.
+
+[e28 link] Exhibits
+
+[e29 link] 39
+
+[e30 link] Exhibit Index
+
+[e31 link] 40
+
+[e32 link] Signatures
+
+[e33 link] 40
+
+2
+[e34 link] Table of Contents
+
+NETFLIX, INC.
+Consolidated Statements of Operations
+(unaudited)
+(in thousands, except per share data)
+
+	Three Months Ended		Six Months Ended
+	June 30,
+2026		June 30,
+2025		June 30,
+2026		June 30,
+2025
+
+Revenues
+	$	12,559,938 			$	11,079,166 			$	24,809,695 			$	21,621,967
+
+Cost of revenues
+	6,036,965 			5,325,311 			11,925,203 			10,588,458
+Sales and marketing	823,838 			713,265 			1,666,055 			1,401,635
+
+Technology and development
+	1,007,675 			824,683 			1,967,371 			1,647,506
+
+General and administrative
+	498,850 			441,213 			1,101,459 			862,675
+
+Operating income
+	4,192,610 			3,774,694 			8,149,607 			7,121,693
+
+Other income (expense):
+
+Interest expense
+	(175,685)			(182,649)			(437,762)			(366,821)
+Interest and other income (expense)	51,661 			39,630 			2,903,827 			90,529
+
+Income before income taxes
+	4,068,586 			3,631,675 			10,615,672 			6,845,401
+Provision for income taxes	(667,172)			(506,262)			(1,931,467)			(829,637)
+
+Net income
+	$	3,401,414 			$	3,125,413 			$	8,684,205 			$	6,015,764
+
+Earnings per share:
+
+Basic
+	$	0.81 			$	0.74 			$	2.06 			$	1.41
+
+Diluted
+	$	0.80 			$	0.72 			$	2.03 			$	1.38
+
+Weighted-average shares of common stock outstanding:
+
+Basic
+	4,189,303 			4,252,112 			4,205,952 			4,262,347
+
+Diluted
+	4,261,300 			4,348,825 			4,279,776 			4,359,167
+
+See accompanying notes to the consolidated financial statements.
+3
+[e35 link] Table of Contents
+NETFLIX, INC.
+Consolidated Statements of Comprehensive Income
+(unaudited)
+(in thousands)
+
+	Three Months Ended		Six Months Ended
+	June 30,
+2026		June 30,
+2025		June 30,
+2026		June 30,
+2025
+Net income	$	3,401,414 			$	3,125,413 			$	8,684,205 			$	6,015,764
+Other comprehensive income (loss):
+
+Foreign currency translation adjustments, net of income tax benefit (expense) of $(3) million, $21 million, $(12) million, and $32 million, respectively
+	3,549 			97,341 			(49,329)			154,256
+
+Net change in unrealized gains (losses) on available-for-sale securities, net of income tax benefit (expense) of $0, $0.2 million, $0, and $1 million, respectively
+	— 			(699)			— 			(2,511)
+Cash flow hedges:
+Net unrealized gains (losses)	92,357 			(941,572)			388,509 			(1,316,744)
+Reclassification of net (gains) losses included in net income	37,301 			28,537 			138,480 			(96,624)
+
+Net change, net of income tax benefit (expense) of $(39) million, $272 million, $(159) million, and $421 million, respectively
+	129,658 			(913,035)			526,989 			(1,413,368)
+Fair value hedges:
+
+Net change in unrealized gains (losses) excluded from the assessment of effectiveness, net of income tax benefit (expense) of $(1) million, $1 million, $(2) million, and $2 million, respectively
+	4,707 			(2,540)			5,605 			(5,207)
+Total other comprehensive income (loss)	137,914 			(818,933)			483,265 			(1,266,830)
+Comprehensive income	$	3,539,328 			$	2,306,480 			$	9,167,470 			$	4,748,934
+
+See accompanying notes to the consolidated financial statements.
+4
+[e36 link] Table of Contents
+NETFLIX, INC.
+
+Consolidated Statements of Cash Flows
+(unaudited)
+(in thousands)
+
+	Three Months Ended		Six Months Ended
+
+	June 30,
+2026		June 30,
+2025		June 30,
+2026		June 30,
+2025
+Cash flows from operating activities:
+Net income	$	3,401,414 			$	3,125,413 			$	8,684,205 			$	6,015,764
+Adjustments to reconcile net income to net cash provided by operating activities:
+Additions to content assets	(4,927,523)			(3,835,813)			(9,774,440)			(7,385,470)
+Change in content liabilities	(181,794)			(214,052)			(136,578)			(625,305)
+Amortization of content assets	4,311,309 			3,832,074 			8,529,209 			7,655,186
+Depreciation and amortization of property, equipment and intangibles	100,530 			80,013 			199,105 			160,080
+Stock-based compensation expense	131,312 			80,862 			271,717 			152,839
+Foreign currency remeasurement loss (gain) on debt	(8,813)			55,238 			(18,923)			83,785
+Other non-cash items	141,356 			120,139 			339,583 			234,869
+Deferred income taxes	81,260 			(135,755)			140,079 			(299,683)
+Changes in operating assets and liabilities:
+Other current assets	111,713 			(176,683)			(592,927)			(308,050)
+Accounts payable	(157,397)			11,046 			(157,243)			(265,380)
+Accrued expenses and other liabilities	(1,249,793)			(267,235)			46,111 			39,178
+Deferred revenue	54,008 			118,635 			21,726 			207,548
+Other non-current assets and liabilities	(63,770)			(370,624)			(517,607)			(452,904)
+Net cash provided by operating activities	1,743,812 			2,423,258 			7,034,017 			5,212,457
+Cash flows from investing activities:
+Purchases of property and equipment	(218,644)			(155,889)			(414,774)			(284,166)
+
+Acquisitions	— 			— 			(585,744)			—
+Purchases of investments	— 			(1,650)			— 			(157,665)
+
+Proceeds from maturities and sales of investments	— 			962,413 			— 			1,732,367
+Other investing activities	— 			(36,190)			— 			(36,190)
+Net cash provided by (used in) investing activities	(218,644)			768,684 			(1,000,518)			1,254,346
+Cash flows from financing activities:
+
+Repayments of debt	— 			(1,033,450)			— 			(1,833,450)
+Proceeds from issuance of common stock	59,980 			169,066 			109,290 			520,668
+Repurchases of common stock	(4,714,403)			(1,654,327)			(5,984,991)			(5,190,723)
+Taxes paid related to net share settlement of equity awards	(6,631)			(6,114)			(35,861)			(33,984)
+Other financing activities	(8,573)			21,957 			11,121 			6,305
+Net cash used in financing activities	(4,669,627)			(2,502,868)			(5,900,441)			(6,531,184)
+Effect of exchange rate changes on cash, cash equivalents and restricted cash	(19,628)			287,471 			(69,466)			437,617
+Net increase (decrease) in cash, cash equivalents and restricted cash	(3,164,087)			976,545 			63,592 			373,236
+Cash, cash equivalents and restricted cash at beginning of period	12,266,873 			7,204,028 			9,039,194 			7,807,337
+Cash, cash equivalents and restricted cash at end of period	$	9,102,786 			$	8,180,573 			$	9,102,786 			$	8,180,573
+
+See accompanying notes to the consolidated financial statements.
+5
+[e37 link] Table of Contents
+NETFLIX, INC.
+Consolidated Balance Sheets
+(in thousands, except share and par value data)
+
+	As of
+
+	June 30,
+2026		December 31,
+2025
+	(unaudited)
+
+[chunk 1/13; call read_page(page=2) for more]

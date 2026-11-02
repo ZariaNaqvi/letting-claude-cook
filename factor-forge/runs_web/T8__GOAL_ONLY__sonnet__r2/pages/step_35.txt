@@ -1,0 +1,17 @@
+URL: https://www.sec.gov/Archives/edgar/data/66740/000006674026000246/R5.htm | TITLE:  | chunk 1/1
+
+XML 19 R5.htm IDEA: XBRL DOCUMENT
+Consolidated Balance Sheet (Unaudited) (Parenthetical) - USD ($)
+$ in Millions
+
+Jun. 30, 2026
+
+Dec. 31, 2025
+
+Current assets
+Allowances for doubtful accounts receivable	$ 51	$ 61
+3M Company shareholders’ equity:
+Common stock, par value (in dollars per share)	$ 0.01	$ 0.01
+Common stock, issued (in shares)	944,033,056	944,033,056
+Common stock, outstanding (in shares)	515,722,417	530,279,131
+Treasury stock (in shares)	428,310,639	413,753,925

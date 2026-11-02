@@ -90,7 +90,7 @@ run_web.py ──(Messages API, tool use)──► model
 
 | Limit | Value | Why |
 |---|---|---|
-| Tool calls per run | **30** (T1–T7), **40** (T8, four firms) | Enough for the click path ×2 and stops loops. Hitting it = `STEP_LIMIT` |
+| Tool calls per run | **30** (T1–T7), **50** (T8, four firms) | Enough for the click path ×2 (T8: the 41-call path ×4 + 9 spare; 40 was one short of the STEPS path itself) and stops loops. Hitting it = `STEP_LIMIT` |
 | Observation size | ≤ 2,500 tokens per tool result | Keeps the context under ~85K tokens, below Haiku's 100K long-prompt price step |
 | Wall clock | 12 min per run | `TIME_LIMIT` |
 | Page load | 20 s, one automatic retry; each HTTP request is capped at 25 s | A site hiccup is logged as `site_error`. 3 site errors in a run = `HARNESS_ERROR` |
@@ -174,10 +174,10 @@ The raw JSON is saved under `web/data/raw/` with sha256 and fetch time. `web/ans
 | **T2** | Microsoft (789019) | Total stockholders' equity as of June 30, 2026, from the first periodic report that reports that date | Search "Microsoft" → filter **10-K** (June 30 is MSFT's fiscal year-end; there is no June 10-Q) → 10-K filed late July 2026 → index → FilingSummary → "BALANCE SHEETS" → "Total stockholders' equity", "Jun. 30, 2026" | **442,387,000,000**; accn 0001193125-26-323660 (**10-K**, filed 2026-07-29); end 2026-06-30 | Looking for a 10-Q; the FY27 Q1 10-Q (filed ~late Oct) shows the same June 30 number as a comparative but has the wrong accession (`WRONG_FILING`) |
 | **T3** | Walmart (104169) | Total shareholders' equity attributable to Walmart (excluding noncontrolling interest) at the end of its second fiscal quarter of fiscal 2027 | Search "Walmart" → 10-Q filed ~early Sep 2026 → index → FilingSummary → "Condensed Consolidated Balance Sheets" → **"Total Walmart shareholders' equity"**, "Jul. 31, 2026" | **98,238,000,000**; accn 0000104169-26-000154 (filed 2026-08-28); end 2026-07-31 | "Total shareholders' equity" (includes NCI) is the next row; fiscal-year label (FY2027) vs calendar year |
 | **T4** | Netflix (1065280) | Total stockholders' equity at June 30, 2026, from the 10-Q for that quarter | Search "Netflix" → 10-Q filed Jul 2026 → index → FilingSummary → "Consolidated Balance Sheets" → "Total stockholders' equity", "Jun. 30, 2026" | **30,152,052,000** (page shows 30,152,052 **in thousands**); accn **0001065280-26-000212** (filed 2026-07-17; the October 10-Q -000291 repeats the number → `WRONG_FILING`) | **Units in thousands**: a model used to millions gives 30,152,052,000,000 or 30,152,052 → `UNITS` |
-| **T5** | Domino's Pizza (1286681) | Total stockholders' equity (deficit) at the end of Domino's second fiscal quarter of 2026 | Search "Domino's Pizza" → 10-Q filed Jul 2026 → index → FilingSummary → "Condensed Consolidated Balance Sheets" → "Total stockholders' deficit", column "Jun. 14, 2026" | **−3,982,431,000**; accn 0001286681-26-000035 (filed 2026-07-20); end 2026-06-14 | Negative value shown as (3,982,431) → `SIGN`; thousands; odd quarter-end date |
-| **T6** | JPMorgan Chase (19617) | **Common** book equity at June 30, 2026 = total stockholders' equity minus preferred stock, from the Q2 2026 10-Q | Search "JPMorgan Chase" → 10-Q filed ~early Aug 2026 → index → FilingSummary → "Consolidated balance sheets" → "Total stockholders' equity" **minus** "Preferred stock", "Jun. 30, 2026" | **353,558,000,000** = SE 374,598,000,000 − preferred 21,040,000,000 (JPM tags preferred under a different XBRL name; `answer_key.py` tries fallback names); accn 0001628280-26-054343 (filed 2026-08-06) | Forgetting to subtract preferred (`WRONG_LINE`); very long bank balance sheet; arithmetic (`ARITH`) |
-| **T7** | Berkshire Hathaway (1067983) | Berkshire Hathaway shareholders' equity (excluding noncontrolling interests) at June 30, 2026 | Search "Berkshire Hathaway Inc" → 10-Q filed ~early Aug 2026 → index → FilingSummary → "Consolidated Balance Sheets" (spans two sections: Insurance and Other; Railroad, Utilities and Energy) → "Total Berkshire Hathaway shareholders' equity", "Jun. 30, 2026" | **747,910,000,000**; accn 0001193125-26-341032 (filed 2026-08-10) | Two-segment balance sheet; NCI line; Class A/B noise; many look-alike entities in search ("Berkshire Hathaway Energy", "BH Finance") → `WRONG_ENTITY` |
-| **T8** | Mini value sort: Apple, Coca-Cola (21344), Chevron (93410), 3M (66740) | For each of the four firms, find book equity from the first 10-Q filed Jul 1–Aug 31 2026. Using the market equity values given below, rank the firms by B/M = BE/ME, high (value) to low (growth) | The T1 path ×4: KO column "Jul. 3, 2026"; CVX "Jun. 30, 2026" (Chevron: "Total Chevron Corporation stockholders' equity"); MMM "Jun. 30, 2026" | BE: AAPL 107,520,000,000; KO **36,150,000,000** (accn 0001628280-26-050503); CVX **189,883,000,000** (0000093410-26-000167); MMM **2,952,000,000** (0000066740-26-000246). ME (frozen in `tasks_web.json`) = cover shares outstanding × the 2026-06-30 close (AAPL 289.36, KO 81.27, CVX 165.76, MMM 161.91; Yahoo Finance daily history): AAPL 4,222,971,924,800; KO 349,668,176,979; CVX 327,503,846,378; MMM 83,500,616,536. Ranking: **CVX, KO, MMM, AAPL** | All single-firm traps ×4; KO's Jul 3 quarter-end; the step budget (40) |
+| **T5** | Domino's Pizza (1286681) | Total stockholders' equity (deficit) at the end of Domino's second fiscal quarter of 2026 | Search "Domino" (the apostrophe in "Domino's" returns no suggestions) → 10-Q filed Jul 2026 → index → FilingSummary → "Condensed Consolidated Balance Sheets" → "Total stockholders' deficit", column "Jun. 14, 2026" | **−3,982,431,000**; accn 0001286681-26-000035 (filed 2026-07-20); end 2026-06-14 | Negative value shown as (3,982,431) → `SIGN`; thousands; odd quarter-end date |
+| **T6** | JPMorgan Chase (19617) | **Common** book equity at June 30, 2026 = total stockholders' equity minus preferred stock, from the Q2 2026 10-Q | Search "JPMorgan" (the full "JPMorgan Chase" shows only a look-alike, CIK 1325347) → 10-Q filed ~early Aug 2026 → index → FilingSummary → "Consolidated balance sheets" → "Total stockholders' equity" **minus** "Preferred stock", "Jun. 30, 2026" | **353,558,000,000** = SE 374,598,000,000 − preferred 21,040,000,000 (JPM tags preferred under a different XBRL name; `answer_key.py` tries fallback names); accn 0001628280-26-054343 (filed 2026-08-06) | Forgetting to subtract preferred (`WRONG_LINE`); very long bank balance sheet; arithmetic (`ARITH`) |
+| **T7** | Berkshire Hathaway (1067983) | Berkshire Hathaway shareholders' equity (excluding noncontrolling interests) at June 30, 2026 | Search "Berkshire Hathaway Inc" → 10-Q filed ~early Aug 2026 → index → FilingSummary → "Consolidated Balance Sheets" (spans two sections: Insurance and Other; Railroad, Utilities and Energy) → "Berkshire shareholders' equity", "Jun. 30, 2026" | **747,910,000,000**; accn 0001193125-26-341032 (filed 2026-08-10) | Two-segment balance sheet; NCI line; Class A/B noise; many look-alike entities in search ("Berkshire Hathaway Energy", "BH Finance") → `WRONG_ENTITY` |
+| **T8** | Mini value sort: Apple, Coca-Cola (21344), Chevron (93410), 3M (66740) | For each of the four firms, find book equity from the first 10-Q filed Jul 1–Aug 31 2026. Using the market equity values given below, rank the firms by B/M = BE/ME, high (value) to low (growth) | The T1 path ×4: KO column "Jul. 3, 2026"; CVX "Jun. 30, 2026" (Chevron: "Total Chevron Corporation stockholders' equity"); MMM "Jun. 30, 2026" | BE: AAPL 107,520,000,000; KO **36,150,000,000** (accn 0001628280-26-050503); CVX **189,883,000,000** (0000093410-26-000167); MMM **2,952,000,000** (0000066740-26-000246). ME (frozen in `tasks_web.json`) = cover shares outstanding × the 2026-06-30 close (AAPL 289.36, KO 81.27, CVX 165.76, MMM 161.91; Yahoo Finance daily history): AAPL 4,222,971,924,800; KO 349,668,176,979; CVX 327,503,846,378; MMM 83,500,616,536. Ranking: **CVX, KO, MMM, AAPL** | All single-firm traps ×4; KO's Jul 3 quarter-end; the step budget (50) |
 
 **Answer JSON schemas** (they become the `submit_answer` input schema):
 
@@ -213,40 +213,43 @@ Both conditions get the same tools and limits. The prompt never mentions XBRL AP
 
 * Fixed prefix (system + tool defs + task): 3,000 tokens
 * Each step adds ~2,000 tokens (observation ~1,800 + tool call ~150) and ~500 output tokens (including thinking at high effort)
-* Typical steps: 15 (T1–T7), 30 (T8). Caps: 30 / 40
+* Typical steps: 15 (T1–T7), 45 (T8: its STEPS path alone is 41 calls). Caps: 30 / 50
 * Caching: new tokens each turn are written at 1.25× input price, and the rest of the context is read at 0.10×
 
 | Scenario | Input tokens processed | Cache-weighted input ("price-equivalent") | Output tokens |
 |---|---|---|---|
 | T1–T7 typical (15 steps) | ~255K | ~61K | ~7.5K |
-| T8 typical / single-firm at cap (30 steps) | ~960K | ~166K | ~15K |
-| T8 at cap (40 steps) | ~1.68M | ~261K | ~20K |
+| Single-firm at cap (30 steps) | ~960K | ~166K | ~15K |
+| T8 typical (45 steps) | ~2.12M | ~316K | ~22.5K |
+| T8 at cap (50 steps) | ~2.60M | ~376K | ~25K |
 
 **Cost per run ($):**
 
-| Model | $ in/out per 1M | T1–T7 typical | 30-step run | T8 at cap (40) |
-|---|---|---|---|---|
-| Fable | 10 / 50 | 0.99 | 2.41 | 3.61 |
-| Opus | 4 / 20 | 0.39 | 0.96 | 1.44 |
-| Sonnet | 2 / 10 | 0.20 | 0.48 | 0.72 |
-| Haiku | 0.10 / 0.50 | 0.010 | 0.024 | 0.036 |
+| Model | $ in/out per 1M | T1–T7 typical | 30-step run | T8 typical (45) | T8 at cap (50) |
+|---|---|---|---|---|---|
+| Fable | 10 / 50 | 0.99 | 2.41 | 4.29 | 5.01 |
+| Opus | 4 / 20 | 0.39 | 0.96 | 1.71 | 2.01 |
+| Sonnet | 2 / 10 | 0.20 | 0.48 | 0.86 | 1.00 |
+| Haiku | 0.10 / 0.50 | 0.010 | 0.024 | 0.043 | 0.050 |
 
 **Main-run total (typical):** per model, 42 single-firm runs + 6 T8 runs.
 
 | Model | Runs | Typical $ |
 |---|---|---|
-| Fable | 48 | 42×0.99 + 6×2.41 = **56.0** |
-| Opus | 48 | 42×0.39 + 6×0.96 = **22.1** |
-| Sonnet | 48 | 42×0.20 + 6×0.48 = **11.3** |
-| Haiku | 48 | 0.42 + 0.14 = **0.6** |
-| **Total** | **192** | **≈ $90**, plus pilot ≈ $5 → **≈ $95** |
+| Fable | 48 | 42×0.99 + 6×4.29 = **67.2** |
+| Opus | 48 | 42×0.39 + 6×1.71 = **26.9** |
+| Sonnet | 48 | 42×0.20 + 6×0.86 = **13.4** |
+| Haiku | 48 | 0.42 + 0.26 = **0.7** |
+| **Total** | **192** | **≈ $108**, plus pilot ≈ $5 → **≈ $113** |
+
+With T8 at its real path length (41+ calls, cap 50), 3 repeats no longer fit in $100 on this token model; expect the repeat rule below to choose 2 repeats unless the pilot comes in cheaper.
 
 **Guards, so cost stays near $100:**
 
-1. **Repeat rule after the pilot.** If the pilot's measured mean cost × 192 runs > $100, use **2 repeats** (128 runs, ≈ $60–65). The decision and the numbers go in `notes.txt` *before* the main run.
-2. **`--budget-usd 100`.** `run_web.py` sums actual cost after every run and stops cleanly before starting a run that could push past the cap (it uses the 40-step worst case for that model).
+1. **Repeat rule after the pilot.** If the pilot's measured mean cost × 192 runs > $100, use **2 repeats** (128 runs, ≈ $72). The decision and the numbers go in `notes.txt` *before* the main run.
+2. **`--budget-usd 100`.** `run_web.py` logs the actual cost of every API response to `spend.jsonl` and stops cleanly before starting a run that could push past the cap (it uses the step-cap worst case for that model). It also stops mid-run once the real total reaches the cap, and that run is redone on resume.
 3. **Run order is repeat-major.** All tasks × conditions × models for r1 first, then r2, then r3, with models interleaved inside each cell. If the budget stops the run, every model has the same number of complete repeats, and site changes over time hit all models equally.
-4. Worst case without guards (every run at its cap) would be ≈ $200. The budget guard makes that impossible.
+4. Worst case without guards (every run at its cap) would be ≈ $210. The budget guard makes that impossible.
 
 **Wall time:** about 2–5 min per run at 5 req/s, so 192 runs ≈ 8–14 h, spread over 2–3 sessions (resume-safe).
 
@@ -279,7 +282,7 @@ Secondary columns: `value_ok` (the number is right even if the accession is wron
 | `WRONG_PERIOD` | The value equals the key firm's value at another `end` date (comparative column, prior quarter) |
 | `WRONG_LINE` | The value equals a look-alike line for the same period: equity incl. NCI, total liabilities + equity, total assets, preferred alone, preferred not subtracted (T6), or SE minus liquidation preference (T6) |
 | `WRONG_FILING` | The value is right but the accession is a later filing's comparative (e.g. MSFT's FY27 Q1 10-Q) |
-| `ARITH` | T6/T8 only: all components appear correctly in the observations, but the submitted combination or ranking is wrong |
+| `ARITH` | T6: total equity and preferred both appear in the observations, but the submitted result is wrong. T8: all four values exact, but the ranking is wrong |
 | `OTHER_WRONG` | Anything else; read these by hand |
 
 Also reported for every run (PASS or not): `grounded`, `blocked_attempts`, `visited_search_form`, `steps`, `cost_usd`, `input/output/cache tokens`, `wall_s`.

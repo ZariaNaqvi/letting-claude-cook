@@ -1,0 +1,169 @@
+URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000145/earningsreleasefy27q2.htm | TITLE: Document | chunk 1/5
+
+EX-99.1 2 earningsreleasefy27q2.htm EX-99.1
+
+	Walmart reports
+second quarter results
+
+•Revenue growth of 5.9%, up 5.1% in constant currency (cc)1
+•Operating income growth of 28.8%, up 17.4% adjusted (cc)1
+•eCommerce sales up 23% globally
+•GAAP EPS of $0.80; Adjusted EPS1 of $0.81
+•Company issues guidance for Q3; raises outlook for FY27
+
+				“
+
+BENTONVILLE, Ark., August 20, 2026 – Walmart Inc. (NASDAQ: WMT) announces second-quarter results with strong growth in revenue, including eCommerce, which grew 23% globally with strength across segments. Walmart U.S. comp sales2 grew 2.6%, led by growth in transactions and includes 80 bps headwind from health & wellness. The Company issues guidance for the third quarter and raises its outlook for the fiscal year. For Q3, net sales are expected to grow 3.0% to 3.75% and adjusted operating income to grow 2.0% to 4.0%. Net sales for FY27 are expected to grow 4.0% to 5.0% and adjusted operating income to grow 7.0% to 8.5%, all in constant currency (“cc”)1. Adjusted EPS1 is expected to be $0.62 to $0.64 for Q3 and $2.80 to $2.87 for FY27.
+
+Our team delivered another good quarter, and we continue to make steady progress on the long-term value drivers of our business. Our multi-year growth in eCommerce is evidence that customers are choosing Walmart because we deliver price, speed, and convenience across a broad assortment. At Walmart, they can have it all.”
+John Furner
+President and CEO, Walmart
+
+	Second Quarter Highlights
+
+•Revenue of $187.9 billion, up 5.9%, or 5.1% (cc)1
+•Global eCommerce sales grew 23%, led by store-fulfilled pickup & delivery and marketplace
+•Global advertising business3 up 38%, with strength across segments. Walmart U.S. advertising up 38%
+•Membership fee revenue grew 17% globally
+•Gross profit rate up 96 bps, led by Walmart U.S., primarily impacted by tariff refund impacts noted below
+•Operating income up $2.1 billion, or 28.8%; up 17.4% adjusted (cc)1; which includes the impact of tariff refunds received, partially offset by price investments in the quarter. Setting aside this net impact, underlying operating income growth was at the top end of our guidance. Our outlook reflects the continued prioritization of remaining tariff refunds into price investments
+•Adjusted EPS1 of $0.81 excludes the impact, net of tax, from a net loss of $0.12 on equity and other investments, and net benefit of $0.11 from a certain tax matter
+•ROA at 8.0%; ROI at 15.4%1
+•Global inventory up 6.7%; up 6.0% (cc)4, due to strategic initiatives and inflation
+
+1 See additional information at the end of this release regarding non-GAAP financial measures.
+2 Comp sales for the 13-week period ended July 31, 2026 compared to the 13-week period ended August 1, 2025 and excludes fuel. See Supplemental Financial Information for additional information.
+3 Our global advertising business is recorded in either net sales or as a reduction to cost of sales, depending on the nature of the advertising arrangement.
+4 Inventory grew 6.7% on a reported basis and grew 6.0% in constant currency, excluding a ~$0.4 billion foreign currency impact.
+“cc” - constant currency
+
+Key Financial Metrics
+Dollars in billions, except per share data. Dollar and percentage changes may not
+recalculate due to rounding. Charts may not be to scale.
+
+Balance Sheet and Liquidity
+
+•Cash and cash equivalents of $11.5 billion
+
+•Total debt of $57.2 billion2
+
+•Operating cash flow of $19.7 billion, an increase of $1.4 billion
+
+•Free cash flow1 of $5.5 billion, a decrease of $1.4 billion
+
+•Repurchased 42.3 million shares YTD, or $5.1 billion3
+
+•Inventory of $61.6 billion, an increase of $3.9 billion, or 6.7%, up 6.0% cc4
+
+1 See additional information at the end of this release regarding non-GAAP financial measures.
+2 Debt includes short-term borrowings, long-term debt and finance lease obligations due within one year, and long-term debt and finance lease obligations.
+3 $25.1 billion remaining of the $30 billion authorization approved in February 2026.
+4 Inventory grew 6.7% on a reported basis and grew 6.0% in constant currency, excluding a ~$0.4 billion foreign currency impact.
+       cc - constant currency
+2
+
+Business Highlights
+and Strategic Initiatives
+Dollars in billions, except as noted. Dollar and percentage changes may not recalculate due to rounding.
+
+Walmart U.S.	Q2 FY27	Q2 FY26	Change
+Net sales	$125.2	$120.9	$4.3	3.5%
+
+Comp sales (ex. fuel)2
+	2.6%	4.6%	NP	NP
+Transactions	1.5%	1.5%	NP	NP
+Average ticket	1.1%	3.1%	NP	NP
+eCommerce contribution to comp	~510 bps	~420 bps	NP	NP
+Operating income	$8.1	$6.7	$1.4	20.6%
+
+Walmart U.S.
+•Sales reflected continued strong momentum in eCommerce and broad-based share gains, partially offset by 125 bps headwind to comp sales from pharmacy deflation related to new maximum fair price regulation (effective Jan 1)
+•eCommerce sales increased 24%, with strength in store-fulfilled delivery, advertising, and marketplace
+•Strong advertising growth continued, up 38% overall, including 43% increase in Walmart Connect (ex-VIZIO)
+•Gross profit grew 158 bps due to the benefit associated with tariff refunds and improved business mix; partially offset by price investments and higher fuel costs
+•Membership fee revenue grew double-digits as Walmart+ net adds reflected a record second quarter high
+•Operating expense deleveraged 72 bps due to higher claims expense, depreciation, and associate healthcare costs
+•Operating income up 20.6%, reflects higher gross profit, as noted above, and improved eCommerce economics
+•Inventory increased 6.3% due primarily to strategic initiatives and inflation
+
+Walmart International	Q2 FY27	Q2 FY26	Change
+Net sales	$35.2	$31.2	$4.0	12.8%
+
+Net sales (cc)1
+	$33.7	$31.2	$2.5	7.9%
+Operating income	$1.4	$1.2	$0.2	16.6%
+
+Operating income (cc)1
+	$1.3	$1.2	$0.1	5.7%
+
+Walmart International
+•Growth in net sales (cc)1 across markets, with momentum in eCommerce and stores
+◦Transaction counts and unit volumes up, contributing to growth across all categories
+•eCommerce sales up 19%, led by store-fulfilled pickup & delivery, with digital mix up across markets
+•Advertising business3 grew 20%, led by Flipkart Ads
+•Operating income growth (cc)1 benefited by lower losses in eCommerce and business mix changes
+•Currency rate fluctuations positively affected sales by $1.5 billion and operating income by $0.1 billion
+
+1 See additional information at the end of this release regarding non-GAAP financial measures.
+2 See Supplemental Financial Information for additional information.
+3 Our global advertising business is recorded in either net sales or as a reduction to cost of sales, depending on the nature of the advertising arrangement.
+
+NP - Not provided
+cc - constant currency
+
+3
+
+Sam’s Club U.S.	Q2 FY27	Q2 FY26	Change
+Net sales	$25.7	$23.6	$2.1	8.8%
+Net sales (ex. fuel)	$22.1	$21.2	$1.0	4.5%
+
+Comp sales (ex. fuel)1
+	4.4%	5.9%	NP	NP
+Transactions	7.0%	3.9%	NP	NP
+Average ticket	-2.5%	2.0%	NP	NP
+eCommerce contribution to comp	~450 bps	~350 bps	NP	NP
+Operating income	$0.7	$0.5	$0.2	44.3%
+
+Adjusted operating income2
+	$0.7	$0.6	$0.1	23.3%
+
+Sam’s Club U.S.
+•Comp sales driven by increased transactions and total unit volumes with strength in grocery and general merchandise
+•eCommerce sales up 26% with continued strong growth in club-fulfilled pickup & delivery
+•Membership fee revenue grew 6% driven by steady growth in member counts and Plus penetration
+•Operating income growth reflects the benefit associated with tariff refunds and membership growth
+•Inventory up 8.0%, primarily related to higher fuel costs and volumes, including fuel upstreaming with a strategic partner
+
+1 See Supplemental Financial Information for additional information.
+2 See additional information at the end of this release regarding non-GAAP financial measures.
+NP - Not provided
+
+4
+
+	Guidance
+
+The following guidance reflects the Company’s expectations as of August 20, 2026.This guidance is subject to substantial risk and uncertainty that could cause actual results to differ materially from these expectations. These risks and uncertainties include, but are not limited to, the factors set forth below under the heading Forward-looking statements. Additionally, guidance is provided on a non-GAAP basis as the Company cannot predict certain elements that are included in reported GAAP results, such as the changes in fair value of the Company’s equity and other investments. Growth rates reflect an adjusted basis for prior year results.
+
+“Our business model is only getting stronger and more durable, and we’re pleased to raise our guidance for the year. For Q3 sales guidance, we expect a headwind of over 100bps to growth related to a timing shift of Flipkart’s Big Billion Days between Q3 and Q4. Our operating income outlook reflects the continued prioritization of tariff refunds received in Q2 into customer experience and price investments in the second half. For this reason, I encourage you to consider Q2 and Q3 performance together to assess the underlying growth of the business,” said John David Rainey, Walmart Inc. executive vice president and chief financial officer.
+
+	Third quarter
+
+The Company’s third quarter fiscal 2027 guidance is based on the following Q3 FY26 figures: Net sales: $177.8 billion, adjusted operating income1: $7.3 billion, and adjusted EPS1: $0.62.
+
+	Consolidated metric	Q3 FY27
+	Net sales (cc)	Increase 3.0% to 3.75%
+	Operating income (cc)	Increase 2.0% to 4.0%
+	Adjusted EPS	$0.62 to $0.64
+
+	Fiscal year 2027
+
+The Company’s fiscal year guidance is based on the following FY26 figures: Net sales: $706.4 billion, adjusted operating income1: $31.0 billion, and adjusted EPS1: $2.64.
+
+	Consolidated metric	Original from 2.19.2026	As of 5.21.2026	As of 8.20.2026
+	Net sales (cc)	Increase 3.5% to 4.5%	Unchanged	Increase 4.0% to 5.0%
+
+	Adj. operating income (cc)	Increase 6.0% to 8.0%	Unchanged	Increase 7.0% to 8.5%
+
+Adj. Interest, net2
+	Increase approximately $200M to $300M	Unchanged	Unchanged
+[chunk 1/5; call read_page(page=2) for more]

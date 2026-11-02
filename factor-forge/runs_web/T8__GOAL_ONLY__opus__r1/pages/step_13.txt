@@ -1,0 +1,2 @@
+URL: https://www.sec.gov/edgar/search/#/category=custom&ciks=0000093410&forms=10-Q&dateRange=custom&startdt=2026-07-01&enddt=2026-08-31 | find_text 'Open document': 1 match(es)
+(chunk 1) Loading document preview / [e55 link] [e56 button] Open document / [e57 link] [e58 button] Open filing

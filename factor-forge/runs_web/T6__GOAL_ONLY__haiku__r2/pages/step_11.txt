@@ -1,0 +1,5 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm | find_text 'Total liabilities and stockholders': 4 match(es)
+(chunk 6) Stockholders’ equity	374,598 			362,438 		3 / Total liabilities and stockholders’ equity	$	5,015,069 			$	4,424,900 		13 	% / Deposits increased, reflecting the net impact of:
+(chunk 31) Total stockholders’ equity	374,598 			362,438 / Total liabilities and stockholders’ equity	$	5,015,069 			$	4,424,900 / (a)The following table presents information on assets and liabilities related to VIEs that are consolidated by the Firm at June 30, 2026 and December 31, 2025. The assets of the consolidated VIEs are used to settle the liabilities of those entities. The holders of the beneficial 
+(chunk 61) Total stockholders’ equity	364,342 							349,842 / Total liabilities and stockholders’ equity	$	4,977,088 							$	4,437,618 / Interest rate spread				1.93 	%						1.89 	%
+(chunk 62) Total stockholders’ equity	362,728 							347,115 / Total liabilities and stockholders’ equity	$	4,868,516 							$	4,337,024 / Interest rate spread				1.97 	%						1.95 	%

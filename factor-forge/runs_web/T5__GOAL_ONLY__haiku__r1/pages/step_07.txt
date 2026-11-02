@@ -1,0 +1,41 @@
+URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R1.htm | TITLE:  | chunk 1/1
+
+XML 8 R1.htm IDEA: XBRL DOCUMENT
+Cover Page - shares
+
+	6 Months Ended
+
+Jun. 14, 2026
+
+Jul. 13, 2026
+
+Cover [Abstract]
+Document Type	10-Q
+Entity Interactive Data Current	Yes
+Amendment Flag	false
+Document Quarterly Report	true
+Document Transition Report	false
+Entity Central Index Key	0001286681
+Document Fiscal Period Focus	Q2
+Document Fiscal Year Focus	2026
+Document Period End Date	Jun. 14, 2026
+Entity Registrant Name	Domino’s Pizza, Inc.
+Securities Act File Number	001-32242
+Current Fiscal Year End Date	--01-03
+Entity Tax Identification Number	38-2511577
+Entity Incorporation, State or Country Code	DE
+Entity Current Reporting Status	Yes
+Entity Shell Company	false
+Entity Filer Category	Large Accelerated Filer
+Entity Small Business	false
+Entity Emerging Growth Company	false
+Entity Address, Address Line One	30 Frank Lloyd Wright Drive
+Entity Address, City or Town	Ann Arbor
+Entity Address, State or Province	MI
+Entity Address, Postal Zip Code	48105
+City Area Code	734
+Local Phone Number	930-3030
+Trading Symbol	DPZ
+Security Exchange Name	NASDAQ
+Title of 12(b) Security	Common Stock
+Entity Common Stock, Shares Outstanding	 	33,081,735

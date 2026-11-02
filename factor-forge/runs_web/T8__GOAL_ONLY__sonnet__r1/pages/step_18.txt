@@ -1,0 +1,35 @@
+URL: https://www.sec.gov/Archives/edgar/data/21344/000162828026067844/R2.htm | TITLE:  | chunk 1/1
+
+XML 17 R2.htm IDEA: XBRL DOCUMENT
+CONDENSED CONSOLIDATED STATEMENTS OF INCOME - USD ($)
+shares in Millions, $ in Millions
+	3 Months Ended	9 Months Ended
+
+Oct. 02, 2026
+
+Sep. 26, 2025
+
+Oct. 02, 2026
+
+Sep. 26, 2025
+
+Net Operating Revenues	$ 13,380	$ 12,455	$ 39,232	$ 36,119
+Cost of goods sold	4,930	4,797	14,515	13,674
+Gross Profit	8,450	7,658	24,717	22,445
+Selling, general and administrative expenses	3,975	3,618	11,167	10,322
+Other operating charges	10	58	54	202
+Operating Income	4,465	3,982	13,496	11,921
+Interest income	224	185	644	553
+Interest expense	354	391	1,098	1,223
+Equity income (loss) — net	653	644	1,641	1,556
+Other income (loss) — net	(155)	(237)	236	229
+Income Before Income Taxes	4,833	4,183	14,919	13,036
+Income taxes	777	500	2,459	2,215
+Consolidated Net Income	4,056	3,683	12,460	10,821
+Net Income (Loss) Attributable to Noncontrolling Interest	47	(13)	102	(15)
+Net Income Attributable to Shareowners of The Coca-Cola Company	$ 4,009	$ 3,696	$ 12,358	$ 10,836
+Basic Net Income Per Share1	$ 0.93	$ 0.86	$ 2.87	$ 2.52
+Diluted Net Income Per Share1	$ 0.93	$ 0.86	$ 2.86	$ 2.51
+Average Shares Outstanding — Basic	4,303	4,303	4,302	4,303
+Effect of dilutive securities	11	10	11	11
+Average Shares Outstanding — Diluted	4,314	4,313	4,313	4,314

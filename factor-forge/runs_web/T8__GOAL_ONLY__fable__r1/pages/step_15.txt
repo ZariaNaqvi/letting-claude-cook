@@ -1,0 +1,145 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000167/cvx-20260630.htm | TITLE: cvx-20260630 | chunk 1/16
+
+UNITED STATES SECURITIES AND EXCHANGE COMMISSION
+Washington, D.C. 20549
+Form 10-Q
+☑    QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d)
+OF THE SECURITIES EXCHANGE ACT OF 1934
+For the quarterly period ended June 30, 2026
+or
+☐    TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d)
+OF THE SECURITIES EXCHANGE ACT OF 1934
+Commission file number 001-00368
+Chevron Corporation
+(Exact name of registrant as specified in its charter)
+
+				1400 Smith Street
+Delaware		94-0890210		Houston,	TX	77002-7327
+(State or other jurisdiction of
+incorporation or organization)		(I.R.S. Employer
+Identification No.)		(Address of principal executive offices)
+(Zip Code)
+
+Registrant’s telephone number, including area code: (832) 854-1000
+
+		NONE
+	(Former name, former address and former fiscal year, if changed since last report.)
+Securities registered pursuant to Section 12(b) of the Act:
+
+Title of each class		Trading Symbol		Name of each exchange on which registered
+Common stock, par value $.75 per share		CVX		New York Stock Exchange
+Indicate by check mark whether the registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days.    Yes  ☑        No  ☐
+Indicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§ 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files).    Yes  ☑        No  ☐
+Indicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company,” and “emerging growth company” in Rule 12b-2 of the Exchange Act.
+
+Large accelerated filer	☑		Accelerated filer	☐
+Non-accelerated filer	☐		Smaller reporting company	☐
+			Emerging growth company	☐
+If an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. ☐
+Indicate by check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).     Yes  ☐       No  ☑
+There were 1,975,771,274 shares of the company’s common stock outstanding on June 30, 2026.
+
+[e1 link] Table of Contents
+
+TABLE OF CONTENTS
+
+		Page No.
+
+[e2 link] Cautionary Statements Relevant to Forward-Looking Information for the Purpose of “Safe Harbor” Provisions of the Private Securities Litigation Reform Act of 1995
+
+[e3 link] 2
+
+[e4 link] PART I
+FINANCIAL INFORMATION
+
+[e5 link] Item 1.
+
+[e6 link] Consolidated Financial Statements
+
+[e7 link] Consolidated Statement of Income for the Three and Six [e8 link] Months Ended June 30, 2026[e9 link] and 2025
+
+[e10 link] 3
+
+[e11 link] Consolidated Statement of Comprehensive Income for the Three and Six [e12 link] Months Ended June 30, 2026 [e13 link] and 2025
+
+[e14 link] 4
+
+[e15 link] Consolidated Balance Sheet at June 30, 2026[e16 link] and[e17 link] December 31, 2025
+
+[e18 link] 5
+
+[e19 link] Consolidated Statement of Cash Flows for the Three and Six [e20 link] Months Ended June 30, 2026 [e21 link] and 2025
+
+[e22 link] 6
+
+[e23 link] Consolidated Statement of Equity for the Three and Six [e24 link] Months Ended June 30, 2026[e25 link] and 2025
+
+[e26 link] 7
+
+[e27 link] Notes to Consolidated Financial Statements
+
+[e28 link] 8
+
+[e29 link] Item 2.
+
+[e30 link] Management’s Discussion and Analysis of Financial Condition and Results of Operations
+
+[e31 link] 26
+
+[e32 link] Item 3.
+
+[e33 link] Quantitative and Qualitative Disclosures About Market Risk
+
+[e34 link] 44
+
+[e35 link] Item 4.
+
+[e36 link] Controls and Procedures
+
+[e37 link] 44
+
+[e38 link] PART II
+OTHER INFORMATION
+
+[e39 link] Item 1.
+
+[e40 link] Legal Proceedings
+
+[e41 link] 44
+
+[e42 link] Item 1A.
+
+[e43 link] Risk Factors
+
+[e44 link] 45
+
+[e45 link] Item 2.
+
+[e46 link] Unregistered Sales of Equity Securities and Use of Proceeds
+
+[e47 link] 45
+
+[e48 link] Item 5.
+
+[e49 link] Other Information
+
+[e50 link] 45
+
+[e51 link] Item 6.
+
+[e52 link] Exhibits
+
+[e53 link] 46
+
+[e54 link] Signature
+
+[e55 link] 47
+
+1
+[e56 link] Table of Contents
+
+CAUTIONARY STATEMENTS RELEVANT TO FORWARD-LOOKING INFORMATION
+FOR THE PURPOSE OF “SAFE HARBOR” PROVISIONS OF THE
+PRIVATE SECURITIES LITIGATION REFORM ACT OF 1995
+This quarterly report on Form 10-Q of Chevron Corporation contains forward-looking statements relating to Chevron’s operations, assets, and strategy that are based on management’s current expectations, estimates and projections about the petroleum, chemicals and other energy-related industries. Words or phrases such as “anticipates,” “expects,” “intends,” “plans,” “targets,” “advances,” “commits,” “drives,” “aims,” “forecasts,” “projects,” “believes,” “approaches,” “seeks,” “schedules,” “estimates,” “positions,” “pursues,” “progress,” “design,” “enable,” “may,” “can,” “could,” “should,” “will,” “budgets,” “outlook,” “trends,” “guidance,” “focus,” “on track,” “trajectory,” “goals,” “objectives,” “strategies,” “opportunities,” “poised,” “potential,” “ambitions,” “future,” “aspires” and similar expressions, and variations or negatives of these words, are intended to identify such forward-looking statements, but not all forward-looking statements include such words. These statements are not guarantees of future performance and are subject to numerous risks, uncertainties and other factors, many of which are beyond the company’s control and are difficult to predict. Therefore, actual outcomes and results may differ materially from what is expressed or forecasted in such forward-looking statements. The reader should not place undue reliance on these forward-looking statements, which speak only as of the date of this report. Unless legally required, Chevron undertakes no obligation to update publicly any forward-looking statements, whether as a result of new information, future events or otherwise.
+[chunk 1/16; call read_page(page=2) for more]

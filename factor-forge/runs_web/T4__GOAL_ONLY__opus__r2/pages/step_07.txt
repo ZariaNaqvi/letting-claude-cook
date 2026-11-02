@@ -1,0 +1,12 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000212/nflx-20260630.htm | find_text 'stockholders’ equity': 11 match(es)
+(chunk 1) [e10 link] Consolidated Statements of Stockholders’ Equity
+(chunk 2) Liabilities and Stockholders’ Equity
+(chunk 2) Stockholders’ equity:
+(chunk 2) Total stockholders’ equity / 30,152,052 			26,615,488
+(chunk 2) Total liabilities and stockholders’ equity / $	58,450,441 			$	55,596,993
+(chunk 2) NETFLIX, INC. / Consolidated Statements of Stockholders’ Equity / (unaudited)
+(chunk 2) 2025 / Total stockholders’ equity, beginning balances	$	31,126,399 			$	24,028,073 			$	26,615,488 			$	24,743,567
+(chunk 2) Total stockholders’ equity, ending balances	$	30,152,052 			$	24,951,899 			$	30,152,052 			$	24,951,899
+(chunk 6) 10. Stockholders’ Equity / Equity Incentive Plans
+(chunk 13) (1) In March 2021, the Company’s Board of Directors authorized a share repurchase program for the Company’s common stock with no expiration date. The Board subsequently approved additional repurchase authorizations in September 2023 and December 2024, and most recently in April 2026, authorized the repurchase of an additional $25 billion of the Company’s common stock. For further information regar
+(chunk 13) 101		The following financial statements from the Company’s Quarterly Report on Form 10-Q for the quarter ended June 30, 2026, formatted in Inline XBRL: (i) Consolidated Statements of Operations, (ii) Consolidated Statements of Comprehensive Income, (iii) Consolidated Statements of Cash Flows, (iv) Consolidated Balance Sheets, (v) Consolidated Statements of Stockholders’ Equity and (vi) Notes to Co

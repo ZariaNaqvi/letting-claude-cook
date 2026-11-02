@@ -1,0 +1,6 @@
+# model x tag
+model_alias,GAVE_UP,STEP_LIMIT
+sonnet,1,2
+# condition x tag
+condition,GAVE_UP,STEP_LIMIT
+GOAL_ONLY,1,2

@@ -1,0 +1,57 @@
+URL: https://www.sec.gov/Archives/edgar/data/1286681/000128668126000035/R2.htm | TITLE:  | chunk 1/1
+
+XML 9 R2.htm IDEA: XBRL DOCUMENT
+Condensed Consolidated Balance Sheets (Unaudited) - USD ($)
+$ in Thousands
+
+Jun. 14, 2026
+
+Dec. 28, 2025
+
+Current assets:
+Cash and cash equivalents	$ 164,836	$ 125,675
+Restricted cash and cash equivalents	187,885	216,110
+Accounts receivable, net	303,182	315,958
+Inventories	75,057	79,189
+Prepaid expenses and other	55,049	39,767
+Advertising fund assets, restricted	119,410	117,502
+Total current assets	905,419	894,201
+Property, plant and equipment:
+Land and buildings	172,241	105,559
+Leasehold and other improvements	186,158	193,673
+Equipment	388,323	413,303
+Construction in progress	31,741	46,184
+Property, plant and equipment, Gross	778,463	758,719
+Accumulated depreciation and amortization	(404,017)	(434,697)
+Property, plant and equipment, net	374,446	324,022
+Other assets:
+Operating lease right-of-use assets	227,793	219,485
+Goodwill	7,870	10,726
+Capitalized software, net	161,277	159,256
+Investment in DPC Dash	17,714	36,070
+Deferred income tax assets, net	16,805	22,101
+Other assets	51,998	50,598
+Total other assets	483,457	498,236
+Total assets	1,763,322	1,716,459
+Current liabilities:
+Current portion of long-term debt	7,423	6,131
+Accounts payable	137,429	135,029
+Operating lease liabilities	45,964	47,553
+Insurance reserves	25,895	26,169
+Dividends payable	67,912	2,714
+Advertising fund liabilities	117,830	115,412
+Other accrued liabilities	186,217	208,613
+Total current liabilities	588,670	541,621
+Long-term liabilities:
+Long-term debt, less current portion	4,876,221	4,810,683
+Operating lease liabilities	193,245	183,917
+Insurance reserves	36,722	32,959
+Other accrued liabilities	50,895	48,421
+Total long-term liabilities	5,157,083	5,075,980
+Stockholders' deficit
+Common stock	331	336
+Additional paid-in capital	841	1,910
+Retained deficit	(3,977,546)	(3,898,622)
+Accumulated other comprehensive loss	(6,057)	(4,766)
+Total stockholders' deficit	(3,982,431)	(3,901,142)
+Total liabilities and stockholders' deficit	$ 1,763,322	$ 1,716,459

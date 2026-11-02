@@ -1,0 +1,54 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000214/0001065280-26-000214-index.html | TITLE: EDGAR Filing Documents for 0001065280-26-000214 | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] Latest Filings
+[e5 link] Filings search tools
+Filing Detail
+[e6 link] SEC Home » [e7 link] Company Search » Current Page
+Form 8-K - Current report:
+SEC Accession No. 0001065280-26-000214
+Filing Date
+2026-07-30
+Accepted
+2026-07-30 16:05:50
+Documents
+11
+Period of Report
+2026-07-26
+Items
+Item 5.02: Departure of Directors or Certain Officers; Election of Directors; Appointment of Certain Officers: Compensatory Arrangements of Certain Officers
+
+[e8 link]  [e9 button] Interactive Data
+
+Document Format Files
+
+Seq	Description	Document	Type	Size
+1	8-K	[e10 link] nflx-20260726.htm   iXBRL	8-K	20709
+ 	Complete submission text file	[e11 link] 0001065280-26-000214.txt	 	135842
+
+Data Files
+
+Seq	Description	Document	Type	Size
+2	XBRL TAXONOMY EXTENSION SCHEMA DOCUMENT	[e12 link] nflx-20260726.xsd	EX-101.SCH	1942
+3	XBRL TAXONOMY EXTENSION LABEL LINKBASE DOCUMENT	[e13 link] nflx-20260726_lab.xml	EX-101.LAB	21876
+4	XBRL TAXONOMY EXTENSION PRESENTATION LINKBASE DOCUMENT	[e14 link] nflx-20260726_pre.xml	EX-101.PRE	12661
+15	EXTRACTED XBRL INSTANCE DOCUMENT	[e15 link] nflx-20260726_htm.xml	XML	2702
+Mailing Address
+121 ALBRIGHT WAY
+LOS GATOS
+CA
+95032-7606
+Business Address
+121 ALBRIGHT WAY
+LOS GATOS
+CA
+95032
+408-540-3700
+NETFLIX INC (Filer) CIK: [e16 link] 0001065280 (see all company filings)
+
+EIN.: 770467272 | State of Incorp.: DE | Fiscal Year End: 1231
+Type: 8-K | Act: 34 | File No.: [e17 link] 001-35727 | Film No.: 261223278
+SIC: [e18 link] 7841 Services-Video Tape Rental
+(CF Office: 07 Trade & Services)

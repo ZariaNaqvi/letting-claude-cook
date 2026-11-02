@@ -1,0 +1,189 @@
+[
+ {
+  "role": "user",
+  "content": "TASK T3\n\nFind total shareholders' equity attributable to Walmart Inc. (excluding noncontrolling interest) at the end of Walmart's second quarter of fiscal year 2027.\n\nRULES:\n- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.\n- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.\n- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.\n- You may use at most 30 tool calls in total, including submit_answer.\n\nWhen you have the answer, call submit_answer."
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_01TGCKmiyS8PSdQBnNEKhXqB",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q&dateb=&owner=include&count=40"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01TGCKmiyS8PSdQBnNEKhXqB",
+    "content": "BLOCKED: https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK=0000104169&type=10-Q&dateb=&owner=include&count=40 -- disallowed by www.sec.gov/robots.txt"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01Kh6i6bvT3KjbaTqjjfd4Ka",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/edgar/browse/?CIK=104169"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Kh6i6bvT3KjbaTqjjfd4Ka",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=104169 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nWalmart Inc. WMT on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 23, 2026 - 8-K: Current report\nOpen document\n[e11 link] Filing\nOpen filing\n8.01 - Other Events (The registrant can use this Item to report events that are not specifically called for by Form 8-K, that the registrant considers to be of importance to security holders.)\n9.01 - Financial Statements and Exhibits\n[e12 link] October 21, 2026 - 424B5: Prospectus [Rule 424(b)(5)]\nOpen document\n[e13 link] Filing\nOpen filing\n[e14 link] October 21, 2026 - 424B5: Prospectus [Rule 424(b)(5)]\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] October 20, 2026 - FWP: Filing under Securities Act Rules 163/433 of free writing prospectuses\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] October 20, 2026 - FWP: Filing under Securities Act Rules 163/433 of free writing prospectuses\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [+] 10-K (annual reports) and 10-Q (quarterly reports)\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01Vt7Du6Qcib616ehNiSrsiJ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e22"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01Vt7Du6Qcib616ehNiSrsiJ",
+    "content": "URL: https://www.sec.gov/edgar/browse/?CIK=104169 | TITLE: EDGAR Entity Landing Page | chunk 1/1\n\n[e1 link]\nEDGAR | Company Search Results\n[e2 link] FAQ\n[e3 link] EDGAR search tools\n[e4 link] Feedback\n[e5 link] Classic version\n[e6 link] Home \u00bb [e7 link] Company Search\nWalmart Inc. WMT on Nasdaq\n[e8 button] Investor Toolkit: On\n[e9 link] [+] Company Information\nLatest Filings (excluding insider transactions)\n[e10 link] October 23, 2026 - 8-K: Current report\nOpen document\n[e11 link] Filing\nOpen filing\n8.01 - Other Events (The registrant can use this Item to report events that are not specifically called for by Form 8-K, that the registrant considers to be of importance to security holders.)\n9.01 - Financial Statements and Exhibits\n[e12 link] October 21, 2026 - 424B5: Prospectus [Rule 424(b)(5)]\nOpen document\n[e13 link] Filing\nOpen filing\n[e14 link] October 21, 2026 - 424B5: Prospectus [Rule 424(b)(5)]\nOpen document\n[e15 link] Filing\nOpen filing\n[e16 link] October 20, 2026 - FWP: Filing under Securities Act Rules 163/433 of free writing prospectuses\nOpen document\n[e17 link] Filing\nOpen filing\n[e18 link] October 20, 2026 - FWP: Filing under Securities Act Rules 163/433 of free writing prospectuses\nOpen document\n[e19 link] Filing\nOpen filing\n[e20 button] View filings\nSelected Filings\n[e21 link] [+] 8-K (current reports)\n[e22 link] [-] 10-K (annual reports) and 10-Q (quarterly reports)\n[e27 link] August 28, 2026 - 10-Q: Quarterly report for quarter ending July 31, 2026\nOpen document\n [e28 link] Filing\nOpen filing\n[e29 link] May 29, 2026 - 10-Q: Quarterly report for quarter ending April 30, 2026\nOpen document\n [e30 link] Filing\nOpen filing\n[e31 link] March 13, 2026 - 10-K: Annual report for year ending January 31, 2026\nOpen document\n [e32 link] Filing\nOpen filing\n[e33 link] December 3, 2025 - 10-Q: Quarterly report for quarter ending October 31, 2025\nOpen document\n [e34 link] Filing\nOpen filing\n[e35 button] View all 10-Ks and 10-Qs [e36 button] How to read a 10-K/10-Q\n[e23 link] [+] Proxy (annual meeting) and information statements\n[e24 link] [+] Ownership disclosures\nInvestor Resources\n[e25 link] How to Use EDGAR\nLearn how to use EDGAR to research public filings by public companies, mutual funds, ETFs, some annuities, and more.\n[e26 link] Before you Invest, Investor.gov\nGet answers to your investing questions from the SEC's website dedicated to retail investors"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_01KMgrVdo1JWSzZaxePNNSfs",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "ref": "e27"
+    },
+    "name": "click",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_01KMgrVdo1JWSzZaxePNNSfs",
+    "content": "URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/0000104169/000010416926000154/wmt-20260731.htm | TITLE: Inline Viewer: WALMART INC. 10-Q 2026-07-31 | chunk 1/1\n\n"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "id": "toolu_013hUgQ6oy2ZCfdxrmyKDGuJ",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "query": "Total Walmart shareholders' equity"
+    },
+    "name": "find_text",
+    "type": "tool_use"
+   },
+   {
+    "id": "toolu_017hnxoojqP3UPFEDFXwiF8R",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "url": "https://www.sec.gov/Archives/edgar/data/0000104169/000010416926000154/wmt-20260731.htm"
+    },
+    "name": "goto",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_013hUgQ6oy2ZCfdxrmyKDGuJ",
+    "content": "URL: https://www.sec.gov/ix?doc=/Archives/edgar/data/0000104169/000010416926000154/wmt-20260731.htm | find_text \"Total Walmart shareholders' equity\": 0 match(es)"
+   },
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_017hnxoojqP3UPFEDFXwiF8R",
+    "content": "URL: https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm | TITLE: wmt-20260731 | chunk 1/14\n\nUNITED STATES\nSECURITIES AND EXCHANGE COMMISSION\nWashington, D.C. 20549\nFORM 10-Q\n(Mark One)\n\n\u2612\tQuarterly Report Pursuant to Section\u00a013 or 15(d) of the Securities Exchange Act of 1934.\nFor the quarterly period ended July\u00a031, 2026.\nor\n\n\u2610\nTransition Report Pursuant to Section\u00a013 or 15(d) of the Securities Exchange Act of 1934. For the transition period from \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0 to \u00a0\u00a0\u00a0\u00a0\u00a0\u00a0.\nCommission File Number 001-06991\nWALMART INC.\n(Exact name of registrant as specified in its charter)\n\nDelaware\t\t71-0415188\n\n(State or other jurisdiction of incorporation or organization)\n\n(I.R.S. Employer Identification No.)\n\n1 Customer Drive\n\n72716\n\nBentonville\tAR\n(Address of principal executive offices)\t\t(Zip Code)\nRegistrant's telephone number, including area code: (479) 273-4000\nFormer name, former address and former fiscal year, if changed since last report: N/A\nSecurities registered pursuant to Section 12(b) of the Act:\n\nTitle of each class\t\tTrading Symbol(s)\t\tName of each exchange on which registered\nCommon Stock, par value $0.10 per share\t\tWMT\t\tThe Nasdaq Stock Market LLC\n1.050% Notes due 2026\t\tWMT26A\t\tThe Nasdaq Stock Market LLC\n1.500% Notes due 2028\t\tWMT28C\t\tThe Nasdaq Stock Market LLC\n4.875% Notes due 2029\t\tWMT29B\t\tThe Nasdaq Stock Market LLC\n5.750% Notes due 2030\t\tWMT30B\t\tThe Nasdaq Stock Market LLC\n1.800% Notes due 2031\t\tWMT31A\t\tThe Nasdaq Stock Market LLC\n5.625% Notes due 2034\t\tWMT34\t\tThe Nasdaq Stock Market LLC\n5.250% Notes due 2035\t\tWMT35A\t\tThe Nasdaq Stock Market LLC\n4.875% Notes due 2039\t\tWMT39\t\tThe Nasdaq Stock Market LLC\nIndicate by check mark whether the registrant (1)\u00a0has filed all reports required to be filed by Section\u00a013 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or such shorter periods that the registrant was required to file such reports), and (2)\u00a0has been subject to such filing requirements for the past 90 days.\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0 No\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (\u00a7232.405 of this chapter) during the preceding 12 months (or for such shorter period that the registrant was required to submit such files). \u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2612\u00a0\u00a0\u00a0\u00a0No\u00a0\u00a0\u2610\nIndicate by check mark whether the registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company, or an emerging growth company. See definitions of \"large accelerated filer,\" \"accelerated filer,\" \"smaller reporting company,\" and \"emerging growth company\" in Rule 12b-2 of the Exchange Act.\n\nLarge Accelerated Filer\t\t\u2612\t\u00a0\u00a0\tAccelerated\u00a0Filer\t\t\u2610\nNon-Accelerated Filer\t\t\u2610\t\u00a0\u00a0\tSmaller\u00a0Reporting\u00a0Company\t\t\u2610\n\t\t\t\tEmerging Growth Company\t\t\u2610\nIf an emerging growth company, indicate by check mark if the registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act. \u2610\nIndicate by a check mark whether the registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act).\u00a0\u00a0\u00a0\u00a0Yes\u00a0\u00a0\u2610\u00a0\u00a0\u00a0No\u00a0\u00a0\u2612\nThe registrant had 7,933,746,241 shares of common stock outstanding as of August\u00a026, 2026.\n\n[e1 link] Table of Contents\nWalmart Inc.\nForm 10-Q\nFor the Quarterly Period Ended July\u00a031, 2026\n\nTable of Contents\n\n\t\t\tPage\n\n[e2 link] Part I. Financial Information\n\n[e3 link] Item 1. Financial Statements\n\n[e4 link] Condensed Consolidated Statements of Income\n\n[e5 link] 3\n\n[e6 link] Condensed Consolidated Statements of Comprehensive Income\n\n[e7 link] 4\n\n[e8 link] Condensed Consolidated Balance Sheets\n\n[e9 link] 5\n\n[e10 link] Condensed Consolidated Statements of Shareholders' Equity\n\n[e11 link] 6\n\n[e12 link] Condensed Consolidated Statements of Cash Flows\n\n[e13 link] 7\n\n[e14 link] Notes to Condensed Consolidated Financial Statements\n\n[e15 link] 8\n\n[e16 link] Item 2. Management's Discussion and Analysis of Financial Condition and Results of Operations\n\n[e17 link] 17\n\n[e18 link] Item 3. Quantitative and Qualitative Disclosures About Market Risk\n\n[e19 link] 27\n\n[e20 link] Item 4. Controls and Procedures\n\n[e21 link] 28\n\n[e22 link] Part II. Other Information\n\n[e23 link] Item 1. Legal Proceedings\n\n[e24 link] 29\n\n[e25 link] Item 1A. Risk Factors\n\n[e26 link] 29\n\n[e27 link] Item 2. Unregistered Sales of Equity Securities and Use of Proceeds\n\n[e28 link] 30\n\n[e29 link] Item 5. Other Information\n\n[e30 link] 30\n\n[e31 link] Item 6. Exhibits\n\n[e32 link] 34\n\n[e33 link] Signatures\n\n[e34 link] 35\n\n[e35 link] Table of Contents\nPART I. FINANCIAL INFORMATION\nItem 1.Financial Statements\nWalmart Inc.\nCondensed Consolidated Statements of Income\n(Unaudited)\n\n\t\tThree Months Ended July 31,\t\tSix Months Ended July 31,\n(Amounts in millions, except per share data)\t\t2026\t\t2025\t\t2026\t\t2025\nRevenues:\nNet sales\t\t$\t186,100\u00a0\t\t\t$\t175,750\u00a0\t\t\t$\t361,784\u00a0\t\t\t$\t339,731\nMembership and other income\t\t1,837\u00a0\t\t\t1,652\u00a0\t\t\t3,904\u00a0\t\t\t3,280\nTotal revenues\t\t187,937\u00a0\t\t\t177,402\u00a0\t\t\t365,688\u00a0\t\t\t343,011\nCosts and expenses:\nCost of sales\t\t138,804\u00a0\t\t\t132,771\u00a0\t\t\t271,862\u00a0\t\t\t257,074\nOperating, selling, general and administrative expenses\t\t39,750\u00a0\t\t\t37,345\u00a0\t\t\t76,950\u00a0\t\t\t71,516\nOperating income\t\t9,383\u00a0\t\t\t7,286\u00a0\t\t\t16,876\u00a0\t\t\t14,421\nInterest:\nDebt\t\t137\u00a0\t\t\t651\u00a0\t\t\t711\u00a0\t\t\t1,170\nFinance lease\t\t126\u00a0\t\t\t118\u00a0\t\t\t251\u00a0\t\t\t236\nInterest income\t\t(92)\t\t\t(94)\t\t\t(171)\t\t\t(187)\nInterest, net\t\t171\u00a0\t\t\t675\u00a0\t\t\t791\u00a0\t\t\t1,219\n\nOther (gains) and losses\t\t1,200\u00a0\t\t\t(2,708)\t\t\t925\u00a0\t\t\t(2,111)\nIncome before income taxes\t\t8,012\u00a0\t\t\t9,319\u00a0\t\t\t15,160\u00a0\t\t\t15,313\nProvision for income taxes\t\t1,483\u00a0\t\t\t2,168\u00a0\t\t\t3,141\u00a0\t\t\t3,523\n\nConsolidated net income\t\t6,529\u00a0\t\t\t7,151\u00a0\t\t\t12,019\u00a0\t\t\t11,790\nConsolidated net income attributable to noncontrolling interest\t\t(163)\t\t\t(125)\t\t\t(323)\t\t\t(277)\nConsolidated net income attributable to Walmart\t\t$\t6,366\u00a0\t\t\t$\t7,026\u00a0\t\t\t$\t11,696\u00a0\t\t\t$\t11,513\n\nNet income per common share:\nBasic net income per common share attributable to Walmart\t\t$\t0.80\u00a0\t\t\t$\t0.88\u00a0\t\t\t$\t1.47\u00a0\t\t\t$\t1.44\n\nDiluted net income per common share attributable to Walmart\t\t0.80\u00a0\t\t\t0.88\u00a0\t\t\t1.46\u00a0\t\t\t1.43\n\nWeighted-average common shares outstanding:\nBasic\t\t7,954\u00a0\t\t\t7,978\u00a0\t\t\t7,962\u00a0\t\t\t7,994\nDiluted\t\t7,978\u00a0\t\t\t8,016\u00a0\t\t\t7,989\u00a0\t\t\t8,033\n\nDividends declared per common share\t\t$\t\u2014\u00a0\t\t\t$\t\u2014\u00a0\t\t\t$\t0.99\u00a0\t\t\t$\t0.94\nSee accompanying notes.\n3\n[e36 link] Table of Contents\nWalmart Inc.\nCondensed Consolidated Statements of Comprehensive Income\n(Unaudited)\n\n\t\tThree Months Ended July 31,\t\tSix Months Ended July 31,\n(Amounts in millions)\t\t2026\t\t2025\t\t2026\t\t2025\nConsolidated net income\t\t$\t6,529\u00a0\t\t\t$\t7,151\u00a0\t\t\t$\t12,019\u00a0\t\t\t$\t11,790\nConsolidated net income attributable to noncontrolling interest\t\t(163)\t\t\t(125)\t\t\t(323)\t\t\t(277)\n\nConsolidated net income attributable to Walmart\t\t6,366\u00a0\t\t\t7,026\u00a0\t\t\t11,696\u00a0\t\t\t11,513\n\nOther comprehensive income (loss), net of income taxes\t\t534\u00a0\t\t\t750\u00a0\t\t\t(432)\t\t\t1,095\nOther comprehensive income attributable to noncontrolling interest\t\t(132)\t\t\t(187)\t\t\t(1)\t\t\t(223)\n\nOther comprehensive income (loss) attributable to Walmart\t\t402\u00a0\t\t\t563\u00a0\t\t\t(433)\t\t\t872\n\nComprehensive income, net of income taxes\t\t7,063\u00a0\t\t\t7,901\u00a0\t\t\t11,587\u00a0\t\t\t12,885\nComprehensive income attributable to noncontrolling interest\t\t(295)\t\t\t(312)\t\t\t(324)\t\t\t(500)\n\nComprehensive income attributable to Walmart\t\t$\t6,768\u00a0\t\t\t$\t7,589\u00a0\t\t\t$\t11,263\u00a0\t\t\t$\t12,385\nSee accompanying notes.\n4\n[e37 link] Table of Contents\nWalmart Inc.\nCondensed Consolidated Balance Sheets\n(Unaudited)\n\n\t\tJuly 31,\t\tJanuary 31,\t\tJuly 31,\n(Amounts in millions)\t\t2026\t\t2026\t\t2025\nASSETS\nCurrent assets:\nCash and cash equivalents\t\t$\t11,529\u00a0\t\t\t$\t10,727\u00a0\t\t\t$\t9,431\nReceivables, net\t\t11,075\u00a0\t\t\t11,172\u00a0\t\t\t10,518\nInventories\t\t61,600\u00a0\t\t\t58,851\u00a0\t\t\t57,729\nPrepaid expenses and other\t\t4,499\u00a0\t\t\t4,124\u00a0\t\t\t4,355\n\nTotal current assets\t\t88,703\u00a0\t\t\t84,874\u00a0\t\t\t82,033\n\nProperty and equipment, net\t\t142,482\u00a0\t\t\t136,083\u00a0\t\t\t125,476\nOperating lease right-of-use assets\t\t15,650\u00a0\t\t\t14,750\u00a0\t\t\t13,953\nFinance lease right-of-use assets, net\t\t6,178\u00a0\t\t\t6,123\u00a0\t\t\t6,128\n\nGoodwill\t\t28,260\u00a0\t\t\t28,735\u00a0\t\t\t29,060\nOther long-term assets\t\t12,641\u00a0\t\t\t14,103\u00a0\t\t\t14,187\nTotal assets\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\n\nLIABILITIES, REDEEMABLE NONCONTROLLING INTEREST, AND SHAREHOLDERS' EQUITY\n\nCurrent liabilities:\nShort-term borrowings\t\t$\t10,479\u00a0\t\t\t$\t6,596\u00a0\t\t\t$\t3,837\nAccounts payable\t\t64,318\u00a0\t\t\t63,061\u00a0\t\t\t60,086\nDividends payable\t\t3,949\u00a0\t\t\t\u2014\u00a0\t\t\t3,783\nAccrued liabilities\t\t30,074\u00a0\t\t\t31,187\u00a0\t\t\t28,821\nAccrued income taxes\t\t746\u00a0\t\t\t596\u00a0\t\t\t620\nLong-term debt due within one year\t\t3,470\u00a0\t\t\t3,542\u00a0\t\t\t4,011\nOperating lease obligations due within one year\t\t1,714\u00a0\t\t\t1,631\u00a0\t\t\t1,580\nFinance lease obligations due within one year\t\t880\u00a0\t\t\t856\u00a0\t\t\t828\n\nTotal current liabilities\t\t115,630\u00a0\t\t\t107,469\u00a0\t\t\t103,566\n\nLong-term debt\t\t36,462\u00a0\t\t\t34,624\u00a0\t\t\t35,640\nLong-term operating lease obligations\t\t14,798\u00a0\t\t\t13,941\u00a0\t\t\t13,171\nLong-term finance lease obligations\t\t5,952\u00a0\t\t\t5,905\u00a0\t\t\t5,947\n\nDeferred income taxes and other\t\t16,273\u00a0\t\t\t16,549\u00a0\t\t\t15,656\n\nCommitments and contingencies\n\nRedeemable noncontrolling interest\t\t293\u00a0\t\t\t293\u00a0\t\t\t307\n\nShareholders' equity:\n\nCommon stock\t\t794\u00a0\t\t\t797\u00a0\t\t\t797\nCapital in excess of par value\t\t7,046\u00a0\t\t\t6,816\u00a0\t\t\t5,718\nRetained earnings\t\t103,601\u00a0\t\t\t104,774\u00a0\t\t\t96,328\nAccumulated other comprehensive loss\t\t(13,203)\t\t\t(12,770)\t\t\t(12,733)\nTotal Walmart shareholders' equity\t\t98,238\u00a0\t\t\t99,617\u00a0\t\t\t90,110\nNonredeemable noncontrolling interest\t\t6,268\u00a0\t\t\t6,270\u00a0\t\t\t6,440\n\nTotal shareholders' equity\n\t\t104,506\u00a0\t\t\t105,887\u00a0\t\t\t96,550\n\nTotal liabilities, redeemable noncontrolling interest, and shareholders' equity\n\t\t$\t293,914\u00a0\t\t\t$\t284,668\u00a0\t\t\t$\t270,837\u00a0\tSee accompanying notes.\n5\n[e38 link] Table of Contents\nWalmart Inc.\nCondensed Consolidated Statements of Shareholders' Equity\n(Unaudited)\n\n\t\t\t\t\t\t\t\t\tAccumulated\t\tTotal\n\t\t\t\t\tCapital in\t\t\t\tOther\t\tWalmart\t\tNonredeemable\n(Amounts in millions)\tCommon Stock\t\tExcess of\t\tRetained\t\tComprehensive\t\tShareholders'\t\tNoncontrolling\t\tTotal\nShares\t\tAmount\t\tPar\u00a0Value\t\tEarnings\t\tLoss\t\tEquity\t\tInterest\t\tEquity\nBalances as of February 1, 2026\t7,969\u00a0\t\t\t$\t797\u00a0\t\t\t$\t6,816\u00a0\t\t\t$\t104,774\u00a0\t\t\t$\t(12,770)\t\t\t$\t99,617\u00a0\t\t\t$\t6,270\u00a0\t\t\t$\t105,887\n[chunk 1/14; call read_page(page=2) for more]"
+   }
+  ]
+ },
+ {
+  "role": "assistant",
+  "content": [
+   {
+    "type": "thinking",
+    "chars": 0
+   },
+   {
+    "id": "toolu_0116xEtEf3aQJG3mk3MeWWFp",
+    "caller": {
+     "type": "direct"
+    },
+    "input": {
+     "accession": "0000104169-26-000154",
+     "evidence_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm",
+     "period_end": "2026-07-31",
+     "value_usd": 98238000000
+    },
+    "name": "submit_answer",
+    "type": "tool_use"
+   }
+  ]
+ },
+ {
+  "role": "user",
+  "content": [
+   {
+    "type": "tool_result",
+    "tool_use_id": "toolu_0116xEtEf3aQJG3mk3MeWWFp",
+    "content": "Answer received. The task is over."
+   }
+  ]
+ }
+]

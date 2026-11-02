@@ -1,0 +1,230 @@
+URL: https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/ko-20260703.htm | TITLE: ko-20260703 | chunk 1/23
+
+UNITED STATES
+SECURITIES AND EXCHANGE COMMISSION
+WASHINGTON, D.C. 20549
+FORM 10-Q
+(Mark One)
+☒ QUARTERLY REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the quarterly period ended July 3, 2026
+OR
+☐ TRANSITION REPORT PURSUANT TO SECTION 13 OR 15(d) OF THE SECURITIES EXCHANGE ACT OF 1934
+For the transition period from                                    to
+Commission File Number: 001-02217
+COCA COLA CO
+(Exact name of Registrant as specified in its charter)
+
+Delaware	 	58-0628465
+(State or other jurisdiction of incorporation or organization)		(I.R.S. Employer Identification No.)
+One Coca-Cola Plaza
+Atlanta,	Georgia		30313
+(Address of principal executive offices)		(Zip Code)
+Registrant’s telephone number, including area code: (404) 676-2121
+Securities registered pursuant to Section 12(b) of the Act:
+
+Title of each class	Trading Symbol(s)	Name of each exchange on which registered
+Common Stock, $0.25 Par Value	KO	New York Stock Exchange
+1.875% Notes Due 2026	KO26	New York Stock Exchange
+0.750% Notes Due 2026	KO26C	New York Stock Exchange
+1.125% Notes Due 2027	KO27	New York Stock Exchange
+0.125% Notes Due 2029	KO29A	New York Stock Exchange
+0.125% Notes Due 2029	KO29B	New York Stock Exchange
+0.400% Notes Due 2030	KO30B	New York Stock Exchange
+1.250% Notes Due 2031	KO31	New York Stock Exchange
+3.125% Notes Due 2032	KO32	New York Stock Exchange
+0.375% Notes Due 2033	KO33	New York Stock Exchange
+0.500% Notes Due 2033	KO33A	New York Stock Exchange
+1.625% Notes Due 2035	KO35	New York Stock Exchange
+1.100% Notes Due 2036	KO36	New York Stock Exchange
+0.950% Notes Due 2036	KO36A	New York Stock Exchange
+3.375% Notes Due 2037	KO37	New York Stock Exchange
+0.800% Notes Due 2040	KO40B	New York Stock Exchange
+1.000% Notes Due 2041	KO41	New York Stock Exchange
+3.500% Notes Due 2044	KO44	New York Stock Exchange
+3.750% Notes Due 2053	KO53	New York Stock Exchange
+
+Indicate by check mark whether the Registrant (1) has filed all reports required to be filed by Section 13 or 15(d) of the Securities Exchange Act of 1934 during the preceding 12 months (or for such shorter period that the Registrant was required to file such reports), and (2) has been subject to such filing requirements for the past 90 days. Yes ☒    No ☐
+Indicate by check mark whether the Registrant has submitted electronically every Interactive Data File required to be submitted pursuant to Rule 405 of Regulation S-T (§ 232.405 of this chapter) during the preceding 12 months (or for such shorter period that the Registrant was required to submit such files). Yes ☒    No ☐
+Indicate by check mark whether the Registrant is a large accelerated filer, an accelerated filer, a non-accelerated filer, a smaller reporting company or an emerging growth company. See the definitions of “large accelerated filer,” “accelerated filer,” “smaller reporting company” and “emerging growth company” in Rule 12b-2 of the Exchange Act.
+
+Large accelerated filer	☒			Accelerated filer 	☐
+Non-accelerated filer	☐			Smaller reporting company	☐
+Emerging growth company	☐
+If an emerging growth company, indicate by check mark if the Registrant has elected not to use the extended transition period for complying with any new or revised financial accounting standards provided pursuant to Section 13(a) of the Exchange Act.	☐
+Indicate by check mark if the Registrant is a shell company (as defined in Rule 12b-2 of the Exchange Act). Yes ☐    No ☒
+Indicate the number of shares outstanding of each of the issuer’s classes of common stock as of the latest practicable date.
+
+Class of Common Stock 	 	Shares Outstanding as of July 27, 2026
+$0.25 Par Value	 	4,302,549,243
+
+THE COCA-COLA COMPANY AND SUBSIDIARIES
+Table of Contents
+
+ 	 	Page
+
+[e1 link] Forward-Looking Statements
+
+[e2 link] 1
+
+[e3 link] Part I. Financial Information
+
+[e4 link] Item 1.
+
+[e5 link] Financial Statements
+
+[e6 link] 2
+
+[e7 link] Consolidated Statements of Income — Three [e8 link] and Six [e9 link] Months Ended [e10 link] July[e11 link] 3, 2026 and [e12 link] June[e13 link] 2[e14 link] 7[e15 link] , 2025
+
+[e16 link] 2
+
+[e17 link] Consolidated Statements of Comprehensive Income — Three [e18 link] and Six [e19 link] Months Ended [e20 link] July[e21 link] 3, 2026 and
+[e22 link] June 27[e23 link] ,[e24 link] 2025
+
+[e25 link] 3
+
+[e26 link] Consolidated Balance Sheets — [e27 link] July[e28 link] 3, 2026 and December 31, 2025
+
+[e29 link] 4
+
+[e30 link] Consolidated Statements of Cash Flows — [e31 link] Six [e32 link] Months Ended [e33 link] July[e34 link] 3, 2026 and [e35 link] June[e36 link] 2[e37 link] 7[e38 link] , 2025
+
+[e39 link] 5
+
+[e40 link] Notes to Consolidated Financial Statements
+
+[e41 link] 6
+
+[e42 link] Item 2.
+
+[e43 link] Management’s Discussion and Analysis of Financial Condition and Results of Operations
+
+[e44 link] 31
+
+[e45 link] Item 3.
+
+[e46 link] Quantitative and Qualitative Disclosures About Market Risk
+
+[e47 link] 46
+
+[e48 link] Item 4.
+
+[e49 link] Controls and Procedures
+
+[e50 link] 46
+
+[e51 link] Part II. Other Information
+
+[e52 link] Item 1.
+
+[e53 link] Legal Proceedings
+
+[e54 link] 46
+
+[e55 link] Item 1A.
+
+[e56 link] Risk Factors
+
+[e57 link] 48
+
+[e58 link] Item 2.
+
+[e59 link] Unregistered Sales of Equity Securities and Use of Proceeds
+
+[e60 link] 49
+
+[e61 link] Item 5.
+
+[e62 link] Other Information
+
+[e63 link] 49
+
+[e64 link] Item 6.
+
+[e65 link] Exhibits
+
+[e66 link] 49
+
+[e67 link] Signatures
+
+[e68 link] 53
+
+FORWARD-LOOKING STATEMENTS
+This report contains information that may constitute “forward-looking statements.” Generally, the words “believe,” “expect,” “intend,” “estimate,” “anticipate,” “project,” “will” and similar expressions identify forward-looking statements, which generally are not historical in nature. However, the absence of these words or similar expressions does not mean that a statement is not forward-looking. All statements that address operating performance, events or developments that we expect or anticipate will occur in the future are forward-looking statements. Management believes that these forward-looking statements are reasonable as and when made. However, caution should be taken not to place undue reliance on any such forward-looking statements because such statements speak only as of the date when made. Our Company undertakes no obligation to publicly update or revise any forward-looking statements, whether as a result of new information, future events or otherwise, except as required by law. In addition, forward-looking statements are subject to certain risks and uncertainties that could cause our Company’s actual results to differ materially from historical experience and our present expectations or projections. These risks and uncertainties include, but are not limited to, the possibility that the assumptions used to calculate our estimated aggregate incremental tax and interest liability related to the potential unfavorable outcome of the ongoing tax dispute with the United States Internal Revenue Service could significantly change; those described in Part II, “Item 1A. Risk Factors” and elsewhere in this report and in our Annual Report on Form 10-K for the year ended December 31, 2025; and those described from time to time in our future reports filed with the Securities and Exchange Commission.
+1
+
+Part I. Financial Information
+Item 1. Financial Statements
+THE COCA-COLA COMPANY AND SUBSIDIARIES
+CONSOLIDATED STATEMENTS OF INCOME
+(In millions except per share data)
+
+	Three Months Ended		Six Months Ended
+	July 3,
+2026	June 27,
+2025		July 3,
+2026	June 27,
+2025
+Net Operating Revenues	$	13,380 		$	12,535 			$	25,852 		$	23,664
+Cost of goods sold	4,965 		4,714 			9,585 		8,877
+Gross Profit	8,415 		7,821 			16,267 		14,787
+Selling, general and administrative expenses	3,720 		3,470 			7,192 		6,704
+Other operating charges	23 		71 			44 		144
+Operating Income	4,672 		4,280 			9,031 		7,939
+Interest income	198 		188 			420 		368
+Interest expense	369 		445 			744 		832
+Equity income (loss) — net	604 		561 			988 		912
+Other income (loss) — net	370 		212 			391 		466
+Income Before Income Taxes	5,475 		4,796 			10,086 		8,853
+Income taxes	1,037 		993 			1,682 		1,715
+Consolidated Net Income	4,438 		3,803 			8,404 		7,138
+Less: Net income (loss) attributable to noncontrolling interests	13 		(7)			55 		(2)
+Net Income Attributable to Shareowners of The Coca-Cola Company	$	4,425 		$	3,810 			$	8,349 		$	7,140
+
+Basic Net Income Per Share1
+	$	1.03 		$	0.89 			$	1.94 		$	1.66
+
+Diluted Net Income Per Share1
+	$	1.03 		$	0.88 			$	1.94 		$	1.65
+Average Shares Outstanding — Basic	4,303 		4,304 			4,302 		4,303
+Effect of dilutive securities	10 		11 			11 		11
+Average Shares Outstanding — Diluted	4,313 		4,315 			4,313 		4,314
+1 Calculated based on net income attributable to shareowners of The Coca-Cola Company.
+Refer to Notes to Consolidated Financial Statements.
+
+2
+
+THE COCA-COLA COMPANY AND SUBSIDIARIES
+CONSOLIDATED STATEMENTS OF COMPREHENSIVE INCOME
+(In millions)
+
+	Three Months Ended		Six Months Ended
+	July 3,
+2026	June 27,
+2025		July 3,
+2026	June 27,
+2025
+Consolidated Net Income	$	4,438 		$	3,803 			$	8,404 		$	7,138
+Other Comprehensive Income:
+Net foreign currency translation adjustments	399 		1,103 			357 		1,722
+Net gains (losses) on derivatives	60 		(344)			131 		(601)
+Net change in unrealized gains (losses) on available-for-sale debt securities	(3)		10 			(14)		23
+Net change in pension and other postretirement benefit liabilities	14 		1 			43 		20
+Total Comprehensive Income	4,908 		4,573 			8,921 		8,302
+Less: Comprehensive income (loss) attributable to noncontrolling interests	69 		39 			67 		77
+Total Comprehensive Income Attributable to Shareowners of The Coca-Cola Company	$	4,839 		$	4,534 			$	8,854 		$	8,225
+Refer to Notes to Consolidated Financial Statements.
+
+3
+
+THE COCA-COLA COMPANY AND SUBSIDIARIES
+CONSOLIDATED BALANCE SHEETS
+(In millions except par value)
+
+	July 3,
+2026	December 31,
+2025
+ASSETS
+Current Assets
+Cash and cash equivalents	$	12,907 		$	10,270
+[chunk 1/23; call read_page(page=2) for more]

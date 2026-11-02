@@ -1,0 +1,26 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/R3.htm | TITLE:  | chunk 1/1
+
+XML 22 R3.htm IDEA: XBRL DOCUMENT
+Consolidated Statements of Comprehensive Income (Unaudited) - USD ($)
+$ in Millions
+	3 Months Ended	6 Months Ended
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Jun. 30, 2026
+
+Jun. 30, 2025
+
+Statement of Comprehensive Income [Abstract]
+Net income	$ 21,155	$ 14,987	$ 37,649	$ 29,630
+Other comprehensive income/(loss), after–tax
+Unrealized gains/(losses) on investment securities	320	(188)	(2,081)	765
+Translation adjustments, net of hedges	(21)	868	(188)	1,357
+Fair value hedges	(9)	(8)	32	20
+Cash flow hedges	(948)	1,529	(1,849)	3,203
+Defined benefit pension and OPEB plans	37	(28)	41	(44)
+DVA on fair value option elected liabilities	(383)	(305)	642	(88)
+Total other comprehensive income/(loss), after–tax	(1,004)	1,868	(3,403)	5,213
+Comprehensive income	$ 20,151	$ 16,855	$ 34,246	$ 34,843

@@ -88,4 +88,74 @@ The three Prior files have 8 tables and use the columns `SMALL LoPRIOR, ME1 PRIO
 
 **For the talk:** traps 1, 7 and 8 make great slides. Each is one plausible-looking mistake with a big, measurable error.
 
+---
+
+# Part 3: the SEC EDGAR site and its traps
+
+In Part 3 the "data" is a website: **SEC EDGAR** (https://www.sec.gov), where US public companies file their reports. The models reach it only through a headless browser and 9 tools. Everything below was checked on the live site on Oct 28, 2026 (fully for T1 and T4; the labels for T2, T3 and T5–T8 are checked in Step 14).
+
+## The click path (T1, Apple)
+
+| # | Page | What the model does |
+|---|---|---|
+| 1 | `https://www.sec.gov/search-filings` | Types "Apple Inc" in the box "Name, ticker symbol, or CIK" and clicks the suggestion "Apple Inc. (AAPL)" |
+| 2 | Company page `/edgar/browse/?CIK=320193` | The filings table is built by JavaScript (its raw HTML holds 0 accession numbers). Expands "10-K (annual reports) and 10-Q (quarterly reports)" |
+| 3 | The filings list | Finds the 10-Q filed 2026-07-31 among many Form 4 and Form 144 insider filings; clicks "Filing" |
+| 4 | Filing index | Reads "SEC Accession No." 0000320193-26-000020 |
+| 5 | Folder `/Archives/edgar/data/320193/000032019326000020/` | Opens `FilingSummary.xml` and finds "CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited)" → `R4.htm` |
+| 6 | `R4.htm` | Row "Total shareholders' equity", column "Jun. 27, 2026": **107,520** ($ in millions) → 107,520,000,000 |
+
+## What the model can and cannot reach
+
+| Allowed | Blocked |
+|---|---|
+| `www.sec.gov` pages that SEC's robots.txt allows (`/Archives/edgar/data` is allowed) | `data.sec.gov/api/xbrl/*`: the answer-key source |
+| `efts.sec.gov` (the company-name autocomplete and search) | `www.sec.gov/cgi-bin/*` (classic browse and the Interactive Data viewer), `/search/` and the other robots.txt `Disallow` lines |
+| `data.sec.gov/submissions/*` (the filings-list JSON the company page loads; no balance-sheet numbers) | every other site (FRED, Yahoo, Wikipedia, ...) as a page |
+| jQuery, Bootstrap and DataTables from public CDNs, but **only** as scripts or stylesheets of an SEC page | images, media and fonts (skipped to save traffic) |
+
+Shortcuts left open on purpose: the filing's own XBRL instance file (`*_htm.xml`) and the inline viewer (`/ix?doc=`) sit inside the filing folder. Typing a URL directly is allowed too; the scorer records whether the search form was used (`visited_search_form`).
+
+## The 8 tasks and their keys
+
+| Task | Firm | Key (whole USD) | Accession | Period end | Main trap |
+|---|---|---|---|---|---|
+| T1 | Apple | 107,520,000,000 | 0000320193-26-000020 | 2026-06-27 | Form 4/144 noise; Sep. 27, 2025 comparative column |
+| T2 | Microsoft | 442,387,000,000 | 0001193125-26-323660 (10-K) | 2026-06-30 | June 30 is the fiscal year-end, so it's a **10-K**; the later 10-Q repeats the number |
+| T3 | Walmart | 98,238,000,000 | 0000104169-26-000154 | 2026-07-31 | "Total Walmart shareholders' equity" vs the NCI-inclusive row below it (104,506,000,000); fiscal 2027 |
+| T4 | Netflix | 30,152,052,000 | 0001065280-26-000212 | 2026-06-30 | **$ in thousands**; the October 10-Q (…-000291) repeats the number |
+| T5 | Domino's | −3,982,431,000 | 0001286681-26-000035 | 2026-06-14 | A **deficit** shown as (3,982,431), in thousands; odd quarter-end |
+| T6 | JPMorgan | 353,558,000,000 | 0001628280-26-054343 | 2026-06-30 | Common equity = total 374,598,000,000 **minus** preferred 21,040,000,000; a very long bank balance sheet |
+| T7 | Berkshire Hathaway | 747,910,000,000 | 0001193125-26-341032 | 2026-06-30 | Two-part balance sheet; NCI row (750,177,000,000); look-alike companies in search |
+| T8 | Apple, Coca-Cola, Chevron, 3M | AAPL 107,520,000,000; KO 36,150,000,000; CVX 189,883,000,000; MMM 2,952,000,000 | not checked | KO 2026-07-03, others 06-27/06-30 | Four click paths in 40 steps; ranking by B/M: **CVX, KO, MMM, AAPL** |
+
+T8's market equity is given in the prompt: shares outstanding on each 10-Q cover × the June 30, 2026 close (AAPL $4,222,971,924,800; KO $349,668,176,979; CVX $327,503,846,378; MMM $83,500,616,536).
+
+## The traps
+
+| # | Trap | What goes wrong | Tag |
+|---|---|---|---|
+| 1 | **Many dependent pages** (search → company → filings → index → FilingSummary → R page) | One wrong click and the rest of the path is wrong; the model runs out of steps | NAV_ERROR, STEP_LIMIT |
+| 2 | **JavaScript filings table** | A model that reads too early sees no filings | NAV_ERROR, GAVE_UP |
+| 3 | **Insider-trading noise** (Form 4, Form 144) | The 10-Q is hard to spot in the list | NAV_ERROR |
+| 4 | **Comparative column** (prior year-end next to this quarter) | Takes Apple's Sep. 27, 2025 value 73,733,000,000 | WRONG_PERIOD |
+| 5 | **Look-alike rows** | Total liabilities and equity (Apple 383,266,000,000), equity incl. NCI | WRONG_LINE |
+| 6 | **Units** | Submits 107,520 or 30,152,052 instead of whole dollars | UNITS |
+| 7 | **Fiscal calendars** | Looks for Microsoft's June 10-Q (there is none); misreads Walmart's FY2027 | NAV_ERROR, WRONG_FILING |
+| 8 | **Sign** | Domino's deficit submitted as a positive number | SIGN |
+| 9 | **Preferred stock** (T6) | Forgets to subtract it, or subtracts the liquidation preference (21,200,000,000) instead | WRONG_LINE |
+| 10 | **Later filings repeat the number** | Right value, but the accession of the October 10-Q | WRONG_FILING |
+| 11 | **Look-alike companies** (Berkshire Hathaway Energy, BH Finance) | The path is followed for the wrong entity | WRONG_ENTITY |
+| 12 | **Long pages** | Bank and Berkshire balance sheets span several 10,000-character chunks; must use `read_page(page=n)` or `find_text` | STEP_LIMIT, WRONG_LINE |
+| 13 | **Post-cutoff values** | A model that "remembers" a number is guessing | UNGROUNDED |
+
+**For the talk:** traps 4, 6 and 9 are one-slide stories: a plausible-looking number, one row or column away, and an exact dollar error.
+
+## What we learned about the site while building (Oct 28)
+
+- **SEC blocks headless Chromium's own requests** (`403 Undeclared Automated Tool`), even with a declared User-Agent. A plain HTTP client with the same User-Agent gets 200. So every request goes through `httpx2`, and Chromium only renders.
+- **The company page needs CDN libraries** (jQuery, Bootstrap, DataTables) to build the filings table.
+- **Rare stalls of about 690 s** happened three times while loading one SEC script. Each request now has a 25 s cap, and a tool call slower than 120 s is not counted against the model's 12 minutes. The root cause is not known.
+- **Netflix's original 10-Q** is …-000212 (filed 2026-07-17), not …-000291 as the first design said; -000291 is the October 10-Q.
+
 Next: [05 — Glossary](05-glossary.md)

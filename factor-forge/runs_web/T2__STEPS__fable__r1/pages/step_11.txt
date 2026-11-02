@@ -1,0 +1,1 @@
+ERROR: could not load https://efts.sec.gov/LATEST/search-index?q=%22Microsoft%22&forms=10-K&dateRange=custom&startdt=2026-07-01&enddt=2026-08-31&ciks=0000789019 (TimeoutError: Page.goto: Timeout 20000ms exceeded.)

@@ -1,0 +1,13 @@
+URL: https://www.sec.gov/edgar/search/ | TITLE: SEC.gov | EDGAR Full Text Search | chunk 1/1
+
+[e1 link]
+[e2 link] SEC.gov
+[e3 link] EDGAR
+[e4 link] FAQ
+[e5 link] Other search tools
+The new EDGAR advanced search gives you access to the full text of electronic filings since 2001.
+[e6 textbox "Search by keyword, ticker, company name, CIK number or indiv" value=""]
+[e7 link] + more search options
+[e8 button] SEARCH [e9 button] Clear all
+
+[e10 link] Accessibility [e11 link] Budget & Performance [e12 link] Careers [e13 link] Contact [e14 link] Contracts [e15 link] Data [e16 link] FOIA [e17 link] Inspector General [e18 link] Investor.gov [e19 link] No FEAR Act & EEO Data [e20 link] Ombudsman [e21 link] Plain Writing [e22 link] Privacy [e23 link] Related Sites [e24 link] Site Map [e25 link] USA.gov [e26 link] Votes [e27 link] Vulnerability Disclosure Policy [e28 link] Whistleblower Protection

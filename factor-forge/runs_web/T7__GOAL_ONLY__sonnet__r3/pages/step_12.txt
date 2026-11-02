@@ -1,0 +1,1 @@
+URL: https://www.sec.gov/Archives/edgar/data/1067983/000119312526341032/R2.htm | find_text 'Total Berkshire Hathaway shareholders': 0 match(es)

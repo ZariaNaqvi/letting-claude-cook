@@ -1,0 +1,1 @@
+URL: https://data.sec.gov/submissions/CIK0000789019.json | find_text '"reportDate":["2026': 0 match(es)

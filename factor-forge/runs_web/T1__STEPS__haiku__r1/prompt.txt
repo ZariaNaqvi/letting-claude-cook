@@ -1,0 +1,19 @@
+TASK T1
+
+Find Apple Inc.'s total shareholders' equity at the end of its fiscal quarter that ended in late June 2026, as reported in the quarterly report Apple filed in July 2026.
+
+RULES:
+- Give the answer as a whole number of US dollars (not millions or thousands). A negative amount is a negative number.
+- Also give the filing's accession number in the form ##########-##-###### and the balance-sheet date (period_end) as YYYY-MM-DD.
+- Book equity means the parent company's total stockholders' (shareholders') equity line, unless the task says otherwise.
+- You may use at most 30 tool calls in total, including submit_answer.
+
+STEPS (a click path that works):
+1. Open the EDGAR company search page https://www.sec.gov/search-filings and type "Apple Inc" into the Company Search box "Name, ticker symbol, or CIK". Click the suggestion "Apple Inc. (AAPL)" (CIK 0000320193).
+2. On the company page, expand "10-K (annual reports) and 10-Q (quarterly reports)". Ignore the Form 4 and Form 144 insider filings.
+3. Find the 10-Q filed July 31, 2026 ("Quarterly report for quarter ending June 27, 2026") and click its "Filing" link to open the filing index. The accession number is shown as "SEC Accession No.".
+4. Open the filing's folder: the index URL without the file name, e.g. https://www.sec.gov/Archives/edgar/data/320193/<accession without dashes>/. Open FilingSummary.xml and find the report whose ShortName is "CONDENSED CONSOLIDATED BALANCE SHEETS (Unaudited)"; its HtmlFileName (R4.htm) is the balance-sheet page in the same folder.
+5. On that page use the row "Total shareholders' equity" and the column "Jun. 27, 2026" (not the "Sep. 27, 2025" comparative column, and not "Total liabilities and shareholders' equity").
+Units: The page header says "$ in Millions": multiply by 1,000,000.
+
+When you have the answer, call submit_answer.

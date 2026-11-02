@@ -1,0 +1,8 @@
+URL: https://www.sec.gov/Archives/edgar/data/19617/000162828026054343/jpm-20260630.htm | find_text 'Total stockholders’ equity': 7 match(es)
+(chunk 2) Common stockholders’ equity	353,558 			343,993 		342,393 			340,167 		336,879 		353,558 			336,879 / Total stockholders’ equity	374,598 			364,038 		362,438 			360,212 		356,924 		374,598 			356,924
+(chunk 15) Capital components / The following table presents reconciliations of total stockholders’ equity to CET1 capital, Tier 1 capital and Total capital as of June 30, 2026 and December 31, 2025.
+(chunk 15) 2025 / Total stockholders’ equity	$	374,598 			$	362,438 / Less: Preferred stock	21,040 			20,045
+(chunk 31) (178,433)			(164,591) / Total stockholders’ equity	374,598 			362,438 / Total liabilities and stockholders’ equity	$	5,015,069 			$	4,424,900
+(chunk 31) Total stockholders’ equity		$	374,598 			$	356,924 			$	374,598 			$	356,924 / The Notes to Consolidated Financial Statements (unaudited) are an integral part of these statements.
+(chunk 61) Common stockholders’ equity	343,146 							329,797 / Total stockholders’ equity	364,342 							349,842 / Total liabilities and stockholders’ equity	$	4,977,088 							$	4,437,618
+(chunk 62) Common stockholders’ equity	342,104 							327,086 / Total stockholders’ equity	362,728 							347,115 / Total liabilities and stockholders’ equity	$	4,868,516 							$	4,337,024

@@ -135,3 +135,39 @@ This comment explains what is deliberately kept: the input data, the answer file
 3. `runs/` and `results/` are the real experiment, which cost money and should be checkable by others. Dry-run folders are fake data that can be regenerated for free.
 
 </details>
+
+## Part 3 additions
+
+### `web/requirements-web.txt`
+
+```
+-r ../requirements.txt
+playwright==1.64.1
+greenlet==3.5.6
+pyee==14.0.0
+```
+
+It installs Part 2's pins first, so nothing in Part 2 changes, then Playwright. The HTTP client `httpx2` comes with `anthropic` 1.13.0. After installing, download the browser once:
+
+```bash
+pip install -r web/requirements-web.txt
+python -m playwright install chromium     # Chrome Headless Shell 156.0.8078.4 on Oct 28
+```
+
+### `.env.example`: `SEC_USER_AGENT`
+
+```
+SEC_USER_AGENT="Your Name your.address@example.edu"
+```
+
+SEC asks automated tools to declare a name and contact. Copy this line into `.env` with your own name and an address you choose. The harness refuses the placeholder, and refuses the test value `FactorForge-test admin@example.com` for paid runs. Run files store only its sha256.
+
+### `.gitignore`
+
+```
+web/.asset_cache/       # cached js/css of SEC pages
+runs_web_mock/          # fake-model runs: regenerate with --dry-run
+results_web_mock/
+```
+
+Committed on purpose: `web/answer_key.json`, `web/data/raw/` (with the sha256 manifest), `web/fixtures/`, `runs_web_pilot/`, `runs_web/` and `results_web*/` (except the mock ones). The run logs are evidence.

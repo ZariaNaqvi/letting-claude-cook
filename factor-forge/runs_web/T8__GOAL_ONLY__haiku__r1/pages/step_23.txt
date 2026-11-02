@@ -1,0 +1,133 @@
+URL: https://www.sec.gov/Archives/edgar/data/21344/000162828026050503/R1.htm | TITLE:  | chunk 1/1
+
+XML 19 R1.htm IDEA: XBRL DOCUMENT
+DOCUMENT AND ENTITY INFORMATION - shares
+
+	6 Months Ended
+
+Jul. 03, 2026
+
+Jul. 27, 2026
+
+Entity Information [Line Items]
+Document Type	10-Q
+Document Quarterly Report	true
+Document Period End Date	Jul. 03, 2026
+Document Transition Report	false
+Entity File Number	001-02217
+Entity Registrant Name	COCA COLA CO
+Entity Incorporation, State or Country Code	DE
+Entity Tax Identification Number	58-0628465
+Entity Address, Address Line One	One Coca-Cola Plaza
+Entity Address, City or Town	Atlanta,
+Entity Address, State or Province	GA
+Entity Address, Postal Zip Code	30313
+City Area Code	404
+Local Phone Number	676-2121
+Entity Current Reporting Status	Yes
+Entity Interactive Data Current	Yes
+Entity Filer Category	Large Accelerated Filer
+Entity Small Business	false
+Entity Emerging Growth Company	false
+Entity Shell Company	false
+Entity Common Stock, Shares Outstanding	 	4,302,549,243
+Amendment Flag	false
+Current Fiscal Year End Date	--12-31
+Document Fiscal Period Focus	Q2
+Document Fiscal Year Focus	2026
+Entity Central Index Key	0000021344
+Common Stock, $0.25 Par Value [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	Common Stock, $0.25 Par Value
+Trading Symbol	KO
+Security Exchange Name	NYSE
+1.875% Notes Due 2026 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	1.875% Notes Due 2026
+Trading Symbol	KO26
+Security Exchange Name	NYSE
+0.750% Notes Due 2026 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.750% Notes Due 2026
+Trading Symbol	KO26C
+Security Exchange Name	NYSE
+1.125% Notes Due 2027 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	1.125% Notes Due 2027
+Trading Symbol	KO27
+Security Exchange Name	NYSE
+.125% Notes Due 2029 KO29A [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.125% Notes Due 2029
+Trading Symbol	KO29A
+Security Exchange Name	NYSE
+.125% Notes Due 2029 KO29B [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.125% Notes Due 2029
+Trading Symbol	KO29B
+Security Exchange Name	NYSE
+.400% Notes Due 2030 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.400% Notes Due 2030
+Trading Symbol	KO30B
+Security Exchange Name	NYSE
+1.250% Notes Due 2031 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	1.250% Notes Due 2031
+Trading Symbol	KO31
+Security Exchange Name	NYSE
+3.125% Notes Due 2032 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	3.125% Notes Due 2032
+Trading Symbol	KO32
+Security Exchange Name	NYSE
+.375% Notes Due 2033 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.375% Notes Due 2033
+Trading Symbol	KO33
+Security Exchange Name	NYSE
+.500% Notes Due 2033 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.500% Notes Due 2033
+Trading Symbol	KO33A
+Security Exchange Name	NYSE
+1.625% Notes Due 2035 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	1.625% Notes Due 2035
+Trading Symbol	KO35
+Security Exchange Name	NYSE
+1.100% Notes Due 2036 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	1.100% Notes Due 2036
+Trading Symbol	KO36
+Security Exchange Name	NYSE
+.950% Notes Due 2036 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.950% Notes Due 2036
+Trading Symbol	KO36A
+Security Exchange Name	NYSE
+3.375% Notes Due 2037 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	3.375% Notes Due 2037
+Trading Symbol	KO37
+Security Exchange Name	NYSE
+.800% Notes Due 2040 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	0.800% Notes Due 2040
+Trading Symbol	KO40B
+Security Exchange Name	NYSE
+1.000% Notes Due 2041 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	1.000% Notes Due 2041
+Trading Symbol	KO41
+Security Exchange Name	NYSE
+3.500% Notes Due 2044 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	3.500% Notes Due 2044
+Trading Symbol	KO44
+Security Exchange Name	NYSE
+3.750% Notes Due 2053 [Member]
+Entity Information [Line Items]
+Title of 12(b) Security	3.750% Notes Due 2053
+Trading Symbol	KO53
+Security Exchange Name	NYSE

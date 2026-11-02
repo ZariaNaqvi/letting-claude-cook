@@ -1,0 +1,30 @@
+URL: https://www.sec.gov/Archives/edgar/data/1065280/000106528026000211/R1.htm | TITLE:  | chunk 1/1
+
+XML 8 R1.htm IDEA: XBRL DOCUMENT
+Document and Entity Information Document and Entity Information
+
+Jul. 16, 2026
+
+Cover [Abstract]
+Document Type	8-K
+Document Period End Date	Jul. 16, 2026
+Entity Registrant Name	NETFLIX INC
+Entity Incorporation, State or Country Code	DE
+Entity File Number	001-35727
+Entity Tax Identification Number	77-0467272
+Entity Address, Address Line One	121 Albright Way
+Entity Address, City or Town	Los Gatos
+Entity Address, State or Province	CA
+Entity Address, Postal Zip Code	95032
+City Area Code	408
+Local Phone Number	540-3700
+Written Communications	false
+Soliciting Material	false
+Pre-commencement Tender Offer	false
+Pre-commencement Issuer Tender Offer	false
+Title of each class	Common stock, par value $0.001 per share
+Trading Symbol	NFLX
+Security Exchange Name	NASDAQ
+Entity Emerging Growth Company	false
+Entity Central Index Key	0001065280
+Amendment Flag	false
