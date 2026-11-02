@@ -1,0 +1,1 @@
+BLOCKED: https://data.sec.gov/api/xbrl/companyconcept/CIK0000320193/us-gaap/StockholdersEquity.json -- XBRL API is blocked in this experiment (collect data through the EDGAR web pages)

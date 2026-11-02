@@ -1,0 +1,11 @@
+URL: https://www.sec.gov/Archives/edgar/data/93410/000009341026000162/R4.htm | TITLE:  | chunk 1/1 | HTTP 404
+
+This XML file does not appear to have any style information associated with it. The document tree is shown below.
+
+<Error>
+<Code>NoSuchKey</Code>
+<Message>The specified key does not exist.</Message>
+<Key>edgar/data/93410/000009341026000162/R4.htm</Key>
+<RequestId>TSHV891584NB6NFS</RequestId>
+<HostId>5ItNULg4ypKQektlxxW9xh3+H8RY+uNZ+BzhhSm77GJrFhUshtFVFItSdJOsCpuHw9KQ0eZ8R27h0rlTEjSEu/BKU8ys783d</HostId>
+</Error>

@@ -48,7 +48,8 @@ python web/run_web.py --pilot --models fable opus --tasks T1 T4 --conds GOAL_ONL
 python web/score_web.py --runs runs_web_pilot --out results_web_pilot
 
 # main run (192 runs, resume-safe, stops itself before passing $100)
-python web/run_web.py --models fable opus sonnet haiku --tasks all --conds STEPS GOAL_ONLY \
+# caffeinate -i keeps the Mac awake: a sleeping Mac makes runs end TIME_LIMIT
+caffeinate -i python web/run_web.py --models fable opus sonnet haiku --tasks all --conds STEPS GOAL_ONLY \
        --repeats 3 --effort high --budget-usd 100 --out runs_web 2>&1 | tee -a runlog_web.txt
 python web/score_web.py --runs runs_web --out results_web
 python web/analyze_web.py --in results_web/runs_scored.csv --part2 results/runs_scored.csv --out results_web
@@ -56,7 +57,9 @@ python web/analyze_web.py --in results_web/runs_scored.csv --part2 results/runs_
 
 The list flags take spaces or commas: `--tasks T1,T4` is the same as `--tasks T1 T4`.
 
-The same steps with dates, expected outputs and checkpoints are Steps 12-18 of `../docs/03-step-by-step-checklist.md`. Before the pilot, run `python web/capture_fixtures.py --all` (only T1 and T4 were walked live) and set `PROMPT_VERSION = "web-v1"` in `prompts_web.py`.
+The same steps with dates, expected outputs and checkpoints are Steps 12-18 of `../docs/03-step-by-step-checklist.md`. The main run used prompts `web-v2` and harness `web-h3` (commit 654e29b); the version history is in `../notes.txt`.
+
+If a run takes about 12 minutes and ends `TIME_LIMIT`, check whether the Mac slept. In the main run, all 10 such runs were sleep-affected, not model failures. Move those run folders to `runs_web_sleep_affected/` (don't delete them), rerun the same command under `caffeinate -i` (resume-safe, so it redoes only the missing runs), and rescore. Log the rerun in `notes.txt`.
 
 ## How the browser reaches SEC
 

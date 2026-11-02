@@ -1,0 +1,1 @@
+URL: https://data.sec.gov/submissions/CIK0000320193.json | find_text '"10-Q","10-Q"': 0 match(es)
