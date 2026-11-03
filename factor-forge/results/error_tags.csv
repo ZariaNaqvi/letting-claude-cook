@@ -1,0 +1,4 @@
+model_alias,condition,BAD_FORMAT,CRASH,WRONG_FORMULA
+fable,NAME_ONLY,2,0,0
+haiku,NAME_ONLY,0,0,1
+opus,NAME_ONLY,0,1,0

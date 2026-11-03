@@ -1,0 +1,11 @@
+comparison,a_pass,b_pass,p_value,p_holm
+RECIPE: fable vs opus,40/40,40/40,1.0,1.0
+RECIPE: opus vs sonnet,40/40,40/40,1.0,1.0
+RECIPE: sonnet vs haiku,40/40,40/40,1.0,1.0
+NAME_ONLY: fable vs opus,38/40,39/40,1.0,1.0
+NAME_ONLY: opus vs sonnet,39/40,40/40,1.0,1.0
+NAME_ONLY: sonnet vs haiku,40/40,39/40,1.0,1.0
+fable: RECIPE vs NAME_ONLY,40/40,38/40,0.4936708860759492,1.0
+opus: RECIPE vs NAME_ONLY,40/40,39/40,1.0,1.0
+sonnet: RECIPE vs NAME_ONLY,40/40,40/40,1.0,1.0
+haiku: RECIPE vs NAME_ONLY,40/40,39/40,1.0,1.0
